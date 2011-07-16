@@ -1,0 +1,143 @@
+= Overview
+
+A Ruby script for easily configuring your Mac OS user profile settings. By default, these are set to my preferences but you can easily
+change them to your liking.
+
+= Features
+
+* Configures the Bash shell .bashrc file.
+* Configures the Bash shell .bash_profile file.
+* Configures the Git[http://git-scm.com] .gitconfig file.
+* Configures the Git[http://git-scm.com] .gitignore file.
+* Configures the Ruby IRB .irbrc file.
+* Configures the {Ruby Debugger}[http://bashdb.sourceforge.net/ruby-debug.html] .rdebugrc file.
+* Configures the {Ruby on Rails}[http://rubyonrails.org] .railsrc file.
+* Configures the RVM[http://rvm.beginrescueend.com] .rvmrc file.
+
+= Requirements
+
+* Any UNIX-based OS
+* Git[http://git-scm.com]
+* {Ruby Gem Setup}[http://github.com/bkuhlmann/ruby_gem_setup]
+
+= Setup
+
+Open a terminal window and execute the following commands:
+
+Current Version (stable)
+
+  git clone git://github.com/bkuhlmann/macos_setup.git
+  git checkout v1.2.0
+  cd macos_setup
+
+Master Version (unstable)
+
+  git clone git://github.com/bkuhlmann/macos_setup.git
+  cd macos_setup
+
+Edit and save the *.txt files as you see fit.
+
+Open a terminal window and execute the following commands:
+
+  cd ..
+  ruby setup.rb
+
+You can delete the macos_setup directory after completing installation.
+
+= Usage
+
+From the command line, the following commands are possible:
+
+  .. = "cd .."
+  ... = "cd ../.."
+  c = "clear"
+  h = "history"
+  l = "ls -alh"
+  p = "pwd"
+  cpath = 'pwd | tr -d "\r\n" | pbcopy |echo "Current path copied to clipboard."'
+  o = "open"
+  m = "mate ."
+  home = "cd ~"
+  tree = "find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+  bashm = "mate ~/.bashrc"
+  bashs = "source ~/.bashrc"
+
+  gst = "git status -sb"
+  gg = "git grep"
+  gl = "git log --oneline --decorate"
+  glc = "git shortlog -sne"
+  gld = "git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+  gd = "git diff"
+  gdw = "git diff --word-diff"
+  gb = "git branch -v"
+  gm = "git merge"
+  gcl = "git clone"
+  gch = "git checkout"
+  ga = "git add"
+  gall = "git add ."
+  gco = "git commit"
+  gca = "git commit -a"
+  gcam = "git commit -a -m"
+  gf = "git fetch"
+  gpu = "git pull"
+  gp = "git push"
+  gpo = "git push origin"
+  gpp = "git push production master"
+  gps = "git push stage stage:master"
+  gtag = "git tag"
+  gtags = "git push --tags"
+
+  rd = "rdoc -a -o _doc"
+	sc = "script/console"
+	ss = "script/server"
+	sg = "script/generate"
+	scs = "sc --sandbox"
+  sgc = "sg controller"
+  sgm = "sg model"
+  sgs = "sg scaffold"
+  rdbd = "rake db:drop"
+  rdbc = "rake db:create"
+  rdbm = "rake db:migrate"
+  taild = "tail -f log/development.log"
+  tailt = "tail -f log/test.log"
+  cdl = "> ./log/development.log"
+  ctl = "> ./log/test.log"
+  cpl = "> ./log/production.log"
+  cbl = "> ./log/bullet.log"
+  clogs = "cdl; ctl; cpl; cbl"
+  res = "rake restart"
+  debug = "rdebug -c"
+	rpaths = "rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
+  erd = "rake erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
+  rmodels = "rake doc:diagram:models"
+  rcontrollers = "rake doc:diagram:controllers"
+  rdemo = "rails new demo -d=sqlite3 -J -T -f -m https://github.com/bkuhlmann/rails_setup_template/raw/master/template.rb"
+
+  ber = "bundle exec rspec"
+  bec = "bundle exec cucumber"
+  rebundle = "rm -f Gemfile.lock; bundle check; bundle package"
+
+From IRB or the Rails console, the following commands are possible:
+
+  RA.cp - Copies data to the MacOS clipboard.
+  ap - Prints collections in an easy to read format.
+
+= Resources
+
+Inspiration came from these dotfile projects (in case they are of interest to you as well):
+
+* {Ryan Bates}[http://github.com/ryanb/dotfiles]
+* {Blake Walters}[https://github.com/markupboy/dotfiles]
+
+= Author
+
+{Red Alchemist}[http://www.redalchemist.com]
+
+= License
+
+Copyright (c) 2010 {Red Alchemist}[http://www.redalchemist.com].
+Read the LICENSE for details.
+
+= History
+
+Read the CHANGELOG for details.

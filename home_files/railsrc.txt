@@ -1,0 +1,41 @@
+# Requirements: .irbrc
+# Reference: http://rbjl.net/49-railsrc-rails-console-snippets
+
+if ENV.include?("RAILS_ENV") && !Object.const_defined?("RAILS_DEFAULT_LOGGER")
+  # Rails 2.x.x
+
+  # Prompt
+  require "logger"
+  RAILS_DEFAULT_LOGGER = Logger.new STDOUT
+  IRB.conf[:PROMPT][:RA][:PROMPT_I] = "[#{ENV['RUBY_VERSION']}][#{ENV["RAILS_ENV"]}]> "
+  IRB.conf[:PROMPT][:RA][:PROMPT_N] = "[#{ENV['RUBY_VERSION']}][#{ENV["RAILS_ENV"]}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_C] = "[#{ENV['RUBY_VERSION']}][#{ENV["RAILS_ENV"]}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_S] = "[#{ENV['RUBY_VERSION']}][#{ENV["RAILS_ENV"]}]%l "
+elsif defined?(Rails)
+  # Rails 3.x.x
+
+  # Prompt
+  require "logger"
+  Rails.logger = Logger.new STDOUT
+  IRB.conf[:PROMPT][:RA][:PROMPT_I] = "[#{ENV['RUBY_VERSION']}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]> "
+  IRB.conf[:PROMPT][:RA][:PROMPT_N] = "[#{ENV['RUBY_VERSION']}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_C] = "[#{ENV['RUBY_VERSION']}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_S] = "[#{ENV['RUBY_VERSION']}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]%l "
+  
+  # ActionController
+  ActionController::Base.logger = Logger.new STDOUT
+
+  # ActionView
+  include ActionView::Helpers::DebugHelper
+  include ActionView::Helpers::NumberHelper
+  include ActionView::Helpers::RawOutputHelper
+  include ActionView::Helpers::SanitizeHelper
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::TranslationHelper
+  include ApplicationController._helpers
+
+  # Routes
+  include Rails.application.routes.url_helpers
+  default_url_options[:host] = Rails.application.class.parent_name.downcase
+end

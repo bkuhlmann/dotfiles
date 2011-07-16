@@ -1,0 +1,54 @@
+# Defaults
+IRB.conf[:AUTO_INDENT] = true
+IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:EVAL_HISTORY] = 200
+IRB.conf[:PROMPT] ||= {}
+IRB.conf[:PROMPT][:RA] = {
+  :PROMPT_I => "[#{ENV['RUBY_VERSION']}]> ",
+  :PROMPT_N => "[#{ENV['RUBY_VERSION']}]| ",
+  :PROMPT_C => "[#{ENV['RUBY_VERSION']}]| ",
+  :PROMPT_S => "[#{ENV['RUBY_VERSION']}]%l ",
+  :RETURN => "=> %s\n"
+}
+IRB.conf[:PROMPT_MODE] = :RA
+
+# Gem Requirements
+["rubygems", "wirble", "hirb", "ap"].each do |gem|
+  begin
+    require gem
+  rescue LoadError
+    STDERR.puts "Unable to load #{gem}: #{$!}"
+  end
+end
+
+# Gem Settings
+["Wirble.init", "Wirble.colorize", "Hirb.enable"].each do |config|
+  begin
+    instance_eval config
+  rescue NoMethodError
+    STDERR.puts "Unable to execute #{config}: #{$!}"
+  end
+end
+
+# Rails Settings
+railsrc_path = File.expand_path("~/.railsrc")
+if (ENV["RAILS_ENV"] || defined?(Rails)) && File.exist?(railsrc_path)
+  begin
+    load railsrc_path
+  rescue Exception
+    warn "Could not load: #{railsrc_path}"
+  end
+end
+
+# Red Alchemist IRB Utilities
+class RA
+  # Copies data to the Mac OS clipboard.
+  # Original Source: https://gist.github.com/949714
+  # Fork Reference: http://stackoverflow.com/questions/881388/what-is-the-reason-for-performing-a-double-fork-when-creating-a-daemon
+	# Alternative Gem: https://github.com/ahoward/irbcp
+  # Example Usage: RA.cb User.all.map &:email
+  def self.copy *args
+    buffer = args * ''
+    fork {fork {IO.popen("pbcopy", 'w') {|fd| fd.write(buffer)}}; exit! 0}
+  end
+end

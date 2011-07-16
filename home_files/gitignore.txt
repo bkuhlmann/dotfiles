@@ -1,0 +1,25 @@
+# Mac OS
+.DS_Store
+Icon?
+
+# Windows
+Thumbs.db
+
+# TextMate
+*.tmproj
+tmtags
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.tar.gz
+*.zip
+*.bzip
+
+# SVN
+.svn
