@@ -89,9 +89,9 @@ From the command line, the following commands are possible:
 
   rd = "rdoc -a -o _doc"
   sc = "script/console"
-	ss = "script/server"
-	sg = "script/generate"
-	scs = "sc --sandbox"
+  ss = "script/server"
+  sg = "script/generate"
+  scs = "sc --sandbox"
   sgc = "sg controller"
   sgm = "sg model"
   sgs = "sg scaffold"
