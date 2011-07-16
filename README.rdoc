@@ -26,14 +26,14 @@ Open a terminal window and execute the following commands:
 
 Current Version (stable)
 
-  git clone git://github.com/bkuhlmann/macos_setup.git
-  git checkout v1.2.0
-  cd macos_setup
+  git clone git://github.com/bkuhlmann/dotfiles.git
+  git checkout v1.0.0
+  cd dotfiles
 
 Master Version (unstable)
 
-  git clone git://github.com/bkuhlmann/macos_setup.git
-  cd macos_setup
+  git clone git://github.com/bkuhlmann/dotfiles.git
+  cd dotfiles
 
 Edit and save the *.txt files as you see fit.
 
@@ -42,7 +42,7 @@ Open a terminal window and execute the following commands:
   cd ..
   ruby setup.rb
 
-You can delete the macos_setup directory after completing installation.
+You can delete the dotfiles directory after completing installation.
 
 = Usage
 
