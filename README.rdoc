@@ -1,7 +1,7 @@
 = Overview
 
-A Ruby script for easily configuring your Mac OS user profile settings. By default, these are set to my preferences but you can easily
-change them to your liking.
+Setup and configure your user profile settings the way you like. By default, these are set to my preferences but you can
+change them to your liking by editing any of the *.txt files in the home_files directory. Read on to learn more.
 
 = Features
 
