@@ -1,7 +1,8 @@
 = Overview
 
-Setup and configure your user profile settings the way you like. By default, these are set to my preferences but you can
-change them to your liking by editing any of the *.txt files in the home_files directory. Read on to learn more.
+Setup and configure your user profile settings the way you like. By default, these are set to my preferences (namely
+the Mac OS) but you can change them to your liking by editing any of the *.txt files in the home_files directory. Read
+on to learn more.
 
 = Features
 
