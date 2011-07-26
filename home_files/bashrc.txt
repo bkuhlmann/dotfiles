@@ -168,3 +168,4 @@ export EDITOR=mate
 
 # Ruby Version Manager (http://rvm.beginrescueend.com)
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+if [[ -s .rvmrc ]] ; then source .rvmrc ; fi # Fixes RVM config failure when creating new terminal tabs (example: iTerm).
