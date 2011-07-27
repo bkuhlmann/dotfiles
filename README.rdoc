@@ -10,6 +10,7 @@ on to learn more.
 * Configures the Bash shell .bash_profile file.
 * Configures the Git[http://git-scm.com] .gitconfig file.
 * Configures the Git[http://git-scm.com] .gitignore file.
+* Configures the {Ruby Gems}[http://docs.rubygems.org/read/chapter/11] .gemrc file.
 * Configures the Ruby IRB .irbrc file.
 * Configures the {Ruby Debugger}[http://bashdb.sourceforge.net/ruby-debug.html] .rdebugrc file.
 * Configures the {Ruby on Rails}[http://rubyonrails.org] .railsrc file.
