@@ -4,7 +4,7 @@
 HOME_PATH = ENV["HOME"]
 
 # Execution
-puts "\nConfiguring dotfiles...\n\n"
+puts "\nInstalling dotfiles...\n\n"
 if File.exists? HOME_PATH
   Dir[File.join("home_files", "*.txt")].each do |original_file|
     new_file = File.join HOME_PATH, '.' + File.basename(original_file).chomp(".txt")
@@ -18,4 +18,4 @@ if File.exists? HOME_PATH
 else
   puts "ERROR: #{HOME_PATH} does not appear to exist."
 end
-puts "\nDotfile configuration complete.\n\n"
+puts "\nDotfile install complete.\n\n"

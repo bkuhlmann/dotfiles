@@ -22,7 +22,7 @@ on to learn more.
 * Git[http://git-scm.com]
 * {Ruby Gem Setup}[http://github.com/bkuhlmann/ruby_gem_setup]
 
-= Setup
+= Installation
 
 Open a terminal window and execute the following commands:
 
@@ -42,9 +42,17 @@ Edit and save the *.txt files as you see fit.
 Open a terminal window and execute the following commands:
 
   cd ..
-  ruby setup.rb
+  ruby install.rb
 
 You can delete the dotfiles directory after completing installation.
+
+= Configuration
+
+If you didn't tweak the dotfiles prior to installation (which is perfectly acceptable), there are couple files that need
+manual care. They are:
+
+* .gemrc - Uncomment the "gemcutter_key" line and add your own RubyGems key for publishing gems.
+* .gitconfig - Uncomment the name and email lines and replace with your own identification.
 
 = Usage
 
