@@ -97,6 +97,8 @@ From the command line, the following commands are possible:
   gtag = "git tag"
   gtags = "git push --tags"
 
+	init_github <account name> <project name>
+
   rd = "rdoc -a -o _doc"
   sc = "script/console"
   ss = "script/server"

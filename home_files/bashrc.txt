@@ -101,6 +101,16 @@ alias gps="git push stage stage:master"
 alias gtag="git tag"
 alias gtags="git push --tags"
 
+# GitHub (https://github.com)
+# Function Source: https://gist.github.com/1105392
+function init_github() {
+	git remote add origin git@github.com:$1/$2.git
+	git push origin master
+	git config branch.master.remote origin
+	git config branch.master.merge refs/heads/master
+	git config push.default current
+}
+
 # Apache
 alias apachec="mate /etc/apache2/httpd.conf"
 alias apachev="mate /private/etc/apache2/extra/httpd-vhosts.conf"
