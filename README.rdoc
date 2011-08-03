@@ -77,6 +77,7 @@ From the command line, the following commands are possible:
   gl = "git log --oneline --decorate"
   glc = "git shortlog -sne"
   gld = "git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+  gln = "git log --name-status"
   gd = "git diff"
   gdw = "git diff --word-diff"
   gb = "git branch -v"
