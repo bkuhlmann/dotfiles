@@ -1,3 +1,5 @@
 rvm_archflags="-arch x86_64"
 rvm_path=~/.rvm
+rvm_project_rvmrc=1
+rvm_project_rvmrc_default=1
 export rvm_path="~/.rvm"
