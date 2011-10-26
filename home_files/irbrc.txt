@@ -42,13 +42,15 @@ end
 
 # Red Alchemist IRB Utilities
 class RA
-  # Copies data to the Mac OS clipboard.
-  # Original Source: https://gist.github.com/949714
-  # Fork Reference: http://stackoverflow.com/questions/881388/what-is-the-reason-for-performing-a-double-fork-when-creating-a-daemon
-	# Alternative Gem: https://github.com/ahoward/irbcp
-  # Example Usage: RA.cb User.all.map &:email
+  # Copies input to the Mac OS clipboard seperated by a new line.
+  # ==== Parameters
+  # * +args+ - The single or multiple inputs to send to the clipboard.
   def self.copy *args
-    buffer = args * ''
-    fork {fork {IO.popen("pbcopy", 'w') {|fd| fd.write(buffer)}}; exit! 0}
+    open("| pbcopy", 'w') {|clipboard| clipboard << args.join("\n")}
+  end
+  
+  # Pastes recent content from the Mac OS clipboard.
+  def self.paste
+    `pbpaste`
   end
 end
