@@ -13,7 +13,7 @@ alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias bashm="mate ~/.bashrc"
 alias bashs="source ~/.bashrc"
 
-# Global Colors
+# Colors (http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 NORMAL=$'\e[00m'
 GREEN=$'\e[0;32m'
 RED=$'\e[0;31m'
