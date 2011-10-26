@@ -141,6 +141,8 @@ Inspiration came from these dotfile projects (in case they are of interest to yo
 
 * {Ryan Bates}[http://github.com/ryanb/dotfiles]
 * {Blake Walters}[https://github.com/markupboy/dotfiles]
+* {James Edward Grey II}[https://github.com/JEG2/dotfiles]
+* {Gabe Berke-Williams}[https://github.com/gabebw/dotfiles]
 
 = Author
 
