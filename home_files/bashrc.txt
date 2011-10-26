@@ -13,6 +13,9 @@ alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias bashm="mate ~/.bashrc"
 alias bashs="source ~/.bashrc"
 
+# Hardware
+alias serial="ioreg -l | grep IOPlatformSerialNumber"
+
 # Colors (http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 
 NO_COLOR='\e[0m'
