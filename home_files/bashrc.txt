@@ -196,6 +196,11 @@ alias rcontrollers="rake doc:diagram:controllers"
 alias rdemo="rails new demo -d=sqlite3 -J -T -f -m https://github.com/bkuhlmann/rails_setup_template/raw/master/template.rb"
 
 # Bundler (http://gembundler.com)
+alias b="bundle"
+alias bch="bundle check"
+alias bi="bundle install"
+alias bu="bundle update"
+alias be="bundle exec"
 alias ber="bundle exec rspec"
 alias bec="bundle exec cucumber"
 alias rebundle="rm -f Gemfile.lock; bundle check; bundle package"
