@@ -144,9 +144,13 @@ Inspiration came from these dotfile projects (in case they are of interest to yo
 * {James Edward Grey II}[https://github.com/JEG2/dotfiles]
 * {Gabe Berke-Williams}[https://github.com/gabebw/dotfiles]
 
-= Author
+= Company
 
 {Red Alchemist}[http://www.redalchemist.com]
+
+= Author
+
+{Brooke Kuhlmann}[http://www.redalchemist.com]
 
 = License
 
