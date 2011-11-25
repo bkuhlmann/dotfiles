@@ -10,14 +10,12 @@ alias o="open"
 alias m="mate ."
 alias home="cd ~"
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-alias bashm="mate ~/.bashrc"
 alias bashs="source ~/.bashrc"
 
 # Hardware
 alias serial="ioreg -l | grep IOPlatformSerialNumber"
 
 # Colors (http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
-
 NO_COLOR='\e[0m'
 
 # Regular
@@ -143,6 +141,8 @@ function init_github() {
 alias apachec="mate /etc/apache2/httpd.conf"
 alias apachev="mate /private/etc/apache2/extra/httpd-vhosts.conf"
 alias apaches="mate /private/etc/apache2/extra/httpd-ssl.conf"
+alias apachest="sudo /usr/sbin/apachectl start"
+alias apachesp="sudo /usr/sbin/apachectl stop"
 alias apacher="sudo /usr/sbin/apachectl restart"
 
 # Ruby (http://www.ruby-lang.org)
@@ -190,11 +190,13 @@ alias cbl="> ./log/bullet.log"
 alias clogs="cdl; ctl; cpl; cbl"
 alias res="rake restart"
 alias debug="rdebug -c"
+alias rprofile="ruby-prof --printer=graph_html ./script/rails runner > profile.html"
 alias rpaths="rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
 alias erd="rake erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
 alias rmodels="rake doc:diagram:models"
 alias rcontrollers="rake doc:diagram:controllers"
-alias rdemo="rails new demo -d=sqlite3 -J -T -f -m https://github.com/bkuhlmann/rails_setup_template/raw/master/template.rb"
+alias rdemo="rails _3.0.10_ new demo -d=sqlite3 -J -T -f -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
+alias rdemot="rails _3.0.10_ new demo -d=sqlite3 -J -T -f -m ~/Dropbox/Development/Ruby/rails_setup_template/template.rb"
 
 # Bundler (http://gembundler.com)
 alias b="bundle"
@@ -203,8 +205,13 @@ alias bi="bundle install"
 alias bu="bundle update"
 alias be="bundle exec"
 alias ber="bundle exec rspec"
+alias bers="bundle exec rspec spec"
 alias bec="bundle exec cucumber"
 alias rebundle="rm -f Gemfile.lock; bundle check; bundle package"
+
+# Gemsmith (https://github.com/bkuhlmann/gemsmith)
+alias g="gemsmith"
+alias go="gemsmith -o"
 
 # Default Editor (for use with open_gem: http://github.com/adamsanderson/open_gem)
 export EDITOR=mate
