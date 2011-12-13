@@ -1,5 +1,4 @@
 # Requirements: .irbrc
-# Reference: http://rbjl.net/49-railsrc-rails-console-snippets
 
 if ENV.include?("RAILS_ENV") && !Object.const_defined?("RAILS_DEFAULT_LOGGER")
   # Rails 2.x.x
@@ -24,18 +23,4 @@ elsif defined?(Rails)
   
   # ActionController
   ActionController::Base.logger = Logger.new STDOUT
-
-  # ActionView
-  include ActionView::Helpers::DebugHelper
-  include ActionView::Helpers::NumberHelper
-  include ActionView::Helpers::RawOutputHelper
-  include ActionView::Helpers::SanitizeHelper
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::TextHelper
-  include ActionView::Helpers::TranslationHelper
-  include ApplicationController._helpers
-
-  # Routes
-  include Rails.application.routes.url_helpers
-  default_url_options[:host] = Rails.application.class.parent_name.downcase
 end
