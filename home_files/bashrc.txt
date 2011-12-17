@@ -101,6 +101,7 @@ PS1="[\t][\u@\h:\w]> "
 
 # Git (http://git-scm.com)
 alias gst="git status -sb"
+alias glast="git show --stat"
 alias gg="git grep"
 alias gl="git log --oneline --decorate"
 alias glc="git shortlog -sne"
@@ -126,6 +127,8 @@ alias gpp="git push production master"
 alias gps="git push stage stage:master"
 alias gtag="git tag"
 alias gtags="git push --tags"
+alias gres="git reset --hard HEAD"
+alias grev="git revert"
 
 # GitHub (https://github.com)
 # Function Source: https://gist.github.com/1105392
