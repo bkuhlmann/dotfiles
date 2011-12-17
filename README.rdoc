@@ -22,7 +22,7 @@ on to learn more.
 * Git[http://git-scm.com]
 * {Ruby Gem Setup}[http://github.com/bkuhlmann/ruby_gem_setup]
 
-= Installation
+= Setup
 
 Open a terminal window and execute the following commands:
 
@@ -39,17 +39,13 @@ Master Version (unstable)
 
 Edit and save the *.txt files as you see fit.
 
-Open a terminal window and execute the following commands:
+Open a terminal window and execute the following commands to install:
 
   cd ..
   ruby install.rb
 
-You can delete the dotfiles directory after completing installation.
-
-= Configuration
-
-If you didn't tweak the dotfiles prior to installation (which is perfectly acceptable), there are couple files that need
-manual care. They are:
+You can delete the dotfiles directory after installation. There are, however, a couple files that need
+manual care regardless of whether you tweaked the files prior to installation or not:
 
 * .gemrc - Uncomment the "gemcutter_key" line and add your own RubyGems key for publishing gems.
 * .gitconfig - Uncomment the name and email lines and replace with your own identification.
@@ -144,13 +140,13 @@ Inspiration came from these dotfile projects (in case they are of interest to yo
 * {James Edward Grey II}[https://github.com/JEG2/dotfiles]
 * {Gabe Berke-Williams}[https://github.com/gabebw/dotfiles]
 
-= Company
+= Contributions
 
-{Red Alchemist}[http://www.redalchemist.com]
+Please log all feedback/issues via {GitHub Issues}[https://github.com/bkuhlmann/dotfiles/issues]. Thanks.
 
-= Author
+= Credits
 
-{Brooke Kuhlmann}[http://www.redalchemist.com]
+Developed by {Brooke Kuhlmann}[http://www.redalchemist.com] at {Red Alchemist}[http://www.redalchemist.com]
 
 = License
 
