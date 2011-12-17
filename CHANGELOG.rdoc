@@ -1,3 +1,23 @@
+= v1.2.0
+
+* Added the glast, gres, and grev Git aliases.
+* Removed the ActionView and route configurations from the railsrc.txt file.
+* Upgraded to Rails 3.0.11 for Rails Template Setup alias.
+* Added Apache start and stop, Gemsmith, and Ruby profile aliases.
+* Added git stash alias.
+* Added the additional aliases for bundler: b, bch, bi, bu, and be.
+* Added references to James Edward Grey II and Gabe Berke-Williams' dotfiles projects.
+* Added project-specific default settings for RVM.
+* Updated the IRB copy to clipboard method and added a paste method.
+* Added bolded and underlined colors as well as background colors.
+* Added link for Bash colors.
+* Added the gln alias for git log --name-status.
+* Added the init_github method to the bashrc file.
+* Renamed setup.rb to install.rb and added configuration documentation to the README.
+* Added the gemrc.txt template.
+* Added RVM fix for loading new Ruby environments when creating new terminal tabs.
+* Updated README with new Gemsmith specs.
+
 = v1.1.0
 
 * Removed FileUtils requirement for setup.rb.

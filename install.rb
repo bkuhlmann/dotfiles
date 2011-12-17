@@ -1,4 +1,5 @@
-#!/usr/bin/ruby
+#!/usr/bin/ruby -w
+# encoding: UTF-8
 
 # Configuration
 HOME_PATH = ENV["HOME"]

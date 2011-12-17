@@ -12,9 +12,6 @@ alias home="cd ~"
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias bashs="source ~/.bashrc"
 
-# Hardware
-alias serial="ioreg -l | grep IOPlatformSerialNumber"
-
 # Colors (http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 NO_COLOR='\e[0m'
 
@@ -99,6 +96,18 @@ export LSCOLORS=cxfxcxdxbxegebabagacad
 # Command Prompt
 PS1="[\t][\u@\h:\w]> "
 
+# PostgreSQL (http://www.postgresql.org)
+alias pgs="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pgq="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+# Apache (http://httpd.apache.org)
+alias apachec="mate /etc/apache2/httpd.conf"
+alias apachev="mate /private/etc/apache2/extra/httpd-vhosts.conf"
+alias apaches="mate /private/etc/apache2/extra/httpd-ssl.conf"
+alias apachest="sudo /usr/sbin/apachectl start"
+alias apachesp="sudo /usr/sbin/apachectl stop"
+alias apacher="sudo /usr/sbin/apachectl restart"
+
 # Git (http://git-scm.com)
 alias gst="git status -sb"
 alias glast="git show --stat"
@@ -140,17 +149,29 @@ function init_github() {
 	git config push.default current
 }
 
-# Apache
-alias apachec="mate /etc/apache2/httpd.conf"
-alias apachev="mate /private/etc/apache2/extra/httpd-vhosts.conf"
-alias apaches="mate /private/etc/apache2/extra/httpd-ssl.conf"
-alias apachest="sudo /usr/sbin/apachectl start"
-alias apachesp="sudo /usr/sbin/apachectl stop"
-alias apacher="sudo /usr/sbin/apachectl restart"
-
 # Ruby (http://www.ruby-lang.org)
 export RUBYOPT=-w
 alias rd="rdoc -a -o _doc"
+
+# Ruby Gems (http://rubygems.org)
+alias gi="gem install"
+alias giv="gem install -v"
+alias gu="gem update"
+
+# Bundler (http://gembundler.com)
+alias b="bundle"
+alias bch="bundle check"
+alias bi="bundle install"
+alias bu="bundle update"
+alias be="bundle exec"
+alias ber="bundle exec rspec"
+alias bers="bundle exec rspec spec"
+alias bec="bundle exec cucumber"
+alias rebundle="rm -f Gemfile.lock; bundle check; bundle package"
+
+# Gemsmith (https://github.com/bkuhlmann/gemsmith)
+alias g="gemsmith"
+alias go="gemsmith -o"
 
 # Ruby on Rails (http://rubyonrails.org)
 function sc {
@@ -200,21 +221,6 @@ alias rmodels="rake doc:diagram:models"
 alias rcontrollers="rake doc:diagram:controllers"
 alias rdemo="rails _3.0.11_ new demo -d=sqlite3 -J -T -f -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
 alias rdemot="rails _3.0.11_ new demo -d=sqlite3 -J -T -f -m ~/Dropbox/Development/Ruby/rails_setup_template/template.rb"
-
-# Bundler (http://gembundler.com)
-alias b="bundle"
-alias bch="bundle check"
-alias bi="bundle install"
-alias bu="bundle update"
-alias be="bundle exec"
-alias ber="bundle exec rspec"
-alias bers="bundle exec rspec spec"
-alias bec="bundle exec cucumber"
-alias rebundle="rm -f Gemfile.lock; bundle check; bundle package"
-
-# Gemsmith (https://github.com/bkuhlmann/gemsmith)
-alias g="gemsmith"
-alias go="gemsmith -o"
 
 # Default Editor (for use with open_gem: http://github.com/adamsanderson/open_gem)
 export EDITOR=mate
