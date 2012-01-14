@@ -150,7 +150,6 @@ function init_github() {
 }
 
 # Ruby (http://www.ruby-lang.org)
-export RUBYOPT=-w
 alias rd="rdoc -a -o _doc"
 
 # Ruby Gems (http://rubygems.org)
