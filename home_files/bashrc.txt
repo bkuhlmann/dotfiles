@@ -159,14 +159,14 @@ alias gu="gem update"
 
 # Bundler (http://gembundler.com)
 alias b="bundle"
-alias bch="bundle check"
+alias bch="rm -f Gemfile.lock; bundle check"
 alias bi="bundle install"
 alias bu="bundle update"
 alias be="bundle exec"
 alias ber="bundle exec rspec"
 alias bers="bundle exec rspec spec"
 alias bec="bundle exec cucumber"
-alias rebundle="rm -f Gemfile.lock; bundle check; bundle package"
+alias rebundle="bch; bundle package"
 
 # Gemsmith (https://github.com/bkuhlmann/gemsmith)
 alias g="gemsmith"
