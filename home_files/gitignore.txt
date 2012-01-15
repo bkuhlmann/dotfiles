@@ -1,6 +1,5 @@
 # Mac OS
 .DS_Store
-Icon?
 
 # Windows
 Thumbs.db
