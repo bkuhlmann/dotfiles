@@ -22,3 +22,6 @@ tmtags
 
 # SVN
 .svn
+
+# SASS
+.sass-cache
