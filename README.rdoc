@@ -14,7 +14,6 @@ on to learn more.
 * Configures the Ruby IRB .irbrc file.
 * Configures the {Ruby Debugger}[http://bashdb.sourceforge.net/ruby-debug.html] .rdebugrc file.
 * Configures the {Ruby on Rails}[http://rubyonrails.org] .railsrc file.
-* Configures the RVM[http://rvm.beginrescueend.com] .rvmrc file.
 
 = Requirements
 
