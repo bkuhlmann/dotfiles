@@ -46,6 +46,7 @@ Open a terminal window and execute the following commands to install:
 You can delete the dotfiles directory after installation. There are, however, a couple files that need
 manual care regardless of whether you tweaked the files prior to installation or not:
 
+* .bashrc - If installed on a OS other than a Mac, adjust the path to point to the correct bin directory for the rbenv binary.
 * .gemrc - Uncomment the "gemcutter_key" line and add your own RubyGems key for publishing gems.
 * .gitconfig - Uncomment the name/email/token lines within the [user] and [github] sections to replace with your own details.
 

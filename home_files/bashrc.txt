@@ -223,3 +223,7 @@ alias rdemot="rails _3.0.11_ new demo -d=sqlite3 -J -T -f -m ~/Dropbox/Developme
 
 # Default Editor (for use with open_gem: http://github.com/adamsanderson/open_gem)
 export EDITOR=mate
+
+# rbenv (https://github.com/sstephenson/rbenv)
+export PATH="/usr/local/bin:$PATH"
+eval "$(rbenv init -)"
