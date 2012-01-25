@@ -47,7 +47,7 @@ You can delete the dotfiles directory after installation. There are, however, a 
 manual care regardless of whether you tweaked the files prior to installation or not:
 
 * .gemrc - Uncomment the "gemcutter_key" line and add your own RubyGems key for publishing gems.
-* .gitconfig - Uncomment the name and email lines and replace with your own identification.
+* .gitconfig - Uncomment the name/email/token lines within the [user] and [github] sections to replace with your own details.
 
 = Usage
 
