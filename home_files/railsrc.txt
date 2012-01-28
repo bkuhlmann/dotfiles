@@ -1,5 +1,9 @@
 # Requirements: .irbrc
 
+# New Rails Defaults
+-d=sqlite3 -J -T -f --skip-bundle -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb
+
+# IRB Prompt
 if ENV.include?("RAILS_ENV") && !Object.const_defined?("RAILS_DEFAULT_LOGGER")
   # Rails 2.x.x
 
