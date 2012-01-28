@@ -29,7 +29,7 @@ Open a terminal window and execute the following commands:
 Current Version (stable)
 
   git clone git://github.com/bkuhlmann/dotfiles.git
-  git checkout v1.2.0
+  git checkout v2.0.0
   cd dotfiles
 
 Master Version (unstable)
@@ -53,7 +53,7 @@ manual care regardless of whether you tweaked the files prior to installation or
 
 = Usage
 
-From the command line, the following commands are possible:
+From the command line, the following commands are possible (please see all home_files/*.txt files for additional details):
 
   .. = "cd .."
   ... = "cd ../.."
@@ -66,9 +66,18 @@ From the command line, the following commands are possible:
   m = "mate ."
   home = "cd ~"
   tree = "find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-  bashm = "mate ~/.bashrc"
   bashs = "source ~/.bashrc"
-
+  
+  pgs = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+  pgq = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+  
+  apachec = "mate /etc/apache2/httpd.conf"
+  apachev = "mate /private/etc/apache2/extra/httpd-vhosts.conf"
+  apaches = "mate /private/etc/apache2/extra/httpd-ssl.conf"
+  apachest = "sudo /usr/sbin/apachectl start"
+  apachesp = "sudo /usr/sbin/apachectl stop"
+  apacher = "sudo /usr/sbin/apachectl restart"
+  
   gst = "git status -sb"
   glast = "git show --stat"
   gg = "git grep"
@@ -98,17 +107,32 @@ From the command line, the following commands are possible:
   gtags = "git push --tags"
   gres = "git reset --hard HEAD"
   grev = "git revert"
-
-	init_github <account name> <project name>
-
+  
+  rd = "rdoc -a -o _doc"
+  
   gi = "gem install"
   giv = "gem install -v"
   gu = "gem update"
+  
+  b = "bundle"
+  bch = "rm -f Gemfile.lock; bundle check"
+  bi = "bundle install"
+  bu = "bundle update"
+  be = "bundle exec"
+  ber = "bundle exec rspec"
+  bers = "bundle exec rspec spec"
+  bec = "bundle exec cucumber"
+  rebundle = "bch; bundle package"
+  
+  g = "gemsmith"
+  go = "gemsmith -o"
+  
+  hpas = "hp -a -s"
 
-  rd = "rdoc -a -o _doc"
   sc = "script/console"
   ss = "script/server"
   sg = "script/generate"
+
   scs = "sc --sandbox"
   sgc = "sg controller"
   sgm = "sg model"
@@ -123,23 +147,13 @@ From the command line, the following commands are possible:
   cpl = "> ./log/production.log"
   cbl = "> ./log/bullet.log"
   clogs = "cdl; ctl; cpl; cbl"
-  res = "rake restart"
+  res = "touch tmp/restart.txt"
   debug = "rdebug -c"
+  rprofile = "ruby-prof --printer=graph_html ./script/rails runner > profile.html"
   rpaths = "rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
   erd = "rake erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
   rmodels = "rake doc:diagram:models"
   rcontrollers = "rake doc:diagram:controllers"
-  rdemo = "rails new demo -d=sqlite3 -J -T -f -m https://github.com/bkuhlmann/rails_setup_template/raw/master/template.rb"
-
-  b = "bundle"
-  bch = "bundle check"
-  bi = "bundle install"
-  bu = "bundle update"
-  be = "bundle exec"
-  ber = "bundle exec rspec"
-  bers = "bundle exec rspec spec"
-  bec = "bundle exec cucumber"
-  rebundle = "rm -f Gemfile.lock; bundle check; bundle package"
 
 From IRB or the Rails console, the following commands are possible:
 

@@ -1,3 +1,18 @@
+= v2.0.0
+
+* Fixed the bch and rebundle aliases.
+* Added .sass-cache to .gitignore.
+* Added rbenv support.
+* Added an alias for Heroku+ account switching.
+* Added new rails app generation defaults to the .railsrc file.
+* Updated the .gitconfig documentation.
+* Removed rake call for the 'res' alias.
+* Removed the -w option from the Ruby opts export.
+* Removed the Icon? option from gitignore.
+* Removed the .rmvrc template and RVM support completely.
+* Removed the binary warning flag.
+* Removed the rdemo and rdemot .bashrc aliases.
+
 = v1.2.0
 
 * Added the glast, gres, and grev Git aliases.
