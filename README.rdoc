@@ -17,10 +17,10 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 
 = Requirements
 
-* Any UNIX-based OS
-* Git[http://git-scm.com]
-* {Ruby Gem Setup}[http://github.com/bkuhlmann/ruby_gem_setup]
-* {Ruby on Rails 3.2.x+}[http://rubyonrails.org] - Necessary for .railsrc file enhancements.
+* Any UNIX-based OS.
+* Git[http://git-scm.com].
+* {Ruby Gem Setup}[http://github.com/bkuhlmann/ruby_gem_setup].
+* {Ruby on Rails 3.2.x+}[http://rubyonrails.org] (necessary for .railsrc file enhancements).
 
 = Setup
 
