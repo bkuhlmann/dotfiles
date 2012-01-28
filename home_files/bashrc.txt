@@ -221,8 +221,6 @@ alias rpaths="rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | so
 alias erd="rake erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
 alias rmodels="rake doc:diagram:models"
 alias rcontrollers="rake doc:diagram:controllers"
-alias rdemo="rails _3.0.11_ new demo -d=sqlite3 -J -T -f -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
-alias rdemot="rails _3.0.11_ new demo -d=sqlite3 -J -T -f -m ~/Dropbox/Development/Ruby/rails_setup_template/template.rb"
 
 # Default Editor (for use with open_gem: http://github.com/adamsanderson/open_gem)
 export EDITOR=mate
