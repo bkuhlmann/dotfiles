@@ -172,6 +172,9 @@ alias rebundle="bch; bundle package"
 alias g="gemsmith"
 alias go="gemsmith -o"
 
+# Heroku+ (https://github.com/bkuhlmann/heroku_plus)
+alias hpas="hp -a -s"
+
 # Ruby on Rails (http://rubyonrails.org)
 function sc {
   if [ -e script/rails ]; then
