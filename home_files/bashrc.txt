@@ -200,6 +200,14 @@ function sg {
   fi
 }
 
+function sdb {
+  if [ -e script/rails ]; then
+    script/rails dbconsole $@
+  else
+    script/dbconsole $@
+  fi
+}
+
 alias scs="sc --sandbox"
 alias sgc="sg controller"
 alias sgm="sg model"
