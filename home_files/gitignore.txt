@@ -4,6 +4,9 @@
 # Windows
 Thumbs.db
 
+# RubyMine
+*.idea
+
 # TextMate
 *.tmproj
 tmtags
