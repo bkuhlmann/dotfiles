@@ -4,12 +4,15 @@
 # Windows
 Thumbs.db
 
-# RubyMine
-*.idea
-
 # TextMate
 *.tmproj
 tmtags
+
+# Espresso
+*.esproj
+
+# RubyMine
+*.idea
 
 # Archives
 *.7z
