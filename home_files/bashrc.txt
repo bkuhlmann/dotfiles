@@ -232,6 +232,10 @@ alias erd="rake erd attributes=primary_keys,foreign_keys,timestamps,inheritance,
 alias rmodels="rake doc:diagram:models"
 alias rcontrollers="rake doc:diagram:controllers"
 
+# Capistrano (https://github.com/capistrano/capistrano)
+alias caps="cap stage deploy"
+alias capp="cap production deploy"
+
 # Default Editor (for use with open_gem: http://github.com/adamsanderson/open_gem)
 export EDITOR=mate
 
