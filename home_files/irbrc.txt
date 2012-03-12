@@ -1,16 +1,42 @@
-# Defaults
+# IRB Defaults
 IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:EVAL_HISTORY] = 200
 IRB.conf[:PROMPT] ||= {}
 IRB.conf[:PROMPT][:RA] = {
-  :PROMPT_I => "[#{ENV['RUBY_VERSION']}]> ",
-  :PROMPT_N => "[#{ENV['RUBY_VERSION']}]| ",
-  :PROMPT_C => "[#{ENV['RUBY_VERSION']}]| ",
-  :PROMPT_S => "[#{ENV['RUBY_VERSION']}]%l ",
+  :PROMPT_I => "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}]> ",
+  :PROMPT_N => "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}]| ",
+  :PROMPT_C => "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}]| ",
+  :PROMPT_S => "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}]%l ",
   :RETURN => "=> %s\n"
 }
 IRB.conf[:PROMPT_MODE] = :RA
+
+# IRB for Rails 2.x.x
+if ENV.include?("RAILS_ENV") && !Object.const_defined?("RAILS_DEFAULT_LOGGER")
+
+  # Prompt
+  require "logger"
+  RAILS_DEFAULT_LOGGER = Logger.new STDOUT
+  IRB.conf[:PROMPT][:RA][:PROMPT_I] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{ENV["RAILS_ENV"]}]> "
+  IRB.conf[:PROMPT][:RA][:PROMPT_N] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{ENV["RAILS_ENV"]}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_C] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{ENV["RAILS_ENV"]}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_S] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{ENV["RAILS_ENV"]}]%l "
+
+# IRB for Rails 3.x.x
+elsif defined?(Rails)
+
+  # Prompt
+  require "logger"
+  Rails.logger = Logger.new STDOUT
+  IRB.conf[:PROMPT][:RA][:PROMPT_I] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]> "
+  IRB.conf[:PROMPT][:RA][:PROMPT_N] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_C] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_S] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]%l "
+  
+  # ActionController
+  ActionController::Base.logger = Logger.new STDOUT
+end
 
 # Gem Requirements
 ["rubygems", "wirble", "hirb", "ap"].each do |gem|
@@ -30,17 +56,7 @@ end
   end
 end
 
-# Rails Settings
-railsrc_path = File.expand_path("~/.railsrc")
-if (ENV["RAILS_ENV"] || defined?(Rails)) && File.exist?(railsrc_path)
-  begin
-    load railsrc_path
-  rescue Exception
-    warn "Could not load: #{railsrc_path}"
-  end
-end
-
-# Red Alchemist IRB Utilities
+# Red Alchemist Utilities
 class RA
   # Copies input to the Mac OS clipboard seperated by a new line.
   # ==== Parameters
