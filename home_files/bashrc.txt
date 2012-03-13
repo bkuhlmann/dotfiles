@@ -222,8 +222,7 @@ alias tailt="tail -f log/test.log"
 alias cdl="> ./log/development.log"
 alias ctl="> ./log/test.log"
 alias cpl="> ./log/production.log"
-alias cbl="> ./log/bullet.log"
-alias clogs="cdl; ctl; cpl; cbl"
+alias clogs="cdl; ctl; cpl"
 alias res="touch tmp/restart.txt"
 alias debug="rdebug -c"
 alias rprofile="ruby-prof --printer=graph_html ./script/rails runner > profile.html"
@@ -235,6 +234,9 @@ alias rcontrollers="rake doc:diagram:controllers"
 # Capistrano (https://github.com/capistrano/capistrano)
 alias caps="cap stage deploy"
 alias capp="cap production deploy"
+
+# Sitemap Generator (https://github.com/kjvarga/sitemap_generator)
+alias rsite="rake sitemap:refresh:no_ping"
 
 # Default Editor (for use with open_gem: http://github.com/adamsanderson/open_gem)
 export EDITOR=mate
