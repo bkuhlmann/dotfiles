@@ -229,8 +229,9 @@ alias debug="rdebug -c"
 alias rprofile="ruby-prof --printer=graph_html ./script/rails runner > profile.html"
 alias rpaths="rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
 alias erd="rake erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
-alias rmodels="rake doc:diagram:models"
-alias rcontrollers="rake doc:diagram:controllers"
+alias dmodels="railroady -l -i -a --all-columns -j -t -o doc/design/models.dot -M"
+alias dcontrollers="railroady -l -i -o doc/design/controllers.dot -C"
+alias dstate="railroady -l -i -o doc/design/state.dot -A"
 
 # Capistrano (https://github.com/capistrano/capistrano)
 alias caps="cap stage deploy"
