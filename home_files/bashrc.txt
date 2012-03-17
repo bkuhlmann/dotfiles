@@ -238,6 +238,7 @@ alias capp="cap production deploy"
 
 # Sitemap Generator (https://github.com/kjvarga/sitemap_generator)
 alias rsite="rake sitemap:refresh:no_ping"
+alias rsitep="rake sitemap:refresh"
 
 # Default Editor (for use with open_gem: http://github.com/adamsanderson/open_gem)
 export EDITOR=mate
