@@ -153,9 +153,10 @@ function init_github() {
 alias rd="rdoc -a -o _doc"
 
 # Ruby Gems (http://rubygems.org)
-alias gi="gem install"
-alias giv="gem install -v"
-alias gu="gem update"
+alias geml="gem list"
+alias gemi="gem install"
+alias gemu="gem update"
+alias gemu="gem server"
 
 # Bundler (http://gembundler.com)
 alias b="bundle"
