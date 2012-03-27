@@ -156,6 +156,7 @@ alias rd="rdoc -a -o _doc"
 alias geml="gem list"
 alias gemi="gem install"
 alias gemu="gem update"
+alias gemc="gem cleanup"
 alias gems="gem server"
 
 # Bundler (http://gembundler.com)
