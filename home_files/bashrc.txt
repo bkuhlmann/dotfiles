@@ -155,6 +155,7 @@ alias rd="rdoc -a -o _doc"
 # Ruby Gems (http://rubygems.org)
 alias geml="gem list"
 alias gemi="gem install"
+alias gemup="gem update"
 alias gemu="gem uninstall"
 alias gemc="gem cleanup"
 alias gems="gem server"
