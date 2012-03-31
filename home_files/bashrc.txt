@@ -7,7 +7,7 @@ alias l="ls -alh"
 alias p="pwd"
 alias cpath='pwd | tr -d "\r\n" | pbcopy |echo "Current path copied to clipboard."'
 alias o="open"
-alias s="sublime ."
+alias e="sublime"
 alias home="cd ~"
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias bashs="source ~/.bashrc"
@@ -246,8 +246,8 @@ alias capp="cap production deploy"
 alias rsite="rake sitemap:refresh:no_ping"
 alias rsitep="rake sitemap:refresh"
 
-# Default Editor (for use with open_gem: http://github.com/adamsanderson/open_gem)
-export EDITOR=mate
+# Default Editor
+export EDITOR=sublime
 
 # rbenv (https://github.com/sstephenson/rbenv)
 export PATH="/usr/local/bin:$PATH"
