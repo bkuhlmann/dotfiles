@@ -170,6 +170,7 @@ Inspiration for this dotfiles project came from these dotfile projects (in case 
 * {James Edward Grey II}[https://github.com/JEG2/dotfiles]
 * {Gabe Berke-Williams}[https://github.com/gabebw/dotfiles]
 * Thoughtbot[https://github.com/thoughtbot/dotfiles]
+* {Mathias Bynens}[https://github.com/mathiasbynens/dotfiles]
 
 The following is a reference to bash shell colors:
 
