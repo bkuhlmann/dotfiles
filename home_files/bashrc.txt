@@ -7,7 +7,7 @@ alias l="ls -alh"
 alias p="pwd"
 alias cpath='pwd | tr -d "\r\n" | pbcopy |echo "Current path copied to clipboard."'
 alias o="open"
-alias m="mate ."
+alias s="sublime ."
 alias home="cd ~"
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias bashs="source ~/.bashrc"
@@ -58,23 +58,23 @@ BWHITE='\e[47m'
 # Terminal Colors
 
 # The color designators:
-#	 a  black
-#	 b  red
-#	 c  green
-#	 d  brown
-#	 e  blue
-#	 f  magenta
-#	 g  cyan
-#	 h  light grey
-#	 A  bold black, usually shows up as dark grey
-#	 B  bold red
-#	 C  bold green
-#	 D  bold brown, usually shows up as yellow
-#	 E  bold blue
-#	 F  bold magenta
-#	 G  bold cyan
-#	 H  bold light grey; looks like bright white
-#	 x  default foreground or background
+#  a  black
+#  b  red
+#  c  green
+#  d  brown
+#  e  blue
+#  f  magenta
+#  g  cyan
+#  h  light grey
+#  A  bold black, usually shows up as dark grey
+#  B  bold red
+#  C  bold green
+#  D  bold brown, usually shows up as yellow
+#  E  bold blue
+#  F  bold magenta
+#  G  bold cyan
+#  H  bold light grey; looks like bright white
+#  x  default foreground or background
 
 # The order of the attributes are as follows:
 #  1.   directory
@@ -142,11 +142,11 @@ alias grev="git revert"
 # GitHub (https://github.com)
 # Function Source: https://gist.github.com/1105392
 function init_github() {
-	git remote add origin git@github.com:$1/$2.git
-	git push origin master
-	git config branch.master.remote origin
-	git config branch.master.merge refs/heads/master
-	git config push.default current
+  git remote add origin git@github.com:$1/$2.git
+  git push origin master
+  git config branch.master.remote origin
+  git config branch.master.merge refs/heads/master
+  git config push.default current
 }
 
 # Ruby (http://www.ruby-lang.org)
