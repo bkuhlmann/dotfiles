@@ -10,7 +10,7 @@ alias o="open"
 alias e="sublime"
 alias home="cd ~"
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-alias bashs="source ~/.bashrc"
+alias bashs="exec $SHELL"
 
 # Colors (http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 NO_COLOR='\e[0m'
