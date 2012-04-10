@@ -250,5 +250,10 @@ alias rsitep="rake sitemap:refresh"
 export EDITOR=sublime
 
 # rbenv (https://github.com/sstephenson/rbenv)
-export PATH="/usr/local/bin:$PATH"
+if [ -d /usr/local/bin ]; then
+  export PATH="/usr/local/bin:$PATH" # OSX
+fi
+if [ -d $HOME/.rbenv/bin ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH" # Ubuntu
+fi
 eval "$(rbenv init -)"
