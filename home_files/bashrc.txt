@@ -8,7 +8,7 @@ alias p="pwd"
 alias cpath='pwd | tr -d "\r\n" | pbcopy |echo "Current path copied to clipboard."'
 alias o="open"
 alias e="sublime"
-alias home="cd ~"
+alias home="cd $HOME"
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias bashs="exec $SHELL"
 
