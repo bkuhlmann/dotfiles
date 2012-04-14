@@ -160,6 +160,9 @@ alias gemu="gem uninstall"
 alias gemc="gem cleanup"
 alias gems="gem server"
 
+# Ruby Gems Whois (https://github.com/jnunemaker/gemwhois)
+alias gemw="gem whois"
+
 # Bundler (http://gembundler.com)
 alias b="bundle"
 alias bi="bundle install"
