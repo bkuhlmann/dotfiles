@@ -30,7 +30,7 @@ Current Version (stable)
 
   git clone git://github.com/bkuhlmann/dotfiles.git
   cd dotfiles
-  git checkout v2.0.0
+  git checkout v2.1.0
 
 Master Version (unstable)
 
@@ -61,23 +61,23 @@ From the command line, the following commands are possible (please see all home_
   h = "history"
   l = "ls -alh"
   p = "pwd"
-  cpath = 'pwd | tr -d "\r\n" | pbcopy |echo "Current path copied to clipboard."'
+  cpath='pwd | tr -d "\r\n" | pbcopy |echo "Current path copied to clipboard."'
   o = "open"
-  m = "mate ."
-  home = "cd ~"
+  e = "sublime"
+  home = "cd $HOME"
   tree = "find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
-  bashs = "source ~/.bashrc"
+  bashs = "exec $SHELL"
   
   pgs = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
   pgq = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-  
+
   apachec = "mate /etc/apache2/httpd.conf"
   apachev = "mate /private/etc/apache2/extra/httpd-vhosts.conf"
   apaches = "mate /private/etc/apache2/extra/httpd-ssl.conf"
   apachest = "sudo /usr/sbin/apachectl start"
   apachesp = "sudo /usr/sbin/apachectl stop"
   apacher = "sudo /usr/sbin/apachectl restart"
-  
+
   gst = "git status -sb"
   glast = "git show --stat"
   gg = "git grep"
@@ -107,32 +107,38 @@ From the command line, the following commands are possible (please see all home_
   gtags = "git push --tags"
   gres = "git reset --hard HEAD"
   grev = "git revert"
-  
+
   rd = "rdoc -a -o _doc"
-  
-  gi = "gem install"
-  giv = "gem install -v"
-  gu = "gem update"
-  
+
+  geml = "gem list"
+  gemi = "gem install"
+  gemup = "gem update"
+  gemu = "gem uninstall"
+  gemc = "gem cleanup"
+  gems = "gem server"
+  gemw = "gem whois"
+
   b = "bundle"
-  bch = "rm -f Gemfile.lock; bundle check"
   bi = "bundle install"
   bu = "bundle update"
+  bo = "bundle outdated"
+  bcon = "bundle console"
   be = "bundle exec"
   ber = "bundle exec rspec"
   bers = "bundle exec rspec spec"
   bec = "bundle exec cucumber"
+  bch = "rm -f Gemfile.lock; bundle check"
   rebundle = "bch; bundle package"
-  
+
   g = "gemsmith"
   go = "gemsmith -o"
-  
+
   hpas = "hp -a -s"
 
-  sc = "script/console"
-  ss = "script/server"
-  sg = "script/generate"
-
+  sc = "rails/console"
+  ss = "rails/server"
+  sg = "rails/generate"
+  sdb = "rails/dbconsole"
   scs = "sc --sandbox"
   sgc = "sg controller"
   sgm = "sg model"
@@ -140,20 +146,24 @@ From the command line, the following commands are possible (please see all home_
   rdbd = "rake db:drop"
   rdbc = "rake db:create"
   rdbm = "rake db:migrate"
+  rassp = "rake assets:precompile"
+  rassc = "rake assets:clean"
   taild = "tail -f log/development.log"
   tailt = "tail -f log/test.log"
-  cdl = "> ./log/development.log"
-  ctl = "> ./log/test.log"
-  cpl = "> ./log/production.log"
-  cbl = "> ./log/bullet.log"
-  clogs = "cdl; ctl; cpl; cbl"
   res = "touch tmp/restart.txt"
   debug = "rdebug -c"
   rprofile = "ruby-prof --printer=graph_html ./script/rails runner > profile.html"
   rpaths = "rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
   erd = "rake erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
-  rmodels = "rake doc:diagram:models"
-  rcontrollers = "rake doc:diagram:controllers"
+  dmodels = "railroady -l -i -a --all-columns -j -t -o doc/design/models.dot -M"
+  dcontrollers = "railroady -l -i -o doc/design/controllers.dot -C"
+  dstate = "railroady -l -i -o doc/design/state.dot -A"
+
+  caps = "cap stage deploy"
+  capp = "cap production deploy"
+
+  rsite = "rake sitemap:refresh:no_ping"
+  rsitep = "rake sitemap:refresh"
 
 From IRB or the Rails console, the following commands are possible:
 

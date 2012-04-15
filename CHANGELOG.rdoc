@@ -1,3 +1,29 @@
+= v2.1.0
+
+* Fixed checkout instructions.
+* Fixed issues with IRB and Rails IRB command prompts.
+* Added sdb alias for rails dbconsole.
+* Added RubyMine project files to gitignore file.
+* Added Espresso files to gitignore file.
+* Added a resource link for bash shell colors.
+* Added the rassp and rassc aliases.
+* Added Capistrano aliases for stage and production deploys.
+* Moved the Rails IRB logic into the irbrc file and left the railsrc file with only default settings.
+* Added aliases for Sitemap Generator gem.
+* Added alias for bundle outdated.
+* Droped RailRoad gem support and switched to the Railroady gem.
+* Updated the dmodels, dcontrollers, and dstate aliases.
+* Added bcon alias for bundle console.
+* Renamed all the gem alises to gem*.
+* Dropped TextMate support, switched to Sublime Text 2.
+* Changed EDITOR export to point to sublime.
+* Changed 's' alias to 'e' to represent the default editor and dropped the dot in the alias.
+* Updated the bashs alias with better cross-platform support.
+* Replaced use of the tilde with $HOME variable.
+* Added OSX and Ubuntu path setup for rbenv.
+* Updated README with link to Mathias Bynens' dotfiles project.
+* Removed the aliases for clearing rails logs since the rake:log clear tasks does this now.
+
 = v2.0.0
 
 * Fixed the bch and rebundle aliases.
