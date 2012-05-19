@@ -175,6 +175,7 @@ From IRB or the Rails console, the following commands are possible:
 
 Inspiration for this dotfiles project came from these dotfile projects (in case they are of interest to you as well):
 
+* {GitHub Dotfiles}[http://dotfiles.github.com]
 * {Ryan Bates}[http://github.com/ryanb/dotfiles]
 * {Blake Walters}[https://github.com/markupboy/dotfiles]
 * {James Edward Grey II}[https://github.com/JEG2/dotfiles]
