@@ -191,7 +191,25 @@ alias hpas="hp -a -s"
 
 # Ruby on Rails (http://rubyonrails.org)
 function rew {
-  rails new $1 -d sqlite3 -J -T -f --skip-bundle -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb
+  unset $options
+
+  case "$2" in
+    "b")
+      echo "Rails Base Template."
+      echo "Template implemented. Exiting..."
+      return
+      ;;
+    "s")
+      echo "Rails Setup Template."
+      options="-d sqlite3 -J -T -f --skip-bundle -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
+      ;;
+    *)
+      echo "Rails Default Skeleton."
+      unset $options
+      ;;
+  esac
+
+  rails new $1 $options
 }
 
 function sc {
