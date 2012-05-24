@@ -190,6 +190,10 @@ alias go="gemsmith -o"
 alias hpas="hp -a -s"
 
 # Ruby on Rails (http://rubyonrails.org)
+function rew {
+  rails new $1 -d sqlite3 -J -T -f --skip-bundle -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb
+}
+
 function sc {
   if [ -e script/rails ]; then
     script/rails console $@
