@@ -130,6 +130,7 @@ alias gcam="git commit -a -m"
 alias gash="git stash"
 alias gf="git fetch"
 alias gpu="git pull"
+alias gpur="git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching
 alias gp="git push"
 alias gpo="git push origin"
 alias gpp="git push production master"
