@@ -1,7 +1,14 @@
+#!/usr/bin/env ruby
+
+# Requirements
+require "irb/completion"
+require "irb/ext/save-history"
+
 # IRB Defaults
 IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:EVAL_HISTORY] = 200
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 IRB.conf[:PROMPT] ||= {}
 IRB.conf[:PROMPT][:RA] = {
   :PROMPT_I => "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}]> ",
