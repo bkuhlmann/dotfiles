@@ -46,8 +46,7 @@ if defined? Bundler
   load "rubygems/custom_require.rb"
 end
 
-# Gem Requirements
-["wirb", "hirb", "ap"].each do |gem|
+["wirb", "hirb", "ap", "pry", "pry-vterm_aliases", "pry-stack_explorer", "pry-remote", "pry-nav"].each do |gem|
   begin
     require gem
   rescue LoadError
