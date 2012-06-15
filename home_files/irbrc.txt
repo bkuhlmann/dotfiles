@@ -38,6 +38,14 @@ elsif defined?(Rails)
   ActionController::Base.logger = Logger.new STDOUT
 end
 
+# Debundle (https://github.com/ConradIrwin/pry-debundle/blob/master/lib/pry-debundle.rb)
+# Allows one to use gems not tied to a specific project Gemfile.
+if defined? Bundler
+  Gem.post_reset_hooks.reject! {|hook| hook.source_location.first =~ %r{/bundler/}}
+  Gem::Specification.reset
+  load "rubygems/custom_require.rb"
+end
+
 # Gem Requirements
 ["wirb", "hirb", "ap"].each do |gem|
   begin
