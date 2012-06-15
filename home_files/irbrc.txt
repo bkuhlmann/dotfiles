@@ -39,7 +39,7 @@ elsif defined?(Rails)
 end
 
 # Gem Requirements
-["rubygems", "wirble", "hirb", "ap"].each do |gem|
+["wirb", "hirb", "ap"].each do |gem|
   begin
     require gem
   rescue LoadError
@@ -48,7 +48,7 @@ end
 end
 
 # Gem Settings
-["Wirble.init", "Wirble.colorize", "Hirb.enable"].each do |config|
+["Wirb.start", "Hirb.enable"].each do |config|
   begin
     instance_eval config
   rescue NoMethodError
