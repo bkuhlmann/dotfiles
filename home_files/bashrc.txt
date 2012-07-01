@@ -113,7 +113,7 @@ alias gst="git status -sb"
 alias glast="git show --stat"
 alias gg="git grep"
 alias gl="git log --oneline --decorate"
-alias glh="git log --pretty=format:%H -1 | pbcopy; echo 'Copied to clipboard: `pbpaste`'"
+alias glh='git log --pretty=format:%H -1 | pbcopy; echo "Copied to clipboard: `pbpaste`"'
 alias glc="git shortlog -sne"
 alias gld="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gln="git log --name-status"
