@@ -61,7 +61,7 @@ From the command line, the following commands are possible (please see all home_
   h = "history"
   l = "ls -alh"
   p = "pwd"
-  cpath='pwd | tr -d "\r\n" | pbcopy |echo "Current path copied to clipboard."'
+  cpath='pwd | tr -d "\r\n" | pbcopy | echo "Current path copied to clipboard."'
   o = "open"
   e = "sublime"
   home = "cd $HOME"
