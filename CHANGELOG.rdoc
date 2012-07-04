@@ -1,3 +1,20 @@
+= v2.2.0
+
+* Fixed awesome_print requirement for .irbrc.
+* Removed the .railsrc file and added the "rew" fuction to the .bashrc file with support for multi-template setup.
+* Removed the Wirble gem and switched to Wirb.
+* Added Pry support (see pryrc.txt).
+* Added Ruby heap/memory settings.
+* Added rdo alias for quickly launching generated RDoc.
+* Added gpur alias for 'git pull --rebase'.
+* Added glh alias for acquiring full hash of last commit and auto-copy to clipboard support.
+* Added gamend alias for git comment ammending.
+* Added glf alias for showing recent git changes in HEAD prior to doing a git pull.
+* Added aliases for rbenv.
+* Added debundler support the .irbrc file.
+* Added IRB auto-completion and history support.
+* Added the GitHub Dotfiles project to the README.
+
 = v2.1.0
 
 * Fixed checkout instructions.
