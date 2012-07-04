@@ -12,15 +12,14 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 * Configures the Git[http://git-scm.com] .gitignore file.
 * Configures the {Ruby Gems}[http://docs.rubygems.org/read/chapter/11] .gemrc file.
 * Configures the Ruby IRB .irbrc file.
+* Configures the Pry .pryrc file.
 * Configures the {Ruby Debugger}[http://bashdb.sourceforge.net/ruby-debug.html] .rdebugrc file.
-* Configures the {Ruby on Rails}[http://rubyonrails.org] .railsrc file (includes {Rails Setup Template}[https://github.com/bkuhlmann/rails_setup_template] support).
 
 = Requirements
 
 * Any UNIX-based OS.
 * Git[http://git-scm.com].
 * {Ruby Gem Setup}[http://github.com/bkuhlmann/ruby_gem_setup].
-* {Ruby on Rails 3.2.x+}[http://rubyonrails.org] (necessary for .railsrc file enhancements).
 
 = Setup
 
@@ -30,7 +29,7 @@ Current Version (stable)
 
   git clone git://github.com/bkuhlmann/dotfiles.git
   cd dotfiles
-  git checkout v2.1.0
+  git checkout v2.2.0
 
 Master Version (unstable)
 
@@ -41,11 +40,11 @@ Edit and save the *.txt files as you see fit.
 
 Open a terminal window and execute the following commands to install:
 
-  cd ..
+  cd dotfiles
   ruby install.rb
 
 You can delete the dotfiles directory after installation. There are, however, a couple files that need
-manual care regardless of whether you tweaked the files prior to installation or not:
+manual updating regardless of whether you tweaked the files prior to installation or not:
 
 * .bashrc - If installed on a OS other than a Mac, adjust the path to point to the correct bin directory for the rbenv binary.
 * .gemrc - Uncomment the "gemcutter_key" line and add your own RubyGems key for publishing gems.
@@ -55,6 +54,7 @@ manual care regardless of whether you tweaked the files prior to installation or
 
 From the command line, the following commands are possible (please see all home_files/*.txt files for additional details):
 
+  # General
   .. = "cd .."
   ... = "cd ../.."
   c = "clear"
@@ -68,23 +68,28 @@ From the command line, the following commands are possible (please see all home_
   tree = "find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
   bashs = "exec $SHELL"
   
+  # PostgreSQL (http://www.postgresql.org)
   pgs = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
   pgq = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-
+  
+  # Apache (http://httpd.apache.org)
   apachec = "mate /etc/apache2/httpd.conf"
   apachev = "mate /private/etc/apache2/extra/httpd-vhosts.conf"
   apaches = "mate /private/etc/apache2/extra/httpd-ssl.conf"
   apachest = "sudo /usr/sbin/apachectl start"
   apachesp = "sudo /usr/sbin/apachectl stop"
   apacher = "sudo /usr/sbin/apachectl restart"
-
+  
+  # Git (http://git-scm.com)
   gst = "git status -sb"
   glast = "git show --stat"
   gg = "git grep"
   gl = "git log --oneline --decorate"
+  glh='git log --pretty=format:%H -1 | pbcopy && echo "Copied to clipboard: `pbpaste`"'
   glc = "git shortlog -sne"
   gld = "git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
   gln = "git log --name-status"
+  glf = "git log ..FETCH_HEAD"
   gd = "git diff"
   gdw = "git diff --word-diff"
   gb = "git branch -v"
@@ -96,9 +101,11 @@ From the command line, the following commands are possible (please see all home_
   gco = "git commit"
   gca = "git commit -a"
   gcam = "git commit -a -m"
+  gamend = "git commit --amend -m"
   gash = "git stash"
   gf = "git fetch"
   gpu = "git pull"
+  gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching
   gp = "git push"
   gpo = "git push origin"
   gpp = "git push production master"
@@ -107,17 +114,23 @@ From the command line, the following commands are possible (please see all home_
   gtags = "git push --tags"
   gres = "git reset --hard HEAD"
   grev = "git revert"
-
+  
+  # Ruby (http://www.ruby-lang.org)
   rd = "rdoc -a -o _doc"
-
+  rdo = "open _doc/index.html"
+  
+  # Ruby Gems (http://rubygems.org)
   geml = "gem list"
   gemi = "gem install"
   gemup = "gem update"
   gemu = "gem uninstall"
   gemc = "gem cleanup"
   gems = "gem server"
+  
+  # Ruby Gems Whois (https://github.com/jnunemaker/gemwhois)
   gemw = "gem whois"
-
+  
+  # Bundler (http://gembundler.com)
   b = "bundle"
   bi = "bundle install"
   bu = "bundle update"
@@ -129,16 +142,20 @@ From the command line, the following commands are possible (please see all home_
   bec = "bundle exec cucumber"
   bch = "rm -f Gemfile.lock; bundle check"
   rebundle = "bch; bundle package"
-
+  
+  # Gemsmith (https://github.com/bkuhlmann/gemsmith)
   g = "gemsmith"
   go = "gemsmith -o"
-
+  
+  # Heroku+ (https://github.com/bkuhlmann/heroku_plus)
   hpas = "hp -a -s"
-
-  sc = "rails/console"
-  ss = "rails/server"
-  sg = "rails/generate"
-  sdb = "rails/dbconsole"
+  
+  # Ruby on Rails (http://rubyonrails.org)
+  rew = Builds a new rails project with defaults or templates applied (see .bashrc for details).
+  sc = Launches the Rails Console (see .bashrc for details). 
+  ss = Launches the Rails Server (see .bashrc for details).
+  sg = Launches the Rails Generator (see .bashrc for details).  
+  sdb = Launches the Rails DB Console (see .bashrc for details).  
   scs = "sc --sandbox"
   sgc = "sg controller"
   sgm = "sg model"
@@ -158,12 +175,23 @@ From the command line, the following commands are possible (please see all home_
   dmodels = "railroady -l -i -a --all-columns -j -t -o doc/design/models.dot -M"
   dcontrollers = "railroady -l -i -o doc/design/controllers.dot -C"
   dstate = "railroady -l -i -o doc/design/state.dot -A"
-
+  
+  # Capistrano (https://github.com/capistrano/capistrano)
   caps = "cap stage deploy"
   capp = "cap production deploy"
-
+  
+  # Sitemap Generator (https://github.com/kjvarga/sitemap_generator)
   rsite = "rake sitemap:refresh:no_ping"
   rsitep = "rake sitemap:refresh"
+
+  # rbenv (https://github.com/sstephenson/rbenv)
+  rb = "rbenv"
+  rbg = "rbenv global"
+  rbl = "rbenv local"
+  rbs = "rbenv shell"
+  rbh = "rbenv rehash"
+  rbw = "rbenv which"
+  rbv = "rbenv versions"
 
 From IRB or the Rails console, the following commands are possible:
 
