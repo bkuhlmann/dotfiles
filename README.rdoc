@@ -12,7 +12,7 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 * Configures the Git[http://git-scm.com] .gitignore file.
 * Configures the {Ruby Gems}[http://docs.rubygems.org/read/chapter/11] .gemrc file.
 * Configures the Ruby IRB .irbrc file.
-* Configures the Pry .pryrc file.
+* Configures the Pry[http://pry.github.com] .pryrc file.
 * Configures the {Ruby Debugger}[http://bashdb.sourceforge.net/ruby-debug.html] .rdebugrc file.
 
 = Requirements
