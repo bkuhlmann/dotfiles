@@ -162,6 +162,18 @@ export RUBY_HEAP_FREE_MIN=100000 # The number of free slots that should be prese
 alias rd="rdoc -a -o _doc"
 alias rdo="open _doc/index.html"
 
+# Executes a specific Test::Unit test file with optional support to 
+# ==== Parameters
+# * +test_file+ - Required. The Test::Unit file path.
+# * +test_name+ - Optional. The Test::Unit name within the file.
+function rtest {
+  if [ -n "$2" ]; then
+    bundle exec ruby -I test "$1" -n "$2"
+  else
+    bundle exec ruby -I test "$1"
+  fi
+}
+
 # Ruby Gems (http://rubygems.org)
 alias geml="gem list"
 alias gemi="gem install"
