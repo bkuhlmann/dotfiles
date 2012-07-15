@@ -4,8 +4,7 @@ alias ...="cd ../.."
 alias c="clear"
 alias h="history"
 alias l="ls -alh"
-alias p='pwd | pbcopy | echo "Current path copied to clipboard."'
-alias cpath='pwd | tr -d "\r\n" | pbcopy | echo "Current path copied to clipboard."'
+alias p='pwd | tr -d "\r\n" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
 alias o="open"
 alias e="sublime"
 alias home="cd $HOME"
@@ -113,7 +112,7 @@ alias gst="git status -sb"
 alias glast="git show --stat"
 alias gg="git grep"
 alias gl="git log --oneline --decorate"
-alias glh='git log --pretty=format:%H -1 | pbcopy && echo "Copied to clipboard: `pbpaste`"'
+alias glh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
 alias glc="git shortlog -sne"
 alias gld="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gln="git log --name-status"
