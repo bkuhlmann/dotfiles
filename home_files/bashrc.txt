@@ -10,6 +10,7 @@ alias e="sublime"
 alias home="cd $HOME"
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias bashs="exec $SHELL"
+alias ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
 
 # Colors (http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 NO_COLOR='\e[0m'
