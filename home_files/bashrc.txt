@@ -94,7 +94,8 @@ export CLICOLOR=1
 export LSCOLORS=cxfxcxdxbxegebabagacad
 
 # Command Prompt
-PS1="[\t][\u@\h:\w]> "
+# Reference: http://jonisalonen.com/2012/your-bash-prompt-needs-this
+PS1="\[\033[G\][\t][\u@\h:\w]> "
 
 # PostgreSQL (http://www.postgresql.org)
 alias pgs="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
