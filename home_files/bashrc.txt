@@ -110,6 +110,7 @@ alias apachesp="sudo /usr/sbin/apachectl stop"
 alias apacher="sudo /usr/sbin/apachectl restart"
 
 # Git (http://git-scm.com)
+alias groot="cd $(dirname $(git rev-parse --git-dir))"
 alias gst="git status -sb"
 alias glast="git show --stat"
 alias gg="git grep"
