@@ -121,6 +121,32 @@ alias glc="git shortlog -sne"
 alias gld="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gln="git log --name-status"
 alias glf="git log ..FETCH_HEAD"
+
+# Git Standup - Answers a summarized list of Git activity since yesterday for all projects in current directory,
+# broken down by project. This is a great way to see what you did yesterday for today's standup report.
+function gsup() {
+  echo ''
+  root_path=`pwd` # Remember current directory.
+
+  # Iterate through all project directories located in root directory.
+  for directory in `ls -d1 -- */`
+  do
+    # Process projects that are Git enabled only.
+    cd "$root_path/$directory"
+    if [ -d ".git" ]; then
+      # Capture git log activity.
+      declare results=$(git log --since yesterday --oneline --author "Brooke Kuhlmann")
+      # Print project name and Git activity only if Git activity was detected.
+      if [ -n "$results" ]; then
+        echo "[${directory/%?/}]"
+        echo -e "$results\n"
+      fi
+    fi
+  done
+
+  cd "$root_path" # Return to original directory.
+}
+
 alias gd="git diff"
 alias gdw="git diff --word-diff"
 alias gwc="git whatchanged -p --pretty=medium"
