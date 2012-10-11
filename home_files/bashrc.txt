@@ -134,8 +134,9 @@ function gsup() {
     # Process projects that are Git enabled only.
     cd "$root_path/$directory"
     if [ -d ".git" ]; then
+      user=$(git config user.name)
       # Capture git log activity.
-      declare results=$(git log --since yesterday --oneline --author "Brooke Kuhlmann")
+      results=$(git log --since yesterday --oneline --author "$user")
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
         echo "[${directory/%?/}]"
