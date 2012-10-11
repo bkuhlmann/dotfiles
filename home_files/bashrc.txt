@@ -107,6 +107,7 @@ function gsup() {
 
 alias gd="git diff"
 alias gdw="git diff --word-diff"
+alias gdc="git diff --cached"
 alias gwc="git whatchanged -p --pretty=medium"
 alias gb="git branch -v"
 alias gm="git merge"
