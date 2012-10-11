@@ -34,3 +34,11 @@
 [github]
 	# user = <enter user here>
 	# token = <enter token here>
+[url "git@github.com:"]
+  insteadOf = gh:
+[url "git@github.com:bkuhlmann/"]
+  insteadOf = bk:
+[url "git@github.com:gnip/"]
+  insteadOf = gnip:
+[url "git@heroku.com:"]
+  insteadOf = heroku:
