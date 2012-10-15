@@ -217,7 +217,7 @@ The following is a reference to bash shell colors:
 
 = Contributions
 
-Please log all feedback/issues via {GitHub Issues}[https://github.com/bkuhlmann/dotfiles/issues]. Thanks.
+Read CONTRIBUTING for details.
 
 = Credits
 
