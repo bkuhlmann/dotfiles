@@ -188,6 +188,7 @@ alias bcon="bundle console"
 alias be="bundle exec"
 alias ber="bundle exec rspec"
 alias bers="bundle exec rspec spec"
+alias bert="bundle exec rake test"
 alias bch="rm -f Gemfile.lock; bundle check"
 alias rebundle="bch; bundle package"
 
