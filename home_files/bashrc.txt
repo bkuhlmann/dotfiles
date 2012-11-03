@@ -202,26 +202,33 @@ alias go="gemsmith -o"
 alias hpas="hp -a -s"
 
 # Ruby on Rails (http://rubyonrails.org)
-function rew {
-  unset $options
 
-  case "$2" in
-    "b")
-      echo "Rails Base Template."
-      echo "Template not implemented. Exiting..."
-      return
-      ;;
-    "s")
-      echo "Rails Setup Template."
-      options="-d sqlite3 -J -T -f --skip-bundle -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
-      ;;
-    *)
-      echo "Rails Default Skeleton."
-      unset $options
-      ;;
-  esac
+# Rails New (rew)
+# Builds a new rails app from selected template.
+# ==== Parameters
+# * +name+ - Required. The name of the new app to build.
+function rew {
+  echo -e "\nAvailable Templates:"
+  echo "  1. Rails Default Template"
+  echo "  2. Rails Setup Template"
+  while true; do
+    read -p "Please pick one (or type 'q' to quit): " response
+    case $response in
+      '1')
+        echo -e "\nRails Base Template"
+        options=''
+        break;;
+      '2')
+        echo -e "\nRails Setup Template"
+        options="-d sqlite3 -J -T -f --skip-bundle -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
+        break;;
+      'q')
+        return;;
+    esac
+  done
 
   rails new $1 $options
+  echo
 }
 
 function sc {
