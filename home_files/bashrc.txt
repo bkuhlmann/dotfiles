@@ -224,6 +224,7 @@ function rew {
     fi
   # Otherwise, prompt for template when selection is unknown.
   else
+    echo -e "Usage: rew NAME TEMPLATE"
     echo -e "\nAvailable Templates:"
     echo "  1. Rails Default Template"
     echo "  2. Rails Setup Template"
