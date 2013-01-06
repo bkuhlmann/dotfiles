@@ -204,30 +204,42 @@ alias hpas="hp -a -s"
 
 # Ruby on Rails (http://rubyonrails.org)
 
-# Rails New (rew)
-# Builds a new rails app from selected template.
+# Rails New
+# Builds a new rails app for given template selection.
 # ==== Parameters
-# * +name+ - Required. The name of the new app to build.
+# * +name+ - Required. The name of the app to create.
+# * +selection+ - Optional. The template to apply. Default: (prompts for choice).
 function rew {
-  echo -e "\nAvailable Templates:"
-  echo "  1. Rails Default Template"
-  echo "  2. Rails Setup Template"
-  while true; do
-    read -p "Please pick one (or type 'q' to quit): " response
-    case $response in
-      '1')
-        echo -e "\nRails Base Template"
-        options=''
-        break;;
-      '2')
-        echo -e "\nRails Setup Template"
-        options="-d sqlite3 -J -T -f --skip-bundle -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
-        break;;
-      'q')
-        return;;
-    esac
-  done
+  # Set defaults.
+  options=''
 
+  # Template options.
+  rails_setup_template_options="-d sqlite3 -J -T -f --skip-bundle -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
+
+  # Bypass prompt if selection is supplied.
+  if [ $2 ]; then
+    if [ $2 = 2 ]; then
+      options=$rails_setup_template_options
+    fi
+  # Otherwise, prompt for template when selection is unknown.
+  else
+    echo -e "\nAvailable Templates:"
+    echo "  1. Rails Default Template"
+    echo "  2. Rails Setup Template"
+    while true; do
+      read -p "Please pick one (or type 'q' to quit): " response
+      case $response in
+        '2')
+          options=$rails_setup_template_options
+          break;;
+        'q')
+          return;;
+      esac
+    done
+  fi
+
+  # Create new Rails app.
+  echo "rails new $1 $options"
   rails new $1 $options
   echo
 }
