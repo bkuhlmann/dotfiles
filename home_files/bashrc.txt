@@ -106,7 +106,7 @@ function gsup() {
     if [ -d ".git" ]; then
       user=$(git config user.name)
       # Capture git log activity.
-      results=$(git log --since yesterday --oneline --author "$user")
+      results=$(git log --reverse --since yesterday --oneline --author "$user")
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
         echo "[${directory/%?/}]"
