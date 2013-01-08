@@ -14,7 +14,7 @@ alias bashs="exec $SHELL"
 
 # Terminal Colors
 #
-# The color designators:
+# Color Designators:
 #  a  black
 #  b  red
 #  c  green
@@ -33,7 +33,7 @@ alias bashs="exec $SHELL"
 #  H  bold light grey; looks like bright white
 #  x  default foreground or background
 #
-# The order of the attributes are as follows:
+# Attribute Order:
 #  1.   directory
 #  2.   symbolic link
 #  3.   socket
@@ -45,8 +45,8 @@ alias bashs="exec $SHELL"
 #  9.   executable with setgid bit set
 #  10.  directory writable to others, with sticky bit
 #  11.  directory writable to others, without sticky bit
-
-# The default is "exfxcxdxbxegedabagacad"
+# 
+# Default: "exfxcxdxbxegedabagacad"
 export CLICOLOR=1
 export LSCOLORS=cxfxcxdxbxegebabagacad
 
@@ -148,7 +148,7 @@ alias grev="git revert"
 alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
 
 # GitHub (https://github.com)
-# Function Source: https://gist.github.com/1105392
+# Reference: https://gist.github.com/1105392
 function init_github() {
   git remote add origin git@github.com:$1/$2.git
   git push origin master
