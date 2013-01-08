@@ -72,14 +72,6 @@ alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias pgs="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias pgq="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
-# Apache (http://httpd.apache.org)
-alias apachec="mate /etc/apache2/httpd.conf"
-alias apachev="mate /private/etc/apache2/extra/httpd-vhosts.conf"
-alias apaches="mate /private/etc/apache2/extra/httpd-ssl.conf"
-alias apachest="sudo /usr/sbin/apachectl start"
-alias apachesp="sudo /usr/sbin/apachectl stop"
-alias apacher="sudo /usr/sbin/apachectl restart"
-
 # Git (http://git-scm.com)
 function groot() {
   cd "$(dirname $(git rev-parse --git-dir))"
