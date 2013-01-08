@@ -195,7 +195,6 @@ alias bes="bundle exec rspec"
 alias bess="bundle exec rspec spec"
 alias bert="bundle exec rake test"
 alias beg="bundle exec guard -c"
-alias bec="bundle exec cap"
 alias bch="rm -f Gemfile.lock; bundle check"
 alias rebundle="bch; bundle package"
 
@@ -302,8 +301,9 @@ alias dcontrollers="railroady -l -i -o doc/design/controllers.dot -C"
 alias dstate="railroady -l -i -o doc/design/state.dot -A"
 
 # Capistrano (https://github.com/capistrano/capistrano)
-alias caps="cap stage deploy"
-alias capp="cap production deploy"
+alias bec="bundle exec cap"
+alias caps="bundle exec cap stage deploy"
+alias capp="bundle exec cap production deploy"
 
 # Sitemap Generator (https://github.com/kjvarga/sitemap_generator)
 alias rsite="rake sitemap:refresh:no_ping"
