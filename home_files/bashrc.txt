@@ -73,10 +73,37 @@ alias pgs="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.l
 alias pgq="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
 # Git (http://git-scm.com)
+
+# Changes to project root directory (regardless of how deep the current path might currently be).
 function groot() {
   cd "$(dirname $(git rev-parse --git-dir))"
 }
 alias gst="git status -sb"
+
+# Git Status (all) - Answers the status of projects with uncommited changes.
+function gsta() {
+  echo ''
+  root_path=`pwd` # Remember root directory.
+
+  # Iterate project directories located in root directory.
+  for directory in `ls -d1 -- */`
+  do
+    # Process projects that are Git enabled only.
+    cd "$root_path/$directory"
+    if [ -d ".git" ]; then
+      # Capture current project status.
+      results=$(git status -s)
+      # Print project name and Git activity only if Git activity was detected.
+      if [ -n "$results" ]; then
+        echo "[${directory/%?/}]"
+        echo -e "$results\n"
+      fi
+    fi
+  done
+
+  cd "$root_path" # Return to root directory.
+}
+
 alias glast="git show --stat"
 alias gg="git grep"
 alias gl="git log --oneline --decorate"
@@ -90,9 +117,9 @@ alias glf="git log ..FETCH_HEAD"
 # broken down by project. This is a great way to see what you did yesterday for today's standup report.
 function gsup() {
   echo ''
-  root_path=`pwd` # Remember current directory.
+  root_path=`pwd` # Remember root directory.
 
-  # Iterate through all project directories located in root directory.
+  # Iterate project directories located in root directory.
   for directory in `ls -d1 -- */`
   do
     # Process projects that are Git enabled only.
@@ -109,7 +136,7 @@ function gsup() {
     fi
   done
 
-  cd "$root_path" # Return to original directory.
+  cd "$root_path" # Return to root directory.
 }
 
 alias gd="git diff"
