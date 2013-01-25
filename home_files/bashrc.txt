@@ -185,12 +185,6 @@ function init_github() {
 }
 
 # Ruby (http://www.ruby-lang.org)
-# Reference: http://snaprails.tumblr.com/post/241746095/rubys-gc-configuration.
-export RUBY_HEAP_MIN_SLOTS=500000 # Initial/minimum number of heap slots. Default: 10000.
-export RUBY_HEAP_SLOTS_INCREMENT=250000 # The number of new slots to allocate when all initial slots are used. Default: 10000.
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1 # The multiplicator use when new heap slots are required (i.e. RUBY_HEAP_SLOTS_INCREMENT * RUBY_HEAP_SLOTS_GROWTH_FACTOR). Default: 1.8.
-export RUBY_GC_MALLOC_LIMIT=50000000 # The number of C data structures that can be allocated before triggering the garbage collector. Default: 8000000.
-export RUBY_HEAP_FREE_MIN=100000 # The number of free slots that should be present after GC finishes. If there are fewer slots than those defined it will allocate new ones according to RUBY_HEAP_SLOTS_INCREMENT and RUBY_HEAP_SLOTS_GROWTH_FACTOR parameters. Default: 4096.
 alias rd="rdoc -a -o _doc"
 alias rdo="open _doc/index.html"
 
