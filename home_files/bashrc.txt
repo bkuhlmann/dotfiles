@@ -249,6 +249,9 @@ function rew {
     while true; do
       read -p "Please pick one (or type 'q' to quit): " response
       case $response in
+        '1')
+          unset options
+          break;;
         '2')
           options=$rails_setup_template_options
           break;;
