@@ -106,10 +106,10 @@ function gsta() {
 
 alias glast="git show --stat"
 alias gg="git grep"
-alias gl="git log --oneline --decorate"
+alias gl="git log --oneline --decorate --no-abbrev-commit"
 alias glh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
 alias glc="git shortlog -sne"
-alias gld="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gld="git log --graph --pretty=format:'%C(yellow)%H%Creset %an: %s - %Creset %C(cyan)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gln="git log --name-status"
 alias glf="git log ..FETCH_HEAD"
 
@@ -127,10 +127,10 @@ function gsup() {
     if [ -d ".git" ]; then
       user=$(git config user.name)
       # Capture git log activity.
-      results=$(git log --reverse --since yesterday --oneline --author "$user")
+      results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since yesterday --reverse)
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
-        echo "[${directory/%?/}]"
+        echo -e "[${directory/%?/}]"
         echo -e "$results\n"
       fi
     fi
@@ -172,7 +172,7 @@ alias gtag="git tag"
 alias gtags="git push --tags"
 
 function gtail() {
-  git log --oneline --format='%s' --reverse $(git describe --abbrev=0 --tags)..HEAD
+  git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags)..HEAD
 }
 
 alias gres="git reset --hard HEAD"
