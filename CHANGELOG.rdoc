@@ -1,3 +1,52 @@
+= v3.0.0
+
+* Added ipa alias.
+* Added the groot alias. Thanks Eoin.
+* Added the gwc Git alias.
+* Added l1 alias for listing files and directories as single line output only.
+* Added a Bash function for reporting Git activity across all projects for standup reports.
+* Added Git URL aliases for GitHub and Heroku to gitconfig.txt
+* Added the gms alias.
+* Added alias for gdc.
+* Added the sniff alias for monitoring TCP/IP traffic (pulled from Paul Irish's dotfiles).
+* Added the bert aliase for running Test::Unit tests.
+* Added the beg alias for running guard.
+* Added usage printout for rew function.
+* Added third option to rew function which allows for building a new rails project using local rails setup template options.
+* Added the glatest git alias which answers the latest update to the project with a datestamp.
+* Added the rbu alias (i.e. rbenv uninstall).
+* Added support for current git branch to command prompt display.
+* Added Bash Completion support.
+* Added yellow color to Git branch info in command prompt.
+* Added glame alias (i.e. git blame).
+* Added the gsta function (i.e. git status all) which answers the status of any project with uncommitted changes.
+* Added Code Climate support.
+* Added the rbvars alias.
+* Added the rfixes alias.
+* Added the gtail alias which shows all commits since last tag.
+* Added CONTRIBUTING guidelines per GitHub requirements.
+* Added Ruby 1.9.x syntax.
+* Added the gashl, gashs, gashp, gashd, and gashc for git stash list, show, pop, drop, and clear respectively.
+* Modified the command prompt to keep the cursor at the first position.
+* Modified the copy to clipboard message for the glh alias.
+* Modified the gsup alias to output commits in reverse order (oldest first, newest last).
+* Modified the 'ber' alias to be 'bundle exec rake'.
+* Modified the rew function to make it easier to select which templates to build from when generating a new Rails app.
+* Modified the rew alias so that the template choice can be supplied without always being prompted for one.
+* Modified alias rbw to be rbp (i.e. rbenv which) and changed rbw to alias rbenv whence.
+* Modified the PRY prompt to resemble the IRB prompt.
+* Modified bash prompt colors (grey for time and cyan for git branch info).
+* Modified all git logging to show full commit hash.
+* Removed the cpath alias and upgraded the p alias to always copy path to clipboard.
+* Removed the hard coded author name for the gsup alias - picks up git user name from .gitconfig file instead.
+* Removed the Bash color codes.
+* Removed Pry editor config since it defaults to sublime.
+* Removed the bec alias for cucumber and repurposed it to capistrano (i.e. bundle exec cap).
+* Removed the Apache aliases.
+* Removed the Ruby GC exports (configured by rbenv-vars - see the OSX project for further details).
+* Removed the bers alias and replaced with the bes and bess aliases for using RSpec.
+* Removed the Ruby install script and added a Bash script instead.
+
 = v2.2.0
 
 * Fixed awesome_print requirement for .irbrc.

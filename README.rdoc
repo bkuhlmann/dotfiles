@@ -1,6 +1,6 @@
 = Overview
 
-{<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/bkuhlmann/dotfiles]
+{<img src = "https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/bkuhlmann/dotfiles]
 
 Configures your user profile settings with useful defaults for your development environment. By default,
 these are set to my preferences (namely for Mac OS) but you can change them to your liking by editing
@@ -31,7 +31,7 @@ Current Version (stable)
 
   git clone git://github.com/bkuhlmann/dotfiles.git
   cd dotfiles
-  git checkout v2.2.0
+  git checkout v3.0.0
 
 Master Version (unstable)
 
@@ -43,7 +43,7 @@ Edit and save the *.txt files as you see fit.
 Open a terminal window and execute the following commands to install:
 
   cd dotfiles
-  ruby install.rb
+  ./install.sh
 
 You can delete the dotfiles directory after installation. There are, however, a couple files that need
 manual updating regardless of whether you tweaked the files prior to installation or not:
@@ -62,40 +62,43 @@ From the command line, the following commands are possible (please see all home_
   c = "clear"
   h = "history"
   l = "ls -alh"
-  p = "pwd"
-  cpath='pwd | tr -d "\r\n" | pbcopy | echo "Current path copied to clipboard."'
+  l1 = "ls -1"
+  p='pwd | tr -d "\r\n" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
   o = "open"
   e = "sublime"
   home = "cd $HOME"
   tree = "find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
   bashs = "exec $SHELL"
+
+  # Network
+  ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
+  sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
   
   # PostgreSQL (http://www.postgresql.org)
   pgs = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
   pgq = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-  
-  # Apache (http://httpd.apache.org)
-  apachec = "mate /etc/apache2/httpd.conf"
-  apachev = "mate /private/etc/apache2/extra/httpd-vhosts.conf"
-  apaches = "mate /private/etc/apache2/extra/httpd-ssl.conf"
-  apachest = "sudo /usr/sbin/apachectl start"
-  apachesp = "sudo /usr/sbin/apachectl stop"
-  apacher = "sudo /usr/sbin/apachectl restart"
-  
+    
   # Git (http://git-scm.com)
+  groot()
   gst = "git status -sb"
+  gsta()
   glast = "git show --stat"
   gg = "git grep"
-  gl = "git log --oneline --decorate"
-  glh='git log --pretty=format:%H -1 | pbcopy && echo "Copied to clipboard: `pbpaste`"'
+  gl = "git log --oneline --decorate --no-abbrev-commit"
+  glh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
   glc = "git shortlog -sne"
-  gld = "git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+  gld = "git log --graph --pretty=format:'%C(yellow)%H%Creset %an: %s - %Creset %C(cyan)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
   gln = "git log --name-status"
   glf = "git log ..FETCH_HEAD"
+  gsup()
   gd = "git diff"
   gdw = "git diff --word-diff"
+  gdc = "git diff --cached"
+  gwc = "git whatchanged -p --pretty=medium"
+  glame = "git blame"
   gb = "git branch -v"
   gm = "git merge"
+  gms = "git merge --squash"
   gcl = "git clone"
   gch = "git checkout"
   ga = "git add"
@@ -105,6 +108,11 @@ From the command line, the following commands are possible (please see all home_
   gcam = "git commit -a -m"
   gamend = "git commit --amend -m"
   gash = "git stash"
+  gashl = "git stash list"
+  gashs = "git stash show"
+  gashp = "git stash pop"
+  gashd = "git stash drop"
+  gashc = "git stash clear"
   gf = "git fetch"
   gpu = "git pull"
   gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching
@@ -116,7 +124,11 @@ From the command line, the following commands are possible (please see all home_
   gtags = "git push --tags"
   gres = "git reset --hard HEAD"
   grev = "git revert"
-  
+  glatest = "git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
+
+  # GitHub
+  github_init()
+
   # Ruby (http://www.ruby-lang.org)
   rd = "rdoc -a -o _doc"
   rdo = "open _doc/index.html"
@@ -139,9 +151,11 @@ From the command line, the following commands are possible (please see all home_
   bo = "bundle outdated"
   bcon = "bundle console"
   be = "bundle exec"
-  ber = "bundle exec rspec"
-  bers = "bundle exec rspec spec"
-  bec = "bundle exec cucumber"
+  ber = "bundle exec rake"
+  bes = "bundle exec rspec"
+  bess = "bundle exec rspec spec"
+  bert = "bundle exec rake test"
+  beg = "bundle exec guard -c"
   bch = "rm -f Gemfile.lock; bundle check"
   rebundle = "bch; bundle package"
   
@@ -153,11 +167,11 @@ From the command line, the following commands are possible (please see all home_
   hpas = "hp -a -s"
   
   # Ruby on Rails (http://rubyonrails.org)
-  rew = Builds a new rails project with defaults or templates applied (see .bashrc for details).
-  sc = Launches the Rails Console (see .bashrc for details). 
-  ss = Launches the Rails Server (see .bashrc for details).
-  sg = Launches the Rails Generator (see .bashrc for details).  
-  sdb = Launches the Rails DB Console (see .bashrc for details).  
+  rew()
+  sc()
+  ss()
+  sg()
+  sdb()
   scs = "sc --sandbox"
   sgc = "sg controller"
   sgm = "sg model"
@@ -167,6 +181,7 @@ From the command line, the following commands are possible (please see all home_
   rdbm = "rake db:migrate"
   rassp = "rake assets:precompile"
   rassc = "rake assets:clean"
+  rfixes = "rake notes:custom ANNOTATION=FIX"
   taild = "tail -f log/development.log"
   tailt = "tail -f log/test.log"
   res = "touch tmp/restart.txt"
@@ -177,10 +192,11 @@ From the command line, the following commands are possible (please see all home_
   dmodels = "railroady -l -i -a --all-columns -j -t -o doc/design/models.dot -M"
   dcontrollers = "railroady -l -i -o doc/design/controllers.dot -C"
   dstate = "railroady -l -i -o doc/design/state.dot -A"
-  
+
   # Capistrano (https://github.com/capistrano/capistrano)
-  caps = "cap stage deploy"
-  capp = "cap production deploy"
+  bec = "bundle exec cap"
+  caps = "bundle exec cap stage deploy"
+  capp = "bundle exec cap production deploy"
   
   # Sitemap Generator (https://github.com/kjvarga/sitemap_generator)
   rsite = "rake sitemap:refresh:no_ping"
@@ -192,8 +208,11 @@ From the command line, the following commands are possible (please see all home_
   rbl = "rbenv local"
   rbs = "rbenv shell"
   rbh = "rbenv rehash"
-  rbw = "rbenv which"
+  rbp = "rbenv which"
+  rbw = "rbenv whence"
   rbv = "rbenv versions"
+  rbu = "rbenv uninstall"
+  rbvars = "rbenv vars"
 
 From IRB or the Rails console, the following commands are possible:
 
