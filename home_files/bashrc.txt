@@ -45,10 +45,10 @@ export CLICOLOR=1
 export LSCOLORS=cxfxcxdxbxegebabagacad
 
 # Bash Colors
-YELLOW="\[\033[0;33m\]"
-CYAN="\[\033[0;36m\]"
-GREY="\[\033[1;30m\]"
-NORMAL="\e[0m"
+YELLOW='\e[0;33m'
+CYAN='\e[0;36m'
+GREY='\e[1;30m'
+NORMAL="\e[m"
 
 # Bash Completion (http://bash-completion.alioth.debian.org)
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -56,7 +56,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 # Command Prompt (http://jonisalonen.com/2012/your-bash-prompt-needs-this)
-export PS1="\[\033[G\]$GREY[\t]$NORMAL[\u@\h]$CYAN\$(__git_ps1 \"[%s]\")$NORMAL[\w]> "
+export PS1="\[$GREY\][\t]\[$NORMAL\][\u@\h]\[$CYAN\]\$(__git_ps1 \"[%s]\")\[$NORMAL\][\w]> "
 
 # Default Editor
 export EDITOR=sublime
