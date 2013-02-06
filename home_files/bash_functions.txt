@@ -1,0 +1,172 @@
+# BASH FUNCTIONS
+
+#--------------------------#
+# Git (http://git-scm.com) #
+#--------------------------#
+
+# Git Root - Changes to project root directory (regardless of how deep the current path might currently be).
+function groot() {
+  cd "$(dirname $(git rev-parse --git-dir))"
+}
+
+# Git Status (all) - Answers the status of projects with uncommited changes.
+function gsta() {
+  echo ''
+  root_path=`pwd` # Remember root directory.
+
+  # Iterate project directories located in root directory.
+  for directory in `ls -d1 -- */`
+  do
+    # Process projects that are Git enabled only.
+    cd "$root_path/$directory"
+    if [ -d ".git" ]; then
+      # Capture current project status.
+      results=$(git status -s)
+      # Print project name and Git activity only if Git activity was detected.
+      if [ -n "$results" ]; then
+        echo "[${directory/%?/}]"
+        echo -e "$results\n"
+      fi
+    fi
+  done
+
+  cd "$root_path" # Return to root directory.
+}
+
+# Git Standup - Answers a summarized list of Git activity since yesterday for all projects in current directory,
+# broken down by project. This is a great way to see what you did yesterday for today's standup report.
+function gsup() {
+  echo ''
+  root_path=`pwd` # Remember root directory.
+
+  # Iterate project directories located in root directory.
+  for directory in `ls -d1 -- */`
+  do
+    # Process projects that are Git enabled only.
+    cd "$root_path/$directory"
+    if [ -d ".git" ]; then
+      user=$(git config user.name)
+      # Capture git log activity.
+      results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since yesterday --reverse)
+      # Print project name and Git activity only if Git activity was detected.
+      if [ -n "$results" ]; then
+        echo -e "[${directory/%?/}]"
+        echo -e "$results\n"
+      fi
+    fi
+  done
+
+  cd "$root_path" # Return to root directory.
+}
+
+# Git Tail - Answers the commit history from the last tag (i.e. tail end of unversioned/untagged commits).
+function gtail() {
+  git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags)..HEAD
+}
+
+#-----------------------------#
+# GitHub (https://github.com) #
+#-----------------------------#
+
+# Initizalize GitHub - Initializes a new GitHub repo with sensible defaults.
+# Reference: https://gist.github.com/1105392
+function init_github() {
+  git remote add origin git@github.com:$1/$2.git
+  git push origin master
+  git config branch.master.remote origin
+  git config branch.master.merge refs/heads/master
+  git config push.default current
+}
+
+#----------------------------------------#
+# Ruby on Rails (http://rubyonrails.org) #
+#----------------------------------------#
+
+# Rails New - Builds a new rails app for given template selection.
+# ==== Parameters
+# * +name+ - Required. The name of the app to create.
+# * +selection+ - Optional. The template to apply. Default: (prompts for choice).
+function rew {
+  # Set defaults.
+  options=''
+
+  # Template options.
+  rails_setup_template_options="-d sqlite3 -J -T -f --skip-bundle -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
+  rails_setup_template_local_options="-d sqlite3 -J -T -f --skip-bundle -m ~/Dropbox/Development/Ruby/rails_setup_template/template.rb"
+
+  # Bypass prompt if selection is supplied.
+  if [ $2 ]; then
+    case $2 in
+      2)
+        options=$rails_setup_template_options
+        ;;
+      3)
+        options=$rails_setup_template_local_options
+        ;;
+    esac
+  # Otherwise, prompt for template when selection is unknown.
+  else
+    echo -e "Usage: rew NAME TEMPLATE"
+    echo -e "\nAvailable Templates:"
+    echo "  1: Rails Default Template"
+    echo "  2: Rails Setup Template"
+    echo "  3: Rails Setup Template (local)"
+    while true; do
+      read -p "Please pick one (or type 'q' to quit): " response
+      case $response in
+        '1')
+          unset options
+          break;;
+        '2')
+          options=$rails_setup_template_options
+          break;;
+        '3')
+          options="-d sqlite3 -J -T -f --skip-bundle -m ~/Dropbox/Development/Ruby/rails_setup_template/template.rb"
+          break;;
+        'q')
+          return;;
+      esac
+    done
+  fi
+
+  # Create new Rails app.
+  echo "rails new $1 $options"
+  rails new $1 $options
+  echo
+}
+
+# Rails Script Console
+function sc {
+  if [ -e script/rails ]; then
+    script/rails console $@
+  else
+    script/console $@
+  fi
+}
+
+# Rails Script Server
+function ss {
+  if [ -e script/rails ]; then
+    script/rails server $@
+  else
+    script/server $@
+  fi
+}
+
+# Rails Script Generator
+function sg {
+  if [ -e script/rails ]; then
+    script/rails generate $@
+  else
+    script/generate $@
+  fi
+}
+
+# Rails Script Database Console
+function sdb {
+  if [ -e script/rails ]; then
+    script/rails dbconsole $@
+  else
+    script/dbconsole $@
+  fi
+}

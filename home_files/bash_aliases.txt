@@ -1,0 +1,148 @@
+# BASH ALIASES
+
+# General
+alias ..="cd .."
+alias ...="cd ../.."
+alias c="clear"
+alias h="history"
+alias l="ls -alh"
+alias l1="ls -1"
+alias p='pwd | tr -d "\r\n" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
+alias o="open"
+alias e="sublime"
+alias home="cd $HOME"
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+alias bashs="exec $SHELL"
+
+# Network
+alias ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
+alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+
+# PostgreSQL (http://www.postgresql.org)
+alias pgs="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pgq="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+# Git (http://git-scm.com)
+alias gst="git status -sb"
+alias glast="git show --stat"
+alias gg="git grep"
+alias gl="git log --oneline --decorate --no-abbrev-commit"
+alias glh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
+alias glc="git shortlog -sne"
+alias gld="git log --graph --pretty=format:'%C(yellow)%H%Creset %an: %s -%C(cyan)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gln="git log --name-status"
+alias glf="git log ..FETCH_HEAD"
+alias gd="git diff"
+alias gdw="git diff --word-diff"
+alias gdc="git diff --cached"
+alias gwc="git whatchanged -p --pretty=medium"
+alias glame="git blame"
+alias gb="git branch -v"
+alias gm="git merge"
+alias gms="git merge --squash"
+alias gcl="git clone"
+alias gch="git checkout"
+alias ga="git add"
+alias gall="git add ."
+alias gco="git commit"
+alias gca="git commit -a"
+alias gcam="git commit -a -m"
+alias gamend="git commit --amend -m"
+alias gash="git stash"
+alias gashl="git stash list"
+alias gashs="git stash show"
+alias gashp="git stash pop"
+alias gashd="git stash drop"
+alias gashc="git stash clear"
+alias gf="git fetch"
+alias gpu="git pull"
+alias gpur="git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching
+alias gp="git push"
+alias gpo="git push origin"
+alias gpp="git push production master"
+alias gps="git push stage stage:master"
+alias gtag="git tag"
+alias gtags="git push --tags"
+alias gres="git reset --hard HEAD"
+alias grev="git revert"
+alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
+
+# Ruby (http://www.ruby-lang.org)
+alias rd="rdoc -a -o _doc"
+alias rdo="open _doc/index.html"
+
+# Ruby Gems (http://rubygems.org)
+alias geml="gem list"
+alias gemi="gem install"
+alias gemup="gem update"
+alias gemu="gem uninstall"
+alias gemc="gem cleanup"
+alias gems="gem server"
+
+# Ruby Gems Whois (https://github.com/jnunemaker/gemwhois)
+alias gemw="gem whois"
+
+# Bundler (http://gembundler.com)
+alias b="bundle"
+alias bi="bundle install"
+alias bu="bundle update"
+alias bo="bundle outdated"
+alias bcon="bundle console"
+alias be="bundle exec"
+alias ber="bundle exec rake"
+alias bes="bundle exec rspec"
+alias bess="bundle exec rspec spec"
+alias bert="bundle exec rake test"
+alias beg="bundle exec guard -c"
+alias bch="rm -f Gemfile.lock; bundle check"
+alias rebundle="bch; bundle package"
+
+# Gemsmith (https://github.com/bkuhlmann/gemsmith)
+alias g="gemsmith"
+alias go="gemsmith -o"
+
+# Heroku+ (https://github.com/bkuhlmann/heroku_plus)
+alias hpas="hp -a -s"
+
+# Ruby on Rails (http://rubyonrails.org)
+alias scs="sc --sandbox"
+alias sgc="sg controller"
+alias sgm="sg model"
+alias sgs="sg scaffold"
+alias rdbd="rake db:drop"
+alias rdbc="rake db:create"
+alias rdbm="rake db:migrate"
+alias rassp="rake assets:precompile"
+alias rassc="rake assets:clean"
+alias rfixes="rake notes:custom ANNOTATION=FIX"
+alias taild="tail -f log/development.log"
+alias tailt="tail -f log/test.log"
+alias res="touch tmp/restart.txt"
+alias debug="rdebug -c"
+alias rprofile="ruby-prof --printer=graph_html ./script/rails runner > profile.html"
+alias rpaths="rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
+alias erd="rake erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
+alias dmodels="railroady -l -i -a --all-columns -j -t -o doc/design/models.dot -M"
+alias dcontrollers="railroady -l -i -o doc/design/controllers.dot -C"
+alias dstate="railroady -l -i -o doc/design/state.dot -A"
+
+# Capistrano (https://github.com/capistrano/capistrano)
+alias bec="bundle exec cap"
+alias caps="bundle exec cap stage deploy"
+alias capp="bundle exec cap production deploy"
+
+# Sitemap Generator (https://github.com/kjvarga/sitemap_generator)
+alias rsite="rake sitemap:refresh:no_ping"
+alias rsitep="rake sitemap:refresh"
+
+# rbenv (https://github.com/sstephenson/rbenv)
+alias rb="rbenv"
+alias rbg="rbenv global"
+alias rbl="rbenv local"
+alias rbs="rbenv shell"
+alias rbh="rbenv rehash"
+alias rbp="rbenv which"
+alias rbw="rbenv whence"
+alias rbv="rbenv versions"
+alias rbu="rbenv uninstall"
+alias rbvars="rbenv vars"
