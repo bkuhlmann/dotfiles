@@ -25,12 +25,13 @@ function gsta() {
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
         echo -e "\033[36m${directory/%?/}\033[m"
-        echo -e "$results\n"
+        echo -e "$results"
       fi
     fi
   done
 
   cd "$root_path" # Return to root directory.
+  echo ''
 }
 
 # Git Standup - Answers a summarized list of Git activity since yesterday for all projects in current directory,
