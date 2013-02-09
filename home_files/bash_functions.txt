@@ -61,7 +61,33 @@ function gsup() {
 
 # Git Tail - Answers the commit history from the last tag (i.e. tail end of unversioned/untagged commits).
 function gtail() {
-  git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags)..HEAD
+  if [ "$(git tag)" ]; then
+    git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags)..HEAD
+  fi
+}
+
+# Git Tail (all) - Answers tail count (see gtail function for details) for all projects within current directory.
+function gtaila() {
+  echo ''
+  root_path=`pwd` # Remember root directory.
+
+  # Iterate project directories located in root directory.
+  for project in `ls -d1 -- */`
+  do
+    # Process projects that are Git enabled only.
+    cd "$root_path/$project"
+    if [ -d ".git" ]; then
+      # Count outstanding commits.
+      count=$(gtail | wc -l | xargs -n 1)
+      # Print project name and Git activity only if Git activity was detected.
+      if [ -n $count ] && [ $count != 0 ]; then
+        echo -e "\033[36m${project/%?/}:\033[m $count"
+      fi
+    fi
+  done
+
+  cd "$root_path" # Return to root directory.
+  echo ''
 }
 
 # Git Branch Delete - Deletes local and associated remote branch (if found).
