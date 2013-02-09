@@ -64,6 +64,29 @@ function gtail() {
   git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags)..HEAD
 }
 
+# Git Delete Branch - Deletes local and associated remote branch (if found).
+function gbd() {
+  echo ''
+
+  if [ "$1" ]; then
+    read -p "You are about to delete the '$1' branch from local and remote repositories. Continue (y/n)?: " response
+    if [ "$response" == 'y' ]; then
+      git branch -d "$1"
+      if [ -n "$(git branch --remotes --list $1)" ]; then
+        git push origin :"$1"
+      else
+        echo "No remote branch found. Skipped." 
+      fi
+    else
+      echo "Branch deletion aborted."
+    fi
+  else
+    echo "ERROR: Branch name must be supplied."
+  fi
+
+  echo ''
+}
+
 #-----------------------------#
 # GitHub (https://github.com) #
 #-----------------------------#
