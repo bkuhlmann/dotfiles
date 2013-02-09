@@ -64,7 +64,7 @@ function gtail() {
   git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags)..HEAD
 }
 
-# Git Delete Branch - Deletes local and associated remote branch (if found).
+# Git Branch Delete - Deletes local and associated remote branch (if found).
 function gbd() {
   echo ''
 
@@ -85,6 +85,15 @@ function gbd() {
   fi
 
   echo ''
+}
+
+# Git Branch Delete Merged - Deletes all local and associated remote branch (if found) merged branches.
+function gbdm() {
+  branches=$(git branch --merged | grep -v "\*" | xargs -n 1)
+  for branch in $branches
+  do
+    gbd $branch
+  done
 }
 
 #-----------------------------#
