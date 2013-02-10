@@ -91,6 +91,36 @@ function gtaila() {
   echo ''
 }
 
+# Git Projects (Commit and Push) - Commits and pushes changes for all projects within current directory. Useful
+# when making the same change across multiple projects.
+function gpcap() {
+  echo ''
+
+  if [ "$1" ]; then
+    root_path=`pwd` # Remember root directory.
+
+    # Iterate project directories located in root directory.
+    for project in `ls -d1 -- */`
+    do
+      # Only process projects that are Git-enabled.
+      cd "$root_path/$project"
+      if [ -d ".git" ]; then
+        # Only process projects that have changes.
+        if [ "$(git status -s)" ]; then
+          echo "Directory: $project"
+          "git commit -a -m $1 && git push"
+        fi
+      fi
+    done
+
+    cd "$root_path" # Return to root directory.
+  else
+    echo "ERROR: Commit message must be supplied."
+  fi
+
+  echo ''
+}
+
 # Git Branch Delete - Deletes local and associated remote branch (if found).
 function gbd() {
   echo ''
