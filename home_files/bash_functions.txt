@@ -107,8 +107,7 @@ function gpcap() {
       if [ -d ".git" ]; then
         # Only process projects that have changes.
         if [ "$(git status -s)" ]; then
-          echo "Directory: $project"
-          "git commit -a -m $1 && git push"
+          git commit -a -m "$1" && git push
         fi
       fi
     done
