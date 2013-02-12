@@ -24,7 +24,7 @@ function gsta() {
       results=$(git status -s)
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
-        echo -e "\033[36m${directory/%?/}\033[m"
+        echo -e "\033[36m${directory/%?/}\033[m" # Outputs in cyan color.
         echo -e "$results"
       fi
     fi
@@ -51,7 +51,7 @@ function gsup() {
       results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since yesterday --reverse)
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
-        echo -e "\033[36m${directory/%?/}"
+        echo -e "\033[36m${directory/%?/}" # Outputs in cyan color.
         echo -e "$results\n"
       fi
     fi
@@ -82,7 +82,7 @@ function gtaila() {
       count=$(gtail | wc -l | xargs -n 1)
       # Print project name and Git activity only if Git activity was detected.
       if [ -n $count ] && [ $count != 0 ]; then
-        echo -e "\033[36m${project/%?/}:\033[m $count"
+        echo -e "\033[36m${project/%?/}:\033[m $count" # Outputs in cyan color.
       fi
     fi
   done
