@@ -102,10 +102,10 @@ alias rebundle="bch; bundle package"
 
 # Gemsmith (https://github.com/bkuhlmann/gemsmith)
 alias g="gemsmith"
-alias go="gemsmith -o"
+alias go="gemsmith open"
 
 # Heroku+ (https://github.com/bkuhlmann/heroku_plus)
-alias hpas="hp -a -s"
+alias hpas="hp account --switch"
 
 # Ruby on Rails (http://rubyonrails.org)
 alias scs="sc --sandbox"
@@ -125,9 +125,9 @@ alias res="touch tmp/restart.txt"
 alias rprofile="ruby-prof --printer=graph_html ./script/rails runner > profile.html"
 alias rpaths="rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
 alias erd="mkdir -p doc/design && rake erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
-alias dmodels="mkdir -p doc/design && railroady -l -i -a --all-columns -j -t -o doc/design/models.dot -M"
-alias dcontrollers="mkdir -p doc/design && railroady -l -i -o doc/design/controllers.dot -C"
-alias dstate="mkdir -p doc/design && railroady -l -i -o doc/design/state.dot -A"
+alias dmodels="mkdir -p doc/design && railroady --label --inheritance --specify --all-columns --join --transitive --output doc/design/models.dot --models"
+alias dcontrollers="mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
+alias dstate="mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
 
 # Capistrano (https://github.com/capistrano/capistrano)
 alias bec="bundle exec cap"
