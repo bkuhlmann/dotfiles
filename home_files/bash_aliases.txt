@@ -73,6 +73,7 @@ alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(com
 # Ruby (http://www.ruby-lang.org)
 alias rd="rdoc -a -o _doc"
 alias rdo="open _doc/index.html"
+alias rdd="rm -rf _doc"
 
 # Ruby Gems (http://rubygems.org)
 alias geml="gem list"
