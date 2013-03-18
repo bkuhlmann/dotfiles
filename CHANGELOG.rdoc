@@ -1,3 +1,31 @@
+= v4.0.0
+
+* Removed the extra spacing before time in the 'gld' alias.
+* Split Bash aliases and functions into separate files.
+* Fixed bash prompt so that word wrapping works.
+* Fixed diagram aliases to ensure the doc/design folder exists prior to being executed.
+* Dropped the debug alias.
+* Added cyan coloring for project names in gsta and gsup aliases.
+* Added the gcm alias (i.e. git commit -m).
+* Added the rbi alias (i.e. rbenv install).
+* Cleaned up file permissions.
+* Added sgh alias (i.e. script/rails helper).
+* Added the gbd alias for deleting local and remote branches.
+* Added gbdm alias for deleting all merged branches.
+* Added the gtaila function which counts the number of commits from last tag for all projects.
+* Moved bash colors into seperate file.
+* Removed excess carriage return per project results.
+* Added the gpcap alias which commits and pushes changes for all projects that have changes.
+* Removed the debundle code.
+* Added color comments.
+* Added the guthers alias (lists all authers/contributors on a project).
+* Added the gap alias (i.e. git add --patch).
+* Expanded git alias abbreviations to improve self documentation.
+* Expanded all alias abbreviations, where able, in order to be more self documenting.
+* Added Adam Jahnke's dotfile project to the README.
+* Added the rdd bash alias (i.e. rm -rf _doc).
+* Applied Code Climate GPA badge.
+
 = v3.0.0
 
 * Added ipa alias.

@@ -31,7 +31,7 @@ Current Version (stable)
 
   git clone git://github.com/bkuhlmann/dotfiles.git
   cd dotfiles
-  git checkout v3.0.0
+  git checkout v4.0.0
 
 Master Version (unstable)
 
@@ -90,6 +90,7 @@ From the command line, the following commands are possible (please see all home_
   gld = "git log --graph --pretty=format:'%C(yellow)%H%Creset %an: %s - %Creset %C(cyan)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
   gln = "git log --name-status"
   glf = "git log ..FETCH_HEAD"
+  guthers = "git log --format='%C(green)%aN%Creset (%ae)' | sort -u"
   gsup()
   gd = "git diff"
   gdw = "git diff --word-diff"
@@ -102,9 +103,11 @@ From the command line, the following commands are possible (please see all home_
   gcl = "git clone"
   gch = "git checkout"
   ga = "git add"
+  gap = "git add --patch"
   gall = "git add ."
   gco = "git commit"
   gca = "git commit -a"
+  gcm = "git commit --message"
   gcam = "git commit -a -m"
   gamend = "git commit --amend -m"
   gash = "git stash"
@@ -132,7 +135,8 @@ From the command line, the following commands are possible (please see all home_
   # Ruby (http://www.ruby-lang.org)
   rd = "rdoc -a -o _doc"
   rdo = "open _doc/index.html"
-  
+  rdd = "rm -rf _doc"
+
   # Ruby Gems (http://rubygems.org)
   geml = "gem list"
   gemi = "gem install"
@@ -175,6 +179,7 @@ From the command line, the following commands are possible (please see all home_
   scs = "sc --sandbox"
   sgc = "sg controller"
   sgm = "sg model"
+  sgh = "sg helper"
   sgs = "sg scaffold"
   rdbd = "rake db:drop"
   rdbc = "rake db:create"
@@ -185,7 +190,6 @@ From the command line, the following commands are possible (please see all home_
   taild = "tail -f log/development.log"
   tailt = "tail -f log/test.log"
   res = "touch tmp/restart.txt"
-  debug = "rdebug -c"
   rprofile = "ruby-prof --printer=graph_html ./script/rails runner > profile.html"
   rpaths = "rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
   erd = "rake erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
@@ -210,6 +214,7 @@ From the command line, the following commands are possible (please see all home_
   rbh = "rbenv rehash"
   rbp = "rbenv which"
   rbw = "rbenv whence"
+  rbi = "rbenv install"
   rbv = "rbenv versions"
   rbu = "rbenv uninstall"
   rbvars = "rbenv vars"
