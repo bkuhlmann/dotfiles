@@ -1,10 +1,9 @@
 ---
-gem: --no-ri --no-rdoc
+gem: --no-document
 # gemcutter_key: <your key>
 :bulk_threshold: 1000
 :sources:
-- http://rubygems.org
+- https://rubygems.org
 :update_sources: true
-:benchmark: false
 :backtrace: false
 :verbose: true
