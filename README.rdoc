@@ -1,7 +1,5 @@
 = Overview
 
-{<img src="https://codeclimate.com/github/bkuhlmann/dotfile.png" alt="Code Climate GPA" />}[https://codeclimate.com/github/bkuhlmann/dotfile]
-
 Configures your user profile settings with useful defaults for your development environment. By default,
 these are set to my preferences (namely for Mac OS) but you can change them to your liking by editing
 any of the *.txt files in the home_files directory. Read on to learn more.
