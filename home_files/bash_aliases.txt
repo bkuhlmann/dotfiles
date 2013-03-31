@@ -11,7 +11,6 @@ alias p='pwd | tr -d "\r\n" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
 alias o="open"
 alias e="sublime"
 alias home="cd $HOME"
-alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 alias bashs="exec $SHELL"
 
 # Network
