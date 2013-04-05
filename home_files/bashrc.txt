@@ -14,6 +14,11 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
+# Z (https://github.com/rupa/z)
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . `brew --prefix`/etc/profile.d/z.sh
+fi
+
 # Command Prompt (http://jonisalonen.com/2012/your-bash-prompt-needs-this)
 export PS1="\[$GREY\][\t]\[$NORMAL\][\u@\h]\[$CYAN\]\$(__git_ps1 \"[%s]\")\[$NORMAL\][\w]> "
 
