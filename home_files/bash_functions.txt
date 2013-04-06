@@ -91,9 +91,11 @@ function gtaila() {
   echo ''
 }
 
-# Git Projects (Commit and Push) - Commits and pushes changes for all projects within current directory. Useful
+# Git Commit and Push (all) - Commits and pushes changes for all projects within current directory. Useful
 # when making the same change across multiple projects.
-function gpcap() {
+# Parameters:
+# $1 = The commit message.
+function gcap() {
   echo ''
 
   if [ "$1" ]; then
