@@ -80,9 +80,18 @@ function gtaila() {
     if [ -d ".git" ]; then
       # Count outstanding commits.
       count=$(gtail | wc -l | xargs -n 1)
-      # Print project name and Git activity only if Git activity was detected.
+      # Print project name and Git activity only if Git activity is detected.
       if [ -n $count ] && [ $count != 0 ]; then
-        echo -e "\033[36m${project/%?/}:\033[m $count" # Outputs in cyan color.
+        if [ $count -gt 10 -a $count -le 20 ]; then
+          # Outputs project (cyan) and count (yellow).
+          echo -e "\033[36m${project/%?/}:\033[m \033[33m$count\033[m"
+        elif [ $count -gt 20 ]; then
+          # Outputs project (cyan) and count (red).
+          echo -e "\033[36m${project/%?/}:\033[m \033[31m$count\033[m"
+        else
+          # Outputs project (cyan) and count (white).
+          echo -e "\033[36m${project/%?/}:\033[m $count"
+        fi
       fi
     fi
   done
