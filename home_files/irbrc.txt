@@ -25,10 +25,10 @@ if ENV.include?("RAILS_ENV") && !Object.const_defined?("RAILS_DEFAULT_LOGGER")
   # Prompt
   require "logger"
   RAILS_DEFAULT_LOGGER = Logger.new STDOUT
-  IRB.conf[:PROMPT][:RA][:PROMPT_I] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{ENV["RAILS_ENV"]}]> "
-  IRB.conf[:PROMPT][:RA][:PROMPT_N] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{ENV["RAILS_ENV"]}]| "
-  IRB.conf[:PROMPT][:RA][:PROMPT_C] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{ENV["RAILS_ENV"]}]| "
-  IRB.conf[:PROMPT][:RA][:PROMPT_S] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{ENV["RAILS_ENV"]}]%l "
+  IRB.conf[:PROMPT][:RA][:PROMPT_I] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{ENV["RAILS_ENV"]}]> "
+  IRB.conf[:PROMPT][:RA][:PROMPT_N] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{ENV["RAILS_ENV"]}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_C] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{ENV["RAILS_ENV"]}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_S] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{ENV["RAILS_ENV"]}]%l "
 
 # IRB for Rails 3.x.x
 elsif defined?(Rails)
@@ -36,10 +36,10 @@ elsif defined?(Rails)
   # Prompt
   require "logger"
   Rails.logger = Logger.new STDOUT
-  IRB.conf[:PROMPT][:RA][:PROMPT_I] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]> "
-  IRB.conf[:PROMPT][:RA][:PROMPT_N] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]| "
-  IRB.conf[:PROMPT][:RA][:PROMPT_C] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]| "
-  IRB.conf[:PROMPT][:RA][:PROMPT_S] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}][#{Rails.application.class.parent_name.downcase}][#{Rails.env}]%l "
+  IRB.conf[:PROMPT][:RA][:PROMPT_I] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}]> "
+  IRB.conf[:PROMPT][:RA][:PROMPT_N] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_C] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}]| "
+  IRB.conf[:PROMPT][:RA][:PROMPT_S] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}]%l "
   
   # ActionController
   ActionController::Base.logger = Logger.new STDOUT
