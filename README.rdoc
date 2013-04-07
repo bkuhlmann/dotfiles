@@ -227,13 +227,14 @@ From IRB or the Rails console, the following commands are possible:
 
 * Dotify[https://github.com/mattdbridges/dotify] - A CLI tool for managing dotfiles across multiple machines.
 * {GitHub Dotfiles}[http://dotfiles.github.com]
+* Thoughtbot[https://github.com/thoughtbot/dotfiles]
 * {Ryan Bates}[http://github.com/ryanb/dotfiles]
 * {Blake Walters}[https://github.com/markupboy/dotfiles]
 * {James Edward Grey II}[https://github.com/JEG2/dotfiles]
 * {Gabe Berke-Williams}[https://github.com/gabebw/dotfiles]
-* Thoughtbot[https://github.com/thoughtbot/dotfiles]
 * {Mathias Bynens}[https://github.com/mathiasbynens/dotfiles]
 * {Adam Jahnke}[https://github.com/adamyonk/dotfiles]
+* {Nicolas Gallagher}[https://github.com/necolas/dotfiles]
 
 The following is a reference to bash shell colors:
 
