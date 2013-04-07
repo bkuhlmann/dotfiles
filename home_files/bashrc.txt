@@ -20,7 +20,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 # Command Prompt (http://jonisalonen.com/2012/your-bash-prompt-needs-this)
-export PS1="\[$GREY\][\t]\[$NORMAL\][\u@\h]\[$CYAN\]\$(__git_ps1 \"[%s]\")\[$NORMAL\]\[$PURPLE\][\w]\[$NORMAL\]> "
+export PS1="[\[$GREY\]\t\[$NORMAL\]|\u@\h|\$(__git_ps1 \"\[$PURPLE\]%s\[$NORMAL\]|\")\[$CYAN\]\w\[$NORMAL\]]> "
 
 # Default Editor
 export EDITOR=sublime
