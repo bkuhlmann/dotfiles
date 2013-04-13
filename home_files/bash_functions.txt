@@ -140,7 +140,7 @@ function gbd() {
       if [ -n "$(git branch --remotes --list $1)" ]; then
         git push origin :"$1"
       else
-        echo "No remote branch found. Skipped." 
+        echo "No remote branch found. Skipped."
       fi
     else
       echo "Branch deletion aborted."
@@ -167,6 +167,9 @@ function gbdm() {
 
 # Initizalize GitHub - Initializes a new GitHub repo with sensible defaults.
 # Reference: https://gist.github.com/1105392
+# ==== Parameters
+# * +user+ - Required. The GitHub user account name.
+# * +repo+ - Required. The repo name.
 function init_github() {
   git remote add origin git@github.com:$1/$2.git
   git push origin master
