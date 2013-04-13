@@ -1,10 +1,6 @@
 # Mac OS
 .DS_Store
 
-# TextMate
-*.tmproj
-tmtags
-
 # Espresso
 *.esproj
 
