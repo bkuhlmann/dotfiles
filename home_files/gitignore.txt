@@ -1,12 +1,6 @@
 # Mac OS
 .DS_Store
 
-# Espresso
-*.esproj
-
-# RubyMine
-*.idea
-
 # Archives
 *.7z
 *.dmg
@@ -19,8 +13,11 @@
 *.zip
 *.bzip
 
-# SVN
-.svn
-
 # SASS
 .sass-cache
+
+# Espresso
+*.esproj
+
+# RubyMine
+*.idea
