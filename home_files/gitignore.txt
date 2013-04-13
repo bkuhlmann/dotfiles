@@ -1,9 +1,6 @@
 # Mac OS
 .DS_Store
 
-# Windows
-Thumbs.db
-
 # TextMate
 *.tmproj
 tmtags
