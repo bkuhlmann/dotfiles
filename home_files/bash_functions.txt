@@ -60,6 +60,32 @@ function gsup() {
   cd "$root_path" # Return to root directory.
 }
 
+# Git Today - Answers a summarized list of Git activity (today only) for all projects in current
+# directory, broken down by project.
+function gday() {
+  echo ''
+  root_path=`pwd` # Remember root directory.
+
+  # Iterate project directories located in root directory.
+  for directory in `ls -d1 -- */`
+  do
+    # Process projects that are Git enabled only.
+    cd "$root_path/$directory"
+    if [ -d ".git" ]; then
+      user=$(git config user.name)
+      # Capture git log activity.
+      results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since 12am --reverse)
+      # Print project name and Git activity only if Git activity was detected.
+      if [ -n "$results" ]; then
+        echo -e "\033[36m${directory/%?/}" # Outputs in cyan color.
+        echo -e "$results\n"
+      fi
+    fi
+  done
+
+  cd "$root_path" # Return to root directory.
+}
+
 # Git Tail - Answers the commit history from the last tag (i.e. tail end of unversioned/untagged commits).
 function gtail() {
   if [ "$(git tag)" ]; then
