@@ -1,3 +1,31 @@
+= v4.1.0
+
+* Applied RubyGems 2.0.0 syntax upgrades.
+* Added the powconfig file. Thanks Eric.
+* Removed the Code Climate badge - Not really relevant for this project.
+* Removed the tree alias, using the Tree app instead. See the OSX[https://github.com/bkuhlmann/osx] for details.
+* Added Z[https://github.com/rupa/z] support for Bash.
+* Added the gba alias (git branch --all).
+* Renamed the gpcap alias to gcap and cleaned up the associated documentation.
+* Upgraded the gtaila alias to color code counts: 0-9 (white), 10-19 (yellow), 20 or greater (red).
+* Fixed if statement in gtaila function color check.
+* Cleaned up the gtaila function documentation.
+* Added a link to the Dotify project in the README.
+* Added purple color to current directory info in shell prompt.
+* Added additional Bash color definitions.
+* Changed the command prompt colors to the following: timestamp (grey), Git branch (purple), and current directory (cyan).
+* Added Nicolas Gallagher's dotfiles to the README.
+* Broke up the command prompt code into easier to read segments.
+* Switched IRB prompt to match Bash shell prompt (using pipes instead of brackets).
+* Added the gls alias (i.e. gl + -S for search).
+* Removed Windows support of Thumbs.db in gitignore.txt.
+* Removed TextMate support in gitignore.txt.
+* Removed SVN support in gitignore.txt.
+* Ignore CTag metadata in gitignore.txt.
+* Added parameter documentation for init_github function.
+* Added the gday function to report git activity across all projects for today only.
+* Refactored the duplicate gsup and gday function code into the gince function.
+
 = v4.0.0
 
 * Removed the extra spacing before time in the 'gld' alias.
@@ -156,7 +184,7 @@
 = v1.1.0
 
 * Removed FileUtils requirement for setup.rb.
-* Added existing file check with corresponding console notification. 
+* Added existing file check with corresponding console notification.
 
 = v1.0.0
 

@@ -14,11 +14,16 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 * Configures the Ruby IRB .irbrc file.
 * Configures the Pry[http://pry.github.com] .pryrc file.
 * Configures the {Ruby Debugger}[http://bashdb.sourceforge.net/ruby-debug.html] .rdebugrc file.
+* Configures the Pow[http://pow.cx] .powconfig file.
+* Configures {Sublime Text}[http://www.sublimetext.com] as the default editor.
+* Adds {Bash Completion}[http://bash-completion.alioth.debian.org].
+* Adds Z[https://github.com/rupa/z] support to Bash.
+* Adds rbenv[https://github.com/sstephenson/rbenv] support to Bash.
 
 = Requirements
 
-* Any UNIX-based OS.
-* Git[http://git-scm.com].
+* OSX[https://www.apple.com/osx].
+* {OSX}[https://github.com/bkuhlmann/osx] machine setup (including Homebrew, Git, and Bash enhancements).
 * {Ruby Gem Setup}[http://github.com/bkuhlmann/ruby_gem_setup].
 
 = Setup
@@ -29,7 +34,7 @@ Current Version (stable)
 
   git clone git://github.com/bkuhlmann/dotfiles.git
   cd dotfiles
-  git checkout v4.0.0
+  git checkout v4.1.0
 
 Master Version (unstable)
 
@@ -65,17 +70,16 @@ From the command line, the following commands are possible (please see all home_
   o = "open"
   e = "sublime"
   home = "cd $HOME"
-  tree = "find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
   bashs = "exec $SHELL"
 
   # Network
   ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
   sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
-  
+
   # PostgreSQL (http://www.postgresql.org)
   pgs = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
   pgq = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-    
+
   # Git (http://git-scm.com)
   groot()
   gst = "git status -sb"
@@ -142,10 +146,10 @@ From the command line, the following commands are possible (please see all home_
   gemu = "gem uninstall"
   gemc = "gem cleanup"
   gems = "gem server"
-  
+
   # Ruby Gems Whois (https://github.com/jnunemaker/gemwhois)
   gemw = "gem whois"
-  
+
   # Bundler (http://gembundler.com)
   b = "bundle"
   bi = "bundle install"
@@ -160,14 +164,14 @@ From the command line, the following commands are possible (please see all home_
   beg = "bundle exec guard -c"
   bch = "rm -f Gemfile.lock; bundle check"
   rebundle = "bch; bundle package"
-  
+
   # Gemsmith (https://github.com/bkuhlmann/gemsmith)
   g = "gemsmith"
   go = "gemsmith -o"
-  
+
   # Heroku+ (https://github.com/bkuhlmann/heroku_plus)
   hpas = "hp -a -s"
-  
+
   # Ruby on Rails (http://rubyonrails.org)
   rew()
   sc()
@@ -199,7 +203,7 @@ From the command line, the following commands are possible (please see all home_
   bec = "bundle exec cap"
   caps = "bundle exec cap stage deploy"
   capp = "bundle exec cap production deploy"
-  
+
   # Sitemap Generator (https://github.com/kjvarga/sitemap_generator)
   rsite = "rake sitemap:refresh:no_ping"
   rsitep = "rake sitemap:refresh"
