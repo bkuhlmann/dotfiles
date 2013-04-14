@@ -34,9 +34,11 @@ function gsta() {
   echo ''
 }
 
-# Git Standup - Answers a summarized list of Git activity since yesterday for all projects in current directory,
-# broken down by project. This is a great way to see what you did yesterday for today's standup report.
-function gsup() {
+# Git Since - Answers a summarized list of Git activity since a specifiy date/time for all projects
+# in current directory, broken down by project.
+# Parameters:
+# $1 = The past date/time from which to log activity up to now.
+function gince() {
   echo ''
   root_path=`pwd` # Remember root directory.
 
@@ -48,7 +50,7 @@ function gsup() {
     if [ -d ".git" ]; then
       user=$(git config user.name)
       # Capture git log activity.
-      results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since yesterday --reverse)
+      results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since "$1" --reverse)
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
         echo -e "\033[36m${directory/%?/}" # Outputs in cyan color.
@@ -60,30 +62,16 @@ function gsup() {
   cd "$root_path" # Return to root directory.
 }
 
+# Git Standup - Answers a summarized list of Git activity since yesterday for all projects in current directory,
+# broken down by project. This is a great way to see what you did yesterday for today's standup report.
+function gsup() {
+  gince "yesterday"
+}
+
 # Git Today - Answers a summarized list of Git activity (today only) for all projects in current
 # directory, broken down by project.
 function gday() {
-  echo ''
-  root_path=`pwd` # Remember root directory.
-
-  # Iterate project directories located in root directory.
-  for directory in `ls -d1 -- */`
-  do
-    # Process projects that are Git enabled only.
-    cd "$root_path/$directory"
-    if [ -d ".git" ]; then
-      user=$(git config user.name)
-      # Capture git log activity.
-      results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since 12am --reverse)
-      # Print project name and Git activity only if Git activity was detected.
-      if [ -n "$results" ]; then
-        echo -e "\033[36m${directory/%?/}" # Outputs in cyan color.
-        echo -e "$results\n"
-      fi
-    fi
-  done
-
-  cd "$root_path" # Return to root directory.
+  gince "12am"
 }
 
 # Git Tail - Answers the commit history from the last tag (i.e. tail end of unversioned/untagged commits).
