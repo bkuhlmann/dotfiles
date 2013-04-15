@@ -26,11 +26,12 @@
 	changed = green
 	untracked = cyan
 [core]
-	editor = mate -w
+	editor = $EDITOR
 	excludesfile = ~/.gitignore
-	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	quotepath = false
 [push]
-  default = current	
+	default = current
 [github]
 	# user = <enter user here>
 	# token = <enter token here>
