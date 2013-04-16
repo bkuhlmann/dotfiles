@@ -22,6 +22,7 @@ alias pgs="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.l
 alias pgq="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
 # Git (http://git-scm.com)
+alias gce="git config -e"
 alias gst="git status --short --branch"
 alias gg="git grep"
 alias gl="git log --oneline --decorate --no-abbrev-commit"
