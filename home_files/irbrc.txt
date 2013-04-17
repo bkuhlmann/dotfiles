@@ -40,12 +40,13 @@ elsif defined?(Rails)
   IRB.conf[:PROMPT][:RA][:PROMPT_N] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}]| "
   IRB.conf[:PROMPT][:RA][:PROMPT_C] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}]| "
   IRB.conf[:PROMPT][:RA][:PROMPT_S] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}]%l "
-  
+
   # ActionController
   ActionController::Base.logger = Logger.new STDOUT
 end
 
-["wirb", "hirb", "awesome_print", "pry", "pry-vterm_aliases", "pry-stack_explorer", "pry-remote", "pry-nav"].each do |gem|
+# Gem Enhancments (setup)
+%w(wirb hirb awesome_print pry pry-vterm_aliases pry-stack_explorer pry-remote pry-nav).each do |gem|
   begin
     require gem
   rescue LoadError
@@ -53,8 +54,8 @@ end
   end
 end
 
-# Gem Settings
-["Wirb.start", "Hirb.enable"].each do |config|
+# Gem Enhancments (settings)
+%w(Wirb.start Hirb.enable).each do |config|
   begin
     instance_eval config
   rescue NoMethodError
@@ -70,7 +71,7 @@ class RA
   def self.copy *args
     open("| pbcopy", 'w') {|clipboard| clipboard << args.join("\n")}
   end
-  
+
   # Pastes recent content from the Mac OS clipboard.
   def self.paste
     `pbpaste`
