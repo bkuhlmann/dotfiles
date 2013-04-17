@@ -9,17 +9,12 @@ alias l="ls -alh"
 alias l1="ls -1"
 alias p='pwd | tr -d "\r\n" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
 alias o="open"
-alias e="sublime"
 alias home="cd $HOME"
 alias bashs="exec $SHELL"
 
 # Network
 alias ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
 alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
-
-# PostgreSQL (http://www.postgresql.org)
-alias pgs="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pgq="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
 # Git (http://git-scm.com)
 alias gce="git config -e"
@@ -72,6 +67,19 @@ alias gres="git reset --hard HEAD"
 alias grev="git revert"
 alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
 
+# rbenv (https://github.com/sstephenson/rbenv)
+alias rb="rbenv"
+alias rbg="rbenv global"
+alias rbl="rbenv local"
+alias rbs="rbenv shell"
+alias rbh="rbenv rehash"
+alias rbp="rbenv which"
+alias rbw="rbenv whence"
+alias rbv="rbenv versions"
+alias rbi="rbenv install"
+alias rbu="rbenv uninstall"
+alias rbvars="rbenv vars"
+
 # Ruby (http://www.ruby-lang.org)
 alias rd="rdoc -a -o _doc"
 alias rdo="open _doc/index.html"
@@ -107,8 +115,9 @@ alias rebundle="bch; bundle package"
 alias g="gemsmith"
 alias go="gemsmith open"
 
-# Heroku+ (https://github.com/bkuhlmann/heroku_plus)
-alias hpas="hp account --switch"
+# PostgreSQL (http://www.postgresql.org)
+alias pgs="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pgq="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
 # Ruby on Rails (http://rubyonrails.org)
 alias scs="sc --sandbox"
@@ -141,18 +150,11 @@ alias capp="bundle exec cap production deploy"
 alias rsite="rake sitemap:refresh:no_ping"
 alias rsitep="rake sitemap:refresh"
 
-# rbenv (https://github.com/sstephenson/rbenv)
-alias rb="rbenv"
-alias rbg="rbenv global"
-alias rbl="rbenv local"
-alias rbs="rbenv shell"
-alias rbh="rbenv rehash"
-alias rbp="rbenv which"
-alias rbw="rbenv whence"
-alias rbv="rbenv versions"
-alias rbi="rbenv install"
-alias rbu="rbenv uninstall"
-alias rbvars="rbenv vars"
+# Heroku+ (https://github.com/bkuhlmann/heroku_plus)
+alias hpas="hp account --switch"
 
 # Path Finder (http://www.cocoatech.com/pathfinder)
 alias opf='open -a "Path Finder.app" $PWD'
+
+# Sublime Text (http://www.sublimetext.com)
+alias e="sublime"
