@@ -13,3 +13,8 @@ Pry.config.prompt = [
     [ruby_info, rails_info, "[PRY #{tree} - #{conf.expr_number}:#{conf.nesting_level}]> "].compact.join
   end
 ]
+
+# Aliases (requires the pry-nav gem)
+Pry.commands.alias_command 'c', "continue" rescue nil
+Pry.commands.alias_command 's', "step" rescue nil
+Pry.commands.alias_command 'n', "next" rescue nil
