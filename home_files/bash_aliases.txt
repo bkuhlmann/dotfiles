@@ -153,3 +153,6 @@ alias rbv="rbenv versions"
 alias rbi="rbenv install"
 alias rbu="rbenv uninstall"
 alias rbvars="rbenv vars"
+
+# Path Finder (http://www.cocoatech.com/pathfinder)
+alias opf='open -a "Path Finder.app" $PWD'
