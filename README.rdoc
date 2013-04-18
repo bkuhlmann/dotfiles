@@ -222,6 +222,7 @@ From IRB or the Rails console, the following commands are possible:
 = Resources
 
 * Dotify[https://github.com/mattdbridges/dotify] - A CLI tool for managing dotfiles across multiple machines.
+* Dotphiles[https://github.com/dotphiles/dotphiles] - A community driven framework of dotfiles.
 * {GitHub Dotfiles}[http://dotfiles.github.com]
 * Thoughtbot[https://github.com/thoughtbot/dotfiles]
 * {Ryan Bates}[http://github.com/ryanb/dotfiles]
