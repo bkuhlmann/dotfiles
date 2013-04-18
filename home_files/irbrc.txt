@@ -45,7 +45,7 @@ elsif defined?(Rails)
   ActionController::Base.logger = Logger.new STDOUT
 end
 
-# Gem Enhancments (setup)
+# Gem Enhancements (requirements)
 %w(wirb hirb awesome_print pry pry-vterm_aliases pry-stack_explorer pry-remote pry-nav).each do |gem|
   begin
     require gem
@@ -54,7 +54,7 @@ end
   end
 end
 
-# Gem Enhancments (settings)
+# Gem Enhancements (settings)
 %w(Wirb.start Hirb.enable).each do |config|
   begin
     instance_eval config
