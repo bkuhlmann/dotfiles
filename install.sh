@@ -8,7 +8,7 @@ if [ -d "$HOME" ]; then
     source_file="home_files/$file"
     dest_file="$HOME/.${file%.*}"
     if [ -f "$dest_file" ]; then
-      echo "Skipped (exists): $dest_file"
+      echo "Exists:  $dest_file"
     else
       cp "$source_file" "$dest_file"
       echo "Created: $dest_file"
