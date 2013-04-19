@@ -10,25 +10,23 @@ function install_file {
   source_file="home_files/$1"
   dest_file="$HOME/.${1%.*}"
 
-  if [ -f "$dest_file" ]; then
-    echo "Exists:  $dest_file"
-  else
+  if [ ! -f "$dest_file" ]; then
     cp "$source_file" "$dest_file"
-    echo "Created: $dest_file"
+    echo " + $dest_file"
   fi
 }
 export install_file
 
 # Installs all files.
 function install_files {
-  echo "\nInstalling dotfiles...\n"
+  echo "\nInstalling dotfiles..."
 
   for file in `ls -1 home_files`
   do
     install_file $file
   done
 
-  echo "\nDotfile install complete."
+  echo "Dotfile install complete."
 }
 export install_files
 
