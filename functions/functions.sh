@@ -5,7 +5,7 @@
 
 # Shows available files for install.
 function show_files {
-  echo "\nDotfiles available for install:"
+  echo "Dotfiles available for install:"
 
   for file in `ls -1 home_files`
   do
@@ -30,7 +30,7 @@ export install_file
 
 # Installs all files.
 function install_files {
-  echo "\nInstalling dotfiles..."
+  echo "Installing dotfiles..."
 
   for file in `ls -1 home_files`
   do
@@ -60,7 +60,7 @@ export link_file
 
 # Links all files.
 function link_files {
-  echo "\nLinking dotfiles..."
+  echo "Linking dotfiles..."
 
   for file in `ls -1 home_files`
   do
@@ -90,7 +90,7 @@ export check_file
 
 # Checks all files for changes.
 function check_files {
-  echo "\nChecking dotfiles for changes..."
+  echo "Checking dotfiles for changes..."
 
   for file in `ls -1 home_files`
   do
@@ -120,7 +120,7 @@ export delete_file
 
 # Delete files.
 function delete_files {
-  echo "\nDeleting dotfiles..."
+  echo "Deleting dotfiles..."
 
   for file in `ls -1 home_files`
   do
@@ -130,3 +130,28 @@ function delete_files {
   echo "Dotfiles deletion complete!"
 }
 export delete_files
+
+# Process selection.
+# Parameters:
+# $1 = The option to process.
+function process {
+  case $1 in
+    's')
+      show_files
+      break;;
+    'i')
+      install_files
+      break;;
+    'l')
+      link_files
+      break;;
+    'c')
+      check_files
+      break;;
+    'd')
+      delete_files
+      break;;
+    'q')
+      break;;
+  esac
+}
