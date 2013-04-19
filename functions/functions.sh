@@ -59,3 +59,36 @@ function check_files {
   echo "Dotfiles check complete!"
 }
 export check_files
+
+# Links a dotfile to this project.
+# Parameters:
+# $1 = The file name.
+function link_file {
+  source_file="home_files/$1"
+  dest_file="$HOME/.${1%.*}"
+
+  # Proceed only if the symbolic link doesn't already exist.
+  if [ ! -h "$dest_file" ]; then
+    read -p "  Link $dest_file -> $source_file (y/n)? " response
+    if [ $response == 'y' ]; then
+      ln -sf "$PWD/$source_file" "$dest_file"
+      echo "    ✓ Linked"
+    else
+      echo "    x Canceled"
+    fi
+  fi
+}
+export link_file
+
+# Links files.
+function link_files {
+  echo "\nLinking dotfiles..."
+
+  for file in `ls -1 home_files`
+  do
+    link_file $file
+  done
+
+  echo "Dotfiles link complete!"
+}
+export link_files
