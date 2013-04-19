@@ -41,6 +41,36 @@ function install_files {
 }
 export install_files
 
+# Links a dotfile to this project.
+# Parameters:
+# $1 = The file name.
+function link_file {
+  source_file="$PWD/home_files/$1"
+  dest_file="$HOME/.${1%.*}"
+
+  # Proceed only if the symbolic link doesn't already exist.
+  if [ ! -h "$dest_file" ]; then
+    read -p "  ? Link $dest_file -> $source_file (y/n)? " response
+    if [ $response == 'y' ]; then
+      ln -sf "$source_file" "$dest_file"
+    fi
+  fi
+}
+export link_file
+
+# Links all files.
+function link_files {
+  echo "\nLinking dotfiles..."
+
+  for file in `ls -1 home_files`
+  do
+    link_file $file
+  done
+
+  echo "Dotfiles link complete!"
+}
+export link_files
+
 # Checks a file for changes.
 # Parameters:
 # $1 = The file name.
@@ -71,32 +101,32 @@ function check_files {
 }
 export check_files
 
-# Links a dotfile to this project.
+# Delete file.
 # Parameters:
 # $1 = The file name.
-function link_file {
-  source_file="$PWD/home_files/$1"
+function delete_file {
+  source_file="home_files/$1"
   dest_file="$HOME/.${1%.*}"
 
-  # Proceed only if the symbolic link doesn't already exist.
-  if [ ! -h "$dest_file" ]; then
-    read -p "  + Link $dest_file -> $source_file (y/n)? " response
+  # Proceed only if the file exist.
+  if [ -f "$dest_file" ]; then
+    read -p "  Delete $dest_file (y/n)? " response
     if [ $response == 'y' ]; then
-      ln -sf "$source_file" "$dest_file"
+      rm -f "$dest_file"
     fi
   fi
 }
-export link_file
+export delete_file
 
-# Links all files.
-function link_files {
-  echo "\nLinking dotfiles..."
+# Delete files.
+function delete_files {
+  echo "\nDeleting dotfiles..."
 
   for file in `ls -1 home_files`
   do
-    link_file $file
+    delete_file $file
   done
 
-  echo "Dotfiles link complete!"
+  echo "Dotfiles deletion complete!"
 }
-export link_files
+export delete_files
