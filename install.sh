@@ -10,7 +10,7 @@
 set -e # Exit if any command returns non-zero.
 
 # FUNCTIONS
-source functions/functions.sh
+source functions/utilities.sh
 
 # EXECUTION
 
