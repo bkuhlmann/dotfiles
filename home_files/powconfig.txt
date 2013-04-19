@@ -1,1 +1,2 @@
-export POW_TIMEOUT=3600 # 1 hour.
+# Keep alive for 1 hour.
+export POW_TIMEOUT=3600
