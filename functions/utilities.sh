@@ -3,11 +3,17 @@
 # DESCRIPTION
 # Defines functions for installing dotfiles.
 
+# Answers a list of all files stored in the home_files folder of this project.
+function home_files {
+  ls -1 home_files
+}
+export home_files
+
 # Shows available files for install.
 function show_files {
   echo "Dotfiles available for install:"
 
-  for file in `ls -1 home_files`
+  for file in $(home_files)
   do
     echo "  .${file%.*}"
   done
@@ -32,7 +38,7 @@ export install_file
 function install_files {
   echo "Installing dotfiles..."
 
-  for file in `ls -1 home_files`
+  for file in $(home_files)
   do
     install_file $file
   done
@@ -62,7 +68,7 @@ export link_file
 function link_files {
   echo "Linking dotfiles..."
 
-  for file in `ls -1 home_files`
+  for file in $(home_files)
   do
     link_file $file
   done
@@ -92,7 +98,7 @@ export check_file
 function check_files {
   echo "Checking dotfiles for changes..."
 
-  for file in `ls -1 home_files`
+  for file in $(home_files)
   do
     check_file $file
   done
@@ -122,7 +128,7 @@ export delete_file
 function delete_files {
   echo "Deleting dotfiles..."
 
-  for file in `ls -1 home_files`
+  for file in $(home_files)
   do
     delete_file $file
   done
