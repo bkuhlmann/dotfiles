@@ -37,8 +37,12 @@ function check_file {
   source_file="home_files/$1"
   dest_file="$HOME/.${1%.*}"
 
-  if [ "$(diff $dest_file $source_file)" != '' ]; then
-    echo " M $dest_file"
+  if [ -f "$dest_file" ]; then
+    if [ "$(diff $dest_file $source_file)" != '' ]; then
+      echo " M $dest_file"
+    fi
+  else
+    echo " - $dest_file"
   fi
 }
 export check_file
