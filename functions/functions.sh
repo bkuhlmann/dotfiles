@@ -12,7 +12,7 @@ function install_file {
 
   if [ ! -f "$dest_file" ]; then
     cp "$source_file" "$dest_file"
-    echo " + $dest_file"
+    echo "  + $dest_file"
   fi
 }
 export install_file
@@ -39,10 +39,10 @@ function check_file {
 
   if [ -f "$dest_file" ]; then
     if [ "$(diff $dest_file $source_file)" != '' ]; then
-      echo " M $dest_file"
+      echo "  M $dest_file"
     fi
   else
-    echo " - $dest_file"
+    echo "  - $dest_file"
   fi
 }
 export check_file
@@ -64,17 +64,14 @@ export check_files
 # Parameters:
 # $1 = The file name.
 function link_file {
-  source_file="home_files/$1"
+  source_file="$PWD/home_files/$1"
   dest_file="$HOME/.${1%.*}"
 
   # Proceed only if the symbolic link doesn't already exist.
   if [ ! -h "$dest_file" ]; then
-    read -p "  Link $dest_file -> $source_file (y/n)? " response
+    read -p "  + Link $dest_file -> $source_file (y/n)? " response
     if [ $response == 'y' ]; then
-      ln -sf "$PWD/$source_file" "$dest_file"
-      echo "    ✓ Linked"
-    else
-      echo "    x Canceled"
+      ln -sf "$source_file" "$dest_file"
     fi
   fi
 }
