@@ -50,7 +50,7 @@ function link_file {
 
   # Proceed only if the symbolic link doesn't already exist.
   if [ ! -h "$dest_file" ]; then
-    read -p "  ? Link $dest_file -> $source_file (y/n)? " response
+    read -p "  Link $dest_file -> $source_file (y/n)? " response
     if [ $response == 'y' ]; then
       ln -sf "$source_file" "$dest_file"
     fi
@@ -80,7 +80,7 @@ function check_file {
 
   if [ -f "$dest_file" ]; then
     if [ "$(diff $dest_file $source_file)" != '' ]; then
-      echo "  M $dest_file"
+      echo "  * $dest_file"
     fi
   else
     echo "  - $dest_file"
