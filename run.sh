@@ -19,7 +19,8 @@ if [ -d "$HOME" ]; then
 
   if [ -z "$1" ]; then
     while true; do
-      echo "Dotfile Options:"
+      echo "Usage: run OPTION"
+      echo "\nDotfile Options:"
       echo "  s: Show dotfiles available for install."
       echo "  i: Install dotfiles (existing files are skipped)."
       echo "  l: Link dotfiles to this project (interactive - asks by file)."
@@ -39,4 +40,3 @@ if [ -d "$HOME" ]; then
 else
   echo "ERROR: $HOME does not exist."
 fi
-
