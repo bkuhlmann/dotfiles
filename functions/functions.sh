@@ -26,7 +26,7 @@ function install_files {
     install_file $file
   done
 
-  echo "Dotfile install complete."
+  echo "Dotfiles install complete!"
 }
 export install_files
 
@@ -37,23 +37,21 @@ function check_file {
   source_file="home_files/$1"
   dest_file="$HOME/.${1%.*}"
 
-  if [ "$(diff $dest_file $source_file)" == '' ]; then
-    echo "Identical: $dest_file"
-  else
-    echo "Different: $dest_file"
+  if [ "$(diff $dest_file $source_file)" != '' ]; then
+    echo " M $dest_file"
   fi
 }
 export check_file
 
 # Checks all files for changes.
 function check_files {
-  echo "\nChecking dotfiles for changes...\n"
+  echo "\nChecking dotfiles for changes..."
 
   for file in `ls -1 home_files`
   do
     check_file $file
   done
 
-  echo "\nDotfile check complete."
+  echo "Dotfiles check complete!"
 }
 export check_files
