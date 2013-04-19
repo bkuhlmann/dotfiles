@@ -18,6 +18,7 @@ if [ -d "$HOME" ]; then
 
   while true; do
     echo "Install Options:"
+    echo "  s: Show available dotfiles for install."
     echo "  i: Install dotfiles (existing files will be skipped)."
     echo "  c: Check for changes since last install."
     echo "  l: Link dotfiles to this project (via symbolic links)."
@@ -25,6 +26,9 @@ if [ -d "$HOME" ]; then
     echo ''
     read -p "Enter selection: " response
     case $response in
+      's')
+        show_files
+        break;;
       'i')
         install_files
         break;;

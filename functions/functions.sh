@@ -3,6 +3,17 @@
 # DESCRIPTION
 # Defines functions for installing dotfiles.
 
+# Shows available files for install.
+function show_files {
+  echo "\nDotfiles available for install:"
+
+  for file in `ls -1 home_files`
+  do
+    echo "  .${file%.*}"
+  done
+}
+export show_files
+
 # Installs a file.
 # Parameters:
 # $1 = The file name.
@@ -77,7 +88,7 @@ function link_file {
 }
 export link_file
 
-# Links files.
+# Links all files.
 function link_files {
   echo "\nLinking dotfiles..."
 
