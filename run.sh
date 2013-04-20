@@ -11,6 +11,7 @@ set -e # Exit if any command returns non-zero.
 
 # FUNCTIONS
 source functions/utilities.sh
+source functions/options.sh
 
 # EXECUTION
 if [ -d "$HOME" ]; then

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # DESCRIPTION
-# Defines helper functions for installing dotfiles.
+# Defines general utility functions.
 
 # Answers a list of files stored in the home_files folder of this project.
 function home_files {
@@ -136,29 +136,3 @@ function delete_files {
   echo "Dotfiles deletion complete!"
 }
 export -f delete_files
-
-# Process option selection.
-# Parameters:
-# $1 = The option to process.
-function process_option {
-  case $1 in
-    's')
-      show_files
-      break;;
-    'i')
-      install_files
-      break;;
-    'l')
-      link_files
-      break;;
-    'c')
-      check_files
-      break;;
-    'd')
-      delete_files
-      break;;
-    'q')
-      break;;
-  esac
-}
-export -f process_option
