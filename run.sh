@@ -32,7 +32,7 @@ if [ -d "$HOME" ]; then
       process_option $response
     done
   else
-    process $1
+    process_option $1
   fi
 
   echo ''
