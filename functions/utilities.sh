@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # DESCRIPTION
-# Defines functions for installing dotfiles.
+# Defines helper functions for installing dotfiles.
 
-# Answers a list of all files stored in the home_files folder of this project.
+# Answers a list of files stored in the home_files folder of this project.
 function home_files {
   ls -1 home_files
 }
