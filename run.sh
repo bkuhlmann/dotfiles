@@ -4,7 +4,7 @@
 # Executes the dotfiles installer.
 
 # USAGE
-# ./install.sh
+# ./run.sh OPTION
 
 # SETTINGS
 set -e # Exit if any command returns non-zero.
