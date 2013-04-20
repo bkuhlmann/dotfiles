@@ -7,7 +7,7 @@
 function home_files {
   ls -1 home_files
 }
-export home_files
+export -f home_files
 
 # Shows available files for install.
 function show_files {
@@ -18,7 +18,7 @@ function show_files {
     echo "  .${file%.*}"
   done
 }
-export show_files
+export -f show_files
 
 # Installs a file.
 # Parameters:
@@ -32,7 +32,7 @@ function install_file {
     echo "  + $dest_file"
   fi
 }
-export install_file
+export -f install_file
 
 # Installs all files.
 function install_files {
@@ -45,7 +45,7 @@ function install_files {
 
   echo "Dotfiles install complete!"
 }
-export install_files
+export -f install_files
 
 # Links a dotfile to this project.
 # Parameters:
@@ -62,7 +62,7 @@ function link_file {
     fi
   fi
 }
-export link_file
+export -f link_file
 
 # Links all files.
 function link_files {
@@ -75,7 +75,7 @@ function link_files {
 
   echo "Dotfiles link complete!"
 }
-export link_files
+export -f link_files
 
 # Checks a file for changes.
 # Parameters:
@@ -92,7 +92,7 @@ function check_file {
     echo "  - $dest_file"
   fi
 }
-export check_file
+export -f check_file
 
 # Checks all files for changes.
 function check_files {
@@ -105,7 +105,7 @@ function check_files {
 
   echo "Dotfiles check complete!"
 }
-export check_files
+export -f check_files
 
 # Delete file.
 # Parameters:
@@ -122,7 +122,7 @@ function delete_file {
     fi
   fi
 }
-export delete_file
+export -f delete_file
 
 # Delete files.
 function delete_files {
@@ -135,9 +135,9 @@ function delete_files {
 
   echo "Dotfiles deletion complete!"
 }
-export delete_files
+export -f delete_files
 
-# Process selection.
+# Process option selection.
 # Parameters:
 # $1 = The option to process.
 function process {
@@ -161,3 +161,4 @@ function process {
       break;;
   esac
 }
+export -f process

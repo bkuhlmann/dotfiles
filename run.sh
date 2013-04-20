@@ -13,7 +13,6 @@ set -e # Exit if any command returns non-zero.
 source functions/utilities.sh
 
 # EXECUTION
-
 if [ -d "$HOME" ]; then
   echo ''
 
