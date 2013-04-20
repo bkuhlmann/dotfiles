@@ -14,6 +14,8 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 * Configures the Ruby IRB .irbrc file.
 * Configures the Pry[http://pry.github.com] .pryrc file.
 * Configures the {Ruby Debugger}[http://bashdb.sourceforge.net/ruby-debug.html] .rdebugrc file.
+* Configures the {Awesome Print}[https://github.com/michaeldv/awesome_print] .aprc file.
+* Configures the Guard[https://github.com/guard/guard] .guardrc file.
 * Configures the Pow[http://pow.cx] .powconfig file.
 * Configures {Sublime Text}[http://www.sublimetext.com] as the default editor.
 * Adds {Bash Completion}[http://bash-completion.alioth.debian.org].
@@ -34,7 +36,7 @@ Current Version (stable)
 
   git clone git://github.com/bkuhlmann/dotfiles.git
   cd dotfiles
-  git checkout v4.1.0
+  git checkout v5.0.0
 
 Master Version (unstable)
 
@@ -46,10 +48,21 @@ Edit and save the *.txt files as you see fit.
 Open a terminal window and execute the following commands to install:
 
   cd dotfiles
-  ./install.sh
+  ./run.sh
 
-You can delete the dotfiles directory after installation. There are, however, a couple files that need
-manual updating regardless of whether you tweaked the files prior to installation or not:
+Executing the run.sh script will present the following options:
+
+  s: Show dotfiles available for install.
+  i: Install dotfiles (existing files are skipped).
+  l: Link dotfiles to this project (interactive - asks by file).
+  c: Check for changes since last install/update.
+  d: Delete dotfiles (interactive - asks by file).
+  q: Quit/Exit.
+
+The options prompt can be skipped by passing the desired option directly to the run.sh script.
+For example, executing "./run.sh s" will show all dotfiles avaiable for install.
+
+After install, the following files will require manual updating:
 
 * .bashrc - If installed on a OS other than a Mac, adjust the path to point to the correct bin directory for the rbenv binary.
 * .gemrc - Uncomment the "gemcutter_key" line and add your own RubyGems key for publishing gems.
@@ -69,7 +82,6 @@ for additional details):
   l1 = "ls -1"
   p='pwd | tr -d "\r\n" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
   o = "open"
-  e = "sublime"
   home = "cd $HOME"
   bashs = "exec $SHELL"
 
@@ -77,11 +89,8 @@ for additional details):
   ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
   sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 
-  # PostgreSQL (http://www.postgresql.org)
-  pgs = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-  pgq = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-
   # Git (http://git-scm.com)
+  gce = "git config -e"
   gst = "git status --short --branch"
   gg = "git grep"
   gl = "git log --oneline --decorate --no-abbrev-commit"
@@ -92,7 +101,7 @@ for additional details):
   glf = "git log ..FETCH_HEAD"
   gls = "gl -S"
   glast = "git show --stat"
-  guthers = "git log --format='%C(green)%aN%Creset (%ae)' | sort -u"
+  guthors = "git log --format='%C(green)%aN%Creset (%ae)' | sort -u"
   gd = "git diff"
   gdw = "git diff --word-diff"
   gdc = "git diff --cached"
@@ -121,6 +130,7 @@ for additional details):
   gf = "git fetch"
   gpu = "git pull"
   gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching
+  geady = "git rebase -i @{u}" # Interactive rebase.
   gp = "git push"
   gpo = "git push origin"
   gpp = "git push production master"
@@ -130,6 +140,19 @@ for additional details):
   gres = "git reset --hard HEAD"
   grev = "git revert"
   glatest = "git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
+
+  # rbenv (https://github.com/sstephenson/rbenv)
+  rb = "rbenv"
+  rbg = "rbenv global"
+  rbl = "rbenv local"
+  rbs = "rbenv shell"
+  rbh = "rbenv rehash"
+  rbp = "rbenv which"
+  rbw = "rbenv whence"
+  rbv = "rbenv versions"
+  rbi = "rbenv install"
+  rbu = "rbenv uninstall"
+  rbvars = "rbenv vars"
 
   # Ruby (http://www.ruby-lang.org)
   rd = "rdoc -a -o _doc"
@@ -158,7 +181,7 @@ for additional details):
   bes = "bundle exec rspec"
   bess = "bundle exec rspec spec"
   bert = "bundle exec rake test"
-  beg = "bundle exec guard -c"
+  beg = "bundle exec guard"
   bch = "rm -f Gemfile.lock; bundle check"
   rebundle = "bch; bundle package"
 
@@ -166,8 +189,9 @@ for additional details):
   g = "gemsmith"
   go = "gemsmith open"
 
-  # Heroku+ (https://github.com/bkuhlmann/heroku_plus)
-  hpas = "hp account --switch"
+  # PostgreSQL (http://www.postgresql.org)
+  pgs = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+  pgq = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
   # Ruby on Rails (http://rubyonrails.org)
   scs = "sc --sandbox"
@@ -200,24 +224,26 @@ for additional details):
   rsite = "rake sitemap:refresh:no_ping"
   rsitep = "rake sitemap:refresh"
 
-  # rbenv (https://github.com/sstephenson/rbenv)
-  rb = "rbenv"
-  rbg = "rbenv global"
-  rbl = "rbenv local"
-  rbs = "rbenv shell"
-  rbh = "rbenv rehash"
-  rbp = "rbenv which"
-  rbw = "rbenv whence"
-  rbv = "rbenv versions"
-  rbi = "rbenv install"
-  rbu = "rbenv uninstall"
-  rbvars = "rbenv vars"
+  # Heroku+ (https://github.com/bkuhlmann/heroku_plus)
+  hpas = "hp account --switch"
+
+  # Path Finder (http://www.cocoatech.com/pathfinder)
+  opf='open -a "Path Finder.app" $PWD'
+
+  # Sublime Text (http://www.sublimetext.com)
+  e = "sublime"
 
 From IRB, Pry, and Rails consoles, the following commands are possible:
 
   RA.copy - Copies data to the MacOS clipboard.
   RA.paste - Pastes data from the MacOS clipboard.
   ap - Prints collections in an easy to read format.
+
+From Pry, the following aliases are available:
+
+  n = next
+  s = step
+  c = continue
 
 = Resources
 
@@ -232,9 +258,6 @@ From IRB, Pry, and Rails consoles, the following commands are possible:
 * {Mathias Bynens}[https://github.com/mathiasbynens/dotfiles]
 * {Adam Jahnke}[https://github.com/adamyonk/dotfiles]
 * {Nicolas Gallagher}[https://github.com/necolas/dotfiles]
-
-The following is a reference to bash shell colors:
-
 * {Color Bash Prompt}[https://wiki.archlinux.org/index.php/Color_Bash_Prompt]
 
 = Contributions

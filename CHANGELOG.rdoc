@@ -1,3 +1,29 @@
+= v5.0.0
+
+* Fixed the timeout comment in the pow config.
+* Fixed 'Enhancements' spelling typo in irbrc file.
+* Default the $EDITOR variable to Sublime Text for all environments.
+* Default to 'simple' when pushing (gitconfig).
+* Added the gce alias for 'git config -e'
+* Added the opf alias (i.e. opens current terminal path as a tab in Path Finder).
+* Added Pry aliases for continue, step, and next as c, s, and n.
+* Added guardrc support and dropped the -c option from the beg alias (provided via guardrc now).
+* Tweaked .pryrc to match Bash prompt settings.
+* Added the .aprc file for setting Awesome Print defaults.
+* Add the Dotphiles resource to the README.
+* Configured Bash history to remove duplicates, keep a history size of 1000, and exclude mundane commands from being entered in history.
+* Added Hirb and Awesome Print support to the Pry console.
+* Updated the installer to prompt for options before executing.
+* Added the install option for checking currently installed file differences.
+* Added the install option for linking dotfiles to this project.
+* Added the install option for showing available dotfiles for install.
+* Added the install option for deleting installed dotfiles.
+* Added the geady alias (i.e. git rebase -i @{u}).
+* Renamed the 'guthers' alias to 'guthors'.
+* Renamed install.sh to run.sh.
+* Bumped IRB Eval History to 1000.
+* Reduced Bash history size to 1000.
+
 = v4.1.0
 
 * Applied RubyGems 2.0.0 syntax upgrades.
