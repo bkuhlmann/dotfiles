@@ -161,4 +161,4 @@ function process {
       break;;
   esac
 }
-export -f process
+export -f process_option

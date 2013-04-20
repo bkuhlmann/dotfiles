@@ -29,7 +29,7 @@ if [ -d "$HOME" ]; then
       echo ''
       read -p "Enter selection: " response
       echo ''
-      process $response
+      process_option $response
     done
   else
     process $1
