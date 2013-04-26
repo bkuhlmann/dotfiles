@@ -154,6 +154,9 @@ alias rsitep="rake sitemap:refresh"
 # Heroku+ (https://github.com/bkuhlmann/heroku_plus)
 alias hpas="hp account --switch"
 
+# Z (https://github.com/rupa/z)
+alias ez="$EDITOR $HOME/.z"
+
 # Path Finder (http://www.cocoatech.com/pathfinder)
 alias opf='open -a "Path Finder.app" $PWD'
 
