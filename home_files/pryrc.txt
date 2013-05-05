@@ -21,7 +21,7 @@ Pry.commands.alias_command 'n', "next" rescue nil
 Pry.commands.alias_command 'f', "finish" rescue nil
 
 # Gem Enhancements (requirements)
-%w(hirb awesome_print).each do |gem|
+%w(bond hirb awesome_print).each do |gem|
   begin
     require gem
   rescue LoadError
@@ -31,6 +31,7 @@ end
 
 # Gem Enhancements (settings)
 begin
+  Bond.start
   Hirb.enable
   Pry.config.print = proc do |output, value|
     Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
