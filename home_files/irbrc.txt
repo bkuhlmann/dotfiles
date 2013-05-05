@@ -46,7 +46,7 @@ elsif defined?(Rails)
 end
 
 # Gem Enhancements (requirements)
-%w(wirb hirb awesome_print pry pry-debugger pry-remote pry-stack_explorer pry-vterm_aliases).each do |gem|
+%w(wirb hirb awesome_print pry pry-debugger pry-remote pry-rescue pry-stack_explorer pry-vterm_aliases).each do |gem|
   begin
     require gem
   rescue LoadError
