@@ -14,11 +14,18 @@ Pry.config.prompt = [
   end
 ]
 
-# Aliases (requires the pry-debugger gem)
+# Aliases (requires pry-debugger gem)
 Pry.commands.alias_command 'c', "continue" rescue nil
 Pry.commands.alias_command 's', "step" rescue nil
 Pry.commands.alias_command 'n', "next" rescue nil
 Pry.commands.alias_command 'f', "finish" rescue nil
+Pry.commands.alias_command "bp", "break" rescue nil
+Pry.commands.alias_command "bpe", "break --enable" rescue nil
+Pry.commands.alias_command "bpd", "break --disable" rescue nil
+Pry.commands.alias_command "bpD", "break --delete" rescue nil
+Pry.commands.alias_command "bpc", "break --disable-all" rescue nil
+Pry.commands.alias_command "bpC", "break --delete-all" rescue nil
+Pry.commands.alias_command "bph", "break --help" rescue nil
 
 # Gem Enhancements (requirements)
 %w(bond hirb awesome_print).each do |gem|
