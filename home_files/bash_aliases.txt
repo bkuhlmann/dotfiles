@@ -159,7 +159,7 @@ alias hpas="hp account --switch"
 alias ez="$EDITOR $HOME/.z"
 
 # Path Finder (http://www.cocoatech.com/pathfinder)
-alias opf='open -a "Path Finder.app" $PWD'
+alias opf='open -a "Path Finder.app" "$PWD"'
 
 # Sublime Text (http://www.sublimetext.com)
 alias e="sublime"
