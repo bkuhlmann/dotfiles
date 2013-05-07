@@ -65,6 +65,7 @@ alias gps="git push stage stage:master"
 alias gtag="git tag"
 alias gtags="git push --tags"
 alias gres="git reset --hard HEAD"
+alias gdis="git reset --hard"
 alias grev="git revert"
 alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
 
