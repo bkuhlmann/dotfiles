@@ -133,6 +133,37 @@ function gtaila() {
   echo ''
 }
 
+# Git Stash (all) - Answers stash size for all projects within current directory.
+function gasha() {
+  echo ''
+  root_path=`pwd` # Remember root directory.
+
+  # Backup IFS.
+  ifs_old=$IFS
+  IFS=$(echo -en "\n\b")
+
+  # Iterate through root project directories.
+  for project in `ls -d1 -- */`
+  do
+    # Process projects that are Git-enabled only.
+    cd "$root_path/$project"
+    if [ -d ".git" ]; then
+      # Count outstanding commits.
+      size=$(git stash list | wc -l | xargs -n 1)
+      # Print project name and Git activity only if Git activity is detected.
+      if [ -n $size ] && [ $size != 0 ]; then
+        echo -e "\033[36m${project/%?/}:\033[m $size" # Outputs in cyan color.
+      fi
+    fi
+  done
+
+  # Restore IFS.
+  IFS=$ifs_old
+
+  cd "$root_path" # Return to root directory.
+  echo ''
+}
+
 # Git Pull (all) - Pulls down new changes (if any) from remote branch for all projects in current directory.
 function gpua() {
   echo ''
