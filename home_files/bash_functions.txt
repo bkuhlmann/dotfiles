@@ -112,6 +112,38 @@ function gtaila() {
   echo ''
 }
 
+# Git Pull (all) - Pulls down new changes (if any) from remote branch for all projects in current directory.
+function gpua() {
+  echo ''
+  root_path="$PWD" # Remember root directory.
+
+  # Backup IFS.
+  ifs_old=$IFS
+  IFS=$(echo -en "\n\b")
+
+  # Iterate project directories located in root directory.
+  for directory in `ls -d1 -- */`
+  do
+    # Process projects that are Git enabled only.
+    cd "$root_path/$directory"
+    if [ -d ".git" ]; then
+      # Capture current project status.
+      results=$(git pull | tail -1)
+      # Print project name and Git activity only if Git activity was detected.
+      if [ -n "$results" -a "$results" != "Already up-to-date." ]; then
+        echo -e "\033[36m${directory/%?/}\033[m" # Outputs in cyan color.
+        echo -e "  $results"
+      fi
+    fi
+  done
+
+  # Restore IFS.
+  IFS=$ifs_old
+
+  cd "$root_path" # Return to root directory.
+  echo ''
+}
+
 # Git Commit and Push (all) - Commits and pushes changes for all projects within current directory. Useful
 # when making the same change across multiple projects.
 # Parameters:
