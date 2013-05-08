@@ -210,8 +210,15 @@ function gbd() {
   if [ "$1" ]; then
     read -p "You are about to delete the '$1' branch from local and remote repositories. Continue (y/n)?: " response
     if [ "$response" == 'y' ]; then
-      git branch -d "$1"
-      if [ -n "$(git branch --remotes --list $1)" ]; then
+      # Handle local branch.
+      if [ -n "$(git branch --list $1)" ]; then
+        git branch -D "$1"
+      else
+        echo "No local branch found. Skipped."
+      fi
+
+      # Handle remote branch.
+      if [ -n "$(git branch --remotes --list origin/$1)" ]; then
         git push origin :"$1"
       else
         echo "No remote branch found. Skipped."
