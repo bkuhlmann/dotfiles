@@ -19,16 +19,16 @@ function gsta() {
   IFS=$(echo -en "\n\b")
 
   # Iterate project directories located in root directory.
-  for directory in `ls -d1 -- */`
+  for project in `ls -d1 -- */`
   do
     # Process projects that are Git enabled only.
-    cd "$root_path/$directory"
+    cd "$root_path/$project"
     if [ -d ".git" ]; then
       # Capture current project status.
       results=$(git status -s)
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
-        echo -e "\033[36m${directory/%?/}\033[m" # Outputs in cyan color.
+        echo -e "\033[36m${project/%?/}\033[m" # Outputs in cyan color.
         echo -e "$results"
       fi
     fi
@@ -54,17 +54,17 @@ function gince() {
   IFS=$(echo -en "\n\b")
 
   # Iterate project directories located in root directory.
-  for directory in `ls -d1 -- */`
+  for project in `ls -d1 -- */`
   do
     # Process projects that are Git enabled only.
-    cd "$root_path/$directory"
+    cd "$root_path/$project"
     if [ -d ".git" ]; then
       user=$(git config user.name)
       # Capture git log activity.
       results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since "$1" --reverse)
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
-        echo -e "\033[36m${directory/%?/}" # Outputs in cyan color.
+        echo -e "\033[36m${project/%?/}" # Outputs in cyan color.
         echo -e "$results\n"
       fi
     fi
@@ -174,16 +174,16 @@ function gpua() {
   IFS=$(echo -en "\n\b")
 
   # Iterate project directories located in root directory.
-  for directory in `ls -d1 -- */`
+  for project in `ls -d1 -- */`
   do
     # Process projects that are Git enabled only.
-    cd "$root_path/$directory"
+    cd "$root_path/$project"
     if [ -d ".git" ]; then
       # Capture current project status.
       results=$(git pull | tail -1)
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" -a "$results" != "Already up-to-date." ]; then
-        echo -e "\033[36m${directory/%?/}\033[m" # Outputs in cyan color.
+        echo -e "\033[36m${project/%?/}\033[m" # Outputs in cyan color.
         echo -e "  $results"
       fi
     fi
