@@ -290,6 +290,42 @@ function init_github() {
   git config push.default current
 }
 
+#---------------------------------#
+# Bundler (http://gembundler.com) #
+#---------------------------------#
+
+# Bundle Outdated (all) - Answers a list of outdated gems for all projects within current directory.
+function boa() {
+  echo ''
+  root_path=`pwd` # Remember root directory.
+
+  # Backup IFS.
+  ifs_old=$IFS
+  IFS=$(echo -en "\n\b")
+
+  # Iterate project directories located in root directory.
+  for project in `ls -d1 -- */`
+  do
+    # Process projects that are Git enabled only.
+    cd "$root_path/$project"
+    if [ -d ".git" ]; then
+      # Capture current project status.
+      results=$(bundle outdated | grep '*')
+      # Print project name and Git activity only if Git activity was detected.
+      if [ -n "$results" ]; then
+        echo -e "\033[36m${project/%?/}\033[m" # Outputs in cyan color.
+        echo -e "$results"
+      fi
+    fi
+  done
+
+  # Restore IFS.
+  IFS=$ifs_old
+
+  cd "$root_path" # Return to root directory.
+  echo ''
+}
+
 #----------------------------------------#
 # Ruby on Rails (http://rubyonrails.org) #
 #----------------------------------------#
