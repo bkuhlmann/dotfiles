@@ -418,3 +418,28 @@ function sdb {
     script/dbconsole $@
   fi
 }
+
+#--------------------------------#
+# FFmpeg (http://www.ffmpeg.org) #
+#--------------------------------#
+
+# Gifize - Converts a video into an animated GIF.
+# ==== Parameters
+# * +input+ - Required. The file path of the source video.
+# * +output+ - Required. The file path of the animated gif (to be created).
+function gifize {
+  input_path="$1"
+  output_path="$2"
+  temp_path=/tmp/gifize.gif
+
+  echo ''
+  if [[ -n "$input_path" && -n "$output_path" ]]; then
+    ffmpeg -i "$input_path" -pix_fmt rgb24 $temp_path
+    convert -layers Optimize $temp_path "$output_path"
+    rm -f $temp_path
+    echo -e "\nGIF Complete: $output_path"
+  else
+    echo "Usage: gifize input output"
+  fi
+  echo ''
+}
