@@ -16,6 +16,7 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 * Configures the {Ruby Debugger}[http://bashdb.sourceforge.net/ruby-debug.html] .rdebugrc file.
 * Configures the {Awesome Print}[https://github.com/michaeldv/awesome_print] .aprc file.
 * Configures the Guard[https://github.com/guard/guard] .guardrc file.
+* Configures the Xray[https://github.com/brentd/xray-rails] .xrayconfig file.
 * Configures the Pow[http://pow.cx] .powconfig file.
 * Configures {Sublime Text}[http://www.sublimetext.com] as the default editor.
 * Adds {Bash Completion}[http://bash-completion.alioth.debian.org].
@@ -36,7 +37,7 @@ Current Version (stable)
 
   git clone git://github.com/bkuhlmann/dotfiles.git
   cd dotfiles
-  git checkout v5.0.0
+  git checkout v5.1.0
 
 Master Version (unstable)
 
@@ -90,6 +91,7 @@ for additional details):
   sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 
   # Git (http://git-scm.com)
+  gi = "git init"
   gce = "git config -e"
   gst = "git status --short --branch"
   gg = "git grep"
@@ -121,6 +123,7 @@ for additional details):
   gcm = "git commit --message"
   gcam = "git commit --all --message"
   gamend = "git commit --amend --message"
+  gcp = "git cherry-pick"
   gash = "git stash"
   gashl = "git stash list"
   gashs = "git stash show"
@@ -138,6 +141,7 @@ for additional details):
   gtag = "git tag"
   gtags = "git push --tags"
   gres = "git reset --hard HEAD"
+  gdis = "git reset --hard"
   grev = "git revert"
   glatest = "git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
 
@@ -227,8 +231,11 @@ for additional details):
   # Heroku+ (https://github.com/bkuhlmann/heroku_plus)
   hpas = "hp account --switch"
 
+  # Z (https://github.com/rupa/z)
+  ez = "$EDITOR $HOME/.z"
+
   # Path Finder (http://www.cocoatech.com/pathfinder)
-  opf='open -a "Path Finder.app" $PWD'
+  opf='open -a "Path Finder.app" "$PWD"'
 
   # Sublime Text (http://www.sublimetext.com)
   e = "sublime"
@@ -241,9 +248,17 @@ From IRB, Pry, and Rails consoles, the following commands are possible:
 
 From Pry, the following aliases are available:
 
-  n = next
-  s = step
-  c = continue
+  c = "continue" rescue nil
+  s = "step" rescue nil
+  n = "next" rescue nil
+  f = "finish" rescue nil
+  bp = "break" rescue nil
+  bpe = "break --enable" rescue nil
+  bpd = "break --disable" rescue nil
+  bpD = "break --delete" rescue nil
+  bpc = "break --disable-all" rescue nil
+  bpC = "break --delete-all" rescue nil
+  bph = "break --help" rescue nil
 
 = Resources
 

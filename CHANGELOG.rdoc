@@ -1,3 +1,28 @@
+= v5.1.0
+
+* Fixed bug with sublime not being defined prior to loading bash_* files as a necessary dependency.
+* Fixed bug with opf alias where paths with spaces would fail to open properly.
+* Fixed Git-related Bash functions where directory names would be split with spaces.
+* Added the -f option for exporting functions.
+* Added ez alias which speeds up opening the ~/.z config in the default editor.
+* Added the xrayconfig.txt file which supports the xray-rails gem.
+* Added the 'f' alias for the pry-debugger finish command.
+* Added pry-rescue support.
+* Added Bond[https://github.com/cldwalker/bond] gem support to .irbrc and .pryrc.
+* Added breakpoint aliases for Pry to .pryrc.
+* Added the gdis alias (i.e. git reset --hard).
+* Added the gcp alias (i.e. git cherry-pick).
+* Added the gpua function which allows one to "git pull" for all git-enable directories in current folder.
+* Added boa Bash function which lists outdated gems for each project in current directory.
+* Added the gifize function (allows one to easily convert video into an animated GIF.
+* Added the gi alias (i.e. git init).
+* Refactored the scripts in the functions folder.
+* Updated run.sh usage.
+* Switched from pry-nav to the pry-debugger gem.
+* Updated the gpd Bash function to delete local branch regardless of merge status and made remote branch specific to 'origin'.
+* Added gasha function which answers the git stash size of all projects in current directory.
+* Renamed instance variable 'directory' to 'project' in directory loops for Bash functions.
+
 = v5.0.0
 
 * Fixed the timeout comment in the pow config.
