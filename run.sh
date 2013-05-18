@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # DESCRIPTION
-# Executes the dotfiles installer.
+# Executes the command line interface.
 
 # USAGE
 # ./run.sh OPTION

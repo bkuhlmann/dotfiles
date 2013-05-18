@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # DESCRIPTION
-# Defines option navigation functions.
+# Defines command line prompt options.
 
 # Process option selection.
 # Parameters:
