@@ -30,10 +30,10 @@ if [ -d "$HOME" ]; then
       echo ''
       read -p "Enter selection: " response
       echo ''
-      process_dotfile_option $response
+      process_option $response
     done
   else
-    process_dotfile_option $1
+    process_option $1
   fi
 
   echo ''
