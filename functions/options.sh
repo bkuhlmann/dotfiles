@@ -6,7 +6,7 @@
 # Process option selection.
 # Parameters:
 # $1 = The option to process.
-function process_option {
+function process_dotfile_option {
   case $1 in
     's')
       show_files
@@ -27,4 +27,4 @@ function process_option {
       break;;
   esac
 }
-export -f process_option
+export -f process_dotfile_option
