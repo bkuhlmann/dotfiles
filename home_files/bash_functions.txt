@@ -9,7 +9,7 @@ function groot() {
   cd "$(dirname $(git rev-parse --git-dir))"
 }
 
-# Git Status (all) - Answers the status of projects with uncommited changes.
+# Git Status (all) - Answers the status of projects with uncommited/unpushed changes.
 function gsta() {
   echo ''
   root_path=`pwd` # Remember root directory.
@@ -21,9 +21,9 @@ function gsta() {
     cd "$root_path/$project"
     if [ -d ".git" ]; then
       # Capture current project status.
-      results=$(git status -s)
-      # Print project name and Git activity only if Git activity was detected.
-      if [ -n "$results" ]; then
+      results=$(git status --short --branch)
+      # Print project name and Git activity only if Git activity is detected.
+      if [ "$results" != "## master" ]; then
         echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
         echo -e "$results"
       fi
