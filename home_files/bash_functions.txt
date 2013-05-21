@@ -14,12 +14,8 @@ function gsta() {
   echo ''
   root_path=`pwd` # Remember root directory.
 
-  # Backup IFS.
-  ifs_old=$IFS
-  IFS=$(echo -en "\n\b")
-
   # Iterate project directories located in root directory.
-  for project in `ls -d1 -- */`
+  while read project
   do
     # Process projects that are Git enabled only.
     cd "$root_path/$project"
@@ -28,14 +24,11 @@ function gsta() {
       results=$(git status -s)
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
-        echo -e "\033[36m${project/%?/}\033[m" # Outputs in cyan color.
+        echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
         echo -e "$results"
       fi
     fi
-  done
-
-  # Restore IFS.
-  IFS=$ifs_old
+  done < <(find . -type d -depth 1)
 
   cd "$root_path" # Return to root directory.
   echo ''
@@ -49,12 +42,8 @@ function gince() {
   echo ''
   root_path=`pwd` # Remember root directory.
 
-  # Backup IFS.
-  ifs_old=$IFS
-  IFS=$(echo -en "\n\b")
-
   # Iterate project directories located in root directory.
-  for project in `ls -d1 -- */`
+  while read project
   do
     # Process projects that are Git enabled only.
     cd "$root_path/$project"
@@ -64,14 +53,11 @@ function gince() {
       results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since "$1" --reverse)
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
-        echo -e "\033[36m${project/%?/}" # Outputs in cyan color.
+        echo -e "\033[36m${project:2}" # Outputs in cyan color.
         echo -e "$results\n"
       fi
     fi
-  done
-
-  # Restore IFS.
-  IFS=$ifs_old
+  done < <(find . -type d -depth 1)
 
   cd "$root_path" # Return to root directory.
 }
@@ -100,12 +86,8 @@ function gtaila() {
   echo ''
   root_path=`pwd` # Remember root directory.
 
-  # Backup IFS.
-  ifs_old=$IFS
-  IFS=$(echo -en "\n\b")
-
   # Iterate through root project directories.
-  for project in `ls -d1 -- */`
+  while read project
   do
     # Process projects that are Git-enabled only.
     cd "$root_path/$project"
@@ -116,18 +98,15 @@ function gtaila() {
       if [ -n $count ] && [ $count != 0 ]; then
         # Outputs project (cyan color) with color-coded commit count (based on volume).
         if [ $count -ge 20 ]; then
-          echo -e "\033[36m${project/%?/}:\033[m \033[31m$count\033[m" # Red count color.
+          echo -e "\033[36m${project:2}:\033[m \033[31m$count\033[m" # Red count color.
         elif [ $count -ge 10 -a $count -le 19 ]; then
-          echo -e "\033[36m${project/%?/}:\033[m \033[33m$count\033[m" # Yellow count color.
+          echo -e "\033[36m${project:2}:\033[m \033[33m$count\033[m" # Yellow count color.
         else
-          echo -e "\033[36m${project/%?/}:\033[m $count" # White count color.
+          echo -e "\033[36m${project:2}:\033[m $count" # White count color.
         fi
       fi
     fi
-  done
-
-  # Restore IFS.
-  IFS=$ifs_old
+  done < <(find . -type d -depth 1)
 
   cd "$root_path" # Return to root directory.
   echo ''
@@ -138,12 +117,8 @@ function gasha() {
   echo ''
   root_path=`pwd` # Remember root directory.
 
-  # Backup IFS.
-  ifs_old=$IFS
-  IFS=$(echo -en "\n\b")
-
   # Iterate through root project directories.
-  for project in `ls -d1 -- */`
+  while read project
   do
     # Process projects that are Git-enabled only.
     cd "$root_path/$project"
@@ -152,13 +127,10 @@ function gasha() {
       size=$(git stash list | wc -l | xargs -n 1)
       # Print project name and Git activity only if Git activity is detected.
       if [ -n $size ] && [ $size != 0 ]; then
-        echo -e "\033[36m${project/%?/}:\033[m $size" # Outputs in cyan color.
+        echo -e "\033[36m${project:2}:\033[m $size" # Outputs in cyan color.
       fi
     fi
-  done
-
-  # Restore IFS.
-  IFS=$ifs_old
+  done < <(find . -type d -depth 1)
 
   cd "$root_path" # Return to root directory.
   echo ''
@@ -169,12 +141,8 @@ function gpua() {
   echo ''
   root_path=`pwd` # Remember root directory.
 
-  # Backup IFS.
-  ifs_old=$IFS
-  IFS=$(echo -en "\n\b")
-
   # Iterate project directories located in root directory.
-  for project in `ls -d1 -- */`
+  while read project
   do
     # Process projects that are Git enabled only.
     cd "$root_path/$project"
@@ -183,14 +151,11 @@ function gpua() {
       results=$(git pull | tail -1)
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" -a "$results" != "Already up-to-date." ]; then
-        echo -e "\033[36m${project/%?/}\033[m" # Outputs in cyan color.
+        echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
         echo -e "  $results"
       fi
     fi
-  done
-
-  # Restore IFS.
-  IFS=$ifs_old
+  done < <(find . -type d -depth 1)
 
   cd "$root_path" # Return to root directory.
   echo ''
@@ -206,12 +171,8 @@ function gcap() {
   if [ "$1" ]; then
     root_path=`pwd` # Remember root directory.
 
-    # Backup IFS.
-    ifs_old=$IFS
-    IFS=$(echo -en "\n\b")
-
     # Iterate project directories located in root directory.
-    for project in `ls -d1 -- */`
+    while read project
     do
       # Only process projects that are Git-enabled.
       cd "$root_path/$project"
@@ -221,10 +182,7 @@ function gcap() {
           git commit -a -m "$1" && git push
         fi
       fi
-    done
-
-    # Restore IFS.
-    IFS=$ifs_old
+    done < <(find . -type d -depth 1)
 
     cd "$root_path" # Return to root directory.
   else
@@ -299,12 +257,8 @@ function boa() {
   echo ''
   root_path=`pwd` # Remember root directory.
 
-  # Backup IFS.
-  ifs_old=$IFS
-  IFS=$(echo -en "\n\b")
-
   # Iterate project directories located in root directory.
-  for project in `ls -d1 -- */`
+  while read project
   do
     # Process projects that are Git enabled only.
     cd "$root_path/$project"
@@ -313,14 +267,11 @@ function boa() {
       results=$(bundle outdated | grep '*')
       # Print project name and Git activity only if Git activity was detected.
       if [ -n "$results" ]; then
-        echo -e "\033[36m${project/%?/}\033[m" # Outputs in cyan color.
+        echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
         echo -e "$results"
       fi
     fi
-  done
-
-  # Restore IFS.
-  IFS=$ifs_old
+  done < <(find . -type d -depth 1)
 
   cd "$root_path" # Return to root directory.
   echo ''
