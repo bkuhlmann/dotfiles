@@ -37,7 +37,7 @@ Current Version (stable)
 
   git clone git://github.com/bkuhlmann/dotfiles.git
   cd dotfiles
-  git checkout v5.1.0
+  git checkout v5.2.0
 
 Master Version (unstable)
 
@@ -94,16 +94,15 @@ for additional details):
   gi = "git init"
   gce = "git config -e"
   gst = "git status --short --branch"
-  gg = "git grep"
   gl = "git log --oneline --decorate --no-abbrev-commit"
   glh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
-  glc = "git shortlog --summary --numbered --email"
   gld = "git log --graph --pretty=format:'%C(yellow)%H%Creset %an: %s -%C(cyan)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
   gln = "git log --name-status"
   glf = "git log ..FETCH_HEAD"
+  gg = "git grep"
   gls = "gl -S"
   glast = "git show --stat"
-  guthors = "git log --format='%C(green)%aN%Creset (%ae)' | sort -u"
+  guthors = "git shortlog --summary --numbered --email"
   gd = "git diff"
   gdw = "git diff --word-diff"
   gdc = "git diff --cached"
@@ -124,8 +123,8 @@ for additional details):
   gcam = "git commit --all --message"
   gamend = "git commit --amend --message"
   gcp = "git cherry-pick"
-  gash = "git stash"
-  gashl = "git stash list"
+  gash = "git stash save"
+  gashl = "git stash list --pretty=format:'%C(yellow)%gd%Creset %s'"
   gashs = "git stash show"
   gashp = "git stash pop"
   gashd = "git stash drop"

@@ -1,3 +1,16 @@
+= v5.2.0
+
+* Force default Git editor to wait for files to be closed before returning.
+* Updated shell script documentation.
+* Fixed z.sh warnings when sourcing bashrc.
+* Updated bash functions to use read line instead of tweaking the IFS variable for parsing directories with spaces.
+* Modified gsta function to display branch status and unpushed changes in addition to uncommitted changes.
+* Collapsed while/do statements to a single line.
+* Added save to 'gash' alias so that git stashes can optionally be saved with a description.
+* Added pretty print formatting to 'gashl' alias for git stash lists.
+* Moved git grep (gg) next to git search git log search (gls).
+* Dropped the glc alias in favor of the guthors alias (uses the author summary originally provided by the glc alias).
+
 = v5.1.0
 
 * Fixed bug with sublime not being defined prior to loading bash_* files as a necessary dependency.
