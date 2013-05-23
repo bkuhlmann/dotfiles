@@ -15,8 +15,7 @@ function gsta() {
   root_path=`pwd` # Remember root directory.
 
   # Iterate project directories located in root directory.
-  while read project
-  do
+  while read project; do
     # Process projects that are Git enabled only.
     cd "$root_path/$project"
     if [ -d ".git" ]; then
@@ -43,8 +42,7 @@ function gince() {
   root_path=`pwd` # Remember root directory.
 
   # Iterate project directories located in root directory.
-  while read project
-  do
+  while read project; do
     # Process projects that are Git enabled only.
     cd "$root_path/$project"
     if [ -d ".git" ]; then
@@ -87,8 +85,7 @@ function gtaila() {
   root_path=`pwd` # Remember root directory.
 
   # Iterate through root project directories.
-  while read project
-  do
+  while read project; do
     # Process projects that are Git-enabled only.
     cd "$root_path/$project"
     if [ -d ".git" ]; then
@@ -118,8 +115,7 @@ function gasha() {
   root_path=`pwd` # Remember root directory.
 
   # Iterate through root project directories.
-  while read project
-  do
+  while read project; do
     # Process projects that are Git-enabled only.
     cd "$root_path/$project"
     if [ -d ".git" ]; then
@@ -142,8 +138,7 @@ function gpua() {
   root_path=`pwd` # Remember root directory.
 
   # Iterate project directories located in root directory.
-  while read project
-  do
+  while read project; do
     # Process projects that are Git enabled only.
     cd "$root_path/$project"
     if [ -d ".git" ]; then
@@ -172,8 +167,7 @@ function gcap() {
     root_path=`pwd` # Remember root directory.
 
     # Iterate project directories located in root directory.
-    while read project
-    do
+    while read project; do
       # Only process projects that are Git-enabled.
       cd "$root_path/$project"
       if [ -d ".git" ]; then
@@ -258,8 +252,7 @@ function boa() {
   root_path=`pwd` # Remember root directory.
 
   # Iterate project directories located in root directory.
-  while read project
-  do
+  while read project; do
     # Process projects that are Git enabled only.
     cd "$root_path/$project"
     if [ -d ".git" ]; then
