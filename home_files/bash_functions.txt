@@ -12,24 +12,24 @@ function groot() {
 # Git Status (all) - Answers the status of projects with uncommited/unpushed changes.
 function gsta() {
   echo ''
-  root_path=`pwd` # Remember root directory.
 
   # Iterate project directories located in root directory.
   while read project; do
-    # Process projects that are Git enabled only.
-    cd "$root_path/$project"
-    if [ -d ".git" ]; then
-      # Capture current project status.
-      results=$(git status --short --branch)
-      # Print project name and Git activity only if Git activity is detected.
-      if [ "$results" != "## master" ]; then
-        echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
-        echo -e "$results"
+    (
+      cd "$project"
+      # Only process projects that are Git enabled.
+      if [ -d ".git" ]; then
+        # Capture current project status.
+        results=$(git status --short --branch)
+        # Print project name and Git activity only if Git activity is detected.
+        if [ "$results" != "## master" ]; then
+          echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
+          echo -e "$results"
+        fi
       fi
-    fi
+    )
   done < <(find . -type d -depth 1)
 
-  cd "$root_path" # Return to root directory.
   echo ''
 }
 
@@ -39,25 +39,24 @@ function gsta() {
 # $1 = The past date/time from which to log activity up to now.
 function gince() {
   echo ''
-  root_path=`pwd` # Remember root directory.
 
   # Iterate project directories located in root directory.
   while read project; do
-    # Process projects that are Git enabled only.
-    cd "$root_path/$project"
-    if [ -d ".git" ]; then
-      user=$(git config user.name)
-      # Capture git log activity.
-      results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since "$1" --reverse)
-      # Print project name and Git activity only if Git activity was detected.
-      if [ -n "$results" ]; then
-        echo -e "\033[36m${project:2}" # Outputs in cyan color.
-        echo -e "$results\n"
+    (
+      cd "$project"
+      # Only process projects that are Git enabled.
+      if [ -d ".git" ]; then
+        user=$(git config user.name)
+        # Capture git log activity.
+        results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since "$1" --reverse)
+        # Print project name and Git activity only if Git activity was detected.
+        if [ -n "$results" ]; then
+          echo -e "\033[36m${project:2}" # Outputs in cyan color.
+          echo -e "$results\n"
+        fi
       fi
-    fi
+    )
   done < <(find . -type d -depth 1)
-
-  cd "$root_path" # Return to root directory.
 }
 
 # Git Standup - Answers a summarized list of Git activity since yesterday for all projects in current directory,
@@ -82,77 +81,77 @@ function gtail() {
 # Git Tail (all) - Answers tail count (see gtail function for details) for all projects within current directory.
 function gtaila() {
   echo ''
-  root_path=`pwd` # Remember root directory.
 
   # Iterate through root project directories.
   while read project; do
-    # Process projects that are Git-enabled only.
-    cd "$root_path/$project"
-    if [ -d ".git" ]; then
-      # Count outstanding commits.
-      count=$(gtail | wc -l | xargs -n 1)
-      # Print project name and Git activity only if Git activity is detected.
-      if [ -n $count ] && [ $count != 0 ]; then
-        # Outputs project (cyan color) with color-coded commit count (based on volume).
-        if [ $count -ge 20 ]; then
-          echo -e "\033[36m${project:2}:\033[m \033[31m$count\033[m" # Red count color.
-        elif [ $count -ge 10 -a $count -le 19 ]; then
-          echo -e "\033[36m${project:2}:\033[m \033[33m$count\033[m" # Yellow count color.
-        else
-          echo -e "\033[36m${project:2}:\033[m $count" # White count color.
+    (
+      cd "$project"
+      # Only process projects that are Git-enabled.
+      if [ -d ".git" ]; then
+        # Count outstanding commits.
+        count=$(gtail | wc -l | xargs -n 1)
+        # Print project name and Git activity only if Git activity is detected.
+        if [ -n $count ] && [ $count != 0 ]; then
+          # Outputs project (cyan color) with color-coded commit count (based on volume).
+          if [ $count -ge 20 ]; then
+            echo -e "\033[36m${project:2}:\033[m \033[31m$count\033[m" # Red count color.
+          elif [ $count -ge 10 -a $count -le 19 ]; then
+            echo -e "\033[36m${project:2}:\033[m \033[33m$count\033[m" # Yellow count color.
+          else
+            echo -e "\033[36m${project:2}:\033[m $count" # White count color.
+          fi
         fi
       fi
-    fi
+    )
   done < <(find . -type d -depth 1)
 
-  cd "$root_path" # Return to root directory.
   echo ''
 }
 
 # Git Stash (all) - Answers stash size for all projects within current directory.
 function gasha() {
   echo ''
-  root_path=`pwd` # Remember root directory.
 
   # Iterate through root project directories.
   while read project; do
-    # Process projects that are Git-enabled only.
-    cd "$root_path/$project"
-    if [ -d ".git" ]; then
-      # Count outstanding commits.
-      size=$(git stash list | wc -l | xargs -n 1)
-      # Print project name and Git activity only if Git activity is detected.
-      if [ -n $size ] && [ $size != 0 ]; then
-        echo -e "\033[36m${project:2}:\033[m $size" # Outputs in cyan color.
+    (
+      cd "$project"
+      # Only process projects that are Git-enabled.
+      if [ -d ".git" ]; then
+        # Count outstanding commits.
+        size=$(git stash list | wc -l | xargs -n 1)
+        # Print project name and Git activity only if Git activity is detected.
+        if [ -n $size ] && [ $size != 0 ]; then
+          echo -e "\033[36m${project:2}:\033[m $size" # Outputs in cyan color.
+        fi
       fi
-    fi
+    )
   done < <(find . -type d -depth 1)
 
-  cd "$root_path" # Return to root directory.
   echo ''
 }
 
 # Git Pull (all) - Pulls down new changes (if any) from remote branch for all projects in current directory.
 function gpua() {
   echo ''
-  root_path=`pwd` # Remember root directory.
 
   # Iterate project directories located in root directory.
   while read project; do
-    # Process projects that are Git enabled only.
-    cd "$root_path/$project"
-    if [ -d ".git" ]; then
-      # Capture current project status.
-      results=$(git pull | tail -1)
-      # Print project name and Git activity only if Git activity was detected.
-      if [ -n "$results" -a "$results" != "Already up-to-date." ]; then
-        echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
-        echo -e "  $results"
+    (
+      cd "$project"
+      # Only process projects that are Git enabled.
+      if [ -d ".git" ]; then
+        # Capture current project status.
+        results=$(git pull | tail -1)
+        # Print project name and Git activity only if Git activity was detected.
+        if [ -n "$results" -a "$results" != "Already up-to-date." ]; then
+          echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
+          echo -e "  $results"
+        fi
       fi
-    fi
+    )
   done < <(find . -type d -depth 1)
 
-  cd "$root_path" # Return to root directory.
   echo ''
 }
 
@@ -164,21 +163,19 @@ function gcap() {
   echo ''
 
   if [ "$1" ]; then
-    root_path=`pwd` # Remember root directory.
-
     # Iterate project directories located in root directory.
     while read project; do
-      # Only process projects that are Git-enabled.
-      cd "$root_path/$project"
-      if [ -d ".git" ]; then
-        # Only process projects that have changes.
-        if [ "$(git status -s)" ]; then
-          git commit -a -m "$1" && git push
+      (
+        cd "$project"
+        # Only process projects that are Git-enabled.
+        if [ -d ".git" ]; then
+          # Only process projects that have changes.
+          if [ "$(git status -s)" ]; then
+            git commit -a -m "$1" && git push
+          fi
         fi
-      fi
+      )
     done < <(find . -type d -depth 1)
-
-    cd "$root_path" # Return to root directory.
   else
     echo "ERROR: Commit message must be supplied."
   fi
@@ -219,8 +216,7 @@ function gbd() {
 # Git Branch Delete Merged - Deletes all local and associated remote branch (if found) merged branches.
 function gbdm() {
   branches=$(git branch --merged | grep -v "\*" | xargs -n 1)
-  for branch in $branches
-  do
+  for branch in $branches; do
     gbd $branch
   done
 }
@@ -249,24 +245,24 @@ function init_github() {
 # Bundle Outdated (all) - Answers a list of outdated gems for all projects within current directory.
 function boa() {
   echo ''
-  root_path=`pwd` # Remember root directory.
 
   # Iterate project directories located in root directory.
   while read project; do
-    # Process projects that are Git enabled only.
-    cd "$root_path/$project"
-    if [ -d ".git" ]; then
-      # Capture current project status.
-      results=$(bundle outdated | grep '*')
-      # Print project name and Git activity only if Git activity was detected.
-      if [ -n "$results" ]; then
-        echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
-        echo -e "$results"
+    (
+      cd "$project"
+      # Only process projects that are Git enabled.
+      if [ -d ".git" ]; then
+        # Capture current project status.
+        results=$(bundle outdated | grep '*')
+        # Print project name and Git activity only if Git activity was detected.
+        if [ -n "$results" ]; then
+          echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
+          echo -e "$results"
+        fi
       fi
-    fi
+    )
   done < <(find . -type d -depth 1)
 
-  cd "$root_path" # Return to root directory.
   echo ''
 }
 
