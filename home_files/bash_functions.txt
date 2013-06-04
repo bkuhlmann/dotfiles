@@ -359,6 +359,15 @@ function sdb {
   fi
 }
 
+# Test::Unit specific test.
+function bertt {
+  if [ "$1" ]; then
+    bundle exec rake test TEST="$1"
+  else
+    echo "ERROR: Missing test file path. Usage: bertt test/unit/example_test.rb."
+  fi
+}
+
 #--------------------------------#
 # FFmpeg (http://www.ffmpeg.org) #
 #--------------------------------#
