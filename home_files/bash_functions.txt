@@ -359,7 +359,7 @@ function sdb {
   fi
 }
 
-# Test::Unit specific test.
+# Executes a single Test::Unit test.
 function bertt {
   if [ "$1" ]; then
     bundle exec rake test TEST="$1"
