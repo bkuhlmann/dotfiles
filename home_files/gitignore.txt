@@ -25,3 +25,6 @@
 
 # RubyMine
 *.idea
+
+# Temp Directories
+tmp
