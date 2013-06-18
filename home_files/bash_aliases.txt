@@ -166,3 +166,6 @@ alias opf='open -a "Path Finder.app" "$PWD"'
 
 # Sublime Text (http://www.sublimetext.com)
 alias e="sublime"
+
+# Marked (http://markedapp.com)
+alias md="open -a Marked"
