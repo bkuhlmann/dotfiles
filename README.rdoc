@@ -274,6 +274,14 @@ From Pry, the following aliases are available:
 * {Nicolas Gallagher}[https://github.com/necolas/dotfiles]
 * {Color Bash Prompt}[https://wiki.archlinux.org/index.php/Color_Bash_Prompt]
 
+= Versioning
+
+Read {Semantic Versioning}[http://semver.org] for details. Briefly, it means:
+
+* Patch (x.y.Z) - Incremented for small, backwards compatible bug fixes.
+* Minor (x.Y.z) - Incremented for new, backwards compatible public API enhancements and/or bug fixes.
+* Major (X.y.z) - Incremented for any backwards incompatible public API changes.
+
 = Contributions
 
 Read CONTRIBUTING for details.
