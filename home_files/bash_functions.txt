@@ -171,7 +171,7 @@ function gcap() {
         if [ -d ".git" ]; then
           # Only process projects that have changes.
           if [ "$(git status -s)" ]; then
-            git commit -a -m "$1" && git push
+            git commit --all --message "$1" && git push
           fi
         fi
       )
