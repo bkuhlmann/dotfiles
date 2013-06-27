@@ -278,18 +278,19 @@ function rew {
   # Set defaults.
   options=''
 
-  # Template options.
-  rails_setup_template_options="-d sqlite3 -J -T -f --skip-bundle -m https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
-  rails_setup_template_local_options="-d sqlite3 -J -T -f --skip-bundle -m ~/Dropbox/Development/Ruby/rails_setup_template/template.rb"
+  # Template flags and options.
+  flags="--database sqlite3 --skip-javascript --skip-test-unit --force --skip-bundle --skip-keeps --template"
+  remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
+  local_options="$flags ~/Dropbox/Development/Ruby/rails_setup_template/template.rb"
 
   # Bypass prompt if selection is supplied.
   if [ $2 ]; then
     case $2 in
       2)
-        options=$rails_setup_template_options
+        options="$remote_options"
         ;;
       3)
-        options=$rails_setup_template_local_options
+        options="$local_options"
         ;;
     esac
   # Otherwise, prompt for template when selection is unknown.
@@ -306,10 +307,10 @@ function rew {
           unset options
           break;;
         '2')
-          options=$rails_setup_template_options
+          options="$remote_options"
           break;;
         '3')
-          options="-d sqlite3 -J -T -f --skip-bundle -m ~/Dropbox/Development/Ruby/rails_setup_template/template.rb"
+          options="$local_options"
           break;;
         'q')
           return;;
