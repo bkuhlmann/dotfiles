@@ -19,6 +19,7 @@ alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 # Git (http://git-scm.com)
 alias gi="git init"
 alias gce="git config -e"
+alias gail="git config --global user.email"
 alias gst="git status --short --branch"
 alias gl="git log --oneline --decorate --no-abbrev-commit"
 alias glh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
