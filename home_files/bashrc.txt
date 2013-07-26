@@ -47,3 +47,6 @@ if [ -d $HOME/.rbenv/bin ]; then
 fi
 
 eval "$(rbenv init -)"
+
+# NPM (http://nodejs.org)
+export PATH="$PATH:/usr/local/share/npm/bin"
