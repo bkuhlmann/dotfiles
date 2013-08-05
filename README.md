@@ -1,6 +1,6 @@
 # Overview
 
-Configures your user home settings with useful defaults for your development environment. By default,
+Shell scripts for applying default settings to UNIX-based operating systems. By default,
 these are set to my preferences (namely for OSX) but you can change them to your liking by editing
 any of the *.txt files in the home_files directory. Read on to learn more.
 
