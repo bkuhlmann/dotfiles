@@ -16,6 +16,12 @@ alias bashs="exec $SHELL"
 alias ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
 alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 
+# tmux (http://tmux.sourceforge.net)
+alias tsl="tmux list-sessions"
+alias tsa="tmux attach-session -t"
+alias tsk="tmux kill-session -t"
+alias tsr="tmux rename-session -t"
+
 # Git (http://git-scm.com)
 alias gi="git init"
 alias gce="git config -e"
