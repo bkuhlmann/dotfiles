@@ -1,7 +1,8 @@
 # BASHRC
 
-# Default Editor
+# Default Editors
 export EDITOR=sublime
+export VISUAL=vi
 
 # History
 export HISTCONTROL=erasedups # Remove duplicate entries.
