@@ -77,6 +77,7 @@ alias gres="git reset --hard HEAD"
 alias gdis="git reset --hard"
 alias grev="git revert"
 alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
+alias ggc="git fsck && git gc"
 
 # rbenv (https://github.com/sstephenson/rbenv)
 alias rb="rbenv"
