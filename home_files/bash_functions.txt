@@ -183,6 +183,24 @@ function gcap() {
   echo ''
 }
 
+# Git Validate and Clean (all) - Validates and cleans all projects in current directory.
+function gvca() {
+  echo ''
+
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git-enabled.
+      if [ -d ".git" ]; then
+        echo -e "\n\033[36m${project:2}\033[m" # Outputs in cyan color.
+        git fsck && git gc
+      fi
+    )
+  done < <(find . -type d -depth 1)
+
+  echo ''
+}
+
 # Git Branch Delete - Deletes local and associated remote branch (if found).
 function gbd() {
   echo ''
