@@ -51,3 +51,6 @@ eval "$(rbenv init -)"
 
 # NPM (http://nodejs.org)
 export PATH="$PATH:/usr/local/share/npm/bin"
+
+# Travis CI (https://travis-ci.org)
+source "$HOME/.travis/travis.sh"
