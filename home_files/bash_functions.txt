@@ -299,7 +299,7 @@ function rew {
   # Template flags and options.
   flags="--database sqlite3 --skip-javascript --skip-test-unit --force --skip-bundle --skip-keeps --template"
   remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
-  local_options="$flags ~/Dropbox/Development/Ruby/rails_setup_template/template.rb"
+  local_options="$flags ~/Dropbox/Development/Projects/rails_setup_template/template.rb"
 
   # Bypass prompt if selection is supplied.
   if [ $2 ]; then
