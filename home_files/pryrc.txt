@@ -14,7 +14,7 @@ Pry.config.prompt = [
   end
 ]
 
-# Aliases (requires pry-debugger gem)
+# Aliases (requires pry-byebug gem)
 Pry.commands.alias_command 'w', "whereami" rescue nil
 Pry.commands.alias_command 'c', "continue" rescue nil
 Pry.commands.alias_command 's', "step" rescue nil
