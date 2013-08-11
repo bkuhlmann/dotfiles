@@ -284,6 +284,39 @@ function boa() {
   echo ''
 }
 
+#---------------------------------#
+# Ruby (http://www.ruby-lang.org) #
+#---------------------------------#
+
+# Ruby Upgrade (all) - Upgrades all Ruby projects in current directory with new Ruby version information.
+# ==== Parameters
+# * +version+ - Required. The new version to upgrade to. Example: 2.0.0-p0.
+function rua() {
+  if [ "$1" ]; then
+    while read project; do
+      (
+        cd "$project"
+        # Only process projects which have ruby version information.
+        if [ -e ".ruby-version" ]; then
+          old_version=$(head -n 1 .ruby-version)
+          new_version="$1"
+
+          # Update only if old is not equal to new version.
+          if [ "$old_version" != "$new_version" ]; then
+            echo "$1" > .ruby-version
+            # Outputs project in cyan and upgrade info in white colors.
+            echo -en "\n\033[36m${project:2}\033[m: $old_version --> $new_version."
+          fi
+        fi
+      )
+    done < <(find . -type d -depth 1)
+  else
+    echo "ERROR: Version must be supplied."
+  fi
+
+  echo -e '\n'
+}
+
 #----------------------------------------#
 # Ruby on Rails (http://rubyonrails.org) #
 #----------------------------------------#
