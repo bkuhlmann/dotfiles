@@ -379,8 +379,10 @@ function rew {
 function sc {
   if [ -e script/rails ]; then
     script/rails console $@
-  else
+  elif [ -e script/console ]; then
     script/console $@
+  else
+    rails console $@
   fi
 }
 
@@ -388,8 +390,10 @@ function sc {
 function ss {
   if [ -e script/rails ]; then
     script/rails server $@
-  else
+  elif [ -e script/server ]; then
     script/server $@
+  else
+    rails server $@
   fi
 }
 
@@ -397,8 +401,10 @@ function ss {
 function sg {
   if [ -e script/rails ]; then
     script/rails generate $@
-  else
+  elif [ -e script/generate ]; then
     script/generate $@
+  else
+    rails generate $@
   fi
 }
 
@@ -406,8 +412,10 @@ function sg {
 function sdb {
   if [ -e script/rails ]; then
     script/rails dbconsole $@
-  else
+  elif [ -e script/dbconsole ]; then
     script/dbconsole $@
+  else
+    rails dbconsole $@
   fi
 }
 
