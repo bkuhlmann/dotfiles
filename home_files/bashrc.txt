@@ -53,4 +53,6 @@ eval "$(rbenv init -)"
 export PATH="$PATH:/usr/local/share/npm/bin"
 
 # Travis CI (https://travis-ci.org)
-source "$HOME/.travis/travis.sh"
+if [ -e "$HOME/.travis/travis.sh" ]; then
+  source "$HOME/.travis/travis.sh"
+fi
