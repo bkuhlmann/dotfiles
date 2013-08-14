@@ -1,3 +1,33 @@
+# v6.0.0
+
+* Fixed 'l1' alias so that it lists dotfiles (minus . and ..).
+* Switched to using sub-shells when traversing sub-directories for all functions.
+* Switched from the pry-debugger to pry-byebug gem in irbrc.
+* Switched from RDoc to Markdown for documentation.
+* Updated the "gall" alias to use the --all option.
+* Updated the "gcap" function to use long form Git options for better readability.
+* Updated the "rew" function so that flags and local/remote options are easier to understand.
+* Updated README to match GitHub project description.
+* Updated "rew" local options to point to "Projects" path instead of the "Ruby" path.
+* Updated the sc, ss, sg, and sdb functions to support Rails 2.x.x, 3.x.x, and 4.x.x.
+* Added the "bertt" function which allows for easier testing of a specific Test::Unit test file.
+* Added the "berts" alias for getting a summary of failing (if any) test files (including line numbers).
+* Added the "bertv" alias for enabling Test::Unit to run tests in verbose mode.
+* Added the "gus" alias (i.e. git reset HEAD).
+* Added the "ggc" alias for validating and fixing dangling objects, freeing up disk space, improving performance, etc.
+* Added the "gvca" function which validates and cleans all Git projects for current diretory.
+* Added the "gail" alias for easily displaying/changing current global email address used for commits.
+* Added the "gemuc" alias for gem update and clean of entire system.
+* Added the 'w' Pry alias for "whereami".
+* Added the "md" alias for opening Markdown files within the Marked app.
+* Added a Versioning section to the README.
+* Added tsl (list-sessions), tsa (attach-session), tsk (kill-session), and tsr (rename-session) aliases for tmux.
+* Added vi as the default visual editor.
+* Added the "rua" function for upgrading all projects in current directory to a new ruby version.
+* Added Travis CI bash completion support.
+* Added missing CHANGELOG, LICENSE, and README files.
+* Added NPM to PATH.
+
 # v5.2.0
 
 * Force default Git editor to wait for files to be closed before returning.

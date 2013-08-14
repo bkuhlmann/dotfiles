@@ -25,8 +25,8 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 
 # Requirements
 
-* [OSX](https://www.apple.com/osx).
-* [OSX](https://github.com/bkuhlmann/osx) machine setup (including Homebrew, Bash enhancements, etc).
+* [Apple OSX](https://www.apple.com/osx).
+* [OSX Install](https://github.com/bkuhlmann/osx).
 * [Ruby Gem Setup](http://github.com/bkuhlmann/ruby_gem_setup).
 
 # Setup
@@ -37,16 +37,15 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v5.2.0
+    git checkout v6.0.0
 
 Master Version (unstable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
 
-Edit and save the *.txt files as you see fit.
-
-Open a terminal window and execute the following commands to install:
+Edit any of the home_files/*.txt files as you see fit. Then open a terminal window and execute the following command
+to install:
 
     cd dotfiles
     ./run.sh
@@ -80,19 +79,26 @@ for additional details):
     c = "clear"
     h = "history"
     l = "ls -alh"
-    l1 = "ls -1"
+    l1 = "ls -A1"
     p='pwd | tr -d "\r\n" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
     o = "open"
     home = "cd $HOME"
     bashs = "exec $SHELL"
 
     # Network
-    ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
+    ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+
+    # tmux (http://tmux.sourceforge.net)
+    tsl = "tmux list-sessions"
+    tsa = "tmux attach-session -t"
+    tsk = "tmux kill-session -t"
+    tsr = "tmux rename-session -t"
 
     # Git (http://git-scm.com)
     gi = "git init"
     gce = "git config -e"
+    gail = "git config --global user.email"
     gst = "git status --short --branch"
     gl = "git log --oneline --decorate --no-abbrev-commit"
     glh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
@@ -116,7 +122,7 @@ for additional details):
     gch = "git checkout"
     ga = "git add"
     gap = "git add --patch"
-    gall = "git add ."
+    gall = "git add --all ."
     gco = "git commit"
     gca = "git commit --all"
     gcm = "git commit --message"
@@ -139,10 +145,12 @@ for additional details):
     gps = "git push stage stage:master"
     gtag = "git tag"
     gtags = "git push --tags"
+    gus = "git reset HEAD"
     gres = "git reset --hard HEAD"
     gdis = "git reset --hard"
     grev = "git revert"
     glatest = "git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
+    ggc = "git fsck && git gc"
 
     # rbenv (https://github.com/sstephenson/rbenv)
     rb = "rbenv"
@@ -169,6 +177,7 @@ for additional details):
     gemu = "gem uninstall"
     gemc = "gem cleanup"
     gems = "gem server"
+    gemuc = "gem update --system && gem update && gem cleanup"
 
     # Ruby Gems Whois (https://github.com/jnunemaker/gemwhois)
     gemw = "gem whois"
@@ -184,6 +193,8 @@ for additional details):
     bes = "bundle exec rspec"
     bess = "bundle exec rspec spec"
     bert = "bundle exec rake test"
+    berts = "bundle exec rake test | grep _test.rb"
+    bertv = "TESTOPTS=-v bundle exec rake test"
     beg = "bundle exec guard"
     bch = "rm -f Gemfile.lock; bundle check"
     rebundle = "bch; bundle package"
@@ -234,10 +245,13 @@ for additional details):
     ez = "$EDITOR $HOME/.z"
 
     # Path Finder (http://www.cocoatech.com/pathfinder)
-    opf='open -a "Path Finder.app" "$PWD"'
+    opf = 'open -a "Path Finder.app" "$PWD"'
 
     # Sublime Text (http://www.sublimetext.com)
     e = "sublime"
+
+    # Marked (http://markedapp.com)
+    md = "open -a Marked"
 
 From IRB, Pry, and Rails consoles, the following commands are possible:
 
@@ -247,17 +261,18 @@ From IRB, Pry, and Rails consoles, the following commands are possible:
 
 From Pry, the following aliases are available:
 
-    c = "continue" rescue nil
-    s = "step" rescue nil
-    n = "next" rescue nil
-    f = "finish" rescue nil
-    bp = "break" rescue nil
-    bpe = "break --enable" rescue nil
-    bpd = "break --disable" rescue nil
-    bpD = "break --delete" rescue nil
-    bpc = "break --disable-all" rescue nil
-    bpC = "break --delete-all" rescue nil
-    bph = "break --help" rescue nil
+    'w' = "whereami"
+    'c' = "continue"
+    's' = "step"
+    'n' = "next"
+    'f' = "finish"
+    "bp" = "break"
+    "bpe" = "break --enable"
+    "bpd" = "break --disable"
+    "bpD" = "break --delete"
+    "bpc" = "break --disable-all"
+    "bpC" = "break --delete-all"
+    "bph" = "break --help"
 
 # Resources
 
