@@ -77,6 +77,12 @@ function gweek() {
   gince "last Monday 12am"
 }
 
+# Git Month - Answers a summarized list of current month, Git activity for all projects in current
+# directory, broken down by project.
+function gmonth() {
+  gince "month 1 12am"
+}
+
 # Git Tail - Answers the commit history from the last tag (i.e. tail end of unversioned/untagged commits).
 function gtail() {
   if [ "$(git tag)" ]; then
