@@ -65,10 +65,16 @@ function gsup() {
   gince "yesterday"
 }
 
-# Git Today - Answers a summarized list of Git activity (today only) for all projects in current
+# Git Day - Answers a summarized list of current day, Git activity for all projects in current
 # directory, broken down by project.
 function gday() {
   gince "12am"
+}
+
+# Git Week - Answers a summarized list of current week, Git activity for all projects in current
+# directory, broken down by project.
+function gweek() {
+  gince "last Monday 12am"
 }
 
 # Git Tail - Answers the commit history from the last tag (i.e. tail end of unversioned/untagged commits).
