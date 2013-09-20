@@ -33,6 +33,30 @@ function gsta() {
   echo ''
 }
 
+# Git Email (all) - Answers user email setting for all products in current directory.
+function gea() {
+  echo ''
+
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git enabled.
+      if [ -d ".git" ]; then
+        # Capture product email.
+        email=$(git config user.email)
+        if [ -z "$email" ]; then
+         email="Email unknown."
+        fi
+        # Print project (cyan) and email (white).
+        echo -e "\033[36m${project:2}\033[m: $email"
+      fi
+    )
+  done < <(find . -type d -depth 1)
+
+  echo ''
+}
+
 # Git Since - Answers a summarized list of Git activity since a specifiy date/time for all projects
 # in current directory, broken down by project.
 # Parameters:
