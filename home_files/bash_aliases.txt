@@ -26,7 +26,7 @@ alias tsr="tmux rename-session -t"
 alias gi="git init"
 alias gcle="git config --local --edit"
 alias gcge="git config --global --edit"
-alias gail="git config --global user.email"
+alias gail="git config user.email"
 alias gst="git status --short --branch"
 alias gl="git log --oneline --decorate --no-abbrev-commit"
 alias glh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
