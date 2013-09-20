@@ -33,7 +33,7 @@ function gsta() {
   echo ''
 }
 
-# Git Email (all) - Answers user email setting for all products in current directory.
+# Git Email (all) - Answers user email for all products in current directory.
 function gea() {
   echo ''
 
@@ -53,6 +53,31 @@ function gea() {
       fi
     )
   done < <(find . -type d -depth 1)
+
+  echo ''
+}
+
+# Git Set Email (all) - Sets local user email for all products in current directory.
+function gsea() {
+  echo ''
+
+  if [ "$1" ]; then
+    # Iterate project directories located in root directory.
+    while read project; do
+      (
+        cd "$project"
+        # Only process projects that are Git enabled.
+        if [ -d ".git" ]; then
+          # Configure email address for current project.
+          git config user.email "$1"
+          # Print project (cyan) and email (white).
+          echo -e "\033[36m${project:2}\033[m: $1"
+        fi
+      )
+    done < <(find . -type d -depth 1)
+  else
+    echo "ERROR: Email address must be supplied."
+  fi
 
   echo ''
 }
