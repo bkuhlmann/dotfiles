@@ -25,6 +25,7 @@ alias tsr="tmux rename-session -t"
 # Git (http://git-scm.com)
 alias gi="git init"
 alias gce="git config --edit"
+alias gcge="git config --global --edit"
 alias gail="git config --global user.email"
 alias gst="git status --short --branch"
 alias gl="git log --oneline --decorate --no-abbrev-commit"
