@@ -169,7 +169,7 @@ function gtail() {
   fi
 }
 
-# Git Tail (all) - Answers tail count (see gtail function for details) for all projects within current directory.
+# Git Tail (all) - Answers tail count (see gtail for details) for all projects within current directory.
 function gtaila() {
   echo ''
 
@@ -542,4 +542,53 @@ function gifize {
     echo "Usage: gifize input output"
   fi
   echo ''
+}
+
+#----------#
+# Dotfiles #
+#----------#
+
+function _print_aliases() {
+  while read line; do
+      if [[ "$line" == "alias"* ]]; then
+      echo $line | sed 's/alias //' | sed 's/="/ = "/'
+    fi
+  done < "$HOME/.bash_aliases"
+}
+
+function _print_functions() {
+  while read line; do
+      if [[ "$line" == "function"*"() {" && "$line" != "function _"* ]]; then
+      echo $line | sed 's/function //' | sed 's/() {//'
+    fi
+  done < "$HOME/.bash_functions"
+}
+
+function _process_option() {
+  case $1 in
+    'a')
+      _print_aliases;;
+    'f')
+      _print_functions;;
+    'q')
+      return;;
+  esac
+}
+
+function dots() {
+  if [ -z "$1" ]; then
+    while true; do
+      echo -e "\nUsage: dots OPTION"
+      echo -e "\nDotfile Options:"
+      echo "  a: Print aliases."
+      echo "  f: Print functions."
+      echo "  q: Quit/Exit."
+      echo ''
+      read -p "Enter selection: " response
+      echo ''
+      _process_option $response
+    done
+  else
+    _process_option $1
+  fi
 }
