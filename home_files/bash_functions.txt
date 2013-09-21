@@ -61,6 +61,13 @@ function ggeta() {
   echo ''
 }
 
+# Git Email - Answers user email for current project.
+function gail() {
+  if [ -d ".git" ]; then
+    git config user.email
+  fi
+}
+
 # Git Email (all) - Answers user email for all projects in current directory.
 function gaila() {
   ggeta "user.email"
