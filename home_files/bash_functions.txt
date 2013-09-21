@@ -46,11 +46,8 @@ function ggeta() {
         cd "$project"
         # Only process projects that are Git enabled.
         if [ -d ".git" ]; then
+          # Get Git config value for given key.
           result=$(git config "$1")
-
-          if [ -z "$result" ]; then
-           result="Unknown"
-          fi
 
           # Print project (cyan) and message (white).
           echo -e "\033[36m${project:2}\033[m: $result"
