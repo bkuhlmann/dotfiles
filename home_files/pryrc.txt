@@ -7,19 +7,16 @@ Pry.config.prompt = [
   proc do |conf|
     tree = conf.binding_stack.map { |stack| Pry.view_clip stack.eval("self") } * " / "
     [ruby_info, rails_info, "PRY #{tree} - #{conf.expr_number}:#{conf.nesting_level}]> "].compact * '|'
-  end,
-  proc do |conf|
-    tree = conf.binding_stack.map { |stack| Pry.view_clip stack.eval("self") } * " / "
-    [ruby_info, rails_info, "PRY #{tree} - #{conf.expr_number}:#{conf.nesting_level}]> "].compact * '|'
   end
 ]
 
 # History
-Pry.config.history.file = "$HOME/.irb_history" # Keep IRB and Pry history the same.
+Pry.config.history.file = "~/.irb_history" # Keep IRB and Pry history the same.
 
 # Aliases
+Pry.commands.alias_command 'w', "whereami" rescue nil
+
 if defined?(Byebug)
-  Pry.commands.alias_command 'w', "whereami" rescue nil
   Pry.commands.alias_command 'c', "continue" rescue nil
   Pry.commands.alias_command 's', "step" rescue nil
   Pry.commands.alias_command 'n', "next" rescue nil
