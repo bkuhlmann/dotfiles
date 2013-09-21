@@ -30,7 +30,7 @@ prompt+="$separator"
 prompt+="\u@\h" # Default color user and host (i.e. user@host).
 prompt+="$separator"
 prompt+="\$(__git_ps1 \"\[$BLUE_BACKGROUND\]%s \$(gail)\[$NORMAL\]$separator\")" # Purple Git branch with separator.
-prompt+="\[$CYAN\]${PWD##*/}\[$NORMAL\]" # Cyan current directory.
+prompt+="\[$CYAN\]\${PWD##*/}\[$NORMAL\]" # Cyan current directory.
 prompt+="]> " # Closing bracket with prompt indicator.
 export PS1=$prompt
 
