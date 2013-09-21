@@ -6,7 +6,7 @@
 # Process option selection.
 # Parameters:
 # $1 = The option to process.
-function process_option {
+function process_option() {
   case $1 in
     's')
       show_files

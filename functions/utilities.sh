@@ -4,13 +4,13 @@
 # Defines general utility functions.
 
 # Answers a list of files stored in the home_files folder of this project.
-function home_files {
+function home_files() {
   ls -1 home_files
 }
 export -f home_files
 
 # Shows available files for install.
-function show_files {
+function show_files() {
   echo "Dotfiles available for install:"
 
   for file in $(home_files)
@@ -23,7 +23,7 @@ export -f show_files
 # Installs a file.
 # Parameters:
 # $1 = The file name.
-function install_file {
+function install_file() {
   source_file="home_files/$1"
   dest_file="$HOME/.${1%.*}"
 
@@ -35,7 +35,7 @@ function install_file {
 export -f install_file
 
 # Installs all files.
-function install_files {
+function install_files() {
   echo "Installing dotfiles..."
 
   for file in $(home_files)
@@ -50,7 +50,7 @@ export -f install_files
 # Links a dotfile to this project.
 # Parameters:
 # $1 = The file name.
-function link_file {
+function link_file() {
   source_file="$PWD/home_files/$1"
   dest_file="$HOME/.${1%.*}"
 
@@ -65,7 +65,7 @@ function link_file {
 export -f link_file
 
 # Links all files.
-function link_files {
+function link_files() {
   echo "Linking dotfiles..."
 
   for file in $(home_files)
@@ -80,7 +80,7 @@ export -f link_files
 # Checks a file for changes.
 # Parameters:
 # $1 = The file name.
-function check_file {
+function check_file() {
   source_file="home_files/$1"
   dest_file="$HOME/.${1%.*}"
 
@@ -95,7 +95,7 @@ function check_file {
 export -f check_file
 
 # Checks all files for changes.
-function check_files {
+function check_files() {
   echo "Checking dotfiles for changes..."
 
   for file in $(home_files)
@@ -110,7 +110,7 @@ export -f check_files
 # Delete file.
 # Parameters:
 # $1 = The file name.
-function delete_file {
+function delete_file() {
   source_file="home_files/$1"
   dest_file="$HOME/.${1%.*}"
 
@@ -125,7 +125,7 @@ function delete_file {
 export -f delete_file
 
 # Delete files.
-function delete_files {
+function delete_files() {
   echo "Deleting dotfiles..."
 
   for file in $(home_files)
