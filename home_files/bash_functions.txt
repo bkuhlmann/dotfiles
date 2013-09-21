@@ -455,7 +455,7 @@ function rew() {
           options="$local_options"
           break;;
         'q')
-          return;;
+          break;;
       esac
     done
   fi
@@ -550,7 +550,7 @@ function gifize() {
 
 function _print_aliases() {
   while read line; do
-      if [[ "$line" == "alias"* ]]; then
+    if [[ "$line" == "alias"* ]]; then
       echo $line | sed 's/alias //' | sed 's/="/ = "/'
     fi
   done < "$HOME/.bash_aliases"
@@ -558,7 +558,7 @@ function _print_aliases() {
 
 function _print_functions() {
   while read line; do
-      if [[ "$line" == "function"*"() {" && "$line" != "function _"* ]]; then
+    if [[ "$line" == "function"*"() {" && "$line" != "function _"* ]]; then
       echo $line | sed 's/function //' | sed 's/() {//'
     fi
   done < "$HOME/.bash_functions"
@@ -567,18 +567,22 @@ function _print_functions() {
 function _process_option() {
   case $1 in
     'a')
-      _print_aliases;;
+      _print_aliases
+      break;;
     'f')
-      _print_functions;;
+      _print_functions
+      break;;
     'q')
-      return;;
+      break;;
   esac
 }
 
 function dots() {
+  echo ''
+
   if [ -z "$1" ]; then
     while true; do
-      echo -e "\nUsage: dots OPTION"
+      echo "Usage: dots OPTION"
       echo -e "\nDotfile Options:"
       echo "  a: Print aliases."
       echo "  f: Print functions."
@@ -591,4 +595,6 @@ function dots() {
   else
     _process_option $1
   fi
+
+  echo ''
 }
