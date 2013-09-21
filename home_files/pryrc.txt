@@ -31,6 +31,9 @@ Pry.commands.alias_command "bpc", "break --disable-all" rescue nil
 Pry.commands.alias_command "bpC", "break --delete-all" rescue nil
 Pry.commands.alias_command "bph", "break --help" rescue nil
 
+# Editors
+Pry.config.editor = "sublime"
+
 # Gem Enhancements (requirements)
 %w(bond hirb awesome_print).each do |gem|
   begin
