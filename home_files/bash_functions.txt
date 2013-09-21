@@ -416,7 +416,7 @@ function rua() {
 # ==== Parameters
 # * +name+ - Required. The name of the app to create.
 # * +selection+ - Optional. The template to apply. Default: (prompts for choice).
-function rew {
+function rew() {
   # Set defaults.
   options=''
 
@@ -467,7 +467,7 @@ function rew {
 }
 
 # Rails Script Console
-function sc {
+function sc() {
   if [ -e script/rails ]; then
     script/rails console $@
   elif [ -e script/console ]; then
@@ -478,7 +478,7 @@ function sc {
 }
 
 # Rails Script Server
-function ss {
+function ss() {
   if [ -e script/rails ]; then
     script/rails server $@
   elif [ -e script/server ]; then
@@ -489,7 +489,7 @@ function ss {
 }
 
 # Rails Script Generator
-function sg {
+function sg() {
   if [ -e script/rails ]; then
     script/rails generate $@
   elif [ -e script/generate ]; then
@@ -500,7 +500,7 @@ function sg {
 }
 
 # Rails Script Database Console
-function sdb {
+function sdb() {
   if [ -e script/rails ]; then
     script/rails dbconsole $@
   elif [ -e script/dbconsole ]; then
@@ -511,7 +511,7 @@ function sdb {
 }
 
 # Executes a single Test::Unit test.
-function bertt {
+function bertt() {
   if [ "$1" ]; then
     bundle exec rake test TEST="$1"
   else
@@ -527,7 +527,7 @@ function bertt {
 # ==== Parameters
 # * +input+ - Required. The file path of the source video.
 # * +output+ - Required. The file path of the animated gif (to be created).
-function gifize {
+function gifize() {
   input_path="$1"
   output_path="$2"
   temp_path=/tmp/gifize.gif
