@@ -63,7 +63,7 @@ function gkeya() {
 }
 
 # Git Email (all) - Answers user email for all projects in current directory.
-function gea() {
+function gaila() {
   gkeya "user.email"
 }
 
