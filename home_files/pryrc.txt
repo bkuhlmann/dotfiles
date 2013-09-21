@@ -17,19 +17,21 @@ Pry.config.prompt = [
 # History
 Pry.config.history.file = "$HOME/.irb_history" # Keep IRB and Pry history the same.
 
-# Aliases (requires pry-byebug gem)
-Pry.commands.alias_command 'w', "whereami" rescue nil
-Pry.commands.alias_command 'c', "continue" rescue nil
-Pry.commands.alias_command 's', "step" rescue nil
-Pry.commands.alias_command 'n', "next" rescue nil
-Pry.commands.alias_command 'f', "finish" rescue nil
-Pry.commands.alias_command "bp", "break" rescue nil
-Pry.commands.alias_command "bpe", "break --enable" rescue nil
-Pry.commands.alias_command "bpd", "break --disable" rescue nil
-Pry.commands.alias_command "bpD", "break --delete" rescue nil
-Pry.commands.alias_command "bpc", "break --disable-all" rescue nil
-Pry.commands.alias_command "bpC", "break --delete-all" rescue nil
-Pry.commands.alias_command "bph", "break --help" rescue nil
+# Aliases
+if defined?(Byebug)
+  Pry.commands.alias_command 'w', "whereami" rescue nil
+  Pry.commands.alias_command 'c', "continue" rescue nil
+  Pry.commands.alias_command 's', "step" rescue nil
+  Pry.commands.alias_command 'n', "next" rescue nil
+  Pry.commands.alias_command 'f', "finish" rescue nil
+  Pry.commands.alias_command "bp", "break" rescue nil
+  Pry.commands.alias_command "bpe", "break --enable" rescue nil
+  Pry.commands.alias_command "bpd", "break --disable" rescue nil
+  Pry.commands.alias_command "bpD", "break --delete" rescue nil
+  Pry.commands.alias_command "bpc", "break --disable-all" rescue nil
+  Pry.commands.alias_command "bpC", "break --delete-all" rescue nil
+  Pry.commands.alias_command "bph", "break --help" rescue nil
+end
 
 # Editors
 Pry.config.editor = "sublime"
