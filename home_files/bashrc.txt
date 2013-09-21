@@ -19,6 +19,8 @@ export HISTIGNORE="..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane
 . "$HOME/.bash_functions"
 
 # Command Prompt (http://jonisalonen.com/2012/your-bash-prompt-needs-this)
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
 separator="|"
 prompt="[" # Opening bracket.
 prompt+="\[$GREY\]\t\[$NORMAL\]" # Grey timestamp.
