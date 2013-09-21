@@ -33,7 +33,9 @@ function gsta() {
   echo ''
 }
 
-# Git Config Key (all) - Answers value of config key for all projects in current directory.
+# Git Get Config Value (all) - Answers key value for all projects in current directory.
+# Parameters:
+# $1 = The key name.
 function ggeta() {
   echo ''
 
@@ -67,7 +69,7 @@ function gaila() {
   ggeta "user.email"
 }
 
-# Git Set (all) - Sets key=value pair for all projects in current directory.
+# Git Set Config Value (all) - Sets value for key for all projects in current directory.
 # Parameters:
 # $1 = The key name.
 # $2 = The key value.
@@ -95,15 +97,17 @@ function gseta() {
   echo ''
 }
 
-# Git Set Email (all) - Sets user email for all projects in current directory.
+# Git Email Set (all) - Sets user email for all projects in current directory.
 # Parameters:
 # $1 = The email address.
-function gsea() {
+function gailsa() {
   gseta "user.email" "$1"
 }
 
 # Git Unset (all) - Unsets all projects in current directory.
-function gusa() {
+# Parameters:
+# $1 = The key name.
+function gunseta() {
   echo ''
 
   if [ "$1" ]; then
