@@ -33,31 +33,41 @@ function gsta() {
   echo ''
 }
 
-# Git Email (all) - Answers user email for all products in current directory.
-function gea() {
+# Git Config Key (all) - Answers value of config key for all projects in current directory.
+function gcka() {
   echo ''
 
-  # Iterate project directories located in root directory.
-  while read project; do
-    (
-      cd "$project"
-      # Only process projects that are Git enabled.
-      if [ -d ".git" ]; then
-        # Capture product email.
-        email=$(git config user.email)
-        if [ -z "$email" ]; then
-         email="Email unknown."
+  if [ "$1" ]; then
+    # Iterate project directories located in root directory.
+    while read project; do
+      (
+        cd "$project"
+        # Only process projects that are Git enabled.
+        if [ -d ".git" ]; then
+          result=$(git config "$1")
+
+          if [ -z "$result" ]; then
+           result="Unknown"
+          fi
+
+          # Print project (cyan) and message (white).
+          echo -e "\033[36m${project:2}\033[m: $result"
         fi
-        # Print project (cyan) and email (white).
-        echo -e "\033[36m${project:2}\033[m: $email"
-      fi
-    )
-  done < <(find . -type d -depth 1)
+      )
+    done < <(find . -type d -depth 1)
+  else
+    echo "ERROR: Key must be supplied."
+  fi
 
   echo ''
 }
 
-# Git Set Email (all) - Sets local user email for all products in current directory.
+# Git Email (all) - Answers user email for all projects in current directory.
+function gea() {
+  gcka "user.email"
+}
+
+# Git Set Email (all) - Sets local user email for all projects in current directory.
 function gsea() {
   echo ''
 
@@ -82,7 +92,7 @@ function gsea() {
   echo ''
 }
 
-# Git Unset (all) - Unsets all products in current directory.
+# Git Unset (all) - Unsets all projects in current directory.
 function gusa() {
   echo ''
 
