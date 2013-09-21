@@ -14,6 +14,9 @@ Pry.config.prompt = [
   end
 ]
 
+# History
+Pry.config.history.file = "$HOME/.irb_history" # Keep IRB and Pry history the same.
+
 # Aliases (requires pry-byebug gem)
 Pry.commands.alias_command 'w', "whereami" rescue nil
 Pry.commands.alias_command 'c', "continue" rescue nil
