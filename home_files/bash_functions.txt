@@ -67,29 +67,39 @@ function gaila() {
   gkeya "user.email"
 }
 
-# Git Set Email (all) - Sets local user email for all projects in current directory.
-function gsea() {
+# Git Set (all) - Sets key=value pair for all projects in current directory.
+# Parameters:
+# $1 = The key name.
+# $2 = The key value.
+function gseta() {
   echo ''
 
-  if [ "$1" ]; then
+  if [ "$1" -a "$2" ]; then
     # Iterate project directories located in root directory.
     while read project; do
       (
         cd "$project"
         # Only process projects that are Git enabled.
         if [ -d ".git" ]; then
-          # Configure email address for current project.
-          git config user.email "$1"
+          # Set key value for current project.
+          git config "$1" "$2"
           # Print project (cyan) and email (white).
-          echo -e "\033[36m${project:2}\033[m: $1"
+          echo -e "\033[36m${project:2}\033[m: $1 = $2"
         fi
       )
     done < <(find . -type d -depth 1)
   else
-    echo "ERROR: Email address must be supplied."
+    echo "ERROR: Key and value must be supplied."
   fi
 
   echo ''
+}
+
+# Git Set Email (all) - Sets user email for all projects in current directory.
+# Parameters:
+# $1 = The email address.
+function gsea() {
+  gseta "user.email" "$1"
 }
 
 # Git Unset (all) - Unsets all projects in current directory.
