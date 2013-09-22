@@ -1,6 +1,6 @@
 # BASH ALIASES
 
-# General
+# Section: General
 alias ..="cd .."
 alias ...="cd ../.."
 alias c="clear"
@@ -12,17 +12,17 @@ alias o="open"
 alias home="cd $HOME"
 alias bashs="exec $SHELL"
 
-# Network
+# Section: Network
 alias ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
 alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 
-# tmux (http://tmux.sourceforge.net)
+# Section: [tmux](http://tmux.sourceforge.net)
 alias tsl="tmux list-sessions"
 alias tsa="tmux attach-session -t"
 alias tsk="tmux kill-session -t"
 alias tsr="tmux rename-session -t"
 
-# Git (http://git-scm.com)
+# Section: [Git](http://git-scm.com)
 alias gi="git init"
 alias gcle="git config --local --edit"
 alias gcge="git config --global --edit"
@@ -81,7 +81,7 @@ alias grev="git revert"
 alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
 alias ggc="git fsck && git gc"
 
-# rbenv (https://github.com/sstephenson/rbenv)
+# Section: [rbenv](https://github.com/sstephenson/rbenv)
 alias rb="rbenv"
 alias rbg="rbenv global"
 alias rbl="rbenv local"
@@ -94,12 +94,12 @@ alias rbi="rbenv install"
 alias rbu="rbenv uninstall"
 alias rbvars="rbenv vars"
 
-# Ruby (http://www.ruby-lang.org)
+# Section: [Ruby](http://www.ruby-lang.org)
 alias rd="rdoc -a -o _doc"
 alias rdo="open _doc/index.html"
 alias rdd="rm -rf _doc"
 
-# Ruby Gems (http://rubygems.org)
+# Section: [Ruby Gems](http://rubygems.org)
 alias geml="gem list"
 alias gemi="gem install"
 alias gemup="gem update"
@@ -108,10 +108,10 @@ alias gemc="gem cleanup"
 alias gems="gem server"
 alias gemuc="gem update --system && gem update && gem cleanup"
 
-# Ruby Gems Whois (https://github.com/jnunemaker/gemwhois)
+# Section: [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
 alias gemw="gem whois"
 
-# Bundler (http://gembundler.com)
+# Section: [Bundler](http://gembundler.com)
 alias b="bundle"
 alias bi="bundle install"
 alias bu="bundle update"
@@ -128,15 +128,15 @@ alias beg="bundle exec guard"
 alias bch="rm -f Gemfile.lock; bundle check"
 alias rebundle="bch; bundle package"
 
-# Gemsmith (https://github.com/bkuhlmann/gemsmith)
+# Section: [Gemsmith](https://github.com/bkuhlmann/gemsmith)
 alias g="gemsmith"
 alias go="gemsmith open"
 
-# PostgreSQL (http://www.postgresql.org)
+# Section: [PostgreSQL](http://www.postgresql.org)
 alias pgs="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias pgq="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
-# Ruby on Rails (http://rubyonrails.org)
+# Section: [Ruby on Rails](http://rubyonrails.org)
 alias scs="sc --sandbox"
 alias sgc="sg controller"
 alias sgm="sg model"
@@ -158,26 +158,26 @@ alias dmodels="mkdir -p doc/design && railroady --label --inheritance --specify 
 alias dcontrollers="mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
 alias dstate="mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
 
-# Capistrano (https://github.com/capistrano/capistrano)
+# Section: [Capistrano](https://github.com/capistrano/capistrano)
 alias bec="bundle exec cap"
 alias caps="bundle exec cap stage deploy"
 alias capp="bundle exec cap production deploy"
 
-# Sitemap Generator (https://github.com/kjvarga/sitemap_generator)
+# Section: [Sitemap Generator](https://github.com/kjvarga/sitemap_generator)
 alias rsite="rake sitemap:refresh:no_ping"
 alias rsitep="rake sitemap:refresh"
 
-# Heroku+ (https://github.com/bkuhlmann/heroku_plus)
+# Section: [Heroku+](https://github.com/bkuhlmann/heroku_plus)
 alias hpas="hp account --switch"
 
-# Z (https://github.com/rupa/z)
+# Section: [Z](https://github.com/rupa/z)
 alias ez="$EDITOR $HOME/.z"
 
-# Path Finder (http://www.cocoatech.com/pathfinder)
+# Section: [Path Finder](http://www.cocoatech.com/pathfinder)
 alias opf='open -a "Path Finder.app" "$PWD"'
 
-# Sublime Text (http://www.sublimetext.com)
+# Section: [Sublime Text](http://www.sublimetext.com)
 alias e="sublime"
 
-# Marked (http://markedapp.com)
+# Section: [Marked](http://markedapp.com)
 alias md="open -a Marked"

@@ -1,8 +1,8 @@
 # BASH FUNCTIONS
 
-#--------------------------#
-# Git (http://git-scm.com) #
-#--------------------------#
+#------------------------------------#
+# Section: [Git](http://git-scm.com) #
+#------------------------------------#
 
 # Name: Git Root
 # Description: Changes to project root directory (regardless of how deep the current path might be).
@@ -366,9 +366,9 @@ function gbdm() {
   done
 }
 
-#-----------------------------#
-# GitHub (https://github.com) #
-#-----------------------------#
+#---------------------------------------#
+# Section: [GitHub](https://github.com) #
+#---------------------------------------#
 
 # Name: Initizalize GitHub
 # Description: Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
@@ -381,9 +381,9 @@ function init_github() {
   git config push.default current
 }
 
-#---------------------------------#
-# Bundler (http://gembundler.com) #
-#---------------------------------#
+#-------------------------------------------#
+# Section: [Bundler](http://gembundler.com) #
+#-------------------------------------------#
 
 # Name: Bundle Outdated (all)
 # Description: Answers a list of outdated gems for all projects within current directory.
@@ -410,9 +410,9 @@ function boa() {
   echo ''
 }
 
-#---------------------------------#
-# Ruby (http://www.ruby-lang.org) #
-#---------------------------------#
+#-------------------------------------------#
+# Section: [Ruby](http://www.ruby-lang.org) #
+#-------------------------------------------#
 
 # Name: Ruby Upgrade (all)
 # Description: Upgrades all Ruby projects in current directory with new Ruby version information.
@@ -443,9 +443,9 @@ function rua() {
   echo -e '\n'
 }
 
-#----------------------------------------#
-# Ruby on Rails (http://rubyonrails.org) #
-#----------------------------------------#
+#--------------------------------------------------#
+# Section: [Ruby on Rails](http://rubyonrails.org) #
+#--------------------------------------------------#
 
 # Name: Create Rails Skeleton
 # Description: Creates a new rails applications skeleton.
@@ -568,9 +568,9 @@ function bertt() {
   fi
 }
 
-#--------------------------------#
-# FFmpeg (http://www.ffmpeg.org) #
-#--------------------------------#
+#------------------------------------------#
+# Section: [FFmpeg](http://www.ffmpeg.org) #
+#------------------------------------------#
 
 # Name: Gifize
 # Description: Converts a video into an animated GIF.
@@ -592,20 +592,31 @@ function gifize() {
   echo ''
 }
 
-#----------#
-# Dotfiles #
-#----------#
+#-------------------#
+# Section: Dotfiles #
+#-------------------#
+
+function _print_section() {
+  if [[ "$1" == "# Section:"* ]]; then
+    section=$(echo $1 | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
+    echo -e "\n##### $section"
+  fi
+}
 
 function _print_aliases() {
   while read line; do
+    _print_section "$line"
+
     if [[ "$line" == "alias"* ]]; then
-      echo $line | sed 's/alias //' | sed 's/="/ = "/' | sed "s/='/ = '/"
+      echo "    $line" | sed 's/alias //' | sed 's/="/ = "/' | sed "s/='/ = '/"
     fi
   done < "$HOME/.bash_aliases"
 }
 
 function _print_functions() {
   while read line; do
+    _print_section "$line"
+
     if [[ "$line" == "# Name:"* ]]; then
       label="$(echo $line | sed 's/# Name://')"
     fi
@@ -616,7 +627,7 @@ function _print_functions() {
 
     if [[ "$line" == "function"*"() {" && "$line" != "function _"* ]]; then
       name=$(echo $line | sed 's/function //' | sed 's/() {//')
-      echo "$name =$label -$description"
+      echo "    $name =$label -$description"
       unset name
       unset description
     fi
@@ -642,8 +653,6 @@ function _process_option() {
 # Name: Dots
 # Description: Informational utility for learning more about dotfile aliases, functions, etc.
 function dots() {
-  echo ''
-
   while true; do
     if [ -z "$1" ]; then
       echo "Usage: dots OPTION"

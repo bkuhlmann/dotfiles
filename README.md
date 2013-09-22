@@ -70,8 +70,9 @@ After install, the following files will require manual updating:
 
 # Usage
 
-From the command line, following aliases are available:
+From the command line, the following aliases are available:
 
+##### General
     .. = "cd .."
     ... = "cd ../.."
     c = "clear"
@@ -82,12 +83,18 @@ From the command line, following aliases are available:
     o = "open"
     home = "cd $HOME"
     bashs = "exec $SHELL"
+
+##### Network
     ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+
+##### [tmux](http://tmux.sourceforge.net)
     tsl = "tmux list-sessions"
     tsa = "tmux attach-session -t"
     tsk = "tmux kill-session -t"
     tsr = "tmux rename-session -t"
+
+##### [Git](http://git-scm.com)
     gi = "git init"
     gcle = "git config --local --edit"
     gcge = "git config --global --edit"
@@ -145,6 +152,8 @@ From the command line, following aliases are available:
     grev = "git revert"
     glatest = "git for-each-ref --sort=-committerdate refs/heads --format = '%(committerdate:short) %(refname:short)'"
     ggc = "git fsck && git gc"
+
+##### [rbenv](https://github.com/sstephenson/rbenv)
     rb = "rbenv"
     rbg = "rbenv global"
     rbl = "rbenv local"
@@ -156,9 +165,13 @@ From the command line, following aliases are available:
     rbi = "rbenv install"
     rbu = "rbenv uninstall"
     rbvars = "rbenv vars"
+
+##### [Ruby](http://www.ruby-lang.org)
     rd = "rdoc -a -o _doc"
     rdo = "open _doc/index.html"
     rdd = "rm -rf _doc"
+
+##### [Ruby Gems](http://rubygems.org)
     geml = "gem list"
     gemi = "gem install"
     gemup = "gem update"
@@ -166,7 +179,11 @@ From the command line, following aliases are available:
     gemc = "gem cleanup"
     gems = "gem server"
     gemuc = "gem update --system && gem update && gem cleanup"
+
+##### [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
     gemw = "gem whois"
+
+##### [Bundler](http://gembundler.com)
     b = "bundle"
     bi = "bundle install"
     bu = "bundle update"
@@ -182,10 +199,16 @@ From the command line, following aliases are available:
     beg = "bundle exec guard"
     bch = "rm -f Gemfile.lock; bundle check"
     rebundle = "bch; bundle package"
+
+##### [Gemsmith](https://github.com/bkuhlmann/gemsmith)
     g = "gemsmith"
     go = "gemsmith open"
+
+##### [PostgreSQL](http://www.postgresql.org)
     pgs = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
     pgq = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+##### [Ruby on Rails](http://rubyonrails.org)
     scs = "sc --sandbox"
     sgc = "sg controller"
     sgm = "sg model"
@@ -206,19 +229,34 @@ From the command line, following aliases are available:
     dmodels = "mkdir -p doc/design && railroady --label --inheritance --specify --all-columns --join --transitive --output doc/design/models.dot --models"
     dcontrollers = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
     dstate = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
+
+##### [Capistrano](https://github.com/capistrano/capistrano)
     bec = "bundle exec cap"
     caps = "bundle exec cap stage deploy"
     capp = "bundle exec cap production deploy"
+
+##### [Sitemap Generator](https://github.com/kjvarga/sitemap_generator)
     rsite = "rake sitemap:refresh:no_ping"
     rsitep = "rake sitemap:refresh"
+
+##### [Heroku+](https://github.com/bkuhlmann/heroku_plus)
     hpas = "hp account --switch"
+
+##### [Z](https://github.com/rupa/z)
     ez = "$EDITOR $HOME/.z"
+
+##### [Path Finder](http://www.cocoatech.com/pathfinder)
     opf = 'open -a "Path Finder.app" "$PWD"'
+
+##### [Sublime Text](http://www.sublimetext.com)
     e = "sublime"
+
+##### [Marked](http://markedapp.com)
     md = "open -a Marked"
 
-From the command line, following functions are available:
+From the command line, the following functions are available:
 
+##### [Git](http://git-scm.com)
     groot = Git Root - Changes to project root directory (regardless of how deep the current path might be).
     gsta = Git Status (all) - Answers the status of projects with uncommited/unpushed changes.
     ggeta = Git Get Config Value (all) - Answers key value for all projects in current directory.
@@ -240,16 +278,28 @@ From the command line, following functions are available:
     gvca = Git Validate and Clean (all) - Validates and cleans all projects in current directory.
     gbd = Git Branch Delete - Deletes local and associated remote branch (if found).
     gbdm = Git Branch Delete Merged - Deletes local and remote merged branches (if found).
+
+##### [GitHub](https://github.com)
     init_github = Initizalize GitHub - Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
+
+##### [Bundler](http://gembundler.com)
     boa = Bundle Outdated (all) - Answers a list of outdated gems for all projects within current directory.
+
+##### [Ruby](http://www.ruby-lang.org)
     rua = Ruby Upgrade (all) - Upgrades all Ruby projects in current directory with new Ruby version information.
-    rew = Rails New - Builds a new rails app for selected template.
+
+##### [Ruby on Rails](http://rubyonrails.org)
+    rew = Rails New - Builds a new rails application skeleton for selected template.
     sc = Rails Script Console - Launches the Rails console.
     ss = Rails Script Server - Launches the Rails server.
     sg = Rails Script Generator - Launches a Rails generator for controller, model, etc. scaffolds.
     sdb = Rails Script Database Console - Launches the Rails database console for direct access to the current application database.
     bertt = Bundle Execute Rake Test - Executes a single Test::Unit test.
+
+##### [FFmpeg](http://www.ffmpeg.org)
     gifize = Gifize - Converts a video into an animated GIF.
+
+##### Dotfiles
     dots = Dots - Informational utility for learning more about dotfile aliases, functions, etc.
 
 From IRB, Pry, and Rails consoles, the following commands are possible:
