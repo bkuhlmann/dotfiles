@@ -8,7 +8,7 @@
 # Description: Inspect remote file, via curl, within default editor.
 function curli() {
   file=$(mktemp -t suspicious_curl_file) || { echo "Failed to create temporary curl file"; return; }
-  curl -fsSL "$1" > $file || { echo "Failed to curl file"; return; }
+  curl --fail --silent --show-error --location "$1" > $file || { echo "Failed to curl file"; return; }
   $EDITOR -w $file || { echo "Unable to open temporary curl file"; return; }
   rm -f $file;
 }
