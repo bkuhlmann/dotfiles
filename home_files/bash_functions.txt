@@ -618,16 +618,16 @@ function _print_functions() {
     _print_section "$line"
 
     if [[ "$line" == "# Name:"* ]]; then
-      label="$(echo $line | sed 's/# Name://')"
+      label="$(echo $line | sed 's/# Name://' | sed 's/^ *//g')"
     fi
 
     if [[ "$line" == "# Description:"* ]]; then
-      description="$(echo $line | sed 's/# Description://')"
+      description="$(echo $line | sed 's/# Description://' | sed 's/^ *//g')"
     fi
 
     if [[ "$line" == "function"*"() {" && "$line" != "function _"* ]]; then
       name=$(echo $line | sed 's/function //' | sed 's/() {//')
-      echo "    $name =$label -$description"
+      echo "    $name = $label - $description"
       unset name
       unset description
     fi
