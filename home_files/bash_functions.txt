@@ -4,9 +4,9 @@
 # Section: [curl](http://curl.haxx.se) #
 #--------------------------------------#
 
-# Name: Inspect Curl
+# Name: Curl Inspect
 # Description: Inspect remote file, via curl, within default editor.
-function icurl() {
+function curli() {
   file=$(mktemp -t suspicious_curl_file) || { echo "Failed to create temporary curl file"; return; }
   curl -fsSL "$1" > $file || { echo "Failed to curl file"; return; }
   $EDITOR -w $file || { echo "Unable to open temporary curl file"; return; }
