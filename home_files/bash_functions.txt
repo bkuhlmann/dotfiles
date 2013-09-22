@@ -465,7 +465,7 @@ function rua() {
 # Parameters: name (required) = The Rails application name, options (optional) = The custom build options to apply.
 function _create_rails_skeleton() {
   echo "rails new $1 $2"
-  rails new "$1" "$2"
+  rails new $1 $2
 }
 
 # Label: Process Rew Option
@@ -473,18 +473,22 @@ function _create_rails_skeleton() {
 # Parameters: name (required) = The Rails application name, template (required) = The template to apply.
 function _process_rew_option() {
   flags="--database sqlite3 --skip-javascript --skip-test-unit --force --skip-bundle --skip-keeps --template"
-  remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
-  local_options="$flags ~/Dropbox/Development/Projects/rails_setup_template/template.rb"
+  slim_options="$flags https://raw.github.com/bkuhlmann/rails_slim_template/master/template.rb"
+  setup_remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
+  setup_local_options="$flags $HOME/Dropbox/Development/Projects/rails_setup_template/template.rb"
 
   case $2 in
     1)
       _create_rails_skeleton "$1"
       break;;
     2)
-      _create_rails_skeleton "$1" "$remote_options"
+      _create_rails_skeleton "$1" "$slim_options"
       break;;
     3)
-      _create_rails_skeleton "$1" "$local_options"
+      _create_rails_skeleton "$1" "$setup_remote_options"
+      break;;
+    4)
+      _create_rails_skeleton "$1" "$setup_local_options"
       break;;
     'q')
       break;;
@@ -508,8 +512,9 @@ function rew() {
         echo "Usage: rew NAME TEMPLATE"
         echo -e "\nAvailable Templates:"
         echo "  1: Rails Default Template"
-        echo "  2: Rails Setup Template"
-        echo "  3: Rails Setup Template (experimental)"
+        echo "  2: Rails Slim Template"
+        echo "  3: Rails Setup Template"
+        echo "  4: Rails Setup Template (experimental)"
         echo
         read -p "Please pick one (or type 'q' to quit): " response
         echo
