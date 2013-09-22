@@ -589,7 +589,7 @@ function gifize() {
 function _print_aliases() {
   while read line; do
     if [[ "$line" == "alias"* ]]; then
-      echo $line | sed 's/alias //' | sed 's/="/ = "/'
+      echo $line | sed 's/alias //' | sed 's/="/ = "/' | sed "s/='/ = '/"
     fi
   done < "$HOME/.bash_aliases"
 }
