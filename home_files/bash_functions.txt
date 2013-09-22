@@ -447,56 +447,66 @@ function rua() {
 # Ruby on Rails (http://rubyonrails.org) #
 #----------------------------------------#
 
-# Name: Rails New
-# Description: Builds a new rails app for selected template.
-# Parameters: name = Required. The name of the app to create, selection = Optional. The template to apply.
-function rew() {
-  # Set defaults.
-  options=''
+# Name: Create Rails Skeleton
+# Description: Creates a new rails applications skeleton.
+# Parameters: name (required) = The Rails application name, options (optional) = The custom build options to apply.
+function _create_rails_skeleton() {
+  echo "rails new $1 $2"
+  rails new "$1" "$2"
+}
 
-  # Template flags and options.
+# Name: Process Rew Option
+# Description: Processes supplied option for constructing new Rails application skeletons with custom build settings.
+# Parameters: name (required) = The Rails application name, template (required) = The template to apply.
+function _process_rew_option() {
   flags="--database sqlite3 --skip-javascript --skip-test-unit --force --skip-bundle --skip-keeps --template"
   remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
   local_options="$flags ~/Dropbox/Development/Projects/rails_setup_template/template.rb"
 
-  # Bypass prompt if selection is supplied.
-  if [ $2 ]; then
-    case $2 in
-      2)
-        options="$remote_options"
-        ;;
-      3)
-        options="$local_options"
-        ;;
-    esac
-  # Otherwise, prompt for template when selection is unknown.
-  else
-    echo -e "Usage: rew NAME TEMPLATE"
-    echo -e "\nAvailable Templates:"
-    echo "  1: Rails Default Template"
-    echo "  2: Rails Setup Template"
-    echo "  3: Rails Setup Template (local)"
+  case $2 in
+    1)
+      _create_rails_skeleton "$1"
+      break;;
+    2)
+      _create_rails_skeleton "$1" "$remote_options"
+      break;;
+    3)
+      _create_rails_skeleton "$1" "$local_options"
+      break;;
+    'q')
+      break;;
+    *)
+      echo "ERROR: Invalid option."
+      break;;
+  esac
+}
+
+# Name: Rails New
+# Description: Builds a new rails application skeleton for selected template.
+# Parameters: name (required) = The Rails application name, template (optional) = The template to apply.
+function rew() {
+  echo
+
+  if [ "$1" ]; then
     while true; do
-      read -p "Please pick one (or type 'q' to quit): " response
-      case $response in
-        '1')
-          unset options
-          break;;
-        '2')
-          options="$remote_options"
-          break;;
-        '3')
-          options="$local_options"
-          break;;
-        'q')
-          break;;
-      esac
+      if [ $2 ]; then
+        _process_rew_option $1 $2
+      else
+        echo "Usage: rew NAME TEMPLATE"
+        echo -e "\nAvailable Templates:"
+        echo "  1: Rails Default Template"
+        echo "  2: Rails Setup Template"
+        echo "  3: Rails Setup Template (experimental)"
+        echo
+        read -p "Please pick one (or type 'q' to quit): " response
+        echo
+        _process_rew_option "$1" $response
+      fi
     done
+  else
+    echo "ERROR: Rails application name must be supplied."
   fi
 
-  # Create new Rails app.
-  echo "rails new $1 $options"
-  rails new $1 $options
   echo
 }
 
