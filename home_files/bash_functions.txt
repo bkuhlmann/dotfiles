@@ -616,14 +616,24 @@ function _print_section() {
   fi
 }
 
+function _print_alias() {
+  echo "$1" | sed 's/alias //' | sed 's/="/ = "/' | sed "s/='/ = '/"
+}
+
 function _print_aliases() {
   while read line; do
     _print_section "$line"
 
     if [[ "$line" == "alias"* ]]; then
-      echo "    $line" | sed 's/alias //' | sed 's/="/ = "/' | sed "s/='/ = '/"
+      echo -n "    "
+      _print_alias "$line"
     fi
   done < "$HOME/.bash_aliases"
+}
+
+function _print_function() {
+  name=$(echo $1 | sed 's/function //' | sed 's/() {//')
+  echo "$name = $2 - $3"
 }
 
 function _print_functions() {
@@ -639,8 +649,9 @@ function _print_functions() {
     fi
 
     if [[ "$line" == "function"*"() {" && "$line" != "function _"* ]]; then
-      name=$(echo $line | sed 's/function //' | sed 's/() {//')
-      echo "    $name = $label - $description"
+      echo -n "    "
+      _print_function "$line" "$label" "$description"
+
       unset name
       unset description
     fi
