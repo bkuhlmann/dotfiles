@@ -16,6 +16,9 @@ alias bashs="exec $SHELL"
 alias ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
 alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 
+# Section: SSH
+alias sshe="$EDITOR $HOME/.ssh/config"
+
 # Section: [tmux](http://tmux.sourceforge.net)
 alias tsl="tmux list-sessions"
 alias tsa="tmux attach-session -t"
