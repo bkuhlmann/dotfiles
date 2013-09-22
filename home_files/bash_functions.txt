@@ -631,31 +631,72 @@ function _print_aliases() {
   done < "$HOME/.bash_aliases"
 }
 
-function _print_function() {
+function _print_function_name() {
   name=$(echo $1 | sed 's/function //' | sed 's/() {//')
   echo "$name = $2 - $3"
+}
+
+function _set_function_label() {
+  if [[ "$1" == "# Name:"* ]]; then
+    label=$(echo "$1" | sed 's/# Name://' | sed 's/^ *//g')
+  fi
+}
+
+function _set_function_description() {
+  if [[ "$line" == "# Description:"* ]]; then
+    description=$(echo $line | sed 's/# Description://' | sed 's/^ *//g')
+  fi
 }
 
 function _print_functions() {
   while read line; do
     _print_section "$line"
-
-    if [[ "$line" == "# Name:"* ]]; then
-      label="$(echo $line | sed 's/# Name://' | sed 's/^ *//g')"
-    fi
-
-    if [[ "$line" == "# Description:"* ]]; then
-      description="$(echo $line | sed 's/# Description://' | sed 's/^ *//g')"
-    fi
+    _set_function_label "$line"
+    _set_function_description "$line"
 
     if [[ "$line" == "function"*"() {" && "$line" != "function _"* ]]; then
       echo -n "    "
-      _print_function "$line" "$label" "$description"
-
-      unset name
+      _print_function_name "$line" "$label" "$description"
+      unset label
       unset description
     fi
   done < "$HOME/.bash_functions"
+}
+
+function _find_alias() {
+  while read line; do
+    if [[ "$line" == "alias "*"$1"* ]]; then
+      echo -n "    Alias: "
+      _print_alias "$line"
+    fi
+  done < "$HOME/.bash_aliases"
+}
+
+function _find_function() {
+  while read line; do
+    _set_function_label "$line"
+    _set_function_description "$line"
+
+    if [[ "$line" == "function "*"$1"* ]]; then
+      echo -n "    Function: "
+      _print_function_name "$line" "$label" "$description"
+      unset label
+      unset description
+    fi
+  done < "$HOME/.bash_functions"
+}
+
+function _find_command() {
+  echo
+
+  if [ "$1" ]; then
+    echo "\"$1\" Search Results:"
+
+    _find_alias "$1"
+    _find_function "$1"
+  else
+    echo "ERROR: Nothing to search for. Command must be supplied."
+  fi
 }
 
 function _process_option() {
@@ -665,6 +706,9 @@ function _process_option() {
       break;;
     'f')
       _print_functions
+      break;;
+    's')
+      _find_command "$2"
       break;;
     'q')
       break;;
@@ -683,13 +727,14 @@ function dots() {
       echo -e "\nDotfile Options:"
       echo "  a: Print aliases."
       echo "  f: Print functions."
+      echo "  s: Search for alias/function."
       echo "  q: Quit/Exit."
       echo ''
       read -p "Enter selection: " response
       echo ''
-      _process_option $response
+      _process_option $response "$2"
     else
-      _process_option $1
+      _process_option $1 "$2"
     fi
   done
 
