@@ -4,7 +4,7 @@
 # Section: [curl](http://curl.haxx.se) #
 #--------------------------------------#
 
-# Name: Curl Inspect
+# Label: Curl Inspect
 # Description: Inspect remote file, via curl, within default editor.
 function curli() {
   file=$(mktemp -t suspicious_curl_file) || { echo "Failed to create temporary curl file"; return; }
@@ -17,13 +17,13 @@ function curli() {
 # Section: [Git](http://git-scm.com) #
 #------------------------------------#
 
-# Name: Git Root
+# Label: Git Root
 # Description: Changes to project root directory (regardless of how deep the current path might be).
 function groot() {
   cd "$(dirname $(git rev-parse --git-dir))"
 }
 
-# Name: Git Status (all)
+# Label: Git Status (all)
 # Description: Answers the status of projects with uncommited/unpushed changes.
 function gsta() {
   echo ''
@@ -48,7 +48,7 @@ function gsta() {
   echo ''
 }
 
-# Name: Git Get Config Value (all)
+# Label: Git Get Config Value (all)
 # Description: Answers key value for all projects in current directory.
 # Parameters: $1 = The key name.
 function ggeta() {
@@ -76,7 +76,7 @@ function ggeta() {
   echo ''
 }
 
-# Name: Git Email
+# Label: Git Email
 # Description: Answers user email for current project.
 function gail() {
   if [ -d ".git" ]; then
@@ -84,13 +84,13 @@ function gail() {
   fi
 }
 
-# Name: Git Email (all)
+# Label: Git Email (all)
 # Description: Answers user email for all projects in current directory.
 function gaila() {
   ggeta "user.email"
 }
 
-# Name: Git Set Config Value (all)
+# Label: Git Set Config Value (all)
 # Description: Sets key value for all projects in current directory.
 # Parameters: $1 = The key name, $2 = The key value.
 function gseta() {
@@ -117,14 +117,14 @@ function gseta() {
   echo ''
 }
 
-# Name: Git Email Set (all)
+# Label: Git Email Set (all)
 # Description: Sets user email for all projects in current directory.
 # Parameters: $1 = The email address.
 function gailsa() {
   gseta "user.email" "$1"
 }
 
-# Name: Git Unset (all)
+# Label: Git Unset (all)
 # Description: Unsets key value for all projects in current directory.
 # Parameters: $1 = The key name.
 function gunseta() {
@@ -156,7 +156,7 @@ function gunseta() {
   echo ''
 }
 
-# Name: Git Since
+# Label: Git Since
 # Description: Answers a summarized list of Git activity since date/time for all projects in current directory.
 # Parameters: $1 = The past date/time from which to log activity up to now.
 function gince() {
@@ -181,31 +181,31 @@ function gince() {
   done < <(find . -type d -depth 1)
 }
 
-# Name: Git Standup
+# Label: Git Standup
 # Description: Answers a summarized list of Git activity since yesterday for all projects in current directory.
 function gsup() {
   gince "yesterday"
 }
 
-# Name: Git Day
+# Label: Git Day
 # Description: Answers a summarized list of Git current day activity for all projects in current directory.
 function gday() {
   gince "12am"
 }
 
-# Name: Git Week
+# Label: Git Week
 # Description: Answers a summarized list of Git current week activity for all projects in current directory.
 function gweek() {
   gince "last Monday 12am"
 }
 
-# Name: Git Month
+# Label: Git Month
 # Description: Answers a summarized list of Git current month activity for all projects in current directory.
 function gmonth() {
   gince "month 1 12am"
 }
 
-# Name: Git Tail
+# Label: Git Tail
 # Description: Answers commit history since last tag for current project.
 function gtail() {
   if [ "$(git tag)" ]; then
@@ -213,7 +213,7 @@ function gtail() {
   fi
 }
 
-# Name: Git Tail (all)
+# Label: Git Tail (all)
 # Description: Answers commit history count since last tag (see gtail) for all projects in current directory.
 function gtaila() {
   echo ''
@@ -244,7 +244,7 @@ function gtaila() {
   echo ''
 }
 
-# Name: Git Stash (all)
+# Label: Git Stash (all)
 # Description: Answers stash count for all projects within current directory.
 function gasha() {
   echo ''
@@ -268,7 +268,7 @@ function gasha() {
   echo ''
 }
 
-# Name: Git Pull (all)
+# Label: Git Pull (all)
 # Description: Pulls down new changes (if any) from remote branch for all projects in current directory.
 function gpua() {
   echo ''
@@ -293,7 +293,7 @@ function gpua() {
   echo ''
 }
 
-# Name: Git Commit and Push (all)
+# Label: Git Commit and Push (all)
 # Description: Commits and pushes changes for all projects within current directory.
 # Parameters: $1 = The commit message.
 function gcap() {
@@ -320,7 +320,7 @@ function gcap() {
   echo ''
 }
 
-# Name: Git Validate and Clean (all)
+# Label: Git Validate and Clean (all)
 # Description: Validates and cleans all projects in current directory.
 function gvca() {
   echo ''
@@ -339,7 +339,7 @@ function gvca() {
   echo ''
 }
 
-# Name: Git Branch Delete
+# Label: Git Branch Delete
 # Description: Deletes local and associated remote branch (if found).
 function gbd() {
   echo ''
@@ -370,7 +370,7 @@ function gbd() {
   echo ''
 }
 
-# Name: Git Branch Delete Merged
+# Label: Git Branch Delete Merged
 # Description: Deletes local and remote merged branches (if found).
 function gbdm() {
   branches=$(git branch --merged | grep -v "\*" | xargs -n 1)
@@ -383,7 +383,7 @@ function gbdm() {
 # Section: [GitHub](https://github.com) #
 #---------------------------------------#
 
-# Name: Initizalize GitHub
+# Label: Initizalize GitHub
 # Description: Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
 # Parameters: user = Required. The GitHub user account name, repo = Required. The repo name.
 function init_github() {
@@ -398,7 +398,7 @@ function init_github() {
 # Section: [Bundler](http://gembundler.com) #
 #-------------------------------------------#
 
-# Name: Bundle Outdated (all)
+# Label: Bundle Outdated (all)
 # Description: Answers a list of outdated gems for all projects within current directory.
 function boa() {
   echo ''
@@ -427,7 +427,7 @@ function boa() {
 # Section: [Ruby](http://www.ruby-lang.org) #
 #-------------------------------------------#
 
-# Name: Ruby Upgrade (all)
+# Label: Ruby Upgrade (all)
 # Description: Upgrades all Ruby projects in current directory with new Ruby version information.
 # Parameters: version = Required. The new version to upgrade to. Example: 2.0.0-p0.
 function rua() {
@@ -460,7 +460,7 @@ function rua() {
 # Section: [Ruby on Rails](http://rubyonrails.org) #
 #--------------------------------------------------#
 
-# Name: Create Rails Skeleton
+# Label: Create Rails Skeleton
 # Description: Creates a new rails applications skeleton.
 # Parameters: name (required) = The Rails application name, options (optional) = The custom build options to apply.
 function _create_rails_skeleton() {
@@ -468,7 +468,7 @@ function _create_rails_skeleton() {
   rails new "$1" "$2"
 }
 
-# Name: Process Rew Option
+# Label: Process Rew Option
 # Description: Processes supplied option for constructing new Rails application skeletons with custom build settings.
 # Parameters: name (required) = The Rails application name, template (required) = The template to apply.
 function _process_rew_option() {
@@ -494,7 +494,7 @@ function _process_rew_option() {
   esac
 }
 
-# Name: Rails New
+# Label: Rails New
 # Description: Builds a new rails application skeleton for selected template.
 # Parameters: name (required) = The Rails application name, template (optional) = The template to apply.
 function rew() {
@@ -523,7 +523,7 @@ function rew() {
   echo
 }
 
-# Name: Rails Script Console
+# Label: Rails Script Console
 # Description: Launches the Rails console.
 function sc() {
   if [ -e script/rails ]; then
@@ -535,7 +535,7 @@ function sc() {
   fi
 }
 
-# Name: Rails Script Server
+# Label: Rails Script Server
 # Description: Launches the Rails server.
 function ss() {
   if [ -e script/rails ]; then
@@ -547,7 +547,7 @@ function ss() {
   fi
 }
 
-# Name: Rails Script Generator
+# Label: Rails Script Generator
 # Description: Launches a Rails generator for controller, model, etc. scaffolds.
 function sg() {
   if [ -e script/rails ]; then
@@ -559,7 +559,7 @@ function sg() {
   fi
 }
 
-# Name: Rails Script Database Console
+# Label: Rails Script Database Console
 # Description: Launches the Rails database console for direct access to the current application database.
 function sdb() {
   if [ -e script/rails ]; then
@@ -571,7 +571,7 @@ function sdb() {
   fi
 }
 
-# Name: Bundle Execute Rake Test
+# Label: Bundle Execute Rake Test
 # Description: Executes a single Test::Unit test.
 function bertt() {
   if [ "$1" ]; then
@@ -585,7 +585,7 @@ function bertt() {
 # Section: [FFmpeg](http://www.ffmpeg.org) #
 #------------------------------------------#
 
-# Name: Gifize
+# Label: Gifize
 # Description: Converts a video into an animated GIF.
 # Parameters: input = Required. The file path of the source video, output = Required. The file path of the animated gif (to be created).
 function gifize() {
@@ -637,8 +637,8 @@ function _print_function_name() {
 }
 
 function _set_function_label() {
-  if [[ "$1" == "# Name:"* ]]; then
-    label=$(echo "$1" | sed 's/# Name://' | sed 's/^ *//g')
+  if [[ "$1" == "# Label:"* ]]; then
+    label=$(echo "$1" | sed 's/# Label://' | sed 's/^ *//g')
   fi
 }
 
@@ -718,7 +718,7 @@ function _process_option() {
   esac
 }
 
-# Name: Dots
+# Label: Dots
 # Description: Informational utility for learning more about dotfile aliases, functions, etc.
 function dots() {
   while true; do
