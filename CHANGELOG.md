@@ -1,3 +1,34 @@
+# v7.0.0
+
+* Fixed function signatures where some functions were missing "()".
+* Removed the "gus" alias for "git reset HEAD".
+* Added the "gr" alias for "git reset".
+* Added "gweek" function which answers Git commit history for the past week.
+* Added "gmonth" function which answers Git commit history since beginning of current month.
+* Added Kaleidoscope support for diff and merge to gitconfig.
+* Added "gdt" alias for launching Git diffs with Kaleidoscope.
+* Replaced the "gce" alias with the "gcle" alias for git config local edit of project settings.
+* Enhanced the "gcle" alias to use the --edit option for readability.
+* Added the "gcge" alias for git config global edit of settings.
+* Added the "gaila" function which answers the current email address of all projects in current directory.
+* Converted the "gail" alias to a function.
+* Dropped the --global option from the "gail" function.
+* Added the "gailsa" function which sets the local user email for each project in current directory.
+* Added the "gunseta" function which will unset a Git config key for all projects in current directory.
+* Added the "dots" function which can print supported alias and function information for all dotfiles.
+* Added the "gget" alias for "git config".
+* Added the "ggeta" function which answers a value for a given Git config key for all projects in current directory.
+* Added the "gseta" function for setting a key=value pair for all projects in current directory.
+* Enhanced the "l1" alias to copy output to clipboard.
+* Enhanced Pry history to be shared with IRB history.
+* Enhanced Pry to default to Sublime Text editor.
+* Enhanced Pry debug aliases to be only defined if the Byebug debugger is present.
+* Enhanced shell prompt to show dirty and untracked file statuses for git branches.
+* Enhanced shell prompt to display Git stash state and upstream differences (if any).
+* Enhanced shell prompt to only show current directory and not the full path.
+* Enhanced shell prompt to show git branch and committer email address in a blue background.
+* Enhanced the dots function to print function name and description information.
+
 # v6.0.0
 
 * Fixed 'l1' alias so that it lists dotfiles (minus . and ..).

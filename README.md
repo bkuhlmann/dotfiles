@@ -37,7 +37,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v6.0.0
+    git checkout v7.0.0
 
 Master Version (unstable)
 
@@ -70,38 +70,31 @@ After install, the following files will require manual updating:
 
 # Usage
 
-From the command line, the following are a few of the commands available to use (please see all home_files/*.txt files
-for additional details):
+From the command line, following aliases are available:
 
-    # General
     .. = "cd .."
     ... = "cd ../.."
     c = "clear"
     h = "history"
     l = "ls -alh"
-    l1 = "ls -A1"
-    p='pwd | tr -d "\r\n" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
+    l1 = 'ls -A1 | pbcopy && echo -e "`pbpaste` n(copied to clipboard)"'
+    p = 'pwd | tr -d "rn" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
     o = "open"
     home = "cd $HOME"
     bashs = "exec $SHELL"
-
-    # Network
-    ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
+    ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
-
-    # tmux (http://tmux.sourceforge.net)
     tsl = "tmux list-sessions"
     tsa = "tmux attach-session -t"
     tsk = "tmux kill-session -t"
     tsr = "tmux rename-session -t"
-
-    # Git (http://git-scm.com)
     gi = "git init"
-    gce = "git config -e"
-    gail = "git config --global user.email"
+    gcle = "git config --local --edit"
+    gcge = "git config --global --edit"
+    gget = "git config"
     gst = "git status --short --branch"
     gl = "git log --oneline --decorate --no-abbrev-commit"
-    glh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
+    glh = 'git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
     gld = "git log --graph --pretty=format:'%C(yellow)%H%Creset %an: %s -%C(cyan)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
     gln = "git log --name-status"
     glf = "git log ..FETCH_HEAD"
@@ -110,6 +103,7 @@ for additional details):
     glast = "git show --stat"
     guthors = "git shortlog --summary --numbered --email"
     gd = "git diff"
+    gdt = "git difftool"
     gdw = "git diff --word-diff"
     gdc = "git diff --cached"
     gwc = "git whatchanged -p --pretty=medium"
@@ -145,14 +139,12 @@ for additional details):
     gps = "git push stage stage:master"
     gtag = "git tag"
     gtags = "git push --tags"
-    gus = "git reset HEAD"
+    gr = "git reset"
     gres = "git reset --hard HEAD"
     gdis = "git reset --hard"
     grev = "git revert"
-    glatest = "git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
+    glatest = "git for-each-ref --sort=-committerdate refs/heads --format = '%(committerdate:short) %(refname:short)'"
     ggc = "git fsck && git gc"
-
-    # rbenv (https://github.com/sstephenson/rbenv)
     rb = "rbenv"
     rbg = "rbenv global"
     rbl = "rbenv local"
@@ -164,13 +156,9 @@ for additional details):
     rbi = "rbenv install"
     rbu = "rbenv uninstall"
     rbvars = "rbenv vars"
-
-    # Ruby (http://www.ruby-lang.org)
     rd = "rdoc -a -o _doc"
     rdo = "open _doc/index.html"
     rdd = "rm -rf _doc"
-
-    # Ruby Gems (http://rubygems.org)
     geml = "gem list"
     gemi = "gem install"
     gemup = "gem update"
@@ -178,11 +166,7 @@ for additional details):
     gemc = "gem cleanup"
     gems = "gem server"
     gemuc = "gem update --system && gem update && gem cleanup"
-
-    # Ruby Gems Whois (https://github.com/jnunemaker/gemwhois)
     gemw = "gem whois"
-
-    # Bundler (http://gembundler.com)
     b = "bundle"
     bi = "bundle install"
     bu = "bundle update"
@@ -198,16 +182,10 @@ for additional details):
     beg = "bundle exec guard"
     bch = "rm -f Gemfile.lock; bundle check"
     rebundle = "bch; bundle package"
-
-    # Gemsmith (https://github.com/bkuhlmann/gemsmith)
     g = "gemsmith"
     go = "gemsmith open"
-
-    # PostgreSQL (http://www.postgresql.org)
     pgs = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
     pgq = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-
-    # Ruby on Rails (http://rubyonrails.org)
     scs = "sc --sandbox"
     sgc = "sg controller"
     sgm = "sg model"
@@ -228,30 +206,51 @@ for additional details):
     dmodels = "mkdir -p doc/design && railroady --label --inheritance --specify --all-columns --join --transitive --output doc/design/models.dot --models"
     dcontrollers = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
     dstate = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
-
-    # Capistrano (https://github.com/capistrano/capistrano)
     bec = "bundle exec cap"
     caps = "bundle exec cap stage deploy"
     capp = "bundle exec cap production deploy"
-
-    # Sitemap Generator (https://github.com/kjvarga/sitemap_generator)
     rsite = "rake sitemap:refresh:no_ping"
     rsitep = "rake sitemap:refresh"
-
-    # Heroku+ (https://github.com/bkuhlmann/heroku_plus)
     hpas = "hp account --switch"
-
-    # Z (https://github.com/rupa/z)
     ez = "$EDITOR $HOME/.z"
-
-    # Path Finder (http://www.cocoatech.com/pathfinder)
     opf = 'open -a "Path Finder.app" "$PWD"'
-
-    # Sublime Text (http://www.sublimetext.com)
     e = "sublime"
-
-    # Marked (http://markedapp.com)
     md = "open -a Marked"
+
+From the command line, following functions are available:
+
+    groot = Git Root - Changes to project root directory (regardless of how deep the current path might be).
+    gsta = Git Status (all) - Answers the status of projects with uncommited/unpushed changes.
+    ggeta = Git Get Config Value (all) - Answers key value for all projects in current directory.
+    gail = Git Email - Answers user email for current project.
+    gaila = Git Email (all) - Answers user email for all projects in current directory.
+    gseta = Git Set Config Value (all) - Sets key value for all projects in current directory.
+    gailsa = Git Email Set (all) - Sets user email for all projects in current directory.
+    gunseta = Git Unset (all) - Unsets key value for all projects in current directory.
+    gince = Git Since - Answers a summarized list of Git activity since date/time for all projects in current directory.
+    gsup = Git Standup - Answers a summarized list of Git activity since yesterday for all projects in current directory.
+    gday = Git Day - Answers a summarized list of Git current day activity for all projects in current directory.
+    gweek = Git Week - Answers a summarized list of Git current week activity for all projects in current directory.
+    gmonth = Git Month - Answers a summarized list of Git current month activity for all projects in current directory.
+    gtail = Git Tail - Answers commit history since last tag for current project.
+    gtaila = Git Tail (all) - Answers commit history count since last tag (see gtail) for all projects in current directory.
+    gasha = Git Stash (all) - Answers stash count for all projects within current directory.
+    gpua = Git Pull (all) - Pulls down new changes (if any) from remote branch for all projects in current directory.
+    gcap = Git Commit and Push (all) - Commits and pushes changes for all projects within current directory.
+    gvca = Git Validate and Clean (all) - Validates and cleans all projects in current directory.
+    gbd = Git Branch Delete - Deletes local and associated remote branch (if found).
+    gbdm = Git Branch Delete Merged - Deletes local and remote merged branches (if found).
+    init_github = Initizalize GitHub - Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
+    boa = Bundle Outdated (all) - Answers a list of outdated gems for all projects within current directory.
+    rua = Ruby Upgrade (all) - Upgrades all Ruby projects in current directory with new Ruby version information.
+    rew = Rails New - Builds a new rails app for selected template.
+    sc = Rails Script Console - Launches the Rails console.
+    ss = Rails Script Server - Launches the Rails server.
+    sg = Rails Script Generator - Launches a Rails generator for controller, model, etc. scaffolds.
+    sdb = Rails Script Database Console - Launches the Rails database console for direct access to the current application database.
+    bertt = Bundle Execute Rake Test - Executes a single Test::Unit test.
+    gifize = Gifize - Converts a video into an animated GIF.
+    dots = Dots - Informational utility for learning more about dotfile aliases, functions, etc.
 
 From IRB, Pry, and Rails consoles, the following commands are possible:
 
@@ -287,6 +286,7 @@ From Pry, the following aliases are available:
 * [Mathias Bynens](https://github.com/mathiasbynens/dotfiles)
 * [Adam Jahnke](https://github.com/adamyonk/dotfiles)
 * [Nicolas Gallagher](https://github.com/necolas/dotfiles)
+* [Brian Hogan](https://github.com/napcs/dotfiles)
 * [Color Bash Prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 
 # Versioning
