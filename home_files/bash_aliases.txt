@@ -84,6 +84,9 @@ alias grev="git revert"
 alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
 alias ggc="git fsck && git gc"
 
+# Section: [GitHub](https://github.com)
+alias gho="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/https:\/\//'\`"
+
 # Section: [rbenv](https://github.com/sstephenson/rbenv)
 alias rb="rbenv"
 alias rbg="rbenv global"
