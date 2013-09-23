@@ -180,10 +180,10 @@ alias hpas="hp account --switch"
 alias ez="$EDITOR $HOME/.z"
 
 # Section: [Path Finder](http://www.cocoatech.com/pathfinder)
-alias opf='open -a "Path Finder.app" "$PWD"'
+alias pfo='open -a "Path Finder.app" "$PWD"'
 
 # Section: [Sublime Text](http://www.sublimetext.com)
 alias e="sublime"
 
 # Section: [Marked](http://markedapp.com)
-alias md="open -a Marked"
+alias mo="open -a Marked"
