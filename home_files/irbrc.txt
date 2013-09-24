@@ -76,4 +76,8 @@ class RA
   def self.paste
     `pbpaste`
   end
+
+  def self.http_codes
+    Rack::Utils::HTTP_STATUS_CODES if defined?(Rack)
+  end
 end
