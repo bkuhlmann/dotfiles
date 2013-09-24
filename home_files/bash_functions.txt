@@ -383,10 +383,10 @@ function gbdm() {
 # Section: [GitHub](https://github.com) #
 #---------------------------------------#
 
-# Label: Initizalize GitHub
+# Label: GitHub Initizalize
 # Description: Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
-# Parameters: user = Required. The GitHub user account name, repo = Required. The repo name.
-function init_github() {
+# Parameters: user (required) - The GitHub user account name, repo (required) = The repository name.
+function githubi() {
   git remote add origin git@github.com:$1/$2.git
   git push origin master
   git config branch.master.remote origin
