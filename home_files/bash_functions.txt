@@ -710,7 +710,7 @@ function _find_command() {
   fi
 }
 
-function _process_option() {
+function _process_dots_option() {
   case $1 in
     'a')
       _print_aliases
@@ -743,9 +743,9 @@ function dots() {
       echo ''
       read -p "Enter selection: " response
       echo ''
-      _process_option $response "$2"
+      _process_dots_option $response "$2"
     else
-      _process_option $1 "$2"
+      _process_dots_option $1 "$2"
     fi
   done
 
