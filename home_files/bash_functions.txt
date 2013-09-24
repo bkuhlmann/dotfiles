@@ -394,10 +394,66 @@ function githubi() {
   git config push.default current
 }
 
-# Label: GitHub Open
-# Description: Opens GitHub project page of current project in default browser.
-function gho() {
-  open `git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/https:\/\//'`
+function _github_url() {
+  echo $(git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//')
+}
+
+function _process_gh_option() {
+  case $1 in
+    'o')
+      open $(_github_url)
+      break;;
+    'c')
+      if [ "$2" ]; then
+        open "$(_github_url)/commit/$2"
+      else
+        open "$(_github_url)/commits"
+      fi
+      break;;
+    'b')
+      open "$(_github_url)/branches"
+      break;;
+    't')
+      open "$(_github_url)/tags"
+      break;;
+    'u')
+      _github_url
+      break;;
+    'q')
+      break;;
+    *)
+      echo "ERROR: Invalid option."
+      break;;
+  esac
+}
+
+# Label: GitHub
+# Description: GitHub utility for linking from current project to GitHub project in default browser.
+function gh() {
+  if [ -d ".git" ]; then
+    while true; do
+      if [ -z "$1" ]; then
+        echo "Usage: gh OPTION"
+        echo -e "\nGitHub Options:"
+        echo "  o: Open GitHub project in default browser."
+        echo "  c: Open GitHub project commit(s) in default browser."
+        echo "  b: Open GitHub project branches in default browser."
+        echo "  t: Open GitHub project tags (releases) in default browser."
+        echo "  u: Print GitHub project URL."
+        echo "  q: Quit/Exit."
+        echo ''
+        read -p "Enter selection: " response
+        echo ''
+        _process_gh_option $response "$2"
+      else
+        _process_gh_option "$1" "$2"
+      fi
+    done
+  else
+    echo "ERROR: Not a Git repository!"
+  fi
+
+  echo ''
 }
 
 #-------------------------------------------#
