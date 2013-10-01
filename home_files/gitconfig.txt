@@ -32,6 +32,8 @@
   quotepath = false
 [push]
   default = simple
+[branch]
+  autosetuprebase = always
 [difftool "Kaleidoscope"]
   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
