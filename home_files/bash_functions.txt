@@ -648,6 +648,34 @@ function bertt() {
   fi
 }
 
+#---------------------------------------------------------------------------#
+# Section: [Site Validator](https://github.com/jaimeiniesta/site_validator) #
+#---------------------------------------------------------------------------#
+
+# Label: Site Validator
+# Description: Generates a validation report for a site using the W3C Validator.
+function sv() {
+  echo ''
+
+  if [ $(command -v site_validator) ]; then
+    if [ "$1" ]; then
+      if [ "$2" ]; then
+        report="$2"
+      else
+        report="report.html"
+      fi
+
+      site_validator "$1" "$report" && open "$report"
+    else
+      echo "ERROR: Missing web site URL. Usage: sv http://www.example.com output.html."
+    fi
+  else
+    echo "ERROR: Site Validator not found. To install, run: gem install site_validator."
+  fi
+
+  echo ''
+}
+
 #------------------------------------------#
 # Section: [FFmpeg](http://www.ffmpeg.org) #
 #------------------------------------------#
