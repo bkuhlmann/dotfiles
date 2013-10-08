@@ -77,7 +77,15 @@ class RA
     `pbpaste`
   end
 
+  # Answers HTTP status codes.
   def self.http_codes
-    Rack::Utils::HTTP_STATUS_CODES if defined?(Rack)
+    defined?(Rack) ? Rack::Utils::HTTP_STATUS_CODES : {}
+  end
+
+  # Answers HTTP status symbols (as used by Rails).
+  def self.http_symbols
+    http_codes.each_with_object({}) do |(code, label), hash|
+      hash[code] = label.downcase.gsub(/(\s|-)/, '_').gsub(/(\(|\))/, '').intern
+    end
   end
 end
