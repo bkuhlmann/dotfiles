@@ -4,6 +4,9 @@
 [user]
   # name = <enter name here>
   # email = <enter email here>
+[github]
+  # user = <enter user here>
+  # token = <enter token here>
 [color]
   diff = auto
   status = auto
@@ -47,9 +50,6 @@
   prompt = false
 [merge]
   tool = Kaleidoscope
-[github]
-  # user = <enter user here>
-  # token = <enter token here>
 [url "git@github.com:"]
   insteadOf = gh:
 [url "git@github.com:bkuhlmann/"]
