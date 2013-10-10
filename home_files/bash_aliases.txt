@@ -33,7 +33,7 @@ alias gget="git config"
 alias gst="git status --short --branch"
 alias gl="git log --oneline --decorate --no-abbrev-commit"
 alias glh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
-alias gld="git log --graph --pretty=format:'%C(yellow)%H%Creset %an: %s -%C(cyan)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gld="git log --graph --pretty=format:'%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gln="git log --name-status"
 alias glf="git log ..FETCH_HEAD"
 alias gg="git grep"
