@@ -167,7 +167,7 @@ function gunseta() {
 
 # Label: Git Since
 # Description: Answers a summarized list of Git activity since date/time for all projects in current directory.
-# Parameters: $1 (required) - The date/time from which to log activity.
+# Parameters: $1 (required) - The date/time from which to log activity, $2 (optional) - The commit author.
 function gince() {
   echo ''
 
@@ -178,9 +178,8 @@ function gince() {
         cd "$project"
         # Only process projects that are Git enabled.
         if [ -d ".git" ]; then
-          user=$(git config user.name)
           # Capture git log activity.
-          results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --author "$user" --since "$1" --reverse)
+          results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --since "$1" --author "$2" --reverse)
           # Print project name and Git activity only if Git activity was detected.
           if [ -n "$results" ]; then
             echo -e "\033[36m${project:2}" # Outputs in cyan color.
@@ -198,7 +197,7 @@ function gince() {
 # Label: Git Standup
 # Description: Answers a summarized list of Git activity since yesterday for all projects in current directory.
 function gsup() {
-  gince "yesterday"
+  gince "yesterday" $(git config user.name)
 }
 
 # Label: Git Day
