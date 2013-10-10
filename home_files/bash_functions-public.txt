@@ -179,7 +179,7 @@ function gince() {
         # Only process projects that are Git enabled.
         if [ -d ".git" ]; then
           # Capture git log activity.
-          results=$(git log --oneline --format='%C(yellow)%H%Creset %s' --since "$1" --author "$2" --reverse)
+          results=$(git log --oneline --format='%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset' --since "$1" --author "$2" --reverse)
           # Print project name and Git activity only if Git activity was detected.
           if [ -n "$results" ]; then
             echo -e "\033[36m${project:2}" # Outputs in cyan color.
