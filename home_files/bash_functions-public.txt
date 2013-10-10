@@ -8,10 +8,18 @@
 # Description: Inspect remote file, via curl, within default editor.
 # Parameters: $1 (required) - The URL.
 function curli() {
-  file=$(mktemp -t suspicious_curl_file) || { echo "Failed to create temporary curl file"; return; }
-  curl --fail --silent --show-error --location "$1" > $file || { echo "Failed to curl file"; return; }
-  $EDITOR -w $file || { echo "Unable to open temporary curl file"; return; }
-  rm -f $file;
+  echo ''
+
+  if [ "$1" ]; then
+    file=$(mktemp -t suspicious_curl_file) || { echo "Failed to create temporary curl file"; return; }
+    curl --fail --silent --show-error --location "$1" > $file || { echo "Failed to curl file"; return; }
+    $EDITOR -w $file || { echo "Unable to open temporary curl file"; return; }
+    rm -f $file;
+  else
+    echo "ERROR: URL must be supplied."
+  fi
+
+  echo ''
 }
 
 #------------------------------------#
