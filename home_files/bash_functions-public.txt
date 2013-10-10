@@ -409,7 +409,7 @@ function githubi() {
 }
 
 # Label: GitHub
-# Description: GitHub utility for linking from current project to GitHub project in default browser.
+# Description: View current GitHub project commits, branches, tags, etc. in default browser.
 # Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
 function gh() {
   if [ -d ".git" ]; then
