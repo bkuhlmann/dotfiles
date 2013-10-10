@@ -1,0 +1,193 @@
+# BASH FUNCTIONS (private)
+
+#---------------------------------------#
+# Section: [GitHub](https://github.com) #
+#---------------------------------------#
+
+function _gh_url() {
+  echo $(git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//')
+}
+
+function _process_gh_option() {
+  case $1 in
+    'o')
+      open $(_gh_url)
+      break;;
+    'c')
+      if [ "$2" ]; then
+        open "$(_gh_url)/commit/$2"
+      else
+        open "$(_gh_url)/commits"
+      fi
+      break;;
+    'b')
+      open "$(_gh_url)/branches"
+      break;;
+    't')
+      open "$(_gh_url)/tags"
+      break;;
+    'u')
+      _gh_url
+      break;;
+    'q')
+      break;;
+    *)
+      echo "ERROR: Invalid option."
+      break;;
+  esac
+}
+
+#--------------------------------------------------#
+# Section: [Ruby on Rails](http://rubyonrails.org) #
+#--------------------------------------------------#
+
+# Label: Create Rails Skeleton
+# Description: Creates a new rails applications skeleton.
+# Parameters: name (required) = The Rails application name, options (optional) = The custom build options to apply.
+function _create_rails_skeleton() {
+  echo "rails new $1 $2"
+  rails new $1 $2
+}
+
+# Label: Process Rew Option
+# Description: Processes supplied option for constructing new Rails application skeletons with custom build settings.
+# Parameters: name (required) = The Rails application name, template (required) = The template to apply.
+function _process_rew_option() {
+  flags="--database sqlite3 --skip-javascript --skip-test-unit --force --skip-bundle --skip-keeps --template"
+  slim_options="$flags https://raw.github.com/bkuhlmann/rails_slim_template/master/template.rb"
+  setup_remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
+  setup_local_options="$flags $HOME/Dropbox/Development/Projects/rails_setup_template/template.rb"
+
+  case $2 in
+    1)
+      _create_rails_skeleton "$1"
+      break;;
+    2)
+      _create_rails_skeleton "$1" "$slim_options"
+      break;;
+    3)
+      _create_rails_skeleton "$1" "$setup_remote_options"
+      break;;
+    4)
+      _create_rails_skeleton "$1" "$setup_local_options"
+      break;;
+    'q')
+      break;;
+    *)
+      echo "ERROR: Invalid option."
+      break;;
+  esac
+}
+
+#-------------------#
+# Section: Dotfiles #
+#-------------------#
+
+function _print_section() {
+  if [[ "$1" == "# Section:"* ]]; then
+    section=$(echo $1 | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
+    echo -e "\n##### $section"
+  fi
+}
+
+function _print_alias() {
+  echo "$1" | sed 's/alias //' | sed 's/="/ = "/' | sed "s/='/ = '/"
+}
+
+function _print_aliases() {
+  while read line; do
+    _print_section "$line"
+
+    if [[ "$line" == "alias"* ]]; then
+      echo -n "    "
+      _print_alias "$line"
+    fi
+  done < "$HOME/.bash_aliases"
+}
+
+function _print_function_name() {
+  name=$(echo $1 | sed 's/function //' | sed 's/() {//')
+  echo "$name = $2 - $3"
+}
+
+function _set_function_label() {
+  if [[ "$1" == "# Label:"* ]]; then
+    label=$(echo "$1" | sed 's/# Label://' | sed 's/^ *//g')
+  fi
+}
+
+function _set_function_description() {
+  if [[ "$line" == "# Description:"* ]]; then
+    description=$(echo $line | sed 's/# Description://' | sed 's/^ *//g')
+  fi
+}
+
+function _print_functions() {
+  while read line; do
+    _print_section "$line"
+    _set_function_label "$line"
+    _set_function_description "$line"
+
+    if [[ "$line" == "function"*"() {" && "$line" != "function _"* ]]; then
+      echo -n "    "
+      _print_function_name "$line" "$label" "$description"
+      unset label
+      unset description
+    fi
+  done < "$HOME/.bash_functions-public"
+}
+
+function _find_alias() {
+  while read line; do
+    if [[ "$line" == "alias "*"$1"* ]]; then
+      echo -n "    Alias: "
+      _print_alias "$line"
+    fi
+  done < "$HOME/.bash_aliases"
+}
+
+function _find_function() {
+  while read line; do
+    _set_function_label "$line"
+    _set_function_description "$line"
+
+    if [[ "$line" == "function "*"$1"* ]]; then
+      echo -n "    Function: "
+      _print_function_name "$line" "$label" "$description"
+      unset label
+      unset description
+    fi
+  done < "$HOME/.bash_functions-public"
+}
+
+function _find_command() {
+  echo
+
+  if [ "$1" ]; then
+    echo "\"$1\" Search Results:"
+
+    _find_alias "$1"
+    _find_function "$1"
+  else
+    echo "ERROR: Nothing to search for. Criteria must be supplied."
+  fi
+}
+
+function _process_dots_option() {
+  case $1 in
+    'a')
+      _print_aliases
+      break;;
+    'f')
+      _print_functions
+      break;;
+    's')
+      _find_command "$2"
+      break;;
+    'q')
+      break;;
+    *)
+      echo "ERROR: Invalid option."
+      break;;
+  esac
+}

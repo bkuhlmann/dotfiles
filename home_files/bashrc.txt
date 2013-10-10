@@ -16,7 +16,8 @@ export HISTIGNORE="..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane
 . "$HOME/.bash_aliases"
 
 # Functions
-. "$HOME/.bash_functions"
+. "$HOME/.bash_functions-private"
+. "$HOME/.bash_functions-public"
 
 # Command Prompt (http://jonisalonen.com/2012/your-bash-prompt-needs-this)
 export GIT_PS1_SHOWDIRTYSTATE=true
