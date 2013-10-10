@@ -4,10 +4,15 @@
 # Section: [GitHub](https://github.com) #
 #---------------------------------------#
 
+# Label: GitHub URL
+# Description: Answers the GitHub URL for current project.
 function _gh_url() {
   echo $(git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//')
 }
 
+# Label: Process GitHub Option
+# Description: Processes option selection for viewing the remote GitHub repository.
+# Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
 function _process_gh_option() {
   case $1 in
     'o')
@@ -43,15 +48,15 @@ function _process_gh_option() {
 
 # Label: Create Rails Skeleton
 # Description: Creates a new rails applications skeleton.
-# Parameters: name (required) = The Rails application name, options (optional) = The custom build options to apply.
+# Parameters: $1 (required) - The application name, $2 (optional) - The build options to apply.
 function _create_rails_skeleton() {
   echo "rails new $1 $2"
   rails new $1 $2
 }
 
 # Label: Process Rew Option
-# Description: Processes supplied option for constructing new Rails application skeletons with custom build settings.
-# Parameters: name (required) = The Rails application name, template (required) = The template to apply.
+# Description: Processes option selection for constructing new Rails application skeletons with custom build settings.
+# Parameters: $1 (required) - The application name, $2 (required) - The template to apply.
 function _process_rew_option() {
   flags="--database sqlite3 --skip-javascript --skip-test-unit --force --skip-bundle --skip-keeps --template"
   slim_options="$flags https://raw.github.com/bkuhlmann/rails_slim_template/master/template.rb"
@@ -173,6 +178,9 @@ function _find_command() {
   fi
 }
 
+# Label: Process Dotfiles Option
+# Description: Processes option selection for learning about dotfile aliases/functions.
+# Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
 function _process_dots_option() {
   case $1 in
     'a')

@@ -6,6 +6,7 @@
 
 # Label: Curl Inspect
 # Description: Inspect remote file, via curl, within default editor.
+# Parameters: $1 (required) - The URL.
 function curli() {
   file=$(mktemp -t suspicious_curl_file) || { echo "Failed to create temporary curl file"; return; }
   curl --fail --silent --show-error --location "$1" > $file || { echo "Failed to curl file"; return; }
@@ -50,7 +51,7 @@ function gsta() {
 
 # Label: Git Get Config Value (all)
 # Description: Answers key value for all projects in current directory.
-# Parameters: $1 = The key name.
+# Parameters: $1 (required) - The key name.
 function ggeta() {
   echo ''
 
@@ -92,7 +93,7 @@ function gaila() {
 
 # Label: Git Set Config Value (all)
 # Description: Sets key value for all projects in current directory.
-# Parameters: $1 = The key name, $2 = The key value.
+# Parameters: $1 (required) - The key name, $2 (required) - The key value.
 function gseta() {
   echo ''
 
@@ -119,14 +120,14 @@ function gseta() {
 
 # Label: Git Email Set (all)
 # Description: Sets user email for all projects in current directory.
-# Parameters: $1 = The email address.
+# Parameters: $1 (required) - The email address.
 function gailsa() {
   gseta "user.email" "$1"
 }
 
 # Label: Git Unset (all)
 # Description: Unsets key value for all projects in current directory.
-# Parameters: $1 = The key name.
+# Parameters: $1 (required) - The key name.
 function gunseta() {
   echo ''
 
@@ -158,7 +159,7 @@ function gunseta() {
 
 # Label: Git Since
 # Description: Answers a summarized list of Git activity since date/time for all projects in current directory.
-# Parameters: $1 = The past date/time from which to log activity up to now.
+# Parameters: $1 (optional) - The past date/time from which to log activity up to now.
 function gince() {
   echo ''
 
@@ -295,7 +296,7 @@ function gpua() {
 
 # Label: Git Commit and Push (all)
 # Description: Commits and pushes changes for all projects within current directory.
-# Parameters: $1 = The commit message.
+# Parameters: $1 (required) - The commit message.
 function gcap() {
   echo ''
 
@@ -341,6 +342,7 @@ function gvca() {
 
 # Label: Git Branch Delete
 # Description: Deletes local and associated remote branch (if found).
+# Parameters: $1 (required) - The branch name.
 function gbd() {
   echo ''
 
@@ -385,7 +387,7 @@ function gbdm() {
 
 # Label: GitHub Initizalize
 # Description: Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
-# Parameters: user (required) - The GitHub user account name, repo (required) = The repository name.
+# Parameters: $1 (required) - The GitHub user account name, $2 (required) - The repository name.
 function githubi() {
   git remote add origin git@github.com:$1/$2.git
   git push origin master
@@ -396,6 +398,7 @@ function githubi() {
 
 # Label: GitHub
 # Description: GitHub utility for linking from current project to GitHub project in default browser.
+# Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
 function gh() {
   if [ -d ".git" ]; then
     while true; do
@@ -458,7 +461,7 @@ function boa() {
 
 # Label: Ruby Upgrade (all)
 # Description: Upgrades all Ruby projects in current directory with new Ruby version information.
-# Parameters: version = Required. The new version to upgrade to. Example: 2.0.0-p0.
+# Parameters: $1 (required) - The new version to upgrade to. Example: 2.0.0-p0.
 function rua() {
   if [ "$1" ]; then
     while read project; do
@@ -491,7 +494,7 @@ function rua() {
 
 # Label: Rails New
 # Description: Builds a new rails application skeleton for selected template.
-# Parameters: name (required) = The Rails application name, template (optional) = The template to apply.
+# Parameters: $1 (required) - The Rails application name, $2 (optional) - The template to apply.
 function rew() {
   echo
 
@@ -583,6 +586,7 @@ function bertt() {
 
 # Label: Site Validator
 # Description: Generates a validation report for a site using the W3C Validator.
+# Parameters: $1 (required) - The site URL, $2 (optional) - The report file path/name.
 function sv() {
   echo ''
 
@@ -611,7 +615,7 @@ function sv() {
 
 # Label: Gifize
 # Description: Converts a video into an animated GIF.
-# Parameters: input = Required. The file path of the source video, output = Required. The file path of the animated gif (to be created).
+# Parameters: $1 (required) - The source video input path, $2 (required) - The animated gif output path.
 function gifize() {
   input_path="$1"
   output_path="$2"
@@ -633,8 +637,9 @@ function gifize() {
 # Section: Dotfiles #
 #-------------------#
 
-# Label: Dots
+# Label: Dotfiles
 # Description: Informational utility for learning more about dotfile aliases, functions, etc.
+# Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
 function dots() {
   while true; do
     if [ -z "$1" ]; then
