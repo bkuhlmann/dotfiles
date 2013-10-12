@@ -37,7 +37,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v7.0.0
+    git checkout v8.0.0
 
 Master Version (unstable)
 
@@ -88,6 +88,9 @@ From the command line, the following aliases are available:
     ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 
+##### SSH
+    sshe = "$EDITOR $HOME/.ssh/config"
+
 ##### [tmux](http://tmux.sourceforge.net)
     tsl = "tmux list-sessions"
     tsa = "tmux attach-session -t"
@@ -100,19 +103,22 @@ From the command line, the following aliases are available:
     gcge = "git config --global --edit"
     gget = "git config"
     gst = "git status --short --branch"
-    gl = "git log --oneline --decorate --no-abbrev-commit"
+    gl = "git log --graph --pretty=format:'%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset'"
+    gld = "git log --pretty=format:'%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset %n%b' --stat"
     glh = 'git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
-    gld = "git log --graph --pretty=format:'%C(yellow)%H%Creset %an: %s -%C(cyan)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
     gln = "git log --name-status"
     glf = "git log ..FETCH_HEAD"
-    gg = "git grep"
     gls = "gl -S"
+    gg = "git grep"
     glast = "git show --stat"
     guthors = "git shortlog --summary --numbered --email"
     gd = "git diff"
-    gdt = "git difftool"
-    gdw = "git diff --word-diff"
     gdc = "git diff --cached"
+    gdm = "git diff origin/master"
+    gdw = "git diff --word-diff"
+    gdt = "git difftool"
+    gdtc = "git difftool --cached"
+    gdtm = "git difftool origin/master"
     gwc = "git whatchanged -p --pretty=medium"
     glame = "git blame"
     gb = "git branch --verbose"
@@ -128,7 +134,7 @@ From the command line, the following aliases are available:
     gca = "git commit --all"
     gcm = "git commit --message"
     gcam = "git commit --all --message"
-    gamend = "git commit --amend --message"
+    gamend = "git commit --amend"
     gcp = "git cherry-pick"
     gash = "git stash save"
     gashl = "git stash list --pretty=format:'%C(yellow)%gd%Creset %s'"
@@ -138,7 +144,7 @@ From the command line, the following aliases are available:
     gashc = "git stash clear"
     gf = "git fetch"
     gpu = "git pull"
-    gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching
+    gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching.
     geady = "git rebase -i @{u}" # Interactive rebase.
     gp = "git push"
     gpo = "git push origin"
@@ -246,15 +252,18 @@ From the command line, the following aliases are available:
     ez = "$EDITOR $HOME/.z"
 
 ##### [Path Finder](http://www.cocoatech.com/pathfinder)
-    opf = 'open -a "Path Finder.app" "$PWD"'
+    pfo = 'open -a "Path Finder.app" "$PWD"'
 
 ##### [Sublime Text](http://www.sublimetext.com)
     e = "sublime"
 
 ##### [Marked](http://markedapp.com)
-    md = "open -a Marked"
+    mo = "open -a Marked"
 
 From the command line, the following functions are available:
+
+##### [curl](http://curl.haxx.se)
+    curli = Curl Inspect - Inspect remote file, via curl, within default editor.
 
 ##### [Git](http://git-scm.com)
     groot = Git Root - Changes to project root directory (regardless of how deep the current path might be).
@@ -280,7 +289,8 @@ From the command line, the following functions are available:
     gbdm = Git Branch Delete Merged - Deletes local and remote merged branches (if found).
 
 ##### [GitHub](https://github.com)
-    init_github = Initizalize GitHub - Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
+    githubi = GitHub Initizalize - Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
+    gh = GitHub - View current GitHub project commits, branches, tags, etc. in default browser.
 
 ##### [Bundler](http://gembundler.com)
     boa = Bundle Outdated (all) - Answers a list of outdated gems for all projects within current directory.
@@ -296,11 +306,14 @@ From the command line, the following functions are available:
     sdb = Rails Script Database Console - Launches the Rails database console for direct access to the current application database.
     bertt = Bundle Execute Rake Test - Executes a single Test::Unit test.
 
+##### [Site Validator](https://github.com/jaimeiniesta/site_validator)
+    sv = Site Validator - Generates a validation report for a site using the W3C Validator.
+
 ##### [FFmpeg](http://www.ffmpeg.org)
     gifize = Gifize - Converts a video into an animated GIF.
 
 ##### Dotfiles
-    dots = Dots - Informational utility for learning more about dotfile aliases, functions, etc.
+    dots = Dotfiles - Informational utility for learning more about dotfile aliases, functions, etc.
 
 From IRB, Pry, and Rails consoles, the following commands are possible:
 

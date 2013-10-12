@@ -1,3 +1,37 @@
+# v8.0.0
+
+* Fixed "dots" function bug where supplying an option to bypass the options prompt would throw an error.
+* Fixed "dots" function so that leading whitespace is properly trimmed from labels and descriptions.
+* Fixed function label comments to use "Label:" instead of "Name:" for label definitions.
+* Enhanced the "dots" function to be able to print alias and function info grouped by section.
+* Enhanced "curli" function by replacing short with long options for readability.
+* Enhanced "curli" function to throw an error if URL is not supplied.
+* Enhanced "dots" function with the 's' search option for easily searching for an alias/function.
+* Enhanced the "rew" function with the [Rails Slim Template](https://github.com/bkuhlmann/rails_slim_template) option.
+* Enhanced .gitconfig settings to always auto rebase when pulling down new commits.
+* Enhanced .irbrc with the ability to answer HTTP status symbols (as used by Rails).
+* Enhanced the "gld" alias format and colors.
+* Enhanced bash function documentation with better parameter option documentation.
+* Enhanced the "gince" function to throw an error if date/time is not supplied.
+* Enhanced the "gince" function to take an optional author parameter.
+* Enhanced the "gince" function to use the same formatting as the "gl" and "gld" aliases.
+* Enhanced the "gamend" alias to not use the --message option.
+* Refactored the "rew" function for readability and maintainability.
+* Refactored alias and function code into smaller units of functionality.
+* Renamed the following aliases to match existing naming conventions: opf -> pfo, md -> mo
+* Renamed the "init_github" function to "githubi".
+* Replaced the "gl" alias code with contents of the "gld" alias.
+* Split bash functions into private and public function files.
+* Switched default visual editor from vi to vim.
+* Grouped all of the git log aliases together.
+* Added the "curli" function which allows inspection of a remote file, via curl, within default editor.
+* Added the "sshe" alias for editing the SSH config of current user within default editor.
+* Added the "gh" function for opening GitHub page in default browser for current project.
+* Added the RA.http_codes method to IRB (handy when in a Rack app).
+* Added the "sv" function which will validate and generator a report for a given site.
+* Added the "gdm" and "gdtm" aliases.
+* Added the "gdtc" alias for showing a diff of cached/staged changes within difftool.
+
 # v7.0.0
 
 * Fixed function signatures where some functions were missing "()".
