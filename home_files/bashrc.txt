@@ -2,7 +2,7 @@
 
 # Default Editors
 export EDITOR=sublime
-export VISUAL=vi
+export VISUAL=vim
 
 # History
 export HISTCONTROL=erasedups # Remove duplicate entries.
