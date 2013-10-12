@@ -36,8 +36,8 @@ alias gld="git log --pretty=format:'%C(yellow)%H%Creset %C(bold blue)%an%Creset 
 alias glh='git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
 alias gln="git log --name-status"
 alias glf="git log ..FETCH_HEAD"
-alias gg="git grep"
 alias gls="gl -S"
+alias gg="git grep"
 alias glast="git show --stat"
 alias guthors="git shortlog --summary --numbered --email"
 alias gd="git diff"
