@@ -1,2 +1,5 @@
 # Keep alive for 1 hour.
 export POW_TIMEOUT=3600
+
+# Use HTTPS for requests (assumes applications use this environment variable).
+export HTTPS_ENABLED="yes"
