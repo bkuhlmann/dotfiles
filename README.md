@@ -341,6 +341,7 @@ From Pry, the following aliases are available:
 * [Dotphiles](https://github.com/dotphiles/dotphiles) - A community driven framework of dotfiles.
 * [GitHub Dotfiles](http://dotfiles.github.com)
 * [Thoughtbot](https://github.com/thoughtbot/dotfiles)
+* [Ben Orenstein](https://github.com/r00k/dotfiles)
 * [Ryan Bates](http://github.com/ryanb/dotfiles)
 * [Blake Walters](https://github.com/markupboy/dotfiles)
 * [James Edward Grey II](https://github.com/JEG2/dotfiles)

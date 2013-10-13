@@ -1,0 +1,33 @@
+" Settings
+set history=1000 " Keep 1000 lines of history.
+set ruler " Always show the cursor position.
+set relativenumber " Show line numbers relative to cursor where cursor number is always zero.
+
+set expandtab " Use spaces instead of tabs when indenting.
+set smarttab " Indent instead of tabbing at the beginning of a line.
+set shiftwidth=2 " Indent by 2 spaces.
+set tabstop=2 " Hard tab stop.
+set softtabstop=2 " Soft tab stop.
+
+set incsearch " Incrementally highlight search pattern as it is updated.
+set hlsearch " Highlight search matches after entering search pattern.
+set ignorecase " Use case insensitive search pattern matching by default.
+set smartcase " Override 'ignorecase' setting if search pattern contains uppercase characters.
+
+set winwidth=120 " Default window width.
+set winheight=10 " Default window height.
+set winminheight=10 " Minimum window height.
+set winheight=1000 " Reset window height.
+
+syntax on " Enable syntax highlighting.
+filetype plugin indent on " Enable file type specific indentation.
+
+" Leaders
+map <Leader>i mmgg=G`m
+map <Leader>cs :nohlsearch<cr>
+
+" Remappings
+nnoremap <C-K> <C-W><C-K> " Move up one window.
+nnoremap <C-L> <C-W><C-L> " Move right one window.
+nnoremap <C-J> <C-W><C-J> " Move down one window.
+nnoremap <C-H> <C-W><C-H> " Move left one window.
