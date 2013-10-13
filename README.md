@@ -25,8 +25,7 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 
 # Requirements
 
-* [Apple OSX](https://www.apple.com/osx).
-* [OSX Install](https://github.com/bkuhlmann/osx).
+* [OSX](https://github.com/bkuhlmann/osx).
 * [Ruby Gem Setup](http://github.com/bkuhlmann/ruby_gem_setup).
 
 # Setup
