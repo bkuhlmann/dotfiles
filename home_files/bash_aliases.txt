@@ -182,6 +182,9 @@ alias ez="$EDITOR $HOME/.z"
 # Section: [Path Finder](http://www.cocoatech.com/pathfinder)
 alias pfo='open -a "Path Finder.app" "$PWD"'
 
+# Section: [VIM](http://www.vim.org)
+alias v="vim"
+
 # Section: [Sublime Text](http://www.sublimetext.com)
 alias e="sublime"
 
