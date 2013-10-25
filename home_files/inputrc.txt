@@ -1,0 +1,12 @@
+# Shortcut: ESC+p
+# Description: Search command completions, for current command line, from recent history.
+*              Repeated use will cycle through all usages for current command.
+"\ep": history-search-backward
+
+# Shortcut: CONTROL+D
+# Description: Behaves like CONTROL+k (which kills the line after the cursor) but for the entire line.
+"\C-d": kill-whole-line
+
+# Shortcut: TAB
+# Description: Disables the default menu list for tab completion and, instead, cycles through each matching command.
+"\t": menu-complete
