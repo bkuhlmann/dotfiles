@@ -3,12 +3,15 @@
 # Sets bell style to visible instead of audible.
 set bell-style visible
 
-# Use VI commands instead of Emacs.
+# Use VI edit commands instead of Emacs.
 set editing-mode vi
 
-# Shortcut: ESC+p
+# Use VI key mappings instead of Emacs.
+set keymap vi
+
+# Shortcut: CONTROL+p
 # Description: Cycles through command completions, for current command line, from recent history.
-"\ep": history-search-backward
+"\C-p": history-search-backward
 
 # Shortcut: TAB
 # Description: Changes the default menu list for tab completion to cycle through each matching command instead.
