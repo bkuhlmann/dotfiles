@@ -1,4 +1,6 @@
-# Readline Shortcuts (http://cnswww.cns.cwru.edu/php/chet/readline/readline.html#SEC13)
+# Readline (http://cnswww.cns.cwru.edu/php/chet/readline/readline.html#SEC13)
+
+set bell-style visible
 
 # Shortcut: ESC+p
 # Description: Cycles through command completions, for current command line, from recent history.
@@ -7,3 +9,4 @@
 # Shortcut: TAB
 # Description: Changes the default menu list for tab completion to cycle through each matching command instead.
 "\t": menu-complete
+
