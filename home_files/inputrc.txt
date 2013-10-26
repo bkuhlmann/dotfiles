@@ -9,6 +9,21 @@ set editing-mode vi
 # Use VI key mappings instead of Emacs.
 set keymap vi
 
+# Show all auto-complete results at once.
+set page-completions off
+
+# Use case insensitive tab auto-completion.
+set completion-ignore-case on
+
+# Show all possible auto-completion matches (even when some are ambiguous).
+set show-all-if-ambiguous on
+
+# Show all auto-completion results (by asking) when results are more than current limit.
+set completion-query-items 100
+
+# Use intelligent auto-completion for text after the cursor relative to current command.
+set skip-completed-text on
+
 # Shortcut: CONTROL+p
 # Description: Cycles through command completions, for current command line, from recent history.
 "\C-p": history-search-backward
@@ -16,4 +31,3 @@ set keymap vi
 # Shortcut: TAB
 # Description: Changes the default menu list for tab completion to cycle through each matching command instead.
 "\t": menu-complete
-
