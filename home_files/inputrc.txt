@@ -1,4 +1,4 @@
-# Readline (http://cnswww.cns.cwru.edu/php/chet/readline/readline.html#SEC13)
+# READLINE SETTINGS (http://cnswww.cns.cwru.edu/php/chet/readline/readline.html#SEC13)
 
 # Sets bell style to visible instead of audible.
 set bell-style visible
