@@ -24,9 +24,13 @@ set completion-query-items 100
 # Use intelligent auto-completion for text after the cursor relative to current command.
 set skip-completed-text on
 
-# Shortcut: CONTROL+p
-# Description: Cycles through command completions, for current command line, from recent history.
-"\C-p": history-search-backward
+# Shortcut: CONTROL+SHIFT+P
+# Description: Cycles backward through command completions, for current command line, from recent history.
+"\C-P": history-search-backward
+
+# Shortcut: CONTROL+SHIFT+N
+# Description: Cycles forward through command completions, for current command line, from recent history.
+"\C-N": history-search-forward
 
 # Shortcut: TAB
 # Description: Changes the default menu list for tab completion to cycle through each matching command instead.
