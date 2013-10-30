@@ -97,6 +97,7 @@ alias rbp="rbenv which"
 alias rbw="rbenv whence"
 alias rbv="rbenv versions"
 alias rbi="rbenv install"
+alias rbil="rbenv install --list"
 alias rbu="rbenv uninstall"
 alias rbvars="rbenv vars"
 
