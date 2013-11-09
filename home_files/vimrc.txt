@@ -15,6 +15,9 @@ set hlsearch " Highlight search matches after entering search pattern.
 set ignorecase " Use case insensitive search pattern matching by default.
 set smartcase " Override 'ignorecase' setting if search pattern contains uppercase characters.
 
+set spell " Enable spell checking.
+set complete+=kspell " Enables use of CONTROL+N or CONTROL+P within Insert mode to complete words being typed.
+
 set winwidth=120 " Default window width.
 set winheight=10 " Default window height.
 set winminheight=10 " Minimum window height.
@@ -34,6 +37,10 @@ nnoremap <C-K> <C-W><C-K> " Move up one window.
 nnoremap <C-L> <C-W><C-L> " Move right one window.
 nnoremap <C-J> <C-W><C-J> " Move down one window.
 nnoremap <C-H> <C-W><C-H> " Move left one window.
+
+" Auto-Commands
+autocmd FileType gitcommit setlocal spell " Enables spell checking for Git commits.
+autocmd FileType markdown setlocal spell " Enables spell checking for Markdown files.
 
 " Extensions
 execute pathogen#infect()
