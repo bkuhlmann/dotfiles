@@ -44,3 +44,4 @@ autocmd FileType markdown setlocal spell " Enables spell checking for Markdown f
 
 " Extensions
 execute pathogen#infect()
+runtime macros/matchit.vim
