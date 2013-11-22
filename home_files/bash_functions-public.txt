@@ -242,8 +242,10 @@ function gtaila() {
         # Print project name and Git activity only if Git activity is detected.
         if [ -n $count ] && [ $count != 0 ]; then
           # Outputs project (cyan color) with color-coded commit count (based on volume).
-          if [ $count -ge 20 ]; then
+          if [ $count -ge 30 ]; then
             echo -e "\033[36m${project:2}:\033[m \033[31m$count\033[m" # Red count color.
+          elif [ $count -ge 20 -a $count -le 29 ]; then
+            echo -e "\033[36m${project:2}:\033[m \033[1;31m$count\033[m" # Light red count color.
           elif [ $count -ge 10 -a $count -le 19 ]; then
             echo -e "\033[36m${project:2}:\033[m \033[33m$count\033[m" # Yellow count color.
           else
