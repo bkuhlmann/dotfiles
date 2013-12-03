@@ -43,12 +43,32 @@ function gsta() {
       cd "$project"
       # Only process projects that are Git enabled.
       if [ -d ".git" ]; then
-        # Capture current project status.
-        results=$(git status --short --branch)
+        # Capture current project status info as an array.
+        results=(`git status --short --branch`)
+        size="${#results[*]}"
+
         # Print project name and Git activity only if Git activity is detected.
-        if [ "$results" != "## master" ]; then
-          echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
-          echo -e "$results"
+        if [ $size -gt '2' ]; then
+          # Output project name in cyan color.
+          echo -e "\033[36m${project:2}\033[m"
+
+          # Remove first and second elements since they contain branch info.
+          results=("${results[@]:1}")
+          results=("${results[@]:1}")
+
+          # Default initial printing of new line to false.
+          newline=0
+
+          # Print results.
+          for line in "${results[@]}"; do
+            if [ $newline == 1 ]; then
+              echo "$line"
+              newline=0
+            else
+              echo -n "$line "
+              newline=1
+            fi
+          done
         fi
       fi
     )
