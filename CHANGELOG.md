@@ -1,3 +1,17 @@
+# v8.1.0
+
+* Fixed install requirements to only point to the OSX project.
+* Fixed "gls" alias so that search results no longer include graph information.
+* Fixed "gsta" function so that Git project status does not display master...origin/master.
+* Updated .powconfig to keep Pow alive for three hours instead of one.
+* Updated the "gtaila" function to use normal, warning, caution, and danger commit coloring.
+* Added the 'v' alias for vim.
+* Added .vimrc settings.
+* Added .inputrc settings.
+* Added "rbil" alias for "rbenv install --list".
+* Added "tags" to .gitignore.
+* Added Pow HTTPS support.
+
 # v8.0.0
 
 * Fixed "dots" function bug where supplying an option to bypass the options prompt would throw an error.

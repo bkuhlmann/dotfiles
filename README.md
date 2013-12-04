@@ -8,6 +8,8 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 
 * Configures the Bash shell .bashrc file.
 * Configures the Bash shell .bash_profile file.
+* Configures the .inputrc file.
+* Configures the [Vim](http://www.vim.org) .vimrc file.
 * Configures the [Git](http://git-scm.com) .gitconfig file.
 * Configures the [Git](http://git-scm.com) .gitignore file.
 * Configures the [Ruby Gems](http://docs.rubygems.org/read/chapter/11) .gemrc file.
@@ -20,8 +22,8 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 * Configures the [Pow](http://pow.cx) .powconfig file.
 * Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
 * Adds [Bash Completion](http://bash-completion.alioth.debian.org).
-* Adds [Z](https://github.com/rupa/z) support to Bash.
-* Adds [rbenv](https://github.com/sstephenson/rbenv) support to Bash.
+* Adds [Z](https://github.com/rupa/z) Bash support.
+* Adds [rbenv](https://github.com/sstephenson/rbenv) Bash support.
 
 # Requirements
 
@@ -36,7 +38,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v8.0.0
+    git checkout v8.1.0
 
 Master Version (unstable)
 
@@ -102,12 +104,12 @@ From the command line, the following aliases are available:
     gcge = "git config --global --edit"
     gget = "git config"
     gst = "git status --short --branch"
-    gl = "git log --graph --pretty=format:'%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset'"
-    gld = "git log --pretty=format:'%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset %n%b' --stat"
+    gl = "git log --graph --pretty=format:'%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)'"
+    gld = "git log --pretty=format:'%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b' --stat"
     glh = 'git log --pretty=format:%H -1 | pbcopy && echo "`pbpaste` (copied to clipboard)"'
     gln = "git log --name-status"
     glf = "git log ..FETCH_HEAD"
-    gls = "gl -S"
+    gls = "git log --pretty=format:'%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)' -S"
     gg = "git grep"
     glast = "git show --stat"
     guthors = "git shortlog --summary --numbered --email"
@@ -136,7 +138,7 @@ From the command line, the following aliases are available:
     gamend = "git commit --amend"
     gcp = "git cherry-pick"
     gash = "git stash save"
-    gashl = "git stash list --pretty=format:'%C(yellow)%gd%Creset %s'"
+    gashl = "git stash list --pretty=format:'%C(yellow)%gd%C(reset) %s'"
     gashs = "git stash show"
     gashp = "git stash pop"
     gashd = "git stash drop"
@@ -168,6 +170,7 @@ From the command line, the following aliases are available:
     rbw = "rbenv whence"
     rbv = "rbenv versions"
     rbi = "rbenv install"
+    rbil = "rbenv install --list"
     rbu = "rbenv uninstall"
     rbvars = "rbenv vars"
 
@@ -252,6 +255,9 @@ From the command line, the following aliases are available:
 
 ##### [Path Finder](http://www.cocoatech.com/pathfinder)
     pfo = 'open -a "Path Finder.app" "$PWD"'
+
+##### [VIM](http://www.vim.org)
+    v = "vim"
 
 ##### [Sublime Text](http://www.sublimetext.com)
     e = "sublime"
