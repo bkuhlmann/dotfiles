@@ -256,7 +256,7 @@ From the command line, the following aliases are available:
 ##### [Path Finder](http://www.cocoatech.com/pathfinder)
     pfo = 'open -a "Path Finder.app" "$PWD"'
 
-##### [VIM](http://www.vim.org)
+##### [Vim](http://www.vim.org)
     v = "vim"
 
 ##### [Sublime Text](http://www.sublimetext.com)
