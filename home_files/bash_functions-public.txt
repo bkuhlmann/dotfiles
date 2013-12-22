@@ -291,6 +291,12 @@ function gashp() {
   _process_git_stash "pop" "Git Stash Pop Options (select stash to pop)"
 }
 
+# Label: Git Stash Drop
+# Description: Enhances git stash drop behavior by prompting for input (multiple) or dropping last stash (single).
+function gashd() {
+  _process_git_stash "drop" "Git Stash Drop Options (select stash to drop)"
+}
+
 # Label: Git Stash (all)
 # Description: Answers stash count for all projects within current directory.
 function gasha() {
