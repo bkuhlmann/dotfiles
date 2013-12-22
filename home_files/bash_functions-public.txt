@@ -279,6 +279,12 @@ function gtaila() {
   echo ''
 }
 
+# Label: Git Stash List
+# Description: Lists git stashes in an easy to read format.
+function gashl() {
+  git stash list --pretty=format:'%C(yellow)%gd%C(reset) %s'
+}
+
 # Label: Git Stash Show
 # Description: Enhances git stash show behavior by prompting for input (multiple) or showing last stash (single).
 function gashs() {

@@ -16,8 +16,8 @@ function _process_git_stash() {
   IFS_original=$IFS
   IFS=$'\n'
 
-  # Store existing stashes (if any) as an array (pretty formatted for readability).
-  stashes=(`git stash list --pretty=format:"%C(yellow)%gd%C(reset) %s"`)
+  # Store existing stashes (if any) as an array. See the public, "gashl" function for details.
+  stashes=(`gashl`)
 
   # Ask which stash to show when multiple stashes are detected, otherwise show the existing stash.
   if [ "${#stashes[*]}" -gt '1' ]; then
