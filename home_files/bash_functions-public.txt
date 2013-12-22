@@ -562,11 +562,14 @@ function rew() {
         _process_rew_option $1 $2
       else
         echo "Usage: rew NAME TEMPLATE"
-        echo -e "\nAvailable Templates:"
-        echo "  1: Rails Default Template"
-        echo "  2: Rails Slim Template"
-        echo "  3: Rails Setup Template"
-        echo "  4: Rails Setup Template (experimental)"
+        echo -e "\nAvailable Ruby on Rails Templates:"
+        echo "  Rails:"
+        echo "    1: Rails Default Template"
+        echo "    2: Rails Slim Template"
+        echo "    3: Rails Setup Template"
+        echo "    4: Rails Setup Template (experimental)"
+        echo "  Engines:"
+        echo "    5: Rails Engine Default Template"
         echo
         read -p "Please pick one (or type 'q' to quit): " response
         echo
