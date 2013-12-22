@@ -279,35 +279,16 @@ function gtaila() {
   echo ''
 }
 
+# Label: Git Stash Show
+# Description: Enhances git stash show behavior by prompting for input (multiple) or showing last stash (single).
+function gashs() {
+  _process_git_stash "show" "Git Stash Show Options (select stash to show)"
+}
+
 # Label: Git Stash Pop
-# Description: Enhances default git stash pop behavior by prompting for input (multiple) or popping last stash (single).
+# Description: Enhances git stash pop behavior by prompting for input (multiple) or popping last stash (single).
 function gashp() {
-  # Store original line break setting and temporarily switch to using new line characters instead.
-  IFS_original=$IFS
-  IFS=$'\n'
-
-  # Store existing stashes (if any) as an array (pretty formatted for readability).
-  stashes=(`git stash list --pretty=format:"%C(yellow)%gd%C(reset) %s"`)
-
-  # Ask which stash to pop when multiple stashes are detected, otherwise pop the single stash.
-  if [ "${#stashes[*]}" -gt '1' ]; then
-    echo -e "\nGit Stash Pop Options (select stash to pop):"
-    for ((index = 0; index < ${#stashes[*]}; index++)); do
-      echo "  $index: ${stashes[$index]}"
-    done
-    echo -e "  q: Quit/Exit.\n"
-
-    read -p "Enter selection: " response
-    match="^[0-9]{1}$"
-    if [[ "$response" =~ $match ]]; then
-      git stash pop "stash@{$response}"
-    fi
-  else
-    git stash pop
-  fi
-
-  # Restore original line break setting.
-  ISF=$IFS_original
+  _process_git_stash "pop" "Git Stash Pop Options (select stash to pop)"
 }
 
 # Label: Git Stash (all)
