@@ -29,3 +29,6 @@ tags
 
 # Temp Directories
 tmp
+
+# Logs
+*.log
