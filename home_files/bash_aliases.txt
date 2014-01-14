@@ -67,6 +67,7 @@ alias gcp="git cherry-pick"
 alias gash="git stash save"
 alias gashc="git stash clear"
 alias gf="git fetch"
+alias gfp="git fetch --prune"
 alias gpu="git pull"
 alias gpur="git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching.
 alias geady="git rebase -i @{u}" # Interactive rebase.
