@@ -242,7 +242,8 @@ function gmonth() {
 # Description: Answers commit history since last tag for current project.
 function gtail() {
   if [ "$(git tag)" ]; then
-    git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags)..HEAD
+    git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags)..HEAD \
+      | pbcopy && echo -e "`pbpaste`\n(copied to clipboard)"
   fi
 }
 
