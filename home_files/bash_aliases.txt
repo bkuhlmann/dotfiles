@@ -25,6 +25,19 @@ alias tsa="tmux attach-session -t"
 alias tsk="tmux kill-session -t"
 alias tsr="tmux rename-session -t"
 
+# Section: [Homebrew](http://brew.sh)
+alias hbi="brew install"
+alias hbu="brew uninstall"
+alias hbs="brew services list"
+alias hbsr="brew services restart"
+alias hbst="brew services start"
+alias hbsp="brew services stop"
+alias hbsc="brew services cleanup"
+alias hbl="brew list"
+alias hbup="brew update"
+alias hbug="brew upgrade"
+alias hbd="brew doctor"
+
 # Section: [Git](http://git-scm.com)
 alias gi="git init"
 alias gcle="git config --local --edit"
