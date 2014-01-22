@@ -26,7 +26,9 @@ alias tsk="tmux kill-session -t"
 alias tsr="tmux rename-session -t"
 
 # Section: [Homebrew](http://brew.sh)
+alias hb="brew"
 alias hbi="brew install"
+alias hbin="brew info"
 alias hbu="brew uninstall"
 alias hbs="brew services list"
 alias hbsr="brew services restart"
