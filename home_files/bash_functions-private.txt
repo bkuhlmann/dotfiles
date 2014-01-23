@@ -241,13 +241,13 @@ function _find_command() {
 function _process_dots_option() {
   case $1 in
     'a')
-      _print_aliases
+      _print_aliases | more
       break;;
     'f')
-      _print_functions
+      _print_functions | more
       break;;
     's')
-      _find_command "$2"
+      _find_command "$2" | more
       break;;
     'q')
       break;;
