@@ -4,6 +4,14 @@
 # Section: [Git](http://git-scm.com) #
 #------------------------------------#
 
+# Label: Git Commits Since Last Tag
+# Description: Answers commit history since last tag for project.
+function _git_commits_since_last_tag() {
+  if [ "$(git tag)" ]; then
+    git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags)..HEAD
+  fi
+}
+
 # Label: Git Stash
 # Description: Enhances default git stash behavior by prompting for input (multiple) or using last stash (single).
 # Parameters: $1 (required) - The git stash command to execute, $2 (required) - The prompt label (for multiple stashes).
