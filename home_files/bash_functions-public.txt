@@ -22,6 +22,25 @@ function curli() {
   echo ''
 }
 
+#--------------------------------------------------#
+# Section: [lsof](http://people.freebsd.org/~abe/) #
+#--------------------------------------------------#
+
+# Label: Port
+# Description: Lists file activity on a given port.
+# Parameters: $1 (required) - The port number.
+function port() {
+  echo ''
+
+  if [ "$1" ]; then
+    sudo lsof -i :$1
+  else
+    echo "ERROR: Port number must be supplied."
+  fi
+
+  echo ''
+}
+
 #------------------------------------#
 # Section: [Git](http://git-scm.com) #
 #------------------------------------#
