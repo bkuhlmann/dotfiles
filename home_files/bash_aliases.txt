@@ -38,6 +38,7 @@ alias hbsc="brew services cleanup"
 alias hbl="brew list"
 alias hbup="brew update"
 alias hbug="brew upgrade"
+alias hbv="brew versions"
 alias hbd="brew doctor"
 
 # Section: [Git](http://git-scm.com)
