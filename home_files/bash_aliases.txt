@@ -150,8 +150,8 @@ alias bch="rm -f Gemfile.lock; bundle check"
 alias rebundle="bch; bundle package"
 
 # Section: [Gemsmith](https://github.com/bkuhlmann/gemsmith)
-alias g="gemsmith"
-alias go="gemsmith open"
+alias gs="gemsmith"
+alias gso="gemsmith open"
 
 # Section: [PostgreSQL](http://www.postgresql.org)
 alias pgs="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
