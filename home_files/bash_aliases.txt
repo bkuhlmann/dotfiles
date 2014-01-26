@@ -126,6 +126,7 @@ alias gemup="gem update"
 alias gemu="gem uninstall"
 alias gemc="gem cleanup"
 alias gems="gem server"
+alias gemp="gem pristine"
 alias gemuc="gem update --system && gem update && gem cleanup"
 
 # Section: [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
