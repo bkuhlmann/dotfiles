@@ -152,6 +152,7 @@ alias rebundle="bch; bundle package"
 # Section: [Gemsmith](https://github.com/bkuhlmann/gemsmith)
 alias gs="gemsmith"
 alias gse="gemsmith edit"
+alias gsr="gemsmith read"
 alias gso="gemsmith open"
 
 # Section: [PostgreSQL](http://www.postgresql.org)
