@@ -465,14 +465,14 @@ function gtagd() {
   if [ "$1" ]; then
     read -p "You are about to delete the '$1' tag from local and remote repositories. Continue (y/n)?: " response
     if [ "$response" == 'y' ]; then
-      # Handle local tag.
+      echo -n "Local Tag: "
       if [ -n "$(git tag --list $1)" ]; then
         git tag --delete "$1"
       else
         echo "No local tag found. Skipped."
       fi
 
-      # Handle remote tag.
+      echo -n "Remote Tag: "
       if [ -n "$(git ls-remote --tags origin | grep $1)" ]; then
         git push --delete origin "$1"
       else
