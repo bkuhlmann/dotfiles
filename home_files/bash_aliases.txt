@@ -156,10 +156,6 @@ alias gse="gemsmith edit"
 alias gsr="gemsmith read"
 alias gso="gemsmith open"
 
-# Section: [PostgreSQL](http://www.postgresql.org)
-alias pgs="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pgq="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-
 # Section: [Ruby on Rails](http://rubyonrails.org)
 alias scs="sc --sandbox"
 alias sgc="sg controller"
