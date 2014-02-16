@@ -189,7 +189,7 @@ alias rsitep="rake sitemap:refresh"
 alias hpas="hp account --switch"
 
 # Section: [The Silver Surfer](https://github.com/ggreer/the_silver_searcher)
-alias agf="ag --files-with-matches --file-search-regex"
+alias agf="ag --hidden --files-with-matches --file-search-regex"
 
 # Section: [Z](https://github.com/rupa/z)
 alias ez="$EDITOR $HOME/.z"
