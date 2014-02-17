@@ -21,6 +21,7 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 * Configures the [Guard](https://github.com/guard/guard) .guardrc file.
 * Configures the [Xray](https://github.com/brentd/xray-rails) .xrayconfig file.
 * Configures the [Pow](http://pow.cx) .powconfig file.
+* Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) .psqlrc file.
 * Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
 * Adds [Bash Completion](http://bash-completion.alioth.debian.org).
 * Adds [Z](https://github.com/rupa/z) Bash support.
