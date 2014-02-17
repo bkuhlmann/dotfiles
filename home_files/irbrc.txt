@@ -56,8 +56,6 @@ end
     pry-rescue
     pry-stack_explorer
     pry-vterm_aliases
-    pry-git
-    pry-doc
   ).each do |gem|
   begin
     require gem
