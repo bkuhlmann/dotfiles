@@ -1,3 +1,28 @@
+# v9.0.0
+
+* Removed the PostgreSQL aliases.
+* Updated Gemsmith aliases to use "gs" prefixes.
+* Updated the "gtail" function to always copy contents to the clipboard.
+* Updated the "gbd" function with descriptive local/remote branch deletion messages.
+* Added the "tfollowers" Bash function for capturing and comparing Twitter followers.
+* Added Rails Engine default template generation support to the "rew" function.
+* Added *.log files to .gitignore.
+* Added "gfp" alias for "git fetch --prune".
+* Added "gtagd" function for deleting a local and remote tag.
+* Added Homebrew aliases.
+* Added auto-pagination to "dots" for aliases and functions since they are lengthy.
+* Added .psqlrc for an enhanced PostgreSQL prompt.
+* Added "port" function for "sudo lsof -i :<port>" to quickly scan file usage on a given port.
+* Added "gemp" alias for "gem pristine".
+* Added "geme" alias for "gem environment".
+* Added "gse" alias for "gemsmith edit".
+* Added "gsr" alias for "gemsmith read".
+* Added "agf" alias for quick Silver Surfer file searches.
+* Refactored the "gashp" alias to be a function with multiple stash prompt support.
+* Refactored the "gashs" alias to be a function with multiple stash prompt support.
+* Refactored the "gashd" alias to be a function with multiple stash prompt support.
+* Refactored the "gashl" alias to a function.
+
 # v8.1.0
 
 * Fixed install requirements to only point to the OSX project.

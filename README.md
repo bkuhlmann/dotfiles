@@ -1,7 +1,8 @@
 # Overview
 
-Shell scripts for applying default settings to UNIX-based operating systems. By default,
-these are set to my preferences (namely for OSX) but you can change them to your liking by editing
+Shell scripts for applying default settings to UNIX-based operating systems.
+
+By default, these are set to my preferences (namely for OSX) but you can change them to your liking by editing
 any of the *.txt files in the home_files directory. Read on to learn more.
 
 # Features
@@ -38,7 +39,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v8.1.0
+    git checkout v9.0.0
 
 Master Version (unstable)
 
@@ -86,17 +87,32 @@ From the command line, the following aliases are available:
     bashs = "exec $SHELL"
 
 ##### Network
+    sshe = "$EDITOR $HOME/.ssh/config"
     ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | pbcopy && echo "`pbpaste` (copied to clipboard)"'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
-
-##### SSH
-    sshe = "$EDITOR $HOME/.ssh/config"
 
 ##### [tmux](http://tmux.sourceforge.net)
     tsl = "tmux list-sessions"
     tsa = "tmux attach-session -t"
     tsk = "tmux kill-session -t"
     tsr = "tmux rename-session -t"
+
+##### [Homebrew](http://brew.sh)
+    hb = "brew"
+    hbi = "brew install"
+    hbin = "brew info"
+    hbu = "brew uninstall"
+    hbs = "brew services list"
+    hbsr = "brew services restart"
+    hbst = "brew services start"
+    hbsp = "brew services stop"
+    hbsc = "brew services cleanup"
+    hbl = "brew list"
+    hbup = "brew update"
+    hbug = "brew upgrade"
+    hbv = "brew versions"
+    hbd = "brew doctor"
+    hbrb = "brew uninstall ruby-build && brew install --HEAD ruby-build"
 
 ##### [Git](http://git-scm.com)
     gi = "git init"
@@ -138,12 +154,9 @@ From the command line, the following aliases are available:
     gamend = "git commit --amend"
     gcp = "git cherry-pick"
     gash = "git stash save"
-    gashl = "git stash list --pretty=format:'%C(yellow)%gd%C(reset) %s'"
-    gashs = "git stash show"
-    gashp = "git stash pop"
-    gashd = "git stash drop"
     gashc = "git stash clear"
     gf = "git fetch"
+    gfp = "git fetch --prune"
     gpu = "git pull"
     gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching.
     geady = "git rebase -i @{u}" # Interactive rebase.
@@ -186,6 +199,8 @@ From the command line, the following aliases are available:
     gemu = "gem uninstall"
     gemc = "gem cleanup"
     gems = "gem server"
+    gemp = "gem pristine"
+    geme = "gem environment"
     gemuc = "gem update --system && gem update && gem cleanup"
 
 ##### [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
@@ -209,12 +224,10 @@ From the command line, the following aliases are available:
     rebundle = "bch; bundle package"
 
 ##### [Gemsmith](https://github.com/bkuhlmann/gemsmith)
-    g = "gemsmith"
-    go = "gemsmith open"
-
-##### [PostgreSQL](http://www.postgresql.org)
-    pgs = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-    pgq = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+    gs = "gemsmith"
+    gse = "gemsmith edit"
+    gsr = "gemsmith read"
+    gso = "gemsmith open"
 
 ##### [Ruby on Rails](http://rubyonrails.org)
     scs = "sc --sandbox"
@@ -250,6 +263,9 @@ From the command line, the following aliases are available:
 ##### [Heroku+](https://github.com/bkuhlmann/heroku_plus)
     hpas = "hp account --switch"
 
+##### [The Silver Surfer](https://github.com/ggreer/the_silver_searcher)
+    agf = "ag --hidden --files-with-matches --file-search-regex"
+
 ##### [Z](https://github.com/rupa/z)
     ez = "$EDITOR $HOME/.z"
 
@@ -270,6 +286,9 @@ From the command line, the following functions are available:
 ##### [curl](http://curl.haxx.se)
     curli = Curl Inspect - Inspect remote file, via curl, within default editor.
 
+##### [lsof](http://people.freebsd.org/~abe/)
+    port = Port - Lists file activity on a given port.
+
 ##### [Git](http://git-scm.com)
     groot = Git Root - Changes to project root directory (regardless of how deep the current path might be).
     gsta = Git Status (all) - Answers the status of projects with uncommited/unpushed changes.
@@ -284,14 +303,19 @@ From the command line, the following functions are available:
     gday = Git Day - Answers a summarized list of Git current day activity for all projects in current directory.
     gweek = Git Week - Answers a summarized list of Git current week activity for all projects in current directory.
     gmonth = Git Month - Answers a summarized list of Git current month activity for all projects in current directory.
-    gtail = Git Tail - Answers commit history since last tag for current project.
-    gtaila = Git Tail (all) - Answers commit history count since last tag (see gtail) for all projects in current directory.
+    gtail = Git Tail - Answers commit history since last tag for current project and copies results to clipboard.
+    gtaila = Git Tail (all) - Answers commit history count since last tag for all projects in current directory.
+    gashl = Git Stash List - Lists git stashes in an easy to read format.
+    gashs = Git Stash Show - Enhances git stash show behavior by prompting for input (multiple) or showing last stash (single).
+    gashp = Git Stash Pop - Enhances git stash pop behavior by prompting for input (multiple) or popping last stash (single).
+    gashd = Git Stash Drop - Enhances git stash drop behavior by prompting for input (multiple) or dropping last stash (single).
     gasha = Git Stash (all) - Answers stash count for all projects within current directory.
     gpua = Git Pull (all) - Pulls down new changes (if any) from remote branch for all projects in current directory.
     gcap = Git Commit and Push (all) - Commits and pushes changes for all projects within current directory.
     gvca = Git Validate and Clean (all) - Validates and cleans all projects in current directory.
-    gbd = Git Branch Delete - Deletes local and associated remote branch (if found).
+    gbd = Git Branch Delete - Deletes local and remote branch (if found).
     gbdm = Git Branch Delete Merged - Deletes local and remote merged branches (if found).
+    gtagd = Git Tag Delete - Deletes local and remote tag (if found).
 
 ##### [GitHub](https://github.com)
     githubi = GitHub Initizalize - Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
@@ -316,6 +340,9 @@ From the command line, the following functions are available:
 
 ##### [FFmpeg](http://www.ffmpeg.org)
     gifize = Gifize - Converts a video into an animated GIF.
+
+##### [Twitter](https://twitter.com)
+    tfollowers = Twitter Followers - Captures or compares (since last check) Twitter followers.
 
 ##### Dotfiles
     dots = Dotfiles - Informational utility for learning more about dotfile aliases, functions, etc.
