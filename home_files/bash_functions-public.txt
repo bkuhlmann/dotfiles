@@ -547,7 +547,7 @@ function boa() {
     (
       cd "$project"
       # Only process projects that are Git enabled.
-      if [ -f "Gemfile" ]; then
+      if [ -f "Gemfile.lock" ]; then
         # Capture current project status.
         results=$(bundle outdated | grep '*')
         # Print project name and Git activity only if Git activity was detected.
@@ -572,7 +572,7 @@ function bua() {
     (
       cd "$project"
       # Only process projects that support Bundler.
-      if [ -f "Gemfile" ]; then
+      if [ -f "Gemfile.lock" ]; then
         rm -f Gemfile.lock
         results=$(bundle install)
         # Print project name and Git activity only if Git activity was detected.
