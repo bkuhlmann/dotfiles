@@ -562,6 +562,30 @@ function boa() {
   echo ''
 }
 
+# Label: Bundle Update (all)
+# Description: Answers a list of outdated gems for all projects within current directory.
+function bua() {
+  echo ''
+
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that support Bundler.
+      if [ -f "Gemfile" ]; then
+        rm -f Gemfile.lock
+        results=$(bundle install)
+        # Print project name and Git activity only if Git activity was detected.
+        if [ -n "$results" ]; then
+          echo -e "\033[36m${project:2}\033[m: ✓" # Outputs in cyan color.
+        fi
+      fi
+    )
+  done < <(find . -type d -depth 1)
+
+  echo ''
+}
+
 #-------------------------------------------#
 # Section: [Ruby](http://www.ruby-lang.org) #
 #-------------------------------------------#
