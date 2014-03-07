@@ -547,7 +547,7 @@ function boa() {
     (
       cd "$project"
       # Only process projects that are Git enabled.
-      if [ -d ".git" ]; then
+      if [ -f "Gemfile" ]; then
         # Capture current project status.
         results=$(bundle outdated | grep '*')
         # Print project name and Git activity only if Git activity was detected.
