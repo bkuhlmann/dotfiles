@@ -564,7 +564,7 @@ function boa() {
 }
 
 # Label: Bundle Update (all)
-# Description: Answers a list of outdated gems for all projects within current directory.
+# Description: Updates gems for all projects within current directory.
 function bua() {
   echo ''
 
