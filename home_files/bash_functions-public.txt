@@ -516,6 +516,7 @@ function gh() {
         echo "  c: Open GitHub project commit(s) in default browser."
         echo "  b: Open GitHub project branches in default browser."
         echo "  t: Open GitHub project tags (releases) in default browser."
+        echo "  p: Open GitHub project pull requests in default browser."
         echo "  u: Print GitHub project URL."
         echo "  q: Quit/Exit."
         echo ''
