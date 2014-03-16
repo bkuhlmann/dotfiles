@@ -24,9 +24,6 @@ tags
 # SASS
 .sass-cache
 
-# Espresso
-*.esproj
-
 # RubyMine
 *.idea
 
