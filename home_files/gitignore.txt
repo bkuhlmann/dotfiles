@@ -21,9 +21,6 @@ tags
 .tags
 .tags_sorted_by_file
 
-# SASS
-.sass-cache
-
 # RubyMine
 *.idea
 
