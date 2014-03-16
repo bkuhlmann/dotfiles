@@ -1,6 +1,9 @@
 # Mac OS
 .DS_Store
 
+# Environments
+*.env*
+
 # Archives
 *.7z
 *.dmg
