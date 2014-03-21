@@ -715,6 +715,40 @@ function bertt() {
   fi
 }
 
+#----------------------------------------------#
+# Section: [Travis CI](https://travis-ci.org/) #
+#----------------------------------------------#
+
+# Label: Travis CI Encrypt (all)
+# Description: Encrypts a string for all Travis CI-enabled (.travis.yml) projects in current directory.
+# Parameters: $1 (required) - The key to add, $2 (require) - The value to encrypt.
+function tcie() {
+  echo
+
+  if [ -z "$1" ]; then
+    echo -e "ERROR: Encryption key must be supplied. Example: notifications.slack.\n"
+    return 0
+  fi
+
+  if [ -z "$2" ]; then
+    echo -e "ERROR: Encryption value must be supplied. Example: ra:B35GH59594BKDK.\n"
+    return 0
+  fi
+
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects which have ruby version information.
+      if [ -e ".travis.yml" ]; then
+        travis encrypt "$2" --add "$1"
+        echo -e "\033[36m${project:2}\033[m: ✓" # Outputs in cyan color.
+      fi
+    )
+  done < <(find . -type d -depth 1)
+
+  echo -e "\n"
+}
+
 #---------------------------------------------------------------------------#
 # Section: [Site Validator](https://github.com/jaimeiniesta/site_validator) #
 #---------------------------------------------------------------------------#
