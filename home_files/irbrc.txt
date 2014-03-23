@@ -55,7 +55,6 @@ end
     pry-remote
     pry-rescue
     pry-stack_explorer
-    pry-vterm_aliases
   ).each do |gem|
   begin
     require gem
