@@ -552,7 +552,7 @@ function boa() {
       if [ -f "Gemfile.lock" ]; then
         # Capture current project status.
         results=$(bundle outdated | grep '*')
-        # Print project name and Git activity only if Git activity was detected.
+        # Print project name and status only if Bundler activity was detected.
         if [ -n "$results" ]; then
           echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
           echo -e "$results"
@@ -577,8 +577,31 @@ function bua() {
       if [ -f "Gemfile.lock" ]; then
         rm -f Gemfile.lock
         results=$(bundle install)
-        # Print project name and Git activity only if Git activity was detected.
+        # Print project name and status only if Bundler activity was detected.
         if [ -n "$results" ]; then
+          echo -e "\033[36m${project:2}\033[m: ✓" # Outputs in cyan color.
+        fi
+      fi
+    )
+  done < <(find . -type d -depth 1)
+
+  echo ''
+}
+
+# Label: Bundle Clean (all)
+# Description: Cleans all projects of gem artifacts (i.e. pkg folder).
+function bca() {
+  echo ''
+
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that support Bundler.
+      if [ -f "Gemfile.lock" ]; then
+        # Print project name and status.
+        if [ -d "pkg" ]; then
+          rm -rf pkg
           echo -e "\033[36m${project:2}\033[m: ✓" # Outputs in cyan color.
         fi
       fi
@@ -808,7 +831,7 @@ function gifize() {
 #-----------------------------------------#
 
 # Label: Twitter Followers
-# Description: Captures or compares (since last check) Twitter followers.
+# Description: Captures or compares Twitter followers (since last check).
 function tfollowers() {
   old_followers_file_path="$HOME/followers.txt"
   new_followers_file_path="$HOME/followers-new.txt"
