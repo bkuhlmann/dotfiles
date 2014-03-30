@@ -384,6 +384,7 @@ function gcap() {
         if [ -d ".git" ]; then
           # Only process projects that have changes.
           if [ "$(git status -s)" ]; then
+            echo -e "\n\033[36m${project:2}\033[m" # Outputs in cyan color.
             git commit --all --message "$1" && git push
           fi
         fi
