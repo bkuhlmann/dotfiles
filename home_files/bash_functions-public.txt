@@ -46,7 +46,7 @@ function port() {
 #------------------------------------#
 
 # Label: Git Root
-# Description: Changes to project root directory (regardless of how deep the current path might be).
+# Description: Changes to project root directory (regardless of current depth).
 function groot() {
   cd "$(dirname $(git rev-parse --git-dir))"
 }
@@ -94,6 +94,19 @@ function gsta() {
   done < <(find . -type d -depth 1)
 
   echo ''
+}
+
+# Label: Git Churn
+# Description: Answers the commit churn for project files (sorted highest to lowest).
+function ghurn() {
+  git log --all --find-renames --find-copies --name-only --format='format:' "$@" | \
+    sort | \
+    grep --invert-match '^$' | \
+    uniq -c | \
+    sort | \
+    awk '{print $1 "\t" $2}' | \
+    sort --general-numeric-sort --reverse | \
+    more
 }
 
 # Label: Git Get Config Value (all)
