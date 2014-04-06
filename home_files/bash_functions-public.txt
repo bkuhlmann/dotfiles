@@ -838,10 +838,10 @@ function sv() {
 # Section: [Image Magick](http://www.imagemagick.org) #
 #-----------------------------------------------------#
 
-# Label: Whiteboard
-# Description: Converts a photo into a sketch drawing. Inspired by [Whiteboard Cleaner Gist](https://gist.github.com/lelandbatey/8677901).
-# Parameters: $1 (required) - The input image path, $2 (optional) - The output image path. Default: whiteboard.jpg.
-function iwb() {
+# Label: Sketch
+# Description: Converts a photo into a sketch. Inspired by [Whiteboard Cleaner Gist](https://gist.github.com/lelandbatey/8677901).
+# Parameters: $1 (required) - The input image path, $2 (optional) - The output image path. Default: sketch.jpg.
+function sketch() {
   input_path="$1"
   output_path="$2"
 
@@ -851,13 +851,13 @@ function iwb() {
   fi
 
   if [ -z "$output_path" ]; then
-    output_path="whiteboard.jpg"
+    output_path="sketch.jpg"
   fi
 
   echo ''
-  echo "Processing whiteboard image: $input_path..."
+  echo "Processing image: $input_path..."
   convert "$input_path" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$output_path"
-  echo "Whiteboard image processing complete: $output_path."
+  echo "Sketch image ready: $output_path."
   echo ''
 }
 
