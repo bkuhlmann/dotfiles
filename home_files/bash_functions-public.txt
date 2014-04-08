@@ -51,6 +51,27 @@ function groot() {
   cd "$(dirname $(git rev-parse --git-dir))"
 }
 
+# Label: Git Authors (all)
+# Description: Answers author commit activity per project (ranked highest to lowest).
+function guthorsa() {
+  echo ''
+
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git enabled.
+      if [ -d ".git" ]; then
+        # Print project (cyan) and message (white).
+        echo -e "\033[36m${project:2}\033[m"
+        git log --format="%an" | sort | uniq -c | sort --reverse
+      fi
+    )
+  done < <(find . -type d -depth 1)
+
+  echo ''
+}
+
 # Label: Git Status (all)
 # Description: Answers the status of projects with uncommited/unpushed changes.
 function gsta() {
