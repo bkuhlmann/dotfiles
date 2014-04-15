@@ -114,7 +114,7 @@ function _create_rails_engine_skeleton() {
 # Description: Processes option selection for constructing new Rails application skeletons with custom build settings.
 # Parameters: $1 (required) - The application name, $2 (required) - The template to apply.
 function _process_rew_option() {
-  flags="--skip-bundle --database sqlite3 --skip-javascript --skip-test-unit --force --skip-keeps --template"
+  flags="--skip-bundle --database sqlite3 --skip-test-unit --force --skip-keeps --template"
   rails_slim_options="$flags https://raw.github.com/bkuhlmann/rails_slim_template/master/template.rb"
   rails_setup_remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
   rails_setup_local_options="$flags $HOME/Dropbox/Development/Projects/rails_setup_template/template.rb"
