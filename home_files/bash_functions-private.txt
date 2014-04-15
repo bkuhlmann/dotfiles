@@ -115,7 +115,8 @@ function _create_rails_engine_skeleton() {
 # Parameters: $1 (required) - The application name, $2 (required) - The template to apply.
 function _process_rew_option() {
   flags="--skip-bundle --database sqlite3 --skip-test-unit --force --skip-keeps --template"
-  rails_slim_options="$flags https://raw.github.com/bkuhlmann/rails_slim_template/master/template.rb"
+  rails_slim_remote_options="$flags https://raw.github.com/bkuhlmann/rails_slim_template/master/template.rb"
+  rails_slim_local_options="$flags $HOME/Dropbox/Development/Projects/rails_slim_template/template.rb"
   rails_setup_remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
   rails_setup_local_options="$flags $HOME/Dropbox/Development/Projects/rails_setup_template/template.rb"
   engine_options="--skip-bundle --skip-test-unit --force --skip-keeps --mountable --dummy-path=spec/dummy"
@@ -125,15 +126,18 @@ function _process_rew_option() {
       _create_rails_skeleton "$1"
       break;;
     2)
-      _create_rails_skeleton "$1" "$rails_slim_options"
+      _create_rails_skeleton "$1" "$rails_slim_remote_options"
       break;;
     3)
-      _create_rails_skeleton "$1" "$rails_setup_remote_options"
+      _create_rails_skeleton "$1" "$rails_slim_local_options"
       break;;
     4)
-      _create_rails_skeleton "$1" "$rails_setup_local_options"
+      _create_rails_skeleton "$1" "$rails_setup_remote_options"
       break;;
     5)
+      _create_rails_skeleton "$1" "$rails_setup_local_options"
+      break;;
+    6)
       _create_rails_engine_skeleton "$1" "$engine_options"
       break;;
     'q')

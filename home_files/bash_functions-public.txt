@@ -717,10 +717,11 @@ function rew() {
         echo "  Rails:"
         echo "    1: Rails Default Template"
         echo "    2: Rails Slim Template"
-        echo "    3: Rails Setup Template"
-        echo "    4: Rails Setup Template (experimental)"
+        echo "    3: Rails Slim Template (experimental)"
+        echo "    4: Rails Setup Template"
+        echo "    5: Rails Setup Template (experimental)"
         echo "  Engines:"
-        echo "    5: Rails Engine Default Template"
+        echo "    6: Rails Engine Default Template"
         echo
         read -p "Please pick one (or type 'q' to quit): " response
         echo
