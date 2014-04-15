@@ -176,9 +176,8 @@ alias dcontrollers="mkdir -p doc/design && railroady --label --inheritance --out
 alias dstate="mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
 
 # Section: [Capistrano](https://github.com/capistrano/capistrano)
-alias bec="bundle exec cap"
-alias caps="bundle exec cap stage deploy"
-alias capp="bundle exec cap production deploy"
+alias caps="bec stage deploy"
+alias capp="bec production deploy"
 
 # Section: [Sitemap Generator](https://github.com/kjvarga/sitemap_generator)
 alias rsite="rake sitemap:refresh:no_ping"

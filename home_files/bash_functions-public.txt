@@ -664,16 +664,6 @@ function bca() {
   echo ''
 }
 
-# Label: Bundle Execute RSpec
-# Description: Executes RSpec via binstub or Bundler.
-function bes() {
-  if [ -e bin/rspec ]; then
-    bin/rspec $@
-  else
-    bundle exec rspec $@
-  fi
-}
-
 # Label: Bundle Execute Rake
 # Description: Executes Rake via binstub or Bundler.
 function ber() {
@@ -691,6 +681,26 @@ function bertt() {
     ber test TEST="$1"
   else
     echo "ERROR: Missing test file path. Usage: bertt test/unit/example_test.rb."
+  fi
+}
+
+# Label: Bundle Execute RSpec
+# Description: Executes RSpec via binstub or Bundler.
+function bes() {
+  if [ -e bin/rspec ]; then
+    bin/rspec $@
+  else
+    bundle exec rspec $@
+  fi
+}
+
+# Label: Bundle Execute Capistrano
+# Description: Executes Capistrano via binstub or Bundler.
+function bec() {
+  if [ -e bin/cap ]; then
+    bin/cap $@
+  else
+    bundle exec cap $@
   fi
 }
 
