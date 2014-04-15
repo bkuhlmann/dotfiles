@@ -664,6 +664,16 @@ function bca() {
   echo ''
 }
 
+# Label: Bundle Execute RSpec
+# Description: Executes RSpec via binstub or Bundler.
+function bes() {
+  if [ -e bin/rspec ]; then
+    bin/rspec $@
+  else
+    bundle exec rspec $@
+  fi
+}
+
 # Label: Bundle Execute Rake
 # Description: Executes Rake via binstub or Bundler.
 function ber() {
