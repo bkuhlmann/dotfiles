@@ -664,6 +664,26 @@ function bca() {
   echo ''
 }
 
+# Label: Bundle Execute Rake
+# Description: Executes Rake via binstub or Bundler.
+function ber() {
+  if [ -e bin/rake ]; then
+    bin/rake $@
+  else
+    bundle exec rake $@
+  fi
+}
+
+# Label: Bundle Execute Rake Test
+# Description: Executes a single Test::Unit test via binstub or Bundler.
+function bertt() {
+  if [ "$1" ]; then
+    ber test TEST="$1"
+  else
+    echo "ERROR: Missing test file path. Usage: bertt test/unit/example_test.rb."
+  fi
+}
+
 #-------------------------------------------#
 # Section: [Ruby](http://www.ruby-lang.org) #
 #-------------------------------------------#
@@ -788,16 +808,6 @@ function sdb() {
     script/dbconsole $@
   else
     rails dbconsole $@
-  fi
-}
-
-# Label: Bundle Execute Rake Test
-# Description: Executes a single Test::Unit test.
-function bertt() {
-  if [ "$1" ]; then
-    bundle exec rake test TEST="$1"
-  else
-    echo "ERROR: Missing test file path. Usage: bertt test/unit/example_test.rb."
   fi
 }
 
