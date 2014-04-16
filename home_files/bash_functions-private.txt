@@ -97,6 +97,28 @@ function _process_gh_option() {
 # Section: [Ruby on Rails](http://rubyonrails.org) #
 #--------------------------------------------------#
 
+# Label: Run Rails Command
+# Description: Runs a Rails command with smart detection of current environment.
+# Parameters: $1 (required) - The command to run, $2(optional) - Additional arguments
+function _run_rails_command() {
+  rails_command=$1
+  rails_options=$2
+
+  # Rails 4.x.x.
+  if [ -e bin/rails ]; then
+    bin/rails $rails_command $rails_options
+  # Rails 3.x.x.
+  elif [ -e script/rails ]; then
+    script/rails $rails_command $rails_options
+  # Rails 2.x.x.
+  elif [ -e script/$rails_command ]; then
+    script/$rails_command $rails_options
+  # Unsupported version.
+  else
+    echo "ERROR: Unsupported Rails version."
+  fi
+}
+
 # Label: Create Rails Skeleton
 # Description: Creates a new rails applications skeleton.
 # Parameters: $1 (required) - The application name, $2 (optional) - The build options to apply.

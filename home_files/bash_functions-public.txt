@@ -778,57 +778,25 @@ function rew() {
 # Label: Rails Script Console
 # Description: Launches the Rails console.
 function sc() {
-  if [ -e bin/rails ]; then
-    bin/rails console $@
-  elif [ -e script/rails ]; then
-    script/rails console $@
-  elif [ -e script/console ]; then
-    script/console $@
-  else
-    rails console $@
-  fi
+  _run_rails_command "console" "$*"
 }
 
 # Label: Rails Script Server
 # Description: Launches the Rails server.
 function ss() {
-  if [ -e bin/rails ]; then
-    bin/rails server $@
-  elif [ -e script/rails ]; then
-    script/rails server $@
-  elif [ -e script/server ]; then
-    script/server $@
-  else
-    rails server $@
-  fi
+  _run_rails_command "server" "$*"
 }
 
 # Label: Rails Script Generator
 # Description: Launches a Rails generator for controller, model, etc. scaffolds.
 function sg() {
-  if [ -e bin/rails ]; then
-    bin/rails generate $@
-  elif [ -e script/rails ]; then
-    script/rails generate $@
-  elif [ -e script/generate ]; then
-    script/generate $@
-  else
-    rails generate $@
-  fi
+  _run_rails_command "generate" "$*"
 }
 
 # Label: Rails Script Database Console
 # Description: Launches the Rails database console for direct access to the current application database.
 function sdb() {
-  if [ -e bin/rails ]; then
-    bin/rails dbconsole $@
-  elif [ -e script/rails ]; then
-    script/rails dbconsole $@
-  elif [ -e script/dbconsole ]; then
-    script/dbconsole $@
-  else
-    rails dbconsole $@
-  fi
+  _run_rails_command "dbconsole" "$*"
 }
 
 #----------------------------------------------#
