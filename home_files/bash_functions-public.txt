@@ -422,6 +422,31 @@ function gpua() {
   echo ''
 }
 
+# Label: Git Add (all)
+# Description: Applies file changes (including new files) for all projects within current directory.
+function galla() {
+  echo ''
+
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git enabled.
+      if [ -d ".git" ]; then
+        # Apply all changes to Git.
+        results=$(git add --verbose --all .)
+        # Print project name and Git activity only if Git activity was detected.
+        if [ -n "$results" ]; then
+          echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
+          echo -e "$results\n"
+        fi
+      fi
+    )
+  done < <(find . -type d -depth 1)
+
+  echo ''
+}
+
 # Label: Git Commit and Push (all)
 # Description: Commits and pushes changes for all projects within current directory.
 # Parameters: $1 (required) - The commit message.
