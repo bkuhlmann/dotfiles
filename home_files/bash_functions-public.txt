@@ -615,9 +615,9 @@ function githubi() {
 # Description: View current GitHub project commits, branches, tags, etc. in default browser.
 # Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
 function gh() {
-  if [ -d ".git" ]; then
+  if [[ -d ".git" ]]; then
     while true; do
-      if [ -z "$1" ]; then
+      if [[ $# == 0 ]]; then
         echo "Usage: gh OPTION"
         echo -e "\nGitHub Options:"
         echo "  o: Open GitHub project in default browser."
@@ -656,11 +656,11 @@ function boa() {
     (
       cd "$project"
       # Only process projects that are Git enabled.
-      if [ -f "Gemfile.lock" ]; then
+      if [[ -f "Gemfile.lock" ]]; then
         # Capture current project status.
         local results=$(bundle outdated | grep '*')
         # Print project name and status only if Bundler activity was detected.
-        if [ -n "$results" ]; then
+        if [[ -n "$results" ]]; then
           echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
           echo -e "$results"
         fi
@@ -681,11 +681,11 @@ function bua() {
     (
       cd "$project"
       # Only process projects that support Bundler.
-      if [ -f "Gemfile.lock" ]; then
+      if [[ -f "Gemfile.lock" ]]; then
         rm -f Gemfile.lock
         local results=$(bundle install)
         # Print project name and status only if Bundler activity was detected.
-        if [ -n "$results" ]; then
+        if [[ -n "$results" ]]; then
           echo -e "\033[36m${project:2}\033[m: ✓" # Outputs in cyan color.
         fi
       fi
@@ -705,9 +705,9 @@ function bca() {
     (
       cd "$project"
       # Only process projects that support Bundler.
-      if [ -f "Gemfile.lock" ]; then
+      if [[ -f "Gemfile.lock" ]]; then
         # Print project name and status.
-        if [ -d "pkg" ]; then
+        if [[ -d "pkg" ]]; then
           rm -rf pkg
           echo -e "\033[36m${project:2}\033[m: ✓" # Outputs in cyan color.
         fi
@@ -721,7 +721,7 @@ function bca() {
 # Label: Bundle Execute Rake
 # Description: Executes Rake via binstub or Bundler.
 function ber() {
-  if [ -e bin/rake ]; then
+  if [[ -e bin/rake ]]; then
     bin/rake $@
   else
     bundle exec rake $@
@@ -731,7 +731,7 @@ function ber() {
 # Label: Bundle Execute Rake Test
 # Description: Executes a single Test::Unit test via binstub or Bundler.
 function bertt() {
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     ber test TEST="$1"
   else
     echo "ERROR: Missing test file path. Usage: bertt test/unit/example_test.rb."
@@ -741,7 +741,7 @@ function bertt() {
 # Label: Bundle Execute RSpec
 # Description: Executes RSpec via binstub or Bundler.
 function bes() {
-  if [ -e bin/rspec ]; then
+  if [[ -e bin/rspec ]]; then
     bin/rspec $@
   else
     bundle exec rspec $@
@@ -751,7 +751,7 @@ function bes() {
 # Label: Bundle Execute Capistrano
 # Description: Executes Capistrano via binstub or Bundler.
 function bec() {
-  if [ -e bin/cap ]; then
+  if [[ -e bin/cap ]]; then
     bin/cap $@
   else
     bundle exec cap $@
@@ -766,17 +766,17 @@ function bec() {
 # Description: Upgrades all Ruby projects in current directory with new Ruby version information.
 # Parameters: $1 (required) - The new version to upgrade to. Example: 2.0.0-p0.
 function rua() {
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     while read project; do
       (
         cd "$project"
         # Only process projects which have ruby version information.
-        if [ -e ".ruby-version" ]; then
+        if [[ -e ".ruby-version" ]]; then
           local old_version=$(head -n 1 .ruby-version)
           local new_version="$1"
 
           # Update only if old is not equal to new version.
-          if [ "$old_version" != "$new_version" ]; then
+          if [[ "$old_version" != "$new_version" ]]; then
             echo "$1" > .ruby-version
             # Outputs project in cyan and upgrade info in white colors.
             echo -en "\n\033[36m${project:2}\033[m: $old_version --> $new_version."
@@ -801,9 +801,9 @@ function rua() {
 function rew() {
   echo
 
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     while true; do
-      if [ $2 ]; then
+      if [[ $2 ]]; then
         _process_rew_option $1 $2
       else
         echo "Usage: rew NAME TEMPLATE"
@@ -863,12 +863,12 @@ function sdb() {
 function tcie() {
   echo
 
-  if [ -z "$1" ]; then
+  if [[ -z "$1" ]]; then
     echo -e "ERROR: Encryption key must be supplied. Example: notifications.slack.\n"
     return 0
   fi
 
-  if [ -z "$2" ]; then
+  if [[ -z "$2" ]]; then
     echo -e "ERROR: Encryption value must be supplied. Example: ra:B35GH59594BKDK.\n"
     return 0
   fi
@@ -877,7 +877,7 @@ function tcie() {
     (
       cd "$project"
       # Only process projects which have ruby version information.
-      if [ -e ".travis.yml" ]; then
+      if [[ -e ".travis.yml" ]]; then
         travis encrypt "$2" --add "$1"
         echo -e "\033[36m${project:2}\033[m: ✓" # Outputs in cyan color.
       fi
@@ -897,9 +897,9 @@ function tcie() {
 function sv() {
   echo ''
 
-  if [ $(command -v site_validator) ]; then
-    if [ "$1" ]; then
-      if [ "$2" ]; then
+  if [[ $(command -v site_validator) ]]; then
+    if [[ "$1" ]]; then
+      if [[ "$2" ]]; then
         local report="$2"
       else
         local report="report.html"
@@ -927,12 +927,12 @@ function sketch() {
   local input_path="$1"
   local output_path="$2"
 
-  if [ -z "$input_path" ]; then
+  if [[ -z "$input_path" ]]; then
     echo -e "ERROR: Input image path must be supplied."
     return 0
   fi
 
-  if [ -z "$output_path" ]; then
+  if [[ -z "$output_path" ]]; then
     local output_path="sketch.jpg"
   fi
 
@@ -979,12 +979,12 @@ function tfollowers() {
 
   echo ''
 
-  if [ ! $(command -v t) ]; then
+  if [[ ! $(command -v t) ]]; then
     echo -e "ERROR: t (http://sferik.github.io/t) is not installed.\n"
     return 0
   fi
 
-  if [ ! $(command -v ksdiff) ]; then
+  if [[ ! $(command -v ksdiff) ]]; then
     echo -e "ERROR: ksdiff (http://www.kaleidoscopeapp.com/ksdiff2) is not installed.\n"
     return 0
   fi

@@ -15,7 +15,7 @@ source functions/utilities.sh
 source functions/options.sh
 
 # EXECUTION
-if [ -d "$HOME" ]; then
+if [[ -d "$HOME" ]]; then
   while true; do
     if [[ $# == 0 ]]; then
       printf "\nUsage: run OPTION\n"
