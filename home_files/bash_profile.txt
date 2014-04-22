@@ -1,6 +1,6 @@
 # BASH PROFILE
 
 # Send to .bashrc for all settings.
-if [ -f $HOME/.bashrc ]; then
+if [[ -f $HOME/.bashrc ]]; then
   . $HOME/.bashrc
 fi

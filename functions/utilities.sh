@@ -27,7 +27,7 @@ function install_file() {
   local source_file="home_files/$1"
   local dest_file="$HOME/.${1%.*}"
 
-  if [ ! -f "$dest_file" ]; then
+  if [[ ! -f "$dest_file" ]]; then
     cp "$source_file" "$dest_file"
     echo "  + $dest_file"
   fi
@@ -55,9 +55,9 @@ function link_file() {
   local dest_file="$HOME/.${1%.*}"
 
   # Proceed only if the symbolic link doesn't already exist.
-  if [ ! -h "$dest_file" ]; then
+  if [[ ! -h "$dest_file" ]]; then
     read -p "  Link $dest_file -> $source_file (y/n)? " response
-    if [ $response == 'y' ]; then
+    if [[ $response == 'y' ]]; then
       ln -sf "$source_file" "$dest_file"
     fi
   fi
@@ -84,8 +84,8 @@ function check_file() {
   local source_file="home_files/$1"
   local dest_file="$HOME/.${1%.*}"
 
-  if [ -f "$dest_file" ]; then
-    if [ "$(diff $dest_file $source_file)" != '' ]; then
+  if [[ -f "$dest_file" ]]; then
+    if [[ "$(diff $dest_file $source_file)" != '' ]]; then
       echo "  * $dest_file"
     fi
   else
@@ -115,9 +115,9 @@ function delete_file() {
   local dest_file="$HOME/.${1%.*}"
 
   # Proceed only if the file exist.
-  if [ -f "$dest_file" ]; then
+  if [[ -f "$dest_file" ]]; then
     read -p "  Delete $dest_file (y/n)? " response
-    if [ $response == 'y' ]; then
+    if [[ $response == 'y' ]]; then
       rm -f "$dest_file"
     fi
   fi

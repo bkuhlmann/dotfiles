@@ -10,13 +10,13 @@
 function t2s() {
   echo ''
 
-  if [ "$2" ]; then
+  if [[ "$2" ]]; then
     local number_of_spaces=$2
   else
     local number_of_spaces=2
   fi
 
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     local temp_file=$(mktemp -t tabs_to_spaces) || { echo "ERROR: Unable to create temporary file."; return; }
     expand -t $number_of_spaces "$1" > $temp_file
     cat $temp_file > "$1"
@@ -39,7 +39,7 @@ function t2s() {
 function curli() {
   echo ''
 
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     local file=$(mktemp -t suspicious_curl_file) || { echo "ERROR: Unable to create temporary file."; return; }
     curl --fail --silent --show-error --location "$1" > $file || { echo "Failed to curl file"; return; }
     $EDITOR -w $file || { echo "Unable to open temporary curl file"; return; }
@@ -61,7 +61,7 @@ function curli() {
 function port() {
   echo ''
 
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     sudo lsof -i :$1
   else
     echo "ERROR: Port number must be supplied."
@@ -90,7 +90,7 @@ function guthorsa() {
     (
       cd "$project"
       # Only process projects that are Git enabled.
-      if [ -d ".git" ]; then
+      if [[ -d ".git" ]]; then
         # Print project (cyan) and message (white).
         echo -e "\033[36m${project:2}\033[m"
         git log --format="%an" | sort | uniq -c | sort --reverse
@@ -111,13 +111,13 @@ function gsta() {
     (
       cd "$project"
       # Only process projects that are Git enabled.
-      if [ -d ".git" ]; then
+      if [[ -d ".git" ]]; then
         # Capture current project status info as an array.
         local results=(`git status --short --branch`)
         local size="${#results[*]}"
 
         # Print project name and Git activity only if Git activity is detected.
-        if [ $size -gt '2' ]; then
+        if [[ $size -gt '2' ]]; then
           # Output project name in cyan color.
           echo -e "\033[36m${project:2}\033[m"
 
@@ -130,7 +130,7 @@ function gsta() {
 
           # Print results.
           for line in "${results[@]}"; do
-            if [ $newline == 1 ]; then
+            if [[ $newline == 1 ]]; then
               echo "$line"
               newline=0
             else
@@ -163,12 +163,12 @@ function ghurn() {
 # Description: Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
 # Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
 function glamelog() {
-  if [ -z "$1" ]; then
+  if [[ -z "$1" ]]; then
     echo -e "\nERROR: File path must be supplied.\n"
     return 0
   fi
 
-  if [ -n "$2" ]; then
+  if [[ -n "$2" ]]; then
     local blame_hashes=$(git blame -l -L $2 "$1" | awk '{print $1}')
   else
     local blame_hashes=$(git blame -l "$1" | awk '{print $1}')
@@ -184,13 +184,13 @@ function glamelog() {
 function ggeta() {
   echo ''
 
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
       (
         cd "$project"
         # Only process projects that are Git enabled.
-        if [ -d ".git" ]; then
+        if [[ -d ".git" ]]; then
           # Get Git config value for given key.
           local result=$(git config "$1")
 
@@ -209,7 +209,7 @@ function ggeta() {
 # Label: Git Email
 # Description: Answers user email for current project.
 function gail() {
-  if [ -d ".git" ]; then
+  if [[ -d ".git" ]]; then
     git config user.email
   fi
 }
@@ -226,13 +226,13 @@ function gaila() {
 function gseta() {
   echo ''
 
-  if [ "$1" -a "$2" ]; then
+  if [[ "$1" && "$2" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
       (
         cd "$project"
         # Only process projects that are Git enabled.
-        if [ -d ".git" ]; then
+        if [[ -d ".git" ]]; then
           # Set key value for current project.
           git config "$1" "$2"
           # Print project (cyan) and email (white).
@@ -260,18 +260,18 @@ function gailsa() {
 function gunseta() {
   echo ''
 
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
       (
         cd "$project"
         # Only process projects that are Git enabled.
-        if [ -d ".git" ]; then
+        if [[ -d ".git" ]]; then
           # Unset key for current project with error output suppressed (if any).
           local result=$(git config --unset "$1" &> /dev/null)
 
           # Print project (cyan) and message (white).
-          if [ $? -eq 0 ]; then
+          if [[ $? -eq 0 ]]; then
             echo -e "\033[36m${project:2}\033[m: $1 removed."
           else
             echo -e "\033[36m${project:2}\033[m: $1 does not exist!"
@@ -292,17 +292,17 @@ function gunseta() {
 function gince() {
   echo ''
 
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
       (
         cd "$project"
         # Only process projects that are Git enabled.
-        if [ -d ".git" ]; then
+        if [[ -d ".git" ]]; then
           # Capture git log activity.
           local results=$(git log --oneline --format='%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset' --since "$1" --author "$2" --reverse)
           # Print project name and Git activity only if Git activity was detected.
-          if [ -n "$results" ]; then
+          if [[ -n "$results" ]]; then
             echo -e "\033[36m${project:2}" # Outputs in cyan color.
             echo -e "$results\n"
           fi
@@ -355,17 +355,17 @@ function gtaila() {
     (
       cd "$project"
       # Only process projects that are Git-enabled.
-      if [ -d ".git" ]; then
+      if [[ -d ".git" ]]; then
         # Count outstanding commits.
         local count=$(_git_commits_since_last_tag | wc -l | xargs -n 1)
         # Print project name and Git activity only if Git activity is detected.
-        if [ -n $count ] && [ $count != 0 ]; then
+        if [[ -n $count && $count != 0 ]]; then
           # Outputs project (cyan color) with color-coded commit count (based on volume).
-          if [ $count -ge 30 ]; then
+          if [[ $count -ge 30 ]]; then
             echo -e "\033[36m${project:2}:\033[m \033[31m$count\033[m" # Red count color.
-          elif [ $count -ge 20 -a $count -le 29 ]; then
+          elif [[ $count -ge 20 && $count -le 29 ]]; then
             echo -e "\033[36m${project:2}:\033[m \033[1;31m$count\033[m" # Light red count color.
-          elif [ $count -ge 10 -a $count -le 19 ]; then
+          elif [[ $count -ge 10 && $count -le 19 ]]; then
             echo -e "\033[36m${project:2}:\033[m \033[33m$count\033[m" # Yellow count color.
           else
             echo -e "\033[36m${project:2}:\033[m $count" # White count color.
@@ -412,11 +412,11 @@ function gasha() {
     (
       cd "$project"
       # Only process projects that are Git-enabled.
-      if [ -d ".git" ]; then
+      if [[ -d ".git" ]]; then
         # Count outstanding commits.
         local size=$(git stash list | wc -l | xargs -n 1)
         # Print project name and Git activity only if Git activity is detected.
-        if [ -n $size ] && [ $size != 0 ]; then
+        if [[ -n $size && $size != 0 ]]; then
           echo -e "\033[36m${project:2}:\033[m $size" # Outputs in cyan color.
         fi
       fi
@@ -436,11 +436,11 @@ function gpua() {
     (
       cd "$project"
       # Only process projects that are Git enabled.
-      if [ -d ".git" ]; then
+      if [[ -d ".git" ]]; then
         # Capture current project status.
         local results=$(git pull | tail -1)
         # Print project name and Git activity only if Git activity was detected.
-        if [ -n "$results" -a "$results" != "Already up-to-date." ]; then
+        if [[ -n "$results" && "$results" != "Already up-to-date." ]]; then
           echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
           echo -e "  $results"
         fi
@@ -461,11 +461,11 @@ function galla() {
     (
       cd "$project"
       # Only process projects that are Git enabled.
-      if [ -d ".git" ]; then
+      if [[ -d ".git" ]]; then
         # Apply all changes to Git.
         local results=$(git add --verbose --all .)
         # Print project name and Git activity only if Git activity was detected.
-        if [ -n "$results" ]; then
+        if [[ -n "$results" ]]; then
           echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
           echo -e "$results\n"
         fi
@@ -482,15 +482,15 @@ function galla() {
 function gcap() {
   echo ''
 
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
       (
         cd "$project"
         # Only process projects that are Git-enabled.
-        if [ -d ".git" ]; then
+        if [[ -d ".git" ]]; then
           # Only process projects that have changes.
-          if [ "$(git status -s)" ]; then
+          if [[ "$(git status -s)" ]]; then
             echo -e "\n\033[36m${project:2}\033[m" # Outputs in cyan color.
             git commit --all --message "$1" && git push
           fi
@@ -513,7 +513,7 @@ function gvca() {
     (
       cd "$project"
       # Only process projects that are Git-enabled.
-      if [ -d ".git" ]; then
+      if [[ -d ".git" ]]; then
         echo -e "\n\033[36m${project:2}\033[m" # Outputs in cyan color.
         git fsck && git gc
       fi
@@ -529,18 +529,18 @@ function gvca() {
 function gbd() {
   echo ''
 
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     read -p "You are about to delete the '$1' branch from local and remote repositories. Continue (y/n)?: " response
-    if [ "$response" == 'y' ]; then
+    if [[ "$response" == 'y' ]]; then
       echo -n "Local Branch: "
-      if [ -n "$(git branch --list $1)" ]; then
+      if [[ -n "$(git branch --list $1)" ]]; then
         git branch -D "$1"
       else
         echo "No local branch found. Skipped."
       fi
 
       echo -n "Remote Branch: "
-      if [ -n "$(git branch --remotes --list origin/$1)" ]; then
+      if [[ -n "$(git branch --remotes --list origin/$1)" ]]; then
         git push origin :"$1"
       else
         echo "No remote branch found. Skipped."
@@ -570,18 +570,18 @@ function gbdm() {
 function gtagd() {
   echo ''
 
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     read -p "You are about to delete the '$1' tag from local and remote repositories. Continue (y/n)?: " response
-    if [ "$response" == 'y' ]; then
+    if [[ "$response" == 'y' ]]; then
       echo -n "Local Tag: "
-      if [ -n "$(git tag --list $1)" ]; then
+      if [[ -n "$(git tag --list $1)" ]]; then
         git tag --delete "$1"
       else
         echo "No local tag found. Skipped."
       fi
 
       echo -n "Remote Tag: "
-      if [ -n "$(git ls-remote --tags origin | grep $1)" ]; then
+      if [[ -n "$(git ls-remote --tags origin | grep $1)" ]]; then
         git push --delete origin "$1"
       else
         echo "No remote tag found. Skipped."

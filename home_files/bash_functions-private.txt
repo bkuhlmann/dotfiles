@@ -7,7 +7,7 @@
 # Label: Git Commits Since Last Tag
 # Description: Answers commit history since last tag for project.
 function _git_commits_since_last_tag() {
-  if [ "$(git tag)" ]; then
+  if [[ "$(git tag)" ]]; then
     git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags)..HEAD
   fi
 }
@@ -28,7 +28,7 @@ function _process_git_stash() {
   stashes=(`gashl`)
 
   # Ask which stash to show when multiple stashes are detected, otherwise show the existing stash.
-  if [ "${#stashes[*]}" -gt '1' ]; then
+  if [[ "${#stashes[*]}" -gt '1' ]]; then
     echo -e "\n$prompt_label:"
     for ((index = 0; index < ${#stashes[*]}; index++)); do
       echo "  $index: ${stashes[$index]}"
@@ -67,7 +67,7 @@ function _process_gh_option() {
       open $(_gh_url)
       break;;
     'c')
-      if [ "$2" ]; then
+      if [[ "$2" ]]; then
         open "$(_gh_url)/commit/$2"
       else
         open "$(_gh_url)/commits"
@@ -105,13 +105,13 @@ function _run_rails_command() {
   local rails_options=$2
 
   # Rails 4.x.x.
-  if [ -e bin/rails ]; then
+  if [[ -e bin/rails ]]; then
     bin/rails $rails_command $rails_options
   # Rails 3.x.x.
-  elif [ -e script/rails ]; then
+  elif [[ -e script/rails ]]; then
     script/rails $rails_command $rails_options
   # Rails 2.x.x.
-  elif [ -e script/$rails_command ]; then
+  elif [[ -e script/$rails_command ]]; then
     script/$rails_command $rails_options
   # Unsupported version.
   else
@@ -254,7 +254,7 @@ function _find_function() {
 function _find_command() {
   echo
 
-  if [ "$1" ]; then
+  if [[ "$1" ]]; then
     echo "\"$1\" Search Results:"
 
     _find_alias "$1"

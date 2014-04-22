@@ -36,7 +36,7 @@ prompt+="]> " # Closing bracket with prompt indicator.
 export PS1=$prompt
 
 # Bash Completion (http://bash-completion.alioth.debian.org)
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
@@ -44,11 +44,11 @@ fi
 . `brew --prefix`/etc/profile.d/z.sh
 
 # rbenv (https://github.com/sstephenson/rbenv)
-if [ -d /usr/local/bin ]; then
+if [[ -d /usr/local/bin ]]; then
   export PATH="/usr/local/bin:$PATH" # OSX
 fi
 
-if [ -d $HOME/.rbenv/bin ]; then
+if [[ -d $HOME/.rbenv/bin ]]; then
   export PATH="$HOME/.rbenv/bin:$PATH" # Ubuntu
 fi
 
@@ -58,6 +58,6 @@ eval "$(rbenv init -)"
 export PATH="$PATH:/usr/local/share/npm/bin"
 
 # Travis CI (https://travis-ci.org)
-if [ -e "$HOME/.travis/travis.sh" ]; then
+if [[ -e "$HOME/.travis/travis.sh" ]]; then
   source "$HOME/.travis/travis.sh"
 fi
