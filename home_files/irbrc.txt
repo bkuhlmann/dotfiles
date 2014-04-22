@@ -51,7 +51,9 @@ end
     wirb
     hirb
     awesome_print
-    pry pry-byebug
+    priscilla
+    pry
+    pry-byebug
     pry-remote
     pry-rescue
     pry-stack_explorer
@@ -64,7 +66,12 @@ end
 end
 
 # Gem Enhancements (settings)
-%w(Bond.start Wirb.start Hirb.enable).each do |config|
+[
+  "Bond.start",
+  "Wirb.start",
+  "Hirb.enable",
+  "Priscilla.configure { |c| c.decorator = '-'; c.width = 120 }"
+].each do |config|
   begin
     instance_eval config
   rescue NoMethodError
