@@ -17,7 +17,7 @@ source functions/options.sh
 # EXECUTION
 if [ -d "$HOME" ]; then
   while true; do
-    if [ -z "$1" ]; then
+    if [[ $# == 0 ]]; then
       printf "\nUsage: run OPTION\n"
       printf "\nDotfile Options:\n"
       printf "  s: Show dotfiles available for install.\n"

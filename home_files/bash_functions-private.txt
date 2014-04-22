@@ -17,8 +17,8 @@ function _git_commits_since_last_tag() {
 # Parameters: $1 (required) - The git stash command to execute, $2 (required) - The prompt label (for multiple stashes).
 function _process_git_stash() {
   # Convert arguments into readable variables.
-  stash_command="$1"
-  prompt_label="$2"
+  local stash_command="$1"
+  local prompt_label="$2"
 
   # Store original line break setting and temporarily switch to using new line characters instead.
   IFS_original=$IFS
@@ -36,7 +36,7 @@ function _process_git_stash() {
     echo -e "  q: Quit/Exit.\n"
 
     read -p "Enter selection: " response
-    match="^[0-9]{1}$"
+    local match="^[0-9]{1}$"
     if [[ "$response" =~ $match ]]; then
       git stash $stash_command "stash@{$response}"
     fi
@@ -101,8 +101,8 @@ function _process_gh_option() {
 # Description: Runs a Rails command with smart detection of current environment.
 # Parameters: $1 (required) - The command to run, $2(optional) - Additional arguments
 function _run_rails_command() {
-  rails_command=$1
-  rails_options=$2
+  local rails_command=$1
+  local rails_options=$2
 
   # Rails 4.x.x.
   if [ -e bin/rails ]; then
@@ -136,12 +136,12 @@ function _create_rails_engine_skeleton() {
 # Description: Processes option selection for constructing new Rails application skeletons with custom build settings.
 # Parameters: $1 (required) - The application name, $2 (required) - The template to apply.
 function _process_rew_option() {
-  flags="--skip-bundle --database sqlite3 --skip-test-unit --force --skip-keeps --template"
-  rails_slim_remote_options="$flags https://raw.github.com/bkuhlmann/rails_slim_template/master/template.rb"
-  rails_slim_local_options="$flags $HOME/Dropbox/Development/Projects/rails_slim_template/template.rb"
-  rails_setup_remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
-  rails_setup_local_options="$flags $HOME/Dropbox/Development/Projects/rails_setup_template/template.rb"
-  engine_options="--skip-bundle --skip-test-unit --force --skip-keeps --mountable --dummy-path=spec/dummy"
+  local flags="--skip-bundle --database sqlite3 --skip-test-unit --force --skip-keeps --template"
+  local rails_slim_remote_options="$flags https://raw.github.com/bkuhlmann/rails_slim_template/master/template.rb"
+  local rails_slim_local_options="$flags $HOME/Dropbox/Development/Projects/rails_slim_template/template.rb"
+  local rails_setup_remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
+  local rails_setup_local_options="$flags $HOME/Dropbox/Development/Projects/rails_setup_template/template.rb"
+  local engine_options="--skip-bundle --skip-test-unit --force --skip-keeps --mountable --dummy-path=spec/dummy"
 
   case $2 in
     1)
@@ -176,7 +176,7 @@ function _process_rew_option() {
 
 function _print_section() {
   if [[ "$1" == "# Section:"* ]]; then
-    section=$(echo $1 | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
+    local section=$(echo $1 | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
     echo -e "\n##### $section"
   fi
 }
@@ -197,7 +197,7 @@ function _print_aliases() {
 }
 
 function _print_function_name() {
-  name=$(echo $1 | sed 's/function //' | sed 's/() {//')
+  local name=$(echo $1 | sed 's/function //' | sed 's/() {//')
   echo "$name = $2 - $3"
 }
 

@@ -24,8 +24,8 @@ export -f show_files
 # Parameters:
 # $1 = The file name.
 function install_file() {
-  source_file="home_files/$1"
-  dest_file="$HOME/.${1%.*}"
+  local source_file="home_files/$1"
+  local dest_file="$HOME/.${1%.*}"
 
   if [ ! -f "$dest_file" ]; then
     cp "$source_file" "$dest_file"
@@ -51,8 +51,8 @@ export -f install_files
 # Parameters:
 # $1 = The file name.
 function link_file() {
-  source_file="$PWD/home_files/$1"
-  dest_file="$HOME/.${1%.*}"
+  local source_file="$PWD/home_files/$1"
+  local dest_file="$HOME/.${1%.*}"
 
   # Proceed only if the symbolic link doesn't already exist.
   if [ ! -h "$dest_file" ]; then
@@ -81,8 +81,8 @@ export -f link_files
 # Parameters:
 # $1 = The file name.
 function check_file() {
-  source_file="home_files/$1"
-  dest_file="$HOME/.${1%.*}"
+  local source_file="home_files/$1"
+  local dest_file="$HOME/.${1%.*}"
 
   if [ -f "$dest_file" ]; then
     if [ "$(diff $dest_file $source_file)" != '' ]; then
@@ -111,8 +111,8 @@ export -f check_files
 # Parameters:
 # $1 = The file name.
 function delete_file() {
-  source_file="home_files/$1"
-  dest_file="$HOME/.${1%.*}"
+  local source_file="home_files/$1"
+  local dest_file="$HOME/.${1%.*}"
 
   # Proceed only if the file exist.
   if [ -f "$dest_file" ]; then
