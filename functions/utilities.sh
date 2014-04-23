@@ -5,7 +5,9 @@
 
 # Answers a list of files stored in the home_files folder of this project.
 function home_files() {
-  ls -1 home_files
+  for file in $(find home_files -type f); do
+    printf "${file##*/}\n"
+  done
 }
 export -f home_files
 
