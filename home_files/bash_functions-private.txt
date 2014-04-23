@@ -29,11 +29,11 @@ function _process_git_stash() {
 
   # Ask which stash to show when multiple stashes are detected, otherwise show the existing stash.
   if [[ "${#stashes[*]}" -gt '1' ]]; then
-    echo -e "\n$prompt_label:"
+    printf "\n$prompt_label:\n"
     for ((index = 0; index < ${#stashes[*]}; index++)); do
-      echo "  $index: ${stashes[$index]}"
+      printf "  $index: ${stashes[$index]}\n"
     done
-    echo -e "  q: Quit/Exit.\n"
+    printf "  q: Quit/Exit.\n"
 
     read -p "Enter selection: " response
     local match="^[0-9]{1}$"
@@ -55,7 +55,7 @@ function _process_git_stash() {
 # Label: GitHub URL
 # Description: Answers the GitHub URL for current project.
 function _gh_url() {
-  echo $(git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//')
+  printf "$(git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//')"
 }
 
 # Label: Process GitHub Option
@@ -88,7 +88,7 @@ function _process_gh_option() {
     'q')
       break;;
     *)
-      echo "ERROR: Invalid option."
+      printf "ERROR: Invalid option."
       break;;
   esac
 }
@@ -115,7 +115,7 @@ function _run_rails_command() {
     script/$rails_command $rails_options
   # Unsupported version.
   else
-    echo "ERROR: Unsupported Rails version."
+    printf "ERROR: Unsupported Rails version.\n"
   fi
 }
 
@@ -123,12 +123,12 @@ function _run_rails_command() {
 # Description: Creates a new rails applications skeleton.
 # Parameters: $1 (required) - The application name, $2 (optional) - The build options to apply.
 function _create_rails_skeleton() {
-  echo "rails new $1 $2"
+  printf "rails new $1 $2\n"
   rails new $1 $2
 }
 
 function _create_rails_engine_skeleton() {
-  echo "rails plugin new $1 $2"
+  printf "rails plugin new $1 $2\n"
   rails plugin new $1 $2
 }
 
@@ -165,7 +165,7 @@ function _process_rew_option() {
     'q')
       break;;
     *)
-      echo "ERROR: Invalid option."
+      printf "ERROR: Invalid option.\n"
       break;;
   esac
 }
@@ -176,8 +176,8 @@ function _process_rew_option() {
 
 function _print_section() {
   if [[ "$1" == "# Section:"* ]]; then
-    local section=$(echo $1 | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
-    echo -e "\n##### $section"
+    local section=$(printf "$1" | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
+    printf "\n##### $section\n"
   fi
 }
 
@@ -190,26 +190,26 @@ function _print_aliases() {
     _print_section "$line"
 
     if [[ "$line" == "alias"* ]]; then
-      echo -n "    "
+      printf "    "
       _print_alias "$line"
     fi
   done < "$HOME/.bash_aliases"
 }
 
 function _print_function_name() {
-  local name=$(echo $1 | sed 's/function //' | sed 's/() {//')
-  echo "$name = $2 - $3"
+  local name=$(printf "$1" | sed 's/function //' | sed 's/() {//')
+  printf "$name = $2 - $3\n"
 }
 
 function _set_function_label() {
   if [[ "$1" == "# Label:"* ]]; then
-    label=$(echo "$1" | sed 's/# Label://' | sed 's/^ *//g')
+    label=$(printf "$1" | sed 's/# Label://' | sed 's/^ *//g')
   fi
 }
 
 function _set_function_description() {
   if [[ "$line" == "# Description:"* ]]; then
-    description=$(echo $line | sed 's/# Description://' | sed 's/^ *//g')
+    description=$(printf "$line" | sed 's/# Description://' | sed 's/^ *//g')
   fi
 }
 
@@ -220,7 +220,7 @@ function _print_functions() {
     _set_function_description "$line"
 
     if [[ "$line" == "function"*"() {" && "$line" != "function _"* ]]; then
-      echo -n "    "
+      printf "    "
       _print_function_name "$line" "$label" "$description"
       unset label
       unset description
@@ -231,7 +231,7 @@ function _print_functions() {
 function _find_alias() {
   while read line; do
     if [[ "$line" == "alias "*"$1"* ]]; then
-      echo -n "    Alias: "
+      printf "    Alias: "
       _print_alias "$line"
     fi
   done < "$HOME/.bash_aliases"
@@ -243,7 +243,7 @@ function _find_function() {
     _set_function_description "$line"
 
     if [[ "$line" == "function "*"$1"* ]]; then
-      echo -n "    Function: "
+      printf "    Function: "
       _print_function_name "$line" "$label" "$description"
       unset label
       unset description
@@ -252,15 +252,13 @@ function _find_function() {
 }
 
 function _find_command() {
-  echo
-
   if [[ "$1" ]]; then
-    echo "\"$1\" Search Results:"
+    printf "\n\"$1\" Search Results:"
 
     _find_alias "$1"
     _find_function "$1"
   else
-    echo "ERROR: Nothing to search for. Criteria must be supplied."
+    printf "ERROR: Nothing to search for. Criteria must be supplied.\n"
   fi
 }
 
@@ -281,7 +279,7 @@ function _process_dots_option() {
     'q')
       break;;
     *)
-      echo "ERROR: Invalid option."
+      printf "ERROR: Invalid option.\n"
       break;;
   esac
 }

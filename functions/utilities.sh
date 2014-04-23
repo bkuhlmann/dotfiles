@@ -11,11 +11,11 @@ export -f home_files
 
 # Shows available files for install.
 function show_files() {
-  echo "Dotfiles available for install:"
+  printf "Dotfiles available for install:\n"
 
   for file in $(home_files)
   do
-    echo "  .${file%.*}"
+    printf "  .${file%.*}\n"
   done
 }
 export -f show_files
@@ -29,21 +29,21 @@ function install_file() {
 
   if [[ ! -f "$dest_file" ]]; then
     cp "$source_file" "$dest_file"
-    echo "  + $dest_file"
+    printf "  + $dest_file\n"
   fi
 }
 export -f install_file
 
 # Installs all files.
 function install_files() {
-  echo "Installing dotfiles..."
+  printf "Installing dotfiles...\n"
 
   for file in $(home_files)
   do
     install_file $file
   done
 
-  echo "Dotfiles install complete!"
+  printf "Dotfiles install complete!\n"
 }
 export -f install_files
 
@@ -66,14 +66,14 @@ export -f link_file
 
 # Links all files.
 function link_files() {
-  echo "Linking dotfiles..."
+  printf "Linking dotfiles...\n"
 
   for file in $(home_files)
   do
     link_file $file
   done
 
-  echo "Dotfiles link complete!"
+  printf "Dotfiles link complete!\n"
 }
 export -f link_files
 
@@ -86,24 +86,24 @@ function check_file() {
 
   if [[ -f "$dest_file" ]]; then
     if [[ "$(diff $dest_file $source_file)" != '' ]]; then
-      echo "  * $dest_file"
+      printf "  * $dest_file\n"
     fi
   else
-    echo "  - $dest_file"
+    printf "  - $dest_file\n"
   fi
 }
 export -f check_file
 
 # Checks all files for changes.
 function check_files() {
-  echo "Checking dotfiles for changes..."
+  printf "Checking dotfiles for changes...\n"
 
   for file in $(home_files)
   do
     check_file $file
   done
 
-  echo "Dotfiles check complete!"
+  printf "Dotfiles check complete!\n"
 }
 export -f check_files
 
@@ -126,13 +126,13 @@ export -f delete_file
 
 # Delete files.
 function delete_files() {
-  echo "Deleting dotfiles..."
+  printf "Deleting dotfiles...\n"
 
   for file in $(home_files)
   do
     delete_file $file
   done
 
-  echo "Dotfiles deletion complete!"
+  printf "Dotfiles deletion complete!\n"
 }
 export -f delete_files

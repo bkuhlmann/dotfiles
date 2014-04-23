@@ -8,8 +8,6 @@
 # Description: Converts a file from tab to space indendation.
 # Parameters: $1 (required) - The file to convert, $2 (optional) - The number of spaces, default: 2.
 function t2s() {
-  echo ''
-
   if [[ "$2" ]]; then
     local number_of_spaces=$2
   else
@@ -17,16 +15,14 @@ function t2s() {
   fi
 
   if [[ "$1" ]]; then
-    local temp_file=$(mktemp -t tabs_to_spaces) || { echo "ERROR: Unable to create temporary file."; return; }
+    local temp_file=$(mktemp -t tabs_to_spaces) || { printf "\nERROR: Unable to create temporary file.\n"; return; }
     expand -t $number_of_spaces "$1" > $temp_file
     cat $temp_file > "$1"
-    echo "Converted: $1."
+    printf "Converted: $1.\n"
     rm -f $temp_file;
   else
-    echo "ERROR: File must be supplied."
+    printf "ERROR: File must be supplied.\n"
   fi
-
-  echo ''
 }
 
 #--------------------------------------#
@@ -37,18 +33,14 @@ function t2s() {
 # Description: Inspect remote file, via curl, within default editor.
 # Parameters: $1 (required) - The URL.
 function curli() {
-  echo ''
-
   if [[ "$1" ]]; then
-    local file=$(mktemp -t suspicious_curl_file) || { echo "ERROR: Unable to create temporary file."; return; }
-    curl --fail --silent --show-error --location "$1" > $file || { echo "Failed to curl file"; return; }
-    $EDITOR -w $file || { echo "Unable to open temporary curl file"; return; }
+    local file=$(mktemp -t suspicious_curl_file) || { printf "ERROR: Unable to create temporary file.\n"; return; }
+    curl --fail --silent --show-error --location "$1" > $file || { printf "Failed to curl file.\n"; return; }
+    $EDITOR -w $file || { printf "Unable to open temporary curl file.\n"; return; }
     rm -f $file;
   else
-    echo "ERROR: URL must be supplied."
+    printf "ERROR: URL must be supplied.\n"
   fi
-
-  echo ''
 }
 
 #--------------------------------------------------#
@@ -59,15 +51,11 @@ function curli() {
 # Description: Lists file activity on a given port.
 # Parameters: $1 (required) - The port number.
 function port() {
-  echo ''
-
   if [[ "$1" ]]; then
     sudo lsof -i :$1
   else
-    echo "ERROR: Port number must be supplied."
+    printf "ERROR: Port number must be supplied.\n"
   fi
-
-  echo ''
 }
 
 #------------------------------------#
@@ -83,8 +71,6 @@ function groot() {
 # Label: Git Authors (all)
 # Description: Answers author commit activity per project (ranked highest to lowest).
 function guthorsa() {
-  echo ''
-
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -92,20 +78,16 @@ function guthorsa() {
       # Only process projects that are Git enabled.
       if [[ -d ".git" ]]; then
         # Print project (cyan) and message (white).
-        echo -e "\033[36m${project:2}\033[m"
+        printf "\033[36m${project:2}\033[m\n"
         git log --format="%an" | sort | uniq -c | sort --reverse
       fi
     )
   done < <(find . -type d -depth 1)
-
-  echo ''
 }
 
 # Label: Git Status (all)
 # Description: Answers the status of projects with uncommited/unpushed changes.
 function gsta() {
-  echo ''
-
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -119,7 +101,7 @@ function gsta() {
         # Print project name and Git activity only if Git activity is detected.
         if [[ $size -gt '2' ]]; then
           # Output project name in cyan color.
-          echo -e "\033[36m${project:2}\033[m"
+          printf "\033[36m${project:2}\033[m\n"
 
           # Remove first and second elements since they contain branch info.
           results=("${results[@]:1}")
@@ -131,10 +113,10 @@ function gsta() {
           # Print results.
           for line in "${results[@]}"; do
             if [[ $newline == 1 ]]; then
-              echo "$line"
+              printf "$line\n"
               newline=0
             else
-              echo -n "$line "
+              printf "$line "
               newline=1
             fi
           done
@@ -142,8 +124,6 @@ function gsta() {
       fi
     )
   done < <(find . -type d -depth 1)
-
-  echo ''
 }
 
 # Label: Git Churn
@@ -164,7 +144,7 @@ function ghurn() {
 # Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
 function glamelog() {
   if [[ -z "$1" ]]; then
-    echo -e "\nERROR: File path must be supplied.\n"
+    printf "ERROR: File path must be supplied.\n"
     return 0
   fi
 
@@ -182,8 +162,6 @@ function glamelog() {
 # Description: Answers key value for all projects in current directory.
 # Parameters: $1 (required) - The key name.
 function ggeta() {
-  echo ''
-
   if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
@@ -195,15 +173,13 @@ function ggeta() {
           local result=$(git config "$1")
 
           # Print project (cyan) and message (white).
-          echo -e "\033[36m${project:2}\033[m: $result"
+          printf "\033[36m${project:2}\033[m: $result\n"
         fi
       )
     done < <(find . -type d -depth 1)
   else
-    echo "ERROR: Key must be supplied."
+    printf "ERROR: Key must be supplied.\n"
   fi
-
-  echo ''
 }
 
 # Label: Git Email
@@ -224,8 +200,6 @@ function gaila() {
 # Description: Sets key value for all projects in current directory.
 # Parameters: $1 (required) - The key name, $2 (required) - The key value.
 function gseta() {
-  echo ''
-
   if [[ "$1" && "$2" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
@@ -236,15 +210,13 @@ function gseta() {
           # Set key value for current project.
           git config "$1" "$2"
           # Print project (cyan) and email (white).
-          echo -e "\033[36m${project:2}\033[m: $1 = $2"
+          printf "\033[36m${project:2}\033[m: $1 = $2\n"
         fi
       )
     done < <(find . -type d -depth 1)
   else
-    echo "ERROR: Key and value must be supplied."
+    printf "ERROR: Key and value must be supplied.\n"
   fi
-
-  echo ''
 }
 
 # Label: Git Email Set (all)
@@ -258,8 +230,6 @@ function gailsa() {
 # Description: Unsets key value for all projects in current directory.
 # Parameters: $1 (required) - The key name.
 function gunseta() {
-  echo ''
-
   if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
@@ -272,26 +242,22 @@ function gunseta() {
 
           # Print project (cyan) and message (white).
           if [[ $? -eq 0 ]]; then
-            echo -e "\033[36m${project:2}\033[m: $1 removed."
+            printf "\033[36m${project:2}\033[m: $1 removed.\n"
           else
-            echo -e "\033[36m${project:2}\033[m: $1 does not exist!"
+            printf "\033[36m${project:2}\033[m: $1 does not exist!\n"
           fi
         fi
       )
     done < <(find . -type d -depth 1)
   else
-    echo "ERROR: Key must be supplied."
+    printf "ERROR: Key must be supplied.\n"
   fi
-
-  echo ''
 }
 
 # Label: Git Since
 # Description: Answers a summarized list of Git activity since date/time for all projects in current directory.
 # Parameters: $1 (required) - The date/time from which to log activity, $2 (optional) - The commit author.
 function gince() {
-  echo ''
-
   if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
@@ -303,15 +269,14 @@ function gince() {
           local results=$(git log --oneline --format='%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset' --since "$1" --author "$2" --reverse)
           # Print project name and Git activity only if Git activity was detected.
           if [[ -n "$results" ]]; then
-            echo -e "\033[36m${project:2}" # Outputs in cyan color.
-            echo -e "$results\n"
+            printf "\033[36m${project:2}\n" # Outputs in cyan color.
+            printf "$results\n"
           fi
         fi
       )
     done < <(find . -type d -depth 1)
   else
-    echo "ERROR: Date/time must be supplied."
-    echo ''
+    printf "ERROR: Date/time must be supplied.\n"
   fi
 }
 
@@ -342,14 +307,12 @@ function gmonth() {
 # Label: Git Tail
 # Description: Answers commit history since last tag for current project and copies results to clipboard.
 function gtail() {
-  _git_commits_since_last_tag | pbcopy && echo -e "$(pbpaste)\n(copied to clipboard)"
+  _git_commits_since_last_tag | pbcopy && printf "$(pbpaste)\n(copied to clipboard)\n"
 }
 
 # Label: Git Tail (all)
 # Description: Answers commit history count since last tag for all projects in current directory.
 function gtaila() {
-  echo ''
-
   # Iterate through root project directories.
   while read project; do
     (
@@ -362,20 +325,18 @@ function gtaila() {
         if [[ -n $count && $count != 0 ]]; then
           # Outputs project (cyan color) with color-coded commit count (based on volume).
           if [[ $count -ge 30 ]]; then
-            echo -e "\033[36m${project:2}:\033[m \033[31m$count\033[m" # Red count color.
+            printf "\033[36m${project:2}:\033[m \033[31m$count\033[m\n" # Red count color.
           elif [[ $count -ge 20 && $count -le 29 ]]; then
-            echo -e "\033[36m${project:2}:\033[m \033[1;31m$count\033[m" # Light red count color.
+            printf "\033[36m${project:2}:\033[m \033[1;31m$count\033[m\n" # Light red count color.
           elif [[ $count -ge 10 && $count -le 19 ]]; then
-            echo -e "\033[36m${project:2}:\033[m \033[33m$count\033[m" # Yellow count color.
+            printf "\033[36m${project:2}:\033[m \033[33m$count\033[m\n" # Yellow count color.
           else
-            echo -e "\033[36m${project:2}:\033[m $count" # White count color.
+            printf "\033[36m${project:2}:\033[m $count\n" # White count color.
           fi
         fi
       fi
     )
   done < <(find . -type d -depth 1)
-
-  echo ''
 }
 
 # Label: Git Stash List
@@ -405,8 +366,6 @@ function gashd() {
 # Label: Git Stash (all)
 # Description: Answers stash count for all projects within current directory.
 function gasha() {
-  echo ''
-
   # Iterate through root project directories.
   while read project; do
     (
@@ -417,20 +376,16 @@ function gasha() {
         local size=$(git stash list | wc -l | xargs -n 1)
         # Print project name and Git activity only if Git activity is detected.
         if [[ -n $size && $size != 0 ]]; then
-          echo -e "\033[36m${project:2}:\033[m $size" # Outputs in cyan color.
+          printf "\033[36m${project:2}:\033[m $size\n" # Outputs in cyan color.
         fi
       fi
     )
   done < <(find . -type d -depth 1)
-
-  echo ''
 }
 
 # Label: Git Pull (all)
 # Description: Pulls down new changes (if any) from remote branch for all projects in current directory.
 function gpua() {
-  echo ''
-
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -441,21 +396,17 @@ function gpua() {
         local results=$(git pull | tail -1)
         # Print project name and Git activity only if Git activity was detected.
         if [[ -n "$results" && "$results" != "Already up-to-date." ]]; then
-          echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
-          echo -e "  $results"
+          printf "\033[36m${project:2}\033[m\n" # Outputs in cyan color.
+          printf "  $results\n"
         fi
       fi
     )
   done < <(find . -type d -depth 1)
-
-  echo ''
 }
 
 # Label: Git Add (all)
 # Description: Applies file changes (including new files) for all projects within current directory.
 function galla() {
-  echo ''
-
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -466,22 +417,18 @@ function galla() {
         local results=$(git add --verbose --all .)
         # Print project name and Git activity only if Git activity was detected.
         if [[ -n "$results" ]]; then
-          echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
-          echo -e "$results\n"
+          printf "\033[36m${project:2}\033[m\n" # Outputs in cyan color.
+          printf "$results\n"
         fi
       fi
     )
   done < <(find . -type d -depth 1)
-
-  echo ''
 }
 
 # Label: Git Commit and Push (all)
 # Description: Commits and pushes changes for all projects within current directory.
 # Parameters: $1 (required) - The commit message.
 function gcap() {
-  echo ''
-
   if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
@@ -491,68 +438,58 @@ function gcap() {
         if [[ -d ".git" ]]; then
           # Only process projects that have changes.
           if [[ "$(git status -s)" ]]; then
-            echo -e "\n\033[36m${project:2}\033[m" # Outputs in cyan color.
+            printf "\n\033[36m${project:2}\033[m\n" # Outputs in cyan color.
             git commit --all --message "$1" && git push
           fi
         fi
       )
     done < <(find . -type d -depth 1)
   else
-    echo "ERROR: Commit message must be supplied."
+    printf "ERROR: Commit message must be supplied.\n"
   fi
-
-  echo ''
 }
 
 # Label: Git Validate and Clean (all)
 # Description: Validates and cleans all projects in current directory.
 function gvca() {
-  echo ''
-
   while read project; do
     (
       cd "$project"
       # Only process projects that are Git-enabled.
       if [[ -d ".git" ]]; then
-        echo -e "\n\033[36m${project:2}\033[m" # Outputs in cyan color.
+        printf "\n\033[36m${project:2}\033[m\n" # Outputs in cyan color.
         git fsck && git gc
       fi
     )
   done < <(find . -type d -depth 1)
-
-  echo ''
 }
 
 # Label: Git Branch Delete
 # Description: Deletes local and remote branch (if found).
 # Parameters: $1 (required) - The branch name.
 function gbd() {
-  echo ''
-
   if [[ "$1" ]]; then
     read -p "You are about to delete the '$1' branch from local and remote repositories. Continue (y/n)?: " response
     if [[ "$response" == 'y' ]]; then
-      echo -n "Local Branch: "
+      printf "Local Branch: "
       if [[ -n "$(git branch --list $1)" ]]; then
         git branch -D "$1"
       else
-        echo "No local branch found. Skipped."
+        printf "No local branch found. Skipped.\n"
       fi
 
-      echo -n "Remote Branch: "
+      printf "Remote Branch: "
       if [[ -n "$(git branch --remotes --list origin/$1)" ]]; then
         git push origin :"$1"
       else
-        echo "No remote branch found. Skipped."
+        printf "No remote branch found. Skipped.\n"
       fi
     else
-      echo "Branch deletion aborted."
+      printf "Branch deletion aborted.\n"
     fi
   else
-    echo "ERROR: Branch name must be supplied."
+    printf "ERROR: Branch name must be supplied.\n"
   fi
-
-  echo ''
 }
 
 # Label: Git Branch Delete Merged
@@ -568,32 +505,28 @@ function gbdm() {
 # Description: Deletes local and remote tag (if found).
 # Parameters: $1 (required) - The tag name.
 function gtagd() {
-  echo ''
-
   if [[ "$1" ]]; then
     read -p "You are about to delete the '$1' tag from local and remote repositories. Continue (y/n)?: " response
     if [[ "$response" == 'y' ]]; then
-      echo -n "Local Tag: "
+      printf "Local Tag: "
       if [[ -n "$(git tag --list $1)" ]]; then
         git tag --delete "$1"
       else
-        echo "No local tag found. Skipped."
+        printf "No local tag found. Skipped.\n"
       fi
 
-      echo -n "Remote Tag: "
+      printf "Remote Tag: "
       if [[ -n "$(git ls-remote --tags origin | grep $1)" ]]; then
         git push --delete origin "$1"
       else
-        echo "No remote tag found. Skipped."
+        printf "No remote tag found. Skipped.\n"
       fi
     else
-      echo "Tag deletion aborted."
+      printf "Tag deletion aborted.\n"
     fi
   else
-    echo "ERROR: Tag name must be supplied."
+    printf "ERROR: Tag name must be supplied.\n"
   fi
-
-  echo ''
 }
 
 #---------------------------------------#
@@ -618,28 +551,25 @@ function gh() {
   if [[ -d ".git" ]]; then
     while true; do
       if [[ $# == 0 ]]; then
-        echo "Usage: gh OPTION"
-        echo -e "\nGitHub Options:"
-        echo "  o: Open GitHub project in default browser."
-        echo "  c: Open GitHub project commit(s) in default browser."
-        echo "  b: Open GitHub project branches in default browser."
-        echo "  t: Open GitHub project tags (releases) in default browser."
-        echo "  p: Open GitHub project pull requests in default browser."
-        echo "  u: Print GitHub project URL."
-        echo "  q: Quit/Exit."
-        echo ''
+        printf "\nUsage: gh OPTION\n"
+        printf "\nGitHub Options:\n"
+        printf "  o: Open GitHub project in default browser.\n"
+        printf "  c: Open GitHub project commit(s) in default browser.\n"
+        printf "  b: Open GitHub project branches in default browser.\n"
+        printf "  t: Open GitHub project tags (releases) in default browser.\n"
+        printf "  p: Open GitHub project pull requests in default browser.\n"
+        printf "  u: Print GitHub project URL.\n"
+        printf "  q: Quit/Exit.\n\n"
         read -p "Enter selection: " response
-        echo ''
+        printf "\n"
         _process_gh_option $response "$2"
       else
         _process_gh_option "$1" "$2"
       fi
     done
   else
-    echo "ERROR: Not a Git repository!"
+    printf "ERROR: Not a Git repository!\n"
   fi
-
-  echo ''
 }
 
 #-------------------------------------------#
@@ -649,8 +579,6 @@ function gh() {
 # Label: Bundle Outdated (all)
 # Description: Answers a list of outdated gems for all projects within current directory.
 function boa() {
-  echo ''
-
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -661,21 +589,17 @@ function boa() {
         local results=$(bundle outdated | grep '*')
         # Print project name and status only if Bundler activity was detected.
         if [[ -n "$results" ]]; then
-          echo -e "\033[36m${project:2}\033[m" # Outputs in cyan color.
-          echo -e "$results"
+          printf "\033[36m${project:2}\033[m\n" # Outputs in cyan color.
+          printf "$results\n"
         fi
       fi
     )
   done < <(find . -type d -depth 1)
-
-  echo ''
 }
 
 # Label: Bundle Update (all)
 # Description: Updates gems for all projects within current directory.
 function bua() {
-  echo ''
-
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -686,20 +610,16 @@ function bua() {
         local results=$(bundle install)
         # Print project name and status only if Bundler activity was detected.
         if [[ -n "$results" ]]; then
-          echo -e "\033[36m${project:2}\033[m: ✓" # Outputs in cyan color.
+          printf "\033[36m${project:2}\033[m: ✓\n" # Outputs in cyan color.
         fi
       fi
     )
   done < <(find . -type d -depth 1)
-
-  echo ''
 }
 
 # Label: Bundle Clean (all)
 # Description: Cleans all projects of gem artifacts (i.e. pkg folder).
 function bca() {
-  echo ''
-
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -709,13 +629,11 @@ function bca() {
         # Print project name and status.
         if [[ -d "pkg" ]]; then
           rm -rf pkg
-          echo -e "\033[36m${project:2}\033[m: ✓" # Outputs in cyan color.
+          printf "\033[36m${project:2}\033[m: ✓\n" # Outputs in cyan color.
         fi
       fi
     )
   done < <(find . -type d -depth 1)
-
-  echo ''
 }
 
 # Label: Bundle Execute Rake
@@ -734,7 +652,7 @@ function bertt() {
   if [[ "$1" ]]; then
     ber test TEST="$1"
   else
-    echo "ERROR: Missing test file path. Usage: bertt test/unit/example_test.rb."
+    printf "ERROR: Missing test file path. Usage: bertt test/unit/example_test.rb.\n"
   fi
 }
 
@@ -777,18 +695,16 @@ function rua() {
 
           # Update only if old is not equal to new version.
           if [[ "$old_version" != "$new_version" ]]; then
-            echo "$1" > .ruby-version
+            printf "$1" > .ruby-version
             # Outputs project in cyan and upgrade info in white colors.
-            echo -en "\n\033[36m${project:2}\033[m: $old_version --> $new_version."
+            printf "\n\033[36m${project:2}\033[m: $old_version --> $new_version.\n"
           fi
         fi
       )
     done < <(find . -type d -depth 1)
   else
-    echo "ERROR: Version must be supplied."
+    printf "ERROR: Version must be supplied.\n"
   fi
-
-  echo -e '\n'
 }
 
 #--------------------------------------------------#
@@ -799,34 +715,29 @@ function rua() {
 # Description: Builds a new rails application skeleton for selected template.
 # Parameters: $1 (required) - The Rails application name, $2 (optional) - The template to apply.
 function rew() {
-  echo
-
   if [[ "$1" ]]; then
     while true; do
       if [[ $2 ]]; then
         _process_rew_option $1 $2
       else
-        echo "Usage: rew NAME TEMPLATE"
-        echo -e "\nAvailable Ruby on Rails Templates:"
-        echo "  Rails:"
-        echo "    1: Rails Default Template"
-        echo "    2: Rails Slim Template"
-        echo "    3: Rails Slim Template (experimental)"
-        echo "    4: Rails Setup Template"
-        echo "    5: Rails Setup Template (experimental)"
-        echo "  Engines:"
-        echo "    6: Rails Engine Default Template"
-        echo
+        printf "\nUsage: rew NAME TEMPLATE\n"
+        printf "\nAvailable Ruby on Rails Templates:\n"
+        printf "  Rails:\n"
+        printf "    1: Rails Default Template\n"
+        printf "    2: Rails Slim Template\n"
+        printf "    3: Rails Slim Template (experimental)\n"
+        printf "    4: Rails Setup Template\n"
+        printf "    5: Rails Setup Template (experimental)\n"
+        printf "  Engines:\n"
+        printf "    6: Rails Engine Default Template\n\n"
         read -p "Please pick one (or type 'q' to quit): " response
-        echo
+        printf "\n"
         _process_rew_option "$1" $response
       fi
     done
   else
-    echo "ERROR: Rails application name must be supplied."
+    printf "ERROR: Rails application name must be supplied.\n"
   fi
-
-  echo
 }
 
 # Label: Rails Script Console
@@ -861,15 +772,13 @@ function sdb() {
 # Description: Encrypts a string for all Travis CI-enabled (.travis.yml) projects in current directory.
 # Parameters: $1 (required) - The key to add, $2 (require) - The value to encrypt.
 function tcie() {
-  echo
-
   if [[ -z "$1" ]]; then
-    echo -e "ERROR: Encryption key must be supplied. Example: notifications.slack.\n"
+    printf "ERROR: Encryption key must be supplied. Example: notifications.slack.\n"
     return 0
   fi
 
   if [[ -z "$2" ]]; then
-    echo -e "ERROR: Encryption value must be supplied. Example: ra:B35GH59594BKDK.\n"
+    printf "ERROR: Encryption value must be supplied. Example: ra:B35GH59594BKDK.\n"
     return 0
   fi
 
@@ -879,12 +788,10 @@ function tcie() {
       # Only process projects which have ruby version information.
       if [[ -e ".travis.yml" ]]; then
         travis encrypt "$2" --add "$1"
-        echo -e "\033[36m${project:2}\033[m: ✓" # Outputs in cyan color.
+        printf "\033[36m${project:2}\033[m: ✓\n" # Outputs in cyan color.
       fi
     )
   done < <(find . -type d -depth 1)
-
-  echo -e "\n"
 }
 
 #---------------------------------------------------------------------------#
@@ -895,8 +802,6 @@ function tcie() {
 # Description: Generates a validation report for a site using the W3C Validator.
 # Parameters: $1 (required) - The site URL, $2 (optional) - The report file path/name.
 function sv() {
-  echo ''
-
   if [[ $(command -v site_validator) ]]; then
     if [[ "$1" ]]; then
       if [[ "$2" ]]; then
@@ -907,13 +812,11 @@ function sv() {
 
       site_validator "$1" "$report" && open "$report"
     else
-      echo "ERROR: Missing web site URL. Usage: sv http://www.example.com output.html."
+      printf "ERROR: Missing web site URL. Usage: sv http://www.example.com output.html.\n"
     fi
   else
-    echo "ERROR: Site Validator not found. To install, run: gem install site_validator."
+    printf "ERROR: Site Validator not found. To install, run: gem install site_validator.\n"
   fi
-
-  echo ''
 }
 
 #-----------------------------------------------------#
@@ -928,7 +831,7 @@ function sketch() {
   local output_path="$2"
 
   if [[ -z "$input_path" ]]; then
-    echo -e "ERROR: Input image path must be supplied."
+    printf "ERROR: Input image path must be supplied.\n"
     return 0
   fi
 
@@ -936,11 +839,9 @@ function sketch() {
     local output_path="sketch.jpg"
   fi
 
-  echo ''
-  echo "Processing image: $input_path..."
+  printf "\nProcessing image: $input_path...\n"
   convert "$input_path" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$output_path"
-  echo "Sketch image ready: $output_path."
-  echo ''
+  printf "\nSketch image ready: $output_path.\n"
 }
 
 #------------------------------------------#
@@ -955,16 +856,14 @@ function gifize() {
   local output_path="$2"
   local temp_path=/tmp/gifize.gif
 
-  echo ''
   if [[ -n "$input_path" && -n "$output_path" ]]; then
     ffmpeg -i "$input_path" -pix_fmt rgb24 $temp_path
     convert -layers Optimize $temp_path "$output_path"
     rm -f $temp_path
-    echo -e "\nGIF Complete: $output_path"
+    printf "GIF Complete: $output_path\n"
   else
-    echo "Usage: gifize input output"
+    printf "Usage: gifize input output.\n"
   fi
-  echo ''
 }
 
 #-----------------------------------------#
@@ -977,30 +876,27 @@ function tfollowers() {
   local old_followers_file_path="$HOME/followers.txt"
   local new_followers_file_path="$HOME/followers-new.txt"
 
-  echo ''
-
   if [[ ! $(command -v t) ]]; then
-    echo -e "ERROR: t (http://sferik.github.io/t) is not installed.\n"
+    printf "ERROR: t (http://sferik.github.io/t) is not installed.\n"
     return 0
   fi
 
   if [[ ! $(command -v ksdiff) ]]; then
-    echo -e "ERROR: ksdiff (http://www.kaleidoscopeapp.com/ksdiff2) is not installed.\n"
+    printf "ERROR: ksdiff (http://www.kaleidoscopeapp.com/ksdiff2) is not installed.\n"
     return 0
   fi
 
   if [[ -e "$old_followers_file_path" ]]; then
-    echo "Comparing Twitter followers ($old_followers_file_path == $new_followers_file_path)..."
+    printf "Comparing Twitter followers ($old_followers_file_path == $new_followers_file_path)...\n"
     t followers > "$new_followers_file_path"
     ksdiff --wait "$old_followers_file_path" "$new_followers_file_path"
     rm -f "$old_followers_file_path"
     mv "$new_followers_file_path" "$old_followers_file_path"
   else
-    echo "Capturing Twitter followers ($old_followers_file_path)..."
+    printf "Capturing Twitter followers ($old_followers_file_path)...\n"
     t followers > "$old_followers_file_path"
     ksdiff --wait "$old_followers_file_path"
   fi
-  echo ''
 }
 
 #-------------------#
@@ -1013,20 +909,17 @@ function tfollowers() {
 function dots() {
   while true; do
     if [[ $# == 0 ]]; then
-      echo "Usage: dots OPTION"
-      echo -e "\nDotfile Options:"
-      echo "  a: Print aliases."
-      echo "  f: Print functions."
-      echo "  s: Search for alias/function."
-      echo "  q: Quit/Exit."
-      echo ''
+      printf "\nUsage: dots OPTION\n"
+      printf "\nDotfile Options:\n"
+      printf "  a: Print aliases.\n"
+      printf "  f: Print functions.\n"
+      printf "  s: Search for alias/function.\n"
+      printf "  q: Quit/Exit.\n\n"
       read -p "Enter selection: " response
-      echo ''
+      printf "\n"
       _process_dots_option $response "$2"
     else
       _process_dots_option $1 "$2"
     fi
   done
-
-  echo ''
 }
