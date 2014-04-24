@@ -98,26 +98,23 @@ function gsta() {
         local results=($(git status --short --branch))
         local size="${#results[*]}"
 
-        # Print project name and Git activity only if Git activity is detected.
+        # Print Git activity if Git activity detected (white).
         if [[ $size -gt '2' ]]; then
-          # Output project name in cyan color.
-          printf "\033[36m${project:2}\033[m:\n"
-
           # Remove first and second elements since they contain branch info.
           results=("${results[@]:1}")
           results=("${results[@]:1}")
 
-          # Default initial printing of new line to false.
-          local newline=0
+          # Print project (cyan).
+          printf "\033[36m${project:2}\033[m:\n"
 
-          # Print results.
+          # Print results (white).
           for line in "${results[@]}"; do
+            printf "$line "
             if [[ $newline == 1 ]]; then
-              printf "$line\n"
-              newline=0
+              printf "\n"
+              local newline=0
             else
-              printf "$line "
-              newline=1
+              local newline=1
             fi
           done
         fi
