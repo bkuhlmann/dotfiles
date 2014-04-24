@@ -63,8 +63,7 @@ function _gh_url() {
     head -1 | \
     cut -f2 | \
     cut -d' ' -f1 | \
-    sed -e's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//' | \
-    pbcopy && printf "$(pbpaste) (copied to clipboard)\n"
+    sed -e's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//'
 }
 
 # Label: Process GitHub Option
@@ -92,7 +91,7 @@ function _process_gh_option() {
       open "$(_gh_url)/pulls"
       break;;
     'u')
-      _gh_url
+      _gh_url | pbcopy && printf "$(pbpaste) (copied to clipboard)\n"
       break;;
     'q')
       break;;
