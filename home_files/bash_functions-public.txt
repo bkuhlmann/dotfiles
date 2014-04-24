@@ -614,9 +614,13 @@ function bua() {
       if [[ -f "Gemfile.lock" ]]; then
         rm -f Gemfile.lock
         local results=$(bundle install)
-        # Print project name and status only if Bundler activity was detected.
-        if [[ -n "$results" ]]; then
-          printf "\033[36m${project:2}\033[m: ✓\n" # Outputs in cyan color.
+        printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
+
+        # Print project status if Bundler activity is detected, otherwise a checkmark for passing status.
+        if [[ "${results[*]}" == *"Installing"* ]]; then
+          printf "Updated gem dependencies.\n"
+        else
+          printf "✓\n"
         fi
       fi
     )
