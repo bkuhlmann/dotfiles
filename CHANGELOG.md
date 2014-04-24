@@ -1,3 +1,37 @@
+# v10.0.0
+
+* Removed Espresso files from .gitignore.
+* Removed .sass-cache from .gitignore.
+* Removed the loading of pry-vterm_aliases within .irbrc.
+* Removed --skip-javascript as a default option for the "rew" function.
+* Fixed the "boa" function to only check for Gemfile.lock files.
+* Updated the "sc", "ss", "sg", and "sdb" functions so they make use of the rails binstub (if it exists).
+* Updated the "ber" alias to be a function.
+* Updated the "bes" alias to be a function.
+* Updated the "bec" alias to be a function.
+* Updated the "gpua" function so that project names are always printed.
+* Updated the "boa" function to catch for missing gems.
+* Updated the "rua" function to indicate Ruby version updates per project.
+* Updated the "gunseta" function to only print removed keys.
+* Updated the "ggeta" function output for setting keys (found/not found).
+* Updated the "gh" function so the 'u' option copies the GitHub URL to clipboard.
+* Updated the "guthors" alias to count author commits by name instead of email.
+* Added the "bua" function which performs a bundle update for all projets in current directory.
+* Added the "tcie" function which can encrypt Travis CI values for projects.
+* Added the "bca" function (i.e. bundle clean all) for cleaning up gem build artifacts.
+* Added the "sketch" function for converting whiteboard photos into sketch drawnings.
+* Added the "ghurn" function which answers the Git commit churn for project files (sorted highest to lowest).
+* Added the "glamelog" function which answers the commit history of a specific file.
+* Added the "guthorsa" function which answers author commit activity per project (ranked highest to lowest).
+* Added the "galla" function for easy adding of all file changes per project.
+* Added the "t2s" function which converts a file from tabs to spaces (with optional support for number of spaces).
+* Added the "Rails Slim Template (experimental)" option to the "rew" function.
+* Added support for GitHub Pull Requests to "gh" function.
+* Added environment configs to .gitignore.
+* Added code coverage folder to .gitignore.
+* Added project information to "gcap" function output.
+* Added [Priscilla](https://github.com/Arkham/priscilla) gem support to .irbrc.
+
 # v9.0.0
 
 * Removed the PostgreSQL aliases.
