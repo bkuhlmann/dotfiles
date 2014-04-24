@@ -636,10 +636,14 @@ function bca() {
       cd "$project"
       # Only process projects that support Bundler.
       if [[ -f "Gemfile.lock" ]]; then
-        # Print project name and status.
+        printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
+
+        # Print status if found, otherwise a checkmark for passing status.
         if [[ -d "pkg" ]]; then
           rm -rf pkg
-          printf "\033[36m${project:2}\033[m: ✓\n" # Outputs in cyan color.
+          printf "Cleaned gem artifacts.\n"
+        else
+          printf "✓\n"
         fi
       fi
     )
