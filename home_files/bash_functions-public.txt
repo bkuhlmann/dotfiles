@@ -169,8 +169,15 @@ function ggeta() {
           # Get Git config value for given key.
           local result=$(git config "$1")
 
-          # Print project (cyan) and message (white).
-          printf "\033[36m${project:2}\033[m: $result\n"
+          # Print project (cyan).
+          printf "\033[36m${project:2}\033[m: "
+
+          # Print result.
+          if [[ -n "$result" ]]; then
+            printf "$1 = $result\n" # White
+          else
+            printf "\033[31mKey not found.\033[m\n" # Red
+          fi
         fi
       )
     done < <(find . -type d -depth 1)
