@@ -587,12 +587,16 @@ function boa() {
       cd "$project"
       # Only process projects that are Git enabled.
       if [[ -f "Gemfile.lock" ]]; then
-        # Capture current project status.
-        local results=$(bundle outdated | grep '*')
-        # Print project name and status only if Bundler activity was detected.
+        printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
+
+        # Capture current project status: Search for bullets (*, outdated gems) or missing (not found) gems.
+        local results=$(bundle outdated | egrep "(\*.+|.+not\sfind.+)")
+
+        # Print project status if Bundler activity is detected, otherwise a checkmark for passing status.
         if [[ -n "$results" ]]; then
-          printf "\033[36m${project:2}\033[m\n" # Outputs in cyan color.
-          printf "$results\n"
+          printf "\n$results\n"
+        else
+          printf "✓\n"
         fi
       fi
     )
