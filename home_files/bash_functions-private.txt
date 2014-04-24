@@ -21,7 +21,7 @@ function _process_git_stash() {
   local prompt_label="$2"
 
   # Store original line break setting and temporarily switch to using new line characters instead.
-  IFS_original=$IFS
+  local ifs_original=$IFS
   IFS=$'\n'
 
   # Store existing stashes (if any) as an array. See the public, "gashl" function for details.
@@ -33,19 +33,21 @@ function _process_git_stash() {
     for ((index = 0; index < ${#stashes[*]}; index++)); do
       printf "  $index: ${stashes[$index]}\n"
     done
-    printf "  q: Quit/Exit.\n"
+    printf "  q: Quit/Exit.\n\n"
 
     read -p "Enter selection: " response
     local match="^[0-9]{1}$"
     if [[ "$response" =~ $match ]]; then
+      printf "\n"
       git stash $stash_command "stash@{$response}"
+      printf "\n"
     fi
   else
     git stash $stash_command
   fi
 
   # Restore original line break setting.
-  ISF=$IFS_original
+  ISF=$ifs_original
 }
 
 #---------------------------------------#
