@@ -235,17 +235,10 @@ function gunseta() {
         # Only process projects that are Git enabled.
         if [[ -d ".git" ]]; then
           # Unset key for current project with error output suppressed (if any).
-          local result=$(git config --unset "$1" &> /dev/null)
+          git config --unset "$1" &> /dev/null
 
           # Print project (cyan).
-          printf "\033[36m${project:2}\033[m: "
-
-          # Print message (white).
-          if [[ $? -eq 0 ]]; then
-            printf "$1 removed.\n"
-          else
-            printf "$1 does not exist.\n"
-          fi
+          printf "\033[36m${project:2}\033[m: \"$1\" key removed.\n"
         fi
       )
     done < <(find . -type d -depth 1)
