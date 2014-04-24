@@ -395,9 +395,11 @@ function gpua() {
         # Capture current project status.
         local results=$(git pull | tail -1)
         # Print project name and Git activity only if Git activity was detected.
+        printf "\033[36m${project:2}\033[m" # Outputs in cyan color.
         if [[ -n "$results" && "$results" != "Already up-to-date." ]]; then
-          printf "\033[36m${project:2}\033[m\n" # Outputs in cyan color.
-          printf "  $results\n"
+          printf "\n  $results\n"
+        else
+          printf ": ✓\n"
         fi
       fi
     )
