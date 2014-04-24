@@ -78,7 +78,7 @@ function guthorsa() {
       # Only process projects that are Git enabled.
       if [[ -d ".git" ]]; then
         # Print project (cyan) and message (white).
-        printf "\033[36m${project:2}\033[m\n"
+        printf "\033[36m${project:2}\033[m:\n"
         git log --format="%an" | sort | uniq -c | sort --reverse
       fi
     )
@@ -101,7 +101,7 @@ function gsta() {
         # Print project name and Git activity only if Git activity is detected.
         if [[ $size -gt '2' ]]; then
           # Output project name in cyan color.
-          printf "\033[36m${project:2}\033[m\n"
+          printf "\033[36m${project:2}\033[m:\n"
 
           # Remove first and second elements since they contain branch info.
           results=("${results[@]:1}")
@@ -240,11 +240,14 @@ function gunseta() {
           # Unset key for current project with error output suppressed (if any).
           local result=$(git config --unset "$1" &> /dev/null)
 
-          # Print project (cyan) and message (white).
+          # Print project (cyan).
+          printf "\033[36m${project:2}\033[m: "
+
+          # Print message (white).
           if [[ $? -eq 0 ]]; then
-            printf "\033[36m${project:2}\033[m: $1 removed.\n"
+            printf "$1 removed.\n"
           else
-            printf "\033[36m${project:2}\033[m: $1 does not exist!\n"
+            printf "$1 does not exist.\n"
           fi
         fi
       )
@@ -267,10 +270,9 @@ function gince() {
         if [[ -d ".git" ]]; then
           # Capture git log activity.
           local results=$(git log --oneline --format='%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset' --since "$1" --author "$2" --reverse)
-          # Print project name and Git activity only if Git activity was detected.
+          # Print project name (cyan) and Git activity (white) only if Git activity was detected.
           if [[ -n "$results" ]]; then
-            printf "\033[36m${project:2}\n" # Outputs in cyan color.
-            printf "$results\n"
+            printf "\033[36m${project:2}:\n$results\n"
           fi
         fi
       )
@@ -323,15 +325,15 @@ function gtaila() {
         local count=$(_git_commits_since_last_tag | wc -l | xargs -n 1)
         # Print project name and Git activity only if Git activity is detected.
         if [[ -n $count && $count != 0 ]]; then
-          # Outputs project (cyan color) with color-coded commit count (based on volume).
+          printf "\033[36m${project:2}\033[m: " # Project (cyan).
           if [[ $count -ge 30 ]]; then
-            printf "\033[36m${project:2}:\033[m \033[31m$count\033[m\n" # Red count color.
+            printf "\033[31m$count\033[m\n" # Count (red)
           elif [[ $count -ge 20 && $count -le 29 ]]; then
-            printf "\033[36m${project:2}:\033[m \033[1;31m$count\033[m\n" # Light red count color.
+            printf "\033[1;31m$count\033[m\n" # Count (light red).
           elif [[ $count -ge 10 && $count -le 19 ]]; then
-            printf "\033[36m${project:2}:\033[m \033[33m$count\033[m\n" # Yellow count color.
+            printf "\033[33m$count\033[m\n" # Count (yellow).
           else
-            printf "\033[36m${project:2}:\033[m $count\n" # White count color.
+            printf "$count\n" # Count (white).
           fi
         fi
       fi
@@ -376,7 +378,7 @@ function gasha() {
         local size=$(git stash list | wc -l | xargs -n 1)
         # Print project name and Git activity only if Git activity is detected.
         if [[ -n $size && $size != 0 ]]; then
-          printf "\033[36m${project:2}:\033[m $size\n" # Outputs in cyan color.
+          printf "\033[36m${project:2}\033[m: $size\n" # Outputs in cyan color.
         fi
       fi
     )
@@ -395,11 +397,11 @@ function gpua() {
         # Capture current project status.
         local results=$(git pull | tail -1)
         # Print project name and Git activity only if Git activity was detected.
-        printf "\033[36m${project:2}\033[m" # Outputs in cyan color.
+        printf "\033[36m${project:2}\033[m: " # Outputs in cyan color.
         if [[ -n "$results" && "$results" != "Already up-to-date." ]]; then
           printf "\n  $results\n"
         else
-          printf ": ✓\n"
+          printf "✓\n"
         fi
       fi
     )
@@ -417,10 +419,9 @@ function galla() {
       if [[ -d ".git" ]]; then
         # Apply all changes to Git.
         local results=$(git add --verbose --all .)
-        # Print project name and Git activity only if Git activity was detected.
+        # Print project name (cyan) and Git activity (white) only if Git activity was detected.
         if [[ -n "$results" ]]; then
-          printf "\033[36m${project:2}\033[m\n" # Outputs in cyan color.
-          printf "$results\n"
+          printf "\033[36m${project:2}\033[m:\n$results\n"
         fi
       fi
     )
@@ -440,7 +441,7 @@ function gcap() {
         if [[ -d ".git" ]]; then
           # Only process projects that have changes.
           if [[ "$(git status -s)" ]]; then
-            printf "\n\033[36m${project:2}\033[m\n" # Outputs in cyan color.
+            printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
             git commit --all --message "$1" && git push
           fi
         fi
@@ -459,7 +460,7 @@ function gvca() {
       cd "$project"
       # Only process projects that are Git-enabled.
       if [[ -d ".git" ]]; then
-        printf "\n\033[36m${project:2}\033[m\n" # Outputs in cyan color.
+        printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
         git fsck && git gc
       fi
     )
