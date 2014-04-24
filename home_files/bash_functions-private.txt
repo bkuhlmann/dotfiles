@@ -179,7 +179,7 @@ function _process_rew_option() {
 function _print_section() {
   if [[ "$1" == "# Section:"* ]]; then
     local section=$(printf "$1" | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
-    printf "\n##### $section\n"
+    printf "##### $section\n"
   fi
 }
 
@@ -255,7 +255,7 @@ function _find_function() {
 
 function _find_command() {
   if [[ "$1" ]]; then
-    printf "\n\"$1\" Search Results:"
+    printf "\"$1\" Search Results:\n"
 
     _find_alias "$1"
     _find_function "$1"
