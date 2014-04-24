@@ -707,11 +707,14 @@ function rua() {
           local old_version=$(head -n 1 .ruby-version)
           local new_version="$1"
 
-          # Update only if old is not equal to new version.
+          printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
+
+          # Update only if current version is not equal to new version.
           if [[ "$old_version" != "$new_version" ]]; then
-            printf "$1" > .ruby-version
-            # Outputs project in cyan and upgrade info in white colors.
-            printf "\n\033[36m${project:2}\033[m: $old_version --> $new_version.\n"
+            printf "$new_version\n" > .ruby-version
+            printf "$old_version --> $new_version\n"
+          else
+            printf "✓\n"
           fi
         fi
       )
