@@ -425,6 +425,24 @@ function galla() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Git Push (all)
+# Description: Pushes changes for all projects within current directory.
+function gpa() {
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git-enabled.
+      if [[ -d ".git" ]]; then
+        # Only process projects that have changes.
+        if [[ "$(git status --short --branch)" == *"[ahead"*"]" ]]; then
+          printf "\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+          git push
+        fi
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 # Label: Git Commit and Push (all)
 # Description: Commits and pushes changes for all projects within current directory.
 # Parameters: $1 (required) - The commit message.
@@ -437,8 +455,8 @@ function gcap() {
         # Only process projects that are Git-enabled.
         if [[ -d ".git" ]]; then
           # Only process projects that have changes.
-          if [[ "$(git status -s)" ]]; then
-            printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+          if [[ "$(git status --short)" ]]; then
+            printf "\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
             git commit --all --message "$1" && git push
           fi
         fi
