@@ -30,7 +30,7 @@ function t2s() {
 #-----------------------------------------------------------#
 
 # Label: lessi
-# Description: Interactively inspect a streaming file (typically a log).
+# Description: Interactively inspect a file (typically a log).
 # Parameters: $1 (required) - The file path.
 function lessi() {
   if [[ "$1" ]]; then
