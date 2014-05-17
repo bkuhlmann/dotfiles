@@ -25,6 +25,22 @@ function t2s() {
   fi
 }
 
+#-----------------------------------------------------------#
+# Section: [less](http://en.wikipedia.org/wiki/Less_(Unix)) #
+#-----------------------------------------------------------#
+
+# Label: lessi
+# Description: Interactively inspect a streaming file (typically a log).
+# Parameters: $1 (required) - The file path.
+function lessi() {
+  if [[ "$1" ]]; then
+    less +F --LONG-PROMPT --LINE-NUMBERS --RAW-CONTROL-CHARS --QUIET --quit-if-one-screen -i "$1"
+  else
+    printf "ERROR: File path must be supplied.\n"
+    printf "TIP: Use CONTROL+c to switch to VI mode, SHIFT+f to switch back, and CONTROL+c+q to exit.\n"
+  fi
+}
+
 #--------------------------------------#
 # Section: [curl](http://curl.haxx.se) #
 #--------------------------------------#
