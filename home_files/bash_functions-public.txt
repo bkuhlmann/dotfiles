@@ -498,6 +498,18 @@ function gvca() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Git Branch Create
+# Description: Creates and switches to local branch.
+# Parameters: $1 (required) - The branch name.
+function gbc() {
+  if [[ "$1" ]]; then
+    git branch "$1"
+    git checkout "$1"
+  else
+    printf "ERROR: Branch name must be supplied.\n"
+  fi
+}
+
 # Label: Git Branch Delete
 # Description: Deletes local and remote branch (if found).
 # Parameters: $1 (required) - The branch name.
