@@ -155,7 +155,7 @@ function ghurn() {
 # Label: Git Blame Log
 # Description: Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
 # Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
-function glamelog() {
+function glamel() {
   if [[ -z "$1" ]]; then
     printf "ERROR: File path must be supplied.\n"
     return 0
