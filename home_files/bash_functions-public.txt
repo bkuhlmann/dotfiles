@@ -510,6 +510,38 @@ function gbc() {
   fi
 }
 
+# Label: Git Branch Switch
+# Description: Switch between local branches.
+function gbs() {
+  # Only process projects that are Git-enabled.
+  if [[ -d ".git" ]]; then
+    # Store local branches (minus HEAD) to local array.
+    local branches=($(find .git/refs/remotes/origin -type f ! -name HEAD))
+
+    # Proceed only if there is more than one branch to select from.
+    if [[ "${#branches[*]}" -gt '1' ]]; then
+      printf "\nSelect branch to switch to:\n"
+
+      for ((index = 0; index < ${#branches[*]}; index++)); do
+        printf "  $index: ${branches[$index]##*/}\n"
+      done
+
+      printf "  q: Quit/Exit.\n\n"
+
+      read -p "Enter selection: " response
+      printf "\n"
+
+      local match="^[0-9]{1}$"
+      if [[ "$response" =~ $match ]]; then
+        git checkout "${branches[$response]##*/}"
+        printf "\n"
+      fi
+    else
+      printf "Sorry, no branches to switch to.\n"
+    fi
+  fi
+}
+
 # Label: Git Branch Delete
 # Description: Deletes local and remote branch (if found).
 # Parameters: $1 (required) - The branch name.
