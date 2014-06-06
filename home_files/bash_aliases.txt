@@ -104,6 +104,7 @@ alias gdis="git reset --hard" # Reset to commit (hash), destroying all committed
 alias grev="git revert" # Revert a previous commit (hash).
 alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
 alias ggc="git fsck && git gc"
+alias grp="git remote prune origin"
 
 # Section: [Tar](http://www.gnu.org/software/tar/tar.html)
 alias bzc="tar --use-compress-program=pigz -cjvf"
