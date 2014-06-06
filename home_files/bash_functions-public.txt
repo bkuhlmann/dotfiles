@@ -514,7 +514,7 @@ function gbc() {
 # Description: Switch between local branches.
 function gbs() {
   # Only process projects that are Git-enabled.
-  if [[ -d ".git" ]]; then
+  if [[ -e ".git/refs/remotes/origin" ]]; then
     # Store local branches (minus HEAD) to local array.
     local branches=($(find .git/refs/remotes/origin -type f ! -name HEAD))
 
@@ -537,8 +537,10 @@ function gbs() {
         printf "\n"
       fi
     else
-      printf "Sorry, no branches to switch to.\n"
+      printf "Sorry, only one branch to switch to and you're on it!\n"
     fi
+  else
+    printf "Sorry, no branches to switch to.\n"
   fi
 }
 
