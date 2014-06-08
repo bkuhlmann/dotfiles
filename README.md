@@ -1,5 +1,7 @@
 # Overview
 
+[![Gittip](http://img.shields.io/gittip/bkuhlmann.svg)](https://www.gittip.com/bkuhlmann)
+
 Shell scripts for applying default settings to UNIX-based operating systems.
 
 By default, these are set to my preferences (namely for OSX) but you can change them to your liking by editing
