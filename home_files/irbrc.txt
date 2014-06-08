@@ -79,7 +79,7 @@ end
   end
 end
 
-# Red Alchemist Utilities
+# Alchemists Utilities
 class RA
   # Copies input to the Mac OS clipboard seperated by a new line.
   # ==== Parameters
