@@ -516,7 +516,7 @@ function gbs() {
   # Only process projects that are Git-enabled.
   if [[ -e ".git/refs/remotes/origin" ]]; then
     # Store local branches (minus HEAD) to local array.
-    local branches=($(find .git/refs/remotes/origin -type f ! -name HEAD))
+    local branches=($(git branch -r | awk '{print $1}' | cut -d'/' -f2 | sed '/HEAD/d'))
 
     # Proceed only if there is more than one branch to select from.
     if [[ "${#branches[*]}" -gt '1' ]]; then
