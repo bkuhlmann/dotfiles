@@ -195,6 +195,9 @@ alias capp="bec production deploy"
 alias rsite="ber sitemap:refresh:no_ping"
 alias rsitep="ber sitemap:refresh"
 
+# Section: [Swift](https://developer.apple.com/swift)
+alias swift="/Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
+
 # Section: [Heroku+](https://github.com/bkuhlmann/heroku_plus)
 alias hpas="hp account --switch"
 
