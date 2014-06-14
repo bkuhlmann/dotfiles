@@ -515,8 +515,16 @@ function gbc() {
 function gbs() {
   # Only process projects that are Git-enabled.
   if [[ -d ".git" ]]; then
-    # Store local branches (minus HEAD) to local array.
-    local branches=($(git branch -r | awk '{print $1}' | cut -d'/' -f2 | sed '/HEAD/d'))
+    local branches=()
+
+    # Store local branches (minus master) to local array.
+    branches+=($(git branch | awk '{print $1}' | cut -d'/' -f2 | sed '/\*/d'))
+
+    # Store remote branches (minus HEAD) to local array.
+    branches+=($(git branch --remotes | awk '{print $1}' | cut -d'/' -f2 | sed '/HEAD/d'))
+
+    # Sort and remove duplicate branches.
+    branches=($(for branch in "${branches[@]}"; do printf "$branch\n"; done | sort --unique))
 
     # Proceed only if there is more than one branch to select from.
     if [[ "${#branches[*]}" -gt '1' ]]; then
