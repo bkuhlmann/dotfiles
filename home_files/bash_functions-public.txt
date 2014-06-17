@@ -798,6 +798,16 @@ function bes() {
   fi
 }
 
+# Label: Bundle Execute Guard
+# Description: Executes Guard via binstub or Bundler.
+function beg() {
+  if [[ -e bin/guard ]]; then
+    bin/guard $@
+  else
+    bundle exec guard $@
+  fi
+}
+
 # Label: Bundle Execute Capistrano
 # Description: Executes Capistrano via binstub or Bundler.
 function bec() {
