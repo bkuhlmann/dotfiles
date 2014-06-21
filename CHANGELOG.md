@@ -1,3 +1,31 @@
+# v11.0.0
+
+* Removed the "gres" alias (renamed to "grh" instead).
+* Removed the "glamelog" function (renamed to "glamel" instead).
+* Added the "gpa" function which will push changes to remote repo for all projects in current directory.
+* Added Git config cw: prefix for Charity: Water (removed Gnip).
+* Added the "lessi" function for interactive less.
+* Added "grs" alias for "git reset --soft HEAD^".
+* Added "gbc" function to create and switch to a new local branch.
+* Added --set-upstream option to "gpo" alias.
+* Added "gcf" alias for "git commit --fixup".
+* Added the "gbr" alias for "git branch --move".
+* Added "rdbmt" alias for rake db:migrate test.
+* Added "gau" alias for "git add --update".
+* Added a Tar alias section with support for bzip2 compression/decompression.
+* Added "grl" alias for "git reflog".
+* Added "grp" alias for "git remote prune origin".
+* Added "gbs" function for git branch switching.
+* Added line numbers to git grep search (i.e. "gg" alias).
+* Added the swift alias for easy access to the Swift console.
+* Updated the "gpp" alias and added the "gpr" and "gps" aliases.
+* Updated "gps" and "gpp" aliases to use "deploy" branch.
+* Updated gitconfig to autosquash rebases by default.
+* Updated the "gbd" function to prompt for branch deletion.
+* Updated the "beg" alias so that is is a function.
+* Updated Bash prompt colors.
+* Updated all aliases using "rake" to pass through bundle exec (or binstubs if available) instead.
+
 # v10.0.0
 
 * Removed Espresso files from .gitignore.

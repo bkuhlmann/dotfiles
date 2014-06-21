@@ -42,7 +42,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v10.0.0
+    git checkout v11.0.0
 
 Master Version (unstable)
 
@@ -125,6 +125,7 @@ From the command line, the following aliases are available:
     gln = "git log --name-status"
     glf = "git log ..FETCH_HEAD"
     gls = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
+    grl = "git reflog"
     gg = "git grep"
     glast = "git show --stat"
     guthors = "git log --format = '%an' | sort | uniq -c | sort --reverse"
@@ -139,11 +140,13 @@ From the command line, the following aliases are available:
     glame = "git blame"
     gb = "git branch --verbose"
     gba = "git branch --all"
+    gbr = "git branch --move"
     gm = "git merge"
     gms = "git merge --squash"
     gcl = "git clone"
     gch = "git checkout"
     ga = "git add"
+    gau = "git add --update"
     gap = "git add --patch"
     gall = "git add --all ."
     gco = "git commit"
@@ -151,6 +154,7 @@ From the command line, the following aliases are available:
     gcm = "git commit --message"
     gcam = "git commit --all --message"
     gamend = "git commit --amend"
+    gcf = "git commit --fixup"
     gcp = "git cherry-pick"
     gash = "git stash save"
     gashc = "git stash clear"
@@ -160,17 +164,23 @@ From the command line, the following aliases are available:
     gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching.
     geady = "git rebase -i @{u}" # Interactive rebase.
     gp = "git push"
-    gpo = "git push origin"
-    gpp = "git push production master"
-    gps = "git push stage stage:master"
+    gpo = "git push --set-upstream origin"
+    gpr = "git push review master"
+    gps = "git push stage deploy:master"
+    gpp = "git push production deploy:master"
     gtag = "git tag"
     gtags = "git push --tags"
-    gr = "git reset"
-    gres = "git reset --hard HEAD"
-    gdis = "git reset --hard"
-    grev = "git revert"
+    gr = "git reset" # Unstage staged files for commit.
+    grs = "git reset --soft HEAD^" # Uncommit previous commit.
+    grh = "git reset --hard HEAD" # Reset to HEAD, destroying all staged/unstaged changes.
+    gdis = "git reset --hard" # Reset to commit (hash), destroying all committed changes up to specific commit.
+    grev = "git revert" # Revert a previous commit (hash).
     glatest = "git for-each-ref --sort=-committerdate refs/heads --format = '%(committerdate:short) %(refname:short)'"
     ggc = "git fsck && git gc"
+    grp = "git remote prune origin"
+##### [Tar](http://www.gnu.org/software/tar/tar.html)
+    bzc = "tar --use-compress-program=pigz -cjvf"
+    bzx = "tar -xjvf"
 ##### [rbenv](https://github.com/sstephenson/rbenv)
     rb = "rbenv"
     rbg = "rbenv global"
@@ -211,7 +221,6 @@ From the command line, the following aliases are available:
     bert = "ber test"
     berts = "ber test | grep _test.rb"
     bertv = "TESTOPTS=-v ber test"
-    beg = "bundle exec guard"
     bch = "rm -f Gemfile.lock; bundle check"
     rebundle = "bch; bundle package"
 ##### [Gemsmith](https://github.com/bkuhlmann/gemsmith)
@@ -225,18 +234,19 @@ From the command line, the following aliases are available:
     sgm = "sg model"
     sgh = "sg helper"
     sgs = "sg scaffold"
-    rdbd = "rake db:drop"
-    rdbc = "rake db:create"
-    rdbm = "rake db:migrate"
-    rassp = "rake assets:precompile"
-    rassc = "rake assets:clean"
-    rfixes = "rake notes:custom ANNOTATION=FIX"
+    rdbd = "ber db:drop"
+    rdbc = "ber db:create"
+    rdbm = "ber db:migrate"
+    rdbmt = "ber db:migrate && ber db:rollback && ber db:migrate"
+    rassp = "ber assets:precompile"
+    rassc = "ber assets:clean"
+    rfixes = "ber notes:custom ANNOTATION=FIX"
     taild = "tail -f log/development.log"
     tailt = "tail -f log/test.log"
     res = "touch tmp/restart.txt"
     rprofile = "ruby-prof --printer=graph_html ./script/rails runner > profile.html"
-    rpaths = "rake routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
-    erd = "mkdir -p doc/design && rake erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
+    rpaths = "ber routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
+    erd = "mkdir -p doc/design && ber erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
     dmodels = "mkdir -p doc/design && railroady --label --inheritance --specify --all-columns --join --transitive --output doc/design/models.dot --models"
     dcontrollers = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
     dstate = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
@@ -244,8 +254,10 @@ From the command line, the following aliases are available:
     caps = "bec stage deploy"
     capp = "bec production deploy"
 ##### [Sitemap Generator](https://github.com/kjvarga/sitemap_generator)
-    rsite = "rake sitemap:refresh:no_ping"
-    rsitep = "rake sitemap:refresh"
+    rsite = "ber sitemap:refresh:no_ping"
+    rsitep = "ber sitemap:refresh"
+##### [Swift](https://developer.apple.com/swift)
+    swift = "/Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
 ##### [Heroku+](https://github.com/bkuhlmann/heroku_plus)
     hpas = "hp account --switch"
 ##### [The Silver Surfer](https://github.com/ggreer/the_silver_searcher)
@@ -265,6 +277,8 @@ From the command line, the following functions are available:
 
 ##### General
     t2s = Tabs to Spaces - Converts a file from tab to space indendation.
+##### [less](http://en.wikipedia.org/wiki/Less_(Unix))
+    lessi = lessi - Interactively inspect a file (typically a log).
 ##### [curl](http://curl.haxx.se)
     curli = Curl Inspect - Inspect remote file, via curl, within default editor.
 ##### [lsof](http://people.freebsd.org/~abe/)
@@ -274,7 +288,7 @@ From the command line, the following functions are available:
     guthorsa = Git Authors (all) - Answers author commit activity per project (ranked highest to lowest).
     gsta = Git Status (all) - Answers the status of projects with uncommited/unpushed changes.
     ghurn = Git Churn - Answers the commit churn for project files (sorted highest to lowest).
-    glamelog = Git Blame Log - Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
+    glamel = Git Blame Log - Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
     ggeta = Git Get Config Value (all) - Answers key value for all projects in current directory.
     gail = Git Email - Answers user email for current project.
     gaila = Git Email (all) - Answers user email for all projects in current directory.
@@ -295,8 +309,11 @@ From the command line, the following functions are available:
     gasha = Git Stash (all) - Answers stash count for all projects within current directory.
     gpua = Git Pull (all) - Pulls down new changes (if any) from remote branch for all projects in current directory.
     galla = Git Add (all) - Applies file changes (including new files) for all projects within current directory.
+    gpa = Git Push (all) - Pushes changes for all projects within current directory.
     gcap = Git Commit and Push (all) - Commits and pushes changes for all projects within current directory.
     gvca = Git Validate and Clean (all) - Validates and cleans all projects in current directory.
+    gbc = Git Branch Create - Creates and switches to local branch.
+    gbs = Git Branch Switch - Switch between local branches.
     gbd = Git Branch Delete - Deletes local and remote branch (if found).
     gbdm = Git Branch Delete Merged - Deletes local and remote merged branches (if found).
     gtagd = Git Tag Delete - Deletes local and remote tag (if found).
@@ -310,6 +327,7 @@ From the command line, the following functions are available:
     ber = Bundle Execute Rake - Executes Rake via binstub or Bundler.
     bertt = Bundle Execute Rake Test - Executes a single Test::Unit test via binstub or Bundler.
     bes = Bundle Execute RSpec - Executes RSpec via binstub or Bundler.
+    beg = Bundle Execute Guard - Executes Guard via binstub or Bundler.
     bec = Bundle Execute Capistrano - Executes Capistrano via binstub or Bundler.
 ##### [Ruby](http://www.ruby-lang.org)
     rua = Ruby Upgrade (all) - Upgrades all Ruby projects in current directory with new Ruby version information.
