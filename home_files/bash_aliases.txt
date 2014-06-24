@@ -186,6 +186,9 @@ alias dmodels="mkdir -p doc/design && railroady --label --inheritance --specify 
 alias dcontrollers="mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
 alias dstate="mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
 
+# Section: [Rubocop](https://github.com/bbatsov/rubocop)
+alias rcop="rubocop --display-cop-names"
+
 # Section: [Capistrano](https://github.com/capistrano/capistrano)
 alias caps="bec stage deploy"
 alias capp="bec production deploy"
