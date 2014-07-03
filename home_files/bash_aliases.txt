@@ -11,6 +11,7 @@ alias p='pwd | tr -d "\r\n" | pbcopy && printf "$(pbpaste) (copied to clipboard)
 alias o="open"
 alias home="cd $HOME"
 alias bashs="exec $SHELL"
+alias pss='ps axu | grep "$@" --ignore-case --color=auto'
 
 # Section: Network
 alias sshe="$EDITOR $HOME/.ssh/config"
