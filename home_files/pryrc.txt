@@ -11,7 +11,7 @@ Pry.config.prompt = [
 ]
 
 # History
-Pry.config.history.file = "~/.irb_history" # Keep IRB and Pry history the same.
+Pry.config.history.file = "#{ENV['HOME']}/.irb_history" # Keep IRB and Pry history the same.
 
 # Aliases
 Pry.commands.alias_command 'w', "whereami" rescue nil
