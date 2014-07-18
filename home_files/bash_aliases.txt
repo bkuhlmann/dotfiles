@@ -3,6 +3,7 @@
 # Section: General
 alias ..="cd .."
 alias ...="cd ../.."
+alias cdb="cd -"
 alias c="clear"
 alias h="history"
 alias l="ls -alh"
