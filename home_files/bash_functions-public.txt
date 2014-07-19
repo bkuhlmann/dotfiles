@@ -539,7 +539,7 @@ function gbs() {
       read -p "Enter selection: " response
       printf "\n"
 
-      local match="^[0-9]{1}$"
+      local match="^([0-9]{1,2})$"
       if [[ "$response" =~ $match ]]; then
         git checkout "${branches[$response]##*/}"
         printf "\n"
@@ -583,7 +583,7 @@ function gbd() {
       local branch="${branches[$response]##*/}"
       printf "\n"
 
-      local match="^[0-9]{1}$"
+      local match="^([0-9]{1,2})$"
       if [[ "$response" =~ $match ]]; then
         read -p "You are about to delete the \"$branch\" branch from the local and remote repositories. Continue (y/n)?: " response
         if [[ "$response" == 'y' ]]; then
