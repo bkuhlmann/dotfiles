@@ -3,6 +3,7 @@
 
 # Environments
 *.env*
+!.env.sample
 
 # Archives
 *.7z
