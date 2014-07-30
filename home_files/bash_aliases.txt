@@ -156,6 +156,7 @@ alias bess="bes spec"
 alias bert="ber test"
 alias berts="ber test | grep _test.rb"
 alias bertv="TESTOPTS=-v ber test"
+alias bernt="ber notes:custom ANNOTATION=TODO"
 alias bch="rm -f Gemfile.lock; bundle check"
 alias rebundle="bch; bundle package"
 
