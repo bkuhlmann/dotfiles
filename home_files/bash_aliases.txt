@@ -92,6 +92,7 @@ alias gfp="git fetch --prune"
 alias gpu="git pull"
 alias gpur="git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching.
 alias grc="git rebase --continue"
+alias gra="git rebase --abort"
 alias geady="git rebase -i @{u}" # Interactive rebase.
 alias gp="git push"
 alias gpo="git push --set-upstream origin"
