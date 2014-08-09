@@ -459,6 +459,30 @@ function gpa() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Git Commit With Message (all)
+# Description: Commits changes (modified and new), with a message, for all projects within current directory.
+# Parameters: $1 (required) - The commit message.
+function gcama() {
+  if [[ "$1" ]]; then
+    # Iterate project directories located in root directory.
+    while read project; do
+      (
+        cd "$project"
+        # Only process projects that are Git-enabled.
+        if [[ -d ".git" ]]; then
+          # Only process projects that have changes.
+          if [[ "$(git status --short)" ]]; then
+            printf "\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+            git commit --all --message "$1"
+          fi
+        fi
+      )
+    done < <(find . -type d -depth 1)
+  else
+    printf "ERROR: Commit message must be supplied.\n"
+  fi
+}
+
 # Label: Git Commit and Push (all)
 # Description: Commits and pushes changes for all projects within current directory.
 # Parameters: $1 (required) - The commit message.
