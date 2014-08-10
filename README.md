@@ -42,7 +42,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v11.0.0
+    git checkout v12.0.0
 
 Master Version (unstable)
 
@@ -80,6 +80,7 @@ From the command line, the following aliases are available:
 ##### General
     .. = "cd .."
     ... = "cd ../.."
+    cdb = "cd -"
     c = "clear"
     h = "history"
     l = "ls -alh"
@@ -88,6 +89,7 @@ From the command line, the following aliases are available:
     o = "open"
     home = "cd $HOME"
     bashs = "exec $SHELL"
+    pss = 'ps axu | grep "$@" --ignore-case --color=auto'
 ##### Network
     sshe = "$EDITOR $HOME/.ssh/config"
     ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | pbcopy && printf "$(pbpaste) (copied to clipboard)n"'
@@ -162,6 +164,8 @@ From the command line, the following aliases are available:
     gfp = "git fetch --prune"
     gpu = "git pull"
     gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching.
+    grc = "git rebase --continue"
+    gra = "git rebase --abort"
     geady = "git rebase -i @{u}" # Interactive rebase.
     gp = "git push"
     gpo = "git push --set-upstream origin"
@@ -240,7 +244,8 @@ From the command line, the following aliases are available:
     rdbmt = "ber db:migrate && ber db:rollback && ber db:migrate"
     rassp = "ber assets:precompile"
     rassc = "ber assets:clean"
-    rfixes = "ber notes:custom ANNOTATION=FIX"
+    bernt = "ber notes:custom ANNOTATION=TODO"
+    bernf = "ber notes:custom ANNOTATION=FIX"
     taild = "tail -f log/development.log"
     tailt = "tail -f log/test.log"
     res = "touch tmp/restart.txt"
@@ -250,6 +255,8 @@ From the command line, the following aliases are available:
     dmodels = "mkdir -p doc/design && railroady --label --inheritance --specify --all-columns --join --transitive --output doc/design/models.dot --models"
     dcontrollers = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
     dstate = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
+##### [Rubocop](https://github.com/bbatsov/rubocop)
+    rcop = "rubocop --display-cop-names"
 ##### [Capistrano](https://github.com/capistrano/capistrano)
     caps = "bec stage deploy"
     capp = "bec production deploy"
@@ -310,6 +317,7 @@ From the command line, the following functions are available:
     gpua = Git Pull (all) - Pulls down new changes (if any) from remote branch for all projects in current directory.
     galla = Git Add (all) - Applies file changes (including new files) for all projects within current directory.
     gpa = Git Push (all) - Pushes changes for all projects within current directory.
+    gcama = Git Commit with Message (all) - Commits changes (modified and new), with a message, for all projects within current directory.
     gcap = Git Commit and Push (all) - Commits and pushes changes for all projects within current directory.
     gvca = Git Validate and Clean (all) - Validates and cleans all projects in current directory.
     gbc = Git Branch Create - Creates and switches to local branch.
@@ -352,11 +360,10 @@ From the command line, the following functions are available:
 
 From IRB, Pry, and Rails consoles, the following commands are possible:
 
-    RA.copy - Copies data to the MacOS clipboard.
-    RA.paste - Pastes data from the MacOS clipboard.
-    RA.http_codes - Prints Rails HTTP codes.
-    RA.http_symbols - Prints Rails HTTP symbols.
-    ap - Prints collections in an easy to read format.
+    ConsoleKit.copy - Copies data to the MacOS clipboard.
+    ConsoleKit.paste - Pastes data from the MacOS clipboard.
+    ConsoleKit.http_codes - Prints Rails HTTP codes.
+    ConsoleKit.http_symbols - Prints Rails HTTP symbols.
 
 From Pry, the following aliases are available:
 

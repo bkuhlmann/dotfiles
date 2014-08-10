@@ -1,3 +1,30 @@
+# v12.0.0
+
+* Removed the 'p' option for "gh" function (replaced with 'r' instead).
+* Removed the "rfixes" alias (use "bernf" instead).
+* Removed the Rails Engine template option from the "rew" function. Use the
+  [Gemsmith](https://github.com/bkuhlmann/gemsmith) gem instead.
+* Removed the IRB RA class (replaced as ConsoleKit instead).
+* Fixed binding.pry bug with .irb_history file not being resolved correctly in .pryrc settings.
+* Fixed bug with Hirb "pager" error when using Pry 0.10.0.
+* Fixed bug with not being able to select branches higher than nine in a list.
+* Updated .gitignore to exclude .env.sample files.
+* Updated 'b' option of "gh" function to accept a 'c' option for opening current GitHub branch in default browser.
+* Updated the "gh" function option documentation.
+* Added "rcop" alias for running Rubocop with useful defaults.
+* Added "pss" alias for easy searching of running processes.
+* Added "cdb" alias for "cd -".
+* Added "bernt" alias for "ber notes:custom ANNOTATION=TODO".
+* Added "bernf" alias for "ber notes:custom ANNOTATION=FIX".
+* Added "grc" alias for "git rebase --continue".
+* Added "gra" alias for "git rebase --abort".
+* Added "gcama" function for making the same commit for all projects in current directory.
+* Added 'i' option to "gh" function for opening GitHub project issues.
+* Added 'w' option to "gh" function for opening GitHub project wiki.
+* Added 's' option to "gh" function for opening GitHub project settings.
+* Added 'g' option to "gh" function for opening GitHub project graphs.
+* Added 'p' option to "gh" function for opening GitHub project pulse.
+
 # v11.0.0
 
 * Removed the "gres" alias (renamed to "grh" instead).
