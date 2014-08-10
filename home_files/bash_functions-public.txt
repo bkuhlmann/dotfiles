@@ -699,7 +699,7 @@ function gh() {
         printf "\nGitHub Options:\n"
         printf "  o: Open GitHub project in default browser.\n"
         printf "  i: Open GitHub project issues in default browser.\n"
-        printf "  c: Open GitHub project commit(s) in default browser.\n"
+        printf "  c: Open GitHub project commits/commit (Usage: 'gh c <hash>') in default browser.\n"
         printf "  b: Open GitHub project branches/current branch (Usage: 'gh b c') in default browser.\n"
         printf "  t: Open GitHub project tags (releases) in default browser.\n"
         printf "  r: Open GitHub project pull requests in default browser.\n"
@@ -707,7 +707,7 @@ function gh() {
         printf "  p: Open GitHub project pulse in default browser.\n"
         printf "  g: Open GitHub project graphs in default browser.\n"
         printf "  s: Open GitHub project settings in default browser.\n"
-        printf "  u: Print GitHub project URL.\n"
+        printf "  u: Prints, and copies to clipboard, the GitHub project URL.\n"
         printf "  q: Quit/Exit.\n\n"
         read -p "Enter selection: " response
         printf "\n"
