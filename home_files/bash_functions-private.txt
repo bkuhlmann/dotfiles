@@ -74,6 +74,9 @@ function _process_gh_option() {
     'o')
       open $(_gh_url)
       break;;
+    'i')
+      open "$(_gh_url)/issues"
+      break;;
     'c')
       if [[ "$2" ]]; then
         open "$(_gh_url)/commit/$2"
