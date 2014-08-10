@@ -85,7 +85,11 @@ function _process_gh_option() {
       fi
       break;;
     'b')
-      open "$(_gh_url)/branches"
+      if [[ "$2" == 'c' ]]; then
+        open "$(_gh_url)/tree/$(git rev-parse --abbrev-ref HEAD)"
+      else
+        open "$(_gh_url)/branches"
+      fi
       break;;
     't')
       open "$(_gh_url)/tags"
