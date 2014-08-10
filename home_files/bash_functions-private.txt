@@ -154,11 +154,6 @@ function _create_rails_skeleton() {
   rails new $1 $2
 }
 
-function _create_rails_engine_skeleton() {
-  printf "rails plugin new $1 $2\n"
-  rails plugin new $1 $2
-}
-
 # Label: Process Rew Option
 # Description: Processes option selection for constructing new Rails application skeletons with custom build settings.
 # Parameters: $1 (required) - The application name, $2 (required) - The template to apply.
@@ -168,7 +163,6 @@ function _process_rew_option() {
   local rails_slim_local_options="$flags $HOME/Dropbox/Development/Projects/rails_slim_template/template.rb"
   local rails_setup_remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
   local rails_setup_local_options="$flags $HOME/Dropbox/Development/Projects/rails_setup_template/template.rb"
-  local engine_options="--skip-bundle --skip-test-unit --force --skip-keeps --mountable --dummy-path=spec/dummy"
 
   case $2 in
     1)
@@ -185,9 +179,6 @@ function _process_rew_option() {
       break;;
     5)
       _create_rails_skeleton "$1" "$rails_setup_local_options"
-      break;;
-    6)
-      _create_rails_engine_skeleton "$1" "$engine_options"
       break;;
     'q')
       break;;
