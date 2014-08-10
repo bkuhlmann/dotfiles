@@ -93,6 +93,9 @@ function _process_gh_option() {
     'p')
       open "$(_gh_url)/pulls"
       break;;
+    'w')
+      open "$(_gh_url)/wiki"
+      break;;
     'u')
       _gh_url | pbcopy && printf "$(pbpaste) (copied to clipboard)\n"
       break;;

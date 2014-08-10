@@ -703,6 +703,7 @@ function gh() {
         printf "  b: Open GitHub project branches in default browser.\n"
         printf "  t: Open GitHub project tags (releases) in default browser.\n"
         printf "  p: Open GitHub project pull requests in default browser.\n"
+        printf "  w: Open GitHub project wiki in default browser.\n"
         printf "  u: Print GitHub project URL.\n"
         printf "  q: Quit/Exit.\n\n"
         read -p "Enter selection: " response
