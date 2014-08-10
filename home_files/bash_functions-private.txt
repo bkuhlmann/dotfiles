@@ -96,6 +96,9 @@ function _process_gh_option() {
     'w')
       open "$(_gh_url)/wiki"
       break;;
+    'g')
+      open "$(_gh_url)/graphs"
+      break;;
     's')
       open "$(_gh_url)/settings"
       break;;
