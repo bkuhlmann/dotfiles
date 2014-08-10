@@ -79,8 +79,8 @@ end
   end
 end
 
-# Alchemists Utilities
-class RA
+# Console Utilities
+class ConsoleKit
   # Copies input to the Mac OS clipboard seperated by a new line.
   # ==== Parameters
   # * +args+ - The single or multiple inputs to send to the clipboard.
