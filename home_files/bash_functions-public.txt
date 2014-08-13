@@ -529,6 +529,8 @@ function gbc() {
   if [[ "$1" ]]; then
     git branch "$1"
     git checkout "$1"
+    printf "$1" | pbcopy
+    printf "(copied to clipboard)\n"
   else
     printf "ERROR: Branch name must be supplied.\n"
   fi
