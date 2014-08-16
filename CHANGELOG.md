@@ -1,4 +1,4 @@
-# v12.0.0
+# v12.0.0 (2014-08-10)
 
 * Removed the 'p' option for "gh" function (replaced with 'r' instead).
 * Removed the "rfixes" alias (use "bernf" instead).
@@ -25,7 +25,7 @@
 * Added 'g' option to "gh" function for opening GitHub project graphs.
 * Added 'p' option to "gh" function for opening GitHub project pulse.
 
-# v11.0.0
+# v11.0.0 (2014-06-21)
 
 * Removed the "gres" alias (renamed to "grh" instead).
 * Removed the "glamelog" function (renamed to "glamel" instead).
@@ -53,7 +53,7 @@
 * Updated Bash prompt colors.
 * Updated all aliases using "rake" to pass through bundle exec (or binstubs if available) instead.
 
-# v10.0.0
+# v10.0.0 (2014-04-24)
 
 * Removed Espresso files from .gitignore.
 * Removed .sass-cache from .gitignore.
@@ -87,7 +87,7 @@
 * Added project information to "gcap" function output.
 * Added [Priscilla](https://github.com/Arkham/priscilla) gem support to .irbrc.
 
-# v9.0.0
+# v9.0.0 (2014-02-17)
 
 * Removed the PostgreSQL aliases.
 * Updated Gemsmith aliases to use "gs" prefixes.
@@ -112,7 +112,7 @@
 * Refactored the "gashd" alias to be a function with multiple stash prompt support.
 * Refactored the "gashl" alias to a function.
 
-# v8.1.0
+# v8.1.0 (2013-12-03)
 
 * Fixed install requirements to only point to the OSX project.
 * Fixed "gls" alias so that search results no longer include graph information.
@@ -126,7 +126,7 @@
 * Added "tags" to .gitignore.
 * Added Pow HTTPS support.
 
-# v8.0.0
+# v8.0.0 (2013-10-12)
 
 * Fixed "dots" function bug where supplying an option to bypass the options prompt would throw an error.
 * Fixed "dots" function so that leading whitespace is properly trimmed from labels and descriptions.
@@ -160,7 +160,7 @@
 * Added the "gdm" and "gdtm" aliases.
 * Added the "gdtc" alias for showing a diff of cached/staged changes within difftool.
 
-# v7.0.0
+# v7.0.0 (2013-09-21)
 
 * Fixed function signatures where some functions were missing "()".
 * Removed the "gus" alias for "git reset HEAD".
@@ -191,7 +191,7 @@
 * Enhanced shell prompt to show git branch and committer email address in a blue background.
 * Enhanced the dots function to print function name and description information.
 
-# v6.0.0
+# v6.0.0 (2013-08-13)
 
 * Fixed 'l1' alias so that it lists dotfiles (minus . and ..).
 * Switched to using sub-shells when traversing sub-directories for all functions.
@@ -221,7 +221,7 @@
 * Added missing CHANGELOG, LICENSE, and README files.
 * Added NPM to PATH.
 
-# v5.2.0
+# v5.2.0 (2013-05-22)
 
 * Force default Git editor to wait for files to be closed before returning.
 * Updated shell script documentation.
@@ -234,7 +234,7 @@
 * Moved git grep (gg) next to git search git log search (gls).
 * Dropped the glc alias in favor of the guthors alias (uses the author summary originally provided by the glc alias).
 
-# v5.1.0
+# v5.1.0 (2013-05-11)
 
 * Fixed bug with sublime not being defined prior to loading bash_* files as a necessary dependency.
 * Fixed bug with opf alias where paths with spaces would fail to open properly.
@@ -259,7 +259,7 @@
 * Added gasha function which answers the git stash size of all projects in current directory.
 * Renamed instance variable 'directory' to 'project' in directory loops for Bash functions.
 
-# v5.0.0
+# v5.0.0 (2013-04-20)
 
 * Fixed the timeout comment in the pow config.
 * Fixed 'Enhancements' spelling typo in irbrc file.
@@ -285,7 +285,7 @@
 * Bumped IRB Eval History to 1000.
 * Reduced Bash history size to 1000.
 
-# v4.1.0
+# v4.1.0 (2013-04-14)
 
 * Applied RubyGems 2.0.0 syntax upgrades.
 * Added the powconfig file. Thanks Eric.
@@ -313,7 +313,7 @@
 * Added the gday function to report git activity across all projects for today only.
 * Refactored the duplicate gsup and gday function code into the gince function.
 
-# v4.0.0
+# v4.0.0 (2013-03-17)
 
 * Removed the extra spacing before time in the 'gld' alias.
 * Split Bash aliases and functions into separate files.
@@ -341,7 +341,7 @@
 * Added the rdd bash alias (i.e. rm -rf _doc).
 * Applied Code Climate GPA badge.
 
-# v3.0.0
+# v3.0.0 (2013-01-27)
 
 * Added ipa alias.
 * Added the groot alias. Thanks Eoin.
@@ -390,7 +390,7 @@
 * Removed the bers alias and replaced with the bes and bess aliases for using RSpec.
 * Removed the Ruby install script and added a Bash script instead.
 
-# v2.2.0
+# v2.2.0 (2012-07-04)
 
 * Fixed awesome_print requirement for .irbrc.
 * Removed the .railsrc file and added the "rew" fuction to the .bashrc file with support for multi-template setup.
@@ -407,7 +407,7 @@
 * Added IRB auto-completion and history support.
 * Added the GitHub Dotfiles project to the README.
 
-# v2.1.0
+# v2.1.0 (2012-04-15)
 
 * Fixed checkout instructions.
 * Fixed issues with IRB and Rails IRB command prompts.
@@ -433,7 +433,7 @@
 * Updated README with link to Mathias Bynens' dotfiles project.
 * Removed the aliases for clearing rails logs since the rake:log clear tasks does this now.
 
-# v2.0.0
+# v2.0.0 (2012-01-28)
 
 * Fixed the bch and rebundle aliases.
 * Added .sass-cache to .gitignore.
@@ -448,7 +448,7 @@
 * Removed the binary warning flag.
 * Removed the rdemo and rdemot .bashrc aliases.
 
-# v1.2.0
+# v1.2.0 (2011-12-17)
 
 * Added the glast, gres, and grev Git aliases.
 * Removed the ActionView and route configurations from the railsrc.txt file.
@@ -468,11 +468,11 @@
 * Added RVM fix for loading new Ruby environments when creating new terminal tabs.
 * Updated README with new Gemsmith specs.
 
-# v1.1.0
+# v1.1.0 (2011-07-19)
 
 * Removed FileUtils requirement for setup.rb.
 * Added existing file check with corresponding console notification.
 
-# v1.0.0
+# v1.0.0 (2011-07-16)
 
 * Initial version.
