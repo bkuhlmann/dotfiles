@@ -54,6 +54,7 @@ alias glh='git log --pretty=format:%H -1 | pbcopy && printf "$(pbpaste) (copied 
 alias gln="git log --name-status"
 alias glf="git log ..FETCH_HEAD"
 alias gls='git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
+alias glt='git log --tags --simplify-by-decoration --pretty="format:%d (%ad)" --date=short | sed -e "s/ (tag: //" -e "s/)//" -e "/^ /d"'
 alias grl="git reflog"
 alias gg="git grep"
 alias glast="git show --stat"
