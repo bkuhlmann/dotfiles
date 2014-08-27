@@ -9,30 +9,30 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 
 # Features
 
-* Configures the Bash shell .bashrc file.
-* Configures the Bash shell .bash_profile file.
-* Configures the .inputrc file.
-* Configures the [Vim](http://www.vim.org) .vimrc file.
-* Configures the [Git](http://git-scm.com) .gitconfig file.
-* Configures the [Git](http://git-scm.com) .gitignore file.
-* Configures the [Ruby Gems](http://docs.rubygems.org/read/chapter/11) .gemrc file.
-* Configures the Ruby IRB .irbrc file.
-* Configures the [Pry](http://pry.github.com) .pryrc file.
-* Configures the [Ruby Debugger](http://bashdb.sourceforge.net/ruby-debug.html) .rdebugrc file.
-* Configures the [Awesome Print](https://github.com/michaeldv/awesome_print) .aprc file.
-* Configures the [Guard](https://github.com/guard/guard) .guardrc file.
-* Configures the [Xray](https://github.com/brentd/xray-rails) .xrayconfig file.
-* Configures the [Pow](http://pow.cx) .powconfig file.
-* Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) .psqlrc file.
-* Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
-* Adds [Bash Completion](http://bash-completion.alioth.debian.org).
-* Adds [Z](https://github.com/rupa/z) Bash support.
-* Adds [rbenv](https://github.com/sstephenson/rbenv) Bash support.
+- Configures the Bash shell .bashrc file.
+- Configures the Bash shell .bash_profile file.
+- Configures the .inputrc file.
+- Configures the [Vim](http://www.vim.org) .vimrc file.
+- Configures the [Git](http://git-scm.com) .gitconfig file.
+- Configures the [Git](http://git-scm.com) .gitignore file.
+- Configures the [Ruby Gems](http://docs.rubygems.org/read/chapter/11) .gemrc file.
+- Configures the Ruby IRB .irbrc file.
+- Configures the [Pry](http://pry.github.com) .pryrc file.
+- Configures the [Ruby Debugger](http://bashdb.sourceforge.net/ruby-debug.html) .rdebugrc file.
+- Configures the [Awesome Print](https://github.com/michaeldv/awesome_print) .aprc file.
+- Configures the [Guard](https://github.com/guard/guard) .guardrc file.
+- Configures the [Xray](https://github.com/brentd/xray-rails) .xrayconfig file.
+- Configures the [Pow](http://pow.cx) .powconfig file.
+- Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) .psqlrc file.
+- Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
+- Adds [Bash Completion](http://bash-completion.alioth.debian.org).
+- Adds [Z](https://github.com/rupa/z) Bash support.
+- Adds [rbenv](https://github.com/sstephenson/rbenv) Bash support.
 
 # Requirements
 
-* [OSX](https://github.com/bkuhlmann/osx).
-* [Ruby Gem Setup](http://github.com/bkuhlmann/ruby_gem_setup).
+- [OSX](https://github.com/bkuhlmann/osx).
+- [Ruby Gem Setup](http://github.com/bkuhlmann/ruby_gem_setup).
 
 # Setup
 
@@ -69,9 +69,9 @@ For example, executing "./run.sh s" will show all dotfiles avaiable for install.
 
 After install, the following files will require manual updating:
 
-* .bashrc - If installed on a OS other than a Mac, adjust the path to point to the correct bin directory for the rbenv binary.
-* .gemrc - Uncomment the "gemcutter_key" line and add your own RubyGems key for publishing gems.
-* .gitconfig - Uncomment the name/email/token lines within the [user] and [github] sections to replace with your own details.
+- .bashrc - If installed on a OS other than a Mac, adjust the path to point to the correct bin directory for the rbenv binary.
+- .gemrc - Uncomment the "gemcutter_key" line and add your own RubyGems key for publishing gems.
+- .gitconfig - Uncomment the name/email/token lines within the [user] and [github] sections to replace with your own details.
 
 # Usage
 
@@ -382,28 +382,28 @@ From Pry, the following aliases are available:
 
 # Resources
 
-* [Dotify](https://github.com/mattdbridges/dotify) - A CLI tool for managing dotfiles across multiple machines.
-* [Dotphiles](https://github.com/dotphiles/dotphiles) - A community driven framework of dotfiles.
-* [GitHub Dotfiles](http://dotfiles.github.com)
-* [Thoughtbot](https://github.com/thoughtbot/dotfiles)
-* [Ben Orenstein](https://github.com/r00k/dotfiles)
-* [Ryan Bates](http://github.com/ryanb/dotfiles)
-* [Blake Walters](https://github.com/markupboy/dotfiles)
-* [James Edward Grey II](https://github.com/JEG2/dotfiles)
-* [Gabe Berke-Williams](https://github.com/gabebw/dotfiles)
-* [Mathias Bynens](https://github.com/mathiasbynens/dotfiles)
-* [Adam Jahnke](https://github.com/adamyonk/dotfiles)
-* [Nicolas Gallagher](https://github.com/necolas/dotfiles)
-* [Brian Hogan](https://github.com/napcs/dotfiles)
-* [Color Bash Prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
+- [Dotify](https://github.com/mattdbridges/dotify) - A CLI tool for managing dotfiles across multiple machines.
+- [Dotphiles](https://github.com/dotphiles/dotphiles) - A community driven framework of dotfiles.
+- [GitHub Dotfiles](http://dotfiles.github.com)
+- [Thoughtbot](https://github.com/thoughtbot/dotfiles)
+- [Ben Orenstein](https://github.com/r00k/dotfiles)
+- [Ryan Bates](http://github.com/ryanb/dotfiles)
+- [Blake Walters](https://github.com/markupboy/dotfiles)
+- [James Edward Grey II](https://github.com/JEG2/dotfiles)
+- [Gabe Berke-Williams](https://github.com/gabebw/dotfiles)
+- [Mathias Bynens](https://github.com/mathiasbynens/dotfiles)
+- [Adam Jahnke](https://github.com/adamyonk/dotfiles)
+- [Nicolas Gallagher](https://github.com/necolas/dotfiles)
+- [Brian Hogan](https://github.com/napcs/dotfiles)
+- [Color Bash Prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 
 # Versioning
 
 Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 
-* Patch (x.y.Z) - Incremented for small, backwards compatible bug fixes.
-* Minor (x.Y.z) - Incremented for new, backwards compatible public API enhancements and/or bug fixes.
-* Major (X.y.z) - Incremented for any backwards incompatible public API changes.
+- Patch (x.y.Z) - Incremented for small, backwards compatible bug fixes.
+- Minor (x.Y.z) - Incremented for new, backwards compatible public API enhancements and/or bug fixes.
+- Major (X.y.z) - Incremented for any backwards incompatible public API changes.
 
 # Contributions
 
