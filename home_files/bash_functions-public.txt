@@ -272,7 +272,7 @@ function gunseta() {
 
 # Label: Git Since
 # Description: Answers a summarized list of Git activity since date/time for all projects in current directory.
-# Parameters: $1 (required) - The date/time from which to log activity, $2 (optional) - The commit author.
+# Parameters: $1 (required) - The date/time since value, $2 (optional) - The date/time until value, $3 (optional) - The commit author.
 function gince() {
   if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
@@ -282,7 +282,7 @@ function gince() {
         # Only process projects that are Git enabled.
         if [[ -d ".git" ]]; then
           # Capture git log activity.
-          local results=$(git log --oneline --format='%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset' --since "$1" --author "$2" --reverse)
+          local results=$(git log --oneline --format='%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset' --since "$1" --until "$2" --author "$3" --reverse)
           # Print project name (cyan) and Git activity (white) only if Git activity was detected.
           if [[ -n "$results" ]]; then
             printf "\033[36m${project:2}:\n$results\n"
