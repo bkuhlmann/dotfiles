@@ -41,6 +41,7 @@
   autosquash = true
 [grep]
   lineNumber = true
+  fullname = true
 [difftool "Kaleidoscope"]
   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
