@@ -54,6 +54,8 @@
   prompt = false
 [merge]
   tool = Kaleidoscope
+[tag]
+  sort = version:refname
 [url "git@github.com:"]
   insteadOf = gh:
 [url "git@heroku.com:"]
