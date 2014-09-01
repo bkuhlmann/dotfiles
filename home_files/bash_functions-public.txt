@@ -298,7 +298,7 @@ function gince() {
 # Label: Git Standup
 # Description: Answers a summarized list of Git activity since yesterday for all projects in current directory.
 function gsup() {
-  gince "yesterday" $(git config user.name)
+  gince "yesterday.midnight" "midnight" $(git config user.name)
 }
 
 # Label: Git Day
