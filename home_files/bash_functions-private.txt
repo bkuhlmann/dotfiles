@@ -1,5 +1,24 @@
 # BASH FUNCTIONS (private)
 
+#------------------#
+# Section: General #
+#------------------#
+
+# Label: Toggle Total Color
+# Description: Formats and conditionally colors the total.
+# Parameters: $1 (required) - The total, $2(required) - The label, $3 (required) - The color.
+function _toggle_total_color() {
+  local total="$1"
+  local label="$2"
+  local color="$3"
+
+  if [[ $total -gt 0 ]]; then
+    printf "$color$total $label\033[m"
+  else
+    printf "$total $label"
+  fi
+}
+
 #------------------------------------#
 # Section: [Git](http://git-scm.com) #
 #------------------------------------#

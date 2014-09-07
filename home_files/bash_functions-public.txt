@@ -838,10 +838,28 @@ function bessa() {
       cd "$project"
       # Only process projects that support Bundler and RSpec.
       if [[ -f "Gemfile.lock" && -d "spec" ]]; then
-        local results=$(SUPPRESS_STDOUT=enabled SUPPRESS_STDERR=enabled bess --format json | jq ".summary_line" | tr -d '"')
+        local json=$(SUPPRESS_STDOUT=enabled SUPPRESS_STDERR=enabled bess --format json)
+        local examples=$(printf "$json" | jq ".summary.example_count" )
+        local failures=$(printf "$json" | jq ".summary.failure_count" )
+        local pending=$(printf "$json" | jq ".summary.pending_count" )
+        local duration=$(printf "$json" | jq ".summary.duration" )
 
-        # Print status if found, otherwise a checkmark for passing status.
-        printf "\033[36m${project:2}\033[m: $results\n" # Outputs project in cyan color.
+        # Prints project (cyan).
+        printf "\033[36m${project:2}\033[m: "
+
+        # Prints total examples (white).
+        printf "$examples examples, "
+
+        # Prints total failures (red).
+        _toggle_total_color "$failures" "failures" "\033[31m"
+        printf ", "
+
+        # Prints total pending (yellow).
+        _toggle_total_color "$pending" "pending" "\033[33m"
+        printf ", "
+
+        # Prints total duration (white).
+        printf "$duration seconds.\n"
       fi
     )
   done < <(find . -type d -depth 1)
