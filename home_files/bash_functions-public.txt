@@ -838,7 +838,7 @@ function bessa() {
       cd "$project"
       # Only process projects that support Bundler and RSpec.
       if [[ -f "Gemfile.lock" && -d "spec" ]]; then
-        local results=$(bess --format json | jq ".summary_line" | tr -d '"')
+        local results=$(SUPPRESS_STDOUT=enabled SUPPRESS_STDERR=enabled bess --format json | jq ".summary_line" | tr -d '"')
 
         # Print status if found, otherwise a checkmark for passing status.
         printf "\033[36m${project:2}\033[m: $results\n" # Outputs project in cyan color.
