@@ -70,6 +70,7 @@ alias gwc="git whatchanged -p --pretty=medium"
 alias glame="git blame"
 alias gb="git branch --verbose"
 alias gba="git branch --all"
+alias gbn='git rev-parse --abbrev-ref HEAD | pbcopy && printf "$(pbpaste) (copied to clipboard)\n"'
 alias gbr="git branch --move"
 alias gm="git merge"
 alias gms="git merge --squash"
