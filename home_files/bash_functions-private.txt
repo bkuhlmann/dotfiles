@@ -4,6 +4,16 @@
 # Section: General #
 #------------------#
 
+# Label: Clip and Print
+# Description: Copies input to clipboard and prints what what was copied (best used with a pipe).
+# Parameters: $1 (optional) - Displays "(copied to cliboard)" on a new line. Default: false.
+function _clip_and_print() {
+  local delimiter=${1:-' '}
+  local message="$delimiter(copied to clipboard)\n"
+
+  pbcopy && printf "$(pbpaste)$message"
+}
+
 # Label: Toggle Total Color
 # Description: Formats and conditionally colors the total.
 # Parameters: $1 (required) - The total, $2(required) - The label, $3 (required) - The color.
@@ -129,7 +139,7 @@ function _process_gh_option() {
       open "$(_gh_url)/settings"
       break;;
     'u')
-      _gh_url | pbcopy && printf "$(pbpaste) (copied to clipboard)\n"
+      _gh_url | _clip_and_print
       break;;
     'q')
       break;;

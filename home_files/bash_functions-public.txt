@@ -322,7 +322,7 @@ function gmonth() {
 # Label: Git Tail
 # Description: Answers commit history since last tag for current project and copies results to clipboard.
 function gtail() {
-  _git_commits_since_last_tag | pbcopy && printf "$(pbpaste)\n(copied to clipboard)\n"
+  _git_commits_since_last_tag | _clip_and_print "\n"
 }
 
 # Label: Git Tail (all)
@@ -529,8 +529,7 @@ function gbc() {
   if [[ "$1" ]]; then
     git branch "$1"
     git checkout "$1"
-    printf "$1" | pbcopy
-    printf "(copied to clipboard)\n"
+    printf "$1" | _clip_and_print
   else
     printf "ERROR: Branch name must be supplied.\n"
   fi
