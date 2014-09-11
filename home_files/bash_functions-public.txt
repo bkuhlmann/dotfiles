@@ -611,7 +611,10 @@ function gbd() {
 
       local match="^([0-9]{1,2})$"
       if [[ "$response" =~ $match ]]; then
-        read -p "You are about to delete the \"$branch\" branch from the local and remote repositories. Continue (y/n)?: " response
+        printf "\033[31m" # Switch to red font.
+        read -p "Delete the \"$branch\" branch from the local AND remote repositories (y/n)?: " response
+        printf "\033[m" # Switch to white font.
+
         if [[ "$response" == 'y' ]]; then
           printf "Local Branch: "
           if [[ -n "$(git branch --list $branch)" ]]; then
