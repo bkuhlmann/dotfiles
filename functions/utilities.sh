@@ -116,8 +116,8 @@ function delete_file() {
   local source_file="home_files/$1"
   local dest_file="$HOME/.${1%.*}"
 
-  # Proceed only if the file exist.
-  if [[ -f "$dest_file" ]]; then
+  # Proceed only if file exists.
+  if [[ -e "$dest_file" || -h "$dest_file" ]]; then
     read -p "  Delete $dest_file (y/n)? " response
     if [[ $response == 'y' ]]; then
       rm -f "$dest_file"
