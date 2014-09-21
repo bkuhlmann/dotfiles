@@ -56,7 +56,7 @@ function link_file() {
   local source_file="$PWD/home_files/$1"
   local dest_file="$HOME/.${1%.*}"
 
-  # Proceed only if the symbolic link doesn't already exist.
+  # Proceed only if the symbolic link doesn't exist.
   if [[ ! -h "$dest_file" ]]; then
     read -p "  Link $dest_file -> $source_file (y/n)? " response
     if [[ $response == 'y' ]]; then
@@ -86,7 +86,7 @@ function check_file() {
   local source_file="home_files/$1"
   local dest_file="$HOME/.${1%.*}"
 
-  if [[ -f "$dest_file" ]]; then
+  if [[ -e "$dest_file" || -h "$dest_file" ]]; then
     if [[ "$(diff $dest_file $source_file)" != '' ]]; then
       printf "  * $dest_file\n"
     fi
