@@ -6,18 +6,33 @@
 # Answers a list of files stored in the home_files folder of this project.
 function home_files() {
   for file in $(find home_files -type f); do
-    printf "${file##*/}\n"
+    printf "$file\n"
   done
 }
 export -f home_files
+
+function base_dest_file() {
+  local source_file="$1"
+  local extension="${source_file##*.}"
+  local computed_file=''
+
+  if [[ "$extension" == "txt" ]]; then
+    computed_file="$(basename $source_file)"
+    computed_file=".${computed_file%.*}"
+  else
+    computed_file="$source_file"
+  fi
+
+  printf "$computed_file" | sed 's/home_files\///g'
+}
+export -f base_dest_file
 
 # Shows available files for install.
 function show_files() {
   printf "Dotfiles available for install:\n"
 
-  for file in $(home_files)
-  do
-    printf "  .${file%.*}\n"
+  for file in $(home_files); do
+    printf "  $(base_dest_file $file)\n"
   done
 }
 export -f show_files
@@ -26,10 +41,12 @@ export -f show_files
 # Parameters:
 # $1 = The file name.
 function install_file() {
-  local source_file="home_files/$1"
-  local dest_file="$HOME/.${1%.*}"
+  local source_file="$1"
+  local dest_file="$HOME/$(base_dest_file $source_file)"
+  local dest_dir="$(dirname $dest_file)"
 
   if [[ ! -f "$dest_file" ]]; then
+    mkdir -p "$dest_dir"
     cp "$source_file" "$dest_file"
     printf "  + $dest_file\n"
   fi
@@ -40,8 +57,7 @@ export -f install_file
 function install_files() {
   printf "Installing dotfiles...\n"
 
-  for file in $(home_files)
-  do
+  for file in $(home_files); do
     install_file $file
   done
 
@@ -53,8 +69,8 @@ export -f install_files
 # Parameters:
 # $1 = The file name.
 function link_file() {
-  local source_file="$PWD/home_files/$1"
-  local dest_file="$HOME/.${1%.*}"
+  local source_file="$PWD/$1"
+  local dest_file="$HOME/$(base_dest_file $1)"
 
   # Proceed only if the symbolic link doesn't exist.
   if [[ ! -h "$dest_file" ]]; then
@@ -70,8 +86,7 @@ export -f link_file
 function link_files() {
   printf "Linking dotfiles...\n"
 
-  for file in $(home_files)
-  do
+  for file in $(home_files); do
     link_file $file
   done
 
@@ -83,8 +98,8 @@ export -f link_files
 # Parameters:
 # $1 = The file name.
 function check_file() {
-  local source_file="home_files/$1"
-  local dest_file="$HOME/.${1%.*}"
+  local source_file="$1"
+  local dest_file="$HOME/$(base_dest_file $1)"
 
   if [[ -e "$dest_file" || -h "$dest_file" ]]; then
     if [[ "$(diff $dest_file $source_file)" != '' ]]; then
@@ -100,8 +115,7 @@ export -f check_file
 function check_files() {
   printf "Checking dotfiles for changes...\n"
 
-  for file in $(home_files)
-  do
+  for file in $(home_files); do
     check_file $file
   done
 
@@ -113,8 +127,7 @@ export -f check_files
 # Parameters:
 # $1 = The file name.
 function delete_file() {
-  local source_file="home_files/$1"
-  local dest_file="$HOME/.${1%.*}"
+  local dest_file="$HOME/$(base_dest_file $1)"
 
   # Proceed only if file exists.
   if [[ -e "$dest_file" || -h "$dest_file" ]]; then
@@ -130,8 +143,7 @@ export -f delete_file
 function delete_files() {
   printf "Deleting dotfiles...\n"
 
-  for file in $(home_files)
-  do
+  for file in $(home_files); do
     delete_file $file
   done
 
