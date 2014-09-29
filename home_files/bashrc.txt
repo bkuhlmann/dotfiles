@@ -20,20 +20,7 @@ export HISTIGNORE="..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane
 . "$HOME/.bash_functions-public"
 
 # Command Prompt (http://jonisalonen.com/2012/your-bash-prompt-needs-this)
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWUNTRACKEDFILES=true
-export GIT_PS1_SHOWSTASHSTATE=true
-export GIT_PS1_SHOWUPSTREAM="auto"
-separator="|"
-prompt="[" # Opening bracket.
-prompt+="\[$GREY\]\t\[$NORMAL\]" # Grey timestamp.
-prompt+="$separator"
-prompt+="\u@\h" # Default color user and host (i.e. user@host).
-prompt+="$separator"
-prompt+="\$(__git_ps1 \"\[$LIGHT_CYAN\]%s\[$NORMAL\]|\[$LIGHT_BLUE\]\$(gail)\[$NORMAL\]$separator\")"
-prompt+="\[$CYAN\]\${PWD##*/}\[$NORMAL\]" # Cyan current directory.
-prompt+="]> " # Closing bracket with prompt indicator.
-export PS1=$prompt
+. "$HOME/.bash_prompt"
 
 # Bash Completion (http://bash-completion.alioth.debian.org)
 if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
