@@ -42,7 +42,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v12.0.0
+    git checkout v12.1.0
 
 Master Version (unstable)
 
@@ -84,15 +84,15 @@ From the command line, the following aliases are available:
     c = "clear"
     h = "history"
     l = "ls -alh"
-    l1 = 'ls -A1 | pbcopy && printf "$(pbpaste) n(copied to clipboard)n"'
-    p = 'pwd | tr -d "rn" | pbcopy && printf "$(pbpaste) (copied to clipboard)n"'
+    l1 = "ls -A1 | _clip_and_print 'n'"
+    p = 'pwd | tr -d "rn" | _clip_and_print'
     o = "open"
     home = "cd $HOME"
     bashs = "exec $SHELL"
     pss = 'ps axu | grep "$@" --ignore-case --color=auto'
 ##### Network
     sshe = "$EDITOR $HOME/.ssh/config"
-    ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | pbcopy && printf "$(pbpaste) (copied to clipboard)n"'
+    ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | _clip_and_print'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 ##### [tmux](http://tmux.sourceforge.net)
     tsl = "tmux list-sessions"
@@ -123,10 +123,11 @@ From the command line, the following aliases are available:
     gst = "git status --short --branch"
     gl = 'git log --graph --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
     gld = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" --stat'
-    glh = 'git log --pretty=format:%H -1 | pbcopy && printf "$(pbpaste) (copied to clipboard)n"'
+    glh = 'git log --pretty=format:%H -1 | _clip_and_print'
     gln = "git log --name-status"
     glf = "git log ..FETCH_HEAD"
     gls = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
+    glt = 'git log --tags --simplify-by-decoration --pretty = "format:%d (%ad)" --date=short | sed -e "s/ (tag: //" -e "s/)//" -e "/^ /d"'
     grl = "git reflog"
     gg = "git grep"
     glast = "git show --stat"
@@ -142,11 +143,13 @@ From the command line, the following aliases are available:
     glame = "git blame"
     gb = "git branch --verbose"
     gba = "git branch --all"
+    gbn = "git rev-parse --abbrev-ref HEAD | _clip_and_print"
     gbr = "git branch --move"
     gm = "git merge"
     gms = "git merge --squash"
     gcl = "git clone"
     gch = "git checkout"
+    gchm = "git checkout master"
     ga = "git add"
     gau = "git add --update"
     gap = "git add --patch"
@@ -163,15 +166,17 @@ From the command line, the following aliases are available:
     gf = "git fetch"
     gfp = "git fetch --prune"
     gpu = "git pull"
-    gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch after fetching.
+    gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch.
+    gpuro = "gpur origin" # Rebase the current branch on top of the upstream origin branch.
+    gpurom = "gpuro master" # Rebase the current branch on top of the upstream origin master branch.
     grc = "git rebase --continue"
     gra = "git rebase --abort"
     geady = "git rebase -i @{u}" # Interactive rebase.
     gp = "git push"
     gpo = "git push --set-upstream origin"
     gpr = "git push review master"
-    gps = "git push stage deploy:master"
-    gpp = "git push production deploy:master"
+    gps = "git push stage stage:master"
+    gpp = "git push production production:master"
     gtag = "git tag"
     gtags = "git push --tags"
     gr = "git reset" # Unstage staged files for commit.
@@ -335,6 +340,7 @@ From the command line, the following functions are available:
     ber = Bundle Execute Rake - Executes Rake via binstub or Bundler.
     bertt = Bundle Execute Rake Test - Executes a single Test::Unit test via binstub or Bundler.
     bes = Bundle Execute RSpec - Executes RSpec via binstub or Bundler.
+    bessa = Bundle Execute RSpec (all) - Executes RSpec via binstub or Bundler for all projects within current directory.
     beg = Bundle Execute Guard - Executes Guard via binstub or Bundler.
     bec = Bundle Execute Capistrano - Executes Capistrano via binstub or Bundler.
 ##### [Ruby](http://www.ruby-lang.org)

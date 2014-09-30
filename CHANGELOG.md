@@ -1,3 +1,26 @@
+# v12.1.0 (2014-09-29)
+
+- Fixed "gsup" function to only report yesterday's Git log activity.
+- Fixed dotfile deletion so symbolic links are included too.
+- Updated "gbc" function to always copy new branch name to clipboard.
+- Updated Git config to default sort tabs by refname.
+- Updated Git config to use full pathnames when using git-grep.
+- Updated "gbd" function to display confirmation prompt in red color.
+- Updated "gps" and "gpp" aliases to push "stage" and "production" branches respectively.
+- Updated dotfile check to include symbolic files.
+- Updated dotfiles option prompt descriptions.
+- Updated Bash background color codes.
+- Updated "gince" function to support optional "--until" filtering.
+- Added "gchm" alias for "git checkout master".
+- Added "glt" alias which prints git tags with dates.
+- Added "bessa" function which runs RSpec and reports results on all projects in current directory.
+- Added "gbn" alias which prints and copies current Git branch name to clipboard.
+- Added the "gpuro" alias for rebasing upon a remote origin branch.
+- Added the "gpurom" alias for rebasing upon the remote orign master branch.
+- Added support for installation of nested directories (i.e. those located in the home_files folder).
+- Added Bash Powerline prompt support.
+- Added Go workspace path.
+
 # v12.0.0 (2014-08-10)
 
 - Removed the 'p' option for "gh" function (replaced with 'r' instead).
