@@ -25,31 +25,28 @@ __powerline() {
   esac
 
   __git_info() {
-    [ -x "$(which git)" ] || return    # git not found
-
-    # get current branch name or short SHA1 hash for detached head
+    # Get current branch name or short SHA1 hash for detached head.
     local branch="$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --always 2>/dev/null)"
-    [ -n "$branch" ] || return  # git branch not found
+    [ -n "$branch" ] || return  # Git branch not found.
 
     local marks
 
-    # branch is modified?
+    # Check if branch is modified.
     [ -n "$(git status --porcelain)" ] && marks+=" $GIT_BRANCH_CHANGED_SYMBOL"
 
-    # how many commits local branch is ahead/behind of remote?
+    # Compute how many commits local branch is ahead/behind of remote branch.
     local stat="$(git status --porcelain --branch | grep '^##' | grep -o '\[.\+\]$')"
     local aheadN="$(echo $stat | grep -o 'ahead \d\+' | grep -o '\d\+')"
     local behindN="$(echo $stat | grep -o 'behind \d\+' | grep -o '\d\+')"
     [ -n "$aheadN" ] && marks+=" $GIT_NEED_PUSH_SYMBOL$aheadN"
     [ -n "$behindN" ] && marks+=" $GIT_NEED_PULL_SYMBOL$behindN"
 
-    # print the git branch segment without a trailing newline
+    # Print the git branch segment without a trailing newline
     printf " $GIT_BRANCH_SYMBOL $branch$marks "
   }
 
   ps1() {
-    # Check the exit code of the previous command and display different
-    # colors in the prompt accordingly.
+    # Check the exit code of the previous command and toggle background color accordingly.
     if [ $? -eq 0 ]; then
       local BG_EXIT="$GREEN_BACKGROUND"
     else
@@ -57,11 +54,11 @@ __powerline() {
     fi
 
     PS1="\[$BLACK\]\[$WHITE_BACKGROUND\] \t \[$NORMAL\]" # Date/time.
-    PS1+="\[$BLACK\]\[$SILVER_BACKGROUND\] \u@\h \[$NORMAL\]" # User at host.
+    PS1+="\[$BLACK\]\[$SILVER_BACKGROUND\] \u@\h \[$NORMAL\]" # User@host.
     PS1+="\[$BLACK\]\[$WHITE_BACKGROUND\] ${PWD##*/} \[$NORMAL\]" # Directory.
 
     if [[ -d .git ]]; then
-      PS1+="\[$BLACK\]\[$CYAN_BACKGROUND\] $(gail) \[$NORMAL\]" # Email.
+      PS1+="\[$BLACK\]\[$CYAN_BACKGROUND\] $(gail) \[$NORMAL\]" # Git Email.
       PS1+="\[$BLUE_BACKGROUND\]$(__git_info)\[$NORMAL\]" # Git Info.
     fi
 
