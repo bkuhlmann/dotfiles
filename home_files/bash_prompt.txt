@@ -8,6 +8,7 @@ __powerline() {
   readonly PS_SYMBOL_LINUX='$'
   readonly PS_SYMBOL_OTHER='%'
   readonly GIT_BRANCH_SYMBOL='⑂'
+  readonly GIT_BRANCH_NORMAL_SYMBOL='✓'
   readonly GIT_BRANCH_CHANGED_SYMBOL='+'
   readonly GIT_NEED_PUSH_SYMBOL='⇡'
   readonly GIT_NEED_PULL_SYMBOL='⇣'
@@ -29,10 +30,10 @@ __powerline() {
     local branch="$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --always 2>/dev/null)"
     [ -n "$branch" ] || return  # Git branch not found.
 
-    local marks
+    local marks=" $GIT_BRANCH_NORMAL_SYMBOL"
 
     # Check if branch is modified.
-    [ -n "$(git status --porcelain)" ] && marks+=" $GIT_BRANCH_CHANGED_SYMBOL"
+    [ -n "$(git status --porcelain)" ] && marks=" $GIT_BRANCH_CHANGED_SYMBOL"
 
     # Compute how many commits local branch is ahead/behind of remote branch.
     local stat="$(git status --porcelain --branch | grep '^##' | grep -o '\[.\+\]$')"
