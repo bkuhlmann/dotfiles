@@ -59,8 +59,12 @@ __powerline() {
     PS1="\[$BLACK\]\[$WHITE_BACKGROUND\] \t \[$NORMAL\]" # Date/time.
     PS1+="\[$BLACK\]\[$SILVER_BACKGROUND\] \u@\h \[$NORMAL\]" # User at host.
     PS1+="\[$BLACK\]\[$WHITE_BACKGROUND\] ${PWD##*/} \[$NORMAL\]" # Directory.
-    PS1+="\[$BLACK\]\[$CYAN_BACKGROUND\] $(gail) \[$NORMAL\]" # Email.
-    PS1+="\[$BLUE_BACKGROUND\]$(__git_info)\[$NORMAL\]" # Git Info.
+
+    if [[ -d .git ]]; then
+      PS1+="\[$BLACK\]\[$CYAN_BACKGROUND\] $(gail) \[$NORMAL\]" # Email.
+      PS1+="\[$BLUE_BACKGROUND\]$(__git_info)\[$NORMAL\]" # Git Info.
+    fi
+
     PS1+="\[$BG_EXIT\] $PS_SYMBOL \[$NORMAL\] "
   }
 
