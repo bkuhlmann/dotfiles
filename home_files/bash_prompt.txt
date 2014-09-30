@@ -9,8 +9,8 @@ __powerline() {
   readonly PS_SYMBOL_OTHER='%'
   readonly GIT_BRANCH_NORMAL_SYMBOL='✓'
   readonly GIT_BRANCH_CHANGED_SYMBOL='+'
-  readonly GIT_NEED_PUSH_SYMBOL='⇡'
-  readonly GIT_NEED_PULL_SYMBOL='⇣'
+  readonly GIT_NEED_PUSH_SYMBOL='↑'
+  readonly GIT_NEED_PULL_SYMBOL='↓'
 
   # Determine OS
   case "$(uname)" in
