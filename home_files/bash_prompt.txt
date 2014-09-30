@@ -4,24 +4,24 @@
 
 __powerline() {
   # Unicode symbols
-  readonly PS_SYMBOL_DARWIN=''
-  readonly PS_SYMBOL_LINUX='$'
-  readonly PS_SYMBOL_OTHER='%'
+  readonly OS_DARWIN_SYMBOL=''
+  readonly OS_LINUX_SYMBOL='$'
+  readonly OS_OTHER_SYMBOL='%'
   readonly GIT_BRANCH_NORMAL_SYMBOL='✓'
   readonly GIT_BRANCH_CHANGED_SYMBOL='+'
-  readonly GIT_NEED_PUSH_SYMBOL='↑'
-  readonly GIT_NEED_PULL_SYMBOL='↓'
+  readonly GIT_PUSH_SYMBOL='↑'
+  readonly GIT_PULL_SYMBOL='↓'
 
   # Determine OS
   case "$(uname)" in
     Darwin)
-      readonly PS_SYMBOL=$PS_SYMBOL_DARWIN
+      readonly OS_SYMBOL=$OS_DARWIN_SYMBOL
       ;;
     Linux)
-      readonly PS_SYMBOL=$PS_SYMBOL_LINUX
+      readonly OS_SYMBOL=$OS_LINUX_SYMBOL
       ;;
     *)
-      readonly PS_SYMBOL=$PS_SYMBOL_OTHER
+      readonly OS_SYMBOL=$OS_OTHER_SYMBOL
   esac
 
   __git_info() {
@@ -38,8 +38,8 @@ __powerline() {
     local stat="$(git status --porcelain --branch | grep '^##' | grep -o '\[.\+\]$')"
     local aheadN="$(echo $stat | grep -o 'ahead \d\+' | grep -o '\d\+')"
     local behindN="$(echo $stat | grep -o 'behind \d\+' | grep -o '\d\+')"
-    [ -n "$aheadN" ] && marks+=" $GIT_NEED_PUSH_SYMBOL$aheadN"
-    [ -n "$behindN" ] && marks+=" $GIT_NEED_PULL_SYMBOL$behindN"
+    [ -n "$aheadN" ] && marks+=" $GIT_PUSH_SYMBOL$aheadN"
+    [ -n "$behindN" ] && marks+=" $GIT_PULL_SYMBOL$behindN"
 
     # Print the git branch segment without a trailing newline
     printf " $branch$marks "
@@ -62,7 +62,7 @@ __powerline() {
       PS1+="\[$BLUE_BACKGROUND\]$(__git_info)\[$NORMAL\]" # Git Info.
     fi
 
-    PS1+="\[$BG_EXIT\] $PS_SYMBOL \[$NORMAL\] "
+    PS1+="\[$BG_EXIT\] $OS_SYMBOL \[$NORMAL\] "
   }
 
   PROMPT_COMMAND=ps1
