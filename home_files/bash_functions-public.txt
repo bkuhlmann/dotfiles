@@ -641,11 +641,11 @@ function gbd() {
 }
 
 # Label: Git Branch Delete Merged
-# Description: Deletes local and remote merged branches (if found).
+# Description: Deletes locally merged branches (if any).
 function gbdm() {
-  local branches=$(git branch --merged | grep -v "\*" | xargs -n 1)
+  local branches=$(git branch --merged | grep --invert-match "\* master" | xargs -n 1)
   for branch in $branches; do
-    gbd $branch
+    git branch -D "$branch"
   done
 }
 
