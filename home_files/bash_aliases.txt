@@ -116,8 +116,8 @@ alias ggc="git fsck && git gc"
 alias grp="git remote prune origin"
 
 # Section: [Tar](http://www.gnu.org/software/tar/tar.html)
-alias bzc="tar --use-compress-program=pigz -cjvf"
-alias bzx="tar -xjvf"
+alias bzc="tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
+alias bzx="tar --extract --bzip2 --verbose --file"
 
 # Section: [rbenv](https://github.com/sstephenson/rbenv)
 alias rb="rbenv"
