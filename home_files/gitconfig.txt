@@ -1,6 +1,8 @@
 # http://www.kernel.org/pub/software/scm/git/docs/git-config.html
 # http://stackoverflow.com/questions/267761/what-does-your-gitconfig-contain
 
+[init]
+  templatedir = ~/.git_template
 [user]
   # name = <enter name here>
   # email = <enter email here>
