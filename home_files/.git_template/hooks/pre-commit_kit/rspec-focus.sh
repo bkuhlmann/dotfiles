@@ -7,11 +7,11 @@
 function rspec_focus() {
   local label="[rspec focus]"
 
-  if command -v ag  >/dev/null 2>&1; then
+  if command -v ag > /dev/null; then
     local results=()
-    results="$(ag --file-search-regex 'spec.rb' ', :focus' .)"
+    results="$(ag --file-search-regex 'spec.rb' ', :focus' . || true)"
 
-    if [[ ${#results[@]} > 0 ]]; then
+    if [[ ${#results[@]} > 0 && ${results[@]} != '' ]]; then
       printf "$label: The following files have \":focus\" statements:\n\n"
 
       for line in ${results[@]}; do
