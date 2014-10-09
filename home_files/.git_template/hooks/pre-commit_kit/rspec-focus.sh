@@ -21,7 +21,7 @@ function rspec_focus() {
       exit 1
     fi
   else
-     printf "$label: The Silver Surfer (https://github.com/ggreer/the_silver_searcher) is not installed!"
+     printf "$label: The Silver Surfer not found. To install, run: brew install the_silver_searcher."
      exit 1
   fi
 }
