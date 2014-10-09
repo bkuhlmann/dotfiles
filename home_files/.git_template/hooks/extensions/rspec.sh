@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function rspec_focus() {
-  local label="[rspec focus]"
+  local label="[rspec]"
 
   if command -v ag > /dev/null; then
     local results=()

@@ -10,7 +10,7 @@ set -o pipefail # Returns exit status of the last command in the pipe that retur
 IFS=$'\n\t' # Defines how Bash splits words and iterates arrays. This defines newlines and tabs as delimiters.
 
 # EXTENSIONS
-source $HOME/.git_template/hooks/extensions/rspec-focus.sh
+source $HOME/.git_template/hooks/extensions/rspec.sh
 
 # EXECUTION
 # RSpec

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function ctags_rebuild() {
-  local label="[ctags rebuild]"
+  local label="[ctags]"
   local git_root="$(dirname $(git rev-parse --git-dir))"
   local tag_file="$git_root/.tags"
 
