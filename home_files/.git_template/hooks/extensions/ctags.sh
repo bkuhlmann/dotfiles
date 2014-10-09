@@ -7,7 +7,7 @@ function ctags_rebuild() {
 
   if command -v ctags > /dev/null; then
     rm -f "$tag_file"
-    ctags --recurse -f $tag_file
+    ctags --recurse --tag-relative --languages=-javascript,sql -f $tag_file
     printf "$label: CTags rebuilt.\n"
   else
      printf "$label: Exuberant CTags not found. To install, run: brew install ctags."
