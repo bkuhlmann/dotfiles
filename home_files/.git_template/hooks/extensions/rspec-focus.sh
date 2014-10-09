@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# DESCRIPTION
-# Defines global settings.
-
-# FUNCTIONS
 function rspec_focus() {
   local label="[rspec focus]"
 
