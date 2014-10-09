@@ -71,11 +71,13 @@ export -f install_files
 function link_file() {
   local source_file="$PWD/$1"
   local dest_file="$HOME/$(base_dest_file $1)"
+  local dest_dir="$(dirname $dest_file)"
 
   # Proceed only if the symbolic link doesn't exist.
   if [[ ! -h "$dest_file" ]]; then
     read -p "  Link $dest_file -> $source_file (y/n)? " response
     if [[ $response == 'y' ]]; then
+      mkdir -p "$dest_dir"
       ln -sf "$source_file" "$dest_file"
     fi
   fi
