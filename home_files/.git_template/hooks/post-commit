@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # DESCRIPTION
-# Defines Git pre-commit functionality.
+# Defines Git post-commit functionality.
 
 # SETTINGS
 set -o nounset # Exit, with error message, when attempting to use an undefined variable.
