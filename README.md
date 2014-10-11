@@ -65,7 +65,7 @@ Executing the run.sh script will present the following options:
     q: Quit/Exit.
 
 The options prompt can be skipped by passing the desired option directly to the run.sh script.
-For example, executing "./run.sh s" will show all dotfiles avaiable for install.
+For example, executing `./run.sh s` will show all dotfiles avaiable for install.
 
 After install, the following files will require manual updating:
 
