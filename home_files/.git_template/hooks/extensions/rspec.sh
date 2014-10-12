@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Label: RSpec Focus
+# Description: Ensures RSpec specs don't include a ":focus" key.
 function rspec_focus() {
   local label="[rspec]"
 

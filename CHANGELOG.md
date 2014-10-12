@@ -1,3 +1,17 @@
+# v12.2.0 (2014-10-12)
+
+- Fixed "gbdm" function so that only locally merged branches are deleted.
+- Fixed dotfile symlinking for nested folder structures.
+- Updated "glf" alias to pretty print git log as used by the "gl" alias.
+- Updated current directory/git email for bash prompt.
+- Updated "glf" alias to always fetch before displaying log.
+- Added "gamendh" alias for ammending current changes to HEAD.
+- Added "gia" function for initializing/re-initializing all Git repositories in current directory.
+- Added Git template directory location to Git repo initialization.
+- Added custom Git hooks.
+- Added custom Git commit message.
+- Added .mackup.cfg home file.
+
 # v12.1.0 (2014-09-29)
 
 - Fixed "gsup" function to only report yesterday's Git log activity.

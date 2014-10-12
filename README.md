@@ -13,8 +13,7 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 - Configures the Bash shell .bash_profile file.
 - Configures the .inputrc file.
 - Configures the [Vim](http://www.vim.org) .vimrc file.
-- Configures the [Git](http://git-scm.com) .gitconfig file.
-- Configures the [Git](http://git-scm.com) .gitignore file.
+- Configures the [Git](http://git-scm.com) .gitconfig, .gitignore, and hook (i.e. ~/.git_template) files.
 - Configures the [Ruby Gems](http://docs.rubygems.org/read/chapter/11) .gemrc file.
 - Configures the Ruby IRB .irbrc file.
 - Configures the [Pry](http://pry.github.com) .pryrc file.
@@ -42,7 +41,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v12.1.0
+    git checkout v12.2.0
 
 Master Version (unstable)
 
@@ -125,7 +124,7 @@ From the command line, the following aliases are available:
     gld = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" --stat'
     glh = 'git log --pretty=format:%H -1 | _clip_and_print'
     gln = "git log --name-status"
-    glf = "git log ..FETCH_HEAD"
+    glf = 'git fetch && git log ..@{upstream} --graph --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
     gls = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
     glt = 'git log --tags --simplify-by-decoration --pretty = "format:%d (%ad)" --date=short | sed -e "s/ (tag: //" -e "s/)//" -e "/^ /d"'
     grl = "git reflog"
@@ -159,6 +158,7 @@ From the command line, the following aliases are available:
     gcm = "git commit --message"
     gcam = "git commit --all --message"
     gamend = "git commit --amend"
+    gamendh = "git commit --all --amend --reuse-message HEAD"
     gcf = "git commit --fixup"
     gcp = "git cherry-pick"
     gash = "git stash save"
@@ -171,7 +171,7 @@ From the command line, the following aliases are available:
     gpurom = "gpuro master" # Rebase the current branch on top of the upstream origin master branch.
     grc = "git rebase --continue"
     gra = "git rebase --abort"
-    geady = "git rebase -i @{u}" # Interactive rebase.
+    geady = "git rebase -i @{upstream}" # Interactive rebase.
     gp = "git push"
     gpo = "git push --set-upstream origin"
     gpr = "git push review master"
@@ -188,8 +188,8 @@ From the command line, the following aliases are available:
     ggc = "git fsck && git gc"
     grp = "git remote prune origin"
 ##### [Tar](http://www.gnu.org/software/tar/tar.html)
-    bzc = "tar --use-compress-program=pigz -cjvf"
-    bzx = "tar -xjvf"
+    bzc = "tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
+    bzx = "tar --extract --bzip2 --verbose --file"
 ##### [rbenv](https://github.com/sstephenson/rbenv)
     rb = "rbenv"
     rbg = "rbenv global"
@@ -297,6 +297,7 @@ From the command line, the following functions are available:
     port = Port - Lists file activity on a given port.
 ##### [Git](http://git-scm.com)
     groot = Git Root - Changes to project root directory (regardless of current depth).
+    gia = Git Init (all) - Initializes/re-initializes for all Git repositories in current directory.
     guthorsa = Git Authors (all) - Answers author commit activity per project (ranked highest to lowest).
     gsta = Git Status (all) - Answers the status of projects with uncommited/unpushed changes.
     ghurn = Git Churn - Answers the commit churn for project files (sorted highest to lowest).
@@ -328,7 +329,7 @@ From the command line, the following functions are available:
     gbc = Git Branch Create - Creates and switches to local branch.
     gbs = Git Branch Switch - Switch between local branches.
     gbd = Git Branch Delete - Deletes local and remote branch (if found).
-    gbdm = Git Branch Delete Merged - Deletes local and remote merged branches (if found).
+    gbdm = Git Branch Delete Merged - Deletes locally merged branches (if any).
     gtagd = Git Tag Delete - Deletes local and remote tag (if found).
 ##### [GitHub](https://github.com)
     githubi = GitHub Initizalize - Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
