@@ -7,7 +7,7 @@
 # Label: Clip and Print
 # Description: Copies input to clipboard and prints what what was copied (best used with a pipe).
 # Parameters: $1 (optional) - Displays "(copied to cliboard)" on a new line. Default: false.
-function _clip_and_print() {
+function _copy_and_print() {
   local delimiter=${1:-' '}
   local message="$delimiter(copied to clipboard)\n"
 
@@ -139,7 +139,7 @@ function _process_gh_option() {
       open "$(_gh_url)/settings"
       break;;
     'u')
-      _gh_url | _clip_and_print
+      _gh_url | _copy_and_print
       break;;
     'q')
       break;;

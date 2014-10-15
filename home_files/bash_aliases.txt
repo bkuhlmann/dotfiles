@@ -7,8 +7,8 @@ alias cdb="cd -"
 alias c="clear"
 alias h="history"
 alias l="ls -alh"
-alias l1="ls -A1 | _clip_and_print '\n'"
-alias p='pwd | tr -d "\r\n" | _clip_and_print'
+alias l1="ls -A1 | _copy_and_print '\n'"
+alias p='pwd | tr -d "\r\n" | _copy_and_print'
 alias o="open"
 alias home="cd $HOME"
 alias bashs="exec $SHELL"
@@ -16,7 +16,7 @@ alias pss='ps axu | grep "$@" --ignore-case --color=auto'
 
 # Section: Network
 alias sshe="$EDITOR $HOME/.ssh/config"
-alias ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | _clip_and_print'
+alias ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | _copy_and_print'
 alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 
 # Section: [tmux](http://tmux.sourceforge.net)
@@ -50,7 +50,7 @@ alias gget="git config"
 alias gst="git status --short --branch"
 alias gl='git log --graph --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
 alias gld='git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" --stat'
-alias glh='git log --pretty=format:%H -1 | _clip_and_print'
+alias glh='git log --pretty=format:%H -1 | _copy_and_print'
 alias gln="git log --name-status"
 alias glf='git fetch && git log ..@{upstream} --graph --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
 alias gls='git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
@@ -70,7 +70,7 @@ alias gwc="git whatchanged -p --pretty=medium"
 alias glame="git blame"
 alias gb="git branch --verbose"
 alias gba="git branch --all"
-alias gbn="git rev-parse --abbrev-ref HEAD | _clip_and_print"
+alias gbn="git rev-parse --abbrev-ref HEAD | _copy_and_print"
 alias gbr="git branch --move"
 alias gm="git merge"
 alias gms="git merge --squash"
