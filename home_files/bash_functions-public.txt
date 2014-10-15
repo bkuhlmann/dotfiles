@@ -1096,12 +1096,12 @@ function tfollowers() {
 
   if [[ ! $(command -v t) ]]; then
     printf "ERROR: t (http://sferik.github.io/t) is not installed.\n"
-    return 0
+    exit 1
   fi
 
   if [[ ! $(command -v ksdiff) ]]; then
     printf "ERROR: ksdiff (http://www.kaleidoscopeapp.com/ksdiff2) is not installed.\n"
-    return 0
+    exit 1
   fi
 
   if [[ -e "$old_followers_file_path" ]]; then
