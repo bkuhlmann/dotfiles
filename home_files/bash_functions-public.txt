@@ -706,6 +706,24 @@ function ghd() {
   fi
 }
 
+# Label: Git Hook Delete (all)
+# Description: Deletes all Git hooks for all projects in current directory.
+function ghda() {
+  while read project; do
+    (
+      cd "$project"
+      printf "\n\033[36m${project:2}\033[m: " # Outputs in cyan color.
+
+      # Only process projects that are Git-enabled.
+      if [[ -d ".git" ]]; then
+        ghd
+      else
+        printf "Not a Git project.\n"
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 #---------------------------------------#
 # Section: [GitHub](https://github.com) #
 #---------------------------------------#
