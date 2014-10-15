@@ -698,17 +698,6 @@ function gtagd() {
 # Section: [GitHub](https://github.com) #
 #---------------------------------------#
 
-# Label: GitHub Initizalize
-# Description: Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
-# Parameters: $1 (required) - The GitHub user account name, $2 (required) - The repository name.
-function githubi() {
-  git remote add origin git@github.com:$1/$2.git
-  git push origin master
-  git config branch.master.remote origin
-  git config branch.master.merge refs/heads/master
-  git config push.default current
-}
-
 # Label: GitHub
 # Description: View current GitHub project commits, branches, tags, etc. in default browser.
 # Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
