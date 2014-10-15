@@ -694,6 +694,18 @@ function gtagd() {
   fi
 }
 
+# Label: Git Hook Delete
+# Description: Deletes all Git hooks for current project.
+function ghd() {
+  if [[ -d ".git" ]]; then
+    (
+      cd .git/hooks
+      rm -rf *
+    )
+    printf "Git hooks deleted.\n"
+  fi
+}
+
 #---------------------------------------#
 # Section: [GitHub](https://github.com) #
 #---------------------------------------#
