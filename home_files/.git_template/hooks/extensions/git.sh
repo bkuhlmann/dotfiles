@@ -1,16 +1,21 @@
 #!/bin/bash
 
+# Label: Git Label
+# Description: Prints Git label.
+function _git_label() {
+  printf "[git]"
+}
+
 # Label: Git Commit Message Prefix
 # Description: Ensures a commit message start with an expected prefix word.
 function git_commit_message_prefix() {
-  local label="[git]"
   local message_file="${BASH_ARGV[0]}"
   local match="^(Fixed|Removed|Added|Updated|Refactored).+"
 
   read -r first_line < $message_file
 
   if [[ ! "$first_line" =~ $match ]]; then
-    printf "$label: Invalid commit message prefix. Use only: Fixed, Removed, Added, Updated, or Refactored.\n"
+    printf "$(_git_label): Invalid commit message prefix. Use only: Fixed, Removed, Added, Updated, or Refactored.\n"
     exit 1
   fi
 }
@@ -18,7 +23,6 @@ function git_commit_message_prefix() {
 # Label: Git Commit Message Length
 # Description: Detects commit message long line lengths.
 function git_commit_message_length() {
-  local label="[git]"
   local message_file="${BASH_ARGV[0]}"
   local line_length=71
   local line_number=0
@@ -33,7 +37,7 @@ function git_commit_message_length() {
   done < "$message_file"
 
   if [[ ${#long_lines[@]} > 0 ]]; then
-    printf "$label: Commit message exceeds $line_length character line length. Lines detected:\n\n"
+    printf "$(_git_label): Commit message exceeds $line_length character line length. Lines detected:\n\n"
 
     for line in ${long_lines[@]}; do
       printf "$line\n"
