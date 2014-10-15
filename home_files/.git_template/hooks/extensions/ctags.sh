@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Label: CTags Rebuild
-# Description: Rebuilds the CTag .tags file in the project root.
+# Description: Rebuilds the CTag file in the project root.
 function ctags_rebuild() {
   local label="[ctags]"
   local git_root="$(dirname $(git rev-parse --git-dir))"

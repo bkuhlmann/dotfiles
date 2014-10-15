@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Label: JavaScript Console
-# Description: Ensures JavaScript "console.log" is removed from source code.
+# Description: Ensures JavaScript debug statements are removed.
 function java_script_console() {
   local label="[java_script]"
 
@@ -10,7 +10,7 @@ function java_script_console() {
     results="$(ag --file-search-regex '(js|erb|slim)' 'console.log' . || true)"
 
     if [[ ${#results[@]} > 0 && ${results[@]} != '' ]]; then
-      printf "$label: The following files have \"console.log\" statements:\n\n"
+      printf "$label: Debug statements detected:\n\n"
 
       for line in ${results[@]}; do
         printf "$line\n"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Label: RSpec Focus
-# Description: Ensures RSpec specs don't include a ":focus" key.
+# Description: Ensures RSpec focus metadata is removed.
 function rspec_focus() {
   local label="[rspec]"
 
@@ -10,7 +10,7 @@ function rspec_focus() {
     results="$(ag --file-search-regex 'spec.rb' ', :focus' . || true)"
 
     if [[ ${#results[@]} > 0 && ${results[@]} != '' ]]; then
-      printf "$label: The following files have \":focus\" statements:\n\n"
+      printf "$label: Focus metadata detected:\n\n"
 
       for line in ${results[@]}; do
         printf "$line\n"

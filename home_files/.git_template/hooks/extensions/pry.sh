@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Label: Pry Binding
-# Description: Ensures Pry "binding.pry" is removed from source code.
+# Description: Ensures Pry debug statements are removed.
 function pry_binding() {
   local label="[pry]"
 

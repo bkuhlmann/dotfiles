@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Label: Git Commit Message Prefix
-# Description: Ensures a commit message starts with a proper prefix word.
+# Description: Ensures a commit message start with an expected prefix word.
 function git_commit_message_prefix() {
   local label="[git]"
   local message_file="${BASH_ARGV[0]}"
