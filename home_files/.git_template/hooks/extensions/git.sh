@@ -14,3 +14,31 @@ function git_commit_message_prefix() {
     exit 1
   fi
 }
+
+# Label: Git Commit Message Length
+# Description: Detects commit message long line lengths.
+function git_commit_message_length() {
+  local label="[git]"
+  local message_file="${BASH_ARGV[0]}"
+  local line_length=71
+  local line_number=0
+  local long_lines=()
+
+  while read line; do
+    line_number=$((line_number+1))
+
+    if [[ ${#line} -gt $line_length ]]; then
+      long_lines+=("$line_number: $line")
+    fi
+  done < "$message_file"
+
+  if [[ ${#long_lines[@]} > 0 ]]; then
+    printf "$label: Commit message exceeds $line_length character line length. Lines detected:\n\n"
+
+    for line in ${long_lines[@]}; do
+      printf "$line\n"
+    done
+
+    printf "\nCommit message should be amended and fixed.\n"
+  fi
+}

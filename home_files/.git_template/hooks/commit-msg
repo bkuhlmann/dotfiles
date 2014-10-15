@@ -14,3 +14,4 @@ source $HOME/.git_template/hooks/extensions/git.sh
 
 # EXECUTION
 git_commit_message_prefix
+git_commit_message_length
