@@ -1091,8 +1091,8 @@ function gifize() {
 # Label: Twitter Followers
 # Description: Captures or compares Twitter followers (since last check).
 function tfollowers() {
-  local old_followers_file_path="$HOME/followers.txt"
-  local new_followers_file_path="$HOME/followers-new.txt"
+  local old_followers_file_path="$HOME/Dropbox/Cache/Twitter/followers.txt"
+  local new_followers_file_path="$HOME/Dropbox/Cache/Twitter/followers-new.txt"
 
   if [[ ! $(command -v t) ]]; then
     printf "ERROR: t (http://sferik.github.io/t) is not installed.\n"
