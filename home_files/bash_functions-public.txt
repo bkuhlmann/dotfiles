@@ -93,9 +93,8 @@ function gia() {
       cd "$project"
       # Only process projects that are Git enabled.
       if [[ -d ".git" ]]; then
-        # Print project (cyan) and message (white).
-        # git init
-        printf "\033[36m${project:2}\033[m: ✓\n"
+        printf "\033[36m${project:2}\033[m: " # Print project (cyan) and message (white).
+        git init
       fi
     )
   done < <(find . -type d -depth 1)
