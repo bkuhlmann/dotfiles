@@ -31,7 +31,7 @@
   changed = green
   untracked = cyan
 [commit]
-  template = ~/.git_template/commit_message.md
+  template = ~/.git_template/commit_message.txt
 [core]
   editor = "$EDITOR -w"
   excludesfile = ~/.gitignore
