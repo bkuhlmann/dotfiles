@@ -1113,39 +1113,6 @@ function gifize() {
   fi
 }
 
-#-----------------------------------------#
-# Section: [Twitter](https://twitter.com) #
-#-----------------------------------------#
-
-# Label: Twitter Followers
-# Description: Captures or compares Twitter followers (since last check).
-function tfollowers() {
-  local old_followers_file_path="$HOME/Dropbox/Cache/Twitter/followers.txt"
-  local new_followers_file_path="$HOME/Dropbox/Cache/Twitter/followers-new.txt"
-
-  if [[ ! $(command -v t) ]]; then
-    printf "ERROR: t (http://sferik.github.io/t) is not installed.\n"
-    exit 1
-  fi
-
-  if [[ ! $(command -v ksdiff) ]]; then
-    printf "ERROR: ksdiff (http://www.kaleidoscopeapp.com/ksdiff2) is not installed.\n"
-    exit 1
-  fi
-
-  if [[ -e "$old_followers_file_path" ]]; then
-    printf "Comparing Twitter followers ($old_followers_file_path == $new_followers_file_path)...\n"
-    t followers > "$new_followers_file_path"
-    ksdiff --wait "$old_followers_file_path" "$new_followers_file_path"
-    rm -f "$old_followers_file_path"
-    mv "$new_followers_file_path" "$old_followers_file_path"
-  else
-    printf "Capturing Twitter followers ($old_followers_file_path)...\n"
-    t followers > "$old_followers_file_path"
-    ksdiff --wait "$old_followers_file_path"
-  fi
-}
-
 #-------------------#
 # Section: Dotfiles #
 #-------------------#
