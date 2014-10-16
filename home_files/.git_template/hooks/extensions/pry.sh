@@ -7,7 +7,7 @@ function pry_binding() {
 
   if command -v ag > /dev/null; then
     local results=()
-    results="$(ag --file-search-regex '(rb|erb|slim)' '(binding.pry|binding.remote_pry)' . || true)"
+    results="$(ag --file-search-regex '(rb|erb|slim)' '^(?:(?!.*#.+).*(binding.pry|binding.remote_pry))' . || true)"
 
     if [[ ${#results[@]} > 0 && ${results[@]} != '' ]]; then
       printf "$label: Debug statements detected:\n\n"
