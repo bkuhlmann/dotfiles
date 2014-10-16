@@ -16,7 +16,7 @@ function base_dest_file() {
   local extension="${source_file##*.}"
   local computed_file=''
 
-  if [[ "$extension" == "txt" ]]; then
+  if [[ "$extension" == "tt" ]]; then
     computed_file="$(basename $source_file)"
     computed_file=".${computed_file%.*}"
   else
