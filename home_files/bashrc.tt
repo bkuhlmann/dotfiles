@@ -10,17 +10,17 @@ export HISTSIZE=1000 # Keep a lengthy history.
 export HISTIGNORE="..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane commands.
 
 # Colors
-. "$HOME/.bash_colors"
+. "$HOME/.bash/colors.sh"
 
 # Aliases
-. "$HOME/.bash_aliases"
+. "$HOME/.bash/aliases.sh"
 
 # Functions
-. "$HOME/.bash_functions-private"
-. "$HOME/.bash_functions-public"
+. "$HOME/.bash/functions-private.sh"
+. "$HOME/.bash/functions-public.sh"
 
 # Command Prompt (http://jonisalonen.com/2012/your-bash-prompt-needs-this)
-. "$HOME/.bash_prompt"
+. "$HOME/.bash/prompt.sh"
 
 # Bash Completion (http://bash-completion.alioth.debian.org)
 if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
