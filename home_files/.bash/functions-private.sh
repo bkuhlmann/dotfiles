@@ -189,9 +189,9 @@ function _create_rails_skeleton() {
 function _process_rew_option() {
   local flags="--skip-bundle --database sqlite3 --skip-test-unit --force --skip-keeps --template"
   local rails_slim_remote_options="$flags https://raw.github.com/bkuhlmann/rails_slim_template/master/template.rb"
-  local rails_slim_local_options="$flags $HOME/Dropbox/Development/Projects/rails_slim_template/template.rb"
+  local rails_slim_local_options="$flags $HOME/Dropbox/Development/OSS/rails_slim_template/template.rb"
   local rails_setup_remote_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/master/template.rb"
-  local rails_setup_local_options="$flags $HOME/Dropbox/Development/Projects/rails_setup_template/template.rb"
+  local rails_setup_local_options="$flags $HOME/Dropbox/Development/OSS/rails_setup_template/template.rb"
 
   case $2 in
     1)
