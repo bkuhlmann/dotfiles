@@ -240,7 +240,7 @@ function _print_aliases() {
       printf "    "
       _print_alias "$line"
     fi
-  done < "$HOME/.bash_aliases"
+  done < "$HOME/.bash/aliases.sh"
 }
 
 function _print_function_name() {
@@ -272,7 +272,7 @@ function _print_functions() {
       unset label
       unset description
     fi
-  done < "$HOME/.bash_functions-public"
+  done < "$HOME/.bash/functions-public.sh"
 }
 
 function _find_alias() {
@@ -281,7 +281,7 @@ function _find_alias() {
       printf "    Alias: "
       _print_alias "$line"
     fi
-  done < "$HOME/.bash_aliases"
+  done < "$HOME/.bash/aliases.sh"
 }
 
 function _find_function() {
@@ -295,7 +295,7 @@ function _find_function() {
       unset label
       unset description
     fi
-  done < "$HOME/.bash_functions-public"
+  done < "$HOME/.bash/functions-public.sh"
 }
 
 function _find_command() {
