@@ -40,6 +40,7 @@ alias hbup="brew update"
 alias hbug="brew upgrade"
 alias hbv="brew versions"
 alias hbd="brew doctor"
+alias hbc="brew cleanup"
 alias hbrb="brew uninstall ruby-build && brew install --HEAD ruby-build"
 
 # Section: [Git](http://git-scm.com)
