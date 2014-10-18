@@ -34,7 +34,7 @@ fi
 # Go (http://golang.org)
 if [[ -e /usr/local/bin/go ]]; then
   export GOPATH=$HOME/Apps/Go
-  export PATH=$PATH:$GOPATH/bin
+  export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
 fi
 
 # rbenv (https://github.com/sstephenson/rbenv)
