@@ -764,6 +764,31 @@ function gh() {
 # Section: [Bundler](http://gembundler.com) #
 #-------------------------------------------#
 
+# Label: Bundler Jobs
+# Description: Answers maximum Bundler job limit for current machine and automatically sets it if otherwise.
+function bj() {
+  if command -v sysctl > /dev/null; then
+    local computer_name=$(scutil --get ComputerName)
+    local max_jobs=$((`sysctl -n hw.ncpu` - 1))
+    local bundler_config="$HOME/.bundle/config"
+
+    printf "$computer_name's maximum Bundler job limit is: $max_jobs.\n"
+
+    if command -v ag > /dev/null && [[ -e "$bundler_config" ]]; then
+      local current_jobs=$(ag "JOBS" $bundler_config | awk '{print $2}' | tr -d "'")
+
+      if [[ $current_jobs != $max_jobs ]]; then
+        bundle config --global jobs $max_jobs
+        printf "Automatically updated Bundler to use maximum job limit. Details: $bundler_config.\n"
+      else
+        printf "$computer_name is using maximum job limit. Kudos!\n"
+      fi
+    fi
+  else
+    printf "ERROR: Operating system must be OSX."
+  fi
+}
+
 # Label: Bundle Outdated (all)
 # Description: Answers a list of outdated gems for all projects within current directory.
 function boa() {
