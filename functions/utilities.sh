@@ -72,9 +72,10 @@ function link_file() {
   local source_file="$PWD/$1"
   local dest_file="$HOME/$(base_dest_file $1)"
   local dest_dir="$(dirname $dest_file)"
+  local excludes=".+(env.sh|gemrc.tt|gitconfig.tt)$"
 
-  # Proceed only if the symbolic link doesn't exist.
-  if [[ ! -h "$dest_file" ]]; then
+  # Proceed only if the symbolic link doesn't exist and is not an excluded file.
+  if [[ ! -h "$dest_file" && ! "$source_file" =~ $excludes ]]; then
     read -p "  Link $dest_file -> $source_file (y/n)? " response
     if [[ $response == 'y' ]]; then
       mkdir -p "$dest_dir"
