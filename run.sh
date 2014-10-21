@@ -22,9 +22,9 @@ if [[ -d "$HOME" ]]; then
       printf "\nDotfile Options:\n"
       printf "  s: Show dotfiles available for install.\n"
       printf "  i: Install dotfiles (existing files are skipped).\n"
-      printf "  l: Link dotfiles to this project (interactive, per file).\n"
+      printf "  l: Link dotfiles to this project (interactive per file, excludes: env.sh, .gemrc, and .gitconfig).\n"
       printf "  c: Check for changes since last install/update.\n"
-      printf "  d: Delete dotfiles (interactive, per file).\n"
+      printf "  d: Delete dotfiles (interactive per file, excludes: env.sh, .gemrc, and .gitconfig).\n"
       printf "  q: Quit/Exit.\n\n"
       read -p "Enter selection: " response
       printf "\n"
