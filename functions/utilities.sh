@@ -124,9 +124,10 @@ export -f check_files
 # $1 = The file name.
 function delete_file() {
   local dest_file="$HOME/$(base_dest_file $1)"
+  local excludes=".+(env.sh|.gemrc|.gitconfig)$"
 
   # Proceed only if file exists.
-  if [[ -e "$dest_file" || -h "$dest_file" ]]; then
+  if [[ -e "$dest_file" || -h "$dest_file" ]] && [[ ! "$dest_file" =~ $excludes ]]; then
     read -p "  Delete $dest_file (y/n)? " response
     if [[ $response == 'y' ]]; then
       rm -f "$dest_file"
