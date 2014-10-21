@@ -16,14 +16,7 @@ function base_dest_file() {
   local extension="${source_file##*.}"
   local computed_file=''
 
-  if [[ "$extension" == "tt" ]]; then
-    computed_file="$(basename $source_file)"
-    computed_file=".${computed_file%.*}"
-  else
-    computed_file="$source_file"
-  fi
-
-  printf "$computed_file" | sed 's/home_files\///g'
+  printf "${source_file%.*}" | sed 's/home_files\///g'
 }
 export -f base_dest_file
 
@@ -72,7 +65,7 @@ function link_file() {
   local source_file="$PWD/$1"
   local dest_file="$HOME/$(base_dest_file $1)"
   local dest_dir="$(dirname $dest_file)"
-  local excludes=".+(env.sh|gemrc.tt|gitconfig.tt)$"
+  local excludes=".+(env.sh.tt|.gemrc.tt|.gitconfig.tt)$"
 
   # Proceed only if the symbolic link doesn't exist and is not an excluded file.
   if [[ ! -h "$dest_file" && ! "$source_file" =~ $excludes ]]; then
