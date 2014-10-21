@@ -13,14 +13,13 @@ export -f home_files
 
 function base_dest_file() {
   local source_file="$1"
-  local extension="${source_file##*.}"
   local computed_file=''
 
   printf "${source_file%.*}" | sed 's/home_files\///g'
 }
 export -f base_dest_file
 
-# Shows available files for install.
+# Shows managed files.
 function show_files() {
   printf "Dotfiles available for install:\n"
 
