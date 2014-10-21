@@ -205,10 +205,6 @@ alias rcop="rubocop --display-cop-names"
 alias caps="bec stage deploy"
 alias capp="bec production deploy"
 
-# Section: [Sitemap Generator](https://github.com/kjvarga/sitemap_generator)
-alias rsite="ber sitemap:refresh:no_ping"
-alias rsitep="ber sitemap:refresh"
-
 # Section: [Swift](https://developer.apple.com/swift)
 alias swift="/Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
 
