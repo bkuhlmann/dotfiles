@@ -1,3 +1,29 @@
+# v13.0.0 (2014-10-20)
+
+- Removed the "githubi" function.
+- Removed the "tfollowers" function.
+- Removed the "hpas" alias.
+- Removed the "rsite" and "rsitep" aliases.
+- Fixed "gia" function so Git hooks are actually initialized for all projects.
+- Fixed bug with JavaScript Git hook detecting console.log statements in commented code.
+- Fixed bug with Pry Git hook detecting binding.pry or binding.remote_pry statements in commented code.
+- Updated Pry Git hook to detect remote debug statements.
+- Updated dotfile linking to exclude env.sh, .gemrc, and .gitconfig files from being linked.
+- Updated dotfile deletion to exclude env.sh, .gemrc, and .gitconfig files from being deleted.
+- Updated options prompt documentation.
+- Added Git pre-commit hook for preventing binding.pry statements.
+- Added Git pre-commit hook for preventing console.log statements.
+- Added Git hook for commit message long line lengths.
+- Added "hbc" alias for "homebrew cleanup".
+- Added Bash history time format to .bashrc.
+- Added GOROOT to $PATH (only if Go is installed).
+- Added "bj" function for Bundler job detection/updating.
+- Added env.sh for secret/machine-specific environment settings.
+- Added "ghd" function for deletion of git hooks for current project.
+- Added "ghda" function for deletion of Git hooks for all projects in currenct directory.
+- Refactored Bash scripts to .bash folder.
+- Refactored home_files with .tt extension.
+
 # v12.2.0 (2014-10-12)
 
 - Fixed "gbdm" function so that only locally merged branches are deleted.

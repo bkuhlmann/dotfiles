@@ -30,8 +30,7 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 
 # Requirements
 
-- [OSX](https://github.com/bkuhlmann/osx).
-- [Ruby Gem Setup](http://github.com/bkuhlmann/ruby_gem_setup).
+- [OSX](https://github.com/bkuhlmann/osx)
 
 # Setup
 
@@ -41,7 +40,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v12.2.0
+    git checkout v13.0.0
 
 Master Version (unstable)
 
@@ -56,21 +55,22 @@ to install:
 
 Executing the run.sh script will present the following options:
 
-    s: Show dotfiles available for install.
+    s: Show managed dotfiles.
     i: Install dotfiles (existing files are skipped).
-    l: Link dotfiles to this project (interactive - asks by file).
-    c: Check for changes since last install/update.
-    d: Delete dotfiles (interactive - asks by file).
+    l: Link dotfiles to this project (interactive per file, excludes: env.sh, .gemrc, and .gitconfig).
+    c: Check for differences between $HOME files and this project's files.
+    d: Delete dotfiles (interactive per file, excludes: env.sh, .gemrc, and .gitconfig).
     q: Quit/Exit.
 
 The options prompt can be skipped by passing the desired option directly to the run.sh script.
-For example, executing `./run.sh s` will show all dotfiles avaiable for install.
+For example, executing `./run.sh s` will show all managed dotfiles by this project.
 
 After install, the following files will require manual updating:
 
-- .bashrc - If installed on a OS other than a Mac, adjust the path to point to the correct bin directory for the rbenv binary.
+- .bash/env.sh - Add secret/machine-specific environment settings (if any).
 - .gemrc - Uncomment the "gemcutter_key" line and add your own RubyGems key for publishing gems.
-- .gitconfig - Uncomment the name/email/token lines within the [user] and [github] sections to replace with your own details.
+- .gitconfig - Uncomment the name, email, and token lines within the `[user]` and `[github]` sections to replace with
+  your own details.
 
 # Usage
 
@@ -83,15 +83,15 @@ From the command line, the following aliases are available:
     c = "clear"
     h = "history"
     l = "ls -alh"
-    l1 = "ls -A1 | _clip_and_print 'n'"
-    p = 'pwd | tr -d "rn" | _clip_and_print'
+    l1 = "ls -A1 | _copy_and_print 'n'"
+    p = 'pwd | tr -d "rn" | _copy_and_print'
     o = "open"
     home = "cd $HOME"
     bashs = "exec $SHELL"
     pss = 'ps axu | grep "$@" --ignore-case --color=auto'
 ##### Network
     sshe = "$EDITOR $HOME/.ssh/config"
-    ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | _clip_and_print'
+    ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | _copy_and_print'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 ##### [tmux](http://tmux.sourceforge.net)
     tsl = "tmux list-sessions"
@@ -113,6 +113,7 @@ From the command line, the following aliases are available:
     hbug = "brew upgrade"
     hbv = "brew versions"
     hbd = "brew doctor"
+    hbc = "brew cleanup"
     hbrb = "brew uninstall ruby-build && brew install --HEAD ruby-build"
 ##### [Git](http://git-scm.com)
     gi = "git init"
@@ -122,7 +123,7 @@ From the command line, the following aliases are available:
     gst = "git status --short --branch"
     gl = 'git log --graph --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
     gld = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" --stat'
-    glh = 'git log --pretty=format:%H -1 | _clip_and_print'
+    glh = 'git log --pretty=format:%H -1 | _copy_and_print'
     gln = "git log --name-status"
     glf = 'git fetch && git log ..@{upstream} --graph --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
     gls = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
@@ -142,7 +143,7 @@ From the command line, the following aliases are available:
     glame = "git blame"
     gb = "git branch --verbose"
     gba = "git branch --all"
-    gbn = "git rev-parse --abbrev-ref HEAD | _clip_and_print"
+    gbn = "git rev-parse --abbrev-ref HEAD | _copy_and_print"
     gbr = "git branch --move"
     gm = "git merge"
     gms = "git merge --squash"
@@ -265,13 +266,8 @@ From the command line, the following aliases are available:
 ##### [Capistrano](https://github.com/capistrano/capistrano)
     caps = "bec stage deploy"
     capp = "bec production deploy"
-##### [Sitemap Generator](https://github.com/kjvarga/sitemap_generator)
-    rsite = "ber sitemap:refresh:no_ping"
-    rsitep = "ber sitemap:refresh"
 ##### [Swift](https://developer.apple.com/swift)
     swift = "/Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
-##### [Heroku+](https://github.com/bkuhlmann/heroku_plus)
-    hpas = "hp account --switch"
 ##### [The Silver Surfer](https://github.com/ggreer/the_silver_searcher)
     agf = "ag --hidden --files-with-matches --file-search-regex"
 ##### [Z](https://github.com/rupa/z)
@@ -331,10 +327,12 @@ From the command line, the following functions are available:
     gbd = Git Branch Delete - Deletes local and remote branch (if found).
     gbdm = Git Branch Delete Merged - Deletes locally merged branches (if any).
     gtagd = Git Tag Delete - Deletes local and remote tag (if found).
+    ghd = Git Hook Delete - Deletes all Git hooks for current project.
+    ghda = Git Hook Delete (all) - Deletes all Git hooks for all projects in current directory.
 ##### [GitHub](https://github.com)
-    githubi = GitHub Initizalize - Initializes a new GitHub repo with sensible defaults (https://gist.github.com/1105392).
     gh = GitHub - View current GitHub project commits, branches, tags, etc. in default browser.
 ##### [Bundler](http://gembundler.com)
+    bj = Bundler Jobs - Answers maximum Bundler job limit for current machine and automatically sets it if otherwise.
     boa = Bundle Outdated (all) - Answers a list of outdated gems for all projects within current directory.
     bua = Bundle Update (all) - Updates gems for all projects within current directory.
     bca = Bundle Clean (all) - Cleans all projects of gem artifacts (i.e. pkg folder).
@@ -360,8 +358,6 @@ From the command line, the following functions are available:
     sketch = Sketch - Converts a photo into a sketch. Inspired by [Whiteboard Cleaner Gist](https://gist.github.com/lelandbatey/8677901).
 ##### [FFmpeg](http://www.ffmpeg.org)
     gifize = Gifize - Converts a video into an animated GIF.
-##### [Twitter](https://twitter.com)
-    tfollowers = Twitter Followers - Captures or compares Twitter followers (since last check).
 ##### Dotfiles
     dots = Dotfiles - Informational utility for learning more about dotfile aliases, functions, etc.
 
@@ -386,23 +382,6 @@ From Pry, the following aliases are available:
     "bpc" = "break --disable-all"
     "bpC" = "break --delete-all"
     "bph" = "break --help"
-
-# Resources
-
-- [Dotify](https://github.com/mattdbridges/dotify) - A CLI tool for managing dotfiles across multiple machines.
-- [Dotphiles](https://github.com/dotphiles/dotphiles) - A community driven framework of dotfiles.
-- [GitHub Dotfiles](http://dotfiles.github.com)
-- [Thoughtbot](https://github.com/thoughtbot/dotfiles)
-- [Ben Orenstein](https://github.com/r00k/dotfiles)
-- [Ryan Bates](http://github.com/ryanb/dotfiles)
-- [Blake Walters](https://github.com/markupboy/dotfiles)
-- [James Edward Grey II](https://github.com/JEG2/dotfiles)
-- [Gabe Berke-Williams](https://github.com/gabebw/dotfiles)
-- [Mathias Bynens](https://github.com/mathiasbynens/dotfiles)
-- [Adam Jahnke](https://github.com/adamyonk/dotfiles)
-- [Nicolas Gallagher](https://github.com/necolas/dotfiles)
-- [Brian Hogan](https://github.com/napcs/dotfiles)
-- [Color Bash Prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 
 # Versioning
 
