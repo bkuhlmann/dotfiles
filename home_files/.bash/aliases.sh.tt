@@ -212,9 +212,6 @@ alias rsitep="ber sitemap:refresh"
 # Section: [Swift](https://developer.apple.com/swift)
 alias swift="/Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
 
-# Section: [Heroku+](https://github.com/bkuhlmann/heroku_plus)
-alias hpas="hp account --switch"
-
 # Section: [The Silver Surfer](https://github.com/ggreer/the_silver_searcher)
 alias agf="ag --hidden --files-with-matches --file-search-regex"
 
