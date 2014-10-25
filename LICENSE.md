@@ -1,4 +1,4 @@
-Copyright (c) 2010 [Alchemists](http://www.alchemists.io).
+Copyright (c) 2010 [Alchemists](https://www.alchemists.io).
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
