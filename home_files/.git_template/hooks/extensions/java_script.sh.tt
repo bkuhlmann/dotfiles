@@ -6,8 +6,8 @@ function java_script_console() {
   local label="[java_script]"
 
   if command -v ag > /dev/null; then
-    local results=()
-    results="$(ag --file-search-regex '(js|erb|slim)' '^(?:(?!(.*//.+|.*/\*.+)).*console.log\(.+\);)' . || true)"
+    regex='^(?:(?!(.*//.+|.*/\*.+)).*console.(count|dir|error|group.*|info|log|time.*|table|trace)\(.+\);)'
+    results=("$(ag --file-search-regex '(js|erb|slim)' $regex . || true)")
 
     if [[ ${#results[@]} > 0 && ${results[@]} != '' ]]; then
       printf "$label: Console statements detected:\n\n"
