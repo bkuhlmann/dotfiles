@@ -155,10 +155,10 @@ function gsta() {
   done < <(find . -type d -depth 1)
 }
 
-# Label: Git Catchup
-# Description: Fetches latest commits then reviews each commit one-by-one with option to compare diff.
-function gatchup() {
-  git fetch > /dev/null 2>&1
+# Label: Git Update
+# Description: Fetches latest commits, reviews each commit (with diff), and rebases (all step are optional).
+function gup() {
+  git fetch --quiet
   commits=($(git log ..@{upstream} --no-merges --reverse --pretty=format:"%H"))
 
   if [[ ${#commits[@]} -gt 1 ]]; then
