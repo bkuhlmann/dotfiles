@@ -155,6 +155,43 @@ function gsta() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Git Catchup
+# Description: Fetches latest commits then reviews each commit one-by-one with option to compare diff.
+function gatchup() {
+  git fetch > /dev/null 2>&1
+  commits=($(git log ..@{upstream} --no-merges --reverse --pretty=format:"%H"))
+
+  if [[ ${#commits[@]} -gt 1 ]]; then
+    printf "Review started. You are behind by ${#commits[*]} commits.\n"
+    hr '-'
+
+    for commit in "${commits[@]}"; do
+      git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" -n 1 $commit
+
+      printf "\n"
+      read -p "View Diff (y = yes, n = no, q = quit)? " response
+
+      if [[ "$response" == 'q' ]]; then
+        break
+      fi
+
+      if [[ "$response" == 'y' ]]; then
+        git difftool $commit^..$commit
+      fi
+
+      hr '-'
+    done
+
+    read -p "Review complete. Rebase (y/n)? " response
+
+    if [[ "$response" == 'y' ]]; then
+      git pull --rebase
+    fi
+  else
+    printf "All is quiet, nothing to review.\n"
+  fi
+}
+
 # Label: Git Churn
 # Description: Answers the commit churn for project files (sorted highest to lowest).
 function ghurn() {
