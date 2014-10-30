@@ -156,7 +156,7 @@ function gsta() {
 }
 
 # Label: Git Update
-# Description: Fetches latest commits, reviews each commit (with diff), and rebases (all step are optional).
+# Description: Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
 function gup() {
   git fetch --quiet
   commits=($(git log ..@{upstream} --no-merges --reverse --pretty=format:"%H"))
