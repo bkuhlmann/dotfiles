@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Label: Scan Code
+# Description: Scans for invalid code.
+# Parameters: $1 (required) - Label, $2 (required) - Message, $3 (required) - File regex, $4 (required) - Search regex.
+function _scan_code() {
+  local label="$1"
+  local message="$2"
+  local file_regex=$3
+  local search_regex=$4
+
+  if command -v ag > /dev/null; then
+    results=("$(ag --file-search-regex $file_regex $search_regex . || true)")
+
+    if [[ ${#results[@]} > 0 && ${results[@]} != '' ]]; then
+      printf "$label: $message:\n\n"
+
+      for line in ${results[@]}; do
+        printf "$line\n"
+      done
+
+      exit 1
+    fi
+  else
+     printf "$label: The Silver Surfer not found. To install, run: brew install the_silver_searcher."
+     exit 1
+  fi
+}
