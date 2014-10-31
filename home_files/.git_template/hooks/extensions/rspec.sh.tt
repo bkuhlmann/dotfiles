@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Label: RSpec Focus
-# Description: Ensures RSpec focus metadata is removed.
+# Description: Detects RSpec focus metadata.
 function rspec_focus() {
   _scan_code "[rspec]" "Focus metadata detected" 'spec.rb$' ', :focus'
 }

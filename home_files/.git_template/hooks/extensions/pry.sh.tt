@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Label: Pry Binding
-# Description: Ensures Pry debug statements are removed.
+# Description: Detects Pry debug statements.
 function pry_binding() {
   local search_regex='^(?:(?!.*#.+).*(binding.pry|binding.remote_pry))'
   _scan_code "[pry]" "Debug statements detected" '(rb|erb|slim)$' $search_regex
