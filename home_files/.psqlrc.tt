@@ -33,5 +33,8 @@
 -- By default, NULL is an empty space. This makes NULL values visible.
 \pset null '[NULL]'
 
+-- Enable display of query execution times.
+\timing on
+
 -- Use table format (with headers) by default, but switch to expanded table format when there's a lot of data.
 \x auto
