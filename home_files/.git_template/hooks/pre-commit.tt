@@ -16,7 +16,7 @@ source $HOME/.git_template/hooks/extensions/pry.sh
 source $HOME/.git_template/hooks/extensions/rspec.sh
 
 # EXECUTION
-java_script_console
 java_script_debugger
+java_script_console
 pry_binding
 rspec_focus

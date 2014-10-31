@@ -12,16 +12,16 @@ function _file_regex() {
   printf '^((?!min).)+.(js|erb|slim)$'
 }
 
-# Label: JavaScript Console
-# Description: Ensures JavaScript console statements are removed.
-function java_script_console() {
-  local search_regex='^(?:(?!(.*//.+|.*/\*.+)).*console.(count|dir|error|group.*|info|log|time.*|table|trace)\(.+\);)'
-  _scan_code "$(_git_label)" "Console statements detected" $(_file_regex) $search_regex
-}
-
 # Label: JavaScript Debugger
 # Description: Ensures JavaScript debug statements are removed.
 function java_script_debugger() {
   local search_regex='^(?:(?!(.*//.+|.*/\*.+)).*debugger;)'
   _scan_code "$(_git_label)" "Debug statements detected" $(_file_regex) $search_regex
+}
+
+# Label: JavaScript Console
+# Description: Ensures JavaScript console statements are removed.
+function java_script_console() {
+  local search_regex='^(?:(?!(.*//.+|.*/\*.+)).*console.(count|dir|error|group.*|info|log|time.*|table|trace)\(.+\);)'
+  _scan_code "$(_git_label)" "Console statements detected" $(_file_regex) $search_regex
 }
