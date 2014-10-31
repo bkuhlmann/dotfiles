@@ -7,7 +7,7 @@ function java_script_console() {
 
   if command -v ag > /dev/null; then
     regex='^(?:(?!(.*//.+|.*/\*.+)).*console.(count|dir|error|group.*|info|log|time.*|table|trace)\(.+\);)'
-    results=("$(ag --file-search-regex '(js|erb|slim)' $regex . || true)")
+    results=("$(ag --file-search-regex '^((?!min).)+.(js|erb|slim)$' $regex . || true)")
 
     if [[ ${#results[@]} > 0 && ${results[@]} != '' ]]; then
       printf "$label: Console statements detected:\n\n"
@@ -31,7 +31,7 @@ function java_script_debugger() {
 
   if command -v ag > /dev/null; then
     local results=()
-    results="$(ag --file-search-regex '(js|erb|slim)' '^(?:(?!(.*//.+|.*/\*.+)).*debugger;)' . || true)"
+    results="$(ag --file-search-regex '^((?!min).)+.(js|erb|slim)$' '^(?:(?!(.*//.+|.*/\*.+)).*debugger;)' . || true)"
 
     if [[ ${#results[@]} > 0 && ${results[@]} != '' ]]; then
       printf "$label: Debug statements detected:\n\n"
