@@ -32,3 +32,6 @@
 
 -- Autocomplete keywords (like SELECT) in upper-case, even if you started typing them in lower case.
 \set COMP_KEYWORD_CASE upper
+
+-- Use "\q" instead of CONTROL+D to quit.
+\set IGNOREEOF 5
