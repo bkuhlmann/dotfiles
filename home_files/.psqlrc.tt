@@ -12,7 +12,7 @@
 -- Used when waiting for more input.
 \set PROMPT2 '[more] %R > '
 
--- By default, NULL is an empty space. This makes NULL values more visible.
+-- By default, NULL is an empty space. This makes NULL values visible.
 \pset null '[NULL]'
 
 -- Use table format (with headers) by default, but switch to expanded table format when there's a lot of data.
@@ -26,6 +26,9 @@
 
 -- If a command is run more than once in a row, only store it once in the history.
 \set HISTCONTROL ignoredups
+
+-- Keep a decently sized history of previously used commands.
+\set HISTSIZE 1000
 
 -- Autocomplete keywords (like SELECT) in upper-case, even if you started typing them in lower case.
 \set COMP_KEYWORD_CASE upper
