@@ -40,7 +40,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v13.0.0
+    git checkout v13.1.0
 
 Master Version (unstable)
 
@@ -103,11 +103,6 @@ From the command line, the following aliases are available:
     hbi = "brew install"
     hbin = "brew info"
     hbu = "brew uninstall"
-    hbs = "brew services list"
-    hbsr = "brew services restart"
-    hbst = "brew services start"
-    hbsp = "brew services stop"
-    hbsc = "brew services cleanup"
     hbl = "brew list"
     hbup = "brew update"
     hbug = "brew upgrade"
@@ -296,6 +291,7 @@ From the command line, the following functions are available:
     gia = Git Init (all) - Initializes/re-initializes for all Git repositories in current directory.
     guthorsa = Git Authors (all) - Answers author commit activity per project (ranked highest to lowest).
     gsta = Git Status (all) - Answers the status of projects with uncommited/unpushed changes.
+    gup = Git Update - Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
     ghurn = Git Churn - Answers the commit churn for project files (sorted highest to lowest).
     glamel = Git Blame Log - Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
     ggeta = Git Get Config Value (all) - Answers key value for all projects in current directory.

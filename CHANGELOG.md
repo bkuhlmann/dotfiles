@@ -1,3 +1,17 @@
+# v13.1.0 (2014-11-02)
+
+- Removed Homebrew aliases for managing services (Homebrew no longer supports these commands).
+- Updated JavaScript pre-commit Git hook to check for closing tag in `console.log();` statements.
+- Updated JavaScript Git pre-commit hook to check for all console.* statements.
+- Updated JavaScript Git pre-commit hooks to exclude minified files.
+- Updated Git hook extension function documentation.
+- Updated .psqlrc to keep a 1,000 line history.
+- Updated .psqlrc to use "\q" instead of CONTROL+D to quit.
+- Updated .psqlrc to display query execution times.
+- Added the "gup" function for easy reading/diffing of recent Git commits.
+- Added Git pre-commit hook for preventing JavaScript `debugger;` statements.
+- Added Git pre-commmit hook for detecting JavaScript `alert();` statements.
+
 # v13.0.0 (2014-10-20)
 
 - Removed the "githubi" function.
