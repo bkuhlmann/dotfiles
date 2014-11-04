@@ -451,6 +451,27 @@ function gasha() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Git Upstream Commit Count (all)
+# Description: Answers upstream commit count (if any) since last pull for all projects in current directory.
+function gucca() {
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git enabled.
+      if [[ -d ".git" ]]; then
+        # Capture upstream project commit count.
+        local count=$(git fetch && git log ..@{upstream} --pretty=format:"%H" | wc -l | tr -d ' ')
+
+        if [[ $count -gt '0' ]]; then
+          # Print project (cyan) and commit count (white).
+          printf "\033[36m${project:2}\033[m: $count\n"
+        fi
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 # Label: Git Pull (all)
 # Description: Pulls down new changes (if any) from remote branch for all projects in current directory.
 function gpua() {
