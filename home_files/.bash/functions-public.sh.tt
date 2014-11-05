@@ -461,7 +461,8 @@ function gucca() {
       # Only process projects that are Git enabled.
       if [[ -d ".git" ]]; then
         # Capture upstream project commit count.
-        local count=$(git fetch && git log ..@{upstream} --pretty=format:"%H" | wc -l | tr -d ' ')
+        git fetch --quiet
+        local count=$(git log ..@{upstream} --pretty=format:"%H" | wc -l | tr -d ' ')
 
         if [[ $count -gt '0' ]]; then
           # Print project (cyan) and commit count (white).
