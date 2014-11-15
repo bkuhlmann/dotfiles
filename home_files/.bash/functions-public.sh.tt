@@ -1040,6 +1040,16 @@ function rua() {
   fi
 }
 
+# Label: Ruby Server
+# Description: Serves web content from current directory via WEBrick.
+# Parameters: $1 (optional) - The port. Default: 3030.
+function rserv() {
+  local default_port=3030
+  local custom_port=$1
+
+  ruby -run -e httpd . --port ${custom_port:-$default_port}
+}
+
 #--------------------------------------------------#
 # Section: [Ruby on Rails](http://rubyonrails.org) #
 #--------------------------------------------------#
