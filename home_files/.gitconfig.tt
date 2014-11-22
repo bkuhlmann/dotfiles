@@ -43,6 +43,9 @@
   autosetuprebase = always
 [rebase]
   autosquash = true
+[rerere]
+  enabled = true
+  autoupdate = true
 [grep]
   lineNumber = true
   fullname = true
