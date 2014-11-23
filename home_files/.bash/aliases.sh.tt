@@ -18,6 +18,7 @@ alias pss='ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=a
 alias sshe="$EDITOR $HOME/.ssh/config"
 alias ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | _copy_and_print'
 alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+alias dnsf="sudo discoveryutil mdnsflushcache && sudo discoveryutil udnsflushcaches && printf 'DNS cache cleared.\n'"
 
 # Section: [tmux](http://tmux.sourceforge.net)
 alias tsl="tmux list-sessions"
