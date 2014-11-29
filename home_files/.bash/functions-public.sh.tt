@@ -962,10 +962,10 @@ function bessa() {
       # Only process projects that support Bundler and RSpec.
       if [[ -f "Gemfile.lock" && -d "spec" ]]; then
         local json=$(SUPPRESS_STDOUT=enabled SUPPRESS_STDERR=enabled bess --format json)
-        local examples=$(printf "$json" | jq ".summary.example_count" )
-        local failures=$(printf "$json" | jq ".summary.failure_count" )
-        local pending=$(printf "$json" | jq ".summary.pending_count" )
-        local duration=$(printf "$json" | jq ".summary.duration" )
+        local examples=$(printf "%s" "$json" | jq ".summary.example_count" )
+        local failures=$(printf "%s" "$json" | jq ".summary.failure_count" )
+        local pending=$(printf "%s" "$json" | jq ".summary.pending_count" )
+        local duration=$(printf "%s" "$json" | jq ".summary.duration" )
 
         # Prints project (cyan).
         printf "\033[36m${project:2}\033[m: "
