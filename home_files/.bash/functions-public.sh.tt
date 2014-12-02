@@ -923,7 +923,6 @@ function bca() {
 # Label: Bundle Execute Rake
 # Description: Executes Rake via binstub or Bundler.
 function ber() {
-  _enable_jruby_20
   if [[ -e bin/rake ]]; then
     bin/rake $@
   else
@@ -944,7 +943,6 @@ function bertt() {
 # Label: Bundle Execute RSpec
 # Description: Executes RSpec via binstub or Bundler.
 function bes() {
-  _enable_jruby_20
   if [[ -e bin/rspec ]]; then
     bin/rspec $@
   else

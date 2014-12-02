@@ -153,15 +153,6 @@ function _process_gh_option() {
 # Section: [Ruby on Rails](http://rubyonrails.org) #
 #--------------------------------------------------#
 
-# Label: Enable JRuby 2.0
-# Description: Enables Ruby 2.0 compatibility for JRuby (a temporary solution until JRuby 9000 is released).
-function _enable_jruby_20() {
-  local jruby_match=jruby
-  if [[ $RBENV_VERSION =~ $jruby_match ]]; then
-    export RUBYOPT=--2.0
-  fi
-}
-
 # Label: Run Rails Command
 # Description: Runs a Rails command with smart detection of current environment.
 # Parameters: $1 (required) - The command to run, $2(optional) - Additional arguments
