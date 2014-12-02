@@ -11,6 +11,7 @@ alias l1="ls -A1 | _copy_and_print '\n'"
 alias p='pwd | tr -d "\r\n" | _copy_and_print'
 alias o="open"
 alias home="cd $HOME"
+alias bashe="$EDITOR .bash/env.sh"
 alias bashs="exec $SHELL"
 alias pss='ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
 
