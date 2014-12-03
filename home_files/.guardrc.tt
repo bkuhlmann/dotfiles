@@ -1,1 +1,1 @@
-Guard.options[:clear] = true
+clearing :on
