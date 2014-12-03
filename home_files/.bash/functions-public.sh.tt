@@ -141,7 +141,7 @@ function gsta() {
 
           # Print results (white).
           for line in "${results[@]}"; do
-            printf "$line "
+            printf "%s" "$line "
             if [[ $newline == 1 ]]; then
               printf "\n"
               local newline=0
