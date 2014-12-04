@@ -893,12 +893,12 @@ function bua() {
       # Only process projects that support Bundler.
       if [[ -f "Gemfile.lock" ]]; then
         rm -f Gemfile.lock
-        local results=$(bundle install)
-        printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
+        bundle install --quiet
 
         # Print project status if Bundler activity is detected, otherwise a checkmark for passing status.
-        if [[ "${results[*]}" == *"Installing"* ]]; then
-          printf "Updated gem dependencies.\n"
+        printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
+        if [[ $(git diff | wc -l | tr -d ' ') -gt 0 ]]; then
+          printf "↑\n"
         else
           printf "✓\n"
         fi
