@@ -582,6 +582,16 @@ function gcap() {
   fi
 }
 
+# Label: Git Rebase (interactive)
+# Description: Rebase commits, interactively (i.e. reword, fix, squash, etc.)
+# Parameters: $1 (optional) - The number of previous commits to rebase. Default: @{upstream}.
+function gri() {
+  local default="@{upstream}"
+  local custom="@~$1"
+
+  git rebase -i ${custom:-$default}
+}
+
 # Label: Git Validate and Clean (all)
 # Description: Validates and cleans all projects in current directory.
 function gvca() {
