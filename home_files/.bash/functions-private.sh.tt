@@ -275,6 +275,13 @@ function _print_functions() {
   done < "$HOME/.bash/functions-public.sh"
 }
 
+function _print_aliases_and_functions() {
+  printf "#### Aliases\n\n"
+  _print_aliases
+  printf "\n#### Functions\n\n"
+  _print_functions
+}
+
 function _find_alias() {
   while read line; do
     if [[ "$line" == "alias "*"$1"* ]]; then
@@ -319,6 +326,9 @@ function _process_dots_option() {
       break;;
     'f')
       _print_functions | more
+      break;;
+    'p')
+      _print_aliases_and_functions | more
       break;;
     's')
       _find_command "$2" | more

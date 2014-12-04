@@ -1221,6 +1221,7 @@ function dots() {
       printf "\nDotfile Options:\n"
       printf "  a: Print aliases.\n"
       printf "  f: Print functions.\n"
+      printf "  p: Print all.\n"
       printf "  s: Search for alias/function.\n"
       printf "  q: Quit/Exit.\n\n"
       read -p "Enter selection: " response
