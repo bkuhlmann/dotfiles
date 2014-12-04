@@ -99,7 +99,6 @@ alias gpuro="gpur origin" # Rebase the current branch on top of the upstream ori
 alias gpurom="gpuro master" # Rebase the current branch on top of the upstream origin master branch.
 alias grc="git rebase --continue"
 alias gra="git rebase --abort"
-alias geady="git rebase -i @{upstream}" # Interactive rebase.
 alias ger="git rerere"
 alias gp="git push"
 alias gpo="git push --set-upstream origin"
