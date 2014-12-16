@@ -586,10 +586,11 @@ function gcap() {
 # Description: Rebase commits, interactively (i.e. reword, fix, squash, etc.)
 # Parameters: $1 (optional) - The number of previous commits to rebase. Default: @{upstream}.
 function gri() {
-  local default="@{upstream}"
-  local custom="@~$1"
-
-  git rebase -i ${custom:-$default}
+  if [[ -n "$1" ]]; then
+    git rebase -i "@~${1}"
+  else
+    git rebase -i @{upstream}
+  fi
 }
 
 # Label: Git Validate and Clean (all)
