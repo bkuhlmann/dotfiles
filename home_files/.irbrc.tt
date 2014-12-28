@@ -85,12 +85,12 @@ class ConsoleKit
   # ==== Parameters
   # * +args+ - The single or multiple inputs to send to the clipboard.
   def self.copy *args
-    open("| pbcopy", 'w') {|clipboard| clipboard << args.join("\n")}
+    open("| pbcopy", 'w') { |clipboard| clipboard.write args.join("\n") }
   end
 
   # Pastes recent content from the Mac OS clipboard.
   def self.paste
-    `pbpaste`
+    open("| pbpaste", 'r') { |clipboard| clipboard.read }
   end
 
   # Answers HTTP status codes.
