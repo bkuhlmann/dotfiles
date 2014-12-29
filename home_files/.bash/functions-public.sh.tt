@@ -158,11 +158,12 @@ function gsta() {
 # Label: Git Update
 # Description: Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
 function gup() {
-  git fetch --quiet
+  glf
   commits=($(git log ..@{upstream} --no-merges --reverse --pretty=format:"%H"))
+  hr '-'
 
   if [[ ${#commits[@]} -gt 1 ]]; then
-    printf "Review started. You are behind by ${#commits[*]} commits.\n"
+    printf "You are behind by ${#commits[*]} commits.\n"
     hr '-'
 
     for commit in "${commits[@]}"; do
