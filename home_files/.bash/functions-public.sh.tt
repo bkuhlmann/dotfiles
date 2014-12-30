@@ -594,8 +594,18 @@ function gri() {
   fi
 }
 
-# Label: Git Validate and Clean (all)
-# Description: Validates and cleans all projects in current directory.
+# Label: Git Verify and Clean
+# Description: Verifies and cleans Git objects for current project.
+function gvac() {
+  printf "Verifiying connectivity and validity of the objects in Git database...\n\n"
+  git fsck
+
+  printf "\nCleaning unnecessary files and optimizing local Git repository...\n\n"
+  git gc
+}
+
+# Label: Git Verify and Clean (all)
+# Description: Verifies and cleans Git objects for all projects in current directory.
 function gvca() {
   while read project; do
     (
