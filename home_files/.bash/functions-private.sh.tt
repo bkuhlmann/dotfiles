@@ -41,6 +41,41 @@ function _git_commits_since_last_tag() {
   fi
 }
 
+# Label: Git Commit Count Since Last Tag
+# Description: Answers commit count since last tag for project.
+# Parameters: $1 (optional) - The output prefix. Default: null., $2 (optional) - The output suffix. Default: null.
+function _git_commit_count_since_last_tag() {
+  local prefix="$1"
+  local suffix="$2"
+
+  if [[ "$(git tag)" ]]; then
+    local count=$(_git_commits_since_last_tag | wc -l | xargs -n 1)
+
+    if [[ -n $count && $count != 0 ]]; then
+      # Prefix
+      if [[ -n "$prefix" ]]; then
+        printf "\033[36m${prefix:2}\033[m: " # Cyan.
+      fi
+
+      # Commit Count
+      if [[ $count -ge 30 ]]; then
+        printf "\033[31m$count\033[m" # Red.
+      elif [[ $count -ge 20 && $count -le 29 ]]; then
+        printf "\033[1;31m$count\033[m" # Light red.
+      elif [[ $count -ge 10 && $count -le 19 ]]; then
+        printf "\033[33m$count\033[m" # Yellow.
+      else
+        printf "$count" # White.
+      fi
+
+      # Suffix
+      if [[ -n "$suffix" ]]; then
+        printf "$suffix"
+      fi
+    fi
+  fi
+}
+
 # Label: Git Stash
 # Description: Enhances default git stash behavior by prompting for input (multiple) or using last stash (single).
 # Parameters: $1 (required) - The git stash command to execute, $2 (required) - The prompt label (for multiple stashes).

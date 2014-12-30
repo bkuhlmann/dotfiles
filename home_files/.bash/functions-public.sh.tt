@@ -395,21 +395,7 @@ function gtaila() {
       cd "$project"
       # Only process projects that are Git-enabled.
       if [[ -d ".git" ]]; then
-        # Count outstanding commits.
-        local count=$(_git_commits_since_last_tag | wc -l | xargs -n 1)
-        # Print project name and Git activity only if Git activity is detected.
-        if [[ -n $count && $count != 0 ]]; then
-          printf "\033[36m${project:2}\033[m: " # Project (cyan).
-          if [[ $count -ge 30 ]]; then
-            printf "\033[31m$count\033[m\n" # Count (red)
-          elif [[ $count -ge 20 && $count -le 29 ]]; then
-            printf "\033[1;31m$count\033[m\n" # Count (light red).
-          elif [[ $count -ge 10 && $count -le 19 ]]; then
-            printf "\033[33m$count\033[m\n" # Count (yellow).
-          else
-            printf "$count\n" # Count (white).
-          fi
-        fi
+        _git_commit_count_since_last_tag "$project" "\n"
       fi
     )
   done < <(find . -type d -depth 1)
