@@ -606,7 +606,7 @@ function gvac() {
 
 # Label: Git Verify and Clean (all)
 # Description: Verifies and cleans Git objects for all projects in current directory.
-function gvca() {
+function gvaca() {
   while read project; do
     (
       cd "$project"
