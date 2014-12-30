@@ -55,7 +55,7 @@ function _git_commit_count_since_last_tag() {
   local suffix="$2"
   local count=$(_git_commits_since_last_tag | wc -l | xargs -n 1)
 
-  if [[ -n $count && $count != 0 ]]; then
+  if [[ -n $count ]]; then
     # Prefix
     if [[ -n "$prefix" ]]; then
       printf "\033[36m${prefix:2}\033[m: " # Cyan.

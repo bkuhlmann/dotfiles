@@ -435,7 +435,10 @@ function gtaila() {
       cd "$project"
       # Only process projects that are Git-enabled.
       if [[ -d ".git" ]]; then
-        _git_commit_count_since_last_tag "$project" "\n"
+        local info=$(_git_commit_count_since_last_tag "$project")
+        if [[ ! "$info" == *": 0"* ]]; then
+          printf "$info\n"
+        fi
       fi
     )
   done < <(find . -type d -depth 1)
