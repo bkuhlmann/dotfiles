@@ -4,6 +4,14 @@
 # Section: General #
 #------------------#
 
+# Label: Print Black on White
+# Description: Prints black text on a white background.
+# Parameters: $1 (required) - Content to print.
+function _print_black_on_white() {
+  local content="$1"
+  printf "\e[0;30m\e[48;5;255m$content\033[m"
+}
+
 # Label: Clip and Print
 # Description: Copies input to clipboard and prints what what was copied (best used with a pipe).
 # Parameters: $1 (optional) - Displays "(copied to cliboard)" on a new line. Default: false.

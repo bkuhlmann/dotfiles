@@ -100,6 +100,46 @@ function gia() {
   done < <(find . -type d -depth 1)
 }
 
+function ginfo() {
+  printf "$(_print_black_on_white ' Local Configuration (.git/config) ')\n\n"
+  git config --local --list
+
+  printf "\n$(_print_black_on_white ' Local Stashes ')\n\n"
+  local stashes="$(gashl)"
+  if [[ -n "$stashes" ]]; then
+    printf "$stashes"
+  else
+    printf "None.\n"
+  fi
+
+  printf "\n$(_print_black_on_white ' Local Branches ')\n\n"
+  git branch
+
+  printf "\n$(_print_black_on_white ' Remote Branches ')\n\n"
+  git branch --remotes
+
+  printf "\n$(_print_black_on_white ' Remote URLs ')\n\n"
+  git remote --verbose
+
+  printf "\n$(_print_black_on_white ' File Churn (Top 25) ')\n\n"
+  ghurn | head -n 25
+
+  printf "\n$(_print_black_on_white ' Commits by Author ')\n\n"
+  guthors
+
+  printf "\n$(_print_black_on_white ' Total Commits ')\n\n"
+  gount
+
+  printf "\n$(_print_black_on_white ' Last Tag ')\n\n"
+  printf "$(git describe --abbrev=0 --tags --always) ($(_git_commit_count_since_last_tag) commits since)\n"
+
+  printf "\n$(_print_black_on_white ' Last Commit ')\n\n"
+  git show --decorate --stat
+
+  printf "\n$(_print_black_on_white ' Current Status ')\n\n"
+  git status --short --branch
+}
+
 # Label: Git Authors (all)
 # Description: Answers author commit activity per project (ranked highest to lowest).
 function guthorsa() {
