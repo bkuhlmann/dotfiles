@@ -155,6 +155,13 @@ function gsta() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Git Commit Count
+# Description: Answers total number of commits for current project.
+function gount() {
+  printf "Total Commits: "
+  git rev-list --count HEAD
+}
+
 # Label: Git Update
 # Description: Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
 function gup() {
