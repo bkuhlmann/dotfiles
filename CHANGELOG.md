@@ -1,3 +1,34 @@
+# v14.0.0 (2015-01-01)
+
+- Removed the `geady` alias (use `gri` instead).
+- Removed the `gvca` function (use `gvaca` instead).
+- Removed .guardrc support.
+- Fixed `pss` alias so that grep, itself, is not included in the search.
+- Fixed `bessa` output errors with special characters.
+- Fixed `gsta` function with not printing special characters.
+- Fixed `bua` function so that project update statistics are reliable.
+- Fixed .guardrc deprecation warnings related to screen clearing.
+- Added `gucca` function for Git upstream commit count.
+- Added `rserv` function to serve current directory web content.
+- Added `ger` alias for "git rerere".
+- Added `dnsf` alias for flushing DNS cache.
+- Added `dnss` for printing DNS statistic info.
+- Added `gma` alias for `git merge --abort`.
+- Added `bashe` alias for editing global bash environment variables.
+- Added `rbest` alias for `rails_best_practices`.
+- Added 'p' option to `dots` function.
+- Added `gri` function for git rebase (interactive).
+- Added 'gount' alias which answers total number of project commits.
+- Added `gvac` function for Git verify and clean of Git repo objects.
+- Added `ginfo` function for "Git Info".
+- Added Git pre-commit hook for preventing Gemfile path statements.
+- Updated .gitconfig to enable git rerere by default.
+- Updated `glast` alias to use `--decorate` option.
+- Updated .gitconfig to allow `git status` to show all untracked files.
+- Updated `gdw` alias to use colorized word diffs.
+- Updated "gash" alias to include untracked files when stashing.
+- Updated `gup` function to include summarized git log of fetched changes.
+
 # v13.1.0 (2014-11-02)
 
 - Removed Homebrew aliases for managing services (Homebrew no longer supports these commands).

@@ -19,7 +19,6 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 - Configures the [Pry](http://pry.github.com) .pryrc file.
 - Configures the [Ruby Debugger](http://bashdb.sourceforge.net/ruby-debug.html) .rdebugrc file.
 - Configures the [Awesome Print](https://github.com/michaeldv/awesome_print) .aprc file.
-- Configures the [Guard](https://github.com/guard/guard) .guardrc file.
 - Configures the [Xray](https://github.com/brentd/xray-rails) .xrayconfig file.
 - Configures the [Pow](http://pow.cx) .powconfig file.
 - Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) .psqlrc file.
@@ -40,7 +39,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v13.1.0
+    git checkout v14.0.0
 
 Master Version (unstable)
 
@@ -74,7 +73,7 @@ After install, the following files will require manual updating:
 
 # Usage
 
-From the command line, the following aliases are available:
+#### Aliases
 
 ##### General
     .. = "cd .."
@@ -87,12 +86,15 @@ From the command line, the following aliases are available:
     p = 'pwd | tr -d "rn" | _copy_and_print'
     o = "open"
     home = "cd $HOME"
+    bashe = "$EDITOR .bash/env.sh"
     bashs = "exec $SHELL"
-    pss = 'ps axu | grep "$@" --ignore-case --color=auto'
+    pss = 'ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
 ##### Network
     sshe = "$EDITOR $HOME/.ssh/config"
     ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | _copy_and_print'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
+    dnsf = "sudo discoveryutil mdnsflushcache && sudo discoveryutil udnsflushcaches && printf 'DNS cache cleared.n'"
+    dnss = "sudo discoveryutil mdnscachestats && sudo discoveryutil udnscachestats"
 ##### [tmux](http://tmux.sourceforge.net)
     tsl = "tmux list-sessions"
     tsa = "tmux attach-session -t"
@@ -125,12 +127,12 @@ From the command line, the following aliases are available:
     glt = 'git log --tags --simplify-by-decoration --pretty = "format:%d (%ad)" --date=short | sed -e "s/ (tag: //" -e "s/)//" -e "/^ /d"'
     grl = "git reflog"
     gg = "git grep"
-    glast = "git show --stat"
+    glast = "git show --decorate --stat"
     guthors = "git log --format = '%an' | sort | uniq -c | sort --reverse"
     gd = "git diff"
     gdc = "git diff --cached"
     gdm = "git diff origin/master"
-    gdw = "git diff --word-diff"
+    gdw = "git diff --color-words"
     gdt = "git difftool"
     gdtc = "git difftool --cached"
     gdtm = "git difftool origin/master"
@@ -142,6 +144,7 @@ From the command line, the following aliases are available:
     gbr = "git branch --move"
     gm = "git merge"
     gms = "git merge --squash"
+    gma = "git merge --abort"
     gcl = "git clone"
     gch = "git checkout"
     gchm = "git checkout master"
@@ -154,10 +157,10 @@ From the command line, the following aliases are available:
     gcm = "git commit --message"
     gcam = "git commit --all --message"
     gamend = "git commit --amend"
-    gamendh = "git commit --all --amend --reuse-message HEAD"
+    gamendh = "git commit --all --amend --no-edit"
     gcf = "git commit --fixup"
     gcp = "git cherry-pick"
-    gash = "git stash save"
+    gash = "git stash save --include-untracked"
     gashc = "git stash clear"
     gf = "git fetch"
     gfp = "git fetch --prune"
@@ -167,7 +170,7 @@ From the command line, the following aliases are available:
     gpurom = "gpuro master" # Rebase the current branch on top of the upstream origin master branch.
     grc = "git rebase --continue"
     gra = "git rebase --abort"
-    geady = "git rebase -i @{upstream}" # Interactive rebase.
+    ger = "git rerere"
     gp = "git push"
     gpo = "git push --set-upstream origin"
     gpr = "git push review master"
@@ -258,6 +261,8 @@ From the command line, the following aliases are available:
     dstate = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
 ##### [Rubocop](https://github.com/bbatsov/rubocop)
     rcop = "rubocop --display-cop-names"
+##### [Rails Best Practices](https://github.com/railsbp/rails_best_practices)
+    rbest = "rails_best_practices"
 ##### [Capistrano](https://github.com/capistrano/capistrano)
     caps = "bec stage deploy"
     capp = "bec production deploy"
@@ -276,7 +281,7 @@ From the command line, the following aliases are available:
 ##### [Marked](http://markedapp.com)
     mo = "open -a Marked"
 
-From the command line, the following functions are available:
+#### Functions
 
 ##### General
     t2s = Tabs to Spaces - Converts a file from tab to space indendation.
@@ -289,8 +294,10 @@ From the command line, the following functions are available:
 ##### [Git](http://git-scm.com)
     groot = Git Root - Changes to project root directory (regardless of current depth).
     gia = Git Init (all) - Initializes/re-initializes for all Git repositories in current directory.
+    ginfo = Git Info - Prints repository project overview information.
     guthorsa = Git Authors (all) - Answers author commit activity per project (ranked highest to lowest).
     gsta = Git Status (all) - Answers the status of projects with uncommited/unpushed changes.
+    gount = Git Commit Count - Answers total number of commits for current project.
     gup = Git Update - Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
     ghurn = Git Churn - Answers the commit churn for project files (sorted highest to lowest).
     glamel = Git Blame Log - Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
@@ -312,12 +319,15 @@ From the command line, the following functions are available:
     gashp = Git Stash Pop - Enhances git stash pop behavior by prompting for input (multiple) or popping last stash (single).
     gashd = Git Stash Drop - Enhances git stash drop behavior by prompting for input (multiple) or dropping last stash (single).
     gasha = Git Stash (all) - Answers stash count for all projects within current directory.
+    gucca = Git Upstream Commit Count (all) - Answers upstream commit count (if any) since last pull for all projects in current directory.
     gpua = Git Pull (all) - Pulls down new changes (if any) from remote branch for all projects in current directory.
     galla = Git Add (all) - Applies file changes (including new files) for all projects within current directory.
     gpa = Git Push (all) - Pushes changes for all projects within current directory.
     gcama = Git Commit with Message (all) - Commits changes (modified and new), with a message, for all projects within current directory.
     gcap = Git Commit and Push (all) - Commits and pushes changes for all projects within current directory.
-    gvca = Git Validate and Clean (all) - Validates and cleans all projects in current directory.
+    gri = Git Rebase (interactive) - Rebase commits, interactively (i.e. reword, fix, squash, etc.)
+    gvac = Git Verify and Clean - Verifies and cleans Git objects for current project.
+    gvaca = Git Verify and Clean (all) - Verifies and cleans Git objects for all projects in current directory.
     gbc = Git Branch Create - Creates and switches to local branch.
     gbs = Git Branch Switch - Switch between local branches.
     gbd = Git Branch Delete - Deletes local and remote branch (if found).
@@ -340,6 +350,7 @@ From the command line, the following functions are available:
     bec = Bundle Execute Capistrano - Executes Capistrano via binstub or Bundler.
 ##### [Ruby](http://www.ruby-lang.org)
     rua = Ruby Upgrade (all) - Upgrades all Ruby projects in current directory with new Ruby version information.
+    rserv = Ruby Server - Serves web content from current directory via WEBrick.
 ##### [Ruby on Rails](http://rubyonrails.org)
     rew = Rails New - Builds a new rails application skeleton for selected template.
     sc = Rails Script Console - Launches the Rails console.
@@ -357,14 +368,14 @@ From the command line, the following functions are available:
 ##### Dotfiles
     dots = Dotfiles - Informational utility for learning more about dotfile aliases, functions, etc.
 
-From IRB, Pry, and Rails consoles, the following commands are possible:
+#### IRB, Pry, and Rails consoles
 
     ConsoleKit.copy - Copies data to the MacOS clipboard.
     ConsoleKit.paste - Pastes data from the MacOS clipboard.
     ConsoleKit.http_codes - Prints Rails HTTP codes.
     ConsoleKit.http_symbols - Prints Rails HTTP symbols.
 
-From Pry, the following aliases are available:
+#### Pry Aliases
 
     'w' = "whereami"
     'c' = "continue"
