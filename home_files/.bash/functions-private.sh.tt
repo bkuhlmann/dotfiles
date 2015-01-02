@@ -106,11 +106,11 @@ function _process_git_stash() {
     local match="^[0-9]{1}$"
     if [[ "$response" =~ $match ]]; then
       printf "\n"
-      git stash $stash_command "stash@{$response}"
+      eval "git stash $stash_command stash@{$response}"
       printf "\n"
     fi
   else
-    git stash $stash_command
+    eval "git stash $stash_command"
   fi
 
   # Restore original line break setting.

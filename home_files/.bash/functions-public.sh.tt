@@ -458,6 +458,12 @@ function gashs() {
   _process_git_stash "show" "Git Stash Show Options (select stash to show)"
 }
 
+# Label: Git Stash Diff
+# Description: Diffs a git stash by prompting for input (multiple) or using last stash (single).
+function gashdif() {
+  _process_git_stash "show -p" "Git Stash Diff Options (select stash to diff)"
+}
+
 # Label: Git Stash Pop
 # Description: Enhances git stash pop behavior by prompting for input (multiple) or popping last stash (single).
 function gashp() {
