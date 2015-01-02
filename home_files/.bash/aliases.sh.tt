@@ -108,9 +108,10 @@ alias gpp="git push production production:master"
 alias gtag="git tag"
 alias gtags="git push --tags"
 alias gr="git reset" # Unstage staged files for commit.
-alias grs="git reset --soft HEAD^" # Uncommit previous commit.
+alias grs="git reset --soft HEAD^" # Undo previous commit.
 alias grh="git reset --hard HEAD" # Reset to HEAD, destroying all staged/unstaged changes.
-alias gdis="git reset --hard" # Reset to commit (hash), destroying all committed changes up to specific commit.
+alias gdis="git reset --hard" # Reset to commit, destroying all commits prior to commit.
+alias grm="git reset --merge ORIG_HEAD" # Reset to original HEAD prior to merge.
 alias grev="git revert" # Revert a previous commit (hash).
 alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
 alias ggc="git fsck && git gc"
