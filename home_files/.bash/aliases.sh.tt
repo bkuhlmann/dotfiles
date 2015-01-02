@@ -113,6 +113,7 @@ alias grs="git reset --soft HEAD^" # Undo previous commit.
 alias grh="git reset --hard HEAD" # Reset to HEAD, destroying all staged/unstaged changes.
 alias gdis="git reset --hard" # Reset to commit, destroying all commits prior to commit.
 alias grm="git reset --merge ORIG_HEAD" # Reset to original HEAD prior to merge.
+alias grom="git fetch --all && git reset --hard origin/master" # Reset local brach to origin/master branch.
 alias grev="git revert" # Revert a previous commit (hash).
 alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
 alias ggc="git fsck && git gc"
