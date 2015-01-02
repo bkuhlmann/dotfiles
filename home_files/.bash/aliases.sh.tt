@@ -115,6 +115,7 @@ alias gdis="git reset --hard" # Reset to commit, destroying all previous commits
 alias grm="git reset --merge ORIG_HEAD" # Reset to original HEAD prior to merge.
 alias grom="git fetch --all && git reset --hard origin/master" # Reset local branch to origin/master branch. UNRECOVERABLE!
 alias gel="git rm"
+alias gelc="git rm --cached" # Removes previously tracked file from index after being added to gitignore.
 alias grev="git revert" # Revert a commit.
 alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
 alias ggc="git fsck && git gc"
