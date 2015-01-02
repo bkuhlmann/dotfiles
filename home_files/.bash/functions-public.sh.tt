@@ -447,31 +447,31 @@ function gtaila() {
 }
 
 # Label: Git Stash List
-# Description: Lists git stashes in an easy to read format.
+# Description: Lists stashes (if any).
 function gashl() {
   git stash list --pretty=format:'%C(yellow)%gd%C(reset) %s'
 }
 
 # Label: Git Stash Show
-# Description: Enhances git stash show behavior by prompting for input (multiple) or showing last stash (single).
+# Description: Shows stash or prompts for stash to show.
 function gashs() {
   _process_git_stash "show" "Git Stash Show Options (select stash to show)"
 }
 
 # Label: Git Stash Diff
-# Description: Diffs a git stash by prompting for input (multiple) or using last stash (single).
+# Description: Diffs stash or prompts for stash to diff.
 function gashdif() {
   _process_git_stash "show -p" "Git Stash Diff Options (select stash to diff)"
 }
 
 # Label: Git Stash Pop
-# Description: Enhances git stash pop behavior by prompting for input (multiple) or popping last stash (single).
+# Description: Pops stash or prompts for stash to pop.
 function gashp() {
   _process_git_stash "pop" "Git Stash Pop Options (select stash to pop)"
 }
 
 # Label: Git Stash Drop
-# Description: Enhances git stash drop behavior by prompting for input (multiple) or dropping last stash (single).
+# Description: Drops stash or prompts for stash to drop.
 function gashd() {
   _process_git_stash "drop" "Git Stash Drop Options (select stash to drop)"
 }
