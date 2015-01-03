@@ -78,12 +78,6 @@ function port() {
 # Section: [Git](http://git-scm.com) #
 #------------------------------------#
 
-# Label: Git Root
-# Description: Changes to project root directory (regardless of current depth).
-function groot() {
-  cd "$(dirname $(git rev-parse --git-dir))"
-}
-
 # Label: Git Init (all)
 # Description: Initializes/re-initializes for all Git repositories in current directory.
 function gia() {
@@ -98,6 +92,12 @@ function gia() {
       fi
     )
   done < <(find . -type d -depth 1)
+}
+
+# Label: Git Root
+# Description: Changes repository root directory (regardless of current depth).
+function groot() {
+  cd "$(dirname $(git rev-parse --git-dir))"
 }
 
 # Label: Git Info
@@ -142,7 +142,27 @@ function ginfo() {
   git status --short --branch
 }
 
-# Label: Git History
+# Label: Git Churn
+# Description: Answers the commit churn for project files (sorted highest to lowest).
+function ghurn() {
+  git log --all --find-renames --find-copies --name-only --format='format:' "$@" | \
+    sort | \
+    grep --invert-match '^$' | \
+    uniq -c | \
+    sort | \
+    awk '{print $1 "\t" $2}' | \
+    sort --general-numeric-sort --reverse | \
+    more
+}
+
+# Label: Git Commit Count
+# Description: Answers total number of commits for current project.
+function gount() {
+  printf "Total Commits: "
+  git rev-list --count HEAD
+}
+
+# Label: Git File History
 # Description: Walks through all revisions of a file's history (with optional diff support).
 function gistory() {
   local file="$1"
@@ -246,13 +266,6 @@ function gsta() {
   done < <(find . -type d -depth 1)
 }
 
-# Label: Git Commit Count
-# Description: Answers total number of commits for current project.
-function gount() {
-  printf "Total Commits: "
-  git rev-list --count HEAD
-}
-
 # Label: Git Update
 # Description: Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
 function gup() {
@@ -291,19 +304,6 @@ function gup() {
   fi
 }
 
-# Label: Git Churn
-# Description: Answers the commit churn for project files (sorted highest to lowest).
-function ghurn() {
-  git log --all --find-renames --find-copies --name-only --format='format:' "$@" | \
-    sort | \
-    grep --invert-match '^$' | \
-    uniq -c | \
-    sort | \
-    awk '{print $1 "\t" $2}' | \
-    sort --general-numeric-sort --reverse | \
-    more
-}
-
 # Label: Git Blame Log
 # Description: Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
 # Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
@@ -321,6 +321,29 @@ function glamel() {
 
   local log_format="%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b"
   git show --shortstat --pretty=format:"$log_format" $blame_hashes
+}
+
+# Label: Git Set Config Value (all)
+# Description: Sets key value for all projects in current directory.
+# Parameters: $1 (required) - The key name, $2 (required) - The key value.
+function gseta() {
+  if [[ "$1" && "$2" ]]; then
+    # Iterate project directories located in root directory.
+    while read project; do
+      (
+        cd "$project"
+        # Only process projects that are Git enabled.
+        if [[ -d ".git" ]]; then
+          # Set key value for current project.
+          git config "$1" "$2"
+          # Print project (cyan) and email (white).
+          printf "\033[36m${project:2}\033[m: $1 = $2\n"
+        fi
+      )
+    done < <(find . -type d -depth 1)
+  else
+    printf "ERROR: Key and value must be supplied.\n"
+  fi
 }
 
 # Label: Git Get Config Value (all)
@@ -354,50 +377,6 @@ function ggeta() {
   fi
 }
 
-# Label: Git Email
-# Description: Answers user email for current project.
-function gail() {
-  if [[ -d ".git" ]]; then
-    git config user.email
-  fi
-}
-
-# Label: Git Email (all)
-# Description: Answers user email for all projects in current directory.
-function gaila() {
-  ggeta "user.email"
-}
-
-# Label: Git Set Config Value (all)
-# Description: Sets key value for all projects in current directory.
-# Parameters: $1 (required) - The key name, $2 (required) - The key value.
-function gseta() {
-  if [[ "$1" && "$2" ]]; then
-    # Iterate project directories located in root directory.
-    while read project; do
-      (
-        cd "$project"
-        # Only process projects that are Git enabled.
-        if [[ -d ".git" ]]; then
-          # Set key value for current project.
-          git config "$1" "$2"
-          # Print project (cyan) and email (white).
-          printf "\033[36m${project:2}\033[m: $1 = $2\n"
-        fi
-      )
-    done < <(find . -type d -depth 1)
-  else
-    printf "ERROR: Key and value must be supplied.\n"
-  fi
-}
-
-# Label: Git Email Set (all)
-# Description: Sets user email for all projects in current directory.
-# Parameters: $1 (required) - The email address.
-function gailsa() {
-  gseta "user.email" "$1"
-}
-
 # Label: Git Unset (all)
 # Description: Unsets key value for all projects in current directory.
 # Parameters: $1 (required) - The key name.
@@ -420,6 +399,27 @@ function gunseta() {
   else
     printf "ERROR: Key must be supplied.\n"
   fi
+}
+
+# Label: Git Email Set (all)
+# Description: Sets user email for all projects in current directory.
+# Parameters: $1 (required) - The email address.
+function gailsa() {
+  gseta "user.email" "$1"
+}
+
+# Label: Git Email Get
+# Description: Answers user email for current project.
+function gail() {
+  if [[ -d ".git" ]]; then
+    git config user.email
+  fi
+}
+
+# Label: Git Email Get (all)
+# Description: Answers user email for all projects in current directory.
+function gaila() {
+  ggeta "user.email"
 }
 
 # Label: Git Since
@@ -447,12 +447,6 @@ function gince() {
   fi
 }
 
-# Label: Git Standup
-# Description: Answers a summarized list of Git activity since yesterday for all projects in current directory.
-function gsup() {
-  gince "yesterday.midnight" "midnight" $(git config user.name)
-}
-
 # Label: Git Day
 # Description: Answers a summarized list of Git current day activity for all projects in current directory.
 function gday() {
@@ -469,6 +463,12 @@ function gweek() {
 # Description: Answers a summarized list of Git current month activity for all projects in current directory.
 function gmonth() {
   gince "month 1 12am"
+}
+
+# Label: Git Standup
+# Description: Answers a summarized list of Git activity since yesterday for all projects in current directory.
+function gsup() {
+  gince "yesterday.midnight" "midnight" $(git config user.name)
 }
 
 # Label: Git Tail
@@ -590,6 +590,24 @@ function gpua() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Git Push (all)
+# Description: Pushes changes for all projects within current directory.
+function gpa() {
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git-enabled.
+      if [[ -d ".git" ]]; then
+        # Only process projects that have changes.
+        if [[ "$(git status --short --branch)" == *"[ahead"*"]" ]]; then
+          printf "\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+          git push
+        fi
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 # Label: Git Add (all)
 # Description: Applies file changes (including new files) for all projects within current directory.
 function galla() {
@@ -604,24 +622,6 @@ function galla() {
         # Print project name (cyan) and Git activity (white) only if Git activity was detected.
         if [[ -n "$results" ]]; then
           printf "\033[36m${project:2}\033[m:\n$results\n"
-        fi
-      fi
-    )
-  done < <(find . -type d -depth 1)
-}
-
-# Label: Git Push (all)
-# Description: Pushes changes for all projects within current directory.
-function gpa() {
-  while read project; do
-    (
-      cd "$project"
-      # Only process projects that are Git-enabled.
-      if [[ -d ".git" ]]; then
-        # Only process projects that have changes.
-        if [[ "$(git status --short --branch)" == *"[ahead"*"]" ]]; then
-          printf "\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
-          git push
         fi
       fi
     )
@@ -685,31 +685,6 @@ function gri() {
   else
     git rebase -i @{upstream}
   fi
-}
-
-# Label: Git Verify and Clean
-# Description: Verifies and cleans Git objects for current project.
-function gvac() {
-  printf "Verifiying connectivity and validity of the objects in Git database...\n\n"
-  git fsck
-
-  printf "\nCleaning unnecessary files and optimizing local Git repository...\n\n"
-  git gc
-}
-
-# Label: Git Verify and Clean (all)
-# Description: Verifies and cleans Git objects for all projects in current directory.
-function gvaca() {
-  while read project; do
-    (
-      cd "$project"
-      # Only process projects that are Git-enabled.
-      if [[ -d ".git" ]]; then
-        printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
-        git fsck && git gc
-      fi
-    )
-  done < <(find . -type d -depth 1)
 }
 
 # Label: Git Branch Create
@@ -892,6 +867,31 @@ function ghda() {
         ghd
       else
         printf "Not a Git project.\n"
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
+# Label: Git Verify and Clean
+# Description: Verifies and cleans Git objects for current project.
+function gvac() {
+  printf "Verifiying connectivity and validity of the objects in Git database...\n\n"
+  git fsck
+
+  printf "\nCleaning unnecessary files and optimizing local Git repository...\n\n"
+  git gc
+}
+
+# Label: Git Verify and Clean (all)
+# Description: Verifies and cleans Git objects for all projects in current directory.
+function gvaca() {
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git-enabled.
+      if [[ -d ".git" ]]; then
+        printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+        git fsck && git gc
       fi
     )
   done < <(find . -type d -depth 1)
