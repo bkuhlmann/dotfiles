@@ -275,7 +275,7 @@ function gup() {
       fi
 
       if [[ "$response" == 'y' ]]; then
-        git difftool $commit^..$commit
+        git difftool $commit^!
       fi
 
       hr '-'
