@@ -211,6 +211,28 @@ function gistory() {
   fi
 }
 
+# Label: Git Blame Log
+# Description: Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
+# Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
+function glamel() {
+  local file="$1"
+  local lines="$2"
+
+  if [[ -z "$file" ]]; then
+    printf "ERROR: File path must be supplied.\n"
+    return 0
+  fi
+
+  if [[ -n "$lines" ]]; then
+    local blame_hashes=$(git blame -l -L $lines "$file" | awk '{print $1}')
+  else
+    local blame_hashes=$(git blame -l "$file" | awk '{print $1}')
+  fi
+
+  local log_format="%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b"
+  git show --stat --pretty=format:"$log_format" $blame_hashes
+}
+
 # Label: Git Authors (all)
 # Description: Answers author commit activity per project (ranked highest to lowest).
 function guthorsa() {
@@ -302,25 +324,6 @@ function gup() {
   else
     printf "All is quiet, nothing to review.\n"
   fi
-}
-
-# Label: Git Blame Log
-# Description: Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
-# Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
-function glamel() {
-  if [[ -z "$1" ]]; then
-    printf "ERROR: File path must be supplied.\n"
-    return 0
-  fi
-
-  if [[ -n "$2" ]]; then
-    local blame_hashes=$(git blame -l -L $2 "$1" | awk '{print $1}')
-  else
-    local blame_hashes=$(git blame -l "$1" | awk '{print $1}')
-  fi
-
-  local log_format="%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b"
-  git show --shortstat --pretty=format:"$log_format" $blame_hashes
 }
 
 # Label: Git Set Config Value (all)
