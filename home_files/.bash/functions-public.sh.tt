@@ -680,11 +680,13 @@ function gcap() {
 }
 
 # Label: Git Rebase (interactive)
-# Description: Rebase commits, interactively (i.e. reword, fix, squash, etc.)
+# Description: Rebase commits, interactively (i.e. reword, fix, squash, etc.).
 # Parameters: $1 (optional) - The number of previous commits to rebase. Default: @{upstream}.
 function gri() {
-  if [[ -n "$1" ]]; then
-    git rebase -i "@~${1}"
+  local commits="$1"
+
+  if [[ -n "$commits" ]]; then
+    git rebase -i "@~${commits}"
   else
     git rebase -i @{upstream}
   fi
@@ -878,7 +880,7 @@ function ghda() {
 # Label: Git Verify and Clean
 # Description: Verifies and cleans Git objects for current project.
 function gvac() {
-  printf "Verifiying connectivity and validity of the objects in Git database...\n\n"
+  printf "Verifying connectivity and validity of the objects in Git database...\n\n"
   git fsck
 
   printf "\nCleaning unnecessary files and optimizing local Git repository...\n\n"
