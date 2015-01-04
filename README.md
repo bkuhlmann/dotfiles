@@ -39,7 +39,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v14.0.0
+    git checkout v14.1.0
 
 Master Version (unstable)
 
@@ -160,6 +160,7 @@ After install, the following files will require manual updating:
     gamendh = "git commit --all --amend --no-edit"
     gcf = "git commit --fixup"
     gcp = "git cherry-pick"
+    gcpa = "git cherry-pick --abort"
     gash = "git stash save --include-untracked"
     gashc = "git stash clear"
     gf = "git fetch"
@@ -179,10 +180,14 @@ After install, the following files will require manual updating:
     gtag = "git tag"
     gtags = "git push --tags"
     gr = "git reset" # Unstage staged files for commit.
-    grs = "git reset --soft HEAD^" # Uncommit previous commit.
-    grh = "git reset --hard HEAD" # Reset to HEAD, destroying all staged/unstaged changes.
-    gdis = "git reset --hard" # Reset to commit (hash), destroying all committed changes up to specific commit.
-    grev = "git revert" # Revert a previous commit (hash).
+    grs = "git reset --soft HEAD^" # Undo previous commit.
+    grh = "git reset --hard HEAD" # Reset to HEAD, destroying all staged/unstaged changes. UNRECOVERABLE!
+    gdis = "git reset --hard" # Reset to commit, destroying all previous commits. UNRECOVERABLE!
+    grm = "git reset --merge ORIG_HEAD" # Reset to original HEAD prior to merge.
+    grom = "git fetch --all && git reset --hard origin/master" # Reset local branch to origin/master branch. UNRECOVERABLE!
+    gel = "git rm"
+    gelc = "git rm --cached" # Removes previously tracked file from index after being added to gitignore.
+    grev = "git revert" # Revert a commit.
     glatest = "git for-each-ref --sort=-committerdate refs/heads --format = '%(committerdate:short) %(refname:short)'"
     ggc = "git fsck && git gc"
     grp = "git remote prune origin"
@@ -292,42 +297,42 @@ After install, the following files will require manual updating:
 ##### [lsof](http://people.freebsd.org/~abe/)
     port = Port - Lists file activity on a given port.
 ##### [Git](http://git-scm.com)
-    groot = Git Root - Changes to project root directory (regardless of current depth).
     gia = Git Init (all) - Initializes/re-initializes for all Git repositories in current directory.
+    groot = Git Root - Changes repository root directory (regardless of current depth).
     ginfo = Git Info - Prints repository project overview information.
+    ghurn = Git Churn - Answers the commit churn for project files (sorted highest to lowest).
+    gount = Git Commit Count - Answers total number of commits for current project.
+    gistory = Git File History - Walks through all revisions of a file's history (with optional diff support).
+    glamel = Git Blame Log - Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
     guthorsa = Git Authors (all) - Answers author commit activity per project (ranked highest to lowest).
     gsta = Git Status (all) - Answers the status of projects with uncommited/unpushed changes.
-    gount = Git Commit Count - Answers total number of commits for current project.
     gup = Git Update - Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
-    ghurn = Git Churn - Answers the commit churn for project files (sorted highest to lowest).
-    glamel = Git Blame Log - Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
-    ggeta = Git Get Config Value (all) - Answers key value for all projects in current directory.
-    gail = Git Email - Answers user email for current project.
-    gaila = Git Email (all) - Answers user email for all projects in current directory.
     gseta = Git Set Config Value (all) - Sets key value for all projects in current directory.
-    gailsa = Git Email Set (all) - Sets user email for all projects in current directory.
+    ggeta = Git Get Config Value (all) - Answers key value for all projects in current directory.
     gunseta = Git Unset (all) - Unsets key value for all projects in current directory.
+    gailsa = Git Email Set (all) - Sets user email for all projects in current directory.
+    gail = Git Email Get - Answers user email for current project.
+    gaila = Git Email Get (all) - Answers user email for all projects in current directory.
     gince = Git Since - Answers a summarized list of Git activity since date/time for all projects in current directory.
-    gsup = Git Standup - Answers a summarized list of Git activity since yesterday for all projects in current directory.
     gday = Git Day - Answers a summarized list of Git current day activity for all projects in current directory.
     gweek = Git Week - Answers a summarized list of Git current week activity for all projects in current directory.
     gmonth = Git Month - Answers a summarized list of Git current month activity for all projects in current directory.
+    gsup = Git Standup - Answers a summarized list of Git activity since yesterday for all projects in current directory.
     gtail = Git Tail - Answers commit history since last tag for current project and copies results to clipboard.
     gtaila = Git Tail (all) - Answers commit history count since last tag for all projects in current directory.
-    gashl = Git Stash List - Lists git stashes in an easy to read format.
-    gashs = Git Stash Show - Enhances git stash show behavior by prompting for input (multiple) or showing last stash (single).
-    gashp = Git Stash Pop - Enhances git stash pop behavior by prompting for input (multiple) or popping last stash (single).
-    gashd = Git Stash Drop - Enhances git stash drop behavior by prompting for input (multiple) or dropping last stash (single).
+    gashl = Git Stash List - Lists stashes (if any).
+    gashs = Git Stash Show - Shows stash or prompts for stash to show.
+    gashdif = Git Stash Diff - Diffs stash or prompts for stash to diff.
+    gashp = Git Stash Pop - Pops stash or prompts for stash to pop.
+    gashd = Git Stash Drop - Drops stash or prompts for stash to drop.
     gasha = Git Stash (all) - Answers stash count for all projects within current directory.
     gucca = Git Upstream Commit Count (all) - Answers upstream commit count (if any) since last pull for all projects in current directory.
     gpua = Git Pull (all) - Pulls down new changes (if any) from remote branch for all projects in current directory.
-    galla = Git Add (all) - Applies file changes (including new files) for all projects within current directory.
     gpa = Git Push (all) - Pushes changes for all projects within current directory.
+    galla = Git Add (all) - Applies file changes (including new files) for all projects within current directory.
     gcama = Git Commit with Message (all) - Commits changes (modified and new), with a message, for all projects within current directory.
     gcap = Git Commit and Push (all) - Commits and pushes changes for all projects within current directory.
-    gri = Git Rebase (interactive) - Rebase commits, interactively (i.e. reword, fix, squash, etc.)
-    gvac = Git Verify and Clean - Verifies and cleans Git objects for current project.
-    gvaca = Git Verify and Clean (all) - Verifies and cleans Git objects for all projects in current directory.
+    gri = Git Rebase (interactive) - Rebase commits, interactively (i.e. reword, fix, squash, etc.).
     gbc = Git Branch Create - Creates and switches to local branch.
     gbs = Git Branch Switch - Switch between local branches.
     gbd = Git Branch Delete - Deletes local and remote branch (if found).
@@ -335,6 +340,8 @@ After install, the following files will require manual updating:
     gtagd = Git Tag Delete - Deletes local and remote tag (if found).
     ghd = Git Hook Delete - Deletes all Git hooks for current project.
     ghda = Git Hook Delete (all) - Deletes all Git hooks for all projects in current directory.
+    gvac = Git Verify and Clean - Verifies and cleans Git objects for current project.
+    gvaca = Git Verify and Clean (all) - Verifies and cleans Git objects for all projects in current directory.
 ##### [GitHub](https://github.com)
     gh = GitHub - View current GitHub project commits, branches, tags, etc. in default browser.
 ##### [Bundler](http://gembundler.com)

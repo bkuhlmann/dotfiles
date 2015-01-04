@@ -1,3 +1,16 @@
+# v14.1.0 (2015-01-03)
+
+- Updated `gup` function to safely compare previous commit.
+- Updated `glamel` function to use full instead of short stats.
+- Updated function documentation.
+- Added `grm` alias which can reset a merge.
+- Added `gcpa` alias for "git cherry-pick --abort".
+- Added `gashdif` function for diffing git stashes.
+- Added `grom` alias which resets local branch to origin/master.
+- Added `gel` alias for "git rm" (a.k.a git delete).
+- Added `gelc` alias for ignoring previous tracked file now in .gitignore.
+- Added the `gistory` function for reviewing a file's history.
+
 # v14.0.0 (2015-01-01)
 
 - Removed the `geady` alias (use `gri` instead).
