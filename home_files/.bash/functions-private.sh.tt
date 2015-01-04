@@ -282,7 +282,7 @@ _print_aliases() {
 }
 
 _print_function_name() {
-  local name=$(printf "$1" | sed 's///' | sed 's/() {//')
+  local name=$(printf "$1" | sed 's/() {//')
   printf "$name = $2 - $3\n"
 }
 
@@ -304,7 +304,7 @@ _print_functions() {
     _set_function_label "$line"
     _set_function_description "$line"
 
-    if [[ "$line" == "function"*"() {" && "$line" != "_"* ]]; then
+    if [[ "$line" == *"() {" && "$line" != "_"* ]]; then
       printf "    "
       _print_function_name "$line" "$label" "$description"
       unset label
@@ -348,7 +348,7 @@ _find_command() {
     printf "\"$1\" Search Results:\n"
 
     _find_alias "$1"
-    _find_"$1"
+    _find_function "$1"
   else
     printf "ERROR: Nothing to search for. Criteria must be supplied.\n"
   fi
