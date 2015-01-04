@@ -2,6 +2,6 @@
 
 # Label: Gemfile Path
 # Description: Detects gem path statements.
-function gemfile_path() {
+gemfile_path() {
   _scan_code "[bundler]" "Gemfile path statement detected" 'Gemfile' '(path:|:path\s=>)'
 }

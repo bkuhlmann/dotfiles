@@ -4,14 +4,14 @@
 # Defines general utility functions.
 
 # Answers a list of files stored in the home_files folder of this project.
-function home_files() {
+home_files() {
   for file in $(find home_files -type f); do
     printf "$file\n"
   done
 }
 export -f home_files
 
-function base_dest_file() {
+base_dest_file() {
   local source_file="$1"
   local computed_file=''
 
@@ -20,7 +20,7 @@ function base_dest_file() {
 export -f base_dest_file
 
 # Shows managed files.
-function show_files() {
+show_files() {
   printf "Dotfiles available for install:\n"
 
   for file in $(home_files); do
@@ -32,7 +32,7 @@ export -f show_files
 # Installs a file.
 # Parameters:
 # $1 = The file name.
-function install_file() {
+install_file() {
   local source_file="$1"
   local dest_file="$HOME/$(base_dest_file $source_file)"
   local dest_dir="$(dirname $dest_file)"
@@ -46,7 +46,7 @@ function install_file() {
 export -f install_file
 
 # Installs all files.
-function install_files() {
+install_files() {
   printf "Installing dotfiles...\n"
 
   for file in $(home_files); do
@@ -60,7 +60,7 @@ export -f install_files
 # Links a dotfile to this project.
 # Parameters:
 # $1 = The file name.
-function link_file() {
+link_file() {
   local source_file="$PWD/$1"
   local dest_file="$HOME/$(base_dest_file $1)"
   local dest_dir="$(dirname $dest_file)"
@@ -78,7 +78,7 @@ function link_file() {
 export -f link_file
 
 # Links all files.
-function link_files() {
+link_files() {
   printf "Linking dotfiles...\n"
 
   for file in $(home_files); do
@@ -92,7 +92,7 @@ export -f link_files
 # Checks a file for changes.
 # Parameters:
 # $1 = The file name.
-function check_file() {
+check_file() {
   local source_file="$1"
   local dest_file="$HOME/$(base_dest_file $1)"
 
@@ -107,7 +107,7 @@ function check_file() {
 export -f check_file
 
 # Checks all files for changes.
-function check_files() {
+check_files() {
   printf "Checking dotfiles for changes...\n"
 
   for file in $(home_files); do
@@ -121,7 +121,7 @@ export -f check_files
 # Delete file.
 # Parameters:
 # $1 = The file name.
-function delete_file() {
+delete_file() {
   local dest_file="$HOME/$(base_dest_file $1)"
   local excludes=".+(env.sh|.gemrc|.gitconfig)$"
 
@@ -136,7 +136,7 @@ function delete_file() {
 export -f delete_file
 
 # Delete files.
-function delete_files() {
+delete_files() {
   printf "Deleting dotfiles...\n"
 
   for file in $(home_files); do

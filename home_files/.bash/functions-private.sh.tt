@@ -7,7 +7,7 @@
 # Label: Print Black on White
 # Description: Prints black text on a white background.
 # Parameters: $1 (required) - Content to print.
-function _print_black_on_white() {
+_print_black_on_white() {
   local content="$1"
   printf "\e[0;30m\e[48;5;255m$content\033[m"
 }
@@ -15,7 +15,7 @@ function _print_black_on_white() {
 # Label: Clip and Print
 # Description: Copies input to clipboard and prints what what was copied (best used with a pipe).
 # Parameters: $1 (optional) - Displays "(copied to cliboard)" on a new line. Default: false.
-function _copy_and_print() {
+_copy_and_print() {
   local delimiter=${1:-' '}
   local message="$delimiter(copied to clipboard)\n"
 
@@ -25,7 +25,7 @@ function _copy_and_print() {
 # Label: Toggle Total Color
 # Description: Formats and conditionally colors the total.
 # Parameters: $1 (required) - The total, $2(required) - The label, $3 (required) - The color.
-function _toggle_total_color() {
+_toggle_total_color() {
   local total="$1"
   local label="$2"
   local color="$3"
@@ -43,14 +43,14 @@ function _toggle_total_color() {
 
 # Label: Git Commits Since Last Tag
 # Description: Answers commit history since last tag for project.
-function _git_commits_since_last_tag() {
+_git_commits_since_last_tag() {
   git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags --always)..HEAD
 }
 
 # Label: Git Commit Count Since Last Tag
 # Description: Answers commit count since last tag for project.
 # Parameters: $1 (optional) - The output prefix. Default: null., $2 (optional) - The output suffix. Default: null.
-function _git_commit_count_since_last_tag() {
+_git_commit_count_since_last_tag() {
   local prefix="$1"
   local suffix="$2"
   local count=$(_git_commits_since_last_tag | wc -l | xargs -n 1)
@@ -82,7 +82,7 @@ function _git_commit_count_since_last_tag() {
 # Label: Git Stash
 # Description: Enhances default git stash behavior by prompting for input (multiple) or using last stash (single).
 # Parameters: $1 (required) - The git stash command to execute, $2 (required) - The prompt label (for multiple stashes).
-function _process_git_stash() {
+_process_git_stash() {
   # Convert arguments into readable variables.
   local stash_command="$1"
   local prompt_label="$2"
@@ -91,7 +91,7 @@ function _process_git_stash() {
   local ifs_original=$IFS
   IFS=$'\n'
 
-  # Store existing stashes (if any) as an array. See the public, "gashl" function for details.
+  # Store existing stashes (if any) as an array. See the public, "gashl" for details.
   stashes=($(gashl))
 
   # Ask which stash to show when multiple stashes are detected, otherwise show the existing stash.
@@ -123,7 +123,7 @@ function _process_git_stash() {
 
 # Label: GitHub URL
 # Description: Answers the GitHub URL for current project.
-function _gh_url() {
+_gh_url() {
   git remote -v | \
     grep git@github.com | \
     grep fetch | \
@@ -136,7 +136,7 @@ function _gh_url() {
 # Label: Process GitHub Option
 # Description: Processes option selection for viewing the remote GitHub repository.
 # Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
-function _process_gh_option() {
+_process_gh_option() {
   case $1 in
     'o')
       open $(_gh_url)
@@ -194,7 +194,7 @@ function _process_gh_option() {
 # Label: Run Rails Command
 # Description: Runs a Rails command with smart detection of current environment.
 # Parameters: $1 (required) - The command to run, $2(optional) - Additional arguments
-function _run_rails_command() {
+_run_rails_command() {
   local rails_command=$1
   local rails_options=$2
 
@@ -216,7 +216,7 @@ function _run_rails_command() {
 # Label: Create Rails Skeleton
 # Description: Creates a new rails applications skeleton.
 # Parameters: $1 (required) - The application name, $2 (optional) - The build options to apply.
-function _create_rails_skeleton() {
+_create_rails_skeleton() {
   printf "rails new $1 $2\n"
   rails new $1 $2
 }
@@ -224,7 +224,7 @@ function _create_rails_skeleton() {
 # Label: Process Rew Option
 # Description: Processes option selection for constructing new Rails application skeletons with custom build settings.
 # Parameters: $1 (required) - The application name, $2 (required) - The template to apply.
-function _process_rew_option() {
+_process_rew_option() {
   local flags="--skip-bundle --database sqlite3 --skip-test-unit --force --skip-keeps --template"
   local rails_slim_remote_options="$flags https://raw.github.com/bkuhlmann/rails_slim_template/master/template.rb"
   local rails_slim_local_options="$flags $HOME/Dropbox/Development/OSS/rails_slim_template/template.rb"
@@ -259,18 +259,18 @@ function _process_rew_option() {
 # Section: Dotfiles #
 #-------------------#
 
-function _print_section() {
+_print_section() {
   if [[ "$1" == "# Section:"* ]]; then
     local section=$(printf "$1" | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
     printf "##### $section\n"
   fi
 }
 
-function _print_alias() {
+_print_alias() {
   echo "$1" | sed 's/alias //' | sed 's/="/ = "/' | sed "s/='/ = '/"
 }
 
-function _print_aliases() {
+_print_aliases() {
   while read line; do
     _print_section "$line"
 
@@ -281,30 +281,30 @@ function _print_aliases() {
   done < "$HOME/.bash/aliases.sh"
 }
 
-function _print_function_name() {
-  local name=$(printf "$1" | sed 's/function //' | sed 's/() {//')
+_print_function_name() {
+  local name=$(printf "$1" | sed 's///' | sed 's/() {//')
   printf "$name = $2 - $3\n"
 }
 
-function _set_function_label() {
+_set_function_label() {
   if [[ "$1" == "# Label:"* ]]; then
     label=$(printf "$1" | sed 's/# Label://' | sed 's/^ *//g')
   fi
 }
 
-function _set_function_description() {
+_set_function_description() {
   if [[ "$line" == "# Description:"* ]]; then
     description=$(printf "$line" | sed 's/# Description://' | sed 's/^ *//g')
   fi
 }
 
-function _print_functions() {
+_print_functions() {
   while read line; do
     _print_section "$line"
     _set_function_label "$line"
     _set_function_description "$line"
 
-    if [[ "$line" == "function"*"() {" && "$line" != "function _"* ]]; then
+    if [[ "$line" == "function"*"() {" && "$line" != "_"* ]]; then
       printf "    "
       _print_function_name "$line" "$label" "$description"
       unset label
@@ -313,14 +313,14 @@ function _print_functions() {
   done < "$HOME/.bash/functions-public.sh"
 }
 
-function _print_aliases_and_functions() {
+_print_aliases_and_functions() {
   printf "#### Aliases\n\n"
   _print_aliases
   printf "\n#### Functions\n\n"
   _print_functions
 }
 
-function _find_alias() {
+_find_alias() {
   while read line; do
     if [[ "$line" == "alias "*"$1"* ]]; then
       printf "    Alias: "
@@ -329,12 +329,12 @@ function _find_alias() {
   done < "$HOME/.bash/aliases.sh"
 }
 
-function _find_function() {
+_find_function() {
   while read line; do
     _set_function_label "$line"
     _set_function_description "$line"
 
-    if [[ "$line" == "function "*"$1"* ]]; then
+    if [[ "$line" == ""*"$1"* ]]; then
       printf "    Function: "
       _print_function_name "$line" "$label" "$description"
       unset label
@@ -343,12 +343,12 @@ function _find_function() {
   done < "$HOME/.bash/functions-public.sh"
 }
 
-function _find_command() {
+_find_command() {
   if [[ "$1" ]]; then
     printf "\"$1\" Search Results:\n"
 
     _find_alias "$1"
-    _find_function "$1"
+    _find_"$1"
   else
     printf "ERROR: Nothing to search for. Criteria must be supplied.\n"
   fi
@@ -357,7 +357,7 @@ function _find_command() {
 # Label: Process Dotfiles Option
 # Description: Processes option selection for learning about dotfile aliases/functions.
 # Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
-function _process_dots_option() {
+_process_dots_option() {
   case $1 in
     'a')
       _print_aliases | more

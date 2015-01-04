@@ -7,7 +7,7 @@
 # Label: Tabs to Spaces
 # Description: Converts a file from tab to space indendation.
 # Parameters: $1 (required) - The file to convert, $2 (optional) - The number of spaces, default: 2.
-function t2s() {
+t2s() {
   if [[ "$2" ]]; then
     local number_of_spaces=$2
   else
@@ -32,7 +32,7 @@ function t2s() {
 # Label: lessi
 # Description: Interactively inspect a file (typically a log).
 # Parameters: $1 (required) - The file path.
-function lessi() {
+lessi() {
   if [[ "$1" ]]; then
     less +F --LONG-PROMPT --LINE-NUMBERS --RAW-CONTROL-CHARS --QUIET --quit-if-one-screen -i "$1"
   else
@@ -48,7 +48,7 @@ function lessi() {
 # Label: Curl Inspect
 # Description: Inspect remote file, via curl, within default editor.
 # Parameters: $1 (required) - The URL.
-function curli() {
+curli() {
   if [[ "$1" ]]; then
     local file=$(mktemp -t suspicious_curl_file) || { printf "ERROR: Unable to create temporary file.\n"; return; }
     curl --fail --silent --show-error --location "$1" > $file || { printf "Failed to curl file.\n"; return; }
@@ -66,7 +66,7 @@ function curli() {
 # Label: Port
 # Description: Lists file activity on a given port.
 # Parameters: $1 (required) - The port number.
-function port() {
+port() {
   if [[ "$1" ]]; then
     sudo lsof -i :$1
   else
@@ -80,7 +80,7 @@ function port() {
 
 # Label: Git Init (all)
 # Description: Initializes/re-initializes for all Git repositories in current directory.
-function gia() {
+gia() {
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -96,13 +96,13 @@ function gia() {
 
 # Label: Git Root
 # Description: Changes repository root directory (regardless of current depth).
-function groot() {
+groot() {
   cd "$(dirname $(git rev-parse --git-dir))"
 }
 
 # Label: Git Info
 # Description: Prints repository project overview information.
-function ginfo() {
+ginfo() {
   printf "$(_print_black_on_white ' Local Configuration (.git/config) ')\n\n"
   git config --local --list
 
@@ -144,7 +144,7 @@ function ginfo() {
 
 # Label: Git Churn
 # Description: Answers the commit churn for project files (sorted highest to lowest).
-function ghurn() {
+ghurn() {
   git log --all --find-renames --find-copies --name-only --format='format:' "$@" | \
     sort | \
     grep --invert-match '^$' | \
@@ -157,14 +157,14 @@ function ghurn() {
 
 # Label: Git Commit Count
 # Description: Answers total number of commits for current project.
-function gount() {
+gount() {
   printf "Total Commits: "
   git rev-list --count HEAD
 }
 
 # Label: Git File History
 # Description: Walks through all revisions of a file's history (with optional diff support).
-function gistory() {
+gistory() {
   local file="$1"
 
   if [[ ! -n "$file" ]]; then
@@ -214,7 +214,7 @@ function gistory() {
 # Label: Git Blame Log
 # Description: Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
 # Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
-function glamel() {
+glamel() {
   local file="$1"
   local lines="$2"
 
@@ -235,7 +235,7 @@ function glamel() {
 
 # Label: Git Authors (all)
 # Description: Answers author commit activity per project (ranked highest to lowest).
-function guthorsa() {
+guthorsa() {
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -252,7 +252,7 @@ function guthorsa() {
 
 # Label: Git Status (all)
 # Description: Answers the status of projects with uncommited/unpushed changes.
-function gsta() {
+gsta() {
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -290,7 +290,7 @@ function gsta() {
 
 # Label: Git Update
 # Description: Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
-function gup() {
+gup() {
   glf
   commits=($(git log ..@{upstream} --no-merges --reverse --pretty=format:"%H"))
   hr '-'
@@ -329,7 +329,7 @@ function gup() {
 # Label: Git Set Config Value (all)
 # Description: Sets key value for all projects in current directory.
 # Parameters: $1 (required) - The key name, $2 (required) - The key value.
-function gseta() {
+gseta() {
   if [[ "$1" && "$2" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
@@ -352,7 +352,7 @@ function gseta() {
 # Label: Git Get Config Value (all)
 # Description: Answers key value for all projects in current directory.
 # Parameters: $1 (required) - The key name.
-function ggeta() {
+ggeta() {
   if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
@@ -383,7 +383,7 @@ function ggeta() {
 # Label: Git Unset (all)
 # Description: Unsets key value for all projects in current directory.
 # Parameters: $1 (required) - The key name.
-function gunseta() {
+gunseta() {
   if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
@@ -407,13 +407,13 @@ function gunseta() {
 # Label: Git Email Set (all)
 # Description: Sets user email for all projects in current directory.
 # Parameters: $1 (required) - The email address.
-function gailsa() {
+gailsa() {
   gseta "user.email" "$1"
 }
 
 # Label: Git Email Get
 # Description: Answers user email for current project.
-function gail() {
+gail() {
   if [[ -d ".git" ]]; then
     git config user.email
   fi
@@ -421,14 +421,14 @@ function gail() {
 
 # Label: Git Email Get (all)
 # Description: Answers user email for all projects in current directory.
-function gaila() {
+gaila() {
   ggeta "user.email"
 }
 
 # Label: Git Since
 # Description: Answers a summarized list of Git activity since date/time for all projects in current directory.
 # Parameters: $1 (required) - The date/time since value, $2 (optional) - The date/time until value, $3 (optional) - The commit author.
-function gince() {
+gince() {
   if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
@@ -452,37 +452,37 @@ function gince() {
 
 # Label: Git Day
 # Description: Answers a summarized list of Git current day activity for all projects in current directory.
-function gday() {
+gday() {
   gince "12am"
 }
 
 # Label: Git Week
 # Description: Answers a summarized list of Git current week activity for all projects in current directory.
-function gweek() {
+gweek() {
   gince "last Monday 12am"
 }
 
 # Label: Git Month
 # Description: Answers a summarized list of Git current month activity for all projects in current directory.
-function gmonth() {
+gmonth() {
   gince "month 1 12am"
 }
 
 # Label: Git Standup
 # Description: Answers a summarized list of Git activity since yesterday for all projects in current directory.
-function gsup() {
+gsup() {
   gince "yesterday.midnight" "midnight" $(git config user.name)
 }
 
 # Label: Git Tail
 # Description: Answers commit history since last tag for current project and copies results to clipboard.
-function gtail() {
+gtail() {
   _git_commits_since_last_tag | _copy_and_print "\n"
 }
 
 # Label: Git Tail (all)
 # Description: Answers commit history count since last tag for all projects in current directory.
-function gtaila() {
+gtaila() {
   # Iterate through root project directories.
   while read project; do
     (
@@ -500,37 +500,37 @@ function gtaila() {
 
 # Label: Git Stash List
 # Description: Lists stashes (if any).
-function gashl() {
+gashl() {
   git stash list --pretty=format:'%C(yellow)%gd%C(reset) %s'
 }
 
 # Label: Git Stash Show
 # Description: Shows stash or prompts for stash to show.
-function gashs() {
+gashs() {
   _process_git_stash "show" "Git Stash Show Options (select stash to show)"
 }
 
 # Label: Git Stash Diff
 # Description: Diffs stash or prompts for stash to diff.
-function gashdif() {
+gashdif() {
   _process_git_stash "show -p" "Git Stash Diff Options (select stash to diff)"
 }
 
 # Label: Git Stash Pop
 # Description: Pops stash or prompts for stash to pop.
-function gashp() {
+gashp() {
   _process_git_stash "pop" "Git Stash Pop Options (select stash to pop)"
 }
 
 # Label: Git Stash Drop
 # Description: Drops stash or prompts for stash to drop.
-function gashd() {
+gashd() {
   _process_git_stash "drop" "Git Stash Drop Options (select stash to drop)"
 }
 
 # Label: Git Stash (all)
 # Description: Answers stash count for all projects within current directory.
-function gasha() {
+gasha() {
   # Iterate through root project directories.
   while read project; do
     (
@@ -550,7 +550,7 @@ function gasha() {
 
 # Label: Git Upstream Commit Count (all)
 # Description: Answers upstream commit count (if any) since last pull for all projects in current directory.
-function gucca() {
+gucca() {
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -572,7 +572,7 @@ function gucca() {
 
 # Label: Git Pull (all)
 # Description: Pulls down new changes (if any) from remote branch for all projects in current directory.
-function gpua() {
+gpua() {
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -595,7 +595,7 @@ function gpua() {
 
 # Label: Git Push (all)
 # Description: Pushes changes for all projects within current directory.
-function gpa() {
+gpa() {
   while read project; do
     (
       cd "$project"
@@ -613,7 +613,7 @@ function gpa() {
 
 # Label: Git Add (all)
 # Description: Applies file changes (including new files) for all projects within current directory.
-function galla() {
+galla() {
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -634,7 +634,7 @@ function galla() {
 # Label: Git Commit with Message (all)
 # Description: Commits changes (modified and new), with a message, for all projects within current directory.
 # Parameters: $1 (required) - The commit message.
-function gcama() {
+gcama() {
   if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
@@ -658,7 +658,7 @@ function gcama() {
 # Label: Git Commit and Push (all)
 # Description: Commits and pushes changes for all projects within current directory.
 # Parameters: $1 (required) - The commit message.
-function gcap() {
+gcap() {
   if [[ "$1" ]]; then
     # Iterate project directories located in root directory.
     while read project; do
@@ -682,7 +682,7 @@ function gcap() {
 # Label: Git Rebase (interactive)
 # Description: Rebase commits, interactively (i.e. reword, fix, squash, etc.).
 # Parameters: $1 (optional) - The number of previous commits to rebase. Default: @{upstream}.
-function gri() {
+gri() {
   local commits="$1"
 
   if [[ -n "$commits" ]]; then
@@ -695,7 +695,7 @@ function gri() {
 # Label: Git Branch Create
 # Description: Creates and switches to local branch.
 # Parameters: $1 (required) - The branch name.
-function gbc() {
+gbc() {
   if [[ "$1" ]]; then
     git branch "$1"
     git checkout "$1"
@@ -707,7 +707,7 @@ function gbc() {
 
 # Label: Git Branch Switch
 # Description: Switch between local branches.
-function gbs() {
+gbs() {
   # Only process projects that are Git-enabled.
   if [[ -d ".git" ]]; then
     local branches=()
@@ -750,7 +750,7 @@ function gbs() {
 # Label: Git Branch Delete
 # Description: Deletes local and remote branch (if found).
 # Parameters: $1 (required) - The branch name.
-function gbd() {
+gbd() {
   # Only process projects that are Git-enabled.
   if [[ -d ".git" ]]; then
     local branches=()
@@ -812,7 +812,7 @@ function gbd() {
 
 # Label: Git Branch Delete Merged
 # Description: Deletes locally merged branches (if any).
-function gbdm() {
+gbdm() {
   local branches=$(git branch --merged | grep --invert-match "\* master" | xargs -n 1)
   for branch in $branches; do
     git branch -D "$branch"
@@ -822,7 +822,7 @@ function gbdm() {
 # Label: Git Tag Delete
 # Description: Deletes local and remote tag (if found).
 # Parameters: $1 (required) - The tag name.
-function gtagd() {
+gtagd() {
   if [[ "$1" ]]; then
     read -p "You are about to delete the '$1' tag from local and remote repositories. Continue (y/n)?: " response
     if [[ "$response" == 'y' ]]; then
@@ -849,7 +849,7 @@ function gtagd() {
 
 # Label: Git Hook Delete
 # Description: Deletes all Git hooks for current project.
-function ghd() {
+ghd() {
   if [[ -d ".git" ]]; then
     (
       cd .git/hooks
@@ -861,7 +861,7 @@ function ghd() {
 
 # Label: Git Hook Delete (all)
 # Description: Deletes all Git hooks for all projects in current directory.
-function ghda() {
+ghda() {
   while read project; do
     (
       cd "$project"
@@ -879,7 +879,7 @@ function ghda() {
 
 # Label: Git Verify and Clean
 # Description: Verifies and cleans Git objects for current project.
-function gvac() {
+gvac() {
   printf "Verifying connectivity and validity of the objects in Git database...\n\n"
   git fsck
 
@@ -889,7 +889,7 @@ function gvac() {
 
 # Label: Git Verify and Clean (all)
 # Description: Verifies and cleans Git objects for all projects in current directory.
-function gvaca() {
+gvaca() {
   while read project; do
     (
       cd "$project"
@@ -909,7 +909,7 @@ function gvaca() {
 # Label: GitHub
 # Description: View current GitHub project commits, branches, tags, etc. in default browser.
 # Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
-function gh() {
+gh() {
   if [[ -d ".git" ]]; then
     while true; do
       if [[ $# == 0 ]]; then
@@ -945,7 +945,7 @@ function gh() {
 
 # Label: Bundler Jobs
 # Description: Answers maximum Bundler job limit for current machine and automatically sets it if otherwise.
-function bj() {
+bj() {
   if command -v sysctl > /dev/null; then
     local computer_name=$(scutil --get ComputerName)
     local max_jobs=$((`sysctl -n hw.ncpu` - 1))
@@ -970,7 +970,7 @@ function bj() {
 
 # Label: Bundle Outdated (all)
 # Description: Answers a list of outdated gems for all projects within current directory.
-function boa() {
+boa() {
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -995,7 +995,7 @@ function boa() {
 
 # Label: Bundle Update (all)
 # Description: Updates gems for all projects within current directory.
-function bua() {
+bua() {
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -1019,7 +1019,7 @@ function bua() {
 
 # Label: Bundle Clean (all)
 # Description: Cleans all projects of gem artifacts (i.e. pkg folder).
-function bca() {
+bca() {
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -1042,7 +1042,7 @@ function bca() {
 
 # Label: Bundle Execute Rake
 # Description: Executes Rake via binstub or Bundler.
-function ber() {
+ber() {
   if [[ -e bin/rake ]]; then
     bin/rake $@
   else
@@ -1052,7 +1052,7 @@ function ber() {
 
 # Label: Bundle Execute Rake Test
 # Description: Executes a single Test::Unit test via binstub or Bundler.
-function bertt() {
+bertt() {
   if [[ "$1" ]]; then
     ber test TEST="$1"
   else
@@ -1062,7 +1062,7 @@ function bertt() {
 
 # Label: Bundle Execute RSpec
 # Description: Executes RSpec via binstub or Bundler.
-function bes() {
+bes() {
   if [[ -e bin/rspec ]]; then
     bin/rspec $@
   else
@@ -1072,7 +1072,7 @@ function bes() {
 
 # Label: Bundle Execute RSpec (all)
 # Description: Executes RSpec via binstub or Bundler for all projects within current directory.
-function bessa() {
+bessa() {
   # Iterate project directories located in root directory.
   while read project; do
     (
@@ -1108,7 +1108,7 @@ function bessa() {
 
 # Label: Bundle Execute Guard
 # Description: Executes Guard via binstub or Bundler.
-function beg() {
+beg() {
   if [[ -e bin/guard ]]; then
     bin/guard $@
   else
@@ -1118,7 +1118,7 @@ function beg() {
 
 # Label: Bundle Execute Capistrano
 # Description: Executes Capistrano via binstub or Bundler.
-function bec() {
+bec() {
   if [[ -e bin/cap ]]; then
     bin/cap $@
   else
@@ -1133,7 +1133,7 @@ function bec() {
 # Label: Ruby Upgrade (all)
 # Description: Upgrades all Ruby projects in current directory with new Ruby version information.
 # Parameters: $1 (required) - The new version to upgrade to. Example: 2.0.0-p0.
-function rua() {
+rua() {
   if [[ "$1" ]]; then
     while read project; do
       (
@@ -1163,7 +1163,7 @@ function rua() {
 # Label: Ruby Server
 # Description: Serves web content from current directory via WEBrick.
 # Parameters: $1 (optional) - The port. Default: 3030.
-function rserv() {
+rserv() {
   local default_port=3030
   local custom_port=$1
 
@@ -1177,7 +1177,7 @@ function rserv() {
 # Label: Rails New
 # Description: Builds a new rails application skeleton for selected template.
 # Parameters: $1 (required) - The Rails application name, $2 (optional) - The template to apply.
-function rew() {
+rew() {
   if [[ "$1" ]]; then
     while true; do
       if [[ $2 ]]; then
@@ -1203,25 +1203,25 @@ function rew() {
 
 # Label: Rails Script Console
 # Description: Launches the Rails console.
-function sc() {
+sc() {
   _run_rails_command "console" "$*"
 }
 
 # Label: Rails Script Server
 # Description: Launches the Rails server.
-function ss() {
+ss() {
   _run_rails_command "server" "$*"
 }
 
 # Label: Rails Script Generator
 # Description: Launches a Rails generator for controller, model, etc. scaffolds.
-function sg() {
+sg() {
   _run_rails_command "generate" "$*"
 }
 
 # Label: Rails Script Database Console
 # Description: Launches the Rails database console for direct access to the current application database.
-function sdb() {
+sdb() {
   _run_rails_command "dbconsole" "$*"
 }
 
@@ -1232,7 +1232,7 @@ function sdb() {
 # Label: Travis CI Encrypt (all)
 # Description: Encrypts a string for all Travis CI-enabled (.travis.yml) projects in current directory.
 # Parameters: $1 (required) - The key to add, $2 (require) - The value to encrypt.
-function tcie() {
+tcie() {
   if [[ -z "$1" ]]; then
     printf "ERROR: Encryption key must be supplied. Example: notifications.slack.\n"
     return 0
@@ -1262,7 +1262,7 @@ function tcie() {
 # Label: Site Validator
 # Description: Generates a validation report for a site using the W3C Validator.
 # Parameters: $1 (required) - The site URL, $2 (optional) - The report file path/name.
-function sv() {
+sv() {
   if [[ $(command -v site_validator) ]]; then
     if [[ "$1" ]]; then
       if [[ "$2" ]]; then
@@ -1287,7 +1287,7 @@ function sv() {
 # Label: Sketch
 # Description: Converts a photo into a sketch. Inspired by [Whiteboard Cleaner Gist](https://gist.github.com/lelandbatey/8677901).
 # Parameters: $1 (required) - The input image path, $2 (optional) - The output image path. Default: sketch.jpg.
-function sketch() {
+sketch() {
   local input_path="$1"
   local output_path="$2"
 
@@ -1312,7 +1312,7 @@ function sketch() {
 # Label: Gifize
 # Description: Converts a video into an animated GIF.
 # Parameters: $1 (required) - The source video input path, $2 (required) - The animated gif output path.
-function gifize() {
+gifize() {
   local input_path="$1"
   local output_path="$2"
   local temp_path=/tmp/gifize.gif
@@ -1334,7 +1334,7 @@ function gifize() {
 # Label: Dotfiles
 # Description: Informational utility for learning more about dotfile aliases, functions, etc.
 # Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
-function dots() {
+dots() {
   while true; do
     if [[ $# == 0 ]]; then
       printf "\nUsage: dots OPTION\n"

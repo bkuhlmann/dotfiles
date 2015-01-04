@@ -3,7 +3,7 @@
 # Label: Scan Code
 # Description: Scans for invalid code.
 # Parameters: $1 (required) - Label, $2 (required) - Message, $3 (required) - File regex, $4 (required) - Search regex.
-function _scan_code() {
+_scan_code() {
   local label="$1"
   local message="$2"
   local file_regex=$3
