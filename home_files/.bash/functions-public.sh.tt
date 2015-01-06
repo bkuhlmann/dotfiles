@@ -186,7 +186,7 @@ gistory() {
     local previous_commit=''
 
     for commit in "${commits[@]}"; do
-      git show --stat --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" $commit -- "$file"
+      _git_show_formatted_stats $commit -- "$file"
 
       printf "\n"
       read -p "View diff (y = yes, n = no, q = quit)? " response
@@ -229,8 +229,7 @@ glamel() {
     local blame_hashes=$(git blame -l "$file" | awk '{print $1}')
   fi
 
-  local log_format="%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b"
-  git show --stat --pretty=format:"$log_format" $blame_hashes
+  _git_show_formatted_stats $blame_hashes
 }
 
 # Label: Git Authors (all)
@@ -300,7 +299,7 @@ gup() {
     hr '-'
 
     for commit in "${commits[@]}"; do
-      git show --stat --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" $commit
+      _git_show_formatted_stats $commit
 
       printf "\n"
       read -p "View Diff (y = yes, n = no, q = quit)? " response
