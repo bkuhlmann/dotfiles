@@ -300,7 +300,7 @@ gup() {
     hr '-'
 
     for commit in "${commits[@]}"; do
-      git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" --number 1 $commit
+      git show --stat --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" $commit
 
       printf "\n"
       read -p "View Diff (y = yes, n = no, q = quit)? " response
