@@ -183,9 +183,13 @@ gistory() {
   printf "\n"
 
   if [[ "$response" == 'y' ]]; then
+    local counter=1
     local previous_commit=''
 
     for commit in "${commits[@]}"; do
+      printf "[$counter/${#commits[@]}] "
+      counter=$((counter + 1))
+
       _git_show_formatted_stats $commit -- "$file"
 
       printf "\n"
@@ -298,7 +302,11 @@ gup() {
     printf "You are behind by ${#commits[*]} commits.\n"
     hr '-'
 
+    local counter=1
     for commit in "${commits[@]}"; do
+      printf "[$counter/${#commits[@]}] "
+      counter=$((counter + 1))
+
       _git_show_formatted_stats $commit
 
       printf "\n"
