@@ -294,7 +294,9 @@ gsta() {
 # Label: Git Update
 # Description: Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
 gup() {
-  glf
+  git fetch --quiet
+  git log ..@{upstream} --no-merges --reverse --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"
+
   commits=($(git log ..@{upstream} --no-merges --reverse --pretty=format:"%H"))
   hr '-'
 
