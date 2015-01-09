@@ -126,6 +126,7 @@ alias bzc="tar --use-compress-program=pigz --create --preserve-permissions --bzi
 alias bzx="tar --extract --bzip2 --verbose --file"
 
 # Section: [PostgreSQL](http://www.postgresql.org)
+alias pgi="initdb /usr/local/var/postgres"
 alias pgst="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start &"
 alias pgsp="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
