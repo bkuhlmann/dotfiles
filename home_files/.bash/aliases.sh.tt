@@ -130,6 +130,10 @@ alias pgi="initdb /usr/local/var/postgres"
 alias pgst="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start &"
 alias pgsp="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
+# Section: [Redis](http://redis.io)
+alias reds="redis-server /usr/local/etc/redis.conf &"
+alias redc="redis-cli"
+
 # Section: [rbenv](https://github.com/sstephenson/rbenv)
 alias rb="rbenv"
 alias rbg="rbenv global"
