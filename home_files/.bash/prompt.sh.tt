@@ -2,7 +2,7 @@
 
 # The following was inspired by the original Powerline port by Riobard Zhan (https://github.com/riobard/bash-powerline).
 
-__powerline() {
+_powerline() {
   # Unicode symbols
   readonly OS_DARWIN_SYMBOL=''
   readonly OS_LINUX_SYMBOL='$'
@@ -24,7 +24,7 @@ __powerline() {
       readonly OS_SYMBOL=$OS_OTHER_SYMBOL
   esac
 
-  __git_info() {
+  _git_info() {
     # Get current branch name or short SHA1 hash for detached head.
     local branch="$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --always 2>/dev/null)"
     [ -n "$branch" ] || return  # Git branch not found.
@@ -59,7 +59,7 @@ __powerline() {
 
     if [[ -d .git ]]; then
       PS1+="\[$SLATE_BACKGROUND\] $(gail) \[$NORMAL\]" # Git Email.
-      PS1+="\[$BLUE_BACKGROUND\]$(__git_info)\[$NORMAL\]" # Git Info.
+      PS1+="\[$BLUE_BACKGROUND\]$(_git_info)\[$NORMAL\]" # Git Info.
     fi
 
     PS1+="\[$BG_EXIT\] $OS_SYMBOL \[$NORMAL\] "
@@ -68,5 +68,5 @@ __powerline() {
   PROMPT_COMMAND=ps1
 }
 
-__powerline
-unset __powerline
+_powerline
+unset _powerline
