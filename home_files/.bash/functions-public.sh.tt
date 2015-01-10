@@ -179,16 +179,20 @@ gistory() {
     return
   fi
 
+  printf "Commit Summary:\n"
+  hr '-'
   git log --reverse --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ${commits[@]} -- "$file"
 
-  read -p "${#commits[*]} commits detected. Review each (y/n)? " response
-  printf "\n"
+  hr '-'
+  read -p "Commit Review (${#commits[*]}). Review each (y/n)? " response
 
   if [[ "$response" == 'y' ]]; then
     local counter=1
     local previous_commit=''
 
     for commit in "${commits[@]}"; do
+      hr '-'
+
       printf "[$counter/${#commits[@]}] "
       counter=$((counter + 1))
 
@@ -196,7 +200,6 @@ gistory() {
 
       printf "\n"
       read -p "View diff (y = yes, n = no, q = quit)? " response
-      printf "\n"
 
       if [[ "$response" == 'q' ]]; then
         break
