@@ -58,3 +58,6 @@ export PATH="$PATH:/usr/local/share/npm/bin"
 if [[ -e "$HOME/.travis/travis.sh" ]]; then
   source "$HOME/.travis/travis.sh"
 fi
+
+# Ruby on Rails (http://rubyonrails.org)
+export PATH="./bin:$PATH"
