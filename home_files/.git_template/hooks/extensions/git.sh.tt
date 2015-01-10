@@ -15,8 +15,36 @@ git_commit_message_prefix() {
   read -r first_line < $message_file
 
   if [[ ! "$first_line" =~ $match ]]; then
-    printf "$(_git_label): Invalid commit message prefix. Use only: Fixed, Removed, Added, Updated, or Refactored.\n"
+    printf "$(_git_label): Invalid commit message prefix. Use: Fixed, Removed, Added, Updated, or Refactored.\n"
     exit 1
+  fi
+}
+
+# Label: Git Commit Message Words
+# Description: Detects commit message words/phrases to avoid.
+# Reference: http://css-tricks.com/words-avoid-educational-writing.
+git_commit_message_words() {
+  local message_file="${BASH_ARGV[0]}"
+  local line_number=0
+  local matched_lines=()
+  local match="((O|o)bviously|(B|b)asically|(S|s)imply|(O|o)f course|(C|c)learly|Just|(E|e)veryone knows|However|So|Easy)"
+
+  while read line; do
+    line_number=$((line_number+1))
+
+    if [[ "$line" =~ $match ]]; then
+      matched_lines+=("$line_number: $line")
+    fi
+  done < "$message_file"
+
+  if [[ ${#matched_lines[@]} > 0 ]]; then
+    printf "$(_git_label): Commit message uses words/phrases that should be avoided:\n\n"
+
+    for line in ${matched_lines[@]}; do
+      printf "$line\n"
+    done
+
+    printf "\nCommit message should be amended and fixed.\n"
   fi
 }
 
@@ -37,7 +65,7 @@ git_commit_message_length() {
   done < "$message_file"
 
   if [[ ${#long_lines[@]} > 0 ]]; then
-    printf "$(_git_label): Commit message exceeds $line_length character line length. Lines detected:\n\n"
+    printf "$(_git_label): Commit message exceeds $line_length character line length:\n\n"
 
     for line in ${long_lines[@]}; do
       printf "$line\n"
