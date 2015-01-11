@@ -1,3 +1,26 @@
+# v14.2.0 (2015-01-11)
+
+- Fixed dotfile searching (i.e. `dots s`) so only function names are returned.
+- Fixed dotfile searching (i.e. `dots s`) to allow for full function name searches.
+- Fixed `gup` function commit detail output.
+- Fixed `gup` function to show git log summary in reverse order.
+- Updated `gistory` function to behave like the `gup` function.
+- Updated Bash prompt to use 12 hour clock with AM/PM suffix.
+- Updated `gifize` function to produce higher quality GIF images.
+- Updated `gashs` function to show detailed git stash information.
+- Updated `gashs` function to accept git diff/tool options.
+- Updated all git stash listings to add commit hash and time ago info.
+- Added commit counter for `gup` and `gistory` functions.
+- Added formatted section output to `gup` function.
+- Added commit history summary to `gistory` function.
+- Added aliases for PostgreSQL start/stop.
+- Added `pgi` alias for PostgreSQL DB initialization.
+- Added PostgreSQL functions for user creation and deletion.
+- Added Redis server start and CLI aliases.
+- Added `./bin` to .bashrc $PATH setup.
+- Added rbenv variables support.
+- Added auto-detection of words/phrases to avoid in the Git commit messages.
+
 # v14.1.0 (2015-01-03)
 
 - Updated `gup` function to safely compare previous commit.

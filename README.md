@@ -9,23 +9,26 @@ any of the *.txt files in the home_files directory. Read on to learn more.
 
 # Features
 
-- Configures the Bash shell .bashrc file.
-- Configures the Bash shell .bash_profile file.
-- Configures the .inputrc file.
-- Configures the [Vim](http://www.vim.org) .vimrc file.
-- Configures the [Git](http://git-scm.com) .gitconfig, .gitignore, and hook (i.e. ~/.git_template) files.
-- Configures the [Ruby Gems](http://docs.rubygems.org/read/chapter/11) .gemrc file.
-- Configures the Ruby IRB .irbrc file.
-- Configures the [Pry](http://pry.github.com) .pryrc file.
-- Configures the [Ruby Debugger](http://bashdb.sourceforge.net/ruby-debug.html) .rdebugrc file.
-- Configures the [Awesome Print](https://github.com/michaeldv/awesome_print) .aprc file.
-- Configures the [Xray](https://github.com/brentd/xray-rails) .xrayconfig file.
-- Configures the [Pow](http://pow.cx) .powconfig file.
-- Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) .psqlrc file.
+- Configures the Bash `.bashrc`, `.bash_profile`, and `.inputrc` files.
+- Configures the [Vim](http://www.vim.org) `.vimrc` file.
+- Configures the [Git](http://git-scm.com) `.gitconfig`, `.gitignore`, and hook (i.e. `.git_template`) files.
+- Configures the [Ruby Gems](http://docs.rubygems.org/read/chapter/11) `.gemrc` file.
+- Configures the [Ruby](https://www.ruby-lang.org) `.irbrc` file.
+- Configures the [Pry](http://pry.github.com) `.pryrc` file.
+- Configures the [Ruby Debugger](http://bashdb.sourceforge.net/ruby-debug.html) `.rdebugrc` file.
+- Configures the [Awesome Print](https://github.com/michaeldv/awesome_print) `.aprc` file.
+- Configures the [Mackup](https://github.com/lra/mackup) `.mackup.cfg` file.
+- Configures the [Pow](http://pow.cx) `.powconfig` file.
+- Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) `.psqlrc` file.
+- Configures the [Xray](https://github.com/brentd/xray-rails) `.xrayconfig` file.
 - Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
 - Adds [Bash Completion](http://bash-completion.alioth.debian.org).
-- Adds [Z](https://github.com/rupa/z) Bash support.
+- Adds [Go](http://golang.org) Bash support.
 - Adds [rbenv](https://github.com/sstephenson/rbenv) Bash support.
+- Adds [rbenv-vars](https://github.com/sstephenson/rbenv-vars) settings.
+- Adds [NPM](http://nodejs.org) Bash support.
+- Adds [Travis CI](https://travis-ci.org) Bash support.
+- Adds [Z](https://github.com/rupa/z) Bash support.
 
 # Requirements
 
@@ -39,7 +42,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v14.1.0
+    git checkout v14.2.0
 
 Master Version (unstable)
 
@@ -194,6 +197,13 @@ After install, the following files will require manual updating:
 ##### [Tar](http://www.gnu.org/software/tar/tar.html)
     bzc = "tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
     bzx = "tar --extract --bzip2 --verbose --file"
+##### [PostgreSQL](http://www.postgresql.org)
+    pgi = "initdb /usr/local/var/postgres"
+    pgst = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start &"
+    pgsp = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+##### [Redis](http://redis.io)
+    reds = "redis-server /usr/local/etc/redis.conf &"
+    redc = "redis-cli"
 ##### [rbenv](https://github.com/sstephenson/rbenv)
     rb = "rbenv"
     rbg = "rbenv global"
@@ -344,6 +354,9 @@ After install, the following files will require manual updating:
     gvaca = Git Verify and Clean (all) - Verifies and cleans Git objects for all projects in current directory.
 ##### [GitHub](https://github.com)
     gh = GitHub - View current GitHub project commits, branches, tags, etc. in default browser.
+##### [PostgreSQL](http://www.postgresql.org)
+    pguc = PostgreSQL User Create - Creates a PostgreSQL user.
+    pgud = PostgreSQL User Drop - Drops a PostgreSQL user.
 ##### [Bundler](http://gembundler.com)
     bj = Bundler Jobs - Answers maximum Bundler job limit for current machine and automatically sets it if otherwise.
     boa = Bundle Outdated (all) - Answers a list of outdated gems for all projects within current directory.
