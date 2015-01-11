@@ -521,8 +521,25 @@ gashl() {
 
 # Label: Git Stash Show
 # Description: Shows stash or prompts for stash to show.
+# Parameters: $1 (optional) - Show git diff. Default: skipped.
 gashs() {
-  _process_git_stash "_git_show_formatted_stats" "Git Stash Show Options (select stash to show)"
+  local diff_option="$1"
+
+  if [[ -n "$diff_option" ]]; then
+    case "$diff_option" in
+      'd')
+        _process_git_stash "git stash show -p" "Git Stash Diff Options (select stash to diff)";;
+      't')
+        _process_git_stash "gdt" "Git Stash Diff Options (select stash to diff)";;
+      *)
+        printf "ERROR: Invalid option. Use:\n"
+        printf "  d: Git diff.\n"
+        printf "  t: Git difftool.\n"
+        return 1;;
+    esac
+  else
+    _process_git_stash "_git_show_formatted_stats" "Git Stash Show Options (select stash to show)"
+  fi
 }
 
 # Label: Git Stash Diff
