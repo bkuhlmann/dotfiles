@@ -522,7 +522,7 @@ gashl() {
 # Label: Git Stash Show
 # Description: Shows stash or prompts for stash to show.
 gashs() {
-  _process_git_stash "git stash show" "Git Stash Show Options (select stash to show)"
+  _process_git_stash "_git_show_formatted_stats" "Git Stash Show Options (select stash to show)"
 }
 
 # Label: Git Stash Diff
