@@ -339,7 +339,7 @@ _find_function() {
     _set_function_label "$line"
     _set_function_description "$line"
 
-    if [[ "$line" == *"$1()"* ]]; then
+    if [[ "$line" == *"$1"*"()"* ]]; then
       printf "    Function: "
       _print_function_name "$line" "$label" "$description"
       unset label
