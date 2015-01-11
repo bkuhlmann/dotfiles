@@ -516,7 +516,7 @@ gtaila() {
 # Label: Git Stash List
 # Description: Lists stashes (if any).
 gashl() {
-  git stash list --pretty=format:'%C(yellow)%gd%C(reset) %s'
+  git stash list --pretty=format:'%C(magenta)%gd%C(reset) %C(yellow)%H%C(reset) %s %C(green)(%cr)%C(reset)'
 }
 
 # Label: Git Stash Show
