@@ -88,9 +88,10 @@ _git_commit_count_since_last_tag() {
 
 # Label: Git Stash
 # Description: Enhances default git stash behavior by prompting for input (multiple) or using last stash (single).
-# Parameters: $1 (required) - The git stash command to execute, $2 (required) - The prompt label (for multiple stashes).
+# Parameters: $1 (required) - The Git stash command to execute, $2 (required) - The prompt label (for multiple stashes).
 _process_git_stash() {
   local stash_command="$1"
+  local stash_index=0
   local prompt_label="$2"
   local ifs_original=$IFS
   IFS=$'\n'
@@ -99,7 +100,6 @@ _process_git_stash() {
   stashes=($(gashl))
 
   # Ask which stash to show when multiple stashes are detected, otherwise show the existing stash.
-  local git_command=''
   if [[ "${#stashes[*]}" -gt '1' ]]; then
     printf "$prompt_label:\n"
     for ((index = 0; index < ${#stashes[*]}; index++)); do
@@ -112,14 +112,14 @@ _process_git_stash() {
     local match="^[0-9]{1}$"
     if [[ "$response" =~ $match ]]; then
       printf "\n"
-      git_command="git stash $stash_command stash@{$response}"
+      stash_index="$response"
+    else
+      return 0
     fi
-  else
-    git_command="git stash $stash_command"
   fi
 
   ISF=$ifs_original
-  eval "$git_command"
+  eval "$stash_command stash@{$stash_index}"
 }
 
 #---------------------------------------#

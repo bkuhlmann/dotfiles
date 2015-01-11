@@ -522,25 +522,25 @@ gashl() {
 # Label: Git Stash Show
 # Description: Shows stash or prompts for stash to show.
 gashs() {
-  _process_git_stash "show" "Git Stash Show Options (select stash to show)"
+  _process_git_stash "git stash show" "Git Stash Show Options (select stash to show)"
 }
 
 # Label: Git Stash Diff
 # Description: Diffs stash or prompts for stash to diff.
 gashdif() {
-  _process_git_stash "show -p" "Git Stash Diff Options (select stash to diff)"
+  _process_git_stash "git stash show -p" "Git Stash Diff Options (select stash to diff)"
 }
 
 # Label: Git Stash Pop
 # Description: Pops stash or prompts for stash to pop.
 gashp() {
-  _process_git_stash "pop" "Git Stash Pop Options (select stash to pop)"
+  _process_git_stash "git stash pop" "Git Stash Pop Options (select stash to pop)"
 }
 
 # Label: Git Stash Drop
 # Description: Drops stash or prompts for stash to drop.
 gashd() {
-  _process_git_stash "drop" "Git Stash Drop Options (select stash to drop)"
+  _process_git_stash "git stash drop" "Git Stash Drop Options (select stash to drop)"
 }
 
 # Label: Git Stash (all)
