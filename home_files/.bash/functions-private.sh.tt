@@ -90,38 +90,36 @@ _git_commit_count_since_last_tag() {
 # Description: Enhances default git stash behavior by prompting for input (multiple) or using last stash (single).
 # Parameters: $1 (required) - The git stash command to execute, $2 (required) - The prompt label (for multiple stashes).
 _process_git_stash() {
-  # Convert arguments into readable variables.
   local stash_command="$1"
   local prompt_label="$2"
-
-  # Store original line break setting and temporarily switch to using new line characters instead.
   local ifs_original=$IFS
   IFS=$'\n'
 
-  # Store existing stashes (if any) as an array. See the public, "gashl" for details.
+  # Store existing stashes (if any) as an array. See public, "gashl" for details.
   stashes=($(gashl))
 
   # Ask which stash to show when multiple stashes are detected, otherwise show the existing stash.
+  local git_command=''
   if [[ "${#stashes[*]}" -gt '1' ]]; then
-    printf "\n$prompt_label:\n"
+    printf "$prompt_label:\n"
     for ((index = 0; index < ${#stashes[*]}; index++)); do
       printf "  $index: ${stashes[$index]}\n"
     done
     printf "  q: Quit/Exit.\n\n"
 
     read -p "Enter selection: " response
+
     local match="^[0-9]{1}$"
     if [[ "$response" =~ $match ]]; then
       printf "\n"
-      eval "git stash $stash_command stash@{$response}"
-      printf "\n"
+      git_command="git stash $stash_command stash@{$response}"
     fi
   else
-    eval "git stash $stash_command"
+    git_command="git stash $stash_command"
   fi
 
-  # Restore original line break setting.
   ISF=$ifs_original
+  eval "$git_command"
 }
 
 #---------------------------------------#
