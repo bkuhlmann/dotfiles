@@ -1356,19 +1356,37 @@ sketch() {
 
 # Label: Gifize
 # Description: Converts a video into an animated GIF.
-# Parameters: $1 (required) - The source video input path, $2 (required) - The animated gif output path.
+# Parameters: $1 (required) - The video input file path.
 gifize() {
   local input_path="$1"
-  local output_path="$2"
-  local temp_path=/tmp/gifize.gif
+  local output_path="${1%.*}.gif"
+  local temp_dir="/tmp/gifize"
+  local temp_pattern="$temp_dir/static-%05d.png"
 
-  if [[ -n "$input_path" && -n "$output_path" ]]; then
-    ffmpeg -i "$input_path" -pix_fmt rgb24 $temp_path
-    convert -layers Optimize $temp_path "$output_path"
-    rm -f $temp_path
-    printf "GIF Complete: $output_path\n"
+  if ! command -v convert > /dev/null; then
+    printf "ImageMagick not installed.\n"
+    return 1
+  fi
+
+  if ! command -v ffmpeg > /dev/null; then
+    printf "FFMPEG not installed.\n"
+    return 1
+  fi
+
+  if ! command -v gifsicle > /dev/null; then
+    printf "Gifsicle not installed.\n"
+    return 1
+  fi
+
+  if [[ -n "$input_path" ]]; then
+    printf "Rendering $input_path as $output_path...\n"
+    mkdir -p "$temp_dir"
+    ffmpeg -loglevel panic -i "$input_path" -r 10 -vcodec png "$temp_pattern"
+    time convert +dither -layers Optimize -resize 600x600\> "$temp_dir/static*.png"  GIF:- | gifsicle --colors 128 --delay=5 --loop --optimize=3 --multifile - > "$output_path"
+    rm -rf "$temp_dir"
+    printf "\nGIF Complete: $output_path\n"
   else
-    printf "Usage: gifize input output.\n"
+    printf "Usage: gifize example.mov.\n"
   fi
 }
 
