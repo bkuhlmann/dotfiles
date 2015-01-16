@@ -117,7 +117,6 @@ alias gel="git rm"
 alias gelc="git rm --cached" # Removes previously tracked file from index after being added to gitignore.
 alias grev="git revert" # Revert a commit.
 alias glatest="git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:short) %(refname:short)'"
-alias ggc="git fsck && git gc"
 alias grp="git remote prune origin"
 
 # Section: [Tar](http://www.gnu.org/software/tar/tar.html)
