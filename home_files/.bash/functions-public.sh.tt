@@ -299,45 +299,45 @@ gsta() {
 # Label: Git Update
 # Description: Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
 gup() {
+  git fetch --quiet
+  commits=($(git log ..@{upstream} --no-merges --reverse --pretty=format:"%H"))
+
+  if [[ ${#commits[@]} == 0 ]]; then
+    printf "All is quiet, nothing to review.\n"
+    return
+  fi
+
   printf "Commit Summary:\n"
   hr '-'
-
-  git fetch --quiet
   git log ..@{upstream} --no-merges --reverse --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"
-
-  commits=($(git log ..@{upstream} --no-merges --reverse --pretty=format:"%H"))
   hr '-'
 
-  if [[ ${#commits[@]} -gt 1 ]]; then
-    printf "Commit Review (↓${#commits[*]}):\n"
+  printf "Commit Review (↓${#commits[*]}):\n"
 
-    local counter=1
-    for commit in "${commits[@]}"; do
-      hr '-'
-      printf "[$counter/${#commits[@]}] "
-      counter=$((counter + 1))
-
-      _git_show_formatted_stats $commit
-
-      printf "\n"
-      read -p "View Diff (y = yes, n = no, q = quit)? " response
-
-      case $response in
-        'y')
-          git difftool $commit^!;;
-        'q')
-          break;;
-      esac
-    done
-
+  local counter=1
+  for commit in "${commits[@]}"; do
     hr '-'
-    read -p "Review complete. Rebase (y/n)? " response
+    printf "[$counter/${#commits[@]}] "
+    counter=$((counter + 1))
 
-    if [[ "$response" == 'y' ]]; then
-      git pull --rebase
-    fi
-  else
-    printf "All is quiet, nothing to review.\n"
+    _git_show_formatted_stats $commit
+
+    printf "\n"
+    read -p "View Diff (y = yes, n = no, q = quit)? " response
+
+    case $response in
+      'y')
+        git difftool $commit^!;;
+      'q')
+        break;;
+    esac
+  done
+
+  hr '-'
+  read -p "Review complete. Rebase (y/n)? " response
+
+  if [[ "$response" == 'y' ]]; then
+    git pull --rebase
   fi
 }
 
