@@ -542,12 +542,6 @@ gashs() {
   fi
 }
 
-# Label: Git Stash Diff
-# Description: Diffs stash or prompts for stash to diff.
-gashdif() {
-  _process_git_stash "git stash show -p" "Git Stash Diff Options (select stash to diff)"
-}
-
 # Label: Git Stash Pop
 # Description: Pops stash or prompts for stash to pop.
 gashp() {
