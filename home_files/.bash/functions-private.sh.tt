@@ -138,9 +138,48 @@ _gh_url() {
     sed -e 's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//'
 }
 
+# Label: Process GitHub Commit Option
+# Description: Processes GitHub commit option for viewing in remote repository.
+# Parameters: $1 (optional) - The commit hash.
+_process_gh_commit_option() {
+  local commit="$1"
+
+  if [[ "$commit" ]]; then
+    open "$(_gh_url)/commit/$commit"
+  else
+    open "$(_gh_url)/commits"
+  fi
+}
+
+# Label: Process GitHub Branch Option
+# Description: Processes GitHub branch option for viewing in remote repository.
+# Parameters: $1 (optional) - The option.
+_process_gh_branch_option() {
+  local option="$1"
+
+  if [[ "$option" == 'c' ]]; then
+    open "$(_gh_url)/tree/$(git rev-parse --abbrev-ref HEAD)"
+  else
+    open "$(_gh_url)/branches"
+  fi
+}
+
+# Label: Process GitHub URL Option
+# Description: Processes GitHub URL option for viewing in remote repository.
+# Parameters: $1 (optional) - The commit.
+_process_gh_url_option() {
+  local commit="$1"
+
+  if [[ "$commit" ]]; then
+    printf "$(_gh_url)/commit/$commit" | _copy_and_print
+  else
+    _gh_url | _copy_and_print
+  fi
+}
+
 # Label: Process GitHub Option
-# Description: Processes option selection for viewing the remote GitHub repository.
-# Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
+# Description: Processes GitHub option for viewing in remote repository.
+# Parameters: $1 (optional) - The first option, $2 (optional) - The second option.
 _process_gh_option() {
   case $1 in
     'o')
@@ -150,18 +189,10 @@ _process_gh_option() {
       open "$(_gh_url)/issues"
       break;;
     'c')
-      if [[ "$2" ]]; then
-        open "$(_gh_url)/commit/$2"
-      else
-        open "$(_gh_url)/commits"
-      fi
+      _process_gh_commit_option "$2"
       break;;
     'b')
-      if [[ "$2" == 'c' ]]; then
-        open "$(_gh_url)/tree/$(git rev-parse --abbrev-ref HEAD)"
-      else
-        open "$(_gh_url)/branches"
-      fi
+      _process_gh_branch_option "$2"
       break;;
     't')
       open "$(_gh_url)/tags"
@@ -182,11 +213,7 @@ _process_gh_option() {
       open "$(_gh_url)/settings"
       break;;
     'u')
-      if [[ "$2" ]]; then
-        printf "$(_gh_url)/commit/$2" | _copy_and_print
-      else
-        _gh_url | _copy_and_print
-      fi
+      _process_gh_url_option "$2"
       break;;
     'q')
       break;;
