@@ -182,7 +182,11 @@ _process_gh_option() {
       open "$(_gh_url)/settings"
       break;;
     'u')
-      _gh_url | _copy_and_print
+      if [[ "$2" ]]; then
+        printf "$(_gh_url)/commit/$2" | _copy_and_print
+      else
+        _gh_url | _copy_and_print
+      fi
       break;;
     'q')
       break;;
