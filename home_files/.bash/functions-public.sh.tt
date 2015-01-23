@@ -955,6 +955,7 @@ gh() {
         printf "  s: Open repository settings.\n"
         printf "  u: Print and copy (to clipboard) repository URL. Options:\n"
         printf "     - gh u HASH: Print and copy commit URL.\n"
+        printf "     - gh u l: Print and copy last commit URL.\n"
         printf "  q: Quit/Exit.\n\n"
         read -p "Enter selection: " response
         printf "\n"

@@ -166,12 +166,15 @@ _process_gh_branch_option() {
 
 # Label: Process GitHub URL Option
 # Description: Processes GitHub URL option for viewing in remote repository.
-# Parameters: $1 (optional) - The commit.
+# Parameters: $1 (optional) - The commit/option.
 _process_gh_url_option() {
   local commit="$1"
+  local commit_match="^([0-9a-f]{40}|[0-9a-f]{7})$"
 
-  if [[ "$commit" ]]; then
+  if [[ "$commit" =~ $commit_match ]]; then
     printf "$(_gh_url)/commit/$commit" | _copy_and_print
+  elif [[ "$commit" == 'l' ]]; then
+    printf "$(_gh_url)/commit/$(git log --pretty=format:%H -1)" | _copy_and_print
   else
     _gh_url | _copy_and_print
   fi
