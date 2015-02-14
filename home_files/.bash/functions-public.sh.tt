@@ -41,6 +41,51 @@ lessi() {
   fi
 }
 
+#-----------------------------------------#
+# Section: [OpenSSL](https://openssl.org) #
+#-----------------------------------------#
+
+# Label: sslc
+# Description: SSL Certificate (creation)
+# Parameters: $1 (required) - The domain name.
+sslc() {
+  local name="$1"
+
+  if [[ -z "$name" ]]; then
+    printf "ERROR: Domain name for SSL certificate must be supplied.\n"
+    return 0
+  fi
+
+cat > "$name.cnf" <<-EOF
+  [req]
+  distinguished_name = req_distinguished_name
+  x509_extensions = v3_req
+  prompt = no
+  [req_distinguished_name]
+  CN = *."$name"
+  [v3_req]
+  keyUsage = keyEncipherment, dataEncipherment
+  extendedKeyUsage = serverAuth
+  subjectAltName = @alt_names
+  [alt_names]
+  DNS.1 = *."$name"
+  DNS.2 = "$name"
+EOF
+
+  openssl req \
+    -new \
+    -newkey rsa:2048 \
+    -sha256 \
+    -days 3650 \
+    -nodes \
+    -x509 \
+    -keyout "$name.key" \
+    -out "$name.crt" \
+    -config "$name.cnf"
+
+  rm -f "$name.cnf"
+}
+
 #--------------------------------------#
 # Section: [curl](http://curl.haxx.se) #
 #--------------------------------------#
