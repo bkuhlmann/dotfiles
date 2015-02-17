@@ -3,5 +3,5 @@
 # Label: RSpec Focus
 # Description: Detects RSpec focus metadata.
 rspec_focus() {
-  _scan_code "[rspec]" "Focus metadata detected" 'spec.rb$' ', :focus'
+  _scan_code "[rspec]" "Focus metadata detected" 'spec.rb$' ', (:focus|focus:)'
 }
