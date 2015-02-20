@@ -59,7 +59,7 @@ git_commit_message_length() {
   while read line; do
     line_number=$((line_number+1))
 
-    if [[ ${#line} -gt $line_length ]]; then
+    if [[ ${#line} -gt $line_length && "$line" != '#'* ]]; then
       long_lines+=("$line_number: $line")
     fi
   done < "$message_file"
