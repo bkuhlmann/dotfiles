@@ -86,6 +86,18 @@ _git_commit_count_since_last_tag() {
   fi
 }
 
+# Label: Git Branch List
+# Description: Lists all branches (local/remote) including author and relative time.
+_git_branch_list() {
+  git for-each-ref --sort=-committerdate \
+                   --format='%(refname) %(color:blue bold)%(authorname) %(color:green)(%(committerdate:relative))' \
+                   refs/heads refs/remotes/origin | \
+                   sed '/HEAD/d' | \
+                   sed 's/refs\/heads\///g' | \
+                   sed 's/refs\/remotes\/origin\///g' | \
+                   sort --unique
+}
+
 # Label: Git Stash
 # Description: Enhances default git stash behavior by prompting for input (multiple) or using last stash (single).
 # Parameters: $1 (required) - The Git stash command to execute, $2 (required) - The prompt label (for multiple stashes).

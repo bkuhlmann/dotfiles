@@ -782,15 +782,10 @@ gbs() {
   # Only process projects that are Git-enabled.
   if [[ -d ".git" ]]; then
     local branches=()
+    local ifs_original=$IFS
+    IFS=$'\n'
 
-    # Store local branches (minus master) to local array.
-    branches+=($(git branch | awk '{print $1}' | cut -d'/' -f2 | sed '/\*/d'))
-
-    # Store remote branches (minus HEAD) to local array.
-    branches+=($(git branch --remotes | awk '{print $1}' | cut -d'/' -f2 | sed '/HEAD/d'))
-
-    # Sort and remove duplicate branches.
-    branches=($(for branch in "${branches[@]}"; do printf "$branch\n"; done | sort --unique))
+    branches=($(_git_branch_list))
 
     # Proceed only if there is more than one branch to select from.
     if [[ "${#branches[*]}" -gt '1' ]]; then
@@ -807,7 +802,8 @@ gbs() {
 
       local match="^([0-9]{1,2})$"
       if [[ "$response" =~ $match ]]; then
-        git checkout "${branches[$response]##*/}"
+        local branch="$(printf "${branches[$response]##*/}" | awk '{print $1}')"
+        git checkout $branch
         printf "\n"
       fi
     else
@@ -816,6 +812,8 @@ gbs() {
   else
     printf "Sorry, no branches to switch to.\n"
   fi
+
+  ISF=$ifs_original
 }
 
 # Label: Git Branch Delete
@@ -825,15 +823,10 @@ gbd() {
   # Only process projects that are Git-enabled.
   if [[ -d ".git" ]]; then
     local branches=()
+    local ifs_original=$IFS
+    IFS=$'\n'
 
-    # Store local branches (minus master) to local array.
-    branches+=($(git branch | awk '{print $1}' | cut -d'/' -f2 | sed '/\*/d'))
-
-    # Store remote branches (minus HEAD) to local array.
-    branches+=($(git branch --remotes | awk '{print $1}' | cut -d'/' -f2 | sed '/HEAD/d'))
-
-    # Sort and remove duplicate branches.
-    branches=($(for branch in "${branches[@]}"; do printf "$branch\n"; done | sort --unique))
+    branches=($(_git_branch_list))
 
     # Proceed only if there is more than one branch to select from.
     if [[ "${#branches[*]}" -gt '1' ]]; then
@@ -846,7 +839,7 @@ gbd() {
       printf "  q: Quit/Exit.\n\n"
 
       read -p "Enter selection: " response
-      local branch="${branches[$response]##*/}"
+      local branch="$(printf "${branches[$response]##*/}" | awk '{print $1}')"
       printf "\n"
 
       local match="^([0-9]{1,2})$"
@@ -879,6 +872,8 @@ gbd() {
   else
     printf "Sorry, no branches to delete.\n"
   fi
+
+  ISF=$ifs_original
 }
 
 # Label: Git Branch Delete Merged
