@@ -22,6 +22,7 @@ t2s() {
     rm -f $temp_file;
   else
     printf "ERROR: File must be supplied.\n"
+    return 1
   fi
 }
 
@@ -53,7 +54,7 @@ sslc() {
 
   if [[ -z "$name" ]]; then
     printf "ERROR: Domain name for SSL certificate must be supplied.\n"
-    return 0
+    return 1
   fi
 
 cat > "$name.cnf" <<-EOF
@@ -101,6 +102,7 @@ curli() {
     rm -f $file;
   else
     printf "ERROR: URL must be supplied.\n"
+    return 1
   fi
 }
 
@@ -274,7 +276,7 @@ glamel() {
 
   if [[ -z "$file" ]]; then
     printf "ERROR: File path must be supplied.\n"
-    return 0
+    return 1
   fi
 
   if [[ -n "$lines" ]]; then
@@ -406,6 +408,7 @@ gseta() {
     done < <(find . -type d -depth 1)
   else
     printf "ERROR: Key and value must be supplied.\n"
+    return 1
   fi
 }
 
@@ -437,6 +440,7 @@ ggeta() {
     done < <(find . -type d -depth 1)
   else
     printf "ERROR: Key must be supplied.\n"
+    return 1
   fi
 }
 
@@ -461,6 +465,7 @@ gunseta() {
     done < <(find . -type d -depth 1)
   else
     printf "ERROR: Key must be supplied.\n"
+    return 1
   fi
 }
 
@@ -507,6 +512,7 @@ gince() {
     done < <(find . -type d -depth 1)
   else
     printf "ERROR: Date/time must be supplied.\n"
+    return 1
   fi
 }
 
@@ -732,6 +738,7 @@ gcama() {
     done < <(find . -type d -depth 1)
   else
     printf "ERROR: Commit message must be supplied.\n"
+    return 1
   fi
 }
 
@@ -756,6 +763,7 @@ gcap() {
     done < <(find . -type d -depth 1)
   else
     printf "ERROR: Commit message must be supplied.\n"
+    return 1
   fi
 }
 
@@ -789,6 +797,7 @@ gbc() {
     printf "$1" | _copy_and_print
   else
     printf "ERROR: Branch name must be supplied.\n"
+    return 1
   fi
 }
 
@@ -935,6 +944,7 @@ gtagd() {
     fi
   else
     printf "ERROR: Tag name must be supplied.\n"
+    return 1
   fi
 }
 
@@ -1031,6 +1041,7 @@ gh() {
     done
   else
     printf "ERROR: Not a Git repository!\n"
+    return 1
   fi
 }
 
@@ -1048,6 +1059,7 @@ pguc() {
     createuser --interactive "$user" -P
   else
     printf "ERROR: PostgreSQL username must be supplied.\n"
+    return 1
   fi
 }
 
@@ -1061,6 +1073,7 @@ pgud() {
     dropuser --interactive "$user"
   else
     printf "ERROR: PostgreSQL username must be supplied.\n"
+    return 1
   fi
 }
 
@@ -1090,6 +1103,7 @@ bj() {
     fi
   else
     printf "ERROR: Operating system must be OSX."
+    return 1
   fi
 }
 
@@ -1182,6 +1196,7 @@ bertt() {
     ber test TEST="$1"
   else
     printf "ERROR: Missing test file path. Usage: bertt test/unit/example_test.rb.\n"
+    return 1
   fi
 }
 
@@ -1282,6 +1297,7 @@ rua() {
     done < <(find . -type d -depth 1)
   else
     printf "ERROR: Version must be supplied.\n"
+    return 1
   fi
 }
 
@@ -1323,6 +1339,7 @@ rew() {
     done
   else
     printf "ERROR: Rails application name must be supplied.\n"
+    return 1
   fi
 }
 
@@ -1360,12 +1377,12 @@ sdb() {
 tcie() {
   if [[ -z "$1" ]]; then
     printf "ERROR: Encryption key must be supplied. Example: notifications.slack.\n"
-    return 0
+    return 1
   fi
 
   if [[ -z "$2" ]]; then
     printf "ERROR: Encryption value must be supplied. Example: ra:B35GH59594BKDK.\n"
-    return 0
+    return 1
   fi
 
   while read project; do
@@ -1399,9 +1416,11 @@ sv() {
       site_validator "$1" "$report" && open "$report"
     else
       printf "ERROR: Missing web site URL. Usage: sv http://www.example.com output.html.\n"
+      return 1
     fi
   else
     printf "ERROR: Site Validator not found. To install, run: gem install site_validator.\n"
+    return 1
   fi
 }
 
@@ -1418,7 +1437,7 @@ sketch() {
 
   if [[ -z "$input_path" ]]; then
     printf "ERROR: Input image path must be supplied.\n"
-    return 0
+    return 1
   fi
 
   if [[ -z "$output_path" ]]; then
@@ -1444,17 +1463,17 @@ gifize() {
   local temp_pattern="$temp_dir/static-%05d.png"
 
   if ! command -v convert > /dev/null; then
-    printf "ImageMagick not installed.\n"
+    printf "ERROR: ImageMagick not installed.\n"
     return 1
   fi
 
   if ! command -v ffmpeg > /dev/null; then
-    printf "FFMPEG not installed.\n"
+    printf "ERROR: FFMPEG not installed.\n"
     return 1
   fi
 
   if ! command -v gifsicle > /dev/null; then
-    printf "Gifsicle not installed.\n"
+    printf "ERROR: Gifsicle not installed.\n"
     return 1
   fi
 

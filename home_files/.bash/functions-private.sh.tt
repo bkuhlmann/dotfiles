@@ -270,6 +270,7 @@ _run_rails_command() {
   # Unsupported version.
   else
     printf "ERROR: Unsupported Rails version.\n"
+    return 1
   fi
 }
 

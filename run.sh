@@ -35,4 +35,5 @@ if [[ -d "$HOME" ]]; then
   done
 else
   printf "ERROR: $HOME does not exist.\n"
+  return 1
 fi
