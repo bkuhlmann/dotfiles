@@ -537,6 +537,11 @@ gsup() {
 # Label: Git Tail
 # Description: Answers commit history since last tag for current project and copies results to clipboard.
 gtail() {
+  if [[ ! -d ".git" ]]; then
+    printf "ERROR: Not a Git repository.\n"
+    return 1
+  fi
+
   if [[ $(_git_commits_since_last_tag) ]]; then
     _git_commits_since_last_tag | _copy_and_print "\n"
   else
