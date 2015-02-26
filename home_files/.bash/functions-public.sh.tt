@@ -879,7 +879,7 @@ gbd() {
 # Label: Git Branch Delete Merged
 # Description: Deletes locally merged branches (if any).
 gbdm() {
-  if [[ $(git rev-parse --abbrev-ref HEAD) != "master" ]]; then
+  if [[ $(_git_branch_name) != "master" ]]; then
     printf "ERROR: Whoa, switch to master branch first.\n"
     return 1
   fi

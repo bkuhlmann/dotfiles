@@ -86,6 +86,12 @@ _git_commit_count_since_last_tag() {
   fi
 }
 
+# Label: Git Branch Name
+# Description: Prints Git branch name.
+_git_branch_name() {
+  git rev-parse --abbrev-ref HEAD
+}
+
 # Label: Git Branch List
 # Description: Lists all branches (local/remote) including author and relative time.
 _git_branch_list() {
@@ -170,7 +176,7 @@ _process_gh_branch_option() {
   local option="$1"
 
   if [[ "$option" == 'c' ]]; then
-    open "$(_gh_url)/tree/$(git rev-parse --abbrev-ref HEAD)"
+    open "$(_gh_url)/tree/$(_git_branch_name)"
   else
     open "$(_gh_url)/branches"
   fi
