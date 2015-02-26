@@ -5,7 +5,7 @@
 #------------------#
 
 # Label: Tabs to Spaces
-# Description: Converts a file from tab to space indendation.
+# Description: Converts file from tab to space indendation.
 # Parameters: $1 (required) - The file to convert, $2 (optional) - The number of spaces, default: 2.
 t2s() {
   if [[ "$2" ]]; then
@@ -30,7 +30,7 @@ t2s() {
 #-----------------------------------------------------------#
 
 # Label: lessi
-# Description: Interactively inspect a file (typically a log).
+# Description: Interactively inspect a file.
 # Parameters: $1 (required) - The file path.
 lessi() {
   if [[ "$1" ]]; then
@@ -46,7 +46,7 @@ lessi() {
 #-----------------------------------------#
 
 # Label: sslc
-# Description: SSL Certificate (creation)
+# Description: SSL Certificate Creation
 # Parameters: $1 (required) - The domain name.
 sslc() {
   local name="$1"
@@ -91,7 +91,7 @@ EOF
 #--------------------------------------#
 
 # Label: Curl Inspect
-# Description: Inspect remote file, via curl, within default editor.
+# Description: Inspect remote file with default editor.
 # Parameters: $1 (required) - The URL.
 curli() {
   if [[ "$1" ]]; then
@@ -124,7 +124,7 @@ port() {
 #------------------------------------#
 
 # Label: Git Init (all)
-# Description: Initializes/re-initializes for all Git repositories in current directory.
+# Description: Initializes/re-initializes all Git repositories in current directory.
 gia() {
   # Iterate project directories located in root directory.
   while read project; do
@@ -140,13 +140,13 @@ gia() {
 }
 
 # Label: Git Root
-# Description: Changes repository root directory (regardless of current depth).
+# Description: Changes to repository root directory (regardless of current depth).
 groot() {
   cd "$(dirname $(git rev-parse --git-dir))"
 }
 
 # Label: Git Info
-# Description: Prints repository project overview information.
+# Description: Prints repository overview information.
 ginfo() {
   printf "$(_print_black_on_white ' Local Configuration (.git/config) ')\n\n"
   git config --local --list
@@ -711,8 +711,8 @@ galla() {
   done < <(find . -type d -depth 1)
 }
 
-# Label: Git Commit with Message (all)
-# Description: Commits changes (modified and new), with a message, for all projects within current directory.
+# Label: Git Commit and Message (all)
+# Description: Commits changes (modified and new), with message, for all projects within current directory.
 # Parameters: $1 (required) - The commit message.
 gcama() {
   if [[ "$1" ]]; then
@@ -773,14 +773,14 @@ gri() {
 }
 
 # Label: Git Branch List
-# Description: Creates and switches to local branch.
+# Description: Lists details about local and remote branches.
 gbl() {
   local format="%(refname)|%(color:yellow)%(objectname)|%(color:reset)|%(color:blue bold)%(authorname)|%(color:green)|%(committerdate:relative)"
   _git_branch_list "$format" | column -s'|' -t
 }
 
 # Label: Git Branch Create
-# Description: Creates and switches to local branch.
+# Description: Creates and switches to branch.
 # Parameters: $1 (required) - The branch name.
 gbc() {
   if [[ "$1" ]]; then
@@ -793,7 +793,7 @@ gbc() {
 }
 
 # Label: Git Branch Switch
-# Description: Switch between local branches.
+# Description: Switches between branches.
 gbs() {
   # Only process projects that are Git-enabled.
   if [[ -d ".git" ]]; then
@@ -1047,7 +1047,7 @@ pguc() {
   if [[ -n "$user" ]]; then
     createuser --interactive "$user" -P
   else
-    printf "PostgreSQL username must be supplied.\n"
+    printf "ERROR: PostgreSQL username must be supplied.\n"
   fi
 }
 
@@ -1060,7 +1060,7 @@ pgud() {
   if [[ -n "$user" ]]; then
     dropuser --interactive "$user"
   else
-    printf "PostgreSQL username must be supplied.\n"
+    printf "ERROR: PostgreSQL username must be supplied.\n"
   fi
 }
 
@@ -1287,7 +1287,7 @@ rua() {
 
 # Label: Ruby Server
 # Description: Serves web content from current directory via WEBrick.
-# Parameters: $1 (optional) - The port. Default: 3030.
+# Parameters: $1 (optional) - The custom port. Default: 3030.
 rserv() {
   local default_port=3030
   local custom_port=$1
