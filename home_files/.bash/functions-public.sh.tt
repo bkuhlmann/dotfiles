@@ -775,7 +775,7 @@ gri() {
 # Label: Git Branch List
 # Description: Creates and switches to local branch.
 gbl() {
-  local format="%(refname)|%(color:yellow)%(objectname)|%(color:reset)%(subject)|%(color:blue bold)%(authorname)|%(color:green)|%(committerdate:relative)"
+  local format="%(refname)|%(color:yellow)%(objectname)|%(color:reset)|%(color:blue bold)%(authorname)|%(color:green)|%(committerdate:relative)"
   _git_branch_list "$format" | column -s'|' -t
 }
 
