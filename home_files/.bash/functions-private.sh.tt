@@ -94,9 +94,12 @@ _git_branch_name() {
 
 # Label: Git Branch List
 # Description: Lists all branches (local/remote) including author and relative time.
+# Parameters: $1 (optional) - The output format.
 _git_branch_list() {
+  local format=${1:-"%(refname) %(color:blue bold)%(authorname) %(color:green)(%(committerdate:relative))"}
+
   git for-each-ref --sort=-committerdate \
-                   --format='%(refname) %(color:blue bold)%(authorname) %(color:green)(%(committerdate:relative))' \
+                   --format="$format" \
                    refs/heads refs/remotes/origin | \
                    sed '/HEAD/d' | \
                    sed 's/refs\/heads\///g' | \

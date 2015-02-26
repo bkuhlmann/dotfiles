@@ -772,6 +772,13 @@ gri() {
   fi
 }
 
+# Label: Git Branch List
+# Description: Creates and switches to local branch.
+gbl() {
+  local format="%(refname)|%(color:yellow)%(objectname)|%(color:reset)%(subject)|%(color:blue bold)%(authorname)|%(color:green)|%(committerdate:relative)"
+  _git_branch_list "$format" | column -s'|' -t
+}
+
 # Label: Git Branch Create
 # Description: Creates and switches to local branch.
 # Parameters: $1 (required) - The branch name.
@@ -827,7 +834,6 @@ gbs() {
 
 # Label: Git Branch Delete
 # Description: Deletes local and remote branch (if found).
-# Parameters: $1 (required) - The branch name.
 gbd() {
   # Only process projects that are Git-enabled.
   if [[ -d ".git" ]]; then
