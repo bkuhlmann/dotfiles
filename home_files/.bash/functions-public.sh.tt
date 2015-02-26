@@ -884,10 +884,15 @@ gbdm() {
     return 1
   fi
 
-  local branches=$(git branch --merged | grep --invert-match "\* master" | xargs -n 1)
-  for branch in $branches; do
-    git branch -D "$branch"
-  done
+  local branches=($(git branch --merged | grep --invert-match "\* master" | xargs -n 1))
+
+  if [[ ${#branches[@]} > 0 ]]; then
+    for branch in $branches; do
+      git branch -D "$branch"
+    done
+  else
+    printf "All clear, no merged branches to delete.\n"
+  fi
 }
 
 # Label: Git Tag Delete
