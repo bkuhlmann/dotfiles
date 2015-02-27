@@ -598,10 +598,11 @@ gashs() {
       't')
         _process_git_stash "gdt" "Git Stash Diff Options (select stash to diff)";;
       *)
-        printf "ERROR: Invalid option. Use:\n"
+        printf "Usage: gashs OPTION\n\n"
+        printf "Available options:\n"
         printf "  d: Git diff.\n"
         printf "  t: Git difftool.\n"
-        return 1;;
+        return;;
     esac
   else
     _process_git_stash "_git_show_formatted_stats" "Git Stash Show Options (select stash to show)"
