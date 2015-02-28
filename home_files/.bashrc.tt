@@ -26,6 +26,9 @@ export HISTIGNORE="..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane
 # Command Prompt (http://jonisalonen.com/2012/your-bash-prompt-needs-this)
 . "$HOME/.bash/prompt.sh"
 
+# Homebrew (http://brew.sh)
+export PATH="/usr/local/sbin:$PATH"
+
 # Bash Completion (http://bash-completion.alioth.debian.org)
 if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
   . $(brew --prefix)/etc/bash_completion
