@@ -231,7 +231,7 @@ gistory() {
   git log --reverse --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ${commits[@]} -- "$file"
 
   hr '-'
-  read -p "Commit Review (${#commits[*]}). Review each (y/n)? " response
+  read -p "Commit Review (${#commits[@]}). Review each (y/n)? " response
 
   if [[ "$response" == 'y' ]]; then
     local counter=1
@@ -316,10 +316,10 @@ gsta() {
       if [[ -d ".git" ]]; then
         # Capture current project status info as an array.
         local results=($(git status --short --branch))
-        local size="${#results[*]}"
+        local size=${#results[@]}
 
         # Print Git activity if Git activity detected (white).
-        if [[ $size -gt '2' ]]; then
+        if [[ $size -gt 2 ]]; then
           # Remove first and second elements since they contain branch info.
           results=("${results[@]:1}")
           results=("${results[@]:1}")
@@ -359,7 +359,7 @@ gup() {
   git log ..@{upstream} --no-merges --reverse --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"
   hr '-'
 
-  printf "Commit Review (↓${#commits[*]}):\n"
+  printf "Commit Review (↓${#commits[@]}):\n"
 
   local counter=1
   for commit in "${commits[@]}"; do
@@ -820,7 +820,7 @@ gbs() {
     branches=($(_git_branch_list))
 
     # Proceed only if there is more than one branch to select from.
-    if [[ "${#branches[*]}" -gt '1' ]]; then
+    if [[ ${#branches[@]} -gt 1 ]]; then
       printf "\nSelect branch to switch to:\n"
 
       for ((index = 0; index < ${#branches[*]}; index++)); do
@@ -860,7 +860,7 @@ gbd() {
     branches=($(_git_branch_list))
 
     # Proceed only if there is more than one branch to select from.
-    if [[ "${#branches[*]}" -gt '1' ]]; then
+    if [[ ${#branches[@]} -gt 1 ]]; then
       printf "\nSelect branch to delete:\n"
 
       for ((index = 0; index < ${#branches[*]}; index++)); do

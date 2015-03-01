@@ -121,7 +121,7 @@ _process_git_stash() {
   stashes=($(gashl))
 
   # Ask which stash to show when multiple stashes are detected, otherwise show the existing stash.
-  if [[ "${#stashes[*]}" -gt '1' ]]; then
+  if [[ ${#stashes[@]} -gt 1 ]]; then
     printf "$prompt_label:\n"
     for ((index = 0; index < ${#stashes[*]}; index++)); do
       printf "  $index: ${stashes[$index]}\n"
