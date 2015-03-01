@@ -347,7 +347,7 @@ gsta() {
 # Description: Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
 gup() {
   git fetch --quiet
-  commits=($(git log ..@{upstream} --no-merges --reverse --pretty=format:"%H"))
+  commits=($(git log --reverse --no-merges --pretty=format:"%H" ..@{upstream}))
 
   if [[ ${#commits[@]} == 0 ]]; then
     printf "All is quiet, nothing to review.\n"
@@ -356,7 +356,7 @@ gup() {
 
   printf "Commit Summary:\n"
   hr '-'
-  git log ..@{upstream} --no-merges --reverse --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"
+  git log --reverse --no-merges --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ..@{upstream}
   hr '-'
 
   printf "Commit Review (↓${#commits[@]}):\n"

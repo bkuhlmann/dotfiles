@@ -51,7 +51,7 @@ _git_show_formatted_stats() {
 # Label: Git Commits Since Last Tag
 # Description: Answers commit history since last tag for project.
 _git_commits_since_last_tag() {
-  git log --oneline --format='%C(yellow)%H%Creset %s' --reverse $(git describe --abbrev=0 --tags --always)..HEAD
+  git log --oneline --reverse --format='%C(yellow)%H%Creset %s' $(git describe --abbrev=0 --tags --always)..HEAD
 }
 
 # Label: Git Commit Count Since Last Tag
