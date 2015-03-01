@@ -1084,6 +1084,20 @@ pgud() {
   fi
 }
 
+# Label: PostgreSQL Template
+# Description: Edits PostgreSQL template.
+# Parameters: $1 (required) - The username.
+pgt() {
+  local user="$1"
+
+  if [[ -n "$user" ]]; then
+    psql -U "$user" template1
+  else
+    printf "ERROR: PostgreSQL username must be supplied.\n"
+    return 1
+  fi
+}
+
 #-------------------------------------------#
 # Section: [Bundler](http://gembundler.com) #
 #-------------------------------------------#
