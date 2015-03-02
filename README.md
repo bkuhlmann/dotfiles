@@ -42,7 +42,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v14.2.0
+    git checkout v15.0.0
 
 Master Version (unstable)
 
@@ -94,6 +94,7 @@ After install, the following files will require manual updating:
     pss = 'ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
 ##### Network
     sshe = "$EDITOR $HOME/.ssh/config"
+    key = "open /Applications/Utilities/Keychain Access.app"
     ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | _copy_and_print'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
     dnsf = "sudo discoveryutil mdnsflushcache && sudo discoveryutil udnsflushcaches && printf 'DNS cache cleared.n'"
@@ -109,9 +110,12 @@ After install, the following files will require manual updating:
     hbin = "brew info"
     hbu = "brew uninstall"
     hbl = "brew list"
+    hbs = "brew search"
+    hbsw = "brew switch"
     hbup = "brew update"
     hbug = "brew upgrade"
-    hbv = "brew versions"
+    hbp = "brew pin"
+    hbpu = "brew unpin"
     hbd = "brew doctor"
     hbc = "brew cleanup"
     hbrb = "brew uninstall ruby-build && brew install --HEAD ruby-build"
@@ -122,12 +126,11 @@ After install, the following files will require manual updating:
     gget = "git config"
     gst = "git status --short --branch"
     gl = 'git log --graph --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
-    gld = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" --stat'
+    gld = 'git log --stat --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b"'
     glh = 'git log --pretty=format:%H -1 | _copy_and_print'
-    gln = "git log --name-status"
-    glf = 'git fetch && git log ..@{upstream} --graph --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
+    glf = 'git fetch && git log --reverse --no-merges --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ..@{upstream}'
     gls = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
-    glt = 'git log --tags --simplify-by-decoration --pretty = "format:%d (%ad)" --date=short | sed -e "s/ (tag: //" -e "s/)//" -e "/^ /d"'
+    glt = 'git log --tags --simplify-by-decoration --reverse --pretty = "format:%d (%ad)" --date=short | sed -e "s/ (tag: //" -e "s/)//" -e "/^ /d"'
     grl = "git reflog"
     gg = "git grep"
     glast = "git show --decorate --stat"
@@ -139,11 +142,10 @@ After install, the following files will require manual updating:
     gdt = "git difftool"
     gdtc = "git difftool --cached"
     gdtm = "git difftool origin/master"
-    gwc = "git whatchanged -p --pretty=medium"
     glame = "git blame"
     gb = "git branch --verbose"
     gba = "git branch --all"
-    gbn = "git rev-parse --abbrev-ref HEAD | _copy_and_print"
+    gbn = "_git_branch_name | _copy_and_print"
     gbr = "git branch --move"
     gm = "git merge"
     gms = "git merge --squash"
@@ -192,7 +194,6 @@ After install, the following files will require manual updating:
     gelc = "git rm --cached" # Removes previously tracked file from index after being added to gitignore.
     grev = "git revert" # Revert a commit.
     glatest = "git for-each-ref --sort=-committerdate refs/heads --format = '%(committerdate:short) %(refname:short)'"
-    ggc = "git fsck && git gc"
     grp = "git remote prune origin"
 ##### [Tar](http://www.gnu.org/software/tar/tar.html)
     bzc = "tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
@@ -281,6 +282,10 @@ After install, the following files will require manual updating:
 ##### [Capistrano](https://github.com/capistrano/capistrano)
     caps = "bec stage deploy"
     capp = "bec production deploy"
+##### [Node.js](http://nodejs.org)
+    nodejs! = "brew unlink iojs && brew link node && printf 'Switched: IO.js -> Node.jsn'"
+##### [IO.js](https://iojs.org)
+    iojs! = "brew unlink node && brew link --force iojs && printf 'Switched: Node.js -> IO.jsn'"
 ##### [Swift](https://developer.apple.com/swift)
     swift = "/Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
 ##### [The Silver Surfer](https://github.com/ggreer/the_silver_searcher)
@@ -299,17 +304,19 @@ After install, the following files will require manual updating:
 #### Functions
 
 ##### General
-    t2s = Tabs to Spaces - Converts a file from tab to space indendation.
+    t2s = Tabs to Spaces - Converts file from tab to space indendation.
 ##### [less](http://en.wikipedia.org/wiki/Less_(Unix))
-    lessi = lessi - Interactively inspect a file (typically a log).
+    lessi = lessi - Interactively inspect a file.
+##### [OpenSSL](https://openssl.org)
+    sslc = sslc - SSL Certificate Creation
 ##### [curl](http://curl.haxx.se)
-    curli = Curl Inspect - Inspect remote file, via curl, within default editor.
+    curli = Curl Inspect - Inspect remote file with default editor.
 ##### [lsof](http://people.freebsd.org/~abe/)
     port = Port - Lists file activity on a given port.
 ##### [Git](http://git-scm.com)
-    gia = Git Init (all) - Initializes/re-initializes for all Git repositories in current directory.
-    groot = Git Root - Changes repository root directory (regardless of current depth).
-    ginfo = Git Info - Prints repository project overview information.
+    gia = Git Init (all) - Initializes/re-initializes all Git repositories in current directory.
+    groot = Git Root - Changes to repository root directory (regardless of current depth).
+    ginfo = Git Info - Prints repository overview information.
     ghurn = Git Churn - Answers the commit churn for project files (sorted highest to lowest).
     gount = Git Commit Count - Answers total number of commits for current project.
     gistory = Git File History - Walks through all revisions of a file's history (with optional diff support).
@@ -332,7 +339,6 @@ After install, the following files will require manual updating:
     gtaila = Git Tail (all) - Answers commit history count since last tag for all projects in current directory.
     gashl = Git Stash List - Lists stashes (if any).
     gashs = Git Stash Show - Shows stash or prompts for stash to show.
-    gashdif = Git Stash Diff - Diffs stash or prompts for stash to diff.
     gashp = Git Stash Pop - Pops stash or prompts for stash to pop.
     gashd = Git Stash Drop - Drops stash or prompts for stash to drop.
     gasha = Git Stash (all) - Answers stash count for all projects within current directory.
@@ -340,11 +346,12 @@ After install, the following files will require manual updating:
     gpua = Git Pull (all) - Pulls down new changes (if any) from remote branch for all projects in current directory.
     gpa = Git Push (all) - Pushes changes for all projects within current directory.
     galla = Git Add (all) - Applies file changes (including new files) for all projects within current directory.
-    gcama = Git Commit with Message (all) - Commits changes (modified and new), with a message, for all projects within current directory.
+    gcama = Git Commit and Message (all) - Commits changes (modified and new), with message, for all projects within current directory.
     gcap = Git Commit and Push (all) - Commits and pushes changes for all projects within current directory.
     gri = Git Rebase (interactive) - Rebase commits, interactively (i.e. reword, fix, squash, etc.).
-    gbc = Git Branch Create - Creates and switches to local branch.
-    gbs = Git Branch Switch - Switch between local branches.
+    gbl = Git Branch List - Lists details about local and remote branches.
+    gbc = Git Branch Create - Creates and switches to branch.
+    gbs = Git Branch Switch - Switches between branches.
     gbd = Git Branch Delete - Deletes local and remote branch (if found).
     gbdm = Git Branch Delete Merged - Deletes locally merged branches (if any).
     gtagd = Git Tag Delete - Deletes local and remote tag (if found).
@@ -357,6 +364,7 @@ After install, the following files will require manual updating:
 ##### [PostgreSQL](http://www.postgresql.org)
     pguc = PostgreSQL User Create - Creates a PostgreSQL user.
     pgud = PostgreSQL User Drop - Drops a PostgreSQL user.
+    pgt = PostgreSQL Template - Edits PostgreSQL template.
 ##### [Bundler](http://gembundler.com)
     bj = Bundler Jobs - Answers maximum Bundler job limit for current machine and automatically sets it if otherwise.
     boa = Bundle Outdated (all) - Answers a list of outdated gems for all projects within current directory.

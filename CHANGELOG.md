@@ -1,3 +1,39 @@
+# v15.0.0 (2015-03-01)
+
+- Removed `gln` alias (use `gld` instead).
+- Removed `ggc` alias (use `gvac` instead).
+- Removed `gwc` alias (use `gup`, `glame`, `gistory`, etc instead).
+- Removed `gashdif` function (use `gashs` instead).
+- Removed `hbv` alias as `brew versions` is no longer supported.
+- Removed graph and merged commits from `glf` alias output.
+- Fixed `gup` function to only display Git activity when there is some.
+- Fixed RSpec Git hook to check for `:focus` and `focus:` keys.
+- Fixed bug with Git hook long line length detection of commented lines.
+- Fixed `gbdm` function so master branch isn't deleted when on a feature branch.
+- Fixed `gtail` function so empty output is never copied to clipboard.
+- Fixed not returning error statuses for error messages.
+- Fixed error with `gashs` function when no stash existed to be shown.
+- Updated `gh` documentation (reduced redundant information).
+- Updated the Git commit message to use less text.
+- Updated `gbs` and `gbd` functions to include branch author and relative date.
+- Updated function documentation.
+- Updated `glt` alias to sort tags in descending order.
+- Updated `glf` alias to list commmits in reverse order.
+- Added ability to copy and print commit URL to `gh` function.
+- Added ability to print and copy last commit to `gh` function.
+- Added `iojs!` and `nodejs!` aliases for toggling between the two.
+- Added `key` alias for quickly accessing the OSX Keychain.
+- Added `sslc` function for creating SSL certificates.
+- Added the `hbsw` alias for `brew switch`.
+- Added `hbs` alias for `brew search`.
+- Added aliases `hbp` and `hbpu` for `brew pin/unpin` respectively.
+- Added `gbdm` function status message when there are no merged branches to delete.
+- Added `gtail` error message when using on a non-Git repository.
+- Added `gbl` function for listing Git branch information.
+- Added usage text when displaying `gashs` options.
+- Added Homebrew sbin to PATH.
+- Added `pgt` function for editing PostgreSQL template1.
+
 # v14.2.0 (2015-01-11)
 
 - Fixed dotfile searching (i.e. `dots s`) so only function names are returned.
