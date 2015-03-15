@@ -15,6 +15,7 @@ source $HOME/.git_template/hooks/extensions/bundler.sh
 source $HOME/.git_template/hooks/extensions/java_script.sh
 source $HOME/.git_template/hooks/extensions/pry.sh
 source $HOME/.git_template/hooks/extensions/rspec.sh
+source $HOME/.git_template/hooks/extensions/jasmine.sh
 
 # EXECUTION
 gemfile_path
@@ -23,3 +24,4 @@ java_script_console
 java_script_alert
 pry_binding
 rspec_focus
+jasmine_focus
