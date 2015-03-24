@@ -344,9 +344,9 @@ gsta() {
 }
 
 # Label: Git Update
-# Description: Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
+# Description: Fetches commits, prunes untracked references, reviews each commit (optional, with diff), and rebases (optional).
 gup() {
-  git fetch --quiet
+  git fetch --prune --quiet
   commits=($(git log --reverse --no-merges --pretty=format:"%H" ..@{upstream}))
 
   if [[ ${#commits[@]} == 0 ]]; then
