@@ -350,8 +350,8 @@ gup() {
   commits=($(git log --reverse --no-merges --pretty=format:"%H" ..@{upstream}))
 
   if [[ ${#commits[@]} == 0 ]]; then
-    printf "All is quiet, nothing to review.\n"
-    return
+    printf "All is quiet, nothing to update.\n"
+    return 0
   fi
 
   printf "Commit Summary:\n"
@@ -381,7 +381,7 @@ gup() {
   done
 
   hr '-'
-  read -p "Review complete. Rebase (y/n)? " response
+  read -p "Commit Rebase (y/n)? " response
 
   if [[ "$response" == 'y' ]]; then
     git pull --rebase
