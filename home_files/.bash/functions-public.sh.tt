@@ -870,27 +870,8 @@ gbd() {
 
       local match="^([0-9]{1,2})$"
       if [[ "$response" =~ $match ]]; then
-        printf "\033[31m" # Switch to red font.
-        read -p "Delete the \"$branch\" branch from the local AND remote repositories (y/n)?: " response
-        printf "\033[m" # Switch to white font.
-
-        if [[ "$response" == 'y' ]]; then
-          printf "Local Branch: "
-          if [[ -n "$(git branch --list $branch)" ]]; then
-            git branch -D "$branch"
-          else
-            printf "No local branch found. Skipped.\n"
-          fi
-
-          printf "Remote Branch: "
-          if [[ -n "$(git branch --remotes --list origin/$branch)" ]]; then
-            git push origin :"$branch"
-          else
-            printf "No remote branch found. Skipped.\n"
-          fi
-        else
-          printf "Branch deletion aborted.\n"
-        fi
+        _git_branch_delete_local "$branch"
+        _git_branch_delete_remote "$branch"
       fi
     else
       printf "Sorry, only the master branch exists and it can't be deleted.\n"
