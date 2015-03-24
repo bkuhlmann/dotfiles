@@ -120,6 +120,11 @@ _process_git_stash() {
   # Store existing stashes (if any) as an array. See public, "gashl" for details.
   stashes=($(gashl))
 
+  if [[ ${#stashes[@]} == 0 ]]; then
+    printf "Git stash is empty. Nothing to do.\n"
+    return 0
+  fi
+
   # Ask which stash to show when multiple stashes are detected, otherwise show the existing stash.
   if [[ ${#stashes[@]} -gt 1 ]]; then
     printf "$prompt_label:\n"

@@ -586,11 +586,6 @@ gashs() {
   local stash=($(git stash list))
   local diff_option="$1"
 
-  if [[ ${#stash[@]} == 0 ]]; then
-    printf "Git stash is empty. Nothing to show.\n"
-    return 0
-  fi
-
   if [[ -n "$diff_option" ]]; then
     case "$diff_option" in
       'd')
