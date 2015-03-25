@@ -98,9 +98,7 @@ _git_branch_name() {
 _git_branch_list() {
   local format=${1:-"%(refname) %(color:blue bold)%(authorname) %(color:green)(%(committerdate:relative))"}
 
-  git for-each-ref --sort=-committerdate \
-                   --format="$format" \
-                   refs/heads refs/remotes/origin | \
+  git for-each-ref --sort=-committerdate --format="$format" refs/heads refs/remotes/origin | \
                    sed '/HEAD/d' | \
                    sed 's/refs\/heads\///g' | \
                    sed 's/refs\/remotes\/origin\///g' | \
@@ -206,6 +204,18 @@ _gh_url() {
     sed -e 's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//'
 }
 
+# Label: GitHub Pull Request List
+# Description: Lists all pull requests (local/remote) including subject, author, and relative time.
+# Parameters: $1 (optional) - The output format.
+_gh_pr_list() {
+  local format=${1:-"%(refname) %(color:yellow)%(refname)%(color:reset) %(subject) %(color:blue bold)%(authorname) %(color:green)(%(committerdate:relative))"}
+
+  git for-each-ref --format="$format" refs/remotes/pull_requests | \
+                   sed 's/refs\/remotes\/pull_requests\///g' | \
+                   sort --numeric-sort | \
+                   cut -d' ' -f2-
+}
+
 # Label: Process GitHub Commit Option
 # Description: Processes GitHub commit option for viewing in remote repository.
 # Parameters: $1 (optional) - The commit hash.
@@ -229,6 +239,22 @@ _process_gh_branch_option() {
     open "$(_gh_url)/tree/$(_git_branch_name)"
   else
     open "$(_gh_url)/branches"
+  fi
+}
+
+# Label: Process GitHub Branch Option
+# Description: Processes GitHub branch option for viewing in remote repository.
+# Parameters: $1 (optional) - The option.
+_process_gh_pull_request_option() {
+  local option="$1"
+  local number_match="^[0-9]+$"
+
+  if [[ "$option" =~ $number_match ]]; then
+    open "$(_gh_url)/pull/$option"
+  elif [[ "$option" == 'l' ]]; then
+    _gh_pr_list
+  else
+    open "$(_gh_url)/pulls"
   fi
 }
 
@@ -269,7 +295,7 @@ _process_gh_option() {
       open "$(_gh_url)/tags"
       break;;
     'r')
-      open "$(_gh_url)/pulls"
+      _process_gh_pull_request_option "$2"
       break;;
     'w')
       open "$(_gh_url)/wiki"
