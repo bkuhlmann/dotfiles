@@ -1,0 +1,5 @@
+--sort=yes
+--recurse=yes
+
+--exclude=log
+--exclude=tmp
