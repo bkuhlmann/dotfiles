@@ -81,6 +81,7 @@ alias gbire="git bisect replay"
 alias gbiv='git bisect visualize --reverse --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
 alias gbih="git bisect help"
 alias gb="git branch --verbose"
+alias gbt="git show-branch --topics"
 alias gba="git branch --all"
 alias gbn="_git_branch_name | _copy_and_print"
 alias gbr="git branch --move"
