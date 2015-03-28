@@ -254,7 +254,7 @@ alias swift="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.
 # Section: [iOS](https://developer.apple.com/ios)
 alias ios="open /Applications/Xcode.app/Contents/Applications/iOS\ Simulator.app"
 
-# Section: [The Silver Surfer](https://github.com/ggreer/the_silver_searcher)
+# Section: [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
 alias agf="ag --hidden --files-with-matches --file-search-regex"
 
 # Section: [Z](https://github.com/rupa/z)

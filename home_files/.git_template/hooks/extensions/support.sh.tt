@@ -22,7 +22,7 @@ _scan_code() {
       exit 1
     fi
   else
-     printf "$label: The Silver Surfer not found. To install, run: brew install the_silver_searcher."
+     printf "$label: Silver Surfer not found. To install, run: brew install the_silver_searcher."
      exit 1
   fi
 }
