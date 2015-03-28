@@ -549,7 +549,7 @@ gtail() {
   fi
 
   if [[ $(_git_commits_since_last_tag) ]]; then
-    _git_commits_since_last_tag | _copy_and_print "\n"
+    _git_commits_since_last_tag | sort --key=2 --unique | _copy_and_print "\n"
   else
     printf "No commits since last tag.\n"
   fi

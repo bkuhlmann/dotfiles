@@ -60,7 +60,7 @@ _git_commits_since_last_tag() {
 _git_commit_count_since_last_tag() {
   local prefix="$1"
   local suffix="$2"
-  local count=$(_git_commits_since_last_tag | wc -l | xargs -n 1)
+  local count=$(_git_commits_since_last_tag | sort --key=2 --unique | wc -l | xargs -n 1)
 
   if [[ -n $count ]]; then
     # Prefix
