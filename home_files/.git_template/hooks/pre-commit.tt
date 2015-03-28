@@ -19,7 +19,7 @@ source $HOME/.git_template/hooks/extensions/capybara.sh
 source $HOME/.git_template/hooks/extensions/jasmine.sh
 
 # EXECUTION
-gemfile_path
+bundler_gemfile_path
 java_script_debugger
 java_script_console
 java_script_alert

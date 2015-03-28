@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Label: Gemfile Path
+# Label: Bundler Gemfile Path
 # Description: Detects gem path statements.
-gemfile_path() {
+bundler_gemfile_path() {
   _scan_code "[bundler]" "Gemfile path statement detected" 'Gemfile' '(path:|:path\s=>)'
 }
