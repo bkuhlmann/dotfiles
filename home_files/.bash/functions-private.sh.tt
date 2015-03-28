@@ -433,6 +433,8 @@ _set_function_description() {
 }
 
 _print_functions() {
+  local path="${1:-$HOME/.bash/functions-public.sh}"
+
   while read line; do
     _print_section "$line"
     _set_function_label "$line"
@@ -444,14 +446,22 @@ _print_functions() {
       unset label
       unset description
     fi
-  done < "$HOME/.bash/functions-public.sh"
+  done < "$path"
 }
 
-_print_aliases_and_functions() {
+_print_git_hooks() {
+  for file in $(find "$HOME/.git_template/hooks/extensions" -type l); do
+    _print_functions "$file"
+  done
+}
+
+_print_all() {
   printf "#### Aliases\n\n"
   _print_aliases
   printf "\n#### Functions\n\n"
   _print_functions
+  printf "\n#### Git Hooks\n\n"
+  _print_git_hooks
 }
 
 _find_alias() {
@@ -499,8 +509,11 @@ _process_dots_option() {
     'f')
       _print_functions | more
       break;;
+    'g')
+      _print_git_hooks | more
+      break;;
     'p')
-      _print_aliases_and_functions | more
+      _print_all | more
       break;;
     's')
       _find_command "$2" | more

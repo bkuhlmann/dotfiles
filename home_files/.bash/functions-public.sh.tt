@@ -1502,6 +1502,7 @@ dots() {
       printf "\nDotfile Options:\n"
       printf "  a: Print aliases.\n"
       printf "  f: Print functions.\n"
+      printf "  g: Print Git hooks.\n"
       printf "  p: Print all.\n"
       printf "  s: Search for alias/function.\n"
       printf "  q: Quit/Exit.\n\n"
