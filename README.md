@@ -4,18 +4,22 @@
 
 Shell scripts for applying default settings to UNIX-based operating systems.
 
-By default, these are set to my preferences (namely for OSX) but you can change them to your liking by editing
-any of the *.txt files in the home_files directory. Read on to learn more.
+By default, these are set to my preferences (namely for OSX) but you can change them to your liking by editing any of
+the *.tt template files in the home_files directory. Read on to learn more.
 
 # Features
 
 - Configures the Bash `.bashrc`, `.bash_profile`, and `.inputrc` files.
+- Configures the `.hushlogin` file.
+- Configures the [CTags](http://ctags.sourceforge.net) `.ctags` file.
 - Configures the [Vim](http://www.vim.org) `.vimrc` file.
 - Configures the [Git](http://git-scm.com) `.gitconfig`, `.gitignore`, and hook (i.e. `.git_template`) files.
+- Configures the [Silver Surfer](https://github.com/ggreer/the_silver_searcher) `.agignore` file.
 - Configures the [Ruby Gems](http://docs.rubygems.org/read/chapter/11) `.gemrc` file.
 - Configures the [Ruby](https://www.ruby-lang.org) `.irbrc` file.
 - Configures the [Pry](http://pry.github.com) `.pryrc` file.
 - Configures the [Ruby Debugger](http://bashdb.sourceforge.net/ruby-debug.html) `.rdebugrc` file.
+- Configures the [RSpec](http://rspec.info) `.rspec` file.
 - Configures the [Awesome Print](https://github.com/michaeldv/awesome_print) `.aprc` file.
 - Configures the [Mackup](https://github.com/lra/mackup) `.mackup.cfg` file.
 - Configures the [Pow](http://pow.cx) `.powconfig` file.
@@ -42,15 +46,15 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v15.0.0
+    git checkout v15.1.0
 
 Master Version (unstable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
 
-Edit any of the home_files/*.txt files as you see fit. Then open a terminal window and execute the following command
-to install:
+Edit any of the home_files/*.tt template files as you see fit. Then open a terminal window and execute the following
+command to install:
 
     cd dotfiles
     ./run.sh
@@ -73,6 +77,17 @@ After install, the following files will require manual updating:
 - .gemrc - Uncomment the "gemcutter_key" line and add your own RubyGems key for publishing gems.
 - .gitconfig - Uncomment the name, email, and token lines within the `[user]` and `[github]` sections to replace with
   your own details.
+
+# Upgrade
+
+When upgrading to a new version, do the following to apply upgrades:
+
+0. Run: `./run.sh l`. This will link any new files. If not using linked files, run `./run.sh d` and
+   `./run.sh i` instead.
+0. Run: `./run.sh c`. This will display file differences (if any -- usually, should only be excluded files).
+0. Run: `bashs`. This will apply updates to the shell.
+0. Change to the root directory where all projects are stored and run `gia` to re-initialize repositories with new Git
+   Hook updates.
 
 # Usage
 
@@ -129,6 +144,7 @@ After install, the following files will require manual updating:
     gld = 'git log --stat --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b"'
     glh = 'git log --pretty=format:%H -1 | _copy_and_print'
     glf = 'git fetch && git log --reverse --no-merges --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ..@{upstream}'
+    glg = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" --grep'
     gls = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
     glt = 'git log --tags --simplify-by-decoration --reverse --pretty = "format:%d (%ad)" --date=short | sed -e "s/ (tag: //" -e "s/)//" -e "/^ /d"'
     grl = "git reflog"
@@ -143,7 +159,18 @@ After install, the following files will require manual updating:
     gdtc = "git difftool --cached"
     gdtm = "git difftool origin/master"
     glame = "git blame"
+    gbi = "git bisect"
+    gbis = "git bisect start"
+    gbib = "git bisect bad"
+    gbig = "git bisect good"
+    gbir = "git bisect reset"
+    gbisk = "git bisect skip"
+    gbil = "git bisect log"
+    gbire = "git bisect replay"
+    gbiv = 'git bisect visualize --reverse --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
+    gbih = "git bisect help"
     gb = "git branch --verbose"
+    gbt = "git show-branch --topics"
     gba = "git branch --all"
     gbn = "_git_branch_name | _copy_and_print"
     gbr = "git branch --move"
@@ -275,10 +302,15 @@ After install, the following files will require manual updating:
     dmodels = "mkdir -p doc/design && railroady --label --inheritance --specify --all-columns --join --transitive --output doc/design/models.dot --models"
     dcontrollers = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
     dstate = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
+##### [Jasmine](http://jasmine.github.io)
+    berj = "ber jasmine"
+    berjci = "ber jasmine:ci"
 ##### [Rubocop](https://github.com/bbatsov/rubocop)
     rcop = "rubocop --display-cop-names"
 ##### [Rails Best Practices](https://github.com/railsbp/rails_best_practices)
     rbest = "rails_best_practices"
+##### [Foreman](https://github.com/ddollar/foreman)
+    fms = "foreman start"
 ##### [Capistrano](https://github.com/capistrano/capistrano)
     caps = "bec stage deploy"
     capp = "bec production deploy"
@@ -287,8 +319,10 @@ After install, the following files will require manual updating:
 ##### [IO.js](https://iojs.org)
     iojs! = "brew unlink node && brew link --force iojs && printf 'Switched: Node.js -> IO.jsn'"
 ##### [Swift](https://developer.apple.com/swift)
-    swift = "/Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
-##### [The Silver Surfer](https://github.com/ggreer/the_silver_searcher)
+    swift = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
+##### [iOS](https://developer.apple.com/ios)
+    ios = "open /Applications/Xcode.app/Contents/Applications/iOS Simulator.app"
+##### [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
     agf = "ag --hidden --files-with-matches --file-search-regex"
 ##### [Z](https://github.com/rupa/z)
     ez = "$EDITOR $HOME/.z"
@@ -304,97 +338,113 @@ After install, the following files will require manual updating:
 #### Functions
 
 ##### General
-    t2s = Tabs to Spaces - Converts file from tab to space indendation.
+    t2s = Tab to Space - Convert file from tab to space indendation.
 ##### [less](http://en.wikipedia.org/wiki/Less_(Unix))
-    lessi = lessi - Interactively inspect a file.
+    lessi = Less Interactive - Inspect file, interactively.
 ##### [OpenSSL](https://openssl.org)
-    sslc = sslc - SSL Certificate Creation
+    sslc = SSL Certificate Creation - Create SSL certificate.
 ##### [curl](http://curl.haxx.se)
     curli = Curl Inspect - Inspect remote file with default editor.
 ##### [lsof](http://people.freebsd.org/~abe/)
-    port = Port - Lists file activity on a given port.
+    port = Port - List file activity on given port.
 ##### [Git](http://git-scm.com)
-    gia = Git Init (all) - Initializes/re-initializes all Git repositories in current directory.
-    groot = Git Root - Changes to repository root directory (regardless of current depth).
-    ginfo = Git Info - Prints repository overview information.
-    ghurn = Git Churn - Answers the commit churn for project files (sorted highest to lowest).
-    gount = Git Commit Count - Answers total number of commits for current project.
-    gistory = Git File History - Walks through all revisions of a file's history (with optional diff support).
-    glamel = Git Blame Log - Answers the blame log (i.e. commit notes) for a specific file and lines (optional).
-    guthorsa = Git Authors (all) - Answers author commit activity per project (ranked highest to lowest).
-    gsta = Git Status (all) - Answers the status of projects with uncommited/unpushed changes.
-    gup = Git Update - Fetches latest commits, reviews each commit (with diff), and rebases (all steps are optional).
-    gseta = Git Set Config Value (all) - Sets key value for all projects in current directory.
-    ggeta = Git Get Config Value (all) - Answers key value for all projects in current directory.
-    gunseta = Git Unset (all) - Unsets key value for all projects in current directory.
-    gailsa = Git Email Set (all) - Sets user email for all projects in current directory.
-    gail = Git Email Get - Answers user email for current project.
-    gaila = Git Email Get (all) - Answers user email for all projects in current directory.
-    gince = Git Since - Answers a summarized list of Git activity since date/time for all projects in current directory.
-    gday = Git Day - Answers a summarized list of Git current day activity for all projects in current directory.
-    gweek = Git Week - Answers a summarized list of Git current week activity for all projects in current directory.
-    gmonth = Git Month - Answers a summarized list of Git current month activity for all projects in current directory.
-    gsup = Git Standup - Answers a summarized list of Git activity since yesterday for all projects in current directory.
-    gtail = Git Tail - Answers commit history since last tag for current project and copies results to clipboard.
-    gtaila = Git Tail (all) - Answers commit history count since last tag for all projects in current directory.
-    gashl = Git Stash List - Lists stashes (if any).
-    gashs = Git Stash Show - Shows stash or prompts for stash to show.
-    gashp = Git Stash Pop - Pops stash or prompts for stash to pop.
-    gashd = Git Stash Drop - Drops stash or prompts for stash to drop.
-    gasha = Git Stash (all) - Answers stash count for all projects within current directory.
-    gucca = Git Upstream Commit Count (all) - Answers upstream commit count (if any) since last pull for all projects in current directory.
-    gpua = Git Pull (all) - Pulls down new changes (if any) from remote branch for all projects in current directory.
-    gpa = Git Push (all) - Pushes changes for all projects within current directory.
-    galla = Git Add (all) - Applies file changes (including new files) for all projects within current directory.
-    gcama = Git Commit and Message (all) - Commits changes (modified and new), with message, for all projects within current directory.
-    gcap = Git Commit and Push (all) - Commits and pushes changes for all projects within current directory.
+    gia = Git Init (all) - Initialize/re-initialize repositories in current directory.
+    groot = Git Root - Change to repository root directory (regardless of current depth).
+    ginfo = Git Info - Print repository overview information.
+    ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
+    gount = Git Commit Count - Answer total number of commits for current project.
+    gistory = Git File History - Walk through file history revisions (with optional diff support).
+    glamel = Git Blame Log - Answer blame log (i.e. commit notes) for a specific file and lines (optional).
+    guthorsa = Git Authors (all) - Answer author commit activity per project (ranked highest to lowest).
+    gsta = Git Status (all) - Answer status of projects with uncommited/unpushed changes.
+    gup = Git Update - Fetch commits, prune untracked references, review each commit (optional, with diff), and rebase (optional).
+    gseta = Git Set Config Value (all) - Set key value for projects in current directory.
+    ggeta = Git Get Config Value (all) - Answer key value for projects in current directory.
+    gunseta = Git Unset (all) - Unset key value for projects in current directory.
+    gailsa = Git Email Set (all) - Sets user email for projects in current directory.
+    gail = Git Email Get - Answer user email for current project.
+    gaila = Git Email Get (all) - Answer user email for projects in current directory.
+    gince = Git Since - Answer summarized list of activity since date/time for projects in current directory.
+    gday = Git Day - Answer summarized list of current day activity for projects in current directory.
+    gweek = Git Week - Answer summarized list of current week activity for projects in current directory.
+    gmonth = Git Month - Answer summarized list of current month activity for projects in current directory.
+    gsup = Git Standup - Answer summarized list of activity since yesterday for projects in current directory.
+    gtail = Git Tail - Answer commit history since last tag for current project and copies results to clipboard.
+    gtaila = Git Tail (all) - Answer commit history count since last tag for projects in current directory.
+    gashl = Git Stash List - List stashes (if any).
+    gashs = Git Stash Show - Show stash or prompt for stash to show.
+    gashp = Git Stash Pop - Pop stash or prompt for stash to pop.
+    gashd = Git Stash Drop - Drop stash or prompt for stash to drop.
+    gasha = Git Stash (all) - Answer stash count for projects in current directory.
+    gucca = Git Upstream Commit Count (all) - Answer upstream commit count (if any) since last pull for projects in current directory.
+    gpua = Git Pull (all) - Pull new changes (if any) from remote branch for projects in current directory.
+    gpa = Git Push (all) - Push changes for projects in current directory.
+    galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
+    gcama = Git Commit and Message (all) - Commit changes (modified and new), with message, for projects in current directory.
+    gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
     gri = Git Rebase (interactive) - Rebase commits, interactively (i.e. reword, fix, squash, etc.).
-    gbl = Git Branch List - Lists details about local and remote branches.
-    gbc = Git Branch Create - Creates and switches to branch.
-    gbs = Git Branch Switch - Switches between branches.
-    gbd = Git Branch Delete - Deletes local and remote branch (if found).
-    gbdm = Git Branch Delete Merged - Deletes locally merged branches (if any).
-    gtagd = Git Tag Delete - Deletes local and remote tag (if found).
-    ghd = Git Hook Delete - Deletes all Git hooks for current project.
-    ghda = Git Hook Delete (all) - Deletes all Git hooks for all projects in current directory.
-    gvac = Git Verify and Clean - Verifies and cleans Git objects for current project.
-    gvaca = Git Verify and Clean (all) - Verifies and cleans Git objects for all projects in current directory.
+    gbl = Git Branch List - List local and remote branch details.
+    gbc = Git Branch Create - Create and switch to branch.
+    gbs = Git Branch Switch - Switch between branches.
+    gbd = Git Branch Delete - Delete local and/or remote branch (if found).
+    gbdm = Git Branch Delete Merged - Delete locally merged branches (if any).
+    gbna = Git Branch Name (all) - Lists current branch for projects in current directory.
+    gtagd = Git Tag Delete - Delete local and remote tag (if found).
+    ghd = Git Hook Delete - Delete hooks for current project.
+    ghda = Git Hook Delete (all) - Delete hooks for projects in current directory.
+    gvac = Git Verify and Clean - Verify and clean objects for current project.
+    gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in current directory.
 ##### [GitHub](https://github.com)
     gh = GitHub - View current GitHub project commits, branches, tags, etc. in default browser.
 ##### [PostgreSQL](http://www.postgresql.org)
-    pguc = PostgreSQL User Create - Creates a PostgreSQL user.
-    pgud = PostgreSQL User Drop - Drops a PostgreSQL user.
-    pgt = PostgreSQL Template - Edits PostgreSQL template.
+    pguc = PostgreSQL User Create - Create PostgreSQL user.
+    pgud = PostgreSQL User Drop - Drop PostgreSQL user.
+    pgt = PostgreSQL Template - Edit PostgreSQL template.
 ##### [Bundler](http://gembundler.com)
-    bj = Bundler Jobs - Answers maximum Bundler job limit for current machine and automatically sets it if otherwise.
-    boa = Bundle Outdated (all) - Answers a list of outdated gems for all projects within current directory.
-    bua = Bundle Update (all) - Updates gems for all projects within current directory.
-    bca = Bundle Clean (all) - Cleans all projects of gem artifacts (i.e. pkg folder).
-    ber = Bundle Execute Rake - Executes Rake via binstub or Bundler.
-    bertt = Bundle Execute Rake Test - Executes a single Test::Unit test via binstub or Bundler.
-    bes = Bundle Execute RSpec - Executes RSpec via binstub or Bundler.
-    bessa = Bundle Execute RSpec (all) - Executes RSpec via binstub or Bundler for all projects within current directory.
-    beg = Bundle Execute Guard - Executes Guard via binstub or Bundler.
-    bec = Bundle Execute Capistrano - Executes Capistrano via binstub or Bundler.
+    bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it if otherwise.
+    boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
+    bua = Bundle Update (all) - Update gems for projects in current directory.
+    bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
+    ber = Bundle Execute Rake - Run Rake via binstub or Bundler.
+    bertt = Bundle Execute Rake Test - Run single Test::Unit test via binstub or Bundler.
+    bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
+    bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
+    beg = Bundle Execute Guard - Run Guard via binstub or Bundler.
+    bec = Bundle Execute Capistrano - Run Capistrano via binstub or Bundler.
 ##### [Ruby](http://www.ruby-lang.org)
-    rua = Ruby Upgrade (all) - Upgrades all Ruby projects in current directory with new Ruby version information.
-    rserv = Ruby Server - Serves web content from current directory via WEBrick.
+    rua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version information.
+    rserv = Ruby Server - Serve web content from current directory via WEBrick.
 ##### [Ruby on Rails](http://rubyonrails.org)
-    rew = Rails New - Builds a new rails application skeleton for selected template.
-    sc = Rails Script Console - Launches the Rails console.
-    ss = Rails Script Server - Launches the Rails server.
-    sg = Rails Script Generator - Launches a Rails generator for controller, model, etc. scaffolds.
-    sdb = Rails Script Database Console - Launches the Rails database console for direct access to the current application database.
+    rew = Rails New - Create rails application from selected template.
+    sc = Rails Script Console - Run Rails console.
+    ss = Rails Script Server - Run Rails server.
+    sg = Rails Script Generator - Run Rails generator.
+    sdb = Rails Script Database Console - Run Rails database console.
 ##### [Travis CI](https://travis-ci.org/)
-    tcie = Travis CI Encrypt (all) - Encrypts a string for all Travis CI-enabled (.travis.yml) projects in current directory.
+    tcie = Travis CI Encrypt (all) - Encrypt string for Travis CI-enabled (.travis.yml) projects in current directory.
 ##### [Site Validator](https://github.com/jaimeiniesta/site_validator)
-    sv = Site Validator - Generates a validation report for a site using the W3C Validator.
+    sv = Site Validator - Generate site validation report using W3C Validator.
 ##### [Image Magick](http://www.imagemagick.org)
-    sketch = Sketch - Converts a photo into a sketch. Inspired by [Whiteboard Cleaner Gist](https://gist.github.com/lelandbatey/8677901).
+    sketch = Sketch - Convert photo into a sketch. Inspired by [Whiteboard Cleaner Gist](https://gist.github.com/lelandbatey/8677901).
 ##### [FFmpeg](http://www.ffmpeg.org)
-    gifize = Gifize - Converts a video into an animated GIF.
+    gifize = Gifize - Convert video to animated GIF.
 ##### Dotfiles
-    dots = Dotfiles - Informational utility for learning more about dotfile aliases, functions, etc.
+    dots = Dotfiles - Learn about dotfile aliases, functions, etc.
+
+#### Git Hooks
+
+    bundler_gemfile_path = Bundler Gemfile Path - Detects gem path statements.
+    capybara_save_and_open_page = Capybara Save And Open Page - Detects save_and_open_page statements.
+    ctags_rebuild = CTags Rebuild - Rebuilds project .tags file.
+    git_commit_message_prefix = Git Commit Message Prefix - Detects commit message invalid prefixes.
+    git_commit_message_words = Git Commit Message Words - Detects commit message words to avoid.
+    git_commit_message_length = Git Commit Message Length - Detects commit message long line lengths.
+    jasmine_focus = Jasmine Focus - Detects Jasmine focus statements.
+    java_script_debugger = JavaScript Debugger - Detects JavaScript debug statements.
+    java_script_console = JavaScript Console - Detects JavaScript console statements.
+    java_script_alert = JavaScript Alert - Detects JavaScript alert statements.
+    pry_binding = Pry Binding - Detects Pry debug statements.
+    rspec_focus = RSpec Focus - Detects RSpec focus metadata.
 
 #### IRB, Pry, and Rails consoles
 
@@ -446,4 +496,4 @@ Read the [CHANGELOG](CHANGELOG.md) for details.
 
 # Credits
 
-Developed by [Brooke Kuhlmann](https://www.alchemists.io) at [Alchemists](https://www.alchemists.io)
+Developed by [Brooke Kuhlmann](https://www.alchemists.io) at [Alchemists](https://www.alchemists.io).

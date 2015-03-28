@@ -1,3 +1,32 @@
+# v15.1.0 (2015-03-28)
+
+- Fixed `gash*` functions so that processing emtpy stashes won't error.
+- Updated `gbd` function to prompt for local and remote branch deletion.
+- Updated `gtail` and `gtaila` functions to sort by unique subject.
+- Updated `gup` function message cosmetics.
+- Updated `swift` alias to no longer use XCode (beta) path.
+- Updated commit message text to focus on questions instead of format.
+- Added 'g' option to `dots` function for printing of Git Hooks.
+- Added .hushlogin dofile for silencing server welcome messages.
+- Added Foreman aliases.
+- Added Git hook for Capybara save_and_open_page detection.
+- Added Jasmine Git hook support.
+- Added Jasmine aliases.
+- Added JavaScript to CTag Git hook generation.
+- Added RSpec global configuration.
+- Added Silver Surfer global configuration.
+- Added `gbna` function for listing current branch of all projects.
+- Added `gbt` alias for `git show-branch --topics`.
+- Added `glg` alias for easy grepping log subject and body.
+- Added `ios` alias for launching iOS Simulator.
+- Added code of conduct documentation.
+- Added default configuration for CTags.
+- Added git bisect aliases.
+- Added listing and opening of pull requests to `gh` function.
+- Added pruning of untracked remote references to `gup` function.
+- Added remote fetching of GitHub pull requests to global Git config.
+- Refactored Git hook gemfile_path as bundler_gemfile_path.
+
 # v15.0.0 (2015-03-01)
 
 - Removed `gln` alias (use `gld` instead).
