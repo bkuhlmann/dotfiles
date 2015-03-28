@@ -236,7 +236,6 @@ alias rbest="rails_best_practices"
 
 # Section: [Foreman](https://github.com/ddollar/foreman)
 alias fms="foreman start"
-alias fmss="foreman start --procfile Procfile.secure"
 
 # Section: [Capistrano](https://github.com/capistrano/capistrano)
 alias caps="bec stage deploy"
