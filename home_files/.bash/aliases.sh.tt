@@ -249,7 +249,7 @@ alias nodejs!="brew unlink iojs && brew link node && printf 'Switched: IO.js -> 
 alias iojs!="brew unlink node && brew link --force iojs && printf 'Switched: Node.js -> IO.js\n'"
 
 # Section: [Swift](https://developer.apple.com/swift)
-alias swift="/Applications/Xcode6-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
+alias swift="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
 
 # Section: [iOS](https://developer.apple.com/ios)
 alias ios="open /Applications/Xcode.app/Contents/Applications/iOS\ Simulator.app"
