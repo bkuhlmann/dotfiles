@@ -15,7 +15,7 @@ the *.tt template files in the home_files directory. Read on to learn more.
 - Configures the [Vim](http://www.vim.org) `.vimrc` file.
 - Configures the [Git](http://git-scm.com) `.gitconfig`, `.gitignore`, and hook (i.e. `.git_template`) files.
 - Configures the [Silver Surfer](https://github.com/ggreer/the_silver_searcher) `.agignore` file.
-- Configures the [Ruby Gems](http://docs.rubygems.org/read/chapter/11) `.gemrc` file.
+- Configures the [Ruby Gems](https://rubygems.org) `.gemrc` file.
 - Configures the [Ruby](https://www.ruby-lang.org) `.irbrc` file.
 - Configures the [Pry](http://pry.github.com) `.pryrc` file.
 - Configures the [Ruby Debugger](http://bashdb.sourceforge.net/ruby-debug.html) `.rdebugrc` file.
