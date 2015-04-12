@@ -1337,19 +1337,17 @@ rew() {
   if [[ "$1" ]]; then
     while true; do
       if [[ $2 ]]; then
-        _process_rew_option $1 $2
+        _process_rew_option "$1" "$2" "$3"
       else
         printf "\nUsage: rew NAME TEMPLATE\n"
         printf "\nAvailable Ruby on Rails Templates:\n"
         printf "  1: Rails Default Template\n"
         printf "  2: Rails Slim Template\n"
-        printf "  3: Rails Slim Template (experimental)\n"
-        printf "  4: Rails Setup Template\n"
-        printf "  5: Rails Setup Template (experimental)\n"
+        printf "  3: Rails Setup Template\n"
         printf "\n"
         read -p "Please pick one (or type 'q' to quit): " response
         printf "\n"
-        _process_rew_option "$1" $response
+        _process_rew_option "$1" $response "$3"
       fi
     done
   else
