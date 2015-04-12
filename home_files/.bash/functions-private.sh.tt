@@ -365,13 +365,13 @@ _process_rew_option() {
   local rails_setup_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/$branch/template.rb"
 
   case $2 in
-    1)
+    "default")
       _create_rails_skeleton "$1"
       break;;
-    2)
+    "slim")
       _create_rails_skeleton "$1" "$rails_slim_options"
       break;;
-    3)
+    "setup")
       _create_rails_skeleton "$1" "$rails_setup_options"
       break;;
     'q')

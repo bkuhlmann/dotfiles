@@ -1340,10 +1340,10 @@ rew() {
         _process_rew_option "$1" "$2" "$3"
       else
         printf "\nUsage: rew NAME TEMPLATE\n"
-        printf "\nAvailable Ruby on Rails Templates:\n"
-        printf "  1: Rails Default Template\n"
-        printf "  2: Rails Slim Template\n"
-        printf "  3: Rails Setup Template\n"
+        printf "\nAvailable Ruby on Rails Templates:\n\n"
+        printf "  default: Rails Default Template\n"
+        printf "     slim: Rails Slim Template\n"
+        printf "    setup: Rails Setup Template\n"
         printf "\n"
         read -p "Please pick one (or type 'q' to quit): " response
         printf "\n"
