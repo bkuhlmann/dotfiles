@@ -912,7 +912,13 @@ gbna() {
       # Only process projects that are Git-enabled.
       if [[ -d ".git" ]]; then
         printf "\033[36m${project:2}\033[m: " # Output in cyan color.
-        _git_branch_name
+        local branch="$(_git_branch_name)"
+
+        if [[ "$branch" == "master" ]]; then
+          printf "$branch\n"
+        else
+          printf "\033[31m$branch\033[m\n" # Output in red color.
+        fi
       fi
     )
   done < <(find . -type d -depth 1)
