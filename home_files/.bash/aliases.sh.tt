@@ -231,6 +231,7 @@ alias berjci="ber jasmine:ci"
 # Section: [Rubocop](https://github.com/bbatsov/rubocop)
 alias rcop="rubocop --display-cop-names"
 alias rcopo="rubocop --display-cop-names --only"
+alias rcopa="rubocop --auto-gen-config"
 
 # Section: [Rails Best Practices](https://github.com/railsbp/rails_best_practices)
 alias rbest="rails_best_practices"
