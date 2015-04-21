@@ -32,3 +32,21 @@ java_script_alert() {
   local search_regex='^(?:(?!(.*//.+|.*/\*.+)).*alert\(.+\);)'
   _scan_code "$(_git_label)" "Console statements detected" $(_file_regex) $search_regex
 }
+
+# Label: JavaScript Lint
+# Description: Scans JavaScript code for poor style choices.
+java_script_link_check() {
+  if [[ -e "Gemfile" ]] && ag "jslint_on_rails" Gemfile > /dev/null; then
+    printf "[java_script_lint]: Checking for errors...\n"
+
+    local results=($(bundle exec rake jslint))
+
+    if [[ "${results[*]}" == *"No JS errors found"* ]]; then
+      printf "\n\033[32mNo JavaScript lint errors found.\033[m\n"
+    else
+      for line in ${results[*]}; do
+        printf "$line\n"
+      done
+    fi
+  fi
+}
