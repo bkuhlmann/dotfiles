@@ -15,5 +15,5 @@ source $HOME/.git_template/hooks/extensions/rubocop.sh
 source $HOME/.git_template/hooks/extensions/rails.sh
 
 # EXECUTION
-rubocop_scan
-rails_best_practices_scan
+rubocop_check
+rails_best_practices_check

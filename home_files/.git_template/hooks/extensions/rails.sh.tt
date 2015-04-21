@@ -2,7 +2,7 @@
 
 # Label: Rails Best Practices
 # Description: Scans Rails code for poor style choices.
-rails_best_practices_scan() {
+rails_best_practices_check() {
   if command -v rails_best_practices > /dev/null && [[ -e "config/rails_best_practices.yml" ]]; then
     printf "[rails_best_practices]: "
 

@@ -2,7 +2,7 @@
 
 # Label: Rubocop
 # Description: Scans Ruby code for poor style choices.
-rubocop_scan() {
+rubocop_check() {
   if command -v rubocop > /dev/null && [[ -e ".rubocop.yml" ]]; then
     printf "[rubocop]: "
 
