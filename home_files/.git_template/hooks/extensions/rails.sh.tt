@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Label: Rails Best Practices
+# Description: Scans Rails code for poor style choices.
+rails_best_practices_scan() {
+  if command -v rails_best_practices > /dev/null && [[ -e "config/rails_best_practices.yml" ]]; then
+    printf "[rails_best_practices]: "
+
+    if [[ -e "Gemfile" ]] && ag "rails_best_practices" Gemfile > /dev/null; then
+      bundle exec rails_best_practices
+    else
+      rails_best_practices
+    fi
+  fi
+}
