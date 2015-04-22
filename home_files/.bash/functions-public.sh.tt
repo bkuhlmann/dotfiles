@@ -940,7 +940,7 @@ gtagd() {
 
       printf "Remote Tag: "
       if [[ -n "$(git ls-remote --tags origin | grep $1)" ]]; then
-        git push --delete origin "$1"
+        git push --no-verify --delete origin "$1"
       else
         printf "No remote tag found. Skipped.\n"
       fi
