@@ -47,6 +47,8 @@ java_script_link_check() {
       for line in ${results[*]}; do
         printf "$line\n"
       done
+
+      return 1
     fi
   fi
 }
