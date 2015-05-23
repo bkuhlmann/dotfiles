@@ -1,5 +1,9 @@
 # BASHRC
 
+# General
+shopt -s globstar
+shopt -s extglob
+
 # Default Editors
 export EDITOR=sublime
 export VISUAL=vim
