@@ -377,6 +377,9 @@ gup() {
         git difftool $commit^!;;
       'q')
         break;;
+      *)
+        printf "ERROR: Invalid option.\n"
+        break;;
     esac
   done
 

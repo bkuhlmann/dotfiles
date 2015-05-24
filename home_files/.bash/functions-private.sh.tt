@@ -315,7 +315,7 @@ _process_gh_option() {
     'q')
       break;;
     *)
-      printf "ERROR: Invalid option."
+      printf "ERROR: Invalid option.\n"
       break;;
   esac
 }
