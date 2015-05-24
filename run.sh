@@ -10,9 +10,9 @@
 set -o errexit
 set -o pipefail
 
-# FUNCTIONS
-source functions/utilities.sh
-source functions/options.sh
+# LIBRARY
+source lib/utilities.sh
+source lib/options.sh
 
 # EXECUTION
 if [[ -d "$HOME" ]]; then
