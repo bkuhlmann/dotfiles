@@ -12,8 +12,6 @@ IFS=$'\n\t' # Defines how Bash splits words and iterates arrays. This defines ne
 # EXTENSIONS
 source $HOME/.git_template/hooks/extensions/support.sh
 source $HOME/.git_template/hooks/extensions/rubocop.sh
-source $HOME/.git_template/hooks/extensions/rails.sh
 
 # EXECUTION
 rubocop_check
-rails_best_practices_check
