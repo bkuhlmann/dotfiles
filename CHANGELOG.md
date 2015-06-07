@@ -1,3 +1,28 @@
+# v16.0.0 (2015-06-07)
+
+- Removed Git post-receive hook.
+- Removed Git post-update hook.
+- Removed Git update hook.
+- Removed Mackup configuration file.
+- Removed experimental Rails templates from the `rew` function.
+- Removed nodejs! and iojs! aliases.
+- Removed numbered `rew` function options (replaced with strings).
+- Fixed Ruby Gems README link.
+- Fixed hanging script with invalid option.
+- Updated "gbna" function to color non-master branches in red.
+- Updated Git hook extension file permissions.
+- Updated `hbug` alias to include `--all` option.
+- Updated `hbup` alias to include `--all` option.
+- Added (enabled) general glob settings to .bashrc.
+- Added Git post-applypatch hook.
+- Added Git post-merge hook.
+- Added Git post-rewrite hook.
+- Added `asc` alias for `asciinema`.
+- Added `catc` alias for colorized cat.
+- Added `rcopa` alias for autogenerating Rubocop configuration.
+- Added `rcopo` alias for running single Rubocop cops.
+- Added the `gpn` alias for `git push --no-verify`.
+
 # v15.1.0 (2015-03-28)
 
 - Fixed `gash*` functions so that processing emtpy stashes won't error.

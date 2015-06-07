@@ -46,7 +46,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v15.1.0
+    git checkout v16.0.0
 
 Master Version (unstable)
 
@@ -127,13 +127,15 @@ When upgrading to a new version, do the following to apply upgrades:
     hbl = "brew list"
     hbs = "brew search"
     hbsw = "brew switch"
-    hbup = "brew update"
-    hbug = "brew upgrade"
+    hbup = "brew update --all"
+    hbug = "brew upgrade --all"
     hbp = "brew pin"
     hbpu = "brew unpin"
     hbd = "brew doctor"
     hbc = "brew cleanup"
     hbrb = "brew uninstall ruby-build && brew install --HEAD ruby-build"
+##### [Colorized Cat](https://github.com/jingweno/ccat)
+    catc = "ccat --bg=dark"
 ##### [Git](http://git-scm.com)
     gi = "git init"
     gcle = "git config --local --edit"
@@ -205,6 +207,7 @@ When upgrading to a new version, do the following to apply upgrades:
     gra = "git rebase --abort"
     ger = "git rerere"
     gp = "git push"
+    gpn = "git push --no-verify"
     gpo = "git push --set-upstream origin"
     gpr = "git push review master"
     gps = "git push stage stage:master"
@@ -307,6 +310,8 @@ When upgrading to a new version, do the following to apply upgrades:
     berjci = "ber jasmine:ci"
 ##### [Rubocop](https://github.com/bbatsov/rubocop)
     rcop = "rubocop --display-cop-names"
+    rcopo = "rubocop --display-cop-names --only"
+    rcopa = "rubocop --auto-gen-config"
 ##### [Rails Best Practices](https://github.com/railsbp/rails_best_practices)
     rbest = "rails_best_practices"
 ##### [Foreman](https://github.com/ddollar/foreman)
@@ -314,10 +319,6 @@ When upgrading to a new version, do the following to apply upgrades:
 ##### [Capistrano](https://github.com/capistrano/capistrano)
     caps = "bec stage deploy"
     capp = "bec production deploy"
-##### [Node.js](http://nodejs.org)
-    nodejs! = "brew unlink iojs && brew link node && printf 'Switched: IO.js -> Node.jsn'"
-##### [IO.js](https://iojs.org)
-    iojs! = "brew unlink node && brew link --force iojs && printf 'Switched: Node.js -> IO.jsn'"
 ##### [Swift](https://developer.apple.com/swift)
     swift = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
 ##### [iOS](https://developer.apple.com/ios)
@@ -334,6 +335,8 @@ When upgrading to a new version, do the following to apply upgrades:
     e = "sublime"
 ##### [Marked](http://markedapp.com)
     mo = "open -a Marked"
+##### [asciinema](https://asciinema.org)
+    asc = "asciinema"
 
 #### Functions
 
