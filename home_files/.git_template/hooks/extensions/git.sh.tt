@@ -10,7 +10,7 @@ _git_label() {
 # Description: Detects commit message invalid prefixes.
 git_commit_message_prefix() {
   local message_file="${BASH_ARGV[0]}"
-  local match="^(Fixed|Removed|Added|Updated|Refactored).+"
+  local match="^(Fixed|Removed|Added|Updated|Refactored|fixup\!|squash\!).+"
 
   read -r first_line < $message_file
 
