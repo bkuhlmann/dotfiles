@@ -1131,6 +1131,22 @@ bj() {
   fi
 }
 
+# Label: Bundler Ignore Post-Install Message
+# Description: Updates Bundler to ignore install messages for specified gem.
+# Parameters: $1 (required) - The gem name.
+bcim() {
+  local gem_name=$1
+
+  if [[ ! $gem_name ]]; then
+    printf "ERROR: Gem name must be supplied!\n"
+    return 1
+  fi
+
+  bundle config ignore_messages.$gem_name true
+
+  printf "Bundler post-install messages are ignored for \"$gem_name\".\n"
+}
+
 # Label: Bundle Outdated (all)
 # Description: Answer outdated gems for projects in current directory.
 boa() {
