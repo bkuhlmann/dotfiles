@@ -187,6 +187,7 @@ alias gemw="gem whois"
 
 # Section: [Bundler](http://gembundler.com)
 alias b="bundle"
+alias bl="bundle lock"
 alias bi="bundle install"
 alias bu="bundle update"
 alias bo="bundle outdated"
