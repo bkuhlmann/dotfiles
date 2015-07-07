@@ -386,6 +386,9 @@ _process_rew_option() {
 # Section: Dotfiles #
 #-------------------#
 
+# Label: Print Section
+# Description: Prints source code section.
+# Parameters: $1 (required) - The string from which to parse the section from.
 _print_section() {
   if [[ "$1" == "# Section:"* ]]; then
     local section=$(printf "$1" | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
@@ -393,10 +396,15 @@ _print_section() {
   fi
 }
 
+# Label: Print Alias
+# Description: Prints alias.
+# Parameters: $1 (required) - The string from which to parse the alias from.
 _print_alias() {
   echo "$1" | sed 's/alias //' | sed 's/="/ = "/' | sed "s/='/ = '/"
 }
 
+# Label: Print Aliases
+# Description: Prints aliases.
 _print_aliases() {
   while read line; do
     _print_section "$line"
@@ -408,23 +416,33 @@ _print_aliases() {
   done < "$HOME/.bash/aliases.sh"
 }
 
+# Label: Print Function Name
+# Description: Prints function name.
+# Parameters: $1 (required) - The string from which to parse the function name from.
 _print_function_name() {
   local name=$(printf "$1" | sed 's/() {//')
   printf "$name = $2 - $3\n"
 }
 
+# Label: Set Function Label
+# Description: Sets function label.
+# Parameters: $1 (required) - The string from which to parse the function label from.
 _set_function_label() {
   if [[ "$1" == "# Label:"* ]]; then
     label=$(printf "$1" | sed 's/# Label://' | sed 's/^ *//g')
   fi
 }
 
+# Label: Set Function Description
+# Description: Sets function description.
 _set_function_description() {
   if [[ "$line" == "# Description:"* ]]; then
     description=$(printf "$line" | sed 's/# Description://' | sed 's/^ *//g')
   fi
 }
 
+# Label: Print Functions
+# Description: Prints functions.
 _print_functions() {
   local path="${1:-$HOME/.bash/functions-public.sh}"
 
@@ -442,12 +460,16 @@ _print_functions() {
   done < "$path"
 }
 
+# Label: Print Git Hooks
+# Description: Prints Git hooks.
 _print_git_hooks() {
   for file in $(find "$HOME/.git_template/hooks/extensions" -type l); do
     _print_functions "$file"
   done
 }
 
+# Label: Print All
+# Description: Prints aliases, functions, and Git hooks.
 _print_all() {
   printf "#### Aliases\n\n"
   _print_aliases
@@ -457,6 +479,9 @@ _print_all() {
   _print_git_hooks
 }
 
+# Label: Find Alias
+# Description: Finds and prints matching alias.
+# Parameters: $1 (required) - The alias to search for.
 _find_alias() {
   while read line; do
     if [[ "$line" == "alias "*"$1"* ]]; then
@@ -466,6 +491,9 @@ _find_alias() {
   done < "$HOME/.bash/aliases.sh"
 }
 
+# Label: Find Function
+# Description: Finds and prints matching function.
+# Parameters: $1 (required) - The function to search for.
 _find_function() {
   while read line; do
     _set_function_label "$line"
@@ -480,6 +508,9 @@ _find_function() {
   done < "$HOME/.bash/functions-public.sh"
 }
 
+# Label: Find Command
+# Description: Finds and prints matching alias or function.
+# Parameters: $1 (required). The alias or function to search for.
 _find_command() {
   if [[ "$1" ]]; then
     printf "\"$1\" Search Results:\n"
