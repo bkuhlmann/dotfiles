@@ -7,6 +7,7 @@ _powerline() {
   readonly OS_DARWIN_SYMBOL=''
   readonly OS_LINUX_SYMBOL='$'
   readonly OS_OTHER_SYMBOL='%'
+  readonly GIT_BRANCH_SYMBOL='⑂'
   readonly GIT_BRANCH_NORMAL_SYMBOL='✓'
   readonly GIT_BRANCH_CHANGED_SYMBOL='+'
   readonly GIT_STASH_SYMBOL="@"
@@ -43,7 +44,7 @@ _powerline() {
     [ -n "$behindN" ] && marks+=" $GIT_PULL_SYMBOL$behindN"
 
     # Print the git branch segment without a trailing newline
-    printf " $branch$marks "
+    printf " $GIT_BRANCH_SYMBOL $branch$marks "
   }
 
   _git_stash_info() {
