@@ -9,6 +9,7 @@ _powerline() {
   readonly OS_OTHER_SYMBOL='%'
   readonly GIT_BRANCH_NORMAL_SYMBOL='✓'
   readonly GIT_BRANCH_CHANGED_SYMBOL='+'
+  readonly GIT_STASH_SYMBOL="@"
   readonly GIT_PUSH_SYMBOL='↑'
   readonly GIT_PULL_SYMBOL='↓'
 
@@ -24,7 +25,7 @@ _powerline() {
       readonly OS_SYMBOL=$OS_OTHER_SYMBOL
   esac
 
-  _git_info() {
+  _git_branch_info() {
     # Get current branch name or short SHA1 hash for detached head.
     local branch="$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --always 2>/dev/null)"
     [ -n "$branch" ] || return  # Git branch not found.
@@ -45,6 +46,15 @@ _powerline() {
     printf " $branch$marks "
   }
 
+  _git_stash_info() {
+    local count=$(git stash list | wc -l | xargs -n 1)
+    count="$count"
+
+    if [[ $count > 0 ]]; then
+      printf "$GIT_STASH_SYMBOL$count "
+    fi
+  }
+
   ps1() {
     # Check the exit code of the previous command and toggle background color accordingly.
     if [ $? -eq 0 ]; then
@@ -59,7 +69,8 @@ _powerline() {
 
     if [[ -d .git ]]; then
       PS1+="\[$SLATE_BACKGROUND\] $(gail) \[$NORMAL\]" # Git Email.
-      PS1+="\[$BLUE_BACKGROUND\]$(_git_info)\[$NORMAL\]" # Git Info.
+      PS1+="\[$BLUE_BACKGROUND\]$(_git_branch_info)\[$NORMAL\]" # Git Branch Info.
+      PS1+="\[$YELLOW\]\[$BLUE_BACKGROUND\]$(_git_stash_info)\[$NORMAL\]" # Git Stash Info.
     fi
 
     PS1+="\[$BG_EXIT\] $OS_SYMBOL \[$NORMAL\] "
