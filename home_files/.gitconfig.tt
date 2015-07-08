@@ -6,6 +6,8 @@
 [github]
   # user = <enter user here>
   # token = <enter token here>
+[credential]
+  helper = cache --timeout=3600
 [color]
   diff = auto
   status = auto
