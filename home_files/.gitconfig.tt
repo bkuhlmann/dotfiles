@@ -1,6 +1,3 @@
-# http://www.kernel.org/pub/software/scm/git/docs/git-config.html
-# http://stackoverflow.com/questions/267761/what-does-your-gitconfig-contain
-
 [init]
   templatedir = ~/.git_template
 [user]
@@ -41,13 +38,14 @@
   showUntrackedFiles = all
 [push]
   default = simple
+  followTags = true
 [branch]
-  autosetuprebase = always
+  autoSetupRebase = always
 [rebase]
-  autosquash = true
+  autoSquash = true
 [rerere]
   enabled = true
-  autoupdate = true
+  autoUpdate = true
 [grep]
   lineNumber = true
   fullname = true
