@@ -138,7 +138,7 @@ _git_branch_delete_remote() {
 
   if [[ "$response" == 'y' ]]; then
     if [[ -n "$(git branch --remotes --list origin/$branch)" ]]; then
-      git push origin :"$branch"
+      git push origin --delete "$branch"
     else
       printf "Remote branch not found.\n"
     fi
