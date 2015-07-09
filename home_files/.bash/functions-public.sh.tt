@@ -1019,6 +1019,28 @@ gvaca() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Git Nuke
+# Description: Permanently destroy a file from Git history. UNRECOVERABLE!
+# Parameters: $1 (optional) - The file to destroy.
+guke() {
+  local file="$1"
+
+  if [[ -z "$file" ]]; then
+    printf "ERROR: File to nuke must be supplied.\n"
+    return 1
+  fi
+
+  printf "\033[31m" # Switch to red font.
+  read -p "Permanently delete '$file' from the local repository. Continue (y/n)?: " response
+  printf "\033[m" # Switch to white font.
+
+  if [[ "$response" == 'y' ]]; then
+    git filter-branch --force --index-filter "git rm -r --cached '$file' --ignore-unmatch" --prune-empty --tag-name-filter cat -- --all
+  else
+    printf "Nuke aborted.\n"
+  fi
+}
+
 #---------------------------------------#
 # Section: [GitHub](https://github.com) #
 #---------------------------------------#
