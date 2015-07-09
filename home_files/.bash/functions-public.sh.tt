@@ -940,7 +940,7 @@ gbna() {
 # Parameters: $1 (required) - The tag name.
 gtagd() {
   if [[ "$1" ]]; then
-    read -p "You are about to delete the '$1' tag from local and remote repositories. Continue (y/n)?: " response
+    read -p "Delete the '$1' tag from local and remote repositories. Continue (y/n)?: " response
     if [[ "$response" == 'y' ]]; then
       printf "Local Tag: "
       if [[ -n "$(git tag --list $1)" ]]; then
