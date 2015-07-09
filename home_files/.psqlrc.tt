@@ -30,6 +30,9 @@
 -- Use "\q" instead of CONTROL+D (unless pressed 5 times in a row) to quit.
 \set IGNOREEOF 5
 
+-- Enables error fixing when entering statements via the prompt without starting over.
+\set ON_ERROR_ROLLBACK interactive
+
 -- By default, NULL is an empty space. This makes NULL values visible.
 \pset null '[NULL]'
 
