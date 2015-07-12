@@ -1,3 +1,26 @@
+# v16.1.0 (2015-07-12)
+
+- Removed extraneous confirmation wording from `gtagd` function.
+- Fixed `bashe` alias path to environment settings.
+- Updated Git commit message prefix hook to allow fixup! and squash!
+- Updated Git remote branch delete functionality.
+- Updated `gash` alias as a function with default label support.
+- Added Git branch symbol to command prompt.
+- Added Git config credential helper for temporary credential caching.
+- Added Git stash info to the command prompt.
+- Added `bce` alias for `$EDITOR $HOME/.bundle/config`.
+- Added `bcim` function for ignoring noisy gem post-install messages.
+- Added `besb` alias for `bundle exec rspec spec --seed 2112 --bisect`.
+- Added `besf` alias for `bundle exec rspec spec --only-failures`.
+- Added `besn` alias for `bundle exec rspec spec --next-failure`.
+- Added `bl` alias for `bundle lock`.
+- Added `gcs` alias for `git commit --squash`.
+- Added `git rerere gc` to `gvac` and `gvaca` functions.
+- Added `guke` function (a.k.a. Git Nuke) for permanent file deletion.
+- Added `push.followTags = true` to Git config.
+- Added interactive error fixing for psql prompt.
+- Added missing documentation for private functions.
+
 # v16.0.0 (2015-06-07)
 
 - Removed Git post-receive hook.

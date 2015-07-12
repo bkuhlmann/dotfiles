@@ -46,7 +46,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v16.0.0
+    git checkout v16.1.0
 
 Master Version (unstable)
 
@@ -104,7 +104,7 @@ When upgrading to a new version, do the following to apply upgrades:
     p = 'pwd | tr -d "rn" | _copy_and_print'
     o = "open"
     home = "cd $HOME"
-    bashe = "$EDITOR .bash/env.sh"
+    bashe = "$EDITOR $HOME/.bash/env.sh"
     bashs = "exec $SHELL"
     pss = 'ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
 ##### Network
@@ -193,9 +193,9 @@ When upgrading to a new version, do the following to apply upgrades:
     gamend = "git commit --amend"
     gamendh = "git commit --all --amend --no-edit"
     gcf = "git commit --fixup"
+    gcs = "git commit --squash"
     gcp = "git cherry-pick"
     gcpa = "git cherry-pick --abort"
-    gash = "git stash save --include-untracked"
     gashc = "git stash clear"
     gf = "git fetch"
     gfp = "git fetch --prune"
@@ -266,12 +266,17 @@ When upgrading to a new version, do the following to apply upgrades:
     gemw = "gem whois"
 ##### [Bundler](http://gembundler.com)
     b = "bundle"
+    bl = "bundle lock"
     bi = "bundle install"
     bu = "bundle update"
     bo = "bundle outdated"
+    bce = "$EDITOR $HOME/.bundle/config"
     bcon = "bundle console"
     be = "bundle exec"
     bess = "bes spec"
+    besn = "bess --next-failure"
+    besf = "bess --only-failures"
+    besb = "bess --seed 2112 --bisect"
     bert = "ber test"
     berts = "ber test | grep _test.rb"
     bertv = "TESTOPTS=-v ber test"
@@ -374,6 +379,7 @@ When upgrading to a new version, do the following to apply upgrades:
     gsup = Git Standup - Answer summarized list of activity since yesterday for projects in current directory.
     gtail = Git Tail - Answer commit history since last tag for current project and copies results to clipboard.
     gtaila = Git Tail (all) - Answer commit history count since last tag for projects in current directory.
+    gash = Git Stash - Creates stash.
     gashl = Git Stash List - List stashes (if any).
     gashs = Git Stash Show - Show stash or prompt for stash to show.
     gashp = Git Stash Pop - Pop stash or prompt for stash to pop.
@@ -397,6 +403,7 @@ When upgrading to a new version, do the following to apply upgrades:
     ghda = Git Hook Delete (all) - Delete hooks for projects in current directory.
     gvac = Git Verify and Clean - Verify and clean objects for current project.
     gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in current directory.
+    guke = Git Nuke - Permanently destroy a file from Git history. UNRECOVERABLE!
 ##### [GitHub](https://github.com)
     gh = GitHub - View current GitHub project commits, branches, tags, etc. in default browser.
 ##### [PostgreSQL](http://www.postgresql.org)
@@ -405,6 +412,7 @@ When upgrading to a new version, do the following to apply upgrades:
     pgt = PostgreSQL Template - Edit PostgreSQL template.
 ##### [Bundler](http://gembundler.com)
     bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it if otherwise.
+    bcim = Bundler Ignore Post-Install Message - Updates Bundler to ignore install messages for specified gem.
     boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
     bua = Bundle Update (all) - Update gems for projects in current directory.
     bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
