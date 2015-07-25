@@ -7,6 +7,29 @@ Shell scripts for applying default settings to UNIX-based operating systems.
 By default, these are set to my preferences (namely for OSX) but you can change them to your liking by editing any of
 the *.tt template files in the home_files directory. Read on to learn more.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+# Table of Contents
+
+- [Features](#features)
+- [Requirements](#requirements)
+- [Setup](#setup)
+  - [Upgrade](#upgrade)
+- [Usage](#usage)
+      - [Aliases](#aliases)
+      - [Functions](#functions)
+      - [Git Hooks](#git-hooks)
+      - [IRB, Pry, and Rails consoles](#irb-pry-and-rails-consoles)
+      - [Pry Aliases](#pry-aliases)
+- [Versioning](#versioning)
+- [Code of Conduct](#code-of-conduct)
+- [Contributions](#contributions)
+- [License](#license)
+- [History](#history)
+- [Credits](#credits)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Features
 
 - Configures the Bash `.bashrc`, `.bash_profile`, and `.inputrc` files.
@@ -78,7 +101,7 @@ After install, the following files will require manual updating:
 - .gitconfig - Uncomment the name, email, and token lines within the `[user]` and `[github]` sections to replace with
   your own details.
 
-# Upgrade
+## Upgrade
 
 When upgrading to a new version, do the following to apply upgrades:
 
