@@ -282,3 +282,6 @@ alias mo="open -a Marked"
 
 # Section: [asciinema](https://asciinema.org)
 alias asc="asciinema"
+
+# Section: [DocToc](https://github.com/thlorenz/doctoc)
+alias toc="doctoc --title '# Table of Contents'"
