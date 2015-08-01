@@ -213,6 +213,9 @@ alias besb="bess --seed 2112 --bisect"
 # Section: [ByeBug](https://github.com/deivid-rodriguez/byebug)
 alias bbr="bundle exec byebug --remote localhost:1048"
 
+# Section: [Ruby Prof](https://github.com/ruby-prof/ruby-prof)
+alias rprof="ruby-prof --printer=graph_html ./script/rails runner > profile.html"
+
 # Section: [Ruby on Rails](http://rubyonrails.org)
 alias scs="sc --sandbox"
 alias sgc="sg controller"
@@ -229,9 +232,8 @@ alias notest="ber notes:custom ANNOTATION=TODO"
 alias notesf="ber notes:custom ANNOTATION=FIX"
 alias taild="tail -f log/development.log"
 alias tailt="tail -f log/test.log"
-alias res="touch tmp/restart.txt"
-alias rprofile="ruby-prof --printer=graph_html ./script/rails runner > profile.html"
 alias rpaths="ber routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
+alias res="touch tmp/restart.txt"
 
 # Section: [Rails ERD](https://github.com/voormedia/rails-erd)
 alias erd="mkdir -p doc/design && ber erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
