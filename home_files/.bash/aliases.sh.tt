@@ -196,10 +196,6 @@ alias bo="bundle outdated"
 alias bce="$EDITOR $HOME/.bundle/config"
 alias bcon="bundle console"
 alias be="bundle exec"
-alias bess="bes spec"
-alias besn="bess --next-failure"
-alias besf="bess --only-failures"
-alias besb="bess --seed 2112 --bisect"
 alias bch="rm -f Gemfile.lock; bundle check"
 
 # Section: [Gemsmith](https://github.com/bkuhlmann/gemsmith)
@@ -207,6 +203,12 @@ alias gs="gemsmith"
 alias gse="gemsmith edit"
 alias gsr="gemsmith read"
 alias gso="gemsmith open"
+
+# Section: [RSpec](http://rspec.info)
+alias bess="bes spec"
+alias besn="bess --next-failure"
+alias besf="bess --only-failures"
+alias besb="bess --seed 2112 --bisect"
 
 # Section: [ByeBug](https://github.com/deivid-rodriguez/byebug)
 alias bbr="bundle exec byebug --remote localhost:1048"
