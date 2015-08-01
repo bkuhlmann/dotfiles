@@ -201,7 +201,6 @@ alias besn="bess --next-failure"
 alias besf="bess --only-failures"
 alias besb="bess --seed 2112 --bisect"
 alias bch="rm -f Gemfile.lock; bundle check"
-alias rebundle="bch; bundle package"
 
 # Section: [Gemsmith](https://github.com/bkuhlmann/gemsmith)
 alias gs="gemsmith"
