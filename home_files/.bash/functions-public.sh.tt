@@ -1262,16 +1262,29 @@ ber() {
   fi
 }
 
-# Label: Bundle Execute Rake Test
-# Description: Run single Test::Unit test via binstub or Bundler.
-bertt() {
-  if [[ "$1" ]]; then
-    ber test TEST="$1"
+# Label: Bundle Execute Guard
+# Description: Run Guard via binstub or Bundler.
+beg() {
+  if [[ -e bin/guard ]]; then
+    bin/guard $@
   else
-    printf "ERROR: Missing test file path. Usage: bertt test/unit/example_test.rb.\n"
-    return 1
+    bundle exec guard $@
   fi
 }
+
+# Label: Bundle Execute Capistrano
+# Description: Run Capistrano via binstub or Bundler.
+bec() {
+  if [[ -e bin/cap ]]; then
+    bin/cap $@
+  else
+    bundle exec cap $@
+  fi
+}
+
+#-------------------------------------#
+# Section: [RSpec](http://rspec.info) #
+#-------------------------------------#
 
 # Label: Bundle Execute RSpec
 # Description: Run RSpec via binstub or Bundler.
@@ -1317,26 +1330,6 @@ bessa() {
       fi
     )
   done < <(find . -type d -depth 1)
-}
-
-# Label: Bundle Execute Guard
-# Description: Run Guard via binstub or Bundler.
-beg() {
-  if [[ -e bin/guard ]]; then
-    bin/guard $@
-  else
-    bundle exec guard $@
-  fi
-}
-
-# Label: Bundle Execute Capistrano
-# Description: Run Capistrano via binstub or Bundler.
-bec() {
-  if [[ -e bin/cap ]]; then
-    bin/cap $@
-  else
-    bundle exec cap $@
-  fi
 }
 
 #-------------------------------------------#
