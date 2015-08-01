@@ -232,6 +232,8 @@ alias tailt="tail -f log/test.log"
 alias res="touch tmp/restart.txt"
 alias rprofile="ruby-prof --printer=graph_html ./script/rails runner > profile.html"
 alias rpaths="ber routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
+
+# Section: [Rails ERD](https://github.com/voormedia/rails-erd)
 alias erd="mkdir -p doc/design && ber erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
 
 # Section: [RailRoady](https://github.com/preston/railroady)
