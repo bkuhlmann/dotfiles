@@ -1135,6 +1135,101 @@ pgt() {
 }
 
 #-------------------------------------------#
+# Section: [Ruby](http://www.ruby-lang.org) #
+#-------------------------------------------#
+
+# Label: Ruby Upgrade (all)
+# Description: Upgrade Ruby projects in current directory with new Ruby version information.
+# Parameters: $1 (required) - The new version to upgrade to. Example: 2.0.0-p0.
+rua() {
+  if [[ "$1" ]]; then
+    while read project; do
+      (
+        cd "$project"
+        # Only process projects which have ruby version information.
+        if [[ -e ".ruby-version" ]]; then
+          local old_version=$(head -n 1 .ruby-version)
+          local new_version="$1"
+
+          printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
+
+          # Update only if current version is not equal to new version.
+          if [[ "$old_version" != "$new_version" ]]; then
+            printf "$new_version\n" > .ruby-version
+            printf "$old_version --> $new_version\n"
+          else
+            printf "✓\n"
+          fi
+        fi
+      )
+    done < <(find . -type d -depth 1)
+  else
+    printf "ERROR: Version must be supplied.\n"
+    return 1
+  fi
+}
+
+# Label: Ruby Server
+# Description: Serve web content from current directory via WEBrick.
+# Parameters: $1 (optional) - The custom port. Default: 3030.
+rserv() {
+  local default_port=3030
+  local custom_port=$1
+
+  ruby -run -e httpd . --port ${custom_port:-$default_port}
+}
+
+#-------------------------------------#
+# Section: [RSpec](http://rspec.info) #
+#-------------------------------------#
+
+# Label: Bundle Execute RSpec
+# Description: Run RSpec via binstub or Bundler.
+bes() {
+  if [[ -e bin/rspec ]]; then
+    bin/rspec $@
+  else
+    bundle exec rspec $@
+  fi
+}
+
+# Label: Bundle Execute RSpec (all)
+# Description: Run RSpec via binstub or Bundler for projects in current directory.
+bessa() {
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that support Bundler and RSpec.
+      if [[ -f "Gemfile.lock" && -d "spec" ]]; then
+        local json=$(SUPPRESS_STDOUT=enabled SUPPRESS_STDERR=enabled bess --format json)
+        local examples=$(printf "%s" "$json" | jq ".summary.example_count" )
+        local failures=$(printf "%s" "$json" | jq ".summary.failure_count" )
+        local pending=$(printf "%s" "$json" | jq ".summary.pending_count" )
+        local duration=$(printf "%s" "$json" | jq ".summary.duration" )
+
+        # Prints project (cyan).
+        printf "\033[36m${project:2}\033[m: "
+
+        # Prints total examples (white).
+        printf "$examples examples, "
+
+        # Prints total failures (red).
+        _toggle_total_color "$failures" "failures" "\033[31m"
+        printf ", "
+
+        # Prints total pending (yellow).
+        _toggle_total_color "$pending" "pending" "\033[33m"
+        printf ", "
+
+        # Prints total duration (white).
+        printf "$duration seconds.\n"
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
+#-------------------------------------------#
 # Section: [Bundler](http://gembundler.com) #
 #-------------------------------------------#
 
@@ -1280,101 +1375,6 @@ bec() {
   else
     bundle exec cap $@
   fi
-}
-
-#-------------------------------------#
-# Section: [RSpec](http://rspec.info) #
-#-------------------------------------#
-
-# Label: Bundle Execute RSpec
-# Description: Run RSpec via binstub or Bundler.
-bes() {
-  if [[ -e bin/rspec ]]; then
-    bin/rspec $@
-  else
-    bundle exec rspec $@
-  fi
-}
-
-# Label: Bundle Execute RSpec (all)
-# Description: Run RSpec via binstub or Bundler for projects in current directory.
-bessa() {
-  # Iterate project directories located in root directory.
-  while read project; do
-    (
-      cd "$project"
-      # Only process projects that support Bundler and RSpec.
-      if [[ -f "Gemfile.lock" && -d "spec" ]]; then
-        local json=$(SUPPRESS_STDOUT=enabled SUPPRESS_STDERR=enabled bess --format json)
-        local examples=$(printf "%s" "$json" | jq ".summary.example_count" )
-        local failures=$(printf "%s" "$json" | jq ".summary.failure_count" )
-        local pending=$(printf "%s" "$json" | jq ".summary.pending_count" )
-        local duration=$(printf "%s" "$json" | jq ".summary.duration" )
-
-        # Prints project (cyan).
-        printf "\033[36m${project:2}\033[m: "
-
-        # Prints total examples (white).
-        printf "$examples examples, "
-
-        # Prints total failures (red).
-        _toggle_total_color "$failures" "failures" "\033[31m"
-        printf ", "
-
-        # Prints total pending (yellow).
-        _toggle_total_color "$pending" "pending" "\033[33m"
-        printf ", "
-
-        # Prints total duration (white).
-        printf "$duration seconds.\n"
-      fi
-    )
-  done < <(find . -type d -depth 1)
-}
-
-#-------------------------------------------#
-# Section: [Ruby](http://www.ruby-lang.org) #
-#-------------------------------------------#
-
-# Label: Ruby Upgrade (all)
-# Description: Upgrade Ruby projects in current directory with new Ruby version information.
-# Parameters: $1 (required) - The new version to upgrade to. Example: 2.0.0-p0.
-rua() {
-  if [[ "$1" ]]; then
-    while read project; do
-      (
-        cd "$project"
-        # Only process projects which have ruby version information.
-        if [[ -e ".ruby-version" ]]; then
-          local old_version=$(head -n 1 .ruby-version)
-          local new_version="$1"
-
-          printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
-
-          # Update only if current version is not equal to new version.
-          if [[ "$old_version" != "$new_version" ]]; then
-            printf "$new_version\n" > .ruby-version
-            printf "$old_version --> $new_version\n"
-          else
-            printf "✓\n"
-          fi
-        fi
-      )
-    done < <(find . -type d -depth 1)
-  else
-    printf "ERROR: Version must be supplied.\n"
-    return 1
-  fi
-}
-
-# Label: Ruby Server
-# Description: Serve web content from current directory via WEBrick.
-# Parameters: $1 (optional) - The custom port. Default: 3030.
-rserv() {
-  local default_port=3030
-  local custom_port=$1
-
-  ruby -run -e httpd . --port ${custom_port:-$default_port}
 }
 
 #--------------------------------------------------#
