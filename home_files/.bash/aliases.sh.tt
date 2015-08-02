@@ -128,6 +128,7 @@ alias gpr="git push review master"
 alias gps="git push stage stage:master"
 alias gpp="git push production production:master"
 alias gtag="git tag"
+alias gtagv="git tag --verify"
 alias gtags="git push --tags"
 alias gr="git reset" # Unstage staged files for commit.
 alias grs="git reset --soft HEAD^" # Undo previous commit.
