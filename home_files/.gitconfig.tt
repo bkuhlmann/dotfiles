@@ -3,6 +3,7 @@
 [user]
   # name = <enter name here>
   # email = <enter email here>
+  # signingkey = <enter signing key here>
 [github]
   # user = <enter user here>
   # token = <enter token here>
