@@ -228,7 +228,7 @@ gistory() {
 
   printf "Commit Summary:\n"
   hr '-'
-  git log --reverse --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ${commits[@]} -- "$file"
+  git log --reverse --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ${commits[@]} -- "$file"
 
   hr '-'
   read -p "Commit Review (${#commits[@]}). Review each (y/n)? " response
@@ -356,7 +356,7 @@ gup() {
 
   printf "Commit Summary:\n"
   hr '-'
-  git log --reverse --no-merges --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ..@{upstream}
+  git log --reverse --no-merges --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ..@{upstream}
   hr '-'
 
   printf "Commit Review (↓${#commits[@]}):\n"
@@ -505,7 +505,7 @@ gince() {
         # Only process projects that are Git enabled.
         if [[ -d ".git" ]]; then
           # Capture git log activity.
-          local results=$(git log --oneline --format='%C(yellow)%H%Creset %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset' --since "$1" --until "$2" --author "$3" --reverse)
+          local results=$(git log --oneline --format='%C(yellow)%H%Creset %G? %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset' --since "$1" --until "$2" --author "$3" --reverse)
           # Print project name (cyan) and Git activity (white) only if Git activity was detected.
           if [[ -n "$results" ]]; then
             printf "\033[36m${project:2}:\n$results\n"
