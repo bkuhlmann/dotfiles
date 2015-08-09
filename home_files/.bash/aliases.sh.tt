@@ -61,7 +61,7 @@ alias glh='git log --pretty=format:%H -1 | _copy_and_print'
 alias glf='git fetch && git log --reverse --no-merges --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ..@{upstream}'
 alias glg='git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" --grep'
 alias gls='git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
-alias glt='git log --tags --simplify-by-decoration --reverse --pretty="format:%d (%ad)" --date=short | sed -e "s/ (tag: //" -e "s/)//" -e "/^ /d"'
+alias glt='git for-each-ref --sort=taggerdate --format="%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
 alias grl="git reflog"
 alias gg="git grep"
 alias glast="git show --decorate --stat"
