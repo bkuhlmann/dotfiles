@@ -362,6 +362,7 @@ _process_rew_option() {
   local branch="${3:-master}"
   local flags="--skip-bundle --database sqlite3 --skip-test-unit --force --skip-keeps --template"
   local rails_slim_options="$flags https://raw.github.com/bkuhlmann/rails_slim_template/$branch/template.rb"
+  local rails_api_options="$flags https://raw.github.com/bkuhlmann/rails_api_template/$branch/template.rb"
   local rails_setup_options="$flags https://raw.github.com/bkuhlmann/rails_setup_template/$branch/template.rb"
 
   case $2 in
@@ -370,6 +371,9 @@ _process_rew_option() {
       break;;
     "slim")
       _create_rails_skeleton "$1" "$rails_slim_options"
+      break;;
+    "api")
+      _create_rails_skeleton "$1" "$rails_api_options"
       break;;
     "setup")
       _create_rails_skeleton "$1" "$rails_setup_options"
