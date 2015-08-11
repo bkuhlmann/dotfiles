@@ -244,6 +244,11 @@ alias rrm="mkdir -p doc/design && railroady --label --inheritance --specify --al
 alias rrc="mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
 alias rrs="mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
 
+# Section: [Ember](http://emberjs.com)
+alias em="ember"
+alias emg="ember generate"
+alias ems="ember server"
+
 # Section: [Jasmine](http://jasmine.github.io)
 alias berj="ber jasmine"
 alias berjci="ber jasmine:ci"
