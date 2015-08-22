@@ -17,6 +17,9 @@
 *.zip
 *.bzip
 
+# Databases
+*.dump
+
 # CTags
 tags
 .tags
