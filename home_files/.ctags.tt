@@ -1,5 +1,10 @@
 --sort=yes
 --recurse=yes
+--tag-relative=yes
 
+--exclude=.DS_Store
+--exclude=*.git*
 --exclude=log
 --exclude=tmp
+--exclude=node_modules
+--exclude=bower_components
