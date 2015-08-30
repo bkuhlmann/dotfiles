@@ -209,6 +209,20 @@ gount() {
   git rev-list --count HEAD
 }
 
+# Label: Git Show
+# Description: Show commit diff (via difftool) with log entry and commit message body.
+ghow() {
+  local commit="$1"
+
+  if [[ -z "$commit" ]]; then
+    printf "Git commit SHA must be supplied.\n"
+    return 1
+  fi
+
+  git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" -n 1 "$commit"
+  git difftool "$commit^" "$commit"
+}
+
 # Label: Git File History
 # Description: Walk through file history revisions (with optional diff support).
 gistory() {
