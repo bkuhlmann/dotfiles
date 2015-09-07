@@ -800,10 +800,14 @@ gcap() {
 gri() {
   local commits="$1"
 
-  if [[ -n "$commits" ]]; then
-    git rebase -i "@~${commits}"
+  if [[ $(git config remote.origin.url) ]]; then
+    if [[ -n "$commits" ]]; then
+      git rebase --interactive "@~${commits}"
+    else
+      git rebase --interactive @{upstream}
+    fi
   else
-    git rebase -i @{upstream}
+    git rebase --interactive --root
   fi
 }
 
