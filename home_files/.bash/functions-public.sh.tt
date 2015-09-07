@@ -957,28 +957,29 @@ gbna() {
 # Description: Delete local and remote tag (if found).
 # Parameters: $1 (required) - The tag name.
 gtagd() {
-  if [[ "$1" ]]; then
-    read -p "Delete the '$1' tag from local and remote repositories. Continue (y/n)?: " response
-    if [[ "$response" == 'y' ]]; then
-      printf "Local Tag: "
-      if [[ -n "$(git tag --list $1)" ]]; then
-        git tag --delete "$1"
-      else
-        printf "No local tag found. Skipped.\n"
-      fi
-
-      printf "Remote Tag: "
-      if [[ -n "$(git ls-remote --tags origin | grep $1)" ]]; then
-        git push --delete origin "$1"
-      else
-        printf "No remote tag found. Skipped.\n"
-      fi
-    else
-      printf "Tag deletion aborted.\n"
-    fi
-  else
+  if [[ -z "$1" ]]; then
     printf "ERROR: Tag name must be supplied.\n"
     return 1
+  fi
+
+  read -p "Delete '$1' tag from local and remote repositories. Continue (y/n)?: " response
+
+  if [[ "$response" == 'y' ]]; then
+    printf "Local: "
+    if [[ -n "$(git tag --list $1)" ]]; then
+      git tag --delete "$1"
+    else
+      printf "No tag found.\n"
+    fi
+
+    printf "Remote: "
+    if [[ $(git config remote.origin.url) && -n "$(git ls-remote --tags origin | grep $1)" ]]; then
+      git push --delete origin "$1"
+    else
+      printf "No tag found.\n"
+    fi
+  else
+    printf "Tag deletion aborted.\n"
   fi
 }
 
