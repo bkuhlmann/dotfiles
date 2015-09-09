@@ -19,7 +19,7 @@ _copy_and_print() {
   local delimiter=${1:-' '}
   local message="$delimiter(copied to clipboard)\n"
 
-  pbcopy && printf "$(pbpaste)$message"
+  pbcopy && printf "%s" "$(pbpaste)" && printf "$message"
 }
 
 # Label: Toggle Total Color
