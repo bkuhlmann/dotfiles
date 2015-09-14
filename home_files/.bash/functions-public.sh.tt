@@ -1572,6 +1572,30 @@ gifize() {
   fi
 }
 
+#---------------------------------------------#
+# Section: [asciinema](https://asciinema.org) #
+#---------------------------------------------#
+
+# Label: asciinema Record
+# Description: Create a new asciinema recording.
+# Parameters: $1 (required) - The recording title, $2 (required) - The recording file name.
+cinr() {
+  local title="$1"
+  local name="$2"
+
+  if [[ -z "$title" ]]; then
+    printf "ERROR: Recording title is missing.\n"
+    return 1
+  fi
+
+  if [[ -z "$name" ]]; then
+    printf "ERROR: Recording file name is missing.\n"
+    return 1
+  fi
+
+  asciinema rec --max-wait 1 --title "$title" "$name"
+}
+
 #-------------------#
 # Section: Dotfiles #
 #-------------------#
