@@ -26,6 +26,22 @@ t2s() {
   fi
 }
 
+# Label: Kill Process
+# Description: Kill errant process for given search query.
+# Parameters: $1 (required) - The search query.
+# Parameters: $2 (optional) - The kill signal. Default: 15.
+kilp() {
+  local query="$1"
+  local signal=${2:-15}
+
+  if [[ -z "$query" ]]; then
+    printf "ERROR: Search query must be supplied.\n"
+    return 1
+  fi
+
+  ps axu | grep --invert-match grep | grep "$query" | awk '{print $2}' | xargs kill -$signal
+}
+
 #-----------------------------------------------------------#
 # Section: [less](http://en.wikipedia.org/wiki/Less_(Unix)) #
 #-----------------------------------------------------------#
