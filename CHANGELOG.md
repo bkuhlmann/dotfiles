@@ -1,3 +1,52 @@
+# v17.0.0 (2015-09-27)
+
+- Fixed `gri` function issue when no origin exists.
+- Fixed `gtagd` function issues with no origin repository.
+- Fixed bug with coping/pasting of special characters from pbpaste.
+- Fixed calculation of commits since last tag.
+- Added "api" option to `rew` function for build Rails API apps.
+- Added Bashsmith generation to README history.
+- Added RSpec section to aliases and functions.
+- Added RailRoady alias section.
+- Added Rails ERD alias section.
+- Added Ruby Prof alias section.
+- Added [Ember](http://emberjs.com) aliases.
+- Added [Milestoner](https://github.com/bkuhlmann/milestoner) aliases.
+- Added `bbr` alias for launching remote byebug debug session.
+- Added `cinr` function for creating asciinema recordings.
+- Added `gatch` alias for `git commit --patch`.
+- Added `ghow` function for Git commit diff with log info.
+- Added `grbs` alias for rebase skips.
+- Added `gtagv` alias for tag verification.
+- Added `toc` alias for generating table of contents.
+- Added asciinema aliases.
+- Added project name to README.
+- Added table of contents to README.
+- Added the `kilp` function.
+- Added the `man` alias.
+- Added user.signingkey to git config.
+- Updated .gitignore to exclude PostgreSQL archive dumps.
+- Updated Git branch listings to use author date.
+- Updated `glt` alias to include tag author and message.
+- Updated `mo` alias to use Marked 2.
+- Updated git log related aliases and functions to show signature status.
+- Updated shell prompt to only show Git email domain.
+- Updated to Code of Conduct 1.2.0.
+- Removed "r" prefix from Rubocop aliases.
+- Removed "vendor" folder from Git hooks search.
+- Removed GitTip badge from README.
+- Removed Ruby Test::Unit related aliases.
+- Removed `bern*` aliases (use `notes*`) instead.
+- Removed `gra` alias (use `grba` instead).
+- Removed `grc` alias (use `grbc` instead).
+- Removed `rass*` aliases (use `ass*`) instead.
+- Removed `rdb*` aliases (use `db*` instead).
+- Removed `rebundle` alias.
+- Removed sort and unique support when finding commits since last tag.
+- Removed the `asc` alias.
+- Refactored CTags configuration.
+- Refactored Ruby/RSpec function sections.
+
 # v16.1.0 (2015-07-12)
 
 - Removed extraneous confirmation wording from `gtagd` function.

@@ -15,7 +15,53 @@ the *.tt template files in the home_files directory. Read on to learn more.
   - [Upgrade](#upgrade)
 - [Usage](#usage)
       - [Aliases](#aliases)
+        - [General](#general)
+        - [Network](#network)
+        - [[tmux](http://tmux.sourceforge.net)](#tmuxhttptmuxsourceforgenet)
+        - [[Homebrew](http://brew.sh)](#homebrewhttpbrewsh)
+        - [[Colorized Cat](https://github.com/jingweno/ccat)](#colorized-cathttpsgithubcomjingwenoccat)
+        - [[Git](http://git-scm.com)](#githttpgit-scmcom)
+        - [[Tar](http://www.gnu.org/software/tar/tar.html)](#tarhttpwwwgnuorgsoftwaretartarhtml)
+        - [[PostgreSQL](http://www.postgresql.org)](#postgresqlhttpwwwpostgresqlorg)
+        - [[Redis](http://redis.io)](#redishttpredisio)
+        - [[rbenv](https://github.com/sstephenson/rbenv)](#rbenvhttpsgithubcomsstephensonrbenv)
+        - [[Ruby](http://www.ruby-lang.org)](#rubyhttpwwwruby-langorg)
+        - [[Ruby Gems](http://rubygems.org)](#ruby-gemshttprubygemsorg)
+        - [[Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)](#ruby-gems-whoishttpsgithubcomjnunemakergemwhois)
+        - [[Bundler](http://gembundler.com)](#bundlerhttpgembundlercom)
+        - [[Gemsmith](https://github.com/bkuhlmann/gemsmith)](#gemsmithhttpsgithubcombkuhlmanngemsmith)
+        - [[Ruby on Rails](http://rubyonrails.org)](#ruby-on-railshttprubyonrailsorg)
+        - [[Jasmine](http://jasmine.github.io)](#jasminehttpjasminegithubio)
+        - [[Rubocop](https://github.com/bbatsov/rubocop)](#rubocophttpsgithubcombbatsovrubocop)
+        - [[Rails Best Practices](https://github.com/railsbp/rails_best_practices)](#rails-best-practiceshttpsgithubcomrailsbprails_best_practices)
+        - [[Foreman](https://github.com/ddollar/foreman)](#foremanhttpsgithubcomddollarforeman)
+        - [[Capistrano](https://github.com/capistrano/capistrano)](#capistranohttpsgithubcomcapistranocapistrano)
+        - [[Swift](https://developer.apple.com/swift)](#swifthttpsdeveloperapplecomswift)
+        - [[iOS](https://developer.apple.com/ios)](#ioshttpsdeveloperapplecomios)
+        - [[Silver Surfer](https://github.com/ggreer/the_silver_searcher)](#silver-surferhttpsgithubcomggreerthe_silver_searcher)
+        - [[Z](https://github.com/rupa/z)](#zhttpsgithubcomrupaz)
+        - [[Path Finder](http://www.cocoatech.com/pathfinder)](#path-finderhttpwwwcocoatechcompathfinder)
+        - [[Vim](http://www.vim.org)](#vimhttpwwwvimorg)
+        - [[Sublime Text](http://www.sublimetext.com)](#sublime-texthttpwwwsublimetextcom)
+        - [[Marked](http://markedapp.com)](#markedhttpmarkedappcom)
+        - [[asciinema](https://asciinema.org)](#asciinemahttpsasciinemaorg)
       - [Functions](#functions)
+        - [General](#general-1)
+        - [[less](http://en.wikipedia.org/wiki/Less_(Unix))](#lesshttpenwikipediaorgwikiless_unix)
+        - [[OpenSSL](https://openssl.org)](#opensslhttpsopensslorg)
+        - [[curl](http://curl.haxx.se)](#curlhttpcurlhaxxse)
+        - [[lsof](http://people.freebsd.org/~abe/)](#lsofhttppeoplefreebsdorgabe)
+        - [[Git](http://git-scm.com)](#githttpgit-scmcom-1)
+        - [[GitHub](https://github.com)](#githubhttpsgithubcom)
+        - [[PostgreSQL](http://www.postgresql.org)](#postgresqlhttpwwwpostgresqlorg-1)
+        - [[Bundler](http://gembundler.com)](#bundlerhttpgembundlercom-1)
+        - [[Ruby](http://www.ruby-lang.org)](#rubyhttpwwwruby-langorg-1)
+        - [[Ruby on Rails](http://rubyonrails.org)](#ruby-on-railshttprubyonrailsorg-1)
+        - [[Travis CI](https://travis-ci.org/)](#travis-cihttpstravis-ciorg)
+        - [[Site Validator](https://github.com/jaimeiniesta/site_validator)](#site-validatorhttpsgithubcomjaimeiniestasite_validator)
+        - [[Image Magick](http://www.imagemagick.org)](#image-magickhttpwwwimagemagickorg)
+        - [[FFmpeg](http://www.ffmpeg.org)](#ffmpeghttpwwwffmpegorg)
+        - [Dotfiles](#dotfiles)
       - [Git Hooks](#git-hooks)
       - [IRB, Pry, and Rails consoles](#irb-pry-and-rails-consoles)
       - [Pry Aliases](#pry-aliases)
@@ -67,7 +113,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v16.1.0
+    git checkout v17.0.0
 
 Master Version (unstable)
 
@@ -128,6 +174,7 @@ When upgrading to a new version, do the following to apply upgrades:
     bashe = "$EDITOR $HOME/.bash/env.sh"
     bashs = "exec $SHELL"
     pss = 'ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
+    man = "gem man --system"
 ##### Network
     sshe = "$EDITOR $HOME/.ssh/config"
     key = "open /Applications/Utilities/Keychain Access.app"
@@ -163,13 +210,13 @@ When upgrading to a new version, do the following to apply upgrades:
     gcge = "git config --global --edit"
     gget = "git config"
     gst = "git status --short --branch"
-    gl = 'git log --graph --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
-    gld = 'git log --stat --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b"'
+    gl = 'git log --graph --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
+    gld = 'git log --stat --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b"'
     glh = 'git log --pretty=format:%H -1 | _copy_and_print'
-    glf = 'git fetch && git log --reverse --no-merges --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ..@{upstream}'
-    glg = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" --grep'
-    gls = 'git log --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
-    glt = 'git log --tags --simplify-by-decoration --reverse --pretty = "format:%d (%ad)" --date=short | sed -e "s/ (tag: //" -e "s/)//" -e "/^ /d"'
+    glf = 'git fetch && git log --reverse --no-merges --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ..@{upstream}'
+    glg = 'git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" --grep'
+    gls = 'git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
+    glt = 'git for-each-ref --sort=taggerdate --format = "%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
     grl = "git reflog"
     gg = "git grep"
     glast = "git show --decorate --stat"
@@ -208,13 +255,14 @@ When upgrading to a new version, do the following to apply upgrades:
     gap = "git add --patch"
     gall = "git add --all ."
     gco = "git commit"
+    gatch = "git commit --patch"
     gca = "git commit --all"
     gcm = "git commit --message"
     gcam = "git commit --all --message"
-    gamend = "git commit --amend"
-    gamendh = "git commit --all --amend --no-edit"
     gcf = "git commit --fixup"
     gcs = "git commit --squash"
+    gamend = "git commit --amend"
+    gamendh = "git commit --all --amend --no-edit"
     gcp = "git cherry-pick"
     gcpa = "git cherry-pick --abort"
     gashc = "git stash clear"
@@ -224,8 +272,9 @@ When upgrading to a new version, do the following to apply upgrades:
     gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch.
     gpuro = "gpur origin" # Rebase the current branch on top of the upstream origin branch.
     gpurom = "gpuro master" # Rebase the current branch on top of the upstream origin master branch.
-    grc = "git rebase --continue"
-    gra = "git rebase --abort"
+    grbc = "git rebase --continue"
+    grbs = "git rebase --skip"
+    grba = "git rebase --abort"
     ger = "git rerere"
     gp = "git push"
     gpn = "git push --no-verify"
@@ -234,6 +283,7 @@ When upgrading to a new version, do the following to apply upgrades:
     gps = "git push stage stage:master"
     gpp = "git push production production:master"
     gtag = "git tag"
+    gtagv = "git tag --verify"
     gtags = "git push --tags"
     gr = "git reset" # Unstage staged files for commit.
     grs = "git reset --soft HEAD^" # Undo previous commit.
@@ -294,50 +344,65 @@ When upgrading to a new version, do the following to apply upgrades:
     bce = "$EDITOR $HOME/.bundle/config"
     bcon = "bundle console"
     be = "bundle exec"
-    bess = "bes spec"
-    besn = "bess --next-failure"
-    besf = "bess --only-failures"
-    besb = "bess --seed 2112 --bisect"
-    bert = "ber test"
-    berts = "ber test | grep _test.rb"
-    bertv = "TESTOPTS=-v ber test"
     bch = "rm -f Gemfile.lock; bundle check"
-    rebundle = "bch; bundle package"
+##### [Milestoner](https://github.com/bkuhlmann/milestoner)
+    ms = "milestoner"
+    msc = 'milestoner --commits | _copy_and_print "n"'
+    mst = "milestoner --tag"
+    msp = "milestoner --publish"
+    mse = "milestoner --edit"
+    msv = "milestoner --version"
 ##### [Gemsmith](https://github.com/bkuhlmann/gemsmith)
     gs = "gemsmith"
     gse = "gemsmith edit"
     gsr = "gemsmith read"
     gso = "gemsmith open"
+##### [RSpec](http://rspec.info)
+    bess = "bes spec"
+    besn = "bess --next-failure"
+    besf = "bess --only-failures"
+    besb = "bess --seed 2112 --bisect"
+##### [ByeBug](https://github.com/deivid-rodriguez/byebug)
+    bbr = "bundle exec byebug --remote localhost:1048"
+##### [Ruby Prof](https://github.com/ruby-prof/ruby-prof)
+    rprof = "ruby-prof --printer=graph_html ./script/rails runner > profile.html"
 ##### [Ruby on Rails](http://rubyonrails.org)
     scs = "sc --sandbox"
     sgc = "sg controller"
     sgm = "sg model"
     sgh = "sg helper"
     sgs = "sg scaffold"
-    rdbd = "ber db:drop"
-    rdbc = "ber db:create"
-    rdbm = "ber db:migrate"
-    rdbmt = "ber db:migrate && ber db:rollback && ber db:migrate"
-    rassp = "ber assets:precompile"
-    rassc = "ber assets:clean"
-    bernt = "ber notes:custom ANNOTATION=TODO"
-    bernf = "ber notes:custom ANNOTATION=FIX"
+    dbd = "ber db:drop"
+    dbc = "ber db:create"
+    dbm = "ber db:migrate"
+    dbmt = "ber db:migrate && ber db:rollback && ber db:migrate"
+    assp = "ber assets:precompile"
+    assc = "ber assets:clean"
+    notest = "ber notes:custom ANNOTATION=TODO"
+    notesf = "ber notes:custom ANNOTATION=FIX"
     taild = "tail -f log/development.log"
     tailt = "tail -f log/test.log"
-    res = "touch tmp/restart.txt"
-    rprofile = "ruby-prof --printer=graph_html ./script/rails runner > profile.html"
     rpaths = "ber routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
+    res = "touch tmp/restart.txt"
+##### [Rails ERD](https://github.com/voormedia/rails-erd)
     erd = "mkdir -p doc/design && ber erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
-    dmodels = "mkdir -p doc/design && railroady --label --inheritance --specify --all-columns --join --transitive --output doc/design/models.dot --models"
-    dcontrollers = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
-    dstate = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
+##### [RailRoady](https://github.com/preston/railroady)
+    rrm = "mkdir -p doc/design && railroady --label --inheritance --specify --all-columns --join --transitive --output doc/design/models.dot --models"
+    rrc = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
+    rrs = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
+##### [Ember](http://emberjs.com)
+    em = "ember"
+    emg = "ember generate"
+    ems = "ember server"
 ##### [Jasmine](http://jasmine.github.io)
     berj = "ber jasmine"
     berjci = "ber jasmine:ci"
 ##### [Rubocop](https://github.com/bbatsov/rubocop)
-    rcop = "rubocop --display-cop-names"
-    rcopo = "rubocop --display-cop-names --only"
-    rcopa = "rubocop --auto-gen-config"
+    cop = "rubocop --display-cop-names"
+    copc = "rubocop --auto-gen-config"
+    copo = "rubocop --display-cop-names --only"
+    copf = "rubocop --auto-correct"
+    cops = "rubocop --show-cops"
 ##### [Rails Best Practices](https://github.com/railsbp/rails_best_practices)
     rbest = "rails_best_practices"
 ##### [Foreman](https://github.com/ddollar/foreman)
@@ -359,15 +424,21 @@ When upgrading to a new version, do the following to apply upgrades:
     v = "vim"
 ##### [Sublime Text](http://www.sublimetext.com)
     e = "sublime"
-##### [Marked](http://markedapp.com)
-    mo = "open -a Marked"
+##### [Marked 2](http://marked2app.com)
+    mo = "open -a Marked 2"
 ##### [asciinema](https://asciinema.org)
-    asc = "asciinema"
+    cin = "asciinema"
+    cinp = "asciinema play"
+    cinu = "asciinema upload"
+    cinv = "asciinema --version"
+##### [DocToc](https://github.com/thlorenz/doctoc)
+    toc = "doctoc --title '# Table of Contents'"
 
 #### Functions
 
 ##### General
     t2s = Tab to Space - Convert file from tab to space indendation.
+    kilp = Kill Process - Kill errant process for given search query.
 ##### [less](http://en.wikipedia.org/wiki/Less_(Unix))
     lessi = Less Interactive - Inspect file, interactively.
 ##### [OpenSSL](https://openssl.org)
@@ -382,6 +453,7 @@ When upgrading to a new version, do the following to apply upgrades:
     ginfo = Git Info - Print repository overview information.
     ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
     gount = Git Commit Count - Answer total number of commits for current project.
+    ghow = Git Show - Show commit diff (via difftool) with log entry and commit message body.
     gistory = Git File History - Walk through file history revisions (with optional diff support).
     glamel = Git Blame Log - Answer blame log (i.e. commit notes) for a specific file and lines (optional).
     guthorsa = Git Authors (all) - Answer author commit activity per project (ranked highest to lowest).
@@ -431,6 +503,12 @@ When upgrading to a new version, do the following to apply upgrades:
     pguc = PostgreSQL User Create - Create PostgreSQL user.
     pgud = PostgreSQL User Drop - Drop PostgreSQL user.
     pgt = PostgreSQL Template - Edit PostgreSQL template.
+##### [Ruby](http://www.ruby-lang.org)
+    rua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version information.
+    rserv = Ruby Server - Serve web content from current directory via WEBrick.
+##### [RSpec](http://rspec.info)
+    bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
+    bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
 ##### [Bundler](http://gembundler.com)
     bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it if otherwise.
     bcim = Bundler Ignore Post-Install Message - Updates Bundler to ignore install messages for specified gem.
@@ -438,14 +516,8 @@ When upgrading to a new version, do the following to apply upgrades:
     bua = Bundle Update (all) - Update gems for projects in current directory.
     bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
     ber = Bundle Execute Rake - Run Rake via binstub or Bundler.
-    bertt = Bundle Execute Rake Test - Run single Test::Unit test via binstub or Bundler.
-    bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
-    bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
     beg = Bundle Execute Guard - Run Guard via binstub or Bundler.
     bec = Bundle Execute Capistrano - Run Capistrano via binstub or Bundler.
-##### [Ruby](http://www.ruby-lang.org)
-    rua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version information.
-    rserv = Ruby Server - Serve web content from current directory via WEBrick.
 ##### [Ruby on Rails](http://rubyonrails.org)
     rew = Rails New - Create rails application from selected template.
     sc = Rails Script Console - Run Rails console.
@@ -460,6 +532,8 @@ When upgrading to a new version, do the following to apply upgrades:
     sketch = Sketch - Convert photo into a sketch. Inspired by [Whiteboard Cleaner Gist](https://gist.github.com/lelandbatey/8677901).
 ##### [FFmpeg](http://www.ffmpeg.org)
     gifize = Gifize - Convert video to animated GIF.
+##### [asciinema](https://asciinema.org)
+    cinr = asciinema Record - Create a new asciinema recording.
 ##### Dotfiles
     dots = Dotfiles - Learn about dotfile aliases, functions, etc.
 
