@@ -65,6 +65,3 @@ fi
 
 # Z (https://github.com/rupa/z)
 . $(brew --prefix)/etc/profile.d/z.sh
-
-# Ruby on Rails (http://rubyonrails.org)
-export PATH="./bin:$PATH"
