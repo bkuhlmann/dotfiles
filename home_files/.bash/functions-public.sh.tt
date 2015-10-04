@@ -226,17 +226,20 @@ gount() {
 }
 
 # Label: Git Show
-# Description: Show commit diff (via difftool) with log entry and commit message body.
+# Description: Show commit details with optional diff support.
+# Parameters: $1 (optional) - The commit to show. Default: <last commit>, $2 (optional) - Launch difftool. Default: false.
 ghow() {
   local commit="$1"
+  local difftool="$2"
 
-  if [[ -z "$commit" ]]; then
-    printf "Git commit SHA must be supplied.\n"
-    return 1
+  if [[ -n "$commit" && -n "$difftool" ]]; then
+    _git_show_formatted_stats "$commit"
+    git difftool "$commit^" "$commit"
+  elif [[ -n "$commit" && -z "$difftool" ]]; then
+    _git_show_formatted_stats "$commit"
+  else
+    _git_show_formatted_stats
   fi
-
-  _git_show_formatted_stats "$commit"
-  git difftool "$commit^" "$commit"
 }
 
 # Label: Git File History
