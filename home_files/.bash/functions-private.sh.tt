@@ -188,7 +188,7 @@ _process_git_stash() {
     fi
   fi
 
-  ISF=$ifs_original
+  IFS=$ifs_original
   eval "$stash_command stash@{$stash_index}"
 }
 

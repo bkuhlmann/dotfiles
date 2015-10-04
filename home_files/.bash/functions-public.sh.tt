@@ -885,7 +885,7 @@ gbs() {
     printf "Sorry, no branches to switch to.\n"
   fi
 
-  ISF=$ifs_original
+  IFS=$ifs_original
 }
 
 # Label: Git Branch Delete
@@ -925,7 +925,7 @@ gbd() {
     printf "Sorry, no branches to delete.\n"
   fi
 
-  ISF=$ifs_original
+  IFS=$ifs_original
 }
 
 # Label: Git Branch Delete Merged
