@@ -93,7 +93,7 @@ _git_commit_count_since_last_tag() {
 # Label: Git Branch Name
 # Description: Prints Git branch name.
 _git_branch_name() {
-  git rev-parse --abbrev-ref HEAD
+  git rev-parse --abbrev-ref HEAD | tr -d '\n'
 }
 
 # Label: Git Branch List
