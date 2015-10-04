@@ -812,13 +812,17 @@ gcap() {
 
 # Label: Git Rebase (interactive)
 # Description: Rebase commits, interactively (i.e. reword, fix, squash, etc.).
-# Parameters: $1 (optional) - The number of previous commits to rebase. Default: @{upstream}.
+# Parameters: $1 (optional) - The number of commits or branch to rebase to. Default: upstream or root.
 gri() {
-  local commits="$1"
+  local value="$1"
+  local number_regex="^[0-9]+$"
+  local branch_regex="^[0-9a-zA-Z\-\_]+$"
 
   if [[ $(git config remote.origin.url) ]]; then
-    if [[ -n "$commits" ]]; then
-      git rebase --interactive "@~${commits}"
+    if [[ "$value" =~ $number_regex ]]; then
+      git rebase --interactive "@~${value}"
+    elif [[ "$value" =~ $branch_regex ]]; then
+      git rebase --interactive "$value"
     else
       git rebase --interactive @{upstream}
     fi
