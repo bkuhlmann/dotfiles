@@ -57,7 +57,7 @@ alias gcge="git config --global --edit"
 alias gget="git config"
 alias gst="git status --short --branch"
 alias gl='git log --graph --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
-alias gld='git log --stat --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b%n%N%-%n"'
+alias gld='git log --stat --pretty=format:"$(_git_log_format)"'
 alias glh='git log --pretty=format:%H -1 | _copy_and_print'
 alias glf='git fetch && git log --reverse --no-merges --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ..@{upstream}'
 alias glg='git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" --grep'

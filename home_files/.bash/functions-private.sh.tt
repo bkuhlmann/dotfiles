@@ -41,11 +41,17 @@ _toggle_total_color() {
 # Section: [Git](http://git-scm.com) #
 #------------------------------------#
 
+# Label: Git Log Format
+# Description: Prints default Git log format.
+_git_log_format() {
+  printf "%s" "%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b%n%N%-%n"
+}
+
 # Label: Git Show Formatted Stats
 # Description: Shows Git commit/file information in an easy to read format.
 # Parameters: $1 (required) - The params to pass to git show.
 _git_show_formatted_stats() {
-  git show --stat --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b%n%N%-%n" $@
+  git show --stat --pretty=format:"$(_git_log_format)" $@
 }
 
 # Label: Git Commits Since Last Tag
