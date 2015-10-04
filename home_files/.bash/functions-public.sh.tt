@@ -838,10 +838,12 @@ gbl() {
 # Description: Create and switch to branch.
 # Parameters: $1 (required) - The branch name.
 gbc() {
-  if [[ "$1" ]]; then
-    git branch "$1"
-    git checkout "$1"
-    printf "$1" | _copy_and_print
+  local name="$1"
+
+  if [[ "$name" ]]; then
+    git branch "$name"
+    git checkout "$name"
+    printf "$name" | _copy_and_print
   else
     printf "ERROR: Branch name must be supplied.\n"
     return 1
