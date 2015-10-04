@@ -233,12 +233,12 @@ ghow() {
   local difftool="$2"
 
   if [[ -n "$commit" && -n "$difftool" ]]; then
-    _git_show_formatted_stats "$commit"
+    _git_show_details "$commit"
     git difftool "$commit^" "$commit"
   elif [[ -n "$commit" && -z "$difftool" ]]; then
-    _git_show_formatted_stats "$commit"
+    _git_show_details "$commit"
   else
-    _git_show_formatted_stats
+    _git_show_details
   fi
 }
 
@@ -276,7 +276,7 @@ gistory() {
       printf "[$counter/${#commits[@]}] "
       counter=$((counter + 1))
 
-      _git_show_formatted_stats $commit -- "$file"
+      _git_show_details $commit -- "$file"
 
       printf "\n"
       read -p "View diff (y = yes, n = no, q = quit)? " response
@@ -318,7 +318,7 @@ glamel() {
     local blame_hashes=$(git blame -l "$file" | awk '{print $1}')
   fi
 
-  _git_show_formatted_stats $blame_hashes
+  _git_show_details $blame_hashes
 }
 
 # Label: Git Authors (all)
@@ -400,7 +400,7 @@ gup() {
     printf "[$counter/${#commits[@]}] "
     counter=$((counter + 1))
 
-    _git_show_formatted_stats $commit
+    _git_show_details $commit
 
     printf "\n"
     read -p "View Diff (y = yes, n = no, q = quit)? " response
@@ -644,7 +644,7 @@ gashs() {
         return;;
     esac
   else
-    _process_git_stash "_git_show_formatted_stats" "Git Stash Show Options (select stash to show)"
+    _process_git_stash "_git_show_details" "Git Stash Show Options (select stash to show)"
   fi
 }
 

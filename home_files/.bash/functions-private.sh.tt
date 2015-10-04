@@ -47,10 +47,10 @@ _git_log_format() {
   printf "%s" "%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b%n%N%-%n"
 }
 
-# Label: Git Show Formatted Stats
-# Description: Shows Git commit/file information in an easy to read format.
+# Label: Git Show Details
+# Description: Shows Git commit/file change details in a concise and easy to read format.
 # Parameters: $1 (required) - The params to pass to git show.
-_git_show_formatted_stats() {
+_git_show_details() {
   git show --stat --pretty=format:"$(_git_log_format)" $@
 }
 
