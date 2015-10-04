@@ -244,59 +244,48 @@ ghow() {
 
 # Label: Git File History
 # Description: Walk through file history revisions (with optional diff support).
+# Parameters: $1 (required) - The file path.
 gistory() {
-  local file="$1"
-
-  if [[ ! -n "$file" ]]; then
+  if [[ ! -n "$1" ]]; then
     printf "File must be supplied.\n"
     return 1
   fi
 
+  local file="$1"
+  local counter=1
   local commits=($(git rev-list --reverse HEAD -- "$file"))
+  local commit_total=${#commits[@]}
+  local option_padding=${#commit_total}
 
   if [[ ${#commits[@]} == 0 ]]; then
     printf "No file history detected.\n"
     return
   fi
 
-  printf "Commit Summary:\n"
-  hr '-'
-  git log --reverse --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ${commits[@]} -- "$file"
+  printf "Commit History ($file):\n\n"
 
-  hr '-'
-  read -p "Commit Review (${#commits[@]}). Review each (y/n)? " response
+  for commit in ${commits[@]}; do
+    local option="$(printf "%${option_padding}s" $counter)"
+    printf "%s\n" "$option: $(git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -n1 $commit)"
+    counter=$((counter + 1))
+  done
 
+  option_padding=$((option_padding + 1))
+  printf "%${option_padding}s %s\n\n" "q:" "Quit/Exit."
+
+  read -p "Enter selection: " response
+  if [[ "$response" == 'q' ]]; then
+    return
+  fi
+
+  printf "\n"
+  local selected_commit=${commits[$((response - 1))]}
+  _git_show_details $selected_commit -- "$file"
+
+  printf "\n"
+  read -p "View diff (y = yes, n = no)? " response
   if [[ "$response" == 'y' ]]; then
-    local counter=1
-    local previous_commit=''
-
-    for commit in "${commits[@]}"; do
-      hr '-'
-
-      printf "[$counter/${#commits[@]}] "
-      counter=$((counter + 1))
-
-      _git_show_details $commit -- "$file"
-
-      printf "\n"
-      read -p "View diff (y = yes, n = no, q = quit)? " response
-
-      if [[ "$response" == 'q' ]]; then
-        break
-      fi
-
-      if [[ "$response" == 'y' ]]; then
-        if [[ -n $previous_commit ]]; then
-          gdt $previous_commit..$commit -- "$file"
-        else
-          gdt $commit^! -- "$file"
-        fi
-      fi
-
-      previous_commit=$commit
-    done
-  else
-    printf "File history review canceled.\n"
+    gdt $selected_commit^! -- "$file"
   fi
 }
 
