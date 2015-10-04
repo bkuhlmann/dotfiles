@@ -235,7 +235,7 @@ ghow() {
     return 1
   fi
 
-  git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" -n 1 "$commit"
+  git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b%n%N%-%n" -n 1 "$commit"
   git difftool "$commit^" "$commit"
 }
 

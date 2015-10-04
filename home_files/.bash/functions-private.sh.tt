@@ -45,7 +45,7 @@ _toggle_total_color() {
 # Description: Shows Git commit/file information in an easy to read format.
 # Parameters: $1 (required) - The params to pass to git show.
 _git_show_formatted_stats() {
-  git show --stat --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b" $@
+  git show --stat --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b%n%N%-%n" $@
 }
 
 # Label: Git Commits Since Last Tag
