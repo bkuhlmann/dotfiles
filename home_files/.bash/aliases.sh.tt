@@ -13,6 +13,7 @@ alias o="open"
 alias home="cd $HOME"
 alias bashe="$EDITOR $HOME/.bash/env.sh"
 alias bashs="exec $SHELL"
+alias bashv="bash --version"
 alias pss='ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
 alias man="gem man --system"
 
