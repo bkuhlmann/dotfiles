@@ -266,7 +266,7 @@ gistory() {
 
   for commit in ${commits[@]}; do
     local option="$(printf "%${option_padding}s" $counter)"
-    printf "%s\n" "$option: $(git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -n1 $commit)"
+    printf "%s\n" "$option: $(git log --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
     counter=$((counter + 1))
   done
 
@@ -378,7 +378,7 @@ gup() {
 
   printf "Commit Summary:\n"
   hr '-'
-  git log --reverse --no-merges --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ..@{upstream}
+  git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}
   hr '-'
 
   printf "Commit Review (↓${#commits[@]}):\n"
@@ -527,7 +527,7 @@ gince() {
         # Only process projects that are Git enabled.
         if [[ -d ".git" ]]; then
           # Capture git log activity.
-          local results=$(git log --oneline --format='%C(yellow)%H%Creset %G? %C(bold blue)%an%Creset %s%C(bold cyan)%d%Creset %Cgreen(%cr)%Creset' --since "$1" --until "$2" --author "$3" --reverse)
+          local results=$(git log --oneline --format="$(_git_log_line_format)" --since "$1" --until "$2" --author "$3" --reverse)
           # Print project name (cyan) and Git activity (white) only if Git activity was detected.
           if [[ -n "$results" ]]; then
             printf "\033[36m${project:2}:\n$results\n"
