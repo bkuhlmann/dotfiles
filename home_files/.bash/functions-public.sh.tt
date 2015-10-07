@@ -397,6 +397,8 @@ gup() {
     case $response in
       'y')
         git difftool $commit^!;;
+      'n')
+        continue;;
       'q')
         break;;
       *)
