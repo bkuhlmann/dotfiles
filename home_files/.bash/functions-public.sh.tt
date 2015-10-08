@@ -1491,6 +1491,20 @@ sdb() {
   _run_rails_command "dbconsole" "$*"
 }
 
+#--------------------------------------------------------------#
+# Section: [Rails ERD](https://github.com/voormedia/rails-erd) #
+#--------------------------------------------------------------#
+
+# Label: Rails ERD
+# Description: Builds Entity Relationship Diagram (ERD) of Rails models.
+erd() {
+  local doc_dir="tmp/doc"
+
+  mkdir -p "$doc_dir"
+  ber erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename="$doc_dir/models"
+  printf "$(pwd)/$doc_dir/models.pdf" | _copy_and_print
+}
+
 #----------------------------------------------#
 # Section: [Travis CI](https://travis-ci.org/) #
 #----------------------------------------------#
