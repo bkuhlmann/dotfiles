@@ -1496,13 +1496,43 @@ sdb() {
 #--------------------------------------------------------------#
 
 # Label: Rails ERD
-# Description: Builds Entity Relationship Diagram (ERD) of Rails models.
+# Description: Generates Entity Relationship Diagram (ERD) of Rails models.
 erd() {
   local doc_dir="tmp/doc"
 
   mkdir -p "$doc_dir"
   ber erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename="$doc_dir/models"
   printf "$(pwd)/$doc_dir/models.pdf" | _copy_and_print
+}
+
+#------------------------------------------------------------#
+# Section: [RailRoady](https://github.com/preston/railroady) #
+#------------------------------------------------------------#
+
+# Label: RailRoady Models
+# Description: Generates diagrams for Rails models, controllers, or states.
+# Parameters: $1 (required) - The kind of diagram to generate.
+rr() {
+  local kind="$1"
+  local doc_dir="tmp/doc"
+
+  case $kind in
+    'm')
+      railroady --label --inheritance --specify --all-columns --join --transitive --output "$doc_dir/models.dot" --models
+      printf "$(pwd)/$doc_dir/models.dot" | _copy_and_print;;
+    'c')
+      railroady --label --inheritance --output "$doc_dir/controllers.dot" --controllers
+      printf "$(pwd)/$doc_dir/controllers.dot" | _copy_and_print;;
+    's')
+      railroady --label --inheritance --output "$doc_dir/state.dot" --aasm
+      printf "$(pwd)/$doc_dir/state.dot" | _copy_and_print;;
+    *)
+      printf "\nUsage: rr KIND\n\n"
+      printf "RailRoady Options:\n"
+      printf "  m: Generate Rails Entity Relationship Diagram (ERD).\n"
+      printf "  c: Generate Rails controller hierarchy diagram.\n"
+      printf "  s: Generate Rails state machine transitions.\n\n";;
+  esac
 }
 
 #----------------------------------------------#

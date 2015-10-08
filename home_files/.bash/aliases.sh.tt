@@ -251,11 +251,6 @@ alias tailt="tail -f log/test.log"
 alias rpaths="ber routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
 alias res="touch tmp/restart.txt"
 
-# Section: [RailRoady](https://github.com/preston/railroady)
-alias rrm="mkdir -p doc/design && railroady --label --inheritance --specify --all-columns --join --transitive --output doc/design/models.dot --models"
-alias rrc="mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
-alias rrs="mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
-
 # Section: [Ember](http://emberjs.com)
 alias em="ember"
 alias emg="ember generate"
