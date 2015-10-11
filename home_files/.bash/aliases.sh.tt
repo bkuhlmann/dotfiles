@@ -10,6 +10,7 @@ alias l="ls -alh"
 alias l1="ls -A1 | _copy_and_print '\n'"
 alias p='pwd | tr -d "\r\n" | _copy_and_print'
 alias o="open"
+alias cat='ccat -G Keyword="turquoise" -G Punctuation="green" -G Decimal="green" -G Type="blue" -G Literal="blue" -G String="lightgray" -G Plaintext="white"'
 alias home="cd $HOME"
 alias bashe="$EDITOR $HOME/.bash/env.sh"
 alias bashs="exec $SHELL"
