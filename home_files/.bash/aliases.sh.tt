@@ -214,9 +214,9 @@ alias msv="milestoner --version"
 
 # Section: [Gemsmith](https://github.com/bkuhlmann/gemsmith)
 alias gs="gemsmith"
-alias gse="gemsmith edit"
-alias gsr="gemsmith read"
-alias gso="gemsmith open"
+alias gse="gemsmith --edit"
+alias gsr="gemsmith --read"
+alias gso="gemsmith --open"
 
 # Section: [RSpec](http://rspec.info)
 alias bess="bes spec"
