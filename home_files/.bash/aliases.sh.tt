@@ -177,9 +177,9 @@ alias rbu="rbenv uninstall"
 alias rbvars="rbenv vars"
 
 # Section: [Ruby](http://www.ruby-lang.org)
-alias rd="rdoc -a -o _doc"
-alias rdo="open _doc/index.html"
-alias rdd="rm -rf _doc"
+alias rd="rdoc -a -o tmp/doc/rdoc"
+alias rdo="open tmp/doc/rdoc/index.html"
+alias rdd="rm -rf tmp/doc/rdoc"
 
 # Section: [Ruby Gems](http://rubygems.org)
 alias geml="gem list"
