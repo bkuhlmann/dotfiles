@@ -23,8 +23,9 @@ alias sshe="$EDITOR $HOME/.ssh/config"
 alias key="open /Applications/Utilities/Keychain\ Access.app"
 alias ipa='curl -s checkip.dyndns.org | grep -Eo "[0-9\.]+" | _copy_and_print'
 alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
-alias dnsf="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
+alias dnsi="scutil --dns"
 alias dnss="sudo dscacheutil -statistics"
+alias dnsf="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
 
 # Section: [tmux](http://tmux.sourceforge.net)
 alias tsl="tmux list-sessions"
