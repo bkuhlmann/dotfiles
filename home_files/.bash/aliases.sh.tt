@@ -227,9 +227,6 @@ alias besb="bess --seed 2112 --bisect"
 # Section: [ByeBug](https://github.com/deivid-rodriguez/byebug)
 alias bbr="bundle exec byebug --remote localhost:1048"
 
-# Section: [Ruby Prof](https://github.com/ruby-prof/ruby-prof)
-alias rprof="ruby-prof --printer=graph_html ./script/rails runner > profile.html"
-
 # Section: [Ruby on Rails](http://rubyonrails.org)
 alias scs="sc --sandbox"
 alias sgc="sg controller"
