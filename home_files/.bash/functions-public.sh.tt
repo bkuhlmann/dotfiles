@@ -268,71 +268,34 @@ gile() {
 }
 
 # Label: Git File History
-# Description: Walk through file history revisions (with optional diff support).
+# Description: View file commits (with optional diff support).
 # Parameters: $1 (required) - The file path.
 gistory() {
-  if [[ ! -n "$1" ]]; then
-    printf "File must be supplied.\n"
+  if [[ -z "$1" ]]; then
+    printf "ERROR: File must be supplied.\n"
     return 1
   fi
 
   local file="$1"
-  local counter=1
   local commits=($(git rev-list --reverse HEAD -- "$file"))
-  local commit_total=${#commits[@]}
-  local option_padding=${#commit_total}
 
-  if [[ ${#commits[@]} == 0 ]]; then
-    printf "No file history detected.\n"
-    return
-  fi
-
-  printf "Commit History ($file):\n\n"
-
-  for commit in ${commits[@]}; do
-    local option="$(printf "%${option_padding}s" $counter)"
-    printf "%s\n" "$option: $(git log --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
-    counter=$((counter + 1))
-  done
-
-  option_padding=$((option_padding + 1))
-  printf "%${option_padding}s %s\n\n" "q:" "Quit/Exit."
-
-  read -p "Enter selection: " response
-  if [[ "$response" == 'q' ]]; then
-    return
-  fi
-
-  printf "\n"
-  local selected_commit=${commits[$((response - 1))]}
-  _git_show_details $selected_commit -- "$file"
-
-  printf "\n"
-  read -p "View diff (y = yes, n = no)? " response
-  if [[ "$response" == 'y' ]]; then
-    gdt $selected_commit^! -- "$file"
-  fi
+  _git_file_commits commits[@] "$file"
 }
 
-# Label: Git Blame Log
-# Description: Answer blame log (i.e. commit notes) for a specific file and lines (optional).
+# Label: Git Blame History
+# Description: View (blame) file commits for a specific file and/or lines (with optional diff support).
 # Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
 glamel() {
-  local file="$1"
-  local lines="$2"
-
-  if [[ -z "$file" ]]; then
-    printf "ERROR: File path must be supplied.\n"
+  if [[ -z "$1" ]]; then
+    printf "ERROR: File must be supplied.\n"
     return 1
   fi
 
-  if [[ -n "$lines" ]]; then
-    local blame_hashes=$(git blame -l -L $lines "$file" | awk '{print $1}')
-  else
-    local blame_hashes=$(git blame -l "$file" | awk '{print $1}')
-  fi
+  local file="$1"
+  local lines="$2"
+  local commits=($(git blame -l -s -C -M -L "$lines" "$file" | awk '{print $1}' | sort -u))
 
-  _git_show_details $blame_hashes
+  _git_file_commits commits[@] "$file"
 }
 
 # Label: Git Authors (all)

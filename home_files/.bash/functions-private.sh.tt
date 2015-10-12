@@ -102,6 +102,48 @@ _git_commit_count_since_last_tag() {
   fi
 }
 
+# Label: Git File Commits
+# Description: Prints file commit history (with optional diff support).
+# Parameters: $1 (required) - The file path.
+_git_file_commits() {
+  local commits=("${!1}")
+  local file="$2"
+  local commit_total=${#commits[@]}
+  local option_padding=${#commit_total}
+  local counter=1
+
+  if [[ ${#commits[@]} == 0 ]]; then
+    printf "No file history detected.\n"
+    return
+  fi
+
+  printf "Commit History ($file):\n\n"
+
+  for commit in ${commits[@]}; do
+    local option="$(printf "%${option_padding}s" $counter)"
+    printf "%s\n" "$option: $(git log --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
+    counter=$((counter + 1))
+  done
+
+  option_padding=$((option_padding + 1))
+  printf "%${option_padding}s %s\n\n" "q:" "Quit/Exit."
+
+  read -p "Enter selection: " response
+  if [[ "$response" == 'q' ]]; then
+    return
+  fi
+
+  printf "\n"
+  local selected_commit=${commits[$((response - 1))]}
+  _git_show_details $selected_commit
+
+  printf "\n"
+  read -p "View diff (y = yes, n = no)? " response
+  if [[ "$response" == 'y' ]]; then
+    gdt $selected_commit^! -- "$file"
+  fi
+}
+
 # Label: Git Branch Name
 # Description: Prints Git branch name.
 _git_branch_name() {
