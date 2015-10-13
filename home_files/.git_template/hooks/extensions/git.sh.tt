@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Label: Git Label
-# Description: Prints Git label.
+# Description: Print Git label.
 _git_label() {
   printf "[git]"
 }
 
 # Label: Git Commit Message Prefix
-# Description: Detects commit message invalid prefixes.
+# Description: Detect commit message invalid prefixes.
 git_commit_message_prefix() {
   local message_file="${BASH_ARGV[0]}"
   local match="^(Fixed|Removed|Added|Updated|Refactored|fixup\!|squash\!).+"
@@ -21,7 +21,7 @@ git_commit_message_prefix() {
 }
 
 # Label: Git Commit Message Words
-# Description: Detects commit message words to avoid.
+# Description: Detect commit message words to avoid.
 # Reference: http://css-tricks.com/words-avoid-educational-writing.
 git_commit_message_words() {
   local message_file="${BASH_ARGV[0]}"
@@ -49,7 +49,7 @@ git_commit_message_words() {
 }
 
 # Label: Git Commit Message Length
-# Description: Detects commit message long line lengths.
+# Description: Detect commit message long line lengths.
 git_commit_message_length() {
   local message_file="${BASH_ARGV[0]}"
   local line_length=71

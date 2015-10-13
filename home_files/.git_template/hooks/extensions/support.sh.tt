@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Label: Scan Code
-# Description: Scans for invalid code.
+# Description: Scan for invalid code.
 # Parameters: $1 (required) - Label, $2 (required) - Message, $3 (required) - File regex, $4 (required) - Search regex.
 _scan_code() {
   local label="$1"

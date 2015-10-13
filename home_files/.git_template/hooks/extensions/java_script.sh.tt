@@ -1,33 +1,33 @@
 #!/bin/bash
 
 # Label: Git Label
-# Description: Prints Git label.
+# Description: Print Git label.
 _git_label() {
   printf "[java_script]"
 }
 
 # Label: File Regex
-# Description: Prints file regex.
+# Description: Print file regex.
 _file_regex() {
   printf '^((?!min).)+.(js|erb|slim)$'
 }
 
 # Label: JavaScript Debugger
-# Description: Detects JavaScript debug statements.
+# Description: Detect JavaScript debug statements.
 java_script_debugger() {
   local search_regex='^(?:(?!(.*//.+|.*/\*.+)).*debugger;)'
   _scan_code "$(_git_label)" "Debug statements detected" $(_file_regex) $search_regex
 }
 
 # Label: JavaScript Console
-# Description: Detects JavaScript console statements.
+# Description: Detect JavaScript console statements.
 java_script_console() {
   local search_regex='^(?:(?!(.*//.+|.*/\*.+)).*console.(count|dir|error|group.*|info|log|time.*|table|trace)\(.+\);)'
   _scan_code "$(_git_label)" "Console statements detected" $(_file_regex) $search_regex
 }
 
 # Label: JavaScript Alert
-# Description: Detects JavaScript alert statements.
+# Description: Detect JavaScript alert statements.
 java_script_alert() {
   local search_regex='^(?:(?!(.*//.+|.*/\*.+)).*alert\(.+\);)'
   _scan_code "$(_git_label)" "Console statements detected" $(_file_regex) $search_regex
