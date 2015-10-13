@@ -27,9 +27,8 @@ t2s() {
 }
 
 # Label: Kill Process
-# Description: Kill errant process for given search query.
-# Parameters: $1 (required) - The search query.
-# Parameters: $2 (optional) - The kill signal. Default: 15.
+# Description: Kill errant processes.
+# Parameters: $1 (required) - The search query, $2 (optional) - The kill signal. Default: 15.
 kilp() {
   local query="$1"
   local signal=${2:-15}
@@ -158,7 +157,7 @@ gia() {
 }
 
 # Label: Git Root
-# Description: Change to repository root directory (regardless of current depth).
+# Description: Change to repository root directory regardless of current depth.
 groot() {
   cd "$(dirname $(git rev-parse --git-dir))"
 }
@@ -243,7 +242,7 @@ ghow() {
 }
 
 # Label: Git File
-# Description: Show Git file details for a specific commit (with optional diff support).
+# Description: Show file details for a specific commit (with optional diff support).
 # Parameters: $1 (required) - The commit, $2 (required) - The file, $3 (optional) - Launch difftool. Default: false.
 gile() {
   local file="$1"
@@ -268,7 +267,7 @@ gile() {
 }
 
 # Label: Git File History
-# Description: View file commits (with optional diff support).
+# Description: View file commit history (with optional diff support).
 # Parameters: $1 (required) - The file path.
 gistory() {
   if [[ -z "$1" ]]; then
@@ -283,7 +282,7 @@ gistory() {
 }
 
 # Label: Git Blame History
-# Description: View (blame) file commits for a specific file and/or lines (with optional diff support).
+# Description: View file commit history for a specific file and/or lines (with optional diff support).
 # Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
 glameh() {
   if [[ -z "$1" ]]; then
@@ -470,7 +469,7 @@ gunseta() {
         cd "$project"
         # Only process projects that are Git enabled.
         if [[ -d ".git" ]]; then
-          # Unset key for current project with error output suppressed (if any).
+          # Unset key for current project with error output suppressed.
           git config --unset "$1" &> /dev/null
 
           # Print project (cyan).
@@ -556,7 +555,7 @@ gsup() {
 }
 
 # Label: Git Tail
-# Description: Answer commit history since last tag for current project and copies results to clipboard.
+# Description: Answer commit history since last tag for current project (copies results to clipboard).
 gtail() {
   if [[ ! -d ".git" ]]; then
     printf "ERROR: Not a Git repository.\n"
@@ -597,7 +596,7 @@ gash() {
 }
 
 # Label: Git Stash List
-# Description: List stashes (if any).
+# Description: List stashes.
 gashl() {
   git stash list --pretty=format:'%C(magenta)%gd%C(reset) %C(yellow)%H%C(reset) %s %C(green)(%cr)%C(reset)'
 }
@@ -660,7 +659,7 @@ gasha() {
 }
 
 # Label: Git Upstream Commit Count (all)
-# Description: Answer upstream commit count (if any) since last pull for projects in current directory.
+# Description: Answer upstream commit count since last pull for projects in current directory.
 gucca() {
   # Iterate project directories located in root directory.
   while read project; do
@@ -682,7 +681,7 @@ gucca() {
 }
 
 # Label: Git Pull (all)
-# Description: Pull new changes (if any) from remote branch for projects in current directory.
+# Description: Pull new changes from remote branch for projects in current directory.
 gpua() {
   # Iterate project directories located in root directory.
   while read project; do
@@ -793,7 +792,7 @@ gcap() {
 }
 
 # Label: Git Rebase (interactive)
-# Description: Rebase commits, interactively (i.e. reword, fix, squash, etc.).
+# Description: Rebase commits, interactively.
 # Parameters: $1 (optional) - The number of commits or branch to rebase to. Default: upstream or root.
 gri() {
   local value="$1"
@@ -877,7 +876,7 @@ gbs() {
 }
 
 # Label: Git Branch Delete
-# Description: Delete local and/or remote branch (if found).
+# Description: Select local and/or remote branches to delete.
 gbd() {
   # Only process projects that are Git-enabled.
   if [[ -d ".git" ]]; then
@@ -917,7 +916,7 @@ gbd() {
 }
 
 # Label: Git Branch Delete Merged
-# Description: Delete locally merged branches (if any).
+# Description: Delete locally merged branches.
 gbdm() {
   if [[ $(_git_branch_name) != "master" ]]; then
     printf "ERROR: Whoa, switch to master branch first.\n"
@@ -936,7 +935,7 @@ gbdm() {
 }
 
 # Label: Git Branch Name (all)
-# Description: Lists current branch for projects in current directory.
+# Description: List current branch for projects in current directory.
 gbna() {
   # Iterate project directories located in root directory.
   while read project; do
@@ -1071,7 +1070,7 @@ gvaca() {
 }
 
 # Label: Git Nuke
-# Description: Permanently destroy a file from Git history. UNRECOVERABLE!
+# Description: Permanently destroy and erase a file from history. UNRECOVERABLE!
 # Parameters: $1 (optional) - The file to destroy.
 guke() {
   local file="$1"
@@ -1097,7 +1096,7 @@ guke() {
 #---------------------------------------#
 
 # Label: GitHub
-# Description: View current GitHub project commits, branches, tags, etc. in default browser.
+# Description: View GitHub details for current project.
 # Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
 gh() {
   if [[ -d ".git" ]]; then
@@ -1187,8 +1186,8 @@ pgt() {
 #-------------------------------------------#
 
 # Label: Ruby Upgrade (all)
-# Description: Upgrade Ruby projects in current directory with new Ruby version information.
-# Parameters: $1 (required) - The new version to upgrade to. Example: 2.0.0-p0.
+# Description: Upgrade Ruby projects in current directory with new Ruby version.
+# Parameters: $1 (required) - The new version to upgrade to. Example: 2.2.3.
 rua() {
   if [[ "$1" ]]; then
     while read project; do
@@ -1282,7 +1281,7 @@ bessa() {
 #-------------------------------------------#
 
 # Label: Bundler Jobs
-# Description: Answer maximum Bundler job limit for current machine or automatically set it if otherwise.
+# Description: Answer maximum Bundler job limit for current machine or automatically set it.
 bj() {
   if command -v sysctl > /dev/null; then
     local computer_name=$(scutil --get ComputerName)
@@ -1308,7 +1307,7 @@ bj() {
 }
 
 # Label: Bundler Ignore Post-Install Message
-# Description: Updates Bundler to ignore install messages for specified gem.
+# Description: Update Bundler to ignore install messages for specified gem.
 # Parameters: $1 (required) - The gem name.
 bcim() {
   local gem_name=$1
@@ -1430,7 +1429,7 @@ bec() {
 #--------------------------------------------------#
 
 # Label: Rails New
-# Description: Create rails application from selected template.
+# Description: Create new Rails application from selected template.
 # Parameters: $1 (required) - The Rails application name, $2 (optional) - The template to apply.
 rew() {
   if [[ "$1" ]]; then
@@ -1484,7 +1483,7 @@ sdb() {
 #--------------------------------------------------------------#
 
 # Label: Rails ERD
-# Description: Generates Entity Relationship Diagram (ERD) of Rails models.
+# Description: Generate Rails Entity Relationship Diagram (ERD).
 erd() {
   local doc_dir="tmp/doc"
 
@@ -1498,7 +1497,7 @@ erd() {
 #------------------------------------------------------------#
 
 # Label: RailRoady Models
-# Description: Generates diagrams for Rails models, controllers, or states.
+# Description: Generate diagrams for Rails models, controllers, or states.
 # Parameters: $1 (required) - The kind of diagram to generate.
 rr() {
   local kind="$1"
@@ -1528,7 +1527,7 @@ rr() {
 #----------------------------------------------#
 
 # Label: Travis CI Encrypt (all)
-# Description: Encrypt string for Travis CI-enabled (.travis.yml) projects in current directory.
+# Description: Encrypt string for Travis CI-enabled projects in current directory.
 # Parameters: $1 (required) - The key to add, $2 (require) - The value to encrypt.
 tcie() {
   if [[ -z "$1" ]]; then
@@ -1650,7 +1649,7 @@ gifize() {
 #---------------------------------------------#
 
 # Label: asciinema Record
-# Description: Create a new asciinema recording.
+# Description: Create new asciinema recording.
 # Parameters: $1 (required) - The recording title, $2 (required) - The recording file name.
 cinr() {
   local title="$1"

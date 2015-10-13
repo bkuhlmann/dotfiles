@@ -5,7 +5,7 @@
 #------------------#
 
 # Label: Print Black on White
-# Description: Prints black text on a white background.
+# Description: Print black text on a white background.
 # Parameters: $1 (required) - Content to print.
 _print_black_on_white() {
   local content="$1"
@@ -13,7 +13,7 @@ _print_black_on_white() {
 }
 
 # Label: Clip and Print
-# Description: Copies input to clipboard and prints what what was copied (best used with a pipe).
+# Description: Copy input to clipboard and print what what was copied (best used with a pipe).
 # Parameters: $1 (optional) - Displays "(copied to cliboard)" on a new line. Default: false.
 _copy_and_print() {
   local delimiter=${1:-' '}
@@ -23,7 +23,7 @@ _copy_and_print() {
 }
 
 # Label: Toggle Total Color
-# Description: Formats and conditionally colors the total.
+# Description: Format and conditionally color the total.
 # Parameters: $1 (required) - The total, $2(required) - The label, $3 (required) - The color.
 _toggle_total_color() {
   local total="$1"
@@ -42,26 +42,26 @@ _toggle_total_color() {
 #------------------------------------#
 
 # Label: Git Log Line Format
-# Description: Prints Git log single line format.
+# Description: Print single line log format.
 _git_log_line_format() {
   printf "%s" "%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"
 }
 
 # Label: Git Log Format
-# Description: Prints default Git log format.
+# Description: Prints default log format.
 _git_log_details_format() {
   printf "%s" "$(_git_log_line_format) %n%b%n%N%-%n"
 }
 
 # Label: Git Show Details
-# Description: Shows Git commit/file change details in a concise and easy to read format.
+# Description: Show commit/file change details in a concise format.
 # Parameters: $1 (required) - The params to pass to git show.
 _git_show_details() {
   git show --stat --pretty=format:"$(_git_log_details_format)" $@
 }
 
 # Label: Git Commits Since Last Tag
-# Description: Answers commit history since last tag for project.
+# Description: Answer commit history since last tag for project.
 _git_commits_since_last_tag() {
   if [[ $(git tag) ]]; then
     git log --oneline --reverse --format='%C(yellow)%H%Creset %s' $(git describe --abbrev=0 --tags --always)..HEAD
@@ -71,7 +71,7 @@ _git_commits_since_last_tag() {
 }
 
 # Label: Git Commit Count Since Last Tag
-# Description: Answers commit count since last tag for project.
+# Description: Answer commit count since last tag for project.
 # Parameters: $1 (optional) - The output prefix. Default: null., $2 (optional) - The output suffix. Default: null.
 _git_commit_count_since_last_tag() {
   local prefix="$1"
@@ -103,7 +103,7 @@ _git_commit_count_since_last_tag() {
 }
 
 # Label: Git File Commits
-# Description: Prints file commit history (with optional diff support).
+# Description: Print file commit history (with optional diff support).
 # Parameters: $1 (required) - The file path.
 _git_file_commits() {
   local commits=("${!1}")
@@ -145,13 +145,13 @@ _git_file_commits() {
 }
 
 # Label: Git Branch Name
-# Description: Prints Git branch name.
+# Description: Print Git branch name.
 _git_branch_name() {
   git rev-parse --abbrev-ref HEAD | tr -d '\n'
 }
 
 # Label: Git Branch List
-# Description: Lists all branches (local/remote) including author and relative time.
+# Description: List branches (local/remote) including author and relative time.
 # Parameters: $1 (optional) - The output format.
 _git_branch_list() {
   local format=${1:-"%(refname) %(color:blue bold)%(authorname) %(color:green)(%(authordate:relative))"}
@@ -164,7 +164,7 @@ _git_branch_list() {
 }
 
 # Label: Git Branch Delete (local)
-# Description: Deletes local branch.
+# Description: Delete local branch.
 # Parameters: $1 (required) - The local branch to delete.
 _git_branch_delete_local() {
   local branch="$1"
@@ -185,7 +185,7 @@ _git_branch_delete_local() {
 }
 
 # Label: Git Branch Delete (remote)
-# Description: Deletes remote branch.
+# Description: Delete remote branch.
 # Parameters: $1 (required) - The remote branch to delete.
 _git_branch_delete_remote() {
   local branch="$1"
@@ -206,7 +206,7 @@ _git_branch_delete_remote() {
 }
 
 # Label: Git Stash
-# Description: Enhances default git stash behavior by prompting for input (multiple) or using last stash (single).
+# Description: Enhance default git stash behavior by prompting for input (multiple) or using last stash (single).
 # Parameters: $1 (required) - The Git stash command to execute, $2 (required) - The prompt label (for multiple stashes).
 _process_git_stash() {
   local stash_command="$1"
@@ -251,7 +251,7 @@ _process_git_stash() {
 #---------------------------------------#
 
 # Label: GitHub URL
-# Description: Answers the GitHub URL for current project.
+# Description: Answer GitHub URL for current project.
 _gh_url() {
   git remote -v | \
     grep git@github.com | \
@@ -263,7 +263,7 @@ _gh_url() {
 }
 
 # Label: GitHub Pull Request List
-# Description: Lists all pull requests (local/remote) including subject, author, and relative time.
+# Description: List pull requests (local/remote) including subject, author, and relative time.
 # Parameters: $1 (optional) - The output format.
 _gh_pr_list() {
   local format=${1:-"%(refname) %(color:yellow)%(refname)%(color:reset) %(subject) %(color:blue bold)%(authorname) %(color:green)(%(committerdate:relative))"}
@@ -275,7 +275,7 @@ _gh_pr_list() {
 }
 
 # Label: Process GitHub Commit Option
-# Description: Processes GitHub commit option for viewing in remote repository.
+# Description: Process GitHub commit option for remote repository viewing.
 # Parameters: $1 (optional) - The commit hash.
 _process_gh_commit_option() {
   local commit="$1"
@@ -288,7 +288,7 @@ _process_gh_commit_option() {
 }
 
 # Label: Process GitHub Branch Option
-# Description: Processes GitHub branch option for viewing in remote repository.
+# Description: Process GitHub branch option for remote repository viewing.
 # Parameters: $1 (optional) - The option.
 _process_gh_branch_option() {
   local option="$1"
@@ -300,8 +300,8 @@ _process_gh_branch_option() {
   fi
 }
 
-# Label: Process GitHub Branch Option
-# Description: Processes GitHub branch option for viewing in remote repository.
+# Label: Process GitHub Pull Request Option
+# Description: Process GitHub pull request option for remote repository viewing.
 # Parameters: $1 (optional) - The option.
 _process_gh_pull_request_option() {
   local option="$1"
@@ -317,7 +317,7 @@ _process_gh_pull_request_option() {
 }
 
 # Label: Process GitHub URL Option
-# Description: Processes GitHub URL option for viewing in remote repository.
+# Description: Processes GitHub URL option for remote repository viewing.
 # Parameters: $1 (optional) - The commit/option.
 _process_gh_url_option() {
   local commit="$1"
@@ -333,7 +333,7 @@ _process_gh_url_option() {
 }
 
 # Label: Process GitHub Option
-# Description: Processes GitHub option for viewing in remote repository.
+# Description: Processes GitHub option for remote repository viewing.
 # Parameters: $1 (optional) - The first option, $2 (optional) - The second option.
 _process_gh_option() {
   case $1 in
@@ -383,7 +383,7 @@ _process_gh_option() {
 #--------------------------------------------------#
 
 # Label: Run Rails Command
-# Description: Runs a Rails command with smart detection of current environment.
+# Description: Run Rails command with smart detection of current environment.
 # Parameters: $1 (required) - The command to run, $2(optional) - Additional arguments
 _run_rails_command() {
   local rails_command=$1
@@ -406,7 +406,7 @@ _run_rails_command() {
 }
 
 # Label: Create Rails Skeleton
-# Description: Creates a new rails applications skeleton.
+# Description: Create new Rails application skeleton.
 # Parameters: $1 (required) - The application name, $2 (optional) - The build options to apply.
 _create_rails_skeleton() {
   printf "rails new $1 $2\n"
@@ -414,7 +414,7 @@ _create_rails_skeleton() {
 }
 
 # Label: Process Rew Option
-# Description: Processes option selection for constructing new Rails application skeletons with custom build settings.
+# Description: Process option for constructing new Rails application skeletons with custom build settings.
 # Parameters: $1 (required) - The application name, $2 (required) - The template to apply, $3 (optional) - The branch. Default: master.
 _process_rew_option() {
   local branch="${3:-master}"
@@ -449,7 +449,7 @@ _process_rew_option() {
 #-------------------#
 
 # Label: Print Section
-# Description: Prints source code section.
+# Description: Print section.
 # Parameters: $1 (required) - The string from which to parse the section from.
 _print_section() {
   if [[ "$1" == "# Section:"* ]]; then
@@ -459,14 +459,14 @@ _print_section() {
 }
 
 # Label: Print Alias
-# Description: Prints alias.
+# Description: Print alias.
 # Parameters: $1 (required) - The string from which to parse the alias from.
 _print_alias() {
   echo "$1" | sed 's/alias //' | sed 's/="/ = "/' | sed "s/='/ = '/"
 }
 
 # Label: Print Aliases
-# Description: Prints aliases.
+# Description: Print aliases.
 _print_aliases() {
   while read line; do
     _print_section "$line"
@@ -479,7 +479,7 @@ _print_aliases() {
 }
 
 # Label: Print Function Name
-# Description: Prints function name.
+# Description: Print function name.
 # Parameters: $1 (required) - The string from which to parse the function name from.
 _print_function_name() {
   local name=$(printf "$1" | sed 's/() {//')
@@ -487,7 +487,7 @@ _print_function_name() {
 }
 
 # Label: Set Function Label
-# Description: Sets function label.
+# Description: Set function label.
 # Parameters: $1 (required) - The string from which to parse the function label from.
 _set_function_label() {
   if [[ "$1" == "# Label:"* ]]; then
@@ -496,7 +496,7 @@ _set_function_label() {
 }
 
 # Label: Set Function Description
-# Description: Sets function description.
+# Description: Set function description.
 _set_function_description() {
   if [[ "$line" == "# Description:"* ]]; then
     description=$(printf "$line" | sed 's/# Description://' | sed 's/^ *//g')
@@ -504,7 +504,7 @@ _set_function_description() {
 }
 
 # Label: Print Functions
-# Description: Prints functions.
+# Description: Print functions.
 _print_functions() {
   local path="${1:-$HOME/.bash/functions-public.sh}"
 
@@ -523,7 +523,7 @@ _print_functions() {
 }
 
 # Label: Print Git Hooks
-# Description: Prints Git hooks.
+# Description: Print Git hooks.
 _print_git_hooks() {
   for file in $(find "$HOME/.git_template/hooks/extensions" -type l); do
     _print_functions "$file"
@@ -531,7 +531,7 @@ _print_git_hooks() {
 }
 
 # Label: Print All
-# Description: Prints aliases, functions, and Git hooks.
+# Description: Print aliases, functions, and Git hooks.
 _print_all() {
   printf "#### Aliases\n\n"
   _print_aliases
@@ -542,7 +542,7 @@ _print_all() {
 }
 
 # Label: Find Alias
-# Description: Finds and prints matching alias.
+# Description: Find and print matching alias.
 # Parameters: $1 (required) - The alias to search for.
 _find_alias() {
   while read line; do
@@ -554,7 +554,7 @@ _find_alias() {
 }
 
 # Label: Find Function
-# Description: Finds and prints matching function.
+# Description: Find and print matching function.
 # Parameters: $1 (required) - The function to search for.
 _find_function() {
   while read line; do
@@ -571,7 +571,7 @@ _find_function() {
 }
 
 # Label: Find Command
-# Description: Finds and prints matching alias or function.
+# Description: Find and print matching alias or function.
 # Parameters: $1 (required). The alias or function to search for.
 _find_command() {
   if [[ "$1" ]]; then
@@ -585,7 +585,7 @@ _find_command() {
 }
 
 # Label: Process Dotfiles Option
-# Description: Processes option selection for learning about dotfile aliases/functions.
+# Description: Process option for learning about dotfile aliases/functions.
 # Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
 _process_dots_option() {
   case $1 in
