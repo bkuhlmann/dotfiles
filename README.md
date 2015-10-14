@@ -19,7 +19,6 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [Network](#network)
         - [[tmux](http://tmux.sourceforge.net)](#tmuxhttptmuxsourceforgenet)
         - [[Homebrew](http://brew.sh)](#homebrewhttpbrewsh)
-        - [[Colorized Cat](https://github.com/jingweno/ccat)](#colorized-cathttpsgithubcomjingwenoccat)
         - [[Git](http://git-scm.com)](#githttpgit-scmcom)
         - [[Tar](http://www.gnu.org/software/tar/tar.html)](#tarhttpwwwgnuorgsoftwaretartarhtml)
         - [[PostgreSQL](http://www.postgresql.org)](#postgresqlhttpwwwpostgresqlorg)
@@ -29,8 +28,12 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [[Ruby Gems](http://rubygems.org)](#ruby-gemshttprubygemsorg)
         - [[Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)](#ruby-gems-whoishttpsgithubcomjnunemakergemwhois)
         - [[Bundler](http://gembundler.com)](#bundlerhttpgembundlercom)
+        - [[Milestoner](https://github.com/bkuhlmann/milestoner)](#milestonerhttpsgithubcombkuhlmannmilestoner)
         - [[Gemsmith](https://github.com/bkuhlmann/gemsmith)](#gemsmithhttpsgithubcombkuhlmanngemsmith)
+        - [[RSpec](http://rspec.info)](#rspechttprspecinfo)
+        - [[ByeBug](https://github.com/deivid-rodriguez/byebug)](#byebughttpsgithubcomdeivid-rodriguezbyebug)
         - [[Ruby on Rails](http://rubyonrails.org)](#ruby-on-railshttprubyonrailsorg)
+        - [[Ember](http://emberjs.com)](#emberhttpemberjscom)
         - [[Jasmine](http://jasmine.github.io)](#jasminehttpjasminegithubio)
         - [[Rubocop](https://github.com/bbatsov/rubocop)](#rubocophttpsgithubcombbatsovrubocop)
         - [[Rails Best Practices](https://github.com/railsbp/rails_best_practices)](#rails-best-practiceshttpsgithubcomrailsbprails_best_practices)
@@ -43,8 +46,9 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [[Path Finder](http://www.cocoatech.com/pathfinder)](#path-finderhttpwwwcocoatechcompathfinder)
         - [[Vim](http://www.vim.org)](#vimhttpwwwvimorg)
         - [[Sublime Text](http://www.sublimetext.com)](#sublime-texthttpwwwsublimetextcom)
-        - [[Marked](http://markedapp.com)](#markedhttpmarkedappcom)
+        - [[Marked 2](http://marked2app.com)](#marked-2httpmarked2appcom)
         - [[asciinema](https://asciinema.org)](#asciinemahttpsasciinemaorg)
+        - [[DocToc](https://github.com/thlorenz/doctoc)](#doctochttpsgithubcomthlorenzdoctoc)
       - [Functions](#functions)
         - [General](#general-1)
         - [[less](http://en.wikipedia.org/wiki/Less_(Unix))](#lesshttpenwikipediaorgwikiless_unix)
@@ -54,13 +58,17 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [[Git](http://git-scm.com)](#githttpgit-scmcom-1)
         - [[GitHub](https://github.com)](#githubhttpsgithubcom)
         - [[PostgreSQL](http://www.postgresql.org)](#postgresqlhttpwwwpostgresqlorg-1)
-        - [[Bundler](http://gembundler.com)](#bundlerhttpgembundlercom-1)
         - [[Ruby](http://www.ruby-lang.org)](#rubyhttpwwwruby-langorg-1)
+        - [[RSpec](http://rspec.info)](#rspechttprspecinfo-1)
+        - [[Bundler](http://gembundler.com)](#bundlerhttpgembundlercom-1)
         - [[Ruby on Rails](http://rubyonrails.org)](#ruby-on-railshttprubyonrailsorg-1)
+        - [[Rails ERD](https://github.com/voormedia/rails-erd)](#rails-erdhttpsgithubcomvoormediarails-erd)
+        - [[RailRoady](https://github.com/preston/railroady)](#railroadyhttpsgithubcomprestonrailroady)
         - [[Travis CI](https://travis-ci.org/)](#travis-cihttpstravis-ciorg)
         - [[Site Validator](https://github.com/jaimeiniesta/site_validator)](#site-validatorhttpsgithubcomjaimeiniestasite_validator)
         - [[Image Magick](http://www.imagemagick.org)](#image-magickhttpwwwimagemagickorg)
         - [[FFmpeg](http://www.ffmpeg.org)](#ffmpeghttpwwwffmpegorg)
+        - [[asciinema](https://asciinema.org)](#asciinemahttpsasciinemaorg-1)
         - [Dotfiles](#dotfiles)
       - [Git Hooks](#git-hooks)
       - [IRB, Pry, and Rails consoles](#irb-pry-and-rails-consoles)
@@ -88,7 +96,6 @@ the *.tt template files in the home_files directory. Read on to learn more.
 - Configures the [Ruby Debugger](http://bashdb.sourceforge.net/ruby-debug.html) `.rdebugrc` file.
 - Configures the [RSpec](http://rspec.info) `.rspec` file.
 - Configures the [Awesome Print](https://github.com/michaeldv/awesome_print) `.aprc` file.
-- Configures the [Mackup](https://github.com/lra/mackup) `.mackup.cfg` file.
 - Configures the [Pow](http://pow.cx) `.powconfig` file.
 - Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) `.psqlrc` file.
 - Configures the [Xray](https://github.com/brentd/xray-rails) `.xrayconfig` file.
@@ -113,7 +120,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v17.0.0
+    git checkout v18.0.0
 
 Master Version (unstable)
 
@@ -170,18 +177,21 @@ When upgrading to a new version, do the following to apply upgrades:
     l1 = "ls -A1 | _copy_and_print 'n'"
     p = 'pwd | tr -d "rn" | _copy_and_print'
     o = "open"
+    cat = 'ccat -G Keyword = "turquoise" -G Punctuation="green" -G Decimal="green" -G Type="blue" -G Literal="blue" -G String="lightgray" -G Plaintext="white"'
     home = "cd $HOME"
     bashe = "$EDITOR $HOME/.bash/env.sh"
     bashs = "exec $SHELL"
+    bashv = "bash --version"
     pss = 'ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
     man = "gem man --system"
 ##### Network
     sshe = "$EDITOR $HOME/.ssh/config"
     key = "open /Applications/Utilities/Keychain Access.app"
-    ipa = 'curl -s checkip.dyndns.org | grep -Eo "[0-9.]+" | _copy_and_print'
+    ipa = 'curl --silent checkip.dyndns.org | grep --extended-regexp --only-matching "[0-9.]+" | _copy_and_print'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
-    dnsf = "sudo discoveryutil mdnsflushcache && sudo discoveryutil udnsflushcaches && printf 'DNS cache cleared.n'"
-    dnss = "sudo discoveryutil mdnscachestats && sudo discoveryutil udnscachestats"
+    dnsi = "scutil --dns"
+    dnss = "sudo dscacheutil -statistics"
+    dnsf = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.n'"
 ##### [tmux](http://tmux.sourceforge.net)
     tsl = "tmux list-sessions"
     tsa = "tmux attach-session -t"
@@ -202,24 +212,21 @@ When upgrading to a new version, do the following to apply upgrades:
     hbd = "brew doctor"
     hbc = "brew cleanup"
     hbrb = "brew uninstall ruby-build && brew install --HEAD ruby-build"
-##### [Colorized Cat](https://github.com/jingweno/ccat)
-    catc = "ccat --bg=dark"
 ##### [Git](http://git-scm.com)
     gi = "git init"
     gcle = "git config --local --edit"
     gcge = "git config --global --edit"
     gget = "git config"
     gst = "git status --short --branch"
-    gl = 'git log --graph --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
-    gld = 'git log --stat --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset) %n%b"'
+    gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
+    gld = 'git log --stat --pretty=format:"$(_git_log_details_format)"'
     glh = 'git log --pretty=format:%H -1 | _copy_and_print'
-    glf = 'git fetch && git log --reverse --no-merges --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" ..@{upstream}'
-    glg = 'git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" --grep'
-    gls = 'git log --pretty=format:"%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)" -S'
+    glf = 'git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
+    glg = 'git log --pretty=format:"$(_git_log_line_format)" --grep'
+    gls = 'git log --pretty=format:"$(_git_log_line_format)" -S'
     glt = 'git for-each-ref --sort=taggerdate --format = "%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
     grl = "git reflog"
     gg = "git grep"
-    glast = "git show --decorate --stat"
     guthors = "git log --format = '%an' | sort | uniq -c | sort --reverse"
     gd = "git diff"
     gdc = "git diff --cached"
@@ -237,7 +244,7 @@ When upgrading to a new version, do the following to apply upgrades:
     gbisk = "git bisect skip"
     gbil = "git bisect log"
     gbire = "git bisect replay"
-    gbiv = 'git bisect visualize --reverse --pretty=format:"%C(yellow)%H%C(reset) %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"'
+    gbiv = 'git bisect visualize --reverse --pretty=format:"$(_git_log_line_format)"'
     gbih = "git bisect help"
     gb = "git branch --verbose"
     gbt = "git show-branch --topics"
@@ -266,6 +273,12 @@ When upgrading to a new version, do the following to apply upgrades:
     gcp = "git cherry-pick"
     gcpa = "git cherry-pick --abort"
     gashc = "git stash clear"
+    gnl = "git notes list"
+    gns = "git notes show"
+    gna = "git notes add"
+    gne = "git notes edit"
+    gnd = "git notes remove"
+    gnp = "git notes prune"
     gf = "git fetch"
     gfp = "git fetch --prune"
     gpu = "git pull"
@@ -285,6 +298,7 @@ When upgrading to a new version, do the following to apply upgrades:
     gtag = "git tag"
     gtagv = "git tag --verify"
     gtags = "git push --tags"
+    gwp = "git worktree prune"
     gr = "git reset" # Unstage staged files for commit.
     grs = "git reset --soft HEAD^" # Undo previous commit.
     grh = "git reset --hard HEAD" # Reset to HEAD, destroying all staged/unstaged changes. UNRECOVERABLE!
@@ -294,7 +308,6 @@ When upgrading to a new version, do the following to apply upgrades:
     gel = "git rm"
     gelc = "git rm --cached" # Removes previously tracked file from index after being added to gitignore.
     grev = "git revert" # Revert a commit.
-    glatest = "git for-each-ref --sort=-committerdate refs/heads --format = '%(committerdate:short) %(refname:short)'"
     grp = "git remote prune origin"
 ##### [Tar](http://www.gnu.org/software/tar/tar.html)
     bzc = "tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
@@ -320,9 +333,9 @@ When upgrading to a new version, do the following to apply upgrades:
     rbu = "rbenv uninstall"
     rbvars = "rbenv vars"
 ##### [Ruby](http://www.ruby-lang.org)
-    rd = "rdoc -a -o _doc"
-    rdo = "open _doc/index.html"
-    rdd = "rm -rf _doc"
+    rd = "rdoc -a -o tmp/doc/rdoc"
+    rdo = "open tmp/doc/rdoc/index.html"
+    rdd = "rm -rf tmp/doc/rdoc"
 ##### [Ruby Gems](http://rubygems.org)
     geml = "gem list"
     gemi = "gem install"
@@ -354,9 +367,9 @@ When upgrading to a new version, do the following to apply upgrades:
     msv = "milestoner --version"
 ##### [Gemsmith](https://github.com/bkuhlmann/gemsmith)
     gs = "gemsmith"
-    gse = "gemsmith edit"
-    gsr = "gemsmith read"
-    gso = "gemsmith open"
+    gse = "gemsmith --edit"
+    gsr = "gemsmith --read"
+    gso = "gemsmith --open"
 ##### [RSpec](http://rspec.info)
     bess = "bes spec"
     besn = "bess --next-failure"
@@ -364,8 +377,6 @@ When upgrading to a new version, do the following to apply upgrades:
     besb = "bess --seed 2112 --bisect"
 ##### [ByeBug](https://github.com/deivid-rodriguez/byebug)
     bbr = "bundle exec byebug --remote localhost:1048"
-##### [Ruby Prof](https://github.com/ruby-prof/ruby-prof)
-    rprof = "ruby-prof --printer=graph_html ./script/rails runner > profile.html"
 ##### [Ruby on Rails](http://rubyonrails.org)
     scs = "sc --sandbox"
     sgc = "sg controller"
@@ -382,14 +393,7 @@ When upgrading to a new version, do the following to apply upgrades:
     notesf = "ber notes:custom ANNOTATION=FIX"
     taild = "tail -f log/development.log"
     tailt = "tail -f log/test.log"
-    rpaths = "ber routes | sed -e "1d" -e "s,^[^/]*,,g" | awk '{print $1}' | sort | uniq"
     res = "touch tmp/restart.txt"
-##### [Rails ERD](https://github.com/voormedia/rails-erd)
-    erd = "mkdir -p doc/design && ber erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename=doc/design/models"
-##### [RailRoady](https://github.com/preston/railroady)
-    rrm = "mkdir -p doc/design && railroady --label --inheritance --specify --all-columns --join --transitive --output doc/design/models.dot --models"
-    rrc = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/controllers.dot --controllers"
-    rrs = "mkdir -p doc/design && railroady --label --inheritance --output doc/design/state.dot --aasm"
 ##### [Ember](http://emberjs.com)
     em = "ember"
     emg = "ember generate"
@@ -438,7 +442,7 @@ When upgrading to a new version, do the following to apply upgrades:
 
 ##### General
     t2s = Tab to Space - Convert file from tab to space indendation.
-    kilp = Kill Process - Kill errant process for given search query.
+    kilp = Kill Process - Kill errant processes.
 ##### [less](http://en.wikipedia.org/wiki/Less_(Unix))
     lessi = Less Interactive - Inspect file, interactively.
 ##### [OpenSSL](https://openssl.org)
@@ -449,13 +453,14 @@ When upgrading to a new version, do the following to apply upgrades:
     port = Port - List file activity on given port.
 ##### [Git](http://git-scm.com)
     gia = Git Init (all) - Initialize/re-initialize repositories in current directory.
-    groot = Git Root - Change to repository root directory (regardless of current depth).
+    groot = Git Root - Change to repository root directory regardless of current depth.
     ginfo = Git Info - Print repository overview information.
     ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
     gount = Git Commit Count - Answer total number of commits for current project.
-    ghow = Git Show - Show commit diff (via difftool) with log entry and commit message body.
-    gistory = Git File History - Walk through file history revisions (with optional diff support).
-    glamel = Git Blame Log - Answer blame log (i.e. commit notes) for a specific file and lines (optional).
+    ghow = Git Show - Show commit details with optional diff support.
+    gile = Git File - Show file details for a specific commit (with optional diff support).
+    gistory = Git File History - View file commit history (with optional diff support).
+    glameh = Git Blame History - View file commit history for a specific file and/or lines (with optional diff support).
     guthorsa = Git Authors (all) - Answer author commit activity per project (ranked highest to lowest).
     gsta = Git Status (all) - Answer status of projects with uncommited/unpushed changes.
     gup = Git Update - Fetch commits, prune untracked references, review each commit (optional, with diff), and rebase (optional).
@@ -470,48 +475,49 @@ When upgrading to a new version, do the following to apply upgrades:
     gweek = Git Week - Answer summarized list of current week activity for projects in current directory.
     gmonth = Git Month - Answer summarized list of current month activity for projects in current directory.
     gsup = Git Standup - Answer summarized list of activity since yesterday for projects in current directory.
-    gtail = Git Tail - Answer commit history since last tag for current project and copies results to clipboard.
+    gtail = Git Tail - Answer commit history since last tag for current project (copies results to clipboard).
     gtaila = Git Tail (all) - Answer commit history count since last tag for projects in current directory.
     gash = Git Stash - Creates stash.
-    gashl = Git Stash List - List stashes (if any).
+    gashl = Git Stash List - List stashes.
     gashs = Git Stash Show - Show stash or prompt for stash to show.
     gashp = Git Stash Pop - Pop stash or prompt for stash to pop.
     gashd = Git Stash Drop - Drop stash or prompt for stash to drop.
     gasha = Git Stash (all) - Answer stash count for projects in current directory.
-    gucca = Git Upstream Commit Count (all) - Answer upstream commit count (if any) since last pull for projects in current directory.
-    gpua = Git Pull (all) - Pull new changes (if any) from remote branch for projects in current directory.
+    gucca = Git Upstream Commit Count (all) - Answer upstream commit count since last pull for projects in current directory.
+    gpua = Git Pull (all) - Pull new changes from remote branch for projects in current directory.
     gpa = Git Push (all) - Push changes for projects in current directory.
     galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
     gcama = Git Commit and Message (all) - Commit changes (modified and new), with message, for projects in current directory.
     gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
-    gri = Git Rebase (interactive) - Rebase commits, interactively (i.e. reword, fix, squash, etc.).
+    gri = Git Rebase (interactive) - Rebase commits, interactively.
     gbl = Git Branch List - List local and remote branch details.
     gbc = Git Branch Create - Create and switch to branch.
     gbs = Git Branch Switch - Switch between branches.
-    gbd = Git Branch Delete - Delete local and/or remote branch (if found).
-    gbdm = Git Branch Delete Merged - Delete locally merged branches (if any).
-    gbna = Git Branch Name (all) - Lists current branch for projects in current directory.
+    gbd = Git Branch Delete - Select local and/or remote branches to delete.
+    gbdm = Git Branch Delete Merged - Delete locally merged branches.
+    gbna = Git Branch Name (all) - List current branch for projects in current directory.
     gtagd = Git Tag Delete - Delete local and remote tag (if found).
+    gwa = Git Worktree Add - Create and switch to new worktree.
     ghd = Git Hook Delete - Delete hooks for current project.
     ghda = Git Hook Delete (all) - Delete hooks for projects in current directory.
     gvac = Git Verify and Clean - Verify and clean objects for current project.
     gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in current directory.
-    guke = Git Nuke - Permanently destroy a file from Git history. UNRECOVERABLE!
+    guke = Git Nuke - Permanently destroy and erase a file from history. UNRECOVERABLE!
 ##### [GitHub](https://github.com)
-    gh = GitHub - View current GitHub project commits, branches, tags, etc. in default browser.
+    gh = GitHub - View GitHub details for current project.
 ##### [PostgreSQL](http://www.postgresql.org)
     pguc = PostgreSQL User Create - Create PostgreSQL user.
     pgud = PostgreSQL User Drop - Drop PostgreSQL user.
     pgt = PostgreSQL Template - Edit PostgreSQL template.
 ##### [Ruby](http://www.ruby-lang.org)
-    rua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version information.
+    rua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version.
     rserv = Ruby Server - Serve web content from current directory via WEBrick.
 ##### [RSpec](http://rspec.info)
     bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
     bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
 ##### [Bundler](http://gembundler.com)
-    bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it if otherwise.
-    bcim = Bundler Ignore Post-Install Message - Updates Bundler to ignore install messages for specified gem.
+    bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
+    bcim = Bundler Ignore Post-Install Message - Update Bundler to ignore install messages for specified gem.
     boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
     bua = Bundle Update (all) - Update gems for projects in current directory.
     bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
@@ -519,13 +525,17 @@ When upgrading to a new version, do the following to apply upgrades:
     beg = Bundle Execute Guard - Run Guard via binstub or Bundler.
     bec = Bundle Execute Capistrano - Run Capistrano via binstub or Bundler.
 ##### [Ruby on Rails](http://rubyonrails.org)
-    rew = Rails New - Create rails application from selected template.
+    rew = Rails New - Create new Rails application from selected template.
     sc = Rails Script Console - Run Rails console.
     ss = Rails Script Server - Run Rails server.
     sg = Rails Script Generator - Run Rails generator.
     sdb = Rails Script Database Console - Run Rails database console.
+##### [Rails ERD](https://github.com/voormedia/rails-erd)
+    erd = Rails ERD - Generate Rails Entity Relationship Diagram (ERD).
+##### [RailRoady](https://github.com/preston/railroady)
+    rr = RailRoady Models - Generate diagrams for Rails models, controllers, or states.
 ##### [Travis CI](https://travis-ci.org/)
-    tcie = Travis CI Encrypt (all) - Encrypt string for Travis CI-enabled (.travis.yml) projects in current directory.
+    tcie = Travis CI Encrypt (all) - Encrypt string for Travis CI-enabled projects in current directory.
 ##### [Site Validator](https://github.com/jaimeiniesta/site_validator)
     sv = Site Validator - Generate site validation report using W3C Validator.
 ##### [Image Magick](http://www.imagemagick.org)
@@ -533,24 +543,24 @@ When upgrading to a new version, do the following to apply upgrades:
 ##### [FFmpeg](http://www.ffmpeg.org)
     gifize = Gifize - Convert video to animated GIF.
 ##### [asciinema](https://asciinema.org)
-    cinr = asciinema Record - Create a new asciinema recording.
+    cinr = asciinema Record - Create new asciinema recording.
 ##### Dotfiles
     dots = Dotfiles - Learn about dotfile aliases, functions, etc.
 
 #### Git Hooks
 
-    bundler_gemfile_path = Bundler Gemfile Path - Detects gem path statements.
-    capybara_save_and_open_page = Capybara Save And Open Page - Detects save_and_open_page statements.
-    ctags_rebuild = CTags Rebuild - Rebuilds project .tags file.
-    git_commit_message_prefix = Git Commit Message Prefix - Detects commit message invalid prefixes.
-    git_commit_message_words = Git Commit Message Words - Detects commit message words to avoid.
-    git_commit_message_length = Git Commit Message Length - Detects commit message long line lengths.
-    jasmine_focus = Jasmine Focus - Detects Jasmine focus statements.
-    java_script_debugger = JavaScript Debugger - Detects JavaScript debug statements.
-    java_script_console = JavaScript Console - Detects JavaScript console statements.
-    java_script_alert = JavaScript Alert - Detects JavaScript alert statements.
-    pry_binding = Pry Binding - Detects Pry debug statements.
-    rspec_focus = RSpec Focus - Detects RSpec focus metadata.
+    bundler_gemfile_path = Bundler Gemfile Path - Detect gem path statements.
+    capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open_page statements.
+    ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
+    git_commit_message_prefix = Git Commit Message Prefix - Detect commit message invalid prefixes.
+    git_commit_message_words = Git Commit Message Words - Detect commit message words to avoid.
+    git_commit_message_length = Git Commit Message Length - Detect commit message long line lengths.
+    jasmine_focus = Jasmine Focus - Detect Jasmine focus statements.
+    java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
+    java_script_console = JavaScript Console - Detect JavaScript console statements.
+    java_script_alert = JavaScript Alert - Detect JavaScript alert statements.
+    pry_binding = Pry Binding - Detect Pry debug statements.
+    rspec_focus = RSpec Focus - Detect RSpec focus metadata.
 
 #### IRB, Pry, and Rails consoles
 

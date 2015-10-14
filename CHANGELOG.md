@@ -1,3 +1,37 @@
+# v18.0.0 (2015-10-14)
+
+- Fixed "n" option in `gup` function code review.
+- Fixed DNS aliases to flush and report stats correctly.
+- Fixed Gemsmith aliases to use standard command syntax.
+- Fixed restoration of Internal Field Separator (IFS).
+- Added Git notes aliases.
+- Added Git worktree support.
+- Added `bashv` alias for printing Bash version.
+- Added `cat` syntax highlighting.
+- Added `dnsi` alias for printing current DNS info.
+- Added `gile` function for Git file details/diff support.
+- Added `gistory` function commit selection.
+- Added git notes to git log details.
+- Updated Git hook documentation.
+- Updated `ghow` function to display commit details by default.
+- Updated `glamel` function to support `gistory` features.
+- Updated `gri` function to support branch names.
+- Updated function documentation.
+- Removed `catc` alias (use `cat` instead).
+- Removed `glast` alias (use `ghow` function instead).
+- Removed `glatest` alias (use `gbl` function instead).
+- Removed `rpaths` alias.
+- Removed `rprof` alias.
+- Removed carriage return from current branch name.
+- Removed relative "bin" folder being added to the path.
+- Refactored Git log default format to common function.
+- Refactored Git log line and details formats to private functions.
+- Refactored RDoc aliases to use "tmp/doc/rdoc" directory.
+- Refactored RailRoady `rr*` aliases as a single `rr` function.
+- Refactored `erd` alias as a function.
+- Refactored `gbc` function to use local variable.
+- Refactored `glamel` to `glameh`.
+
 # v17.0.0 (2015-09-27)
 
 - Fixed `gri` function issue when no origin exists.
