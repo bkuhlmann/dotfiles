@@ -73,7 +73,5 @@
   insteadOf = heroku:
 [url "git@github.com:bkuhlmann/"]
   insteadOf = bk:
-[url "git@github.com:charitywater/"]
-  insteadOf = cw:
 [remote "origin"]
   fetch = +refs/pull/*/head:refs/remotes/pull_requests/*
