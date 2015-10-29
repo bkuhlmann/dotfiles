@@ -1,5 +1,7 @@
 # Dotfiles
 
+[![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/bkuhlmann)
+
 Shell scripts for applying default settings to UNIX-based operating systems.
 
 By default, these are set to my preferences (namely for OSX) but you can change them to your liking by editing any of
