@@ -1240,6 +1240,25 @@ bes() {
   fi
 }
 
+# Label: Bundle Execute Rake (all)
+# Description: Run default Rake tasks via binstub or Bundler for projects in current directory.
+bera() {
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that support Bundler and RSpec.
+      if [[ -f "Gemfile.lock" && -f "Rakefile" ]]; then
+        # Prints project (cyan).
+        printf "\033[36m${project:2}\033[m: "
+
+        SUPPRESS_STDOUT=enabled SUPPRESS_STDERR=enabled ber > /dev/null
+        printf "\n"
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 # Label: Bundle Execute RSpec (all)
 # Description: Run RSpec via binstub or Bundler for projects in current directory.
 bessa() {
