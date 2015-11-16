@@ -204,6 +204,11 @@ alias bcon="bundle console"
 alias be="bundle exec"
 alias bch="rm -f Gemfile.lock; bundle check"
 
+# Section: [Tocer](https://github.com/bkuhlmann/tocer)
+alias tocg="tocer --generate"
+alias toce="tocer --edit"
+alias tocv="tocer --version"
+
 # Section: [Milestoner](https://github.com/bkuhlmann/milestoner)
 alias ms="milestoner"
 alias msc='milestoner --commits | _copy_and_print "\n"'
