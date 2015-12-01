@@ -66,6 +66,7 @@
   prompt = false
 [merge]
   tool = Kaleidoscope
+  conflictstyle = diff3
 [tag]
   sort = version:refname
 [url "git@github.com:"]
