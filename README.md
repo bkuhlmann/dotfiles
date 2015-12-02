@@ -25,11 +25,11 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [[Tar](http://www.gnu.org/software/tar/tar.html)](#tarhttpwwwgnuorgsoftwaretartarhtml)
         - [[PostgreSQL](http://www.postgresql.org)](#postgresqlhttpwwwpostgresqlorg)
         - [[Redis](http://redis.io)](#redishttpredisio)
-        - [[rbenv](https://github.com/sstephenson/rbenv)](#rbenvhttpsgithubcomsstephensonrbenv)
-        - [[Ruby](http://www.ruby-lang.org)](#rubyhttpwwwruby-langorg)
-        - [[Ruby Gems](http://rubygems.org)](#ruby-gemshttprubygemsorg)
+        - [[rbenv](https://github.com/rbenv/rbenv)](#rbenvhttpsgithubcomsstephensonrbenv)
+        - [[Ruby](https://www.ruby-lang.org/)](#rubyhttpwwwruby-langorg)
+        - [[Ruby Gems](https://rubygems.org/)](#ruby-gemshttprubygemsorg)
         - [[Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)](#ruby-gems-whoishttpsgithubcomjnunemakergemwhois)
-        - [[Bundler](http://gembundler.com)](#bundlerhttpgembundlercom)
+        - [[Bundler](http://bundler.io)](#bundlerhttpgembundlercom)
         - [[Milestoner](https://github.com/bkuhlmann/milestoner)](#milestonerhttpsgithubcombkuhlmannmilestoner)
         - [[Gemsmith](https://github.com/bkuhlmann/gemsmith)](#gemsmithhttpsgithubcombkuhlmanngemsmith)
         - [[RSpec](http://rspec.info)](#rspechttprspecinfo)
@@ -45,7 +45,7 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [[iOS](https://developer.apple.com/ios)](#ioshttpsdeveloperapplecomios)
         - [[Silver Surfer](https://github.com/ggreer/the_silver_searcher)](#silver-surferhttpsgithubcomggreerthe_silver_searcher)
         - [[Z](https://github.com/rupa/z)](#zhttpsgithubcomrupaz)
-        - [[Path Finder](http://www.cocoatech.com/pathfinder)](#path-finderhttpwwwcocoatechcompathfinder)
+        - [[Path Finder](http://www.cocoatech.com/pathfinder/)](#path-finderhttpwwwcocoatechcompathfinder)
         - [[Vim](http://www.vim.org)](#vimhttpwwwvimorg)
         - [[Sublime Text](http://www.sublimetext.com)](#sublime-texthttpwwwsublimetextcom)
         - [[Marked 2](http://marked2app.com)](#marked-2httpmarked2appcom)
@@ -67,7 +67,7 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [[Rails ERD](https://github.com/voormedia/rails-erd)](#rails-erdhttpsgithubcomvoormediarails-erd)
         - [[RailRoady](https://github.com/preston/railroady)](#railroadyhttpsgithubcomprestonrailroady)
         - [[Travis CI](https://travis-ci.org/)](#travis-cihttpstravis-ciorg)
-        - [[Site Validator](https://github.com/jaimeiniesta/site_validator)](#site-validatorhttpsgithubcomjaimeiniestasite_validator)
+        - [[Site Validator](https://github.com/sitevalidator/site_validator)](#site-validatorhttpsgithubcomjaimeiniestasite_validator)
         - [[Image Magick](http://www.imagemagick.org)](#image-magickhttpwwwimagemagickorg)
         - [[FFmpeg](http://www.ffmpeg.org)](#ffmpeghttpwwwffmpegorg)
         - [[asciinema](https://asciinema.org)](#asciinemahttpsasciinemaorg-1)
@@ -103,9 +103,9 @@ the *.tt template files in the home_files directory. Read on to learn more.
 - Configures the [Xray](https://github.com/brentd/xray-rails) `.xrayconfig` file.
 - Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
 - Adds [Bash Completion](http://bash-completion.alioth.debian.org).
-- Adds [Go](http://golang.org) Bash support.
+- Adds [Go](https://golang.org/) Bash support.
 - Adds [rbenv](https://github.com/sstephenson/rbenv) Bash support.
-- Adds [rbenv-vars](https://github.com/sstephenson/rbenv-vars) settings.
+- Adds [rbenv-vars](https://github.com/rbenv/rbenv-vars) settings.
 - Adds [NPM](http://nodejs.org) Bash support.
 - Adds [Travis CI](https://travis-ci.org) Bash support.
 - Adds [Z](https://github.com/rupa/z) Bash support.
