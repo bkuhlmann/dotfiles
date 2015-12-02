@@ -160,7 +160,7 @@ alias pgsp="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 alias reds="redis-server /usr/local/etc/redis.conf &"
 alias redc="redis-cli"
 
-# Section: [rbenv](https://github.com/sstephenson/rbenv)
+# Section: [rbenv](https://github.com/rbenv/rbenv)
 alias rb="rbenv"
 alias rbg="rbenv global"
 alias rbl="rbenv local"
@@ -174,12 +174,12 @@ alias rbil="rbenv install --list"
 alias rbu="rbenv uninstall"
 alias rbvars="rbenv vars"
 
-# Section: [Ruby](http://www.ruby-lang.org)
+# Section: [Ruby](https://www.ruby-lang.org)
 alias rd="rdoc -a -o tmp/doc/rdoc"
 alias rdo="open tmp/doc/rdoc/index.html"
 alias rdd="rm -rf tmp/doc/rdoc"
 
-# Section: [Ruby Gems](http://rubygems.org)
+# Section: [Ruby Gems](https://rubygems.org)
 alias geml="gem list"
 alias gemi="gem install"
 alias gemup="gem update"
@@ -193,7 +193,7 @@ alias gemuc="gem update --system && gem update && gem cleanup"
 # Section: [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
 alias gemw="gem whois"
 
-# Section: [Bundler](http://gembundler.com)
+# Section: [Bundler](http://bundler.io)
 alias b="bundle"
 alias bl="bundle lock"
 alias bi="bundle install"

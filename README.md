@@ -103,9 +103,9 @@ the *.tt template files in the home_files directory. Read on to learn more.
 - Configures the [Xray](https://github.com/brentd/xray-rails) `.xrayconfig` file.
 - Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
 - Adds [Bash Completion](http://bash-completion.alioth.debian.org).
-- Adds [Go](http://golang.org) Bash support.
+- Adds [Go](https://golang.org) Bash support.
 - Adds [rbenv](https://github.com/sstephenson/rbenv) Bash support.
-- Adds [rbenv-vars](https://github.com/sstephenson/rbenv-vars) settings.
+- Adds [rbenv-vars](https://github.com/rbenv/rbenv-vars) settings.
 - Adds [NPM](http://nodejs.org) Bash support.
 - Adds [Travis CI](https://travis-ci.org) Bash support.
 - Adds [Z](https://github.com/rupa/z) Bash support.
@@ -321,7 +321,7 @@ When upgrading to a new version, do the following to apply upgrades:
 ##### [Redis](http://redis.io)
     reds = "redis-server /usr/local/etc/redis.conf &"
     redc = "redis-cli"
-##### [rbenv](https://github.com/sstephenson/rbenv)
+##### [rbenv](https://github.com/rbenv/rbenv)
     rb = "rbenv"
     rbg = "rbenv global"
     rbl = "rbenv local"
@@ -334,11 +334,11 @@ When upgrading to a new version, do the following to apply upgrades:
     rbil = "rbenv install --list"
     rbu = "rbenv uninstall"
     rbvars = "rbenv vars"
-##### [Ruby](http://www.ruby-lang.org)
+##### [Ruby](https://www.ruby-lang.org)
     rd = "rdoc -a -o tmp/doc/rdoc"
     rdo = "open tmp/doc/rdoc/index.html"
     rdd = "rm -rf tmp/doc/rdoc"
-##### [Ruby Gems](http://rubygems.org)
+##### [Ruby Gems](https://rubygems.org)
     geml = "gem list"
     gemi = "gem install"
     gemup = "gem update"
@@ -350,7 +350,7 @@ When upgrading to a new version, do the following to apply upgrades:
     gemuc = "gem update --system && gem update && gem cleanup"
 ##### [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
     gemw = "gem whois"
-##### [Bundler](http://gembundler.com)
+##### [Bundler](http://bundler.io)
     b = "bundle"
     bl = "bundle lock"
     bi = "bundle install"
@@ -511,13 +511,13 @@ When upgrading to a new version, do the following to apply upgrades:
     pguc = PostgreSQL User Create - Create PostgreSQL user.
     pgud = PostgreSQL User Drop - Drop PostgreSQL user.
     pgt = PostgreSQL Template - Edit PostgreSQL template.
-##### [Ruby](http://www.ruby-lang.org)
+##### [Ruby](https://www.ruby-lang.org)
     rua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version.
     rserv = Ruby Server - Serve web content from current directory via WEBrick.
 ##### [RSpec](http://rspec.info)
     bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
     bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
-##### [Bundler](http://gembundler.com)
+##### [Bundler](http://bundler.io)
     bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
     bcim = Bundler Ignore Post-Install Message - Update Bundler to ignore install messages for specified gem.
     boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
@@ -538,7 +538,7 @@ When upgrading to a new version, do the following to apply upgrades:
     rr = RailRoady Models - Generate diagrams for Rails models, controllers, or states.
 ##### [Travis CI](https://travis-ci.org/)
     tcie = Travis CI Encrypt (all) - Encrypt string for Travis CI-enabled projects in current directory.
-##### [Site Validator](https://github.com/jaimeiniesta/site_validator)
+##### [Site Validator](https://github.com/sitevalidator/site_validator)
     sv = Site Validator - Generate site validation report using W3C Validator.
 ##### [Image Magick](http://www.imagemagick.org)
     sketch = Sketch - Convert photo into a sketch. Inspired by [Whiteboard Cleaner Gist](https://gist.github.com/lelandbatey/8677901).

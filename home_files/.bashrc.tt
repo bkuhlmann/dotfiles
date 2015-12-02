@@ -38,7 +38,7 @@ if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-# Go (http://golang.org)
+# Go (https://golang.org)
 if [[ -e /usr/local/bin/go ]]; then
   export GOPATH=$HOME/Apps/Go
   export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin

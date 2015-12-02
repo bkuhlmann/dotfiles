@@ -1181,9 +1181,9 @@ pgt() {
   fi
 }
 
-#-------------------------------------------#
-# Section: [Ruby](http://www.ruby-lang.org) #
-#-------------------------------------------#
+#--------------------------------------------#
+# Section: [Ruby](https://www.ruby-lang.org) #
+#--------------------------------------------#
 
 # Label: Ruby Upgrade (all)
 # Description: Upgrade Ruby projects in current directory with new Ruby version.
@@ -1276,9 +1276,9 @@ bessa() {
   done < <(find . -type d -depth 1)
 }
 
-#-------------------------------------------#
-# Section: [Bundler](http://gembundler.com) #
-#-------------------------------------------#
+#---------------------------------------#
+# Section: [Bundler](http://bundler.io) #
+#---------------------------------------#
 
 # Label: Bundler Jobs
 # Description: Answer maximum Bundler job limit for current machine or automatically set it.
@@ -1552,9 +1552,9 @@ tcie() {
   done < <(find . -type d -depth 1)
 }
 
-#---------------------------------------------------------------------------#
-# Section: [Site Validator](https://github.com/jaimeiniesta/site_validator) #
-#---------------------------------------------------------------------------#
+#----------------------------------------------------------------------------#
+# Section: [Site Validator](https://github.com/sitevalidator/site_validator) #
+#----------------------------------------------------------------------------#
 
 # Label: Site Validator
 # Description: Generate site validation report using W3C Validator.
