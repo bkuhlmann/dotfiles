@@ -1,3 +1,17 @@
+# v18.1.0 (2015-12-02)
+
+- Fixed outdated reference links.
+- Added "diff3" merge conflict style support to global Git configuration.
+- Added Git auto-stash support when rebasing.
+- Added Patreon badge to README.
+- Added [Tocer](https://github.com/bkuhlmann/tocer) aliases.
+- Added `bera` function for running default Rake tasks for all projects.
+- Added `gli` function for Git Log (interactive).
+- Updated to Code of Conduct 1.3.0.
+- Updated Git commit template questions.
+- Updated README with Tocer generated Table of Contents.
+- Removed CW alias from global Git config.
+
 # v18.0.0 (2015-10-14)
 
 - Fixed "n" option in `gup` function code review.

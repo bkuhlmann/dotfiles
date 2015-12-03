@@ -122,7 +122,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v18.0.0
+    git checkout v18.1.0
 
 Master Version (unstable)
 
@@ -360,6 +360,10 @@ When upgrading to a new version, do the following to apply upgrades:
     bcon = "bundle console"
     be = "bundle exec"
     bch = "rm -f Gemfile.lock; bundle check"
+##### [Tocer](https://github.com/bkuhlmann/tocer)
+    tocg = "tocer --generate"
+    toce = "tocer --edit"
+    tocv = "tocer --version"
 ##### [Milestoner](https://github.com/bkuhlmann/milestoner)
     ms = "milestoner"
     msc = 'milestoner --commits | _copy_and_print "n"'
@@ -459,6 +463,7 @@ When upgrading to a new version, do the following to apply upgrades:
     ginfo = Git Info - Print repository overview information.
     ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
     gount = Git Commit Count - Answer total number of commits for current project.
+    gli = Git Log (interactive) - List commits with support to show/diff individual commits.
     ghow = Git Show - Show commit details with optional diff support.
     gile = Git File - Show file details for a specific commit (with optional diff support).
     gistory = Git File History - View file commit history (with optional diff support).
@@ -516,6 +521,7 @@ When upgrading to a new version, do the following to apply upgrades:
     rserv = Ruby Server - Serve web content from current directory via WEBrick.
 ##### [RSpec](http://rspec.info)
     bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
+    bera = Bundle Execute Rake (all) - Run default Rake tasks via binstub or Bundler for projects in current directory.
     bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
 ##### [Bundler](http://bundler.io)
     bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
