@@ -224,6 +224,43 @@ gount() {
   git rev-list --count HEAD
 }
 
+# Label: Git Log (interactive)
+# Description: List commits with support to show/diff individual commits.
+# Parameters: $1 (optional) - The commit limit. Default: 25.
+gli() {
+  local commit_limit=${1:-25}
+  local commits=($(git rev-list --no-merges --max-count $commit_limit HEAD))
+  local commit_total=${#commits[@]}
+  local option_padding=${#commit_total}
+  local counter=1
+
+  printf "Commit Log:\n\n"
+
+  for commit in ${commits[@]}; do
+    local option="$(printf "%${option_padding}s" $counter)"
+    printf "%s\n" "$option: $(git log --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
+    counter=$((counter + 1))
+  done
+
+  option_padding=$((option_padding + 1))
+  printf "%${option_padding}s %s\n\n" "q:" "Quit/Exit."
+
+  read -p "Enter selection: " response
+  if [[ "$response" == 'q' ]]; then
+    return
+  fi
+
+  printf "\n"
+  local selected_commit=${commits[$((response - 1))]}
+  _git_show_details $selected_commit
+
+  printf "\n"
+  read -p "View diff (y = yes, n = no)? " response
+  if [[ "$response" == 'y' ]]; then
+    gdt $selected_commit^!
+  fi
+}
+
 # Label: Git Show
 # Description: Show commit details with optional diff support.
 # Parameters: $1 (optional) - The commit to show. Default: <last commit>, $2 (optional) - Launch difftool. Default: false.
