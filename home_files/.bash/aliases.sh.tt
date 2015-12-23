@@ -119,7 +119,6 @@ alias gnp="git notes prune"
 alias gf="git fetch"
 alias gfp="git fetch --prune"
 alias gpu="git pull"
-alias gpur="git pull --rebase" # Rebase the current branch on top of the upstream branch.
 alias gpuro="gpur origin" # Rebase the current branch on top of the upstream origin branch.
 alias gpurom="gpuro master" # Rebase the current branch on top of the upstream origin master branch.
 alias grbc="git rebase --continue"
