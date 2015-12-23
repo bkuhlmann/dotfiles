@@ -404,7 +404,7 @@ gsta() {
 }
 
 # Label: Git Update
-# Description: Fetch commits, prune untracked references, review each commit (optional, with diff), and rebase (optional).
+# Description: Fetch commits, prune untracked references, review each commit (optional, with diff), and pull (optional).
 gup() {
   git fetch --prune --quiet
   commits=($(git log --reverse --no-merges --pretty=format:"%H" ..@{upstream}))
@@ -446,10 +446,10 @@ gup() {
   done
 
   hr '-'
-  read -p "Commit Rebase (y/n)? " response
+  read -p "Commit Pull (y/n)? " response
 
   if [[ "$response" == 'y' ]]; then
-    git pull --rebase
+    git pull
   fi
 }
 
