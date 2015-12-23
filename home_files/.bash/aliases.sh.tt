@@ -120,6 +120,7 @@ alias gf="git fetch"
 alias gfp="git fetch --prune"
 alias gpu="git pull"
 alias gpuo="git pull origin"
+alias gpuom="git pull origin master"
 alias gpuro="gpur origin" # Rebase the current branch on top of the upstream origin branch.
 alias gpurom="gpuro master" # Rebase the current branch on top of the upstream origin master branch.
 alias grbc="git rebase --continue"
