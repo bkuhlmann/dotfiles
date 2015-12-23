@@ -39,6 +39,8 @@
   quotepath = false
 [status]
   showUntrackedFiles = all
+[pull]
+  rebase = true
 [push]
   default = simple
   followTags = true
