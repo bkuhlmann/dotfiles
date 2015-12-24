@@ -12,11 +12,13 @@ alias p='pwd | tr -d "\r\n" | _copy_and_print'
 alias o="open"
 alias cat='ccat -G Keyword="turquoise" -G Punctuation="green" -G Decimal="green" -G Type="blue" -G Literal="blue" -G String="lightgray" -G Plaintext="white"'
 alias home="cd $HOME"
+alias pss='ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
+alias man="gem man --system"
+
+# Section: [Bash](https://www.gnu.org/software/bash)
 alias bashe="$EDITOR $HOME/.bash/env.sh"
 alias bashs="exec $SHELL"
 alias bashv="bash --version"
-alias pss='ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
-alias man="gem man --system"
 
 # Section: Network
 alias sshe="$EDITOR $HOME/.ssh/config"
