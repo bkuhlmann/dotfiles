@@ -307,6 +307,3 @@ alias cin="asciinema"
 alias cinp="asciinema play"
 alias cinu="asciinema upload"
 alias cinv="asciinema --version"
-
-# Section: [DocToc](https://github.com/thlorenz/doctoc)
-alias toc="doctoc --title '# Table of Contents'"
