@@ -46,22 +46,11 @@ elsif defined?(Rails)
 end
 
 # Gem Enhancements (requirements)
-%w(
-    bond
-    wirb
-    hirb
-    awesome_print
-    priscilla
-    pry
-    pry-byebug
-    pry-remote
-    pry-rescue
-    pry-stack_explorer
-  ).each do |gem|
+%w(bond wirb hirb awesome_print priscilla pry pry-byebug pry-remote pry-rescue pry-stack_explorer).each do |gem|
   begin
     require gem
   rescue LoadError
-    STDERR.puts "Unable to load #{gem}: #{$!}"
+    STDERR.puts "Unable to load: #{gem}."
   end
 end
 
@@ -70,12 +59,12 @@ end
   "Bond.start",
   "Wirb.start",
   "Hirb.enable",
-  "Priscilla.configure { |c| c.decorator = '-'; c.width = 120 }"
+  "Priscilla.configure { |config| config.decorator = '-'; config.width = 120 }"
 ].each do |config|
   begin
     instance_eval config
-  rescue NoMethodError
-    STDERR.puts "Unable to execute #{config}: #{$!}"
+  rescue StandardError
+    STDERR.puts "Unable to execute: #{config}."
   end
 end
 
