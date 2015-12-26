@@ -19,20 +19,7 @@ IRB.conf[:PROMPT][:RA] = {
 }
 IRB.conf[:PROMPT_MODE] = :RA
 
-# IRB for Rails 2.x.x
-if ENV.include?("RAILS_ENV") && !Object.const_defined?("RAILS_DEFAULT_LOGGER")
-
-  # Prompt
-  require "logger"
-  RAILS_DEFAULT_LOGGER = Logger.new STDOUT
-  IRB.conf[:PROMPT][:RA][:PROMPT_I] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{ENV["RAILS_ENV"]}]> "
-  IRB.conf[:PROMPT][:RA][:PROMPT_N] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{ENV["RAILS_ENV"]}]| "
-  IRB.conf[:PROMPT][:RA][:PROMPT_C] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{ENV["RAILS_ENV"]}]| "
-  IRB.conf[:PROMPT][:RA][:PROMPT_S] = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}|#{ENV["RAILS_ENV"]}]%l "
-
-# IRB for Rails 3.x.x
-elsif defined?(Rails)
-
+if defined?(Rails)
   # Prompt
   require "logger"
   Rails.logger = Logger.new STDOUT
