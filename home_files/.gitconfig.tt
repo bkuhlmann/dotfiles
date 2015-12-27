@@ -60,6 +60,8 @@
 [difftool]
   prompt = false
 [diff]
+  mnemonicPrefix = true
+  renames = true
   tool = Kaleidoscope
 [mergetool "Kaleidoscope"]
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
