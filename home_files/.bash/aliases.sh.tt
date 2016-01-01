@@ -281,9 +281,6 @@ alias capp="bec production deploy"
 # Section: [Swift](https://developer.apple.com/swift)
 alias swift="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
 
-# Section: [iOS](https://developer.apple.com/ios)
-alias ios="open /Applications/Xcode.app/Contents/Applications/iOS\ Simulator.app"
-
 # Section: [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
 alias agf="ag --hidden --files-with-matches --file-search-regex"
 
