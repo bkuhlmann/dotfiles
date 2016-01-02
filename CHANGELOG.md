@@ -1,3 +1,25 @@
+# v19.0.0 (2016-01-02)
+
+- Fixed Ruby IRB config with loading of gem enhancements.
+- Added Bash alias section.
+- Added `cype` function for colorized type.
+- Added `gpf` alias for `git push `--force-with-lease`.
+- Added `gpuo` alias (i.e. `git pull origin`).
+- Added `gpuom` alias (i.e. `git pull origin master`).
+- Added pry-state to Ruby IRB gem enhancements.
+- Updated Git global config to enable mnemonicPrefix and renames for diffs.
+- Updated `gup` function to optionally pull only.
+- Updated `hbrb` alias to not use `ruby-build` HEAD.
+- Updated global Git config to always rebase when pulling.
+- Removed Rails 2.x.x function support.
+- Removed Ruby IRB Rails 2.x.x prompt support.
+- Removed Ruby IRB patch info prompt support.
+- Removed `gpur` alias.
+- Removed `gpuro` alias (use `gpuo` instead).
+- Removed `gpurom` alias (use `gpuom` instead).
+- Removed `ios` alias.
+- Removed `toc` alias (use toc* aliases instead).
+
 # v18.1.0 (2015-12-02)
 
 - Fixed outdated reference links.

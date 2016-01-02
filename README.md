@@ -122,7 +122,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v18.1.0
+    git checkout v19.0.0
 
 Master Version (unstable)
 
@@ -181,11 +181,12 @@ When upgrading to a new version, do the following to apply upgrades:
     o = "open"
     cat = 'ccat -G Keyword = "turquoise" -G Punctuation="green" -G Decimal="green" -G Type="blue" -G Literal="blue" -G String="lightgray" -G Plaintext="white"'
     home = "cd $HOME"
+    pss = 'ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
+    man = "gem man --system"
+##### [Bash](https://www.gnu.org/software/bash)
     bashe = "$EDITOR $HOME/.bash/env.sh"
     bashs = "exec $SHELL"
     bashv = "bash --version"
-    pss = 'ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
-    man = "gem man --system"
 ##### Network
     sshe = "$EDITOR $HOME/.ssh/config"
     key = "open /Applications/Utilities/Keychain Access.app"
@@ -213,7 +214,7 @@ When upgrading to a new version, do the following to apply upgrades:
     hbpu = "brew unpin"
     hbd = "brew doctor"
     hbc = "brew cleanup"
-    hbrb = "brew uninstall ruby-build && brew install --HEAD ruby-build"
+    hbrb = "brew uninstall ruby-build && brew install ruby-build"
 ##### [Git](http://git-scm.com)
     gi = "git init"
     gcle = "git config --local --edit"
@@ -284,14 +285,14 @@ When upgrading to a new version, do the following to apply upgrades:
     gf = "git fetch"
     gfp = "git fetch --prune"
     gpu = "git pull"
-    gpur = "git pull --rebase" # Rebase the current branch on top of the upstream branch.
-    gpuro = "gpur origin" # Rebase the current branch on top of the upstream origin branch.
-    gpurom = "gpuro master" # Rebase the current branch on top of the upstream origin master branch.
+    gpuo = "git pull origin"
+    gpuom = "git pull origin master"
     grbc = "git rebase --continue"
     grbs = "git rebase --skip"
     grba = "git rebase --abort"
     ger = "git rerere"
     gp = "git push"
+    gpf = "git push --force-with-lease"
     gpn = "git push --no-verify"
     gpo = "git push --set-upstream origin"
     gpr = "git push review master"
@@ -422,8 +423,6 @@ When upgrading to a new version, do the following to apply upgrades:
     capp = "bec production deploy"
 ##### [Swift](https://developer.apple.com/swift)
     swift = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
-##### [iOS](https://developer.apple.com/ios)
-    ios = "open /Applications/Xcode.app/Contents/Applications/iOS Simulator.app"
 ##### [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
     agf = "ag --hidden --files-with-matches --file-search-regex"
 ##### [Z](https://github.com/rupa/z)
@@ -441,13 +440,12 @@ When upgrading to a new version, do the following to apply upgrades:
     cinp = "asciinema play"
     cinu = "asciinema upload"
     cinv = "asciinema --version"
-##### [DocToc](https://github.com/thlorenz/doctoc)
-    toc = "doctoc --title '# Table of Contents'"
 
 #### Functions
 
 ##### General
     t2s = Tab to Space - Convert file from tab to space indendation.
+    cype = Colorized Type - Identical to "type" command functionality but with syntax highlighting.
     kilp = Kill Process - Kill errant processes.
 ##### [less](http://en.wikipedia.org/wiki/Less_(Unix))
     lessi = Less Interactive - Inspect file, interactively.
@@ -470,7 +468,7 @@ When upgrading to a new version, do the following to apply upgrades:
     glameh = Git Blame History - View file commit history for a specific file and/or lines (with optional diff support).
     guthorsa = Git Authors (all) - Answer author commit activity per project (ranked highest to lowest).
     gsta = Git Status (all) - Answer status of projects with uncommited/unpushed changes.
-    gup = Git Update - Fetch commits, prune untracked references, review each commit (optional, with diff), and rebase (optional).
+    gup = Git Update - Fetch commits, prune untracked references, review each commit (optional, with diff), and pull (optional).
     gseta = Git Set Config Value (all) - Set key value for projects in current directory.
     ggeta = Git Get Config Value (all) - Answer key value for projects in current directory.
     gunseta = Git Unset (all) - Unset key value for projects in current directory.
