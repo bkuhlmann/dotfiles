@@ -395,9 +395,6 @@ _run_rails_command() {
   # Rails 3.x.x.
   elif [[ -e script/rails ]]; then
     script/rails $rails_command $rails_options
-  # Rails 2.x.x.
-  elif [[ -e script/$rails_command ]]; then
-    script/$rails_command $rails_options
   # Unsupported version.
   else
     printf "ERROR: Unsupported Rails version.\n"
