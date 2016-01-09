@@ -662,9 +662,9 @@ gashs() {
   if [[ -n "$diff_option" ]]; then
     case "$diff_option" in
       'd')
-        _process_git_stash "git stash show -p" "Git Stash Diff Options (select stash to diff)";;
+        _process_git_stash "git stash show --patch" "Git Stash Diff Options (select stash to diff)";;
       't')
-        _process_git_stash "gdt" "Git Stash Diff Options (select stash to diff)";;
+        _process_git_stash "git difftool" "Git Stash Diff Options (select stash to diff)";;
       *)
         printf "Usage: gashs OPTION\n\n"
         printf "Available options:\n"
