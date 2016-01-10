@@ -8,7 +8,7 @@ require "irb/ext/save-history"
 IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:EVAL_HISTORY] = 1000
-IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+IRB.conf[:HISTORY_FILE] = %(#{ENV["HOME"]}/.irb_history)
 IRB.conf[:PROMPT] ||= {}
 IRB.conf[:PROMPT][:RA] = {
   PROMPT_I: "[#{RUBY_VERSION}]> ",
@@ -73,12 +73,12 @@ class ConsoleKit
   # ==== Parameters
   # * +args+ - The single or multiple inputs to send to the clipboard.
   def self.copy *args
-    open("| pbcopy", 'w') { |clipboard| clipboard.write args.join("\n") }
+    open("| pbcopy", "w") { |clipboard| clipboard.write args.join("\n") }
   end
 
   # Pastes recent content from the Mac OS clipboard.
   def self.paste
-    open("| pbpaste", 'r') { |clipboard| clipboard.read }
+    open("| pbpaste", "r") { |clipboard| clipboard.read }
   end
 
   # Answers HTTP status codes.
@@ -89,7 +89,7 @@ class ConsoleKit
   # Answers HTTP status symbols (as used by Rails).
   def self.http_symbols
     http_codes.each_with_object({}) do |(code, label), hash|
-      hash[code] = label.downcase.gsub(/(\s|-)/, '_').gsub(/(\(|\))/, '').intern
+      hash[code] = label.downcase.gsub(/(\s|-)/, "_").gsub(/(\(|\))/, "").intern
     end
   end
 end
