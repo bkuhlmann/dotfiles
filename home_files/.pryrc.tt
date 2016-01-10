@@ -38,19 +38,27 @@ Pry.config.editor = "sublime"
   begin
     require gem
   rescue LoadError
-    STDERR.puts "Unable to load #{gem}: #{$!}"
+    STDERR.puts "Unable to load: #{gem}."
   end
 end
 
 # Gem Enhancements (settings)
-begin
-  Bond.start
-  Hirb.enable
-
-  old_print = Pry.config.print
-  Pry.config.print = proc do |*args|
-    Hirb::View.view_or_page_output(args[1]) || old_print.call(*args)
+["Bond.start", "Hirb.enable"].each do |config|
+  begin
+    instance_eval config
+  rescue StandardError
+    STDERR.puts "Unable to execute: #{config}."
   end
-rescue NoMethodError
-  STDERR.puts "Unable to configure Hirb: #{$!}"
+end
+
+# Gem Enhancements (Hirb)
+if defined?(Hirb)
+  begin
+    old_print = Pry.config.print
+    Pry.config.print = proc do |*args|
+      Hirb::View.view_or_page_output(args[1]) || old_print.call(*args)
+    end
+  rescue NoMethodError
+    STDERR.puts "Unable to configure Hirb: #{$ERROR_INFO}."
+  end
 end
