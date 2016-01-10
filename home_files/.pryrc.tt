@@ -1,26 +1,26 @@
 # Setup
-ruby_info = "[#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}"
-rails_info = defined?(Rails) ? "#{Rails.application.class.parent_name.downcase}|#{Rails.env}" : nil
+ruby_info = "#{RUBY_VERSION}"
+rails_info = "#{Rails.application.class.parent_name.downcase}|#{Rails.env}" if defined?(Rails)
 
 # Prompt
 Pry.config.prompt = [
   proc do |conf|
     tree = conf.binding_stack.map { |stack| Pry.view_clip stack.eval("self") } * " / "
-    [ruby_info, rails_info, "PRY #{tree} - #{conf.expr_number}:#{conf.nesting_level}]> "].compact * '|'
+    ["[", ruby_info, rails_info, "PRY #{tree} - #{conf.expr_number}:#{conf.nesting_level}]> "].compact * "|"
   end
 ]
 
 # History
-Pry.config.history.file = "#{ENV['HOME']}/.irb_history" # Keep IRB and Pry history the same.
+Pry.config.history.file = %(#{ENV["HOME"]}/.irb_history) # Keep IRB and Pry history the same.
 
 # Aliases
-Pry.commands.alias_command 'w', "whereami" rescue nil
+Pry.commands.alias_command "w", "whereami" rescue nil
 
 if defined?(Byebug)
-  Pry.commands.alias_command 'c', "continue" rescue nil
-  Pry.commands.alias_command 's', "step" rescue nil
-  Pry.commands.alias_command 'n', "next" rescue nil
-  Pry.commands.alias_command 'f', "finish" rescue nil
+  Pry.commands.alias_command "c", "continue" rescue nil
+  Pry.commands.alias_command "s", "step" rescue nil
+  Pry.commands.alias_command "n", "next" rescue nil
+  Pry.commands.alias_command "f", "finish" rescue nil
   Pry.commands.alias_command "bp", "break" rescue nil
   Pry.commands.alias_command "bpe", "break --enable" rescue nil
   Pry.commands.alias_command "bpd", "break --disable" rescue nil
