@@ -902,7 +902,7 @@ gbs() {
       printf "\nSelect branch to switch to:\n"
 
       for ((index = 0; index < ${#branches[*]}; index++)); do
-        printf "  $index: ${branches[$index]##*/}\n"
+        printf "  $index: ${branches[$index]}\n"
       done
 
       printf "  q: Quit/Exit.\n\n"
@@ -912,8 +912,8 @@ gbs() {
 
       local match="^([0-9]{1,2})$"
       if [[ "$response" =~ $match ]]; then
-        local branch="$(printf "${branches[$response]##*/}" | awk '{print $1}')"
-        git checkout $branch
+        local branch="$(printf "${branches[$response]}" | awk '{print $1}')"
+        git checkout "$branch"
         printf "\n"
       fi
     else
@@ -942,13 +942,13 @@ gbd() {
       printf "\nSelect branch to delete:\n"
 
       for ((index = 0; index < ${#branches[*]}; index++)); do
-        printf "  $index: ${branches[$index]##*/}\n"
+        printf "  $index: ${branches[$index]}\n"
       done
 
       printf "  q: Quit/Exit.\n\n"
 
       read -p "Enter selection: " response
-      local branch="$(printf "${branches[$response]##*/}" | awk '{print $1}')"
+      local branch="$(printf "${branches[$response]}" | awk '{print $1}')"
       printf "\n"
 
       local match="^([0-9]{1,2})$"
