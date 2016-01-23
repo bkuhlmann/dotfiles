@@ -792,9 +792,9 @@ galla() {
   done < <(find . -type d -depth 1)
 }
 
-# Label: Git Commit and Message (all)
-# Description: Commit changes (modified and new), with message, for projects in current directory.
-gcama() {
+# Label: Git Commit (all)
+# Description: Commit changes (unstaged and staged) for projects in current directory.
+gcaa() {
   local temp_file=$(mktemp -t git-commit)
   cp $HOME/.git_template/commit_message.txt $temp_file
   $EDITOR --wait $temp_file
