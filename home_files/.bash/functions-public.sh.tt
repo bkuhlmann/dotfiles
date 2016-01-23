@@ -1062,6 +1062,26 @@ gwa() {
   cd "$worktree_path"
 }
 
+# Label: Git Worktree Delete
+# Description: Deletes current Git worktree.
+gwd() {
+  local project_name="$(basename $(git rev-parse --show-toplevel) | cut -d'-' -f1)"
+  local worktree_dir="$(pwd)"
+
+  if [[ "$(git status --short)" ]]; then
+    printf "ERROR: Git worktree has uncommitted changes.\n"
+    return 1
+  else
+    cd ../$project_name
+    read -p "Git worktree: $worktree_dir. Delete (y/n)?: " response
+
+    if [[ "$response" == 'y' ]]; then
+      rm -rf $worktree_dir
+      git worktree prune
+    fi
+  fi
+}
+
 # Label: Git Reset Soft
 # Description: Resets previous commit (default), resets back to number of commits, or resets to specific commit.
 # Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
