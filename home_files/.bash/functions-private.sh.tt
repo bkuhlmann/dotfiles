@@ -291,13 +291,17 @@ _process_gh_commit_option() {
 # Description: Process GitHub branch option for remote repository viewing.
 # Parameters: $1 (optional) - The option.
 _process_gh_branch_option() {
-  local option="$1"
-
-  if [[ "$option" == 'c' ]]; then
-    open "$(_gh_url)/tree/$(_git_branch_name)"
-  else
-    open "$(_gh_url)/branches"
-  fi
+  case $1 in
+    'c')
+      open "$(_gh_url)/tree/$(_git_branch_name)"
+      break;;
+    'r')
+      open "$(_gh_url)/compare/$(_git_branch_name)?expand=1"
+      break;;
+    *)
+      open "$(_gh_url)/branches"
+      break;;
+  esac
 }
 
 # Label: Process GitHub Pull Request Option

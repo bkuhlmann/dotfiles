@@ -1197,6 +1197,7 @@ gh() {
         printf "     HASH: Open commit.\n"
         printf "  b: Open repository branches. Options:\n"
         printf "     c: Open current branch.\n"
+        printf "     r: Open pull request for current branch.\n"
         printf "  t: Open repository tags (releases).\n"
         printf "  r: Open repository pull requests.\n"
         printf "     NUMBER: Open pull request.\n"
