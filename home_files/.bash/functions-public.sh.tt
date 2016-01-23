@@ -1038,24 +1038,32 @@ gtagd() {
 }
 
 # Label: Git Worktree Add
-# Description: Create and switch to new worktree.
-# Parameters: $1 (required) - The worktree/branch name, $2 (optional) - Branch name ("l" == "local", "r" == "remote").
+# Description: Add and switch to new worktree.
+# Parameters: $1 (required) - The worktree/branch name, $2 (optional) - Use "l" for "local" or "r" for "remote".
 gwa() {
   local name="$1"
   local project_name="$(basename $(pwd))"
   local worktree_path="../$project_name-$name"
-  local branch="${2:-ignore}"
+  local option="${2:-ignore}"
 
   if [[ -z "$name" ]]; then
     printf "ERROR: Git worktree name is missing.\n"
     return 1
   fi
 
-  if [[ "$branch" == "l" ]]; then
-    git worktree add -b "$name" "$worktree_path" master
-  else
-    git worktree add --detach "$worktree_path" HEAD
+  if [[ "$option" != "ignore" && -n $(git branch --list "$name") ]]; then
+    printf "ERROR: Invalid Git worktree, local branch exists.\n"
+    return 1
   fi
+
+  case $option in
+    'l')
+      git worktree add -b "$name" "$worktree_path" master;;
+    'r')
+      git worktree add -b "$name" "$worktree_path" origin/"$name";;
+    *)
+      git worktree add --detach "$worktree_path" HEAD;;
+  esac
 
   printf "Syncing project files...\n"
   git ls-files --others | rsync --compress --links --files-from - "$(pwd)/" "$worktree_path/"
