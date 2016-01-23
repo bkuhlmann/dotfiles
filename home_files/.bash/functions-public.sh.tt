@@ -1137,6 +1137,25 @@ grs() {
   fi
 }
 
+# Label: Git Reset Hard
+# Description: Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
+# Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
+grh() {
+  local value="$1"
+  local number_regex="^[0-9]+$"
+  local commit_regex="^[a-f0-9]+$"
+
+  git clean --force --quiet -d
+
+  if [[ "$value" =~ $number_regex ]]; then
+    git reset --hard "HEAD~${value}"
+  elif [[ "$value" =~ $commit_regex ]]; then
+    git reset --hard "${value}"
+  else
+    git reset --hard HEAD
+  fi
+}
+
 # Label: Git Nuke
 # Description: Permanently destroy and erase a file from history. UNRECOVERABLE!
 # Parameters: $1 (optional) - The file to destroy.

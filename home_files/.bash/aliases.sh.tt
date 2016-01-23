@@ -140,7 +140,6 @@ alias gtags="git push --tags"
 alias gwl="git worktree list"
 alias gwp="git worktree prune"
 alias gr="git reset" # Unstage staged files for commit.
-alias grh="git reset --hard HEAD" # Reset to HEAD, destroying all staged/unstaged changes. UNRECOVERABLE!
 alias gdis="git reset --hard" # Reset to commit, destroying all previous commits. UNRECOVERABLE!
 alias grm="git reset --merge ORIG_HEAD" # Reset to original HEAD prior to merge.
 alias grom="git fetch --all && git reset --hard origin/master" # Reset local branch to origin/master branch. UNRECOVERABLE!
