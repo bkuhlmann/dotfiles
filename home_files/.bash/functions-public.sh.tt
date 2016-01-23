@@ -1223,6 +1223,24 @@ gh() {
   fi
 }
 
+# Label: GitHub Pull Request (all)
+# Description: Open pull request for all projects in current directory (non-master branches only).
+ghpra() {
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git-enabled.
+      if [[ -d ".git" ]]; then
+        # Only process non-master branches.
+        if [[ "$(_git_branch_name)" != "master" ]]; then
+          gh b r # a.k.a. GitHub Branch [Pull] Request
+        fi
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 #--------------------------------------------------#
 # Section: [PostgreSQL](http://www.postgresql.org) #
 #--------------------------------------------------#
