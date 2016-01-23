@@ -754,24 +754,6 @@ gpua() {
   done < <(find . -type d -depth 1)
 }
 
-# Label: Git Push (all)
-# Description: Push changes for projects in current directory.
-gpa() {
-  while read project; do
-    (
-      cd "$project"
-      # Only process projects that are Git-enabled.
-      if [[ -d ".git" ]]; then
-        # Only process projects that have changes.
-        if [[ "$(git status --short --branch)" == *"[ahead"*"]" ]]; then
-          printf "\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
-          git push
-        fi
-      fi
-    )
-  done < <(find . -type d -depth 1)
-}
-
 # Label: Git Add (all)
 # Description: Apply file changes (including new files) for projects in current directory.
 galla() {
@@ -840,6 +822,24 @@ gcap() {
   done < <(find . -type d -depth 1)
 
   rm -f $temp_file
+}
+
+# Label: Git Push (all)
+# Description: Push changes for projects in current directory.
+gpa() {
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git-enabled.
+      if [[ -d ".git" ]]; then
+        # Only process projects that have changes.
+        if [[ "$(git status --short --branch)" == *"[ahead"*"]" ]]; then
+          printf "\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+          git push
+        fi
+      fi
+    )
+  done < <(find . -type d -depth 1)
 }
 
 # Label: Git Rebase (interactive)
@@ -1062,64 +1062,6 @@ gwa() {
   cd "$worktree_path"
 }
 
-# Label: Git Hook Delete
-# Description: Delete hooks for current project.
-ghd() {
-  if [[ -d ".git" ]]; then
-    (
-      cd .git/hooks
-      rm -rf *
-    )
-    printf "Git hooks deleted.\n"
-  fi
-}
-
-# Label: Git Hook Delete (all)
-# Description: Delete hooks for projects in current directory.
-ghda() {
-  while read project; do
-    (
-      cd "$project"
-      printf "\n\033[36m${project:2}\033[m: " # Outputs in cyan color.
-
-      # Only process projects that are Git-enabled.
-      if [[ -d ".git" ]]; then
-        ghd
-      else
-        printf "Not a Git project.\n"
-      fi
-    )
-  done < <(find . -type d -depth 1)
-}
-
-# Label: Git Verify and Clean
-# Description: Verify and clean objects for current project.
-gvac() {
-  printf "Verifying connectivity and validity of the objects in Git repository...\n\n"
-  git fsck
-
-  printf "\nCleaning unnecessary files and optimizing local Git repository...\n\n"
-  git gc
-
-  printf "\nPruning rerere records of older conflicting merges...\n\n"
-  git rerere gc
-}
-
-# Label: Git Verify and Clean (all)
-# Description: Verify and clean objects for projects in current directory.
-gvaca() {
-  while read project; do
-    (
-      cd "$project"
-      # Only process projects that are Git-enabled.
-      if [[ -d ".git" ]]; then
-        printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
-        git fsck && git gc && git rerere gc
-      fi
-    )
-  done < <(find . -type d -depth 1)
-}
-
 # Label: Git Reset Soft
 # Description: Resets previous commit (default), resets back to number of commits, or resets to specific commit.
 # Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
@@ -1176,6 +1118,64 @@ guke() {
   else
     printf "Nuke aborted.\n"
   fi
+}
+
+# Label: Git Hook Delete
+# Description: Delete hooks for current project.
+ghd() {
+  if [[ -d ".git" ]]; then
+    (
+      cd .git/hooks
+      rm -rf *
+    )
+    printf "Git hooks deleted.\n"
+  fi
+}
+
+# Label: Git Hook Delete (all)
+# Description: Delete hooks for projects in current directory.
+ghda() {
+  while read project; do
+    (
+      cd "$project"
+      printf "\n\033[36m${project:2}\033[m: " # Outputs in cyan color.
+
+      # Only process projects that are Git-enabled.
+      if [[ -d ".git" ]]; then
+        ghd
+      else
+        printf "Not a Git project.\n"
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
+# Label: Git Verify and Clean
+# Description: Verify and clean objects for current project.
+gvac() {
+  printf "Verifying connectivity and validity of the objects in Git repository...\n\n"
+  git fsck
+
+  printf "\nCleaning unnecessary files and optimizing local Git repository...\n\n"
+  git gc
+
+  printf "\nPruning rerere records of older conflicting merges...\n\n"
+  git rerere gc
+}
+
+# Label: Git Verify and Clean (all)
+# Description: Verify and clean objects for projects in current directory.
+gvaca() {
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git-enabled.
+      if [[ -d ".git" ]]; then
+        printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+        git fsck && git gc && git rerere gc
+      fi
+    )
+  done < <(find . -type d -depth 1)
 }
 
 #---------------------------------------#
