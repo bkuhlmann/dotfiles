@@ -33,7 +33,7 @@
 [commit]
   template = ~/.git_template/commit_message.txt
 [core]
-  editor = "$EDITOR -w"
+  editor = "$EDITOR --wait"
   excludesfile = ~/.gitignore
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   quotepath = false

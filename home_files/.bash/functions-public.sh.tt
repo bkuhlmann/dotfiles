@@ -127,7 +127,7 @@ curli() {
   if [[ "$1" ]]; then
     local file=$(mktemp -t suspicious_curl_file) || { printf "ERROR: Unable to create temporary file.\n"; return; }
     curl --location --fail --silent --show-error "$1" > $file || { printf "Failed to curl file.\n"; return; }
-    $EDITOR -w $file || { printf "Unable to open temporary curl file.\n"; return; }
+    $EDITOR --wait $file || { printf "Unable to open temporary curl file.\n"; return; }
     rm -f $file;
   else
     printf "ERROR: URL must be supplied.\n"
