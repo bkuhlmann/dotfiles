@@ -1120,6 +1120,23 @@ gvaca() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Git Reset Soft
+# Description: Resets previous commit (default), resets back to number of commits, or resets to specific commit.
+# Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
+grs() {
+  local value="$1"
+  local number_regex="^[0-9]+$"
+  local commit_regex="^[a-f0-9]+$"
+
+  if [[ "$value" =~ $number_regex ]]; then
+    git reset --soft "HEAD~${value}"
+  elif [[ "$value" =~ $commit_regex ]]; then
+    git reset --soft "${value}"
+  else
+    git reset --soft HEAD^
+  fi
+}
+
 # Label: Git Nuke
 # Description: Permanently destroy and erase a file from history. UNRECOVERABLE!
 # Parameters: $1 (optional) - The file to destroy.
