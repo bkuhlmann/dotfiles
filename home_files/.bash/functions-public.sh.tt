@@ -1039,19 +1039,19 @@ gtagd() {
 
 # Label: Git Worktree Add
 # Description: Create and switch to new worktree.
-# Parameters: $1 (required) - The worktree/branch name, $2 (optional) - Create branch ("y" or "n"). Default: "n".
+# Parameters: $1 (required) - The worktree/branch name, $2 (optional) - Branch name ("l" == "local", "r" == "remote").
 gwa() {
   local name="$1"
   local project_name="$(basename $(pwd))"
   local worktree_path="../$project_name-$name"
-  local branch="${2:-n}"
+  local branch="${2:-ignore}"
 
   if [[ -z "$name" ]]; then
     printf "ERROR: Git worktree name is missing.\n"
     return 1
   fi
 
-  if [[ "$branch" == "y" ]]; then
+  if [[ "$branch" == "l" ]]; then
     git worktree add -b "$name" "$worktree_path" master
   else
     git worktree add --detach "$worktree_path" HEAD
