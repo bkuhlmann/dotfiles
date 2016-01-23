@@ -173,7 +173,7 @@ gia() {
 # Label: Git Root
 # Description: Change to repository root directory regardless of current depth.
 groot() {
-  cd "$(dirname $(git rev-parse --git-dir))"
+  cd "$(git rev-parse --show-toplevel)"
 }
 
 # Label: Git Info
