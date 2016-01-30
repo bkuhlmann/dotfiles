@@ -1459,8 +1459,29 @@ bj() {
   fi
 }
 
-# Label: Bundler Ignore Post-Install Message
-# Description: Update Bundler to ignore install messages for specified gem.
+# Label: Bundler Config Gem
+# Description: Configure Bundler gem path for development.
+# Parameters: $1 (required) - The gem name, $2 (required) - The gem path.
+bcg() {
+  local gem_name=$1
+  local gem_path=$2
+
+  if [[ ! $gem_name ]]; then
+    printf "ERROR: Gem name (uppercase only) must be supplied!\n"
+    return 1
+  fi
+
+  if [[ ! $gem_path ]]; then
+    printf "ERROR: Gem path must be supplied!\n"
+    return 1
+  fi
+
+  bundle config "local.$gem_name" "$gem_path"
+  printf "Added: BUNDLE_LOCAL__${gem_name^^}: $gem_path\n"
+}
+
+# Label: Bundler Config Ignore Post-Install Message
+# Description: Configure Bundler to ignore install messages for specified gem.
 # Parameters: $1 (required) - The gem name.
 bcim() {
   local gem_name=$1
