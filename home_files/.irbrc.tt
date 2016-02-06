@@ -68,7 +68,7 @@ end
 end
 
 # A collection of utility methods when working within the IRB console.
-class ConsoleKit
+class CK
   def self.locate object, method
     object.method(method).source_location
   end
