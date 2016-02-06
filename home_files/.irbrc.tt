@@ -73,6 +73,10 @@ class ConsoleKit
     object.method(method).source_location
   end
 
+  def self.search object, pattern
+    object.methods.grep(/#{pattern}/)
+  end
+
   def self.copy *args
     open("| pbcopy", "w") { |clipboard| clipboard.write args.join("\n") }
   end
