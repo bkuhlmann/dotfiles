@@ -21,7 +21,7 @@ export -f base_dest_file
 
 # Shows managed files.
 show_files() {
-  printf "Dotfiles available for install:\n"
+  printf "Managed Dotfiles:\n"
 
   for file in $(home_files); do
     printf "  $(base_dest_file $file)\n"
@@ -108,7 +108,7 @@ export -f check_file
 
 # Checks all files for changes.
 check_files() {
-  printf "Checking dotfiles for changes...\n"
+  printf "Dotfiles Changes:\n"
 
   for file in $(home_files); do
     check_file $file
