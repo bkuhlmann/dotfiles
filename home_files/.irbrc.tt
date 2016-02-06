@@ -67,26 +67,24 @@ end
   end
 end
 
-# Console Utilities
+# A collection of utility methods when working within the IRB console.
 class ConsoleKit
-  # Copies input to the Mac OS clipboard seperated by a new line.
-  # ==== Parameters
-  # * +args+ - The single or multiple inputs to send to the clipboard.
+  def self.locate object, method
+    object.method(method).source_location
+  end
+
   def self.copy *args
     open("| pbcopy", "w") { |clipboard| clipboard.write args.join("\n") }
   end
 
-  # Pastes recent content from the Mac OS clipboard.
   def self.paste
     open("| pbpaste", "r") { |clipboard| clipboard.read }
   end
 
-  # Answers HTTP status codes.
   def self.http_codes
     defined?(Rack) ? Rack::Utils::HTTP_STATUS_CODES : {}
   end
 
-  # Answers HTTP status symbols (as used by Rails).
   def self.http_symbols
     http_codes.each_with_object({}) do |(code, label), hash|
       hash[code] = label.downcase.gsub(/(\s|-)/, "_").gsub(/(\(|\))/, "").intern
