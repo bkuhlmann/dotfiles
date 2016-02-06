@@ -1319,9 +1319,26 @@ pgt() {
 # Section: [Ruby](https://www.ruby-lang.org) #
 #--------------------------------------------#
 
+# Label: Ruby Version (all)
+# Description: Show current Ruby version for all projects in current directory.
+rva() {
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects which have ruby version information.
+      if [[ -e ".ruby-version" ]]; then
+        local version=$(head -n 1 .ruby-version)
+
+        # Outputs project as cyan and version as white color.
+        printf "\033[36m${project:2}\033[m: $version\n"
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 # Label: Ruby Upgrade (all)
 # Description: Upgrade Ruby projects in current directory with new Ruby version.
-# Parameters: $1 (required) - The new version to upgrade to. Example: 2.2.3.
+# Parameters: $1 (required) - The new version to upgrade to. Example: 2.3.0.
 rua() {
   if [[ "$1" ]]; then
     while read project; do
