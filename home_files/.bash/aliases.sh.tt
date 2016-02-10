@@ -250,6 +250,15 @@ alias taild="tail -f log/development.log"
 alias tailt="tail -f log/test.log"
 alias res="touch tmp/restart.txt"
 
+# Section: [Elm](http://elm-lang.org)
+alias elmc="elm repl"
+alias elms="elm reactor"
+alias elmp="elm package"
+alias elmpi="elm package install"
+alias elmpp="elm package publish"
+alias elmpb="elm package bump"
+alias elmpd="elm package diff"
+
 # Section: [Ember](http://emberjs.com)
 alias em="ember"
 alias emg="ember generate"
