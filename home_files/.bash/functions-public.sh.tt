@@ -926,6 +926,33 @@ gbs() {
   IFS=$ifs_original
 }
 
+# Label: Git Branch Switch (all)
+# Description: Switch to given branch for projects in current directory.
+# Parameters: $1 (required) - The branch name.
+gbsa() {
+  local branch="$1"
+
+  if [[ -n "$branch" ]]; then
+    # Iterate project directories located in root directory.
+    while read project; do
+      (
+        cd "$project"
+        # Only process projects that are Git-enabled.
+        if [[ -d ".git" ]]; then
+          local current_branch="$(_git_branch_name)"
+
+          if [[ $(git rev-parse --quiet --verify "$branch") && "$current_branch" != "$branch" ]]; then
+            git checkout --quiet "$branch"
+            printf "\033[36m${project:2}\033[m: $branch\n" # Output in cyan and branch in white color.
+          fi
+        fi
+      )
+    done < <(find . -type d -depth 1)
+  else
+    printf "ERROR: Branch name must be supplied.\n"
+  fi
+}
+
 # Label: Git Branch Delete
 # Description: Select local and/or remote branches to delete.
 gbd() {
