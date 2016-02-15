@@ -975,6 +975,27 @@ gbsa() {
   fi
 }
 
+# Label: Git Branch Number (all)
+# Description: Answer number of branches for projects in current directory.
+gbna() {
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git-enabled.
+      if [[ -d ".git" ]]; then
+        local current_branch="$(_git_branch_name)"
+        local number="$(_git_branch_list | grep --invert-match master | wc -l | tr -d ' ')"
+
+        if [[ $number -gt 0 ]]; then
+          # Output project in cyan and number in white color.
+          printf "\033[36m${project:2}\033[m: $number\n"
+        fi
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 # Label: Git Branch Delete
 # Description: Select local and/or remote branches to delete.
 gbd() {
