@@ -870,6 +870,28 @@ gbl() {
   _git_branch_list "$format" | column -s'|' -t
 }
 
+# Label: Git Branch List (all)
+# Description: List current branch for projects in current directory.
+gbla() {
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      # Only process projects that are Git-enabled.
+      if [[ -d ".git" ]]; then
+        printf "\033[36m${project:2}\033[m: " # Output in cyan color.
+        local branch="$(_git_branch_name)"
+
+        if [[ "$branch" == "master" ]]; then
+          printf "$branch\n"
+        else
+          printf "\033[31m$branch\033[m\n" # Output in red color.
+        fi
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 # Label: Git Branch Create
 # Description: Create and switch to branch.
 # Parameters: $1 (required) - The branch name.
@@ -1010,28 +1032,6 @@ gbdm() {
   else
     printf "All clear, no merged branches to delete.\n"
   fi
-}
-
-# Label: Git Branch Name (all)
-# Description: List current branch for projects in current directory.
-gbna() {
-  # Iterate project directories located in root directory.
-  while read project; do
-    (
-      cd "$project"
-      # Only process projects that are Git-enabled.
-      if [[ -d ".git" ]]; then
-        printf "\033[36m${project:2}\033[m: " # Output in cyan color.
-        local branch="$(_git_branch_name)"
-
-        if [[ "$branch" == "master" ]]; then
-          printf "$branch\n"
-        else
-          printf "\033[31m$branch\033[m\n" # Output in red color.
-        fi
-      fi
-    )
-  done < <(find . -type d -depth 1)
 }
 
 # Label: Git Tag Delete
