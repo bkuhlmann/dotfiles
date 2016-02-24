@@ -64,7 +64,7 @@ link_file() {
   local source_file="$PWD/$1"
   local dest_file="$HOME/$(base_dest_file $1)"
   local dest_dir="$(dirname $dest_file)"
-  local excludes=".+(env.sh.tt|.gemrc.tt|.gitconfig.tt)$"
+  local excludes=".+(env.sh.tt|.gitconfig.tt)$"
 
   # Proceed only if the symbolic link doesn't exist and is not an excluded file.
   if [[ ! -h "$dest_file" && ! "$source_file" =~ $excludes ]]; then
@@ -123,7 +123,7 @@ export -f check_files
 # $1 = The file name.
 delete_file() {
   local dest_file="$HOME/$(base_dest_file $1)"
-  local excludes=".+(env.sh|.gemrc|.gitconfig)$"
+  local excludes=".+(env.sh|.gitconfig)$"
 
   # Proceed only if file exists.
   if [[ -e "$dest_file" || -h "$dest_file" ]] && [[ ! "$dest_file" =~ $excludes ]]; then

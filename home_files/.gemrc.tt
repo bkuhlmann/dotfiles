@@ -1,6 +1,5 @@
 ---
 gem: --no-document
-# gemcutter_key: <your key>
 :bulk_threshold: 1000
 :sources:
 - https://rubygems.org
