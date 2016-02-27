@@ -180,6 +180,7 @@ alias rdo="open tmp/doc/rdoc/index.html"
 alias rdd="rm -rf tmp/doc/rdoc"
 
 # Section: [Ruby Gems](https://rubygems.org)
+alias gemcr="$EDITOR ~/.gem/credentials"
 alias geml="gem list"
 alias gemi="gem install"
 alias gemup="gem update"
