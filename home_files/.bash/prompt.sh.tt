@@ -64,8 +64,7 @@ _powerline() {
       local BG_EXIT="$RED_BACKGROUND"
     fi
 
-    PS1="\[$BLACK\]\[$WHITE_BACKGROUND\] \@ \[$NORMAL\]" # 12 hour datetime with AM/PM suffix.
-    PS1+="\[$BLACK\]\[$SILVER_BACKGROUND\] \u@\h \[$NORMAL\]" # User@host.
+    PS1="\[$BLACK\]\[$WHITE_BACKGROUND\] \u@\h \[$NORMAL\]" # User@host.
     PS1+="\[$BLACK\]\[$CYAN_BACKGROUND\] ${PWD##*/} \[$NORMAL\]" # Directory.
 
     if [[ -d .git ]]; then
