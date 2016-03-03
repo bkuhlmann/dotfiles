@@ -52,7 +52,7 @@ kilp() {
     return 1
   fi
 
-  ps axu | grep --invert-match grep | grep "$query" | awk '{print $2}' | xargs kill -$signal
+  ps axu | ag --invert-match ag | ag "$query" | awk '{print $2}' | xargs kill -$signal
 }
 
 #-----------------------------------------------------------#
@@ -985,7 +985,7 @@ gbna() {
       # Only process projects that are Git-enabled.
       if [[ -d ".git" ]]; then
         local current_branch="$(_git_branch_name)"
-        local number="$(_git_branch_list | grep --invert-match master | wc -l | tr -d ' ')"
+        local number="$(_git_branch_list | ag --invert-match master | wc -l | tr -d ' ')"
 
         if [[ $number -gt 0 ]]; then
           # Output project in cyan and number in white color.
@@ -1044,7 +1044,7 @@ gbdm() {
     return 1
   fi
 
-  local branches=($(git branch --merged | grep --invert-match "\* master" | xargs -n 1))
+  local branches=($(git branch --merged | ag --invert-match "\* master" | xargs -n 1))
 
   if [[ ${#branches[@]} > 0 ]]; then
     for branch in $branches; do
@@ -1075,7 +1075,7 @@ gtagd() {
     fi
 
     printf "Remote: "
-    if [[ $(git config remote.origin.url) && -n "$(git ls-remote --tags origin | grep $1)" ]]; then
+    if [[ $(git config remote.origin.url) && -n "$(git ls-remote --tags origin | ag $1)" ]]; then
       git push --delete origin "$1"
     else
       printf "No tag found.\n"
@@ -1573,7 +1573,7 @@ boa() {
         printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
 
         # Capture current project status: Search for bullets (*, outdated gems) or missing (not found) gems.
-        local results=$(bundle outdated | egrep "(\*.+|.+not\sfind.+)")
+        local results=$(bundle outdated | ag --only-matching "(\*.+|.+not\sfind.+)")
 
         # Print project status if Bundler activity is detected, otherwise a checkmark for passing status.
         if [[ -n "$results" ]]; then

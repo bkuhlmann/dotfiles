@@ -254,8 +254,8 @@ _process_git_stash() {
 # Description: Answer GitHub URL for current project.
 _gh_url() {
   git remote -v | \
-    grep git@github.com | \
-    grep fetch | \
+    ag git@github.com | \
+    ag fetch | \
     head -1 | \
     cut -f2 | \
     cut -d' ' -f1 | \
