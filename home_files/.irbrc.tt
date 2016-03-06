@@ -84,14 +84,4 @@ class CK
   def self.paste
     open("| pbpaste", "r") { |clipboard| clipboard.read }
   end
-
-  def self.http_codes
-    defined?(Rack) ? Rack::Utils::HTTP_STATUS_CODES : {}
-  end
-
-  def self.http_symbols
-    http_codes.each_with_object({}) do |(code, label), hash|
-      hash[code] = label.downcase.gsub(/(\s|-)/, "_").gsub(/(\(|\))/, "").intern
-    end
-  end
 end
