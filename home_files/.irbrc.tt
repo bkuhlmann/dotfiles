@@ -44,7 +44,6 @@ end
   wirb
   hirb
   awesome_print
-  priscilla
 ).each do |gem|
   begin
     require gem
@@ -58,7 +57,6 @@ end
   "Bond.start",
   "Wirb.start",
   "Hirb.enable",
-  "Priscilla.configure { |config| config.decorator = '-'; config.width = 120 }"
 ].each do |config|
   begin
     instance_eval config
