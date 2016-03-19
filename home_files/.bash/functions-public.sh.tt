@@ -1786,6 +1786,18 @@ rr() {
 # Section: [Travis CI](https://travis-ci.org/) #
 #----------------------------------------------#
 
+# Label: Travis CI Encrypt Code Climate
+# Description: Encrypts and adds Code Climate token to env.global section of YAML.
+# Parameters: $1 (required) - The Code Climate token.
+tciec() {
+  if [[ -z "$1" ]]; then
+    printf "ERROR: Code Climate token must be supplied.\n"
+    return 1
+  fi
+
+  travis encrypt CODECLIMATE_REPO_TOKEN=$1 --add env.global
+}
+
 # Label: Travis CI Encrypt (all)
 # Description: Encrypt string for Travis CI-enabled projects in current directory.
 # Parameters: $1 (required) - The key to add, $2 (require) - The value to encrypt.
