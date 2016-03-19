@@ -1782,9 +1782,9 @@ rr() {
   esac
 }
 
-#----------------------------------------------#
-# Section: [Travis CI](https://travis-ci.org/) #
-#----------------------------------------------#
+#---------------------------------------------#
+# Section: [Travis CI](https://travis-ci.org) #
+#---------------------------------------------#
 
 # Label: Travis CI Encrypt Slack
 # Description: Encrypts and adds Code Climate token to notifications.slack section of YAML.
@@ -1818,7 +1818,7 @@ tciec() {
 # Label: Travis CI Encrypt (all)
 # Description: Encrypt string for Travis CI-enabled projects in current directory.
 # Parameters: $1 (required) - The key to add, $2 (require) - The value to encrypt.
-tcie() {
+tciea() {
   if [[ -z "$1" ]]; then
     printf "ERROR: Encryption key must be supplied. Example: notifications.slack.\n"
     return 1
