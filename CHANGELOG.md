@@ -1,3 +1,60 @@
+# v20.0.0 (2016-03-20)
+
+- Fixed .pryrc template errors when loading missing gems.
+- Fixed Git branch switch/delete functions for branches with pathnames.
+- Fixed `groot` function so it works with Git worktrees.
+- Fixed `hbug` alias to always force openssl link.
+- Fixed contributing guideline links.
+- Added .npmrc template.
+- Added Elm aliases.
+- Added Git global config single key interaction.
+- Added GitHub issue and pull request templates.
+- Added GitHub open pull request option to `gh` function.
+- Added Rubocop global configuration.
+- Added Ruby Console Kit method source location helper.
+- Added Ruby Console Kit search method.
+- Added `bcg` function for configuring Bundler with local gems.
+- Added `besb` function for RSpec Bisect.
+- Added `besd` function for debugging intermittent RSpec failures.
+- Added `gbna` function for Git branch numbers of all projects.
+- Added `gbsa` function for switching branches across multiple projects.
+- Added `gemcli` alias for listing CLI gems only.
+- Added `gemcr` alias for opening gem credentials in default editor.
+- Added `ghpra` function (a.k.a GitHub Pull Request -- all).
+- Added `gwa` "r" option for adding remote branches.
+- Added `gwd` function (a.k.a. Git Worktree Delete).
+- Added `gwl` alias for `git worktree list`.
+- Added `rva` function for printing Ruby versions.
+- Added `tciec` function for Travis CI Code Climate encryption.
+- Added `tcies` function for Travis CI Slack encryption.
+- Updated .bashrc history settings.
+- Updated .gemrc to be linkable and deletable.
+- Updated .inputrc settings to for forward/backward history completions.
+- Updated README Table of Contents.
+- Updated `gcama` function to launch default editor for commit message.
+- Updated `gcap` to use same commit behavior as `gcaa` function.
+- Updated `gwa` function to use "l" for adding local branches.
+- Updated run script documentation.
+- Updated to Code of Conduct, Version 1.4.0.
+- Removed .irbrc console kit http code and symbol support.
+- Removed IRB `ConsoleKit` object (use "CK" instead).
+- Removed Priscilla gem support.
+- Removed Ruby patch info from .pryrc template.
+- Removed `besb` alias.
+- Removed `gbna` function (use `gbla` instead).
+- Removed `gcama` function (use `gcaa` instead).
+- Removed `gdis` alias (use `grh` function instead).
+- Removed `tcie` function (use `tciea` instead).
+- Removed date/time from shell command prompt.
+- Removed use of `grep` (replaced with `ag`).
+- Removed use of `rescue nil` from .pryrc template.
+- Refactored .irbrc template to use double quoted strings.
+- Refactored Git function order.
+- Refactored `gashs` function to use long options.
+- Refactored `grh` alias as a function.
+- Refactored `grs` alias as a function.
+- Refactored launching of default editor to use long wait option.
+
 # v19.0.0 (2016-01-02)
 
 - Fixed Ruby IRB config with loading of gem enhancements.

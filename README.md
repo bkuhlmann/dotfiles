@@ -101,6 +101,8 @@ the *.tt template files in the home_files directory. Read on to learn more.
 - Configures the [Pow](http://pow.cx) `.powconfig` file.
 - Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) `.psqlrc` file.
 - Configures the [Xray](https://github.com/brentd/xray-rails) `.xrayconfig` file.
+- Configures the [Rubocop](https://github.com/bbatsov/rubocop) `.rubocop.yml` file.
+- Configures the [NPM](https://www.npmjs.org) `.npmrc` file.
 - Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
 - Adds [Bash Completion](http://bash-completion.alioth.debian.org).
 - Adds [Go](https://golang.org) Bash support.
@@ -122,7 +124,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v19.0.0
+    git checkout v20.0.0
 
 Master Version (unstable)
 
@@ -181,7 +183,7 @@ When upgrading to a new version, do the following to apply upgrades:
     o = "open"
     cat = 'ccat -G Keyword = "turquoise" -G Punctuation="green" -G Decimal="green" -G Type="blue" -G Literal="blue" -G String="lightgray" -G Plaintext="white"'
     home = "cd $HOME"
-    pss = 'ps axu | grep --invert-match grep | grep "$@" --ignore-case --color=auto'
+    pss = 'ps axu | ag --invert-match ag | ag "$@" --ignore-case'
     man = "gem man --system"
 ##### [Bash](https://www.gnu.org/software/bash)
     bashe = "$EDITOR $HOME/.bash/env.sh"
@@ -190,7 +192,7 @@ When upgrading to a new version, do the following to apply upgrades:
 ##### Network
     sshe = "$EDITOR $HOME/.ssh/config"
     key = "open /Applications/Utilities/Keychain Access.app"
-    ipa = 'curl --silent checkip.dyndns.org | grep --extended-regexp --only-matching "[0-9.]+" | _copy_and_print'
+    ipa = 'curl --silent checkip.dyndns.org | ag --only-matching "[0-9.]+" | _copy_and_print'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
     dnsi = "scutil --dns"
     dnss = "sudo dscacheutil -statistics"
@@ -209,7 +211,7 @@ When upgrading to a new version, do the following to apply upgrades:
     hbs = "brew search"
     hbsw = "brew switch"
     hbup = "brew update --all"
-    hbug = "brew upgrade --all"
+    hbug = "brew upgrade --all && brew link --force openssl > /dev/null 2>&1"
     hbp = "brew pin"
     hbpu = "brew unpin"
     hbd = "brew doctor"
@@ -301,11 +303,9 @@ When upgrading to a new version, do the following to apply upgrades:
     gtag = "git tag"
     gtagv = "git tag --verify"
     gtags = "git push --tags"
+    gwl = "git worktree list"
     gwp = "git worktree prune"
     gr = "git reset" # Unstage staged files for commit.
-    grs = "git reset --soft HEAD^" # Undo previous commit.
-    grh = "git reset --hard HEAD" # Reset to HEAD, destroying all staged/unstaged changes. UNRECOVERABLE!
-    gdis = "git reset --hard" # Reset to commit, destroying all previous commits. UNRECOVERABLE!
     grm = "git reset --merge ORIG_HEAD" # Reset to original HEAD prior to merge.
     grom = "git fetch --all && git reset --hard origin/master" # Reset local branch to origin/master branch. UNRECOVERABLE!
     gel = "git rm"
@@ -340,6 +340,7 @@ When upgrading to a new version, do the following to apply upgrades:
     rdo = "open tmp/doc/rdoc/index.html"
     rdd = "rm -rf tmp/doc/rdoc"
 ##### [Ruby Gems](https://rubygems.org)
+    gemcr = "$EDITOR ~/.gem/credentials"
     geml = "gem list"
     gemi = "gem install"
     gemup = "gem update"
@@ -349,6 +350,7 @@ When upgrading to a new version, do the following to apply upgrades:
     gemp = "gem pristine"
     geme = "gem environment"
     gemuc = "gem update --system && gem update && gem cleanup"
+    gemcli = "ag --ignore % --files-with-matches --file-search-regex gemspec executables | xargs basename"
 ##### [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
     gemw = "gem whois"
 ##### [Bundler](http://bundler.io)
@@ -381,7 +383,6 @@ When upgrading to a new version, do the following to apply upgrades:
     bess = "bes spec"
     besn = "bess --next-failure"
     besf = "bess --only-failures"
-    besb = "bess --seed 2112 --bisect"
 ##### [ByeBug](https://github.com/deivid-rodriguez/byebug)
     bbr = "bundle exec byebug --remote localhost:1048"
 ##### [Ruby on Rails](http://rubyonrails.org)
@@ -401,6 +402,14 @@ When upgrading to a new version, do the following to apply upgrades:
     taild = "tail -f log/development.log"
     tailt = "tail -f log/test.log"
     res = "touch tmp/restart.txt"
+##### [Elm](http://elm-lang.org)
+    elmc = "elm repl"
+    elms = "elm reactor"
+    elmp = "elm package"
+    elmpi = "elm package install"
+    elmpp = "elm package publish"
+    elmpb = "elm package bump"
+    elmpd = "elm package diff"
 ##### [Ember](http://emberjs.com)
     em = "ember"
     emg = "ember generate"
@@ -490,40 +499,50 @@ When upgrading to a new version, do the following to apply upgrades:
     gasha = Git Stash (all) - Answer stash count for projects in current directory.
     gucca = Git Upstream Commit Count (all) - Answer upstream commit count since last pull for projects in current directory.
     gpua = Git Pull (all) - Pull new changes from remote branch for projects in current directory.
-    gpa = Git Push (all) - Push changes for projects in current directory.
     galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
-    gcama = Git Commit and Message (all) - Commit changes (modified and new), with message, for projects in current directory.
+    gcaa = Git Commit (all) - Commit changes (unstaged and staged) for projects in current directory.
     gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
+    gpa = Git Push (all) - Push changes for projects in current directory.
     gri = Git Rebase (interactive) - Rebase commits, interactively.
     gbl = Git Branch List - List local and remote branch details.
+    gbla = Git Branch List (all) - List current branch for projects in current directory.
     gbc = Git Branch Create - Create and switch to branch.
     gbs = Git Branch Switch - Switch between branches.
+    gbsa = Git Branch Switch (all) - Switch to given branch for projects in current directory.
+    gbna = Git Branch Number (all) - Answer number of branches for projects in current directory.
     gbd = Git Branch Delete - Select local and/or remote branches to delete.
     gbdm = Git Branch Delete Merged - Delete locally merged branches.
-    gbna = Git Branch Name (all) - List current branch for projects in current directory.
     gtagd = Git Tag Delete - Delete local and remote tag (if found).
-    gwa = Git Worktree Add - Create and switch to new worktree.
+    gwa = Git Worktree Add - Add and switch to new worktree.
+    gwd = Git Worktree Delete - Deletes current Git worktree.
+    grs = Git Reset Soft - Resets previous commit (default), resets back to number of commits, or resets to specific commit.
+    grh = Git Reset Hard - Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
+    guke = Git Nuke - Permanently destroy and erase a file from history. UNRECOVERABLE!
     ghd = Git Hook Delete - Delete hooks for current project.
     ghda = Git Hook Delete (all) - Delete hooks for projects in current directory.
     gvac = Git Verify and Clean - Verify and clean objects for current project.
     gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in current directory.
-    guke = Git Nuke - Permanently destroy and erase a file from history. UNRECOVERABLE!
 ##### [GitHub](https://github.com)
     gh = GitHub - View GitHub details for current project.
+    ghpra = GitHub Pull Request (all) - Open pull request for all projects in current directory (non-master branches only).
 ##### [PostgreSQL](http://www.postgresql.org)
     pguc = PostgreSQL User Create - Create PostgreSQL user.
     pgud = PostgreSQL User Drop - Drop PostgreSQL user.
     pgt = PostgreSQL Template - Edit PostgreSQL template.
 ##### [Ruby](https://www.ruby-lang.org)
+    rva = Ruby Version (all) - Show current Ruby version for all projects in current directory.
     rua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version.
     rserv = Ruby Server - Serve web content from current directory via WEBrick.
 ##### [RSpec](http://rspec.info)
     bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
+    besb = Bundle Exec RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
+    besd = Bundle Exec RSpec Debug - Debug intermittent RSpec failure(s) by running spec(s) until failure is detected.
     bera = Bundle Execute Rake (all) - Run default Rake tasks via binstub or Bundler for projects in current directory.
     bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
 ##### [Bundler](http://bundler.io)
     bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
-    bcim = Bundler Ignore Post-Install Message - Update Bundler to ignore install messages for specified gem.
+    bcg = Bundler Config Gem - Configure Bundler gem path for development.
+    bcim = Bundler Config Ignore Post-Install Message - Configure Bundler to ignore install messages for specified gem.
     boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
     bua = Bundle Update (all) - Update gems for projects in current directory.
     bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
@@ -540,8 +559,10 @@ When upgrading to a new version, do the following to apply upgrades:
     erd = Rails ERD - Generate Rails Entity Relationship Diagram (ERD).
 ##### [RailRoady](https://github.com/preston/railroady)
     rr = RailRoady Models - Generate diagrams for Rails models, controllers, or states.
-##### [Travis CI](https://travis-ci.org/)
-    tcie = Travis CI Encrypt (all) - Encrypt string for Travis CI-enabled projects in current directory.
+##### [Travis CI](https://travis-ci.org)
+    tcies = Travis CI Encrypt Slack - Encrypts and adds Code Climate token to notifications.slack section of YAML.
+    tciec = Travis CI Encrypt Code Climate - Encrypts and adds Code Climate token to env.global section of YAML.
+    tciea = Travis CI Encrypt (all) - Encrypt string for Travis CI-enabled projects in current directory.
 ##### [Site Validator](https://github.com/sitevalidator/site_validator)
     sv = Site Validator - Generate site validation report using W3C Validator.
 ##### [Image Magick](http://www.imagemagick.org)
