@@ -55,6 +55,7 @@ alias hbrb="brew uninstall ruby-build && brew install ruby-build"
 alias gi="git init"
 alias gcle="git config --local --edit"
 alias gcge="git config --global --edit"
+alias gcd="git config --show-origin"
 alias gget="git config"
 alias gst="git status --short --branch"
 alias gl='git log --graph --pretty=format:"$(_git_log_line_format)"'
