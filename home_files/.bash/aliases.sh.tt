@@ -191,7 +191,7 @@ alias gems="gem server"
 alias gemp="gem pristine"
 alias geme="gem environment"
 alias gemuc="gem update --system && gem update && gem cleanup"
-alias gemcli="ag --ignore % --files-with-matches --file-search-regex gemspec executables | xargs basename"
+alias gemcli="ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | _copy_and_print '\n'"
 
 # Section: [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
 alias gemw="gem whois"
