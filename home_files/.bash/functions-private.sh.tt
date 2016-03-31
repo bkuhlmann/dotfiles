@@ -175,7 +175,7 @@ _git_branch_delete_local() {
 
   if [[ "$response" == 'y' ]]; then
     if [[ -n "$(git branch --list $branch)" ]]; then
-      git branch -D "$branch"
+      git branch --delete --force "$branch"
     else
       printf "Local branch not found.\n"
     fi
@@ -196,7 +196,7 @@ _git_branch_delete_remote() {
 
   if [[ "$response" == 'y' ]]; then
     if [[ -n "$(git branch --remotes --list origin/$branch)" ]]; then
-      git push origin --delete "$branch"
+      git push --delete origin "$branch"
     else
       printf "Remote branch not found.\n"
     fi
