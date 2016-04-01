@@ -44,6 +44,9 @@ if [[ -e /usr/local/bin/go ]]; then
   export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
 fi
 
+# direnv (http://direnv.net)
+eval "$(direnv hook bash)"
+
 # rbenv (https://github.com/sstephenson/rbenv)
 if [[ -d /usr/local/bin ]]; then
   export PATH="/usr/local/bin:$PATH" # OSX
