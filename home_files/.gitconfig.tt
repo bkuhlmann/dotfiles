@@ -58,6 +58,7 @@
 [grep]
   lineNumber = true
   fullname = true
+  threads = 3
 [difftool "Kaleidoscope"]
   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
