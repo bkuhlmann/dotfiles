@@ -1,3 +1,5 @@
+Style/AndOr:
+  EnforcedStyle: conditionals
 Style/CaseIndentation:
   IndentOneStep: true
 Style/MethodDefParentheses:
@@ -6,14 +8,20 @@ Style/NumericLiterals:
   Enabled: false
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
+    "%w": "[]"
+    "%W": "[]"
+    "%i": "[]"
+    "%I": "[]"
     "%r": "()"
+Style/SignalException:
+  EnforcedStyle: semantic
 Style/SingleLineBlockParams:
   Enabled: false
 Style/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
-Style/StringLiteralsInInterpolation:
-  EnforcedStyle: double_quotes
 Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
 Metrics/LineLength:
   Max: 120
