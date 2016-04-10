@@ -1696,7 +1696,7 @@ bec() {
 
 # Label: Rails New
 # Description: Create new Rails application from selected template.
-# Parameters: $1 (required) - The Rails application name, $2 (optional) - The template to apply.
+# Parameters: $1 (required) - Application name, $2 (optional) - Template name, $3 (optional) - Branch name.
 rew() {
   if [[ "$1" ]]; then
     while true; do
