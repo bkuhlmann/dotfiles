@@ -106,6 +106,7 @@ the *.tt template files in the home_files directory. Read on to learn more.
 - Configures the [NPM](https://www.npmjs.org) `.npmrc` file.
 - Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
 - Adds [Bash Completion](http://bash-completion.alioth.debian.org).
+- Adds [direnv](http://direnv.net) Bash support.
 - Adds [Go](https://golang.org) Bash support.
 - Adds [rbenv](https://github.com/sstephenson/rbenv) Bash support.
 - Adds [rbenv-vars](https://github.com/rbenv/rbenv-vars) settings.
@@ -142,9 +143,9 @@ Executing the run.sh script will present the following options:
 
     s: Show managed dotfiles.
     i: Install dotfiles (existing files are skipped).
-    l: Link dotfiles to this project (interactive per file, excludes: env.sh, .gemrc, and .gitconfig).
+    l: Link dotfiles to this project (interactive per file, excludes: env.sh and .gitconfig).
     c: Check for differences between $HOME files and this project's files.
-    d: Delete dotfiles (interactive per file, excludes: env.sh, .gemrc, and .gitconfig).
+    d: Delete dotfiles (interactive per file, excludes: env.sh and .gitconfig).
     q: Quit/Exit.
 
 The options prompt can be skipped by passing the desired option directly to the run.sh script.
@@ -159,7 +160,7 @@ After install, the following files will require manual updating:
 
 ## Upgrade
 
-When upgrading to a new version, do the following to apply upgrades:
+When upgrading to a new version, run the following:
 
 0. Run: `./run.sh l`. This will link any new files. If not using linked files, run `./run.sh d` and
    `./run.sh i` instead.
