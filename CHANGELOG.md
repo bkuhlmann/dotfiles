@@ -1,3 +1,21 @@
+# v20.1.0 (2016-04-10)
+
+- Fixed `gemcli` alias output.
+- Fixed `rew` function documentation to describe branch option.
+- Fixed extra pipe (|) showing up in Pry prompt.
+- Added Git grep count to global configuration.
+- Added `gcd` alias (for debugging Git configuration settings).
+- Added `gpob` function.
+- Added `grim` alias for Git interactive `master` branch rebasing.
+- Added direnv support.
+- Added untracked cache to Git global configuration.
+- Updated .gitconfig to only use config for user name and email.
+- Updated GitHub issue and pull request templates.
+- Updated Milestoner `mse` alias to use new edit command.
+- Updated Rubocop global configuration.
+- Refactored Git local and remote branch deletion.
+- Refactored IRB prompt keys and variables.
+
 # v20.0.0 (2016-03-20)
 
 - Fixed .pryrc template errors when loading missing gems.

@@ -37,6 +37,7 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [RSpec](#rspec)
         - [ByeBug](#byebug)
         - [Ruby on Rails](#ruby-on-rails)
+        - [Elm](#elm)
         - [Ember](#ember)
         - [Jasmine](#jasmine)
         - [Rubocop](#rubocop)
@@ -124,7 +125,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v20.0.0
+    git checkout v20.1.0
 
 Master Version (unstable)
 
@@ -221,6 +222,7 @@ When upgrading to a new version, do the following to apply upgrades:
     gi = "git init"
     gcle = "git config --local --edit"
     gcge = "git config --global --edit"
+    gcd = "git config --show-origin"
     gget = "git config"
     gst = "git status --short --branch"
     gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
@@ -289,6 +291,7 @@ When upgrading to a new version, do the following to apply upgrades:
     gpu = "git pull"
     gpuo = "git pull origin"
     gpuom = "git pull origin master"
+    grim = "git rebase --interactive master"
     grbc = "git rebase --continue"
     grbs = "git rebase --skip"
     grba = "git rebase --abort"
@@ -350,7 +353,7 @@ When upgrading to a new version, do the following to apply upgrades:
     gemp = "gem pristine"
     geme = "gem environment"
     gemuc = "gem update --system && gem update && gem cleanup"
-    gemcli = "ag --ignore % --files-with-matches --file-search-regex gemspec executables | xargs basename"
+    gemcli = "ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | _copy_and_print 'n'"
 ##### [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
     gemw = "gem whois"
 ##### [Bundler](http://bundler.io)
@@ -372,7 +375,7 @@ When upgrading to a new version, do the following to apply upgrades:
     msc = 'milestoner --commits | _copy_and_print "n"'
     mst = "milestoner --tag"
     msp = "milestoner --publish"
-    mse = "milestoner --edit"
+    mse = "milestoner --config --edit"
     msv = "milestoner --version"
 ##### [Gemsmith](https://github.com/bkuhlmann/gemsmith)
     gs = "gemsmith"
@@ -502,6 +505,7 @@ When upgrading to a new version, do the following to apply upgrades:
     galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
     gcaa = Git Commit (all) - Commit changes (unstaged and staged) for projects in current directory.
     gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
+    gpob = Git Push Origin Branch - Pushes current branch to origin and sets upstream tracking.
     gpa = Git Push (all) - Push changes for projects in current directory.
     gri = Git Rebase (interactive) - Rebase commits, interactively.
     gbl = Git Branch List - List local and remote branch details.
