@@ -10,23 +10,24 @@ IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:EVAL_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = %(#{ENV["HOME"]}/.irb_history)
 IRB.conf[:PROMPT] ||= {}
-IRB.conf[:PROMPT][:RA] = {
+IRB.conf[:PROMPT][:ALCHEMISTS] = {
   PROMPT_I: "[#{RUBY_VERSION}]> ",
   PROMPT_N: "[#{RUBY_VERSION}]| ",
   PROMPT_C: "[#{RUBY_VERSION}]| ",
   PROMPT_S: "[#{RUBY_VERSION}]%l ",
   RETURN: "=> %s\n"
 }
-IRB.conf[:PROMPT_MODE] = :RA
+IRB.conf[:PROMPT_MODE] = :ALCHEMISTS
 
 if defined?(Rails)
   # Prompt
   require "logger"
   Rails.logger = Logger.new STDOUT
-  IRB.conf[:PROMPT][:RA][:PROMPT_I] = "[#{RUBY_VERSION}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}]> "
-  IRB.conf[:PROMPT][:RA][:PROMPT_N] = "[#{RUBY_VERSION}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}]| "
-  IRB.conf[:PROMPT][:RA][:PROMPT_C] = "[#{RUBY_VERSION}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}]| "
-  IRB.conf[:PROMPT][:RA][:PROMPT_S] = "[#{RUBY_VERSION}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}]%l "
+  rails_app_name = Rails.application.class.parent_name.downcase
+  IRB.conf[:PROMPT][:ALCHEMISTS][:PROMPT_I] = "[#{RUBY_VERSION}|#{rails_app_name}|#{Rails.env}]> "
+  IRB.conf[:PROMPT][:ALCHEMISTS][:PROMPT_N] = "[#{RUBY_VERSION}|#{rails_app_name}|#{Rails.env}]| "
+  IRB.conf[:PROMPT][:ALCHEMISTS][:PROMPT_C] = "[#{RUBY_VERSION}|#{rails_app_name}|#{Rails.env}]| "
+  IRB.conf[:PROMPT][:ALCHEMISTS][:PROMPT_S] = "[#{RUBY_VERSION}|#{rails_app_name}|#{Rails.env}]%l "
 
   # ActionController
   ActionController::Base.logger = Logger.new STDOUT
@@ -65,7 +66,7 @@ end
   end
 end
 
-# A collection of utility methods when working within the IRB console.
+# ConsoleKit (CK) - A collection of utility methods when working within the IRB console.
 class CK
   def self.locate object, method
     object.method(method).source_location
