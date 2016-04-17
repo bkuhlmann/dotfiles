@@ -31,6 +31,7 @@ export HISTIGNORE="..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane
 . "$HOME/.bash/prompt.sh"
 
 # Homebrew (http://brew.sh)
+export HOMEBREW_NO_ANALYTICS=1
 export PATH="/usr/local/sbin:$PATH"
 
 # Bash Completion (http://bash-completion.alioth.debian.org)
