@@ -64,9 +64,9 @@ _git_show_details() {
 # Description: Answer commit history since last tag for project.
 _git_commits_since_last_tag() {
   if [[ $(git tag) ]]; then
-    git log --oneline --reverse --format='%C(yellow)%H%Creset %s' $(git describe --abbrev=0 --tags --always)..HEAD
+    git log --oneline --reverse --format='%C(yellow)%h%Creset %s' $(git describe --abbrev=0 --tags --always)..HEAD
   else
-    git log --oneline --reverse --format='%C(yellow)%H%Creset %s'
+    git log --oneline --reverse --format='%C(yellow)%h%Creset %s'
   fi
 }
 
