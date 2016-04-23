@@ -44,7 +44,7 @@ _toggle_total_color() {
 # Label: Git Log Line Format
 # Description: Print single line log format.
 _git_log_line_format() {
-  printf "%s" "%C(yellow)%H%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)(%cr)%C(reset)"
+  printf "%s" "%C(yellow)%h%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)%cr.%C(reset)"
 }
 
 # Label: Git Log Format
