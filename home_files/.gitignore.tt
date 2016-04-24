@@ -3,7 +3,6 @@
 
 # Environments
 *.env*
-!.env.sample
 
 # Archives
 *.7z
@@ -33,6 +32,3 @@ tmp
 
 # Logs
 *.log
-
-# Code Coverage
-coverage
