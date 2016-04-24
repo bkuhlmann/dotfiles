@@ -453,6 +453,18 @@ gup() {
   fi
 }
 
+# Label: Git Sync
+# Description: Syncs up remote changes and deletes pruned/merged branches.
+# Parameters
+gync() {
+  if [[ $(_git_branch_name) != "master" ]]; then
+    printf "ERROR: Whoa, switch to master branch first.\n"
+    return 1
+  fi
+
+  git fetch --prune && git pull && gbdm
+}
+
 # Label: Git Set Config Value (all)
 # Description: Set key value for projects in current directory.
 # Parameters: $1 (required) - The key name, $2 (required) - The key value.
