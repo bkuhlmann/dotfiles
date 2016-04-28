@@ -59,17 +59,6 @@ fi
 # direnv (http://direnv.net)
 eval "$(direnv hook bash)"
 
-# rbenv (https://github.com/sstephenson/rbenv)
-if [[ -d /usr/local/bin ]]; then
-  export PATH="/usr/local/bin:$PATH" # OSX
-fi
-
-if [[ -d $HOME/.rbenv/bin ]]; then
-  export PATH="$HOME/.rbenv/bin:$PATH" # Ubuntu
-fi
-
-eval "$(rbenv init -)"
-
 # chruby (https://github.com/postmodern/chruby)
 if [[ -e /usr/local/share/chruby ]]; then
   source /usr/local/share/chruby/chruby.sh

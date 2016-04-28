@@ -49,7 +49,6 @@ alias hbp="brew pin"
 alias hbpu="brew unpin"
 alias hbd="brew doctor"
 alias hbc="brew cleanup"
-alias hbrb="brew uninstall ruby-build && brew install ruby-build"
 
 # Section: [Git](http://git-scm.com)
 alias gi="git init"
@@ -161,20 +160,6 @@ alias pgsp="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 # Section: [Redis](http://redis.io)
 alias reds="redis-server /usr/local/etc/redis.conf &"
 alias redc="redis-cli"
-
-# Section: [rbenv](https://github.com/rbenv/rbenv)
-alias rb="rbenv"
-alias rbg="rbenv global"
-alias rbl="rbenv local"
-alias rbs="rbenv shell"
-alias rbh="rbenv rehash"
-alias rbp="rbenv which"
-alias rbw="rbenv whence"
-alias rbv="rbenv versions"
-alias rbi="rbenv install"
-alias rbil="rbenv install --list"
-alias rbu="rbenv uninstall"
-alias rbvars="rbenv vars"
 
 # Section: [chruby](https://github.com/postmodern/chruby)
 alias crb="chruby"
