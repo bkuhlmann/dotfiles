@@ -70,6 +70,12 @@ fi
 
 eval "$(rbenv init -)"
 
+# chruby (https://github.com/postmodern/chruby)
+if [[ -e /usr/local/share/chruby ]]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+fi
+
 # NPM (http://nodejs.org)
 export PATH="$PATH:/usr/local/share/npm/bin"
 

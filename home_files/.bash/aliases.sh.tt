@@ -176,6 +176,9 @@ alias rbil="rbenv install --list"
 alias rbu="rbenv uninstall"
 alias rbvars="rbenv vars"
 
+# Section: [chruby](https://github.com/postmodern/chruby)
+alias crb="chruby"
+
 # Section: [Ruby](https://www.ruby-lang.org)
 alias rd="rdoc -a -o tmp/doc/rdoc"
 alias rdo="open tmp/doc/rdoc/index.html"
