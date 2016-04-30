@@ -182,6 +182,7 @@ alias berc="bundle exec rake console"
 
 # Section: [Bundler](http://bundler.io)
 alias b="bundle"
+alias bs="bundle show"
 alias bl="bundle lock"
 alias bi="bundle install"
 alias bu="bundle update"
