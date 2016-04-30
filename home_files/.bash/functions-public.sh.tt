@@ -1857,33 +1857,6 @@ tciea() {
   done < <(find . -type d -depth 1)
 }
 
-#----------------------------------------------------------------------------#
-# Section: [Site Validator](https://github.com/sitevalidator/site_validator) #
-#----------------------------------------------------------------------------#
-
-# Label: Site Validator
-# Description: Generate site validation report using W3C Validator.
-# Parameters: $1 (required) - The site URL, $2 (optional) - The report file path/name.
-sv() {
-  if [[ $(command -v site_validator) ]]; then
-    if [[ "$1" ]]; then
-      if [[ "$2" ]]; then
-        local report="$2"
-      else
-        local report="report.html"
-      fi
-
-      site_validator "$1" "$report" && open "$report"
-    else
-      printf "ERROR: Missing web site URL. Usage: sv http://www.example.com output.html.\n"
-      return 1
-    fi
-  else
-    printf "ERROR: Site Validator not found. To install, run: gem install site_validator.\n"
-    return 1
-  fi
-}
-
 #-----------------------------------------------------#
 # Section: [Image Magick](http://www.imagemagick.org) #
 #-----------------------------------------------------#
