@@ -1700,16 +1700,6 @@ beg() {
   fi
 }
 
-# Label: Bundle Execute Capistrano
-# Description: Run Capistrano via binstub or Bundler.
-bec() {
-  if [[ -e bin/cap ]]; then
-    bin/cap $@
-  else
-    bundle exec cap $@
-  fi
-}
-
 #--------------------------------------------------#
 # Section: [Ruby on Rails](http://rubyonrails.org) #
 #--------------------------------------------------#

@@ -263,10 +263,6 @@ alias rbest="rails_best_practices"
 # Section: [Foreman](https://github.com/ddollar/foreman)
 alias fms="foreman start"
 
-# Section: [Capistrano](https://github.com/capistrano/capistrano)
-alias caps="bec stage deploy"
-alias capp="bec production deploy"
-
 # Section: [Swift](https://developer.apple.com/swift)
 alias swift="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
 
