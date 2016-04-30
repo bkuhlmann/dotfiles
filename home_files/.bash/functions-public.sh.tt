@@ -1387,7 +1387,7 @@ pgt() {
 
 # Label: Ruby Version (all)
 # Description: Show current Ruby version for all projects in current directory.
-rva() {
+rbva() {
   while read project; do
     (
       cd "$project"
