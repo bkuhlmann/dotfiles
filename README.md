@@ -12,6 +12,7 @@ the *.tt template files in the home_files directory. Read on to learn more.
 # Table of Contents
 
 - [Features](#features)
+- [Screencast](#screencast)
 - [Requirements](#requirements)
 - [Setup](#setup)
   - [Upgrade](#upgrade)
@@ -113,6 +114,10 @@ the *.tt template files in the home_files directory. Read on to learn more.
 - Adds [NPM](http://nodejs.org) Bash support.
 - Adds [Travis CI](https://travis-ci.org) Bash support.
 - Adds [Z](https://github.com/rupa/z) Bash support.
+
+# Screencast
+
+[![asciicast](https://asciinema.org/a/44179.png)](https://asciinema.org/a/44179)
 
 # Requirements
 
