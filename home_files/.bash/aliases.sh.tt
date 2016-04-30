@@ -208,7 +208,6 @@ alias msc='milestoner --commits | _copy_and_print "\n"'
 alias mst="milestoner --tag"
 alias msp="milestoner --publish"
 alias mse="milestoner --config --edit"
-alias msv="milestoner --version"
 
 # Section: [Gemsmith](https://github.com/bkuhlmann/gemsmith)
 alias gs="gemsmith"
