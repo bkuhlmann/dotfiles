@@ -1436,7 +1436,7 @@ rbua() {
 # Label: Ruby Server
 # Description: Serve web content from current directory via WEBrick.
 # Parameters: $1 (optional) - The custom port. Default: 3030.
-rserv() {
+rbs() {
   local default_port=3030
   local custom_port=$1
 
