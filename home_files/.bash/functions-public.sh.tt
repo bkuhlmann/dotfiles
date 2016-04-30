@@ -1405,7 +1405,7 @@ rbva() {
 # Label: Ruby Upgrade (all)
 # Description: Upgrade Ruby projects in current directory with new Ruby version.
 # Parameters: $1 (required) - The new version to upgrade to. Example: 2.3.0.
-rua() {
+rbua() {
   if [[ "$1" ]]; then
     while read project; do
       (
