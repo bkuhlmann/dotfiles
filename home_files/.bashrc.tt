@@ -35,8 +35,8 @@ export HOMEBREW_NO_ANALYTICS=1
 export PATH="/usr/local/sbin:$PATH"
 
 # Bash Completion (http://bash-completion.alioth.debian.org)
-if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
-  . $(brew --prefix)/etc/bash_completion
+if [[ -f /usr/local/etc/bash_completion ]]; then
+  . /usr/local/etc/bash_completion
 fi
 
 # GPG (https://www.gnupg.org)
@@ -57,7 +57,9 @@ if [[ -e /usr/local/bin/go ]]; then
 fi
 
 # direnv (http://direnv.net)
-eval "$(direnv hook bash)"
+if [[ -e /usr/local/bin/direnv ]]; then
+  eval "$(direnv hook bash)"
+fi
 
 # chruby (https://github.com/postmodern/chruby)
 if [[ -e /usr/local/share/chruby ]]; then
@@ -65,7 +67,7 @@ if [[ -e /usr/local/share/chruby ]]; then
   source /usr/local/share/chruby/auto.sh
 fi
 
-# NPM (http://nodejs.org)
+# Node.js (http://nodejs.org)
 export PATH="$PATH:/usr/local/share/npm/bin"
 
 # Travis CI (https://travis-ci.org)
@@ -74,4 +76,6 @@ if [[ -e "$HOME/.travis/travis.sh" ]]; then
 fi
 
 # Z (https://github.com/rupa/z)
-. $(brew --prefix)/etc/profile.d/z.sh
+if [[ -e /usr/local/etc/profile.d/z.sh ]]; then
+  . /usr/local/etc/profile.d/z.sh
+fi
