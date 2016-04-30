@@ -1578,12 +1578,12 @@ bcg() {
   local gem_name=$1
   local gem_path=$2
 
-  if [[ ! $gem_name ]]; then
-    printf "ERROR: Gem name (uppercase only) must be supplied!\n"
+  if [[ -z "$gem_name" ]]; then
+    printf "ERROR: Gem name must be supplied!\n"
     return 1
   fi
 
-  if [[ ! $gem_path ]]; then
+  if [[ -z "$gem_path" ]]; then
     printf "ERROR: Gem path must be supplied!\n"
     return 1
   fi
