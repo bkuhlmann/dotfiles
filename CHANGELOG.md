@@ -1,3 +1,35 @@
+# v21.0.0 (2016-04-30)
+
+- Fixed .bashrc program loading.
+- Added .ruby-version template.
+- Added GPG .bashrc settings.
+- Added `berc` alias for `bundle exec rake console`.
+- Added `besp` function for RSpec profiling.
+- Added `bs` alias for `bundle show`.
+- Added `gync` function to syncing with remote Git repository.
+- Added `rbi` alias for `ruby-install`.
+- Added chruby support.
+- Added screencast tutorial to README.
+- Updated .bashrc to ensure Homebrew analytics are always disabled.
+- Updated Git blame aliases/functions to dig deeper into Git history.
+- Updated Git log format to use short commit SHA.
+- Updated `gtail` function to use short Git commit SHA.
+- Removed ".env.sample" and "coverage" from .gitignore.
+- Removed Capistrano support.
+- Removed Ruby RDoc aliases.
+- Removed `bashv` alias.
+- Removed `bbr` alias.
+- Removed `cinv` alias.
+- Removed `ez` alias (use `ze` instead).
+- Removed `msv` alias.
+- Removed `rbest` alias (use `rbp` instead).
+- Removed `rserv` function (use `rbs` instead).
+- Removed `rua` function (use `rbua` instead).
+- Removed `rva` function (use `rbva` instead).
+- Removed `sv` function.
+- Removed `tocv` alias.
+- Removed rbenv support.
+
 # v20.1.0 (2016-04-10)
 
 - Fixed `gemcli` alias output.

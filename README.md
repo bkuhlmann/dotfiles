@@ -27,7 +27,7 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [Tar](#tar)
         - [PostgreSQL](#postgresql)
         - [Redis](#redis)
-        - [rbenv](#rbenv)
+        - [chruby](#chruby)
         - [Ruby](#ruby)
         - [Ruby Gems](#ruby-gems)
         - [Ruby Gems Whois](#ruby-gems-whois)
@@ -36,7 +36,6 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [Milestoner](#milestoner)
         - [Gemsmith](#gemsmith)
         - [RSpec](#rspec)
-        - [ByeBug](#byebug)
         - [Ruby on Rails](#ruby-on-rails)
         - [Elm](#elm)
         - [Ember](#ember)
@@ -44,7 +43,6 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [Rubocop](#rubocop)
         - [Rails Best Practices](#rails-best-practices)
         - [Foreman](#foreman)
-        - [Capistrano](#capistrano)
         - [Swift](#swift)
         - [Silver Surfer](#silver-surfer)
         - [Z](#z)
@@ -69,7 +67,6 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [Rails ERD](#rails-erd)
         - [RailRoady](#railroady)
         - [Travis CI](#travis-ci)
-        - [Site Validator](#site-validator)
         - [Image Magick](#image-magick)
         - [FFmpeg](#ffmpeg)
         - [asciinema](#asciinema-1)
@@ -95,7 +92,7 @@ the *.tt template files in the home_files directory. Read on to learn more.
 - Configures the [Git](http://git-scm.com) `.gitconfig`, `.gitignore`, and hook (i.e. `.git_template`) files.
 - Configures the [Silver Surfer](https://github.com/ggreer/the_silver_searcher) `.agignore` file.
 - Configures the [Ruby Gems](https://rubygems.org) `.gemrc` file.
-- Configures the [Ruby](https://www.ruby-lang.org) `.irbrc` file.
+- Configures the [Ruby](https://www.ruby-lang.org) `.ruby-version` and `.irbrc` files.
 - Configures the [Pry](http://pry.github.com) `.pryrc` file.
 - Configures the [Ruby Debugger](http://bashdb.sourceforge.net/ruby-debug.html) `.rdebugrc` file.
 - Configures the [RSpec](http://rspec.info) `.rspec` file.
@@ -107,13 +104,13 @@ the *.tt template files in the home_files directory. Read on to learn more.
 - Configures the [NPM](https://www.npmjs.org) `.npmrc` file.
 - Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
 - Adds [Bash Completion](http://bash-completion.alioth.debian.org).
-- Adds [direnv](http://direnv.net) Bash support.
-- Adds [Go](https://golang.org) Bash support.
-- Adds [rbenv](https://github.com/sstephenson/rbenv) Bash support.
-- Adds [rbenv-vars](https://github.com/rbenv/rbenv-vars) settings.
-- Adds [NPM](http://nodejs.org) Bash support.
-- Adds [Travis CI](https://travis-ci.org) Bash support.
-- Adds [Z](https://github.com/rupa/z) Bash support.
+- Adds [GPG](https://www.gnupg.org) support.
+- Adds [Go](https://golang.org) support.
+- Adds [direnv](http://direnv.net) support.
+- Adds [chruby](https://github.com/postmodern/chruby) support.
+- Adds [Node.js](http://nodejs.org) support.
+- Adds [Travis CI](https://travis-ci.org) support.
+- Adds [Z](https://github.com/rupa/z) support.
 
 # Screencast
 
@@ -131,7 +128,7 @@ Current Version (stable)
 
     git clone git://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v20.1.0
+    git checkout v21.0.0
 
 Master Version (unstable)
 
@@ -159,7 +156,6 @@ For example, executing `./run.sh s` will show all managed dotfiles by this proje
 After install, the following files will require manual updating:
 
 - .bash/env.sh - Add secret/machine-specific environment settings (if any).
-- .gemrc - Uncomment the "gemcutter_key" line and add your own RubyGems key for publishing gems.
 - .gitconfig - Uncomment the name, email, and token lines within the `[user]` and `[github]` sections to replace with
   your own details.
 
@@ -195,7 +191,6 @@ When upgrading to a new version, run the following:
 ##### [Bash](https://www.gnu.org/software/bash)
     bashe = "$EDITOR $HOME/.bash/env.sh"
     bashs = "exec $SHELL"
-    bashv = "bash --version"
 ##### Network
     sshe = "$EDITOR $HOME/.ssh/config"
     key = "open /Applications/Utilities/Keychain Access.app"
@@ -223,7 +218,6 @@ When upgrading to a new version, run the following:
     hbpu = "brew unpin"
     hbd = "brew doctor"
     hbc = "brew cleanup"
-    hbrb = "brew uninstall ruby-build && brew install ruby-build"
 ##### [Git](http://git-scm.com)
     gi = "git init"
     gcle = "git config --local --edit"
@@ -248,7 +242,7 @@ When upgrading to a new version, run the following:
     gdt = "git difftool"
     gdtc = "git difftool --cached"
     gdtm = "git difftool origin/master"
-    glame = "git blame"
+    glame = "git blame -M -C -C -C"
     gbi = "git bisect"
     gbis = "git bisect start"
     gbib = "git bisect bad"
@@ -331,23 +325,10 @@ When upgrading to a new version, run the following:
 ##### [Redis](http://redis.io)
     reds = "redis-server /usr/local/etc/redis.conf &"
     redc = "redis-cli"
-##### [rbenv](https://github.com/rbenv/rbenv)
-    rb = "rbenv"
-    rbg = "rbenv global"
-    rbl = "rbenv local"
-    rbs = "rbenv shell"
-    rbh = "rbenv rehash"
-    rbp = "rbenv which"
-    rbw = "rbenv whence"
-    rbv = "rbenv versions"
-    rbi = "rbenv install"
-    rbil = "rbenv install --list"
-    rbu = "rbenv uninstall"
-    rbvars = "rbenv vars"
+##### [chruby](https://github.com/postmodern/chruby)
+    crb = "chruby"
 ##### [Ruby](https://www.ruby-lang.org)
-    rd = "rdoc -a -o tmp/doc/rdoc"
-    rdo = "open tmp/doc/rdoc/index.html"
-    rdd = "rm -rf tmp/doc/rdoc"
+    rbi = "ruby-install"
 ##### [Ruby Gems](https://rubygems.org)
     gemcr = "$EDITOR ~/.gem/credentials"
     geml = "gem list"
@@ -362,8 +343,10 @@ When upgrading to a new version, run the following:
     gemcli = "ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | _copy_and_print 'n'"
 ##### [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
     gemw = "gem whois"
+    berc = "bundle exec rake console"
 ##### [Bundler](http://bundler.io)
     b = "bundle"
+    bs = "bundle show"
     bl = "bundle lock"
     bi = "bundle install"
     bu = "bundle update"
@@ -375,14 +358,12 @@ When upgrading to a new version, run the following:
 ##### [Tocer](https://github.com/bkuhlmann/tocer)
     tocg = "tocer --generate"
     toce = "tocer --edit"
-    tocv = "tocer --version"
 ##### [Milestoner](https://github.com/bkuhlmann/milestoner)
     ms = "milestoner"
     msc = 'milestoner --commits | _copy_and_print "n"'
     mst = "milestoner --tag"
     msp = "milestoner --publish"
     mse = "milestoner --config --edit"
-    msv = "milestoner --version"
 ##### [Gemsmith](https://github.com/bkuhlmann/gemsmith)
     gs = "gemsmith"
     gse = "gemsmith --edit"
@@ -392,8 +373,6 @@ When upgrading to a new version, run the following:
     bess = "bes spec"
     besn = "bess --next-failure"
     besf = "bess --only-failures"
-##### [ByeBug](https://github.com/deivid-rodriguez/byebug)
-    bbr = "bundle exec byebug --remote localhost:1048"
 ##### [Ruby on Rails](http://rubyonrails.org)
     scs = "sc --sandbox"
     sgc = "sg controller"
@@ -433,18 +412,15 @@ When upgrading to a new version, run the following:
     copf = "rubocop --auto-correct"
     cops = "rubocop --show-cops"
 ##### [Rails Best Practices](https://github.com/railsbp/rails_best_practices)
-    rbest = "rails_best_practices"
+    rbp = "rails_best_practices"
 ##### [Foreman](https://github.com/ddollar/foreman)
     fms = "foreman start"
-##### [Capistrano](https://github.com/capistrano/capistrano)
-    caps = "bec stage deploy"
-    capp = "bec production deploy"
 ##### [Swift](https://developer.apple.com/swift)
     swift = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
 ##### [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
     agf = "ag --hidden --files-with-matches --file-search-regex"
 ##### [Z](https://github.com/rupa/z)
-    ez = "$EDITOR $HOME/.z"
+    ze = "$EDITOR $HOME/.z"
 ##### [Path Finder](http://www.cocoatech.com/pathfinder)
     pfo = 'open -a "Path Finder.app" "$PWD"'
 ##### [Vim](http://www.vim.org)
@@ -457,7 +433,6 @@ When upgrading to a new version, run the following:
     cin = "asciinema"
     cinp = "asciinema play"
     cinu = "asciinema upload"
-    cinv = "asciinema --version"
 
 #### Functions
 
@@ -487,6 +462,7 @@ When upgrading to a new version, run the following:
     guthorsa = Git Authors (all) - Answer author commit activity per project (ranked highest to lowest).
     gsta = Git Status (all) - Answer status of projects with uncommited/unpushed changes.
     gup = Git Update - Fetch commits, prune untracked references, review each commit (optional, with diff), and pull (optional).
+    gync = Git Sync - Syncs up remote changes and deletes pruned/merged branches.
     gseta = Git Set Config Value (all) - Set key value for projects in current directory.
     ggeta = Git Get Config Value (all) - Answer key value for projects in current directory.
     gunseta = Git Unset (all) - Unset key value for projects in current directory.
@@ -540,13 +516,14 @@ When upgrading to a new version, run the following:
     pgud = PostgreSQL User Drop - Drop PostgreSQL user.
     pgt = PostgreSQL Template - Edit PostgreSQL template.
 ##### [Ruby](https://www.ruby-lang.org)
-    rva = Ruby Version (all) - Show current Ruby version for all projects in current directory.
-    rua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version.
-    rserv = Ruby Server - Serve web content from current directory via WEBrick.
+    rbva = Ruby Version (all) - Show current Ruby version for all projects in current directory.
+    rbua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version.
+    rbs = Ruby Server - Serve web content from current directory via WEBrick.
 ##### [RSpec](http://rspec.info)
     bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
     besb = Bundle Exec RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
     besd = Bundle Exec RSpec Debug - Debug intermittent RSpec failure(s) by running spec(s) until failure is detected.
+    besp = Bundle Exec RSpec Profile - Runs RSpec specs with profiling enabled.
     bera = Bundle Execute Rake (all) - Run default Rake tasks via binstub or Bundler for projects in current directory.
     bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
 ##### [Bundler](http://bundler.io)
@@ -558,7 +535,6 @@ When upgrading to a new version, run the following:
     bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
     ber = Bundle Execute Rake - Run Rake via binstub or Bundler.
     beg = Bundle Execute Guard - Run Guard via binstub or Bundler.
-    bec = Bundle Execute Capistrano - Run Capistrano via binstub or Bundler.
 ##### [Ruby on Rails](http://rubyonrails.org)
     rew = Rails New - Create new Rails application from selected template.
     sc = Rails Script Console - Run Rails console.
@@ -573,8 +549,6 @@ When upgrading to a new version, run the following:
     tcies = Travis CI Encrypt Slack - Encrypts and adds Code Climate token to notifications.slack section of YAML.
     tciec = Travis CI Encrypt Code Climate - Encrypts and adds Code Climate token to env.global section of YAML.
     tciea = Travis CI Encrypt (all) - Encrypt string for Travis CI-enabled projects in current directory.
-##### [Site Validator](https://github.com/sitevalidator/site_validator)
-    sv = Site Validator - Generate site validation report using W3C Validator.
 ##### [Image Magick](http://www.imagemagick.org)
     sketch = Sketch - Convert photo into a sketch. Inspired by [Whiteboard Cleaner Gist](https://gist.github.com/lelandbatey/8677901).
 ##### [FFmpeg](http://www.ffmpeg.org)
@@ -601,10 +575,10 @@ When upgrading to a new version, run the following:
 
 #### IRB, Pry, and Rails consoles
 
-    ConsoleKit.copy - Copies data to the MacOS clipboard.
-    ConsoleKit.paste - Pastes data from the MacOS clipboard.
-    ConsoleKit.http_codes - Prints Rails HTTP codes.
-    ConsoleKit.http_symbols - Prints Rails HTTP symbols.
+    ConsoleKit.locate - Locates source code for given object and method.
+    ConsoleKit.search - Searches for object method for given pattern.
+    ConsoleKit.copy - Copies data to OS X clipboard.
+    ConsoleKit.paste - Pastes data from OS X clipboard.
 
 #### Pry Aliases
 
