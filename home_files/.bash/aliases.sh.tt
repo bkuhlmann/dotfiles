@@ -164,11 +164,6 @@ alias redc="redis-cli"
 # Section: [chruby](https://github.com/postmodern/chruby)
 alias crb="chruby"
 
-# Section: [Ruby](https://www.ruby-lang.org)
-alias rd="rdoc -a -o tmp/doc/rdoc"
-alias rdo="open tmp/doc/rdoc/index.html"
-alias rdd="rm -rf tmp/doc/rdoc"
-
 # Section: [Ruby Gems](https://rubygems.org)
 alias gemcr="$EDITOR ~/.gem/credentials"
 alias geml="gem list"
