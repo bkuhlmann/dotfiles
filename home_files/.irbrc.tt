@@ -37,10 +37,7 @@ end
 %w(
   pry
   pry-byebug
-  pry-remote
   pry-state
-  pry-rescue
-  pry-stack_explorer
   bond
   wirb
   hirb
