@@ -1,5 +1,3 @@
-[init]
-  templatedir = ~/.git_template
 [user]
   # name = <enter name here>
   # email = <enter email here>
