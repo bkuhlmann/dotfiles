@@ -1214,36 +1214,6 @@ guke() {
   fi
 }
 
-# Label: Git Hook Delete
-# Description: Delete hooks for current project.
-ghd() {
-  if [[ -d ".git" ]]; then
-    (
-      cd .git/hooks
-      rm -rf *
-    )
-    printf "Git hooks deleted.\n"
-  fi
-}
-
-# Label: Git Hook Delete (all)
-# Description: Delete hooks for projects in current directory.
-ghda() {
-  while read project; do
-    (
-      cd "$project"
-      printf "\n\033[36m${project:2}\033[m: " # Outputs in cyan color.
-
-      # Only process projects that are Git-enabled.
-      if [[ -d ".git" ]]; then
-        ghd
-      else
-        printf "Not a Git project.\n"
-      fi
-    )
-  done < <(find . -type d -depth 1)
-}
-
 # Label: Git Verify and Clean
 # Description: Verify and clean objects for current project.
 gvac() {
