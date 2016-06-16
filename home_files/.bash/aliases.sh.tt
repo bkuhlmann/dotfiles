@@ -264,7 +264,7 @@ alias cops="rubocop --show-cops"
 alias rbp="rails_best_practices"
 
 # Section: [Foreman](https://github.com/ddollar/foreman)
-alias fms="foreman start"
+alias fms="foreman start --env /dev/null"
 
 # Section: [Swift](https://developer.apple.com/swift)
 alias swift="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
