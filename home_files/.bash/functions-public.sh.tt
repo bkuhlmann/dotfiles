@@ -1413,6 +1413,24 @@ rbs() {
   ruby -run -e httpd . --port ${custom_port:-$default_port}
 }
 
+#--------------------------------------------#
+# Section: [Ruby Gems](https://rubygems.org) #
+#--------------------------------------------#
+
+# Label: Gem Dependency Search
+# Description: Finds a gem defined within a Gemfile or a gemspec.
+# Parameters: $1 (required) - The gem name.
+gemdep() {
+  local gem_name="$1"
+
+  if [[ -z "$gem_name" ]]; then
+    printf "ERROR: Gem name must be supplied!\n"
+    return 1
+  fi
+
+  ag "(add.*dependency \"$gem_name\"|add.*dependency '$gem_name'|gem \"$gem_name\"|gem '$gem_name')" .
+}
+
 #-------------------------------------#
 # Section: [RSpec](http://rspec.info) #
 #-------------------------------------#
