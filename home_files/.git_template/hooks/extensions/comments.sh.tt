@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# SETTINGS
+# Label: Print Comment Total
+# Description: Print project comment total for specific prefix.
+# Parameters: $1 (required) - The comment prefix to search for.
+_comment_total() {
+  local prefix="$1"
+  local label="[comments]"
+  local lines=("omit:0") # Ensures array is populated, with omitted total, in case Silver Searcher finds nothing.
+  local total=0
+
+  if ! command -v ag > /dev/null; then
+     printf "$label: Silver Surfer not found. To install, run: brew install the_silver_searcher."
+     exit 1
+  fi
+
+  lines+=($(ag --count --depth -1 --ignore "vendor" "^\s*?# $prefix" . || true))
+
+  for line in ${lines[*]}; do
+    total=$((total + ${line#*:}))
+  done
+
+  if [[ $total > 0 ]]; then
+    printf "%s\n" "$label: $total $prefix"
+  fi
+}
+
+# Label: Print Comment Totals
+# Description: Print project comment totals.
+comments_total() {
+  local prefixes=("TODO" "FIX" "rubocop:disable")
+
+  for prefix in ${prefixes[*]}; do
+    _comment_total "$prefix"
+  done
+}
