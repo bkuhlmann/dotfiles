@@ -218,6 +218,31 @@ ginfo() {
   git status --short --branch
 }
 
+# Label: Git Statistics
+# Description: Answer statistics for current project.
+gstats() {
+  if [[ -d ".git" ]]; then
+    gount
+    printf "Branches: %s\n" "$(_git_branch_list | wc -l | tr -d ' ')"
+    printf "Tags: %s\n" "$(git tag | wc -l | tr -d ' ')"
+    printf "Stashes: %s\n" "$(_git_stash_count)"
+    printf "Size: %s\n" "$(git count-objects --human-readable)"
+  fi
+}
+
+# Label: Git Statistics (all)
+# Description: Answer statistics for all projects in current directory.
+gstatsa() {
+  # Iterate project directories located in root directory.
+  while read project; do
+    (
+      cd "$project"
+      printf "\033[36m${project:2}\033[m:\n" # Print project (cyan) and message (white).
+      gstats
+    )
+  done < <(find . -type d -depth 1)
+}
+
 # Label: Git Churn
 # Description: Answer commit churn for project files (sorted highest to lowest).
 ghurn() {
