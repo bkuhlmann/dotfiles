@@ -102,6 +102,12 @@ _git_commit_count_since_last_tag() {
   fi
 }
 
+# Label: Git Last Tag Info
+# Description: Answer last tag for project (including commits added since tag was created).
+_git_last_tag_info() {
+  printf "$(git describe --tags --always) ($(_git_commit_count_since_last_tag) commits since)\n"
+}
+
 # Label: Git File Commits
 # Description: Print file commit history (with optional diff support).
 # Parameters: $1 (required) - The file path.

@@ -209,7 +209,7 @@ ginfo() {
   gount
 
   printf "\n$(_print_black_on_white ' Last Tag ')\n\n"
-  printf "$(git describe --abbrev=0 --tags --always) ($(_git_commit_count_since_last_tag) commits since)\n"
+  _git_last_tag_info
 
   printf "\n$(_print_black_on_white ' Last Commit ')\n\n"
   git show --decorate --stat
