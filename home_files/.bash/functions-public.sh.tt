@@ -234,7 +234,7 @@ ghurn() {
 # Label: Git Commit Count
 # Description: Answer total number of commits for current project.
 gount() {
-  printf "Total Commits: "
+  printf "Commits: "
   git rev-list --count HEAD
 }
 
