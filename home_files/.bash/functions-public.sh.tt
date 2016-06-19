@@ -711,10 +711,10 @@ gasha() {
       # Only process projects that are Git-enabled.
       if [[ -d ".git" ]]; then
         # Count outstanding commits.
-        local size=$(git stash list | wc -l | xargs -n 1)
+        local count=$(_git_stash_count)
         # Print project name and Git activity only if Git activity is detected.
-        if [[ -n $size && $size != 0 ]]; then
-          printf "\033[36m${project:2}\033[m: $size\n" # Outputs in cyan color.
+        if [[ -n $count && $count != 0 ]]; then
+          printf "\033[36m${project:2}\033[m: $count\n" # Outputs in cyan color.
         fi
       fi
     )
