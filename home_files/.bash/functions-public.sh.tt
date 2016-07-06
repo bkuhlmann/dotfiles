@@ -1089,22 +1089,22 @@ gbd() {
 }
 
 # Label: Git Branch Delete Merged
-# Description: Delete locally merged branches.
+# Description: Delete remote and local merged branches.
 gbdm() {
   if [[ $(_git_branch_name) != "master" ]]; then
     printf "ERROR: Whoa, switch to master branch first.\n"
     return 1
   fi
 
-  local branches=($(git branch --merged | ag --invert-match "\* master" | xargs -n 1))
+  # Remote
+  git branch --remotes --merged | \
+    ag "origin" | \
+    ag --invert-match "master" | \
+    sed 's/origin\///' | \
+    xargs -n 1 git push --delete origin
 
-  if [[ ${#branches[@]} > 0 ]]; then
-    for branch in $branches; do
-      git branch -D "$branch"
-    done
-  else
-    printf "All clear, no merged branches to delete.\n"
-  fi
+  # Local
+  git branch --merged | ag --invert-match "\* master" | xargs -n 1 git branch --delete --force
 }
 
 # Label: Git Tag Delete
