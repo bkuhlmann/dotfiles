@@ -27,3 +27,14 @@ _scan_code() {
      exit 1
   fi
 }
+
+# Label: Print warning message.
+# Description: Print yellow warning message.
+# Parameters: $1 (required) - The message to print.
+_print_warning() {
+  local message="$1"
+
+  printf "\033[33m"
+  printf "%s\n" "$message"
+  printf "\033[m"
+}
