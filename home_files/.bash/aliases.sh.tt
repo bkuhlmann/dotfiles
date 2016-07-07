@@ -14,6 +14,7 @@ alias cat='ccat -G Keyword="turquoise" -G Punctuation="green" -G Decimal="green"
 alias home="cd $HOME"
 alias pss='ps axu | ag --invert-match ag | ag "$@" --ignore-case'
 alias man="gem man --system"
+alias rmde="find . -type d -empty -not -path '*.git*' -delete"
 
 # Section: [Bash](https://www.gnu.org/software/bash)
 alias bashe="$EDITOR $HOME/.bash/env.sh"
