@@ -14,16 +14,16 @@ _scan_code() {
     results=("$(ag --file-search-regex $file_regex $search_regex --ignore $ignore_regex . || true)")
 
     if [[ ${#results[@]} > 0 && ${results[@]} != '' ]]; then
-      printf "$label: $message:\n\n"
+      _print_error "$label: $message:"
 
       for line in ${results[@]}; do
-        printf "$line\n"
+        _print_error "  $line"
       done
 
       exit 1
     fi
   else
-     printf "$label: Silver Surfer not found. To install, run: brew install the_silver_searcher."
+    _print_error "$label: Silver Surfer not found. To install, run: brew install the_silver_searcher."
      exit 1
   fi
 }

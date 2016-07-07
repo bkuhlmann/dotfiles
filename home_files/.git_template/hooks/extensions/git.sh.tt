@@ -15,7 +15,7 @@ git_commit_message_prefix() {
   read -r first_line < $message_file
 
   if [[ ! "$first_line" =~ $match ]]; then
-    printf "$(_git_label): Invalid commit message prefix. Use: Fixed, Removed, Added, Updated, or Refactored.\n"
+    _print_error "$(_git_label): Invalid commit message prefix. Use: Fixed, Removed, Added, Updated, or Refactored."
     exit 1
   fi
 }
@@ -38,13 +38,11 @@ git_commit_message_words() {
   done < "$message_file"
 
   if [[ ${#matched_lines[@]} > 0 ]]; then
-    printf "$(_git_label): Commit message uses words/phrases that should be avoided:\n\n"
+    _print_warning "$(_git_label): Commit message uses words/phrases that should be avoided:"
 
     for line in ${matched_lines[@]}; do
-      printf "$line\n"
+      _print_warning "  $line"
     done
-
-    printf "\nCommit message should be amended and fixed.\n"
   fi
 }
 
@@ -65,12 +63,10 @@ git_commit_message_length() {
   done < "$message_file"
 
   if [[ ${#long_lines[@]} > 0 ]]; then
-    printf "$(_git_label): Commit message exceeds $line_length character line length:\n\n"
+    _print_warning "$(_git_label): Commit message exceeds $line_length character line length:"
 
     for line in ${long_lines[@]}; do
-      printf "$line\n"
+      _print_warning "  $line"
     done
-
-    printf "\nCommit message should be amended and fixed.\n"
   fi
 }
