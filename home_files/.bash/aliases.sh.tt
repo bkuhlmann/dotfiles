@@ -218,6 +218,9 @@ alias gse="gemsmith --edit"
 alias gsr="gemsmith --read"
 alias gso="gemsmith --open"
 
+# Section: [Pragmater](https://github.com/bkuhlmann/pragmater)
+alias pas="pragmater --add . --comments '# frozen_string_literal: true' --whitelist 'Gemfile' 'Guardfile' 'Rakefile' 'config.ru' 'bin/**/*' '.gemspec' '.rake' '.rb'"
+
 # Section: [RSpec](http://rspec.info)
 alias bess="bes spec"
 alias besn="bess --next-failure"
