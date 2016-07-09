@@ -431,7 +431,7 @@ _create_rails_skeleton() {
 # Parameters: $1 (required) - The application name, $2 (required) - The template to apply, $3 (optional) - The branch. Default: master.
 _process_rew_option() {
   local branch="${3:-master}"
-  local flags="--skip-git --skip-gemfile --skip-bundle --skip-test --skip-spring --skip-turbolinks --skip-puma --skip-keeps --force --database sqlite3"
+  local flags="--skip-git --skip-gemfile --skip-bundle --skip-test --skip-spring --skip-turbolinks --skip-puma --skip-keeps --force --database postgresql"
   local rails_slim_options="$flags --template https://raw.github.com/bkuhlmann/rails_slim_template/$branch/template.rb"
   local rails_setup_options="$flags --template https://raw.github.com/bkuhlmann/rails_setup_template/$branch/template.rb"
 
