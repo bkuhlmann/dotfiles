@@ -432,8 +432,7 @@ _create_rails_skeleton() {
 _process_rew_option() {
   local branch="${3:-master}"
   local flags="--skip-git --skip-gemfile --skip-bundle --skip-test --skip-spring --skip-turbolinks --skip-puma --skip-keeps --force --database postgresql"
-  local rails_slim_options="$flags --template https://raw.github.com/bkuhlmann/rails_slim_template/$branch/template.rb"
-  local rails_setup_options="$flags --template https://raw.github.com/bkuhlmann/rails_setup_template/$branch/template.rb"
+  local flags_with_template="$flags --template"
 
   case $2 in
     "default")
@@ -443,10 +442,13 @@ _process_rew_option() {
       _create_rails_skeleton "$1" "$flags"
       break;;
     "slim")
-      _create_rails_skeleton "$1" "$rails_slim_options"
+      _create_rails_skeleton "$1" "$flags_with_template https://raw.github.com/bkuhlmann/rails_slim_template/$branch/template.rb"
       break;;
     "setup")
-      _create_rails_skeleton "$1" "$rails_setup_options"
+      _create_rails_skeleton "$1" "$flags_with_template https://raw.github.com/bkuhlmann/rails_setup_template/$branch/template.rb"
+      break;;
+    "dummy")
+      _create_rails_skeleton "$1" "$flags_with_template https://raw.github.com/bkuhlmann/rails_dummy_template/$branch/template.rb"
       break;;
     'q')
       break;;

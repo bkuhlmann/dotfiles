@@ -1727,8 +1727,10 @@ rew() {
         printf "\nUsage: rew NAME TEMPLATE\n"
         printf "\nAvailable Ruby on Rails Templates:\n\n"
         printf "  default: Rails Default Template\n"
+        printf "   custom: Rails Custom Template\n"
         printf "     slim: Rails Slim Template\n"
         printf "    setup: Rails Setup Template\n"
+        printf "    dummy: Rails Dummy Template\n"
         printf "\n"
         read -p "Please pick one (or type 'q' to quit): " response
         printf "\n"
