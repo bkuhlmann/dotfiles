@@ -148,6 +148,7 @@ alias gel="git rm"
 alias gelc="git rm --cached" # Removes previously tracked file from index after being added to gitignore.
 alias grev="git revert" # Revert a commit.
 alias grp="git remote prune origin"
+alias glean="git clean -d --force"
 
 # Section: [Tar](http://www.gnu.org/software/tar/tar.html)
 alias bzc="tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
