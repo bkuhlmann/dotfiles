@@ -21,10 +21,16 @@
   remote = green
 [color "diff"]
   meta = yellow bold
+  commit = green bold
   frag = magenta bold
   old = red bold
   new = green bold
   whitespace = red reverse
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 [color "status"]
   added = yellow
   changed = green
@@ -38,6 +44,7 @@
   editor = "$EDITOR --wait"
   excludesfile = ~/.gitignore
   hooksPath = ~/.git_template/hooks
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [interactive]
   singleKey = true
 [status]
