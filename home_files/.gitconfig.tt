@@ -8,6 +8,14 @@
   # token = <enter token here>
 [credential]
   helper = cache --timeout=3600
+[core]
+  quotepath = false
+  untrackedcache = true
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  editor = "$EDITOR --wait"
+  excludesfile = ~/.gitignore
+  hooksPath = ~/.git_template/hooks
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
   diff = auto
   status = auto
@@ -15,6 +23,10 @@
   interactive = auto
   ui = true
   pager = true
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
 [color "branch"]
   current = yellow reverse
   local = yellow
@@ -31,20 +43,8 @@
   oldHighlight = red bold 52
   newNormal = green bold
   newHighlight = green bold 22
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
 [commit]
   template = ~/.git_template/commit_message.txt
-[core]
-  quotepath = false
-  untrackedcache = true
-  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  editor = "$EDITOR --wait"
-  excludesfile = ~/.gitignore
-  hooksPath = ~/.git_template/hooks
-  pager = diff-so-fancy | less --tabs=4 -RFX
 [interactive]
   singleKey = true
 [status]
@@ -66,23 +66,23 @@
   lineNumber = true
   fullname = true
   threads = 3
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool]
-  prompt = false
 [diff]
   mnemonicPrefix = true
   compactionHeuristic = true
   renames = true
   tool = Kaleidoscope
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustExitCode = true
-[mergetool]
+[difftool]
   prompt = false
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [merge]
   tool = Kaleidoscope
   conflictStyle = diff3
+[mergetool]
+  prompt = false
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
 [tag]
   sort = version:refname
 [url "git@github.com:"]
