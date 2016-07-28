@@ -299,6 +299,23 @@ _process_gh_commit_option() {
   fi
 }
 
+# Label: Process GitHub File Option
+# Description: Process GitHub file option for remote repository viewing.
+# Parameters: $1 (required) - The local (relative) file path, $2 (optional) - The line numbers.
+_process_gh_file_option() {
+  local path="$1"
+  local lines="$2"
+  local start_index=$(pwd | wc -c)
+  local end_index=$(printf "$path" | wc -c)
+  local url="$(_gh_url)/blob/$(_git_branch_name)/${path:$start_index:$end_index}"
+
+  if [[ -n "$lines" ]]; then
+    url="$url#$lines"
+  fi
+
+  printf "$url" | _copy_and_print
+}
+
 # Label: Process GitHub Branch Option
 # Description: Process GitHub branch option for remote repository viewing.
 # Parameters: $1 (optional) - The option.
@@ -361,6 +378,9 @@ _process_gh_option() {
       break;;
     'c')
       _process_gh_commit_option "$2"
+      break;;
+    'f')
+      _process_gh_file_option "$2" "$3"
       break;;
     'b')
       _process_gh_branch_option "$2"

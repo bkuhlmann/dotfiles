@@ -1293,6 +1293,7 @@ gh() {
         printf "  i: Open repository issues.\n"
         printf "  c: Open repository commits. Options:\n"
         printf "     HASH: Open commit.\n"
+        printf "  f: Copy repository file URL to clipboard.\n"
         printf "  b: Open repository branches. Options:\n"
         printf "     c: Open current branch.\n"
         printf "     r: Open pull request for current branch.\n"
@@ -1312,7 +1313,7 @@ gh() {
         printf "\n"
         _process_gh_option $response "$2"
       else
-        _process_gh_option "$1" "$2"
+        _process_gh_option "$1" "$2" "$3"
       fi
     done
   else
