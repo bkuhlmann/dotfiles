@@ -251,11 +251,6 @@ alias elmpp="elm package publish"
 alias elmpb="elm package bump"
 alias elmpd="elm package diff"
 
-# Section: [Ember](http://emberjs.com)
-alias em="ember"
-alias emg="ember generate"
-alias ems="ember server"
-
 # Section: [Jasmine](http://jasmine.github.io)
 alias berj="ber jasmine"
 alias berjci="ber jasmine:ci"
