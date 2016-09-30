@@ -9,25 +9,18 @@
 process_option() {
   case $1 in
     's')
-      show_files
-      break;;
+      show_files;;
     'i')
-      install_files
-      break;;
+      install_files;;
     'l')
-      link_files
-      break;;
+      link_files;;
     'c')
-      check_files
-      break;;
+      check_files;;
     'd')
-      delete_files
-      break;;
-    'q')
-      break;;
+      delete_files;;
+    'q');;
     *)
-      printf "ERROR: Invalid option.\n"
-      break;;
+      printf "ERROR: Invalid option.\n";;
   esac
 }
 export -f process_option

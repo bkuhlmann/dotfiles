@@ -32,6 +32,7 @@ if [[ -d "$HOME" ]]; then
     else
       process_option $1
     fi
+    break
   done
 else
   printf "ERROR: $HOME does not exist.\n"
