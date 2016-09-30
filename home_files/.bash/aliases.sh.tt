@@ -274,6 +274,11 @@ alias swift="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.
 # Section: [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
 alias agf="ag --hidden --files-with-matches --file-search-regex"
 
+# Section: [direnv](http://direnv.net)
+alias denva="direnv allow"
+alias denvr="direnv reload"
+alias denvs="direnv status"
+
 # Section: [Z](https://github.com/rupa/z)
 alias ze="$EDITOR $HOME/.z"
 
