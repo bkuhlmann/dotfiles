@@ -1,3 +1,44 @@
+# v22.0.0 (2016-09-30)
+
+- Fixed `grim` alias to leverage `gri` functionality.
+- Fixed use of `break` in case statements within while loops.
+- Added Git 2.9 `core.hooksPath`.
+- Added Git 2.9 global configuration changes.
+- Added Git hook support for printing duplicate messages.
+- Added Git hook support for printing error messages.
+- Added Git hook support for printing warning messages.
+- Added Git pre-push commit hooks for checking source comments.
+- Added GitHub repository file processing option.
+- Added `gcfp` function.
+- Added `gdo` alias for diffing conflicting files.
+- Added `gemdep` function for finding gem dependencies.
+- Added `glean` alias.
+- Added `gstats` and `gstatsa` functions for Git project stats.
+- Added `hbsu` alias for performing Homebrew software updates.
+- Added `pas` Pragmater gem alias for adding frozen string literal pragmas.
+- Added `rew` function "custom" option.
+- Added `rew` function PostgreSQL database support.
+- Added `rew` function Rails Dummy Template support.
+- Added `rmde` alias for removing empty directories.
+- Added aliases for starting and stoping Elasticsearch.
+- Added diff-so-fancy support to Git global config.
+- Added direnv aliases.
+- Updated Git hooks to use warning and error messages.
+- Updated `fms` alias to ignore environment file.
+- Updated `gbdm` function so that it deletes remote and local merged branches.
+- Updated `rew` configuration to use Rails 5 settings.
+- Removed "Total" prefix from `gount` function.
+- Removed .irbrc pry-remote, pry-rescue, and pry-stack_explorer gems.
+- Removed Ember.js aliases.
+- Removed Git global config for repository initialization.
+- Removed Git hook delete functions.
+- Removed Rails API template generation option.
+- Removed Tocer aliases.
+- Removed superfluous comments.
+- Refactored Git config global settings.
+- Refactored calculating Git stash count to private function.
+- Refactored git last tag info to private function.
+
 # v21.0.0 (2016-04-30)
 
 - Fixed .bashrc program loading.

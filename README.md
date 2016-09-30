@@ -4,8 +4,8 @@
 
 Shell scripts for applying default settings to UNIX-based operating systems.
 
-By default, these are set to my preferences (namely for OSX) but you can change them to your liking by editing any of
-the *.tt template files in the home_files directory. Read on to learn more.
+By default, these are set to my preferences (namely for OSX) but you can change them to your liking
+by editing any of the *.tt template files in the home_files directory. Read on to learn more.
 
 <!-- Tocer[start]: Auto-generated, don't remove. -->
 
@@ -27,24 +27,25 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [Tar](#tar)
         - [PostgreSQL](#postgresql)
         - [Redis](#redis)
+        - [Elasticsearch](#elasticsearch)
         - [chruby](#chruby)
         - [Ruby](#ruby)
         - [Ruby Gems](#ruby-gems)
         - [Ruby Gems Whois](#ruby-gems-whois)
         - [Bundler](#bundler)
-        - [Tocer](#tocer)
         - [Milestoner](#milestoner)
         - [Gemsmith](#gemsmith)
+        - [Pragmater](#pragmater)
         - [RSpec](#rspec)
         - [Ruby on Rails](#ruby-on-rails)
         - [Elm](#elm)
-        - [Ember](#ember)
         - [Jasmine](#jasmine)
         - [Rubocop](#rubocop)
         - [Rails Best Practices](#rails-best-practices)
         - [Foreman](#foreman)
         - [Swift](#swift)
         - [Silver Surfer](#silver-surfer)
+        - [direnv](#direnv)
         - [Z](#z)
         - [Path Finder](#path-finder)
         - [Vim](#vim)
@@ -61,6 +62,7 @@ the *.tt template files in the home_files directory. Read on to learn more.
         - [GitHub](#github)
         - [PostgreSQL](#postgresql-1)
         - [Ruby](#ruby-1)
+        - [Ruby Gems](#ruby-gems-1)
         - [RSpec](#rspec-1)
         - [Bundler](#bundler-1)
         - [Ruby on Rails](#ruby-on-rails-1)
@@ -118,7 +120,7 @@ the *.tt template files in the home_files directory. Read on to learn more.
 
 # Requirements
 
-- [OSX](https://github.com/bkuhlmann/osx)
+- [macOS](https://github.com/bkuhlmann/osx)
 
 # Setup
 
@@ -126,17 +128,17 @@ Open a terminal window and execute the following commands:
 
 Current Version (stable)
 
-    git clone git://github.com/bkuhlmann/dotfiles.git
+    git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v21.0.0
+    git checkout v22.0.0
 
 Master Version (unstable)
 
-    git clone git://github.com/bkuhlmann/dotfiles.git
+    git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
 
-Edit any of the home_files/*.tt template files as you see fit. Then open a terminal window and execute the following
-command to install:
+Edit any of the home_files/*.tt template files as you see fit. Then open a terminal window and
+execute the following command to install:
 
     cd dotfiles
     ./run.sh
@@ -156,8 +158,8 @@ For example, executing `./run.sh s` will show all managed dotfiles by this proje
 After install, the following files will require manual updating:
 
 - .bash/env.sh - Add secret/machine-specific environment settings (if any).
-- .gitconfig - Uncomment the name, email, and token lines within the `[user]` and `[github]` sections to replace with
-  your own details.
+- .gitconfig - Uncomment the name, email, and token lines within the `[user]` and `[github]`
+  sections to replace with your own details.
 
 ## Upgrade
 
@@ -165,10 +167,11 @@ When upgrading to a new version, run the following:
 
 0. Run: `./run.sh l`. This will link any new files. If not using linked files, run `./run.sh d` and
    `./run.sh i` instead.
-0. Run: `./run.sh c`. This will display file differences (if any -- usually, should only be excluded files).
+0. Run: `./run.sh c`. This will display file differences (if any -- usually, should only be excluded
+   files).
 0. Run: `bashs`. This will apply updates to the shell.
-0. Change to the root directory where all projects are stored and run `gia` to re-initialize repositories with new Git
-   Hook updates.
+0. Change to the root directory where all projects are stored and run `gia` to re-initialize
+   repositories with new Git Hook updates.
 
 # Usage
 
@@ -188,6 +191,7 @@ When upgrading to a new version, run the following:
     home = "cd $HOME"
     pss = 'ps axu | ag --invert-match ag | ag "$@" --ignore-case'
     man = "gem man --system"
+    rmde = "find . -type d -empty -not -path '*.git*' -delete"
 ##### [Bash](https://www.gnu.org/software/bash)
     bashe = "$EDITOR $HOME/.bash/env.sh"
     bashs = "exec $SHELL"
@@ -218,6 +222,7 @@ When upgrading to a new version, run the following:
     hbpu = "brew unpin"
     hbd = "brew doctor"
     hbc = "brew cleanup"
+    hbsu = "hbup && hbug && hbc"
 ##### [Git](http://git-scm.com)
     gi = "git init"
     gcle = "git config --local --edit"
@@ -239,6 +244,7 @@ When upgrading to a new version, run the following:
     gdc = "git diff --cached"
     gdm = "git diff origin/master"
     gdw = "git diff --color-words"
+    gdo = "git diff --name-only | uniq | xargs $EDITOR"
     gdt = "git difftool"
     gdtc = "git difftool --cached"
     gdtm = "git difftool origin/master"
@@ -291,7 +297,7 @@ When upgrading to a new version, run the following:
     gpu = "git pull"
     gpuo = "git pull origin"
     gpuom = "git pull origin master"
-    grim = "git rebase --interactive master"
+    grim = "gri master"
     grbc = "git rebase --continue"
     grbs = "git rebase --skip"
     grba = "git rebase --abort"
@@ -315,6 +321,7 @@ When upgrading to a new version, run the following:
     gelc = "git rm --cached" # Removes previously tracked file from index after being added to gitignore.
     grev = "git revert" # Revert a commit.
     grp = "git remote prune origin"
+    glean = "git clean -d --force"
 ##### [Tar](http://www.gnu.org/software/tar/tar.html)
     bzc = "tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
     bzx = "tar --extract --bzip2 --verbose --file"
@@ -325,6 +332,9 @@ When upgrading to a new version, run the following:
 ##### [Redis](http://redis.io)
     reds = "redis-server /usr/local/etc/redis.conf &"
     redc = "redis-cli"
+##### [Elasticsearch](https://www.elastic.co)
+    esst = "elasticsearch --daemonize"
+    essp = "kilp elasticsearch"
 ##### [chruby](https://github.com/postmodern/chruby)
     crb = "chruby"
 ##### [Ruby](https://www.ruby-lang.org)
@@ -355,9 +365,6 @@ When upgrading to a new version, run the following:
     bcon = "bundle console"
     be = "bundle exec"
     bch = "rm -f Gemfile.lock; bundle check"
-##### [Tocer](https://github.com/bkuhlmann/tocer)
-    tocg = "tocer --generate"
-    toce = "tocer --edit"
 ##### [Milestoner](https://github.com/bkuhlmann/milestoner)
     ms = "milestoner"
     msc = 'milestoner --commits | _copy_and_print "n"'
@@ -369,6 +376,8 @@ When upgrading to a new version, run the following:
     gse = "gemsmith --edit"
     gsr = "gemsmith --read"
     gso = "gemsmith --open"
+##### [Pragmater](https://github.com/bkuhlmann/pragmater)
+    pas = "pragmater --add . --comments '# frozen_string_literal: true' --whitelist 'Gemfile' 'Guardfile' 'Rakefile' 'config.ru' 'bin/**/*' '.gemspec' '.rake' '.rb'"
 ##### [RSpec](http://rspec.info)
     bess = "bes spec"
     besn = "bess --next-failure"
@@ -398,10 +407,6 @@ When upgrading to a new version, run the following:
     elmpp = "elm package publish"
     elmpb = "elm package bump"
     elmpd = "elm package diff"
-##### [Ember](http://emberjs.com)
-    em = "ember"
-    emg = "ember generate"
-    ems = "ember server"
 ##### [Jasmine](http://jasmine.github.io)
     berj = "ber jasmine"
     berjci = "ber jasmine:ci"
@@ -414,11 +419,15 @@ When upgrading to a new version, run the following:
 ##### [Rails Best Practices](https://github.com/railsbp/rails_best_practices)
     rbp = "rails_best_practices"
 ##### [Foreman](https://github.com/ddollar/foreman)
-    fms = "foreman start"
+    fms = "foreman start --env /dev/null"
 ##### [Swift](https://developer.apple.com/swift)
     swift = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
 ##### [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
     agf = "ag --hidden --files-with-matches --file-search-regex"
+##### [direnv](http://direnv.net)
+    denva = "direnv allow"
+    denvr = "direnv reload"
+    denvs = "direnv status"
 ##### [Z](https://github.com/rupa/z)
     ze = "$EDITOR $HOME/.z"
 ##### [Path Finder](http://www.cocoatech.com/pathfinder)
@@ -452,6 +461,8 @@ When upgrading to a new version, run the following:
     gia = Git Init (all) - Initialize/re-initialize repositories in current directory.
     groot = Git Root - Change to repository root directory regardless of current depth.
     ginfo = Git Info - Print repository overview information.
+    gstats = Git Statistics - Answer statistics for current project.
+    gstatsa = Git Statistics (all) - Answer statistics for all projects in current directory.
     ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
     gount = Git Commit Count - Answer total number of commits for current project.
     gli = Git Log (interactive) - List commits with support to show/diff individual commits.
@@ -485,6 +496,7 @@ When upgrading to a new version, run the following:
     gucca = Git Upstream Commit Count (all) - Answer upstream commit count since last pull for projects in current directory.
     gpua = Git Pull (all) - Pull new changes from remote branch for projects in current directory.
     galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
+    gcfp = Git Commit Fix and Push - Create fixup commit, push, and copy URL to clipboard.
     gcaa = Git Commit (all) - Commit changes (unstaged and staged) for projects in current directory.
     gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
     gpob = Git Push Origin Branch - Pushes current branch to origin and sets upstream tracking.
@@ -497,15 +509,13 @@ When upgrading to a new version, run the following:
     gbsa = Git Branch Switch (all) - Switch to given branch for projects in current directory.
     gbna = Git Branch Number (all) - Answer number of branches for projects in current directory.
     gbd = Git Branch Delete - Select local and/or remote branches to delete.
-    gbdm = Git Branch Delete Merged - Delete locally merged branches.
+    gbdm = Git Branch Delete Merged - Delete remote and local merged branches.
     gtagd = Git Tag Delete - Delete local and remote tag (if found).
     gwa = Git Worktree Add - Add and switch to new worktree.
     gwd = Git Worktree Delete - Deletes current Git worktree.
     grs = Git Reset Soft - Resets previous commit (default), resets back to number of commits, or resets to specific commit.
     grh = Git Reset Hard - Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
     guke = Git Nuke - Permanently destroy and erase a file from history. UNRECOVERABLE!
-    ghd = Git Hook Delete - Delete hooks for current project.
-    ghda = Git Hook Delete (all) - Delete hooks for projects in current directory.
     gvac = Git Verify and Clean - Verify and clean objects for current project.
     gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in current directory.
 ##### [GitHub](https://github.com)
@@ -519,6 +529,8 @@ When upgrading to a new version, run the following:
     rbva = Ruby Version (all) - Show current Ruby version for all projects in current directory.
     rbua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version.
     rbs = Ruby Server - Serve web content from current directory via WEBrick.
+##### [Ruby Gems](https://rubygems.org)
+    gemdep = Gem Dependency Search - Finds a gem defined within a Gemfile or a gemspec.
 ##### [RSpec](http://rspec.info)
     bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
     besb = Bundle Exec RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
@@ -562,6 +574,7 @@ When upgrading to a new version, run the following:
 
     bundler_gemfile_path = Bundler Gemfile Path - Detect gem path statements.
     capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open_page statements.
+    comments_total = Print Comment Totals - Print project comment totals.
     ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
     git_commit_message_prefix = Git Commit Message Prefix - Detect commit message invalid prefixes.
     git_commit_message_words = Git Commit Message Words - Detect commit message words to avoid.
@@ -605,8 +618,8 @@ Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 
 # Code of Conduct
 
-Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By participating in this project
-you agree to abide by its terms.
+Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By
+participating in this project you agree to abide by its terms.
 
 # Contributions
 
