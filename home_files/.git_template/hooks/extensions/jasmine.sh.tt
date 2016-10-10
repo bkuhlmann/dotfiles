@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # Label: Jasmine Focus
 # Description: Detect Jasmine focus statements.

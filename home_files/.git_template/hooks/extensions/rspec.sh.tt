@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # Label: RSpec Focus
 # Description: Detect RSpec focus metadata.

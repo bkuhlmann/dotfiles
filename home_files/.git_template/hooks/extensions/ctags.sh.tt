@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # Label: CTags Rebuild
 # Description: Rebuild project .tags file.
