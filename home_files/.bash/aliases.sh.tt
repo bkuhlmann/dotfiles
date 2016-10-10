@@ -282,6 +282,9 @@ alias denvs="direnv status"
 # Section: [Z](https://github.com/rupa/z)
 alias ze="$EDITOR $HOME/.z"
 
+# Section: [iTerm](https://www.iterm2.com)
+alias itl='printf "\033]0;${PWD##*/}\007"'
+
 # Section: [Path Finder](http://www.cocoatech.com/pathfinder)
 alias pfo='open -a "Path Finder.app" "$PWD"'
 
