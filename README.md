@@ -4,8 +4,9 @@
 
 Shell scripts for applying default settings to UNIX-based operating systems.
 
-By default, these are set to my preferences (namely for OSX) but you can change them to your liking
-by editing any of the *.tt template files in the home_files directory. Read on to learn more.
+By default, these are set to my preferences (namely for macOS) but you can change them to your
+liking by editing any of the `*.tt` template files in the `home_files` directory. Read on to learn
+more.
 
 <!-- Tocer[start]: Auto-generated, don't remove. -->
 
@@ -91,7 +92,8 @@ by editing any of the *.tt template files in the home_files directory. Read on t
 - Configures the `.hushlogin` file.
 - Configures the [CTags](http://ctags.sourceforge.net) `.ctags` file.
 - Configures the [Vim](http://www.vim.org) `.vimrc` file.
-- Configures the [Git](http://git-scm.com) `.gitconfig`, `.gitignore`, and hook (i.e. `.git_template`) files.
+- Configures the [Git](http://git-scm.com) `.gitconfig`, `.gitignore`, and hook (i.e.
+  `.git_template`) files.
 - Configures the [Silver Surfer](https://github.com/ggreer/the_silver_searcher) `.agignore` file.
 - Configures the [Ruby Gems](https://rubygems.org) `.gemrc` file.
 - Configures the [Ruby](https://www.ruby-lang.org) `.ruby-version` and `.irbrc` files.
@@ -100,7 +102,8 @@ by editing any of the *.tt template files in the home_files directory. Read on t
 - Configures the [RSpec](http://rspec.info) `.rspec` file.
 - Configures the [Awesome Print](https://github.com/michaeldv/awesome_print) `.aprc` file.
 - Configures the [Pow](http://pow.cx) `.powconfig` file.
-- Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) `.psqlrc` file.
+- Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) `.psqlrc`
+  file.
 - Configures the [Xray](https://github.com/brentd/xray-rails) `.xrayconfig` file.
 - Configures the [Rubocop](https://github.com/bbatsov/rubocop) `.rubocop.yml` file.
 - Configures the [NPM](https://www.npmjs.org) `.npmrc` file.
@@ -130,20 +133,20 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v22.0.0
+    git checkout v23.0.0
 
 Master Version (unstable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
 
-Edit any of the home_files/*.tt template files as you see fit. Then open a terminal window and
+Edit any of the `home_files/*.tt` template files as you see fit. Then open a terminal window and
 execute the following command to install:
 
     cd dotfiles
-    ./run.sh
+    bin/run
 
-Executing the run.sh script will present the following options:
+Executing the `bin/run` script will present the following options:
 
     s: Show managed dotfiles.
     i: Install dotfiles (existing files are skipped).
@@ -152,22 +155,22 @@ Executing the run.sh script will present the following options:
     d: Delete dotfiles (interactive per file, excludes: env.sh and .gitconfig).
     q: Quit/Exit.
 
-The options prompt can be skipped by passing the desired option directly to the run.sh script.
-For example, executing `./run.sh s` will show all managed dotfiles by this project.
+The options prompt can be skipped by passing the desired option directly to the `bin/run` script.
+For example, executing `bin/run s` will show all managed dotfiles by this project.
 
 After install, the following files will require manual updating:
 
-- .bash/env.sh - Add secret/machine-specific environment settings (if any).
-- .gitconfig - Uncomment the name, email, and token lines within the `[user]` and `[github]`
+- `.bash/env.sh`: Add secret/machine-specific environment settings (if any).
+- `.gitconfig`: Uncomment the name, email, and token lines within the `[user]` and `[github]`
   sections to replace with your own details.
 
 ## Upgrade
 
 When upgrading to a new version, run the following:
 
-0. Run: `./run.sh l`. This will link any new files. If not using linked files, run `./run.sh d` and
-   `./run.sh i` instead.
-0. Run: `./run.sh c`. This will display file differences (if any -- usually, should only be excluded
+0. Run: `bin/run l`. This will link any new files. If not using linked files, run `bin/run d` and
+   `bin/run i` instead.
+0. Run: `bin/run c`. This will display file differences (if any -- usually, should only be excluded
    files).
 0. Run: `bashs`. This will apply updates to the shell.
 0. Change to the root directory where all projects are stored and run `gia` to re-initialize
@@ -216,8 +219,8 @@ When upgrading to a new version, run the following:
     hbl = "brew list"
     hbs = "brew search"
     hbsw = "brew switch"
-    hbup = "brew update --all"
-    hbug = "brew upgrade --all && brew link --force openssl > /dev/null 2>&1"
+    hbup = "brew update"
+    hbug = "brew upgrade"
     hbp = "brew pin"
     hbpu = "brew unpin"
     hbd = "brew doctor"
@@ -430,6 +433,8 @@ When upgrading to a new version, run the following:
     denvs = "direnv status"
 ##### [Z](https://github.com/rupa/z)
     ze = "$EDITOR $HOME/.z"
+##### [iTerm](https://www.iterm2.com)
+    itl = 'printf "033]0;${PWD##*/}007"'
 ##### [Path Finder](http://www.cocoatech.com/pathfinder)
     pfo = 'open -a "Path Finder.app" "$PWD"'
 ##### [Vim](http://www.vim.org)
@@ -637,4 +642,5 @@ Built with [Bashsmith](https://github.com/bkuhlmann/bashsmith).
 
 # Credits
 
-Developed by [Brooke Kuhlmann](https://www.alchemists.io) at [Alchemists](https://www.alchemists.io).
+Developed by [Brooke Kuhlmann](https://www.alchemists.io) at
+[Alchemists](https://www.alchemists.io).

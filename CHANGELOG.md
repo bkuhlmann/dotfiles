@@ -1,3 +1,10 @@
+# v23.0.0 (2016-10-11)
+
+- Fixed Bash script header to dynamically load correct environment.
+- Added `itl` alias for iTerm tab labeling.
+- Removed `--all` option from Homebrew update/upgrade aliases.
+- Removed `run.sh` (use `bin/run` instead).
+
 # v22.0.0 (2016-09-30)
 
 - Fixed `grim` alias to leverage `gri` functionality.
