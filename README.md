@@ -123,7 +123,7 @@ more.
 
 # Requirements
 
-- [macOS](https://github.com/bkuhlmann/osx)
+- [macOS](https://github.com/bkuhlmann/mac_os)
 
 # Setup
 
