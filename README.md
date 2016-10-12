@@ -119,7 +119,7 @@ more.
 
 # Screencast
 
-[![asciicast](https://asciinema.org/a/44179.png)](https://asciinema.org/a/44179)
+[![asciicast](https://asciinema.org/a/88966.png)](https://asciinema.org/a/88966)
 
 # Requirements
 
