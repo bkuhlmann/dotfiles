@@ -39,6 +39,9 @@ if [[ -f /usr/local/etc/bash_completion ]]; then
   . /usr/local/etc/bash_completion
 fi
 
+# OpenSSL
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
 # GPG (https://www.gnupg.org)
 GPG_TTY=$(tty)
 export GPG_TTY
