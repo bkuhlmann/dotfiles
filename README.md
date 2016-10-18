@@ -633,11 +633,11 @@ Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 # License
 
 Copyright (c) 2010 [Alchemists](https://www.alchemists.io).
-Read the [LICENSE](LICENSE.md) for details.
+Read [LICENSE](LICENSE.md) for details.
 
 # History
 
-Read the [CHANGELOG](CHANGELOG.md) for details.
+Read [CHANGES](CHANGES.md) for details.
 Built with [Bashsmith](https://github.com/bkuhlmann/bashsmith).
 
 # Credits
