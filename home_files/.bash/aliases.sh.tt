@@ -189,7 +189,6 @@ alias gemcli="ag --depth=1 --files-with-matches --file-search-regex gemspec exec
 
 # Section: [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
 alias gemw="gem whois"
-alias berc="bundle exec rake console"
 
 # Section: [Bundler](http://bundler.io)
 alias b="bundle"
