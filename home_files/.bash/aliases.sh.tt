@@ -223,6 +223,7 @@ alias pas="pragmater --add . --comments '# frozen_string_literal: true' --whitel
 
 # Section: [RSpec](http://rspec.info)
 alias bess="bes spec"
+alias best="bess --tag"
 alias besn="bess --next-failure"
 alias besf="bess --only-failures"
 
