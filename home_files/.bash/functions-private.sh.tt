@@ -265,13 +265,14 @@ _process_git_stash() {
 # Label: GitHub URL
 # Description: Answer GitHub URL for current project.
 _gh_url() {
-  git remote -v | \
-    ag git@github.com | \
-    ag fetch | \
-    head -1 | \
-    cut -f2 | \
-    cut -d' ' -f1 | \
-    sed -e 's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//'
+  local remote="$(git remote -v | ag github.com | ag fetch | head -1 | cut -f2 | cut -d' ' -f1)"
+  local match="^git@.*"
+
+  if [[ "$remote" =~ $match ]]; then
+    printf "$remote" | sed -e 's/:/\//' -e 's/git@/https:\/\//' -e 's/\.git//'
+  else
+    printf "$remote"
+  fi
 }
 
 # Label: GitHub Pull Request List
