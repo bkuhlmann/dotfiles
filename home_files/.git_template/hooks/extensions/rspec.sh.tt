@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # Label: RSpec Focus
-# Description: Detect RSpec focus metadata.
+# Description: Detect RSpec focus.
 rspec_focus() {
-  _scan_code "[rspec]" "Focus metadata detected" 'spec.rb$' ', (:focus|focus:)'
+  _scan_code "[rspec]" "Focus detected" 'spec.rb$' '(fdescribe\s|fcontext\s|fspecify\s|fit\s|,\s:focus|,\sfocus:)'
 }
