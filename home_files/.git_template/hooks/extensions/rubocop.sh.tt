@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+# Label: Check Rubocop gem dependencies.
+# Description: Check if Rubocop is a Gemfile or gemspec dependency.
+_check_rubocop_dependencies() {
+  ag "(add.*dependency \"rubocop\"|add.*dependency 'rubocop'|gem \"rubocop\"|gem 'rubocop')" . > /dev/null
+}
+
+# Label: Rubocop
+# Description: Scans Ruby code for poor style choices.
+rubocop_check() {
+  if _check_rubocop_dependencies; then
+    printf "[rubocop]: "
+    bundle exec rubocop --display-cop-names --fail-fast
+  fi
+}
