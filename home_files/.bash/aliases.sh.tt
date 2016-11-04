@@ -218,6 +218,7 @@ alias gse="gemsmith --edit"
 alias gsr="gemsmith --read"
 alias gso="gemsmith --open"
 alias gsi="bundle exec rake install"
+alias gsp="bundle exec rake publish"
 
 # Section: [Pragmater](https://github.com/bkuhlmann/pragmater)
 alias pas="pragmater --add . --comments '# frozen_string_literal: true' --whitelist 'Gemfile' 'Guardfile' 'Rakefile' 'config.ru' 'bin/**/*' '.gemspec' '.rake' '.rb'"
