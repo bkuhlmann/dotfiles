@@ -215,7 +215,7 @@ alias mse="milestoner --config --edit"
 # Section: [Gemsmith](https://github.com/bkuhlmann/gemsmith)
 alias gs="gemsmith"
 alias gsg="gemsmith --generate"
-alias gse="gemsmith --edit"
+alias gse="gemsmith --config --edit"
 alias gsr="gemsmith --read"
 alias gso="gemsmith --open"
 alias gsi="bundle exec rake install"
