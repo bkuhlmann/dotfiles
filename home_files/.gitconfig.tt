@@ -14,6 +14,7 @@
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   editor = "$EDITOR --wait"
   excludesfile = ~/.gitignore
+  attributesFile = ~/.git_template/info/attributes
   hooksPath = ~/.git_template/hooks
   pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
@@ -71,6 +72,8 @@
   compactionHeuristic = true
   renames = true
   tool = Kaleidoscope
+[diff "exif"]
+  textconv = exiftool
 [difftool]
   prompt = false
 [difftool "Kaleidoscope"]
