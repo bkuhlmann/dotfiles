@@ -42,6 +42,9 @@ fi
 # OpenSSL
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
+# Git
+source `brew --prefix git`/etc/bash_completion.d/git-completion.bash
+
 # GPG (https://www.gnupg.org)
 GPG_TTY=$(tty)
 export GPG_TTY
