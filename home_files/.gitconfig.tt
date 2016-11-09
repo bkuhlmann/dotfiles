@@ -68,9 +68,9 @@
   fullname = true
   threads = 3
 [diff]
-  mnemonicPrefix = true
   compactionHeuristic = true
-  renames = true
+  mnemonicPrefix = true
+  renames = copies
   tool = Kaleidoscope
 [diff "exif"]
   textconv = exiftool
