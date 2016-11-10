@@ -1,4 +1,4 @@
-# Mac OS
+# macOS
 .DS_Store
 
 # Environments
@@ -26,6 +26,9 @@ tags
 
 # RubyMine
 *.idea
+
+# SimpleCov
+coverage
 
 # Temp Directories
 tmp
