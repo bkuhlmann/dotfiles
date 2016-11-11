@@ -28,6 +28,14 @@ _scan_code() {
   fi
 }
 
+# Label: Check Gem Dependencies
+# Description: Check Gemfile/gemspec dependencies for specified gem.
+# Parameters: $1 (required) - The gem name.
+_check_gem_dependencies() {
+  local gem="$1"
+  ag "(add.*dependency \"$gem\"|add.*dependency '$gem'|gem \"$gem\"|gem '$gem')" --depth 0 . > /dev/null
+}
+
 # Label: Print warning message.
 # Description: Print yellow warning message.
 # Parameters: $1 (required) - The message to print.
