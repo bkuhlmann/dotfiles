@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+# Label: Check Reek gem dependencies.
+# Description: Check if Reek is a Gemfile or gemspec dependency.
+_check_reek_dependencies() {
+  ag "(add.*dependency \"reek\"|add.*dependency 'reek'|gem \"reek\"|gem 'reek')" . > /dev/null
+}
+
+# Label: Reek
+# Description: Scans Ruby code for poor style choices.
+reek_check() {
+  if _check_reek_dependencies; then
+    printf "[reek]: "
+    bundle exec reek .
+  fi
+}
