@@ -1,3 +1,32 @@
+# v24.0.0 (2016-11-14)
+
+- Fixed Git hook extension permissions to be read-only.
+- Fixed README link to macOS project.
+- Fixed parsing of SSH and HTTPS GitHub URLs.
+- Added Git bash autocompletion support.
+- Added Git config diff exif image support.
+- Added OpenSSL (Homebrew version) to $PATH.
+- Added Reek Git pre-push check.
+- Added Rubocop Git pre-push check.
+- Added SCSS Lint Git pre-push check.
+- Added `bert` alias for `bundler exec rake -T`.
+- Added `best` alias for `bundle exec rspec spec --tag`
+- Added `cov` alias for viewing SimpleCov reports.
+- Added `gsg` alias for `gemsmith --generate`.
+- Added `gsi` alias for `bundle exec rake install`.
+- Added `gsp` alias for `bundle exec rake publish`.
+- Updated Git config to detect renamed copies when diff'ing.
+- Updated Git ignore to exclude SimpleCov `coverage` folder.
+- Updated README screencast link.
+- Updated README versioning documentation.
+- Updated RSpec focus detection Git Hooks to detect f* focus statements.
+- Updated `gse` command options for editing .gemsmithrc.
+- Updated to Rubocop 0.44.
+- Removed CHANGELOG.md (use CHANGES.md instead).
+- Removed `berc` alias (use `bcon` instead).
+- Removed redundant documentation that can be found in the README.
+- Refactored Git hook gem dependency checking.
+
 # v23.0.0 (2016-10-11)
 
 - Fixed Bash script header to dynamically load correct environment.
