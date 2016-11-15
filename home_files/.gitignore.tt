@@ -24,6 +24,9 @@ tags
 .tags
 .tags_sorted_by_file
 
+# Bundler
+.bundle
+
 # RubyMine
 *.idea
 
