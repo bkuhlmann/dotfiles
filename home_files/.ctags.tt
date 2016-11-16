@@ -8,3 +8,4 @@
 --exclude=tmp
 --exclude=node_modules
 --exclude=bower_components
+--exclude=vendor
