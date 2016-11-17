@@ -17,7 +17,13 @@ source $HOME/.git_template/hooks/extensions/rubocop.sh
 source $HOME/.git_template/hooks/extensions/scss_lint.sh
 
 # EXECUTION
+push_command=$(ps -ocommand= -p $PPID)
 zeros=0000000000000000000000000000000000000000
+
+# Ignore remote branch or tag deletes.
+if [[ "$push_command" == *"--delete"* || "$push_command" == *"--tags"* ]]; then
+  exit 0
+fi
 
 while read local_ref local_sha remote_ref remote_sha; do
   if [[ "$local_sha" != "$zeros" && "$remote_sha" != "$zeros" ]]; then
