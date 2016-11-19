@@ -37,7 +37,7 @@ git_commit_message_words() {
     fi
   done < "$message_file"
 
-  if [[ ${#matched_lines[@]} > 0 ]]; then
+  if [[ ${#matched_lines[@]} -gt 0 ]]; then
     _print_warning "$(_git_label): Commit message uses words/phrases that should be avoided:"
 
     for line in ${matched_lines[@]}; do
@@ -62,7 +62,7 @@ git_commit_message_length() {
     fi
   done < "$message_file"
 
-  if [[ ${#long_lines[@]} > 0 ]]; then
+  if [[ ${#long_lines[@]} -gt 0 ]]; then
     _print_warning "$(_git_label): Commit message exceeds $line_length character line length:"
 
     for line in ${long_lines[@]}; do

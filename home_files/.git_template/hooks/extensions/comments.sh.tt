@@ -21,7 +21,7 @@ _comment_total() {
     total=$((total + ${line#*:}))
   done
 
-  if [[ $total > 0 ]]; then
+  if [[ $total -gt 0 ]]; then
     _print_warning "$label: $total $prefix"
   fi
 }

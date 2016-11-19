@@ -51,7 +51,7 @@ _powerline() {
     local count=$(git stash list | wc -l | xargs -n 1)
     count="$count"
 
-    if [[ $count > 0 ]]; then
+    if [[ $count -gt 0 ]]; then
       printf "$GIT_STASH_SYMBOL$count "
     fi
   }
