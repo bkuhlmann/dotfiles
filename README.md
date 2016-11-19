@@ -136,7 +136,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v24.0.0
+    git checkout v24.1.0
 
 Master Version (unstable)
 
@@ -190,25 +190,24 @@ When upgrading to a new version, run the following:
     c = "clear"
     h = "history"
     l = "ls -alh"
-    l1 = "ls -A1 | _copy_and_print 'n'"
-    p = 'pwd | tr -d "rn" | _copy_and_print'
+    l1 = "ls -A1 | _copy_and_print '\n'"
+    p = 'pwd | tr -d "\r\n" | _copy_and_print'
     o = "open"
     cat = 'ccat -G Keyword = "turquoise" -G Punctuation="green" -G Decimal="green" -G Type="blue" -G Literal="blue" -G String="lightgray" -G Plaintext="white"'
-    home = "cd $HOME"
-    pss = 'ps axu | ag --invert-match ag | ag "$@" --ignore-case'
+    home = 'cd $HOME'
     man = "gem man --system"
     rmde = "find . -type d -empty -not -path '*.git*' -delete"
 ##### [Bash](https://www.gnu.org/software/bash)
-    bashe = "$EDITOR $HOME/.bash/env.sh"
-    bashs = "exec $SHELL"
+    bashe = '$EDITOR $HOME/.bash/env.sh'
+    bashs = 'exec $SHELL'
 ##### Network
-    sshe = "$EDITOR $HOME/.ssh/config"
-    key = "open /Applications/Utilities/Keychain Access.app"
-    ipa = 'curl --silent checkip.dyndns.org | ag --only-matching "[0-9.]+" | _copy_and_print'
+    sshe = '$EDITOR $HOME/.ssh/config'
+    key = "open /Applications/Utilities/Keychain\ Access.app"
+    ipa = 'curl --silent checkip.dyndns.org | ag --only-matching "[0-9\.]+" | _copy_and_print'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
     dnsi = "scutil --dns"
     dnss = "sudo dscacheutil -statistics"
-    dnsf = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.n'"
+    dnsf = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
 ##### [tmux](http://tmux.sourceforge.net)
     tsl = "tmux list-sessions"
     tsa = "tmux attach-session -t"
@@ -234,7 +233,8 @@ When upgrading to a new version, run the following:
     gcle = "git config --local --edit"
     gcge = "git config --global --edit"
     gcd = "git config --show-origin"
-    gget = "git config"
+    gget = "git config --get"
+    gset = "git config --add"
     gst = "git status --short --branch"
     gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
     gld = 'git log --stat --pretty=format:"$(_git_log_details_format)"'
@@ -250,7 +250,7 @@ When upgrading to a new version, run the following:
     gdc = "git diff --cached"
     gdm = "git diff origin/master"
     gdw = "git diff --color-words"
-    gdo = "git diff --name-only | uniq | xargs $EDITOR"
+    gdo = 'git diff --name-only | uniq | xargs $EDITOR'
     gdt = "git difftool"
     gdtc = "git difftool --cached"
     gdtm = "git difftool origin/master"
@@ -346,7 +346,7 @@ When upgrading to a new version, run the following:
 ##### [Ruby](https://www.ruby-lang.org)
     rbi = "ruby-install"
 ##### [Ruby Gems](https://rubygems.org)
-    gemcr = "$EDITOR ~/.gem/credentials"
+    gemcr = '$EDITOR ~/.gem/credentials'
     geml = "gem list"
     gemi = "gem install"
     gemup = "gem update"
@@ -356,7 +356,7 @@ When upgrading to a new version, run the following:
     gemp = "gem pristine"
     geme = "gem environment"
     gemuc = "gem update --system && gem update && gem cleanup"
-    gemcli = "ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | _copy_and_print 'n'"
+    gemcli = "ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | _copy_and_print '\n'"
 ##### [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
     gemw = "gem whois"
 ##### [Rake](https://github.com/ruby/rake)
@@ -368,13 +368,13 @@ When upgrading to a new version, run the following:
     bi = "bundle install"
     bu = "bundle update"
     bo = "bundle outdated"
-    bce = "$EDITOR $HOME/.bundle/config"
+    bce = '$EDITOR $HOME/.bundle/config'
     bcon = "bundle console"
     be = "bundle exec"
     bch = "rm -f Gemfile.lock; bundle check"
 ##### [Milestoner](https://github.com/bkuhlmann/milestoner)
     ms = "milestoner"
-    msc = 'milestoner --commits | _copy_and_print "n"'
+    msc = 'milestoner --commits | _copy_and_print "\n"'
     mst = "milestoner --tag"
     msp = "milestoner --publish"
     mse = "milestoner --config --edit"
@@ -442,9 +442,9 @@ When upgrading to a new version, run the following:
     denvr = "direnv reload"
     denvs = "direnv status"
 ##### [Z](https://github.com/rupa/z)
-    ze = "$EDITOR $HOME/.z"
+    ze = '$EDITOR $HOME/.z'
 ##### [iTerm](https://www.iterm2.com)
-    itl = 'printf "033]0;${PWD##*/}007"'
+    itl = 'printf "\033]0;${PWD##*/}\007"'
 ##### [Path Finder](http://www.cocoatech.com/pathfinder)
     pfo = 'open -a "Path Finder.app" "$PWD"'
 ##### [Vim](http://www.vim.org)
@@ -452,7 +452,7 @@ When upgrading to a new version, run the following:
 ##### [Sublime Text](http://www.sublimetext.com)
     e = "sublime"
 ##### [Marked 2](http://marked2app.com)
-    mo = "open -a Marked 2"
+    mo = "open -a Marked\ 2"
 ##### [asciinema](https://asciinema.org)
     cin = "asciinema"
     cinp = "asciinema play"
@@ -463,6 +463,7 @@ When upgrading to a new version, run the following:
 ##### General
     t2s = Tab to Space - Convert file from tab to space indendation.
     cype = Colorized Type - Identical to "type" command functionality but with syntax highlighting.
+    pss = Process Status (specialized) - Display process status, excluding the search of it, and ignoring case.
     kilp = Kill Process - Kill errant processes.
 ##### [less](http://en.wikipedia.org/wiki/Less_(Unix))
     lessi = Less Interactive - Inspect file, interactively.

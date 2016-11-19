@@ -1,3 +1,18 @@
+# v24.1.0 (2016-11-19)
+
+- Fixed Bash alias variable definition expansion.
+- Fixed missing Bash script source header.
+- Fixed potential mangling of backslashes with `read`.
+- Fixed running of Git pre-push for branch deletes and tag creations.
+- Fixed syntax for greater than conditionals.
+- Added `.bundle` to `.gitignore`.
+- Added `gset` alias for setting local Git config.
+- Added `vendor` folder to CTags exclude list.
+- Updated `gh` options documentation.
+- Updated to Ruby 2.3.2.
+- Updated to `gget` to use `--get` option.
+- Refactored `pss` as a function.
+
 # v24.0.0 (2016-11-14)
 
 - Fixed Git hook extension permissions to be read-only.
