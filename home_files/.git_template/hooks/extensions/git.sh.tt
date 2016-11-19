@@ -29,7 +29,7 @@ git_commit_message_words() {
   local matched_lines=()
   local match="((O|o)bviously|(B|b)asically|(S|s)imply|(O|o)f course|(C|c)learly|Just|(E|e)veryone knows|However|So|Easy)"
 
-  while read line; do
+  while read -r line; do
     line_number=$((line_number+1))
 
     if [[ "$line" =~ $match ]]; then
@@ -54,7 +54,7 @@ git_commit_message_length() {
   local line_number=0
   local long_lines=()
 
-  while read line; do
+  while read -r line; do
     line_number=$((line_number+1))
 
     if [[ ${#line} -gt $line_length && "$line" != '#'* ]]; then

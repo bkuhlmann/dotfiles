@@ -68,7 +68,7 @@ link_file() {
 
   # Proceed only if the symbolic link doesn't exist and is not an excluded file.
   if [[ ! -h "$dest_file" && ! "$source_file" =~ $excludes ]]; then
-    read -p "  Link $dest_file -> $source_file (y/n)? " response
+    read -r -p "  Link $dest_file -> $source_file (y/n)? " response
     if [[ $response == 'y' ]]; then
       mkdir -p "$dest_dir"
       ln -sf "$source_file" "$dest_file"
@@ -127,7 +127,7 @@ delete_file() {
 
   # Proceed only if file exists.
   if [[ -e "$dest_file" || -h "$dest_file" ]] && [[ ! "$dest_file" =~ $excludes ]]; then
-    read -p "  Delete $dest_file (y/n)? " response
+    read -r -p "  Delete $dest_file (y/n)? " response
     if [[ $response == 'y' ]]; then
       rm -f "$dest_file"
     fi

@@ -134,7 +134,7 @@ _git_file_commits() {
   option_padding=$((option_padding + 1))
   printf "%${option_padding}s %s\n\n" "q:" "Quit/Exit."
 
-  read -p "Enter selection: " response
+  read -r -p "Enter selection: " response
   if [[ "$response" == 'q' ]]; then
     return
   fi
@@ -479,7 +479,7 @@ _print_alias() {
 # Label: Print Aliases
 # Description: Print aliases.
 _print_aliases() {
-  while read line; do
+  while read -r line; do
     _print_section "$line"
 
     if [[ "$line" == "alias"* ]]; then
@@ -519,7 +519,7 @@ _set_function_description() {
 _print_functions() {
   local path="${1:-$HOME/.bash/functions-public.sh}"
 
-  while read line; do
+  while read -r line; do
     _print_section "$line"
     _set_function_label "$line"
     _set_function_description "$line"
@@ -556,7 +556,7 @@ _print_all() {
 # Description: Find and print matching alias.
 # Parameters: $1 (required) - The alias to search for.
 _find_alias() {
-  while read line; do
+  while read -r line; do
     if [[ "$line" == "alias "*"$1"* ]]; then
       printf "    Alias: "
       _print_alias "$line"
@@ -568,7 +568,7 @@ _find_alias() {
 # Description: Find and print matching function.
 # Parameters: $1 (required) - The function to search for.
 _find_function() {
-  while read line; do
+  while read -r line; do
     _set_function_label "$line"
     _set_function_description "$line"
 

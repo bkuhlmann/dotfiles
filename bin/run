@@ -23,7 +23,7 @@ if [[ -d "$HOME" ]]; then
       printf "  c: Check for differences between \$HOME files and this project's files.\n"
       printf "  d: Delete dotfiles (interactive per file, excludes: env.sh and .gitconfig).\n"
       printf "  q: Quit/Exit.\n\n"
-      read -p "Enter selection: " response
+      read -r -p "Enter selection: " response
       printf "\n"
       process_option $response
     else

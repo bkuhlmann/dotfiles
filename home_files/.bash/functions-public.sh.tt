@@ -164,7 +164,7 @@ port() {
 # Label: Git Init (all)
 # Description: Initialize/re-initialize repositories in current directory.
 gia() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
       if [[ -d ".git" ]]; then
@@ -238,7 +238,7 @@ gstats() {
 # Label: Git Statistics (all)
 # Description: Answer statistics for all projects in current directory.
 gstatsa() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
       printf "\033[36m${project:2}\033[m:\n" # Print project (cyan) and message (white).
@@ -380,7 +380,7 @@ glameh() {
 # Label: Git Authors (all)
 # Description: Answer author commit activity per project (ranked highest to lowest).
 guthorsa() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -396,7 +396,7 @@ guthorsa() {
 # Label: Git Status (all)
 # Description: Answer status of projects with uncommited/unpushed changes.
 gsta() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -496,7 +496,7 @@ gync() {
 # Parameters: $1 (required) - The key name, $2 (required) - The key value.
 gseta() {
   if [[ "$1" && "$2" ]]; then
-    while read project; do
+    while read -r project; do
       (
         cd "$project"
 
@@ -520,7 +520,7 @@ gseta() {
 # Parameters: $1 (required) - The key name.
 ggeta() {
   if [[ "$1" ]]; then
-    while read project; do
+    while read -r project; do
       (
         cd "$project"
 
@@ -551,7 +551,7 @@ ggeta() {
 # Parameters: $1 (required) - The key name.
 gunseta() {
   if [[ "$1" ]]; then
-    while read project; do
+    while read -r project; do
       (
         cd "$project"
 
@@ -596,7 +596,7 @@ gaila() {
 # Parameters: $1 (required) - The date/time since value, $2 (optional) - The date/time until value, $3 (optional) - The commit author.
 gince() {
   if [[ "$1" ]]; then
-    while read project; do
+    while read -r project; do
       (
         cd "$project"
 
@@ -659,7 +659,7 @@ gtail() {
 # Description: Answer commit history count since last tag for projects in current directory.
 gtaila() {
   # Iterate through root project directories.
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -727,7 +727,7 @@ gashd() {
 # Label: Git Stash (all)
 # Description: Answer stash count for projects in current directory.
 gasha() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -745,7 +745,7 @@ gasha() {
 # Label: Git Upstream Commit Count (all)
 # Description: Answer upstream commit count since last pull for projects in current directory.
 gucca() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -766,7 +766,7 @@ gucca() {
 # Label: Git Pull (all)
 # Description: Pull new changes from remote branch for projects in current directory.
 gpua() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -790,7 +790,7 @@ gpua() {
 # Label: Git Add (all)
 # Description: Apply file changes (including new files) for projects in current directory.
 galla() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -841,7 +841,7 @@ gcaa() {
   cp $HOME/.git_template/commit_message.txt $temp_file
   $EDITOR --wait $temp_file
 
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -865,7 +865,7 @@ gcap() {
   cp $HOME/.git_template/commit_message.txt $temp_file
   $EDITOR --wait $temp_file
 
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -891,7 +891,7 @@ gpob() {
 # Label: Git Push (all)
 # Description: Push changes for projects in current directory.
 gpa() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -937,7 +937,7 @@ gbl() {
 # Label: Git Branch List (all)
 # Description: List current branch for projects in current directory.
 gbla() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -1016,7 +1016,7 @@ gbsa() {
   local branch="$1"
 
   if [[ -n "$branch" ]]; then
-    while read project; do
+    while read -r project; do
       (
         cd "$project"
 
@@ -1038,7 +1038,7 @@ gbsa() {
 # Label: Git Branch Number (all)
 # Description: Answer number of branches for projects in current directory.
 gbna() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -1270,7 +1270,7 @@ gvac() {
 # Label: Git Verify and Clean (all)
 # Description: Verify and clean objects for projects in current directory.
 gvaca() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -1332,7 +1332,7 @@ gh() {
 # Label: GitHub Pull Request (all)
 # Description: Open pull request for all projects in current directory (non-master branches only).
 ghpra() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -1398,7 +1398,7 @@ pgt() {
 # Label: Ruby Version (all)
 # Description: Show current Ruby version for all projects in current directory.
 rbva() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -1417,7 +1417,7 @@ rbva() {
 # Parameters: $1 (required) - The new version to upgrade to. Example: 2.3.0.
 rbua() {
   if [[ "$1" ]]; then
-    while read project; do
+    while read -r project; do
       (
         cd "$project"
 
@@ -1516,7 +1516,7 @@ besp() {
 # Label: Bundle Execute Rake (all)
 # Description: Run default Rake tasks via binstub or Bundler for projects in current directory.
 bera() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
       if [[ -f "Gemfile.lock" && -f "Rakefile" ]]; then
@@ -1533,7 +1533,7 @@ bera() {
 # Label: Bundle Execute RSpec (all)
 # Description: Run RSpec via binstub or Bundler for projects in current directory.
 bessa() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -1635,7 +1635,7 @@ bcim() {
 # Label: Bundle Outdated (all)
 # Description: Answer outdated gems for projects in current directory.
 boa() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -1659,7 +1659,7 @@ boa() {
 # Label: Bundle Update (all)
 # Description: Update gems for projects in current directory.
 bua() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
       if [[ -f "Gemfile.lock" ]]; then
@@ -1681,7 +1681,7 @@ bua() {
 # Label: Bundle Clean (all)
 # Description: Clean projects of gem artifacts (i.e. pkg folder).
 bca() {
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
       if [[ -f "Gemfile.lock" ]]; then
@@ -1867,7 +1867,7 @@ tciea() {
     return 1
   fi
 
-  while read project; do
+  while read -r project; do
     (
       cd "$project"
 
@@ -1986,7 +1986,7 @@ dots() {
       printf "  p: Print all.\n"
       printf "  s: Search for alias/function.\n"
       printf "  q: Quit/Exit.\n\n"
-      read -p "Enter selection: " response
+      read -r -p "Enter selection: " response
       printf "\n"
       _process_dots_option $response "$2"
     else
