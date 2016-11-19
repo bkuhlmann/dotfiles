@@ -57,6 +57,7 @@ alias gcle="git config --local --edit"
 alias gcge="git config --global --edit"
 alias gcd="git config --show-origin"
 alias gget="git config --get"
+alias gset="git config --add"
 alias gst="git status --short --branch"
 alias gl='git log --graph --pretty=format:"$(_git_log_line_format)"'
 alias gld='git log --stat --pretty=format:"$(_git_log_details_format)"'
