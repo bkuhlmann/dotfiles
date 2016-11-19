@@ -1,4 +1,4 @@
-# BASH ALIASES
+#! /usr/bin/env bash
 
 # Section: General
 alias ..="cd .."

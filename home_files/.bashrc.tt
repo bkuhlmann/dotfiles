@@ -1,4 +1,4 @@
-# BASHRC
+#! /usr/bin/env bash
 
 # General
 shopt -s globstar
