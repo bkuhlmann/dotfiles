@@ -25,6 +25,11 @@ if [[ "$push_command" == *"--delete"* || "$push_command" == *"--tags"* ]]; then
   exit 0
 fi
 
+# Ignore unbuildable commits.
+if [[ $(git log --format=%B -1) == *"[ci skip]"* ]]; then
+  exit 0
+fi
+
 while read local_ref local_sha remote_ref remote_sha; do
   if [[ "$local_sha" != "$zeros" && "$remote_sha" != "$zeros" ]]; then
     comments_total
