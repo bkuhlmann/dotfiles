@@ -69,7 +69,7 @@
   fullname = true
   threads = 3
 [diff]
-  compactionHeuristic = true
+  indentHeuristic = true
   mnemonicPrefix = true
   renames = copies
   tool = Kaleidoscope
