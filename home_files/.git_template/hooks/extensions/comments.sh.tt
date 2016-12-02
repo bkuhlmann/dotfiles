@@ -29,7 +29,7 @@ _comment_total() {
 # Label: Print Comment Totals
 # Description: Print project comment totals.
 comments_total() {
-  local prefixes=("TODO" "FIX" "DUPLICATE" "rubocop:disable")
+  local prefixes=("TODO" "FIX" "DUPLICATE" ":reek:" "rubocop:disable")
 
   for prefix in ${prefixes[*]}; do
     _comment_total "$prefix"
