@@ -60,7 +60,7 @@ alias gset="git config --add"
 alias gst="git status --short --branch"
 alias gl='git log --graph --pretty=format:"$(_git_log_line_format)"'
 alias gld='git log --stat --pretty=format:"$(_git_log_details_format)"'
-alias glh='git log --pretty=format:%H -1 | _copy_and_print'
+alias glh='git log --pretty=format:%h -1 | _copy_and_print'
 alias glf='git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
 alias glg='git log --pretty=format:"$(_git_log_line_format)" --grep'
 alias gls='git log --pretty=format:"$(_git_log_line_format)" -S'

@@ -357,7 +357,7 @@ _process_gh_url_option() {
   if [[ "$commit" =~ $commit_match ]]; then
     printf "$(_gh_url)/commit/$commit" | _copy_and_print
   elif [[ "$commit" == 'l' ]]; then
-    printf "$(_gh_url)/commit/$(git log --pretty=format:%H -1)" | _copy_and_print
+    printf "$(_gh_url)/commit/$(git log --pretty=format:%h -1)" | _copy_and_print
   else
     _gh_url | _copy_and_print
   fi
