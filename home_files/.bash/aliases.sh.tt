@@ -310,3 +310,6 @@ alias mo="open -a Marked\ 2"
 alias cin="asciinema"
 alias cinp="asciinema play"
 alias cinu="asciinema upload"
+
+# Section: [https://unused.codes]
+alias ud="unused --stdin < .tags"
