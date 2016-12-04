@@ -4,13 +4,12 @@
 # Description: Rebuild project .tags file.
 ctags_rebuild() {
   local label="[ctags]"
-  local git_root="$(dirname $(git rev-parse --git-dir))"
-  local tag_file="$git_root/.tags"
+  local tags_file=".tags"
 
   if command -v ctags > /dev/null; then
-    rm -f "$tag_file"
-    ctags --languages=-sql -f $tag_file
-    printf "$label: CTags rebuilt.\n"
+    rm -f "$tags_file"
+    ctags -f "$tags_file"
+    printf "%s\n" "$label: CTags rebuilt."
   else
      _print_error "$label: Exuberant CTags not found. To install, run: brew install ctags."
      exit 1
