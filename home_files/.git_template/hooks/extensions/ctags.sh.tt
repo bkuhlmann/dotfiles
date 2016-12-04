@@ -4,14 +4,7 @@
 # Description: Rebuild project .tags file.
 ctags_rebuild() {
   local label="[ctags]"
-  local tags_file=".tags"
 
-  if command -v ctags > /dev/null; then
-    rm -f "$tags_file"
-    ctags -f "$tags_file"
-    printf "%s\n" "$label: CTags rebuilt."
-  else
-     _print_error "$label: Exuberant CTags not found. To install, run: brew install ctags."
-     exit 1
-  fi
+  _build_ctags
+  printf "%s\n" "$label: CTags rebuilt."
 }

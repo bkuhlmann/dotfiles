@@ -1,5 +1,44 @@
 #! /usr/bin/env bash
 
+# Label: Check Gem Dependencies
+# Description: Check Gemfile/gemspec dependencies for specified gem.
+# Parameters: $1 (required) - The gem name.
+_check_gem_dependencies() {
+  local gem="$1"
+  ag "(add.*dependency \"$gem\"|add.*dependency '$gem'|gem \"$gem\"|gem '$gem')" --depth 0 . > /dev/null
+}
+
+# Label: Builds CTags
+# Description: Builds/rebuilds CTags.
+_build_ctags() {
+  local tags_file=".tags"
+
+  rm -f "$tags_file"
+  ctags -f "$tags_file"
+}
+
+# Label: Print warning message.
+# Description: Print yellow warning message.
+# Parameters: $1 (required) - The message to print.
+_print_warning() {
+  local message="$1"
+
+  printf "\033[33m"
+  printf "%s\n" "$message"
+  printf "\033[m"
+}
+
+# Label: Print error message.
+# Description: Print red error message.
+# Parameters: $1 (required) - The message to print.
+_print_error() {
+  local message="$1"
+
+  printf "\033[31m"
+  printf "%s\n" "$message"
+  printf "\033[m"
+}
+
 # Label: Scan Code
 # Description: Scan for invalid code.
 # Parameters: $1 (required) - Label, $2 (required) - Message, $3 (required) - File regex, $4 (required) - Search regex.
@@ -26,34 +65,4 @@ _scan_code() {
     _print_error "$label: Silver Surfer not found. To install, run: brew install the_silver_searcher."
      exit 1
   fi
-}
-
-# Label: Check Gem Dependencies
-# Description: Check Gemfile/gemspec dependencies for specified gem.
-# Parameters: $1 (required) - The gem name.
-_check_gem_dependencies() {
-  local gem="$1"
-  ag "(add.*dependency \"$gem\"|add.*dependency '$gem'|gem \"$gem\"|gem '$gem')" --depth 0 . > /dev/null
-}
-
-# Label: Print warning message.
-# Description: Print yellow warning message.
-# Parameters: $1 (required) - The message to print.
-_print_warning() {
-  local message="$1"
-
-  printf "\033[33m"
-  printf "%s\n" "$message"
-  printf "\033[m"
-}
-
-# Label: Print error message.
-# Description: Print red error message.
-# Parameters: $1 (required) - The message to print.
-_print_error() {
-  local message="$1"
-
-  printf "\033[31m"
-  printf "%s\n" "$message"
-  printf "\033[m"
 }
