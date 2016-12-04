@@ -1,6 +1,7 @@
 --sort=yes
 --recurse=yes
 --tag-relative=yes
+--languages=-sql
 
 --exclude=.DS_Store
 --exclude=*.git*
