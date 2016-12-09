@@ -256,6 +256,7 @@ alias elmpi="elm package install"
 alias elmpp="elm package publish"
 alias elmpb="elm package bump"
 alias elmpd="elm package diff"
+alias elmt="elm test"
 
 # Section: [Jasmine](http://jasmine.github.io)
 alias berj="ber jasmine"
