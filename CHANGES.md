@@ -1,3 +1,25 @@
+# v24.2.0 (2017-01-01)
+
+- Added Elm `elmm` function for compiling source code.
+- Added Git commit hook warning check for Reek comments.
+- Added SQL to CTags language exclusion list.
+- Added Yarn to `PATH`.
+- Added `elmi` alias for `elm package install`.
+- Added `elml` for live recompilation of Elm source code.
+- Added `ud` alias for finding duplicate code.
+- Added alias `elmt` for `elm test`.
+- Added disabled ShellCheck comment count to Git pre-push hook.
+- Updated Git global config to diff with `indentHeuristic`.
+- Updated Git global configuration to use default SHA length.
+- Updated Git pre-push hooks to ignore CI skipped commits.
+- Updated to Rubocop 0.46.x.
+- Updated to Ruby 2.3.3.
+- Updated to Ruby 2.4.0.
+- Refactored Git aliases and functions to use SHA abbreviations.
+- Refactored building of CTags.
+- Refactored scripts to use noop when nothing to do.
+- Refactored use of tags file for CTag Git hook extension.
+
 # v24.1.0 (2016-11-19)
 
 - Fixed Bash alias variable definition expansion.

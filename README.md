@@ -56,6 +56,7 @@ more.
         - [Sublime Text](#sublime-text)
         - [Marked 2](#marked-2)
         - [asciinema](#asciinema)
+        - [[https://unused.codes]](#httpsunusedcodes)
       - [Functions](#functions)
         - [General](#general-1)
         - [less](#less)
@@ -72,6 +73,7 @@ more.
         - [Ruby on Rails](#ruby-on-rails-1)
         - [Rails ERD](#rails-erd)
         - [RailRoady](#railroady)
+        - [Elm](#elm-1)
         - [Travis CI](#travis-ci)
         - [Image Magick](#image-magick)
         - [FFmpeg](#ffmpeg)
@@ -136,7 +138,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v24.1.0
+    git checkout v24.2.0
 
 Master Version (unstable)
 
@@ -238,7 +240,7 @@ When upgrading to a new version, run the following:
     gst = "git status --short --branch"
     gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
     gld = 'git log --stat --pretty=format:"$(_git_log_details_format)"'
-    glh = 'git log --pretty=format:%H -1 | _copy_and_print'
+    glh = 'git log --pretty=format:%h -1 | _copy_and_print'
     glf = 'git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
     glg = 'git log --pretty=format:"$(_git_log_line_format)" --grep'
     gls = 'git log --pretty=format:"$(_git_log_line_format)" -S'
@@ -414,10 +416,12 @@ When upgrading to a new version, run the following:
     elmc = "elm repl"
     elms = "elm reactor"
     elmp = "elm package"
+    elmi = "elm package install"
     elmpi = "elm package install"
     elmpp = "elm package publish"
     elmpb = "elm package bump"
     elmpd = "elm package diff"
+    elmt = "elm test"
 ##### [Jasmine](http://jasmine.github.io)
     berj = "ber jasmine"
     berjci = "ber jasmine:ci"
@@ -457,6 +461,8 @@ When upgrading to a new version, run the following:
     cin = "asciinema"
     cinp = "asciinema play"
     cinu = "asciinema upload"
+##### [https://unused.codes]
+    ud = "unused --stdin < .tags"
 
 #### Functions
 
@@ -573,6 +579,9 @@ When upgrading to a new version, run the following:
     erd = Rails ERD - Generate Rails Entity Relationship Diagram (ERD).
 ##### [RailRoady](https://github.com/preston/railroady)
     rr = RailRoady Models - Generate diagrams for Rails models, controllers, or states.
+##### [Elm](http://elm-lang.org)
+    elmm = Elm Make - Compile Elm source.
+    elml = Elm Live Reload - Watch for source code changes and recompile immediately.
 ##### [Travis CI](https://travis-ci.org)
     tcies = Travis CI Encrypt Slack - Encrypts and adds Code Climate token to notifications.slack section of YAML.
     tciec = Travis CI Encrypt Code Climate - Encrypts and adds Code Climate token to env.global section of YAML.
