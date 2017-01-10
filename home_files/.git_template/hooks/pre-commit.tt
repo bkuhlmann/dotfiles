@@ -12,6 +12,7 @@ IFS=$'\n\t' # Defines how Bash splits words and iterates arrays. This defines ne
 # EXTENSIONS
 source $HOME/.git_template/hooks/extensions/support.sh
 source $HOME/.git_template/hooks/extensions/bundler.sh
+source $HOME/.git_template/hooks/extensions/elm.sh
 source $HOME/.git_template/hooks/extensions/java_script.sh
 source $HOME/.git_template/hooks/extensions/pry.sh
 source $HOME/.git_template/hooks/extensions/rspec.sh
@@ -20,6 +21,7 @@ source $HOME/.git_template/hooks/extensions/jasmine.sh
 
 # EXECUTION
 bundler_gemfile_path
+elm_debug
 java_script_debugger
 java_script_console
 java_script_alert
