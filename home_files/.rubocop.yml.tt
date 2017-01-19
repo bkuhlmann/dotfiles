@@ -1,3 +1,11 @@
+Metrics/BlockLength:
+  Exclude:
+    - "**/*.gemspec"
+    - "spec/**/*"
+Metrics/LineLength:
+  Max: 100
+Metrics/ParameterLists:
+  Max: 3
 Style/AndOr:
   EnforcedStyle: conditionals
 Style/CaseIndentation:
@@ -29,11 +37,3 @@ Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
 Style/VariableNumber:
   EnforcedStyle: snake_case
-Metrics/BlockLength:
-  Exclude:
-    - "**/*.gemspec"
-    - "spec/**/*"
-Metrics/LineLength:
-  Max: 100
-Metrics/ParameterLists:
-  Max: 3
