@@ -187,7 +187,7 @@ ginfo() {
   printf "$(_print_black_on_white ' Local Configuration (.git/config) ')\n\n"
   git config --local --list
 
-  printf "\n$(_print_black_on_white ' Local Stashes ')\n\n"
+  printf "\n$(_print_black_on_white ' Stashes ')\n\n"
   local stashes="$(gashl)"
   if [[ -n "$stashes" ]]; then
     printf "$stashes"
@@ -195,11 +195,8 @@ ginfo() {
     printf "None.\n"
   fi
 
-  printf "\n$(_print_black_on_white ' Local Branches ')\n\n"
-  git branch
-
-  printf "\n$(_print_black_on_white ' Remote Branches ')\n\n"
-  git branch --remotes
+  printf "\n$(_print_black_on_white ' Branches ')\n\n"
+  gbl
 
   printf "\n$(_print_black_on_white ' Remote URLs ')\n\n"
   git remote --verbose
