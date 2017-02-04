@@ -5,9 +5,8 @@
 
 --exclude=.DS_Store
 --exclude=*.git*
---exclude=log
---exclude=tmp
 --exclude=elm-stuff
+--exclude=log
 --exclude=node_modules
---exclude=bower_components
+--exclude=tmp
 --exclude=vendor
