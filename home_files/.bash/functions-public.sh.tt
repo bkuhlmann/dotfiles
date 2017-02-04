@@ -1251,6 +1251,24 @@ guke() {
   fi
 }
 
+# Label: Git Clean (all)
+# Description: Clean uncommitted files from all projects in current directory.
+gleana() {
+  while read -r project; do
+    (
+      cd "$project"
+
+      if [[ -d ".git" ]]; then
+        # Only process projects that have untracked changes.
+        if [[ "$(git status --untracked-files --short)" ]]; then
+          printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+          git clean -d --force
+        fi
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 # Label: Git Verify and Clean
 # Description: Verify and clean objects for current project.
 gvac() {
