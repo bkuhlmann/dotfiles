@@ -11,10 +11,8 @@ _check_gem_dependencies() {
 # Label: Builds CTags
 # Description: Builds/rebuilds CTags.
 _build_ctags() {
-  local tags_file=".tags"
-
-  rm -f "$tags_file"
-  ctags -f "$tags_file"
+  rm -f ".tags"
+  ctags
 }
 
 # Label: Print warning message.

@@ -2,6 +2,7 @@
 --recurse=yes
 --tag-relative=yes
 --languages=-sql
+-f .tags
 
 --exclude=.DS_Store
 --exclude=*.git*
