@@ -1650,6 +1650,27 @@ bera() {
   done < <(find . -type d -depth 1)
 }
 
+#--------------------------------------------------------------------#
+# Section: [Code Quality](https://github.com/bkuhlmann/code_quality) #
+#--------------------------------------------------------------------#
+
+# Label: Code Quality (all)
+# Description: Run code quality tasks via binstub or Bundler for projects in current directory.
+cqa() {
+  while read -r project; do
+    (
+      cd "$project"
+      if [[ -f "Gemfile.lock" && -f "Rakefile" ]]; then
+        # Prints project (cyan).
+        printf "\033[36m${project:2}\033[m:\n"
+
+        ber code_quality
+        printf "\n"
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 #-------------------------------------#
 # Section: [RSpec](http://rspec.info) #
 #-------------------------------------#
