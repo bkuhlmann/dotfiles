@@ -138,7 +138,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v24.2.0
+    git checkout v25.0.0
 
 Master Version (unstable)
 
@@ -388,6 +388,7 @@ When upgrading to a new version, run the following:
     gso = "gemsmith --open"
     gsi = "bundle exec rake install"
     gsp = "bundle exec rake publish"
+    gsq = "bundle exec rake code_quality"
 ##### [Pragmater](https://github.com/bkuhlmann/pragmater)
     pas = "pragmater --add . --comments '# frozen_string_literal: true' --whitelist 'Gemfile' 'Guardfile' 'Rakefile' 'config.ru' 'bin/**/*' '.gemspec' '.rake' '.rb'"
 ##### [RSpec](http://rspec.info)
@@ -417,10 +418,6 @@ When upgrading to a new version, run the following:
     elms = "elm reactor"
     elmp = "elm package"
     elmi = "elm package install"
-    elmpi = "elm package install"
-    elmpp = "elm package publish"
-    elmpb = "elm package bump"
-    elmpd = "elm package diff"
     elmt = "elm test"
 ##### [Jasmine](http://jasmine.github.io)
     berj = "ber jasmine"
@@ -538,6 +535,7 @@ When upgrading to a new version, run the following:
     grs = Git Reset Soft - Resets previous commit (default), resets back to number of commits, or resets to specific commit.
     grh = Git Reset Hard - Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
     guke = Git Nuke - Permanently destroy and erase a file from history. UNRECOVERABLE!
+    gleana = Git Clean (all) - Clean uncommitted files from all projects in current directory.
     gvac = Git Verify and Clean - Verify and clean objects for current project.
     gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in current directory.
 ##### [GitHub](https://github.com)
@@ -553,13 +551,6 @@ When upgrading to a new version, run the following:
     rbs = Ruby Server - Serve web content from current directory via WEBrick.
 ##### [Ruby Gems](https://rubygems.org)
     gemdep = Gem Dependency Search - Finds a gem defined within a Gemfile or a gemspec.
-##### [RSpec](http://rspec.info)
-    bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
-    besb = Bundle Exec RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
-    besd = Bundle Exec RSpec Debug - Debug intermittent RSpec failure(s) by running spec(s) until failure is detected.
-    besp = Bundle Exec RSpec Profile - Runs RSpec specs with profiling enabled.
-    bera = Bundle Execute Rake (all) - Run default Rake tasks via binstub or Bundler for projects in current directory.
-    bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
 ##### [Bundler](http://bundler.io)
     bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
     bcg = Bundler Config Gem - Configure Bundler gem path for development.
@@ -567,7 +558,18 @@ When upgrading to a new version, run the following:
     boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
     bua = Bundle Update (all) - Update gems for projects in current directory.
     bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
+##### [Rake](https://github.com/ruby/rake)
     ber = Bundle Execute Rake - Run Rake via binstub or Bundler.
+    bera = Bundle Execute Rake (all) - Run default Rake tasks via binstub or Bundler for projects in current directory.
+##### [Code Quality](https://github.com/bkuhlmann/code_quality)
+    cqa = Code Quality (all) - Run code quality tasks via binstub or Bundler for projects in current directory.
+##### [RSpec](http://rspec.info)
+    bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
+    besb = Bundle Exec RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
+    besd = Bundle Exec RSpec Debug - Debug intermittent RSpec failure(s) by running spec(s) until failure is detected.
+    besp = Bundle Exec RSpec Profile - Runs RSpec specs with profiling enabled.
+    bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
+##### [Guard](https://github.com/guard/guard)
     beg = Bundle Execute Guard - Run Guard via binstub or Bundler.
 ##### [Ruby on Rails](http://rubyonrails.org)
     rew = Rails New - Create new Rails application from selected template.
@@ -601,6 +603,7 @@ When upgrading to a new version, run the following:
     capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open_page statements.
     comments_total = Print Comment Totals - Print project comment totals.
     ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
+    elm_debug = Elm Debug - Detect debug statements.
     git_commit_message_prefix = Git Commit Message Prefix - Detect commit message invalid prefixes.
     git_commit_message_words = Git Commit Message Words - Detect commit message words to avoid.
     git_commit_message_length = Git Commit Message Length - Detect commit message long line lengths.

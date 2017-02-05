@@ -1,3 +1,22 @@
+# v25.0.0 (2017-02-05)
+
+- Fixed CTags configuration so default file is always `.tags`.
+- Fixed `ginfo` to use formatted branch lists.
+- Added Git pre-commit hook for Elm debug statements.
+- Added Rubocop import cache(s) to Git ignore configuration.
+- Added `cqa` function.
+- Added `gleana` function.
+- Added `gsq` alias for Gemsmith code quality checks.
+- Updated CTags configuration to exclude Elm packages.
+- Updated Rubocop to import from global configuration.
+- Updated contributing documentation.
+- Removed Bower files from CTags.
+- Removed Rubocop Style/Documentation check.
+- Removed `tags` file from global Git ignore list.
+- Removed global RSpec configuration.
+- Removed unused Elm aliases.
+- Refactored grouping of Bundler, Rake, Rspec, and Guard functions.
+
 # v24.2.0 (2017-01-01)
 
 - Added Elm `elmm` function for compiling source code.
