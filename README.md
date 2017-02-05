@@ -458,7 +458,7 @@ When upgrading to a new version, run the following:
     cin = "asciinema"
     cinp = "asciinema play"
     cinu = "asciinema upload"
-##### [https://unused.codes]
+##### [Unused](https://unused.codes)
     ud = "unused --stdin < .tags"
 
 #### Functions
