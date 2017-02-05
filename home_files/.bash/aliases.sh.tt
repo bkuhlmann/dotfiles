@@ -254,10 +254,6 @@ alias elmc="elm repl"
 alias elms="elm reactor"
 alias elmp="elm package"
 alias elmi="elm package install"
-alias elmpi="elm package install"
-alias elmpp="elm package publish"
-alias elmpb="elm package bump"
-alias elmpd="elm package diff"
 alias elmt="elm test"
 
 # Section: [Jasmine](http://jasmine.github.io)
