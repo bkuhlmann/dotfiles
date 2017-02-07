@@ -1229,6 +1229,22 @@ grh() {
   fi
 }
 
+# Label: Git Reset Hard (all)
+# Description: Destroy all untracked, staged, and unstaged changes for all projects in current directory. UNRECOVERABLE!
+# Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
+grha() {
+  while read -r project; do
+    (
+      cd "$project"
+
+      if [[ -d ".git" ]]; then
+        printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+        grh "$1"
+      fi
+    )
+  done < <(find . -type d -depth 1)
+}
+
 # Label: Git Nuke
 # Description: Permanently destroy and erase a file from history. UNRECOVERABLE!
 # Parameters: $1 (optional) - The file to destroy.
