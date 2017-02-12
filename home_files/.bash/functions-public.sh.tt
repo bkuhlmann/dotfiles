@@ -959,9 +959,8 @@ gbc() {
   local name="$1"
 
   if [[ "$name" ]]; then
-    git branch "$name"
-    git checkout "$name"
-    printf "$name" | _copy_and_print
+    git checkout -b "$name"
+    printf "%s" "$name" | _copy_and_print
   else
     printf "ERROR: Branch name must be supplied.\n"
     return 1
