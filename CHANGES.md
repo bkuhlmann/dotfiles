@@ -1,3 +1,14 @@
+# v25.1.0 (2017-04-11)
+
+- Fixed Unused URL.
+- Fixed auto-generation of README usage documentation.
+- Added `copd` alias for deleting cached Rubocop configurations.
+- Added `grha` fuction.
+- Updated README semantic versioning order.
+- Updated README table of contents.
+- Updated to Ruby 2.4.1.
+- Refactored `gbc` function.
+
 # v25.0.0 (2017-02-05)
 
 - Fixed CTags configuration so default file is always `.tags`.
