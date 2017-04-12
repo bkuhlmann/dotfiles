@@ -465,7 +465,7 @@ _process_rew_option() {
 _print_section() {
   if [[ "$1" == "# Section:"* ]]; then
     local section=$(printf "$1" | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
-    printf "##### $section\n"
+    printf "### $section\n"
   fi
 }
 
@@ -544,11 +544,11 @@ _print_git_hooks() {
 # Label: Print All
 # Description: Print aliases, functions, and Git hooks.
 _print_all() {
-  printf "#### Aliases\n\n"
+  printf "## Aliases\n\n"
   _print_aliases
-  printf "\n#### Functions\n\n"
+  printf "\n## Functions\n\n"
   _print_functions
-  printf "\n#### Git Hooks\n\n"
+  printf "\n## Git Hooks\n\n"
   _print_git_hooks
 }
 
