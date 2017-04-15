@@ -905,7 +905,7 @@ gpa() {
 
 # Label: Git Rebase (interactive)
 # Description: Rebase commits, interactively.
-# Parameters: $1 (optional) - The number of commits or branch to rebase to. Default: upstream or root.
+# Parameters: $1 (optional) - The commit number or branch to rebase to. Default: upstream or root.
 gri() {
   local value="$1"
   local number_regex="^[0-9]+$"
@@ -922,6 +922,13 @@ gri() {
   else
     git rebase --interactive --root
   fi
+}
+
+# Label: Git Rebase (automatic)
+# Description: Rebase commits, automatically. Identical to `gri` function but skips editor.
+# Parameters: $1 (optional) - The commit number or branch to rebase to. Default: upstream or root.
+gra() {
+  EDITOR=true gri "$1"
 }
 
 # Label: Git Branch List
