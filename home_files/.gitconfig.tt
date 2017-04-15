@@ -89,6 +89,8 @@
   trustExitCode = true
 [tag]
   sort = version:refname
+[transfer]
+  fsckobjects = true
 [url "git@github.com:"]
   insteadOf = gh:
 [url "git@heroku.com:"]
