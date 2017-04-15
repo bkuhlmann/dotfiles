@@ -80,6 +80,7 @@
 [difftool "Kaleidoscope"]
   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [merge]
+  ff = only
   tool = Kaleidoscope
   conflictStyle = diff3
 [mergetool]
