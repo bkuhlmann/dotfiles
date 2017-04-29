@@ -435,8 +435,7 @@ _create_rails_skeleton() {
 # Parameters: $1 (required) - The application name, $2 (required) - The template to apply, $3 (optional) - The branch. Default: master.
 _process_rew_option() {
   local branch="${3:-master}"
-  local flags="--skip-git --skip-gemfile --skip-bundle --skip-test --skip-spring --skip-turbolinks --skip-puma --skip-keeps --force --database postgresql"
-  local flags_with_template="$flags --template"
+  local flags="--skip-git --skip-bundle --skip-sprockets --skip-action-cable --skip-turbolinks --skip-spring --skip-test --skip-keeps --force --database postgresql"
 
   case $2 in
     "default")
@@ -444,11 +443,11 @@ _process_rew_option() {
     "custom")
       _create_rails_skeleton "$1" "$flags";;
     "slim")
-      _create_rails_skeleton "$1" "$flags_with_template https://raw.github.com/bkuhlmann/rails_slim_template/$branch/template.rb";;
+      _create_rails_skeleton "$1" "$flags --template https://raw.github.com/bkuhlmann/rails_slim_template/$branch/template.rb";;
     "setup")
-      _create_rails_skeleton "$1" "$flags_with_template https://raw.github.com/bkuhlmann/rails_setup_template/$branch/template.rb";;
+      _create_rails_skeleton "$1" "$flags --template https://raw.github.com/bkuhlmann/rails_setup_template/$branch/template.rb";;
     "dummy")
-      _create_rails_skeleton "$1" "$flags_with_template https://raw.github.com/bkuhlmann/rails_dummy_template/$branch/template.rb";;
+      _create_rails_skeleton "$1" "$flags --template https://raw.github.com/bkuhlmann/rails_dummy_template/$branch/template.rb";;
     'q');;
     *)
       printf "ERROR: Invalid option.\n";;
