@@ -92,11 +92,11 @@
   sort = version:refname
 [transfer]
   fsckobjects = true
-[url "git@github.com:"]
+[url "https://github.com/"]
   insteadOf = gh:
-[url "git@heroku.com:"]
-  insteadOf = heroku:
-[url "git@github.com:bkuhlmann/"]
+[url "https://github.com/bkuhlmann/"]
   insteadOf = bk:
+[url "https://git.heroku.com"]
+  insteadOf = heroku:
 [remote "origin"]
   fetch = +refs/pull/*/head:refs/remotes/pull_requests/*
