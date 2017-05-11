@@ -1,3 +1,15 @@
+# v25.2.0 (2017-05-11)
+
+- Fixed Git hook detection of avoidable commit message words/phrases.
+- Added Git hook for Ruby IRB binding debug statements.
+- Added `gra` function for automatic Git rebasing.
+- Added object checks to Git configuration.
+- Updated Git config URLs to be HTTPS URLs.
+- Updated `gbc` function to always track on Git branch creation.
+- Updated `rew` function to use Rails 5.1.0 flags.
+- Updated global Git configuration to only fast forward merges.
+- Updated to Code Quality 1.0.0.
+
 # v25.1.0 (2017-04-11)
 
 - Fixed Unused URL.

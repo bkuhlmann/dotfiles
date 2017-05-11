@@ -141,7 +141,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v25.1.0
+    git checkout v25.2.0
 
 Master Version (unstable)
 
@@ -525,6 +525,7 @@ When upgrading to a new version, run the following:
     gpob = Git Push Origin Branch - Pushes current branch to origin and sets upstream tracking.
     gpa = Git Push (all) - Push changes for projects in current directory.
     gri = Git Rebase (interactive) - Rebase commits, interactively.
+    gra = Git Rebase (automatic) - Rebase commits, automatically. Identical to `gri` function but skips editor.
     gbl = Git Branch List - List local and remote branch details.
     gbla = Git Branch List (all) - List current branch for projects in current directory.
     gbc = Git Branch Create - Create and switch to branch.
@@ -620,6 +621,7 @@ When upgrading to a new version, run the following:
     reek_check = Reek - Scans Ruby code for poor style choices.
     rspec_focus = RSpec Focus - Detect RSpec focus.
     rubocop_check = Rubocop - Scans Ruby code for poor style choices.
+    irb_binding = IRB Binding - Detect IRB debug statements.
     scss_lint_check = SCSS Lint - Scans SCSS code for poor style choices.
 
 ## IRB, Pry, and Rails consoles
