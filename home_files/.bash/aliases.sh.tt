@@ -247,10 +247,6 @@ alias elmp="elm package"
 alias elmi="elm package install"
 alias elmt="elm test"
 
-# Section: [Jasmine](http://jasmine.github.io)
-alias berj="ber jasmine"
-alias berjci="ber jasmine:ci"
-
 # Section: [Rubocop](https://github.com/bbatsov/rubocop)
 alias cop="rubocop --display-cop-names"
 alias copc="rubocop --auto-gen-config"
