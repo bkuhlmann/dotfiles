@@ -1852,7 +1852,7 @@ erd() {
   local doc_dir="tmp/doc"
 
   mkdir -p "$doc_dir"
-  ber erd attributes=primary_keys,foreign_keys,timestamps,inheritance,content inheritance=true orientation=vertical filename="$doc_dir/models"
+  ber erd filename="$doc_dir/models"
   printf "$(pwd)/$doc_dir/models.pdf" | _copy_and_print
 }
 
