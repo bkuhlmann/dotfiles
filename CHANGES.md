@@ -1,3 +1,21 @@
+# v26.0.0 (2017-05-27)
+
+- Added .erdconfig template.
+- Updated Code Quality 1.1.0.
+- Removed Jasmine aliases.
+- Removed Rails Rake tasks aliases for custom notes.
+- Removed Rails asset pipeline aliases.
+- Removed Rails helper generator alias.
+- Removed Rails scaffold generator alias.
+- Removed Swift aliases.
+- Removed `--all` option from `gamendh` alias.
+- Removed `erd` function custom options (use global config instead).
+- Removed `grim` alias.
+- Removed `mst` alias.
+- Removed `sketch` function.
+- Removed unused (program) aliases.
+- Removed unused Git merge aliases.
+
 # v25.2.0 (2017-05-11)
 
 - Fixed Git hook detection of avoidable commit message words/phrases.
