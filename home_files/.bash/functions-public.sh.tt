@@ -1979,31 +1979,6 @@ tciea() {
   done < <(find . -type d -depth 1)
 }
 
-#-----------------------------------------------------#
-# Section: [Image Magick](http://www.imagemagick.org) #
-#-----------------------------------------------------#
-
-# Label: Sketch
-# Description: Convert photo into a sketch. Inspired by [Whiteboard Cleaner Gist](https://gist.github.com/lelandbatey/8677901).
-# Parameters: $1 (required) - The input image path, $2 (optional) - The output image path. Default: sketch.jpg.
-sketch() {
-  local input_path="$1"
-  local output_path="$2"
-
-  if [[ -z "$input_path" ]]; then
-    printf "ERROR: Input image path must be supplied.\n"
-    return 1
-  fi
-
-  if [[ -z "$output_path" ]]; then
-    local output_path="sketch.jpg"
-  fi
-
-  printf "\nProcessing image: $input_path...\n"
-  convert "$input_path" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$output_path"
-  printf "\nSketch image ready: $output_path.\n"
-}
-
 #------------------------------------------#
 # Section: [FFmpeg](http://www.ffmpeg.org) #
 #------------------------------------------#
