@@ -369,7 +369,7 @@ glameh() {
 
   local file="$1"
   local lines="$2"
-  local commits=($(git blame -s -M -C -C -C -L "$lines" "$file" | awk '{print $1}' | sort -u))
+  local commits=($(git blame -s -M -C -C -L "$lines" "$file" | awk '{print $1}' | sort -u))
 
   _git_file_commits commits[@] "$file"
 }
