@@ -10,87 +10,87 @@ more.
 
 <!-- Tocer[start]: Auto-generated, don't remove. -->
 
-# Table of Contents
+## Table of Contents
 
-- [Features](#features)
-- [Screencast](#screencast)
-- [Requirements](#requirements)
+  - [Features](#features)
+  - [Screencast](#screencast)
+  - [Requirements](#requirements)
 - [Setup](#setup)
   - [Upgrade](#upgrade)
-- [Usage](#usage)
-  - [Aliases](#aliases)
-    - [General](#general)
-    - [Bash](#bash)
-    - [Network](#network)
-    - [tmux](#tmux)
-    - [Homebrew](#homebrew)
-    - [Git](#git)
-    - [Tar](#tar)
-    - [PostgreSQL](#postgresql)
-    - [Redis](#redis)
-    - [Elasticsearch](#elasticsearch)
-    - [chruby](#chruby)
-    - [Ruby](#ruby)
-    - [Ruby Gems](#ruby-gems)
-    - [Ruby Gems Whois](#ruby-gems-whois)
-    - [Rake](#rake)
-    - [Bundler](#bundler)
-    - [Milestoner](#milestoner)
-    - [Gemsmith](#gemsmith)
-    - [Pragmater](#pragmater)
-    - [RSpec](#rspec)
-    - [Ruby on Rails](#ruby-on-rails)
-    - [Elm](#elm)
-    - [Rubocop](#rubocop)
-    - [Rails Best Practices](#rails-best-practices)
-    - [SimpleCov](#simplecov)
-    - [Foreman](#foreman)
-    - [Silver Surfer](#silver-surfer)
-    - [direnv](#direnv)
-    - [Z](#z)
-    - [iTerm](#iterm)
-    - [Path Finder](#path-finder)
-    - [Vim](#vim)
-    - [Sublime Text](#sublime-text)
-    - [Marked 2](#marked-2)
-    - [asciinema](#asciinema)
-  - [Functions](#functions)
-    - [General](#general-1)
-    - [less](#less)
-    - [OpenSSL](#openssl)
-    - [curl](#curl)
-    - [lsof](#lsof)
-    - [Git](#git-1)
-    - [GitHub](#github)
-    - [PostgreSQL](#postgresql-1)
-    - [Ruby](#ruby-1)
-    - [Ruby Gems](#ruby-gems-1)
-    - [Bundler](#bundler-1)
-    - [Rake](#rake-1)
-    - [Code Quality](#code-quality)
-    - [RSpec](#rspec-1)
-    - [Guard](#guard)
-    - [Ruby on Rails](#ruby-on-rails-1)
-    - [Rails ERD](#rails-erd)
-    - [RailRoady](#railroady)
-    - [Elm](#elm-1)
-    - [Travis CI](#travis-ci)
-    - [FFmpeg](#ffmpeg)
-    - [asciinema](#asciinema-1)
-    - [Dotfiles](#dotfiles)
-  - [Git Hooks](#git-hooks)
-  - [IRB, Pry, and Rails consoles](#irb-pry-and-rails-consoles)
-  - [Pry Aliases](#pry-aliases)
-- [Versioning](#versioning)
-- [Code of Conduct](#code-of-conduct)
-- [Contributions](#contributions)
-- [License](#license)
-- [History](#history)
-- [Credits](#credits)
+  - [Usage](#usage)
+    - [Aliases](#aliases)
+      - [General](#general)
+      - [Bash](#bash)
+      - [Network](#network)
+      - [tmux](#tmux)
+      - [Homebrew](#homebrew)
+      - [Git](#git)
+      - [Tar](#tar)
+      - [PostgreSQL](#postgresql)
+      - [Redis](#redis)
+      - [Elasticsearch](#elasticsearch)
+      - [chruby](#chruby)
+      - [Ruby](#ruby)
+      - [Ruby Gems](#ruby-gems)
+      - [Ruby Gems Whois](#ruby-gems-whois)
+      - [Rake](#rake)
+      - [Bundler](#bundler)
+      - [Milestoner](#milestoner)
+      - [Gemsmith](#gemsmith)
+      - [Pragmater](#pragmater)
+      - [RSpec](#rspec)
+      - [Ruby on Rails](#ruby-on-rails)
+      - [Elm](#elm)
+      - [Rubocop](#rubocop)
+      - [Rails Best Practices](#rails-best-practices)
+      - [SimpleCov](#simplecov)
+      - [Foreman](#foreman)
+      - [Silver Surfer](#silver-surfer)
+      - [direnv](#direnv)
+      - [Z](#z)
+      - [iTerm](#iterm)
+      - [Path Finder](#path-finder)
+      - [Vim](#vim)
+      - [Sublime Text](#sublime-text)
+      - [Marked 2](#marked-2)
+      - [asciinema](#asciinema)
+    - [Functions](#functions)
+      - [General](#general-1)
+      - [less](#less)
+      - [OpenSSL](#openssl)
+      - [curl](#curl)
+      - [lsof](#lsof)
+      - [Git](#git-1)
+      - [GitHub](#github)
+      - [PostgreSQL](#postgresql-1)
+      - [Ruby](#ruby-1)
+      - [Ruby Gems](#ruby-gems-1)
+      - [Bundler](#bundler-1)
+      - [Rake](#rake-1)
+      - [Code Quality](#code-quality)
+      - [RSpec](#rspec-1)
+      - [Guard](#guard)
+      - [Ruby on Rails](#ruby-on-rails-1)
+      - [Rails ERD](#rails-erd)
+      - [RailRoady](#railroady)
+      - [Elm](#elm-1)
+      - [Travis CI](#travis-ci)
+      - [FFmpeg](#ffmpeg)
+      - [asciinema](#asciinema-1)
+      - [Dotfiles](#dotfiles)
+    - [Git Hooks](#git-hooks)
+    - [IRB, Pry, and Rails consoles](#irb-pry-and-rails-consoles)
+    - [Pry Aliases](#pry-aliases)
+  - [Versioning](#versioning)
+  - [Code of Conduct](#code-of-conduct)
+  - [Contributions](#contributions)
+  - [License](#license)
+  - [History](#history)
+  - [Credits](#credits)
 
 <!-- Tocer[finish]: Auto-generated, don't remove. -->
 
-# Features
+## Features
 
 - Configures the Bash `.bashrc`, `.bash_profile`, and `.inputrc` files.
 - Configures the `.hushlogin` file.
@@ -122,11 +122,11 @@ more.
 - Adds [Travis CI](https://travis-ci.org) support.
 - Adds [Z](https://github.com/rupa/z) support.
 
-# Screencast
+## Screencast
 
 [![asciicast](https://asciinema.org/a/88966.png)](https://asciinema.org/a/88966)
 
-# Requirements
+## Requirements
 
 - [macOS](https://github.com/bkuhlmann/mac_os)
 
@@ -181,11 +181,11 @@ When upgrading to a new version, run the following:
 0. Change to the root directory where all projects are stored and run `gia` to re-initialize
    repositories with new Git Hook updates.
 
-# Usage
+## Usage
 
-## Aliases
+### Aliases
 
-### General
+#### General
     .. = "cd .."
     ... = "cd ../.."
     cdb = "cd -"
@@ -199,10 +199,10 @@ When upgrading to a new version, run the following:
     home = 'cd $HOME'
     man = "gem man --system"
     rmde = "find . -type d -empty -not -path '*.git*' -delete"
-### [Bash](https://www.gnu.org/software/bash)
+#### [Bash](https://www.gnu.org/software/bash)
     bashe = '$EDITOR $HOME/.bash/env.sh'
     bashs = 'exec $SHELL'
-### Network
+#### Network
     sshe = '$EDITOR $HOME/.ssh/config'
     key = "open /Applications/Utilities/Keychain\ Access.app"
     ipa = 'curl --silent checkip.dyndns.org | ag --only-matching "[0-9\.]+" | _copy_and_print'
@@ -210,12 +210,12 @@ When upgrading to a new version, run the following:
     dnsi = "scutil --dns"
     dnss = "sudo dscacheutil -statistics"
     dnsf = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
-### [tmux](http://tmux.sourceforge.net)
+#### [tmux](http://tmux.sourceforge.net)
     tsl = "tmux list-sessions"
     tsa = "tmux attach-session -t"
     tsk = "tmux kill-session -t"
     tsr = "tmux rename-session -t"
-### [Homebrew](http://brew.sh)
+#### [Homebrew](http://brew.sh)
     hb = "brew"
     hbi = "brew install"
     hbin = "brew info"
@@ -230,7 +230,7 @@ When upgrading to a new version, run the following:
     hbd = "brew doctor"
     hbc = "brew cleanup"
     hbsu = "hbup && hbug && hbc"
-### [Git](http://git-scm.com)
+#### [Git](http://git-scm.com)
     gi = "git init"
     gcle = "git config --local --edit"
     gcge = "git config --global --edit"
@@ -289,6 +289,7 @@ When upgrading to a new version, run the following:
     gcs = "git commit --squash"
     gamend = "git commit --amend"
     gamendh = "git commit --amend --no-edit"
+    gamenda = "git commit --amend --all --no-edit"
     gcp = "git cherry-pick"
     gcpa = "git cherry-pick --abort"
     gashc = "git stash clear"
@@ -327,24 +328,24 @@ When upgrading to a new version, run the following:
     grev = "git revert" # Revert a commit.
     grp = "git remote prune origin"
     glean = "git clean -d --force"
-### [Tar](http://www.gnu.org/software/tar/tar.html)
+#### [Tar](http://www.gnu.org/software/tar/tar.html)
     bzc = "tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
     bzx = "tar --extract --bzip2 --verbose --file"
-### [PostgreSQL](http://www.postgresql.org)
+#### [PostgreSQL](http://www.postgresql.org)
     pgi = "initdb /usr/local/var/postgres"
     pgst = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start &"
     pgsp = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-### [Redis](http://redis.io)
+#### [Redis](http://redis.io)
     reds = "redis-server /usr/local/etc/redis.conf &"
     redc = "redis-cli"
-### [Elasticsearch](https://www.elastic.co)
+#### [Elasticsearch](https://www.elastic.co)
     esst = "elasticsearch --daemonize"
     essp = "kilp elasticsearch"
-### [chruby](https://github.com/postmodern/chruby)
+#### [chruby](https://github.com/postmodern/chruby)
     crb = "chruby"
-### [Ruby](https://www.ruby-lang.org)
+#### [Ruby](https://www.ruby-lang.org)
     rbi = "ruby-install"
-### [Ruby Gems](https://rubygems.org)
+#### [Ruby Gems](https://rubygems.org)
     gemcr = '$EDITOR ~/.gem/credentials'
     geml = "gem list"
     gemi = "gem install"
@@ -356,11 +357,11 @@ When upgrading to a new version, run the following:
     geme = "gem environment"
     gemuc = "gem update --system && gem update && gem cleanup"
     gemcli = "ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | _copy_and_print '\n'"
-### [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
+#### [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
     gemw = "gem whois"
-### [Rake](https://github.com/ruby/rake)
+#### [Rake](https://github.com/ruby/rake)
     bert = "ber -T"
-### [Bundler](http://bundler.io)
+#### [Bundler](http://bundler.io)
     b = "bundle"
     bs = "bundle show"
     bl = "bundle lock"
@@ -371,12 +372,12 @@ When upgrading to a new version, run the following:
     bcon = "bundle console"
     be = "bundle exec"
     bch = "rm -f Gemfile.lock; bundle check"
-### [Milestoner](https://github.com/bkuhlmann/milestoner)
+#### [Milestoner](https://github.com/bkuhlmann/milestoner)
     ms = "milestoner"
     msc = 'milestoner --commits | _copy_and_print "\n"'
     msp = "milestoner --publish"
     mse = "milestoner --config --edit"
-### [Gemsmith](https://github.com/bkuhlmann/gemsmith)
+#### [Gemsmith](https://github.com/bkuhlmann/gemsmith)
     gs = "gemsmith"
     gsg = "gemsmith --generate"
     gse = "gemsmith --config --edit"
@@ -385,14 +386,14 @@ When upgrading to a new version, run the following:
     gsi = "bundle exec rake install"
     gsp = "bundle exec rake publish"
     gsq = "bundle exec rake code_quality"
-### [Pragmater](https://github.com/bkuhlmann/pragmater)
+#### [Pragmater](https://github.com/bkuhlmann/pragmater)
     pas = "pragmater --add . --comments '# frozen_string_literal: true' --whitelist 'Gemfile' 'Guardfile' 'Rakefile' 'config.ru' 'bin/**/*' '.gemspec' '.rake' '.rb'"
-### [RSpec](http://rspec.info)
+#### [RSpec](http://rspec.info)
     bess = "bes spec"
     best = "bess --tag"
     besn = "bess --next-failure"
     besf = "bess --only-failures"
-### [Ruby on Rails](http://rubyonrails.org)
+#### [Ruby on Rails](http://rubyonrails.org)
     scs = "sc --sandbox"
     sgc = "sg controller"
     sgm = "sg model"
@@ -403,64 +404,64 @@ When upgrading to a new version, run the following:
     taild = "tail -f log/development.log"
     tailt = "tail -f log/test.log"
     res = "touch tmp/restart.txt"
-### [Elm](http://elm-lang.org)
+#### [Elm](http://elm-lang.org)
     elmc = "elm repl"
     elms = "elm reactor"
     elmp = "elm package"
     elmi = "elm package install"
     elmt = "elm test"
-### [Rubocop](https://github.com/bbatsov/rubocop)
-    cop = "rubocop --display-cop-names"
+#### [Rubocop](https://github.com/bbatsov/rubocop)
+    cop = "rubocop --parallel --display-cop-names"
     copc = "rubocop --auto-gen-config"
     copo = "rubocop --display-cop-names --only"
     copf = "rubocop --auto-correct"
     cops = "rubocop --show-cops"
     copd = 'find . -name ".rubocop-http*" -type f -delete'
-### [Rails Best Practices](https://github.com/railsbp/rails_best_practices)
+#### [Rails Best Practices](https://github.com/railsbp/rails_best_practices)
     rbp = "rails_best_practices"
-### [SimpleCov](https://github.com/colszowka/simplecov)
+#### [SimpleCov](https://github.com/colszowka/simplecov)
     cov = "open coverage/index.html"
-### [Foreman](https://github.com/ddollar/foreman)
+#### [Foreman](https://github.com/ddollar/foreman)
     fms = "foreman start --env /dev/null"
-### [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
+#### [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
     agf = "ag --hidden --files-with-matches --file-search-regex"
-### [direnv](http://direnv.net)
+#### [direnv](http://direnv.net)
     denva = "direnv allow"
     denvr = "direnv reload"
     denvs = "direnv status"
-### [Z](https://github.com/rupa/z)
+#### [Z](https://github.com/rupa/z)
     ze = '$EDITOR $HOME/.z'
-### [iTerm](https://www.iterm2.com)
+#### [iTerm](https://www.iterm2.com)
     itl = 'printf "\033]0;${PWD##*/}\007"'
-### [Path Finder](http://www.cocoatech.com/pathfinder)
+#### [Path Finder](http://www.cocoatech.com/pathfinder)
     pfo = 'open -a "Path Finder.app" "$PWD"'
-### [Vim](http://www.vim.org)
+#### [Vim](http://www.vim.org)
     v = "vim"
-### [Sublime Text](http://www.sublimetext.com)
+#### [Sublime Text](http://www.sublimetext.com)
     e = "sublime"
-### [Marked 2](http://marked2app.com)
+#### [Marked 2](http://marked2app.com)
     mo = "open -a Marked\ 2"
-### [asciinema](https://asciinema.org)
+#### [asciinema](https://asciinema.org)
     cin = "asciinema"
     cinp = "asciinema play"
     cinu = "asciinema upload"
 
-## Functions
+### Functions
 
-### General
+#### General
     t2s = Tab to Space - Convert file from tab to space indendation.
     cype = Colorized Type - Identical to "type" command functionality but with syntax highlighting.
     pss = Process Status (specialized) - Display process status, excluding the search of it, and ignoring case.
     kilp = Kill Process - Kill errant processes.
-### [less](http://en.wikipedia.org/wiki/Less_(Unix))
+#### [less](http://en.wikipedia.org/wiki/Less_(Unix))
     lessi = Less Interactive - Inspect file, interactively.
-### [OpenSSL](https://openssl.org)
+#### [OpenSSL](https://openssl.org)
     sslc = SSL Certificate Creation - Create SSL certificate.
-### [curl](http://curl.haxx.se)
+#### [curl](http://curl.haxx.se)
     curli = Curl Inspect - Inspect remote file with default editor.
-### [lsof](http://people.freebsd.org/~abe/)
+#### [lsof](http://people.freebsd.org/~abe/)
     port = Port - List file activity on given port.
-### [Git](http://git-scm.com)
+#### [Git](http://git-scm.com)
     gia = Git Init (all) - Initialize/re-initialize repositories in current directory.
     groot = Git Root - Change to repository root directory regardless of current depth.
     ginfo = Git Info - Print repository overview information.
@@ -524,64 +525,64 @@ When upgrading to a new version, run the following:
     gleana = Git Clean (all) - Clean uncommitted files from all projects in current directory.
     gvac = Git Verify and Clean - Verify and clean objects for current project.
     gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in current directory.
-### [GitHub](https://github.com)
+#### [GitHub](https://github.com)
     gh = GitHub - View GitHub details for current project.
     ghpra = GitHub Pull Request (all) - Open pull request for all projects in current directory (non-master branches only).
-### [PostgreSQL](http://www.postgresql.org)
+#### [PostgreSQL](http://www.postgresql.org)
     pguc = PostgreSQL User Create - Create PostgreSQL user.
     pgud = PostgreSQL User Drop - Drop PostgreSQL user.
     pgt = PostgreSQL Template - Edit PostgreSQL template.
-### [Ruby](https://www.ruby-lang.org)
+#### [Ruby](https://www.ruby-lang.org)
     rbva = Ruby Version (all) - Show current Ruby version for all projects in current directory.
     rbua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version.
     rbs = Ruby Server - Serve web content from current directory via WEBrick.
-### [Ruby Gems](https://rubygems.org)
+#### [Ruby Gems](https://rubygems.org)
     gemdep = Gem Dependency Search - Finds a gem defined within a Gemfile or a gemspec.
-### [Bundler](http://bundler.io)
+#### [Bundler](http://bundler.io)
     bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
     bcg = Bundler Config Gem - Configure Bundler gem path for development.
     bcim = Bundler Config Ignore Post-Install Message - Configure Bundler to ignore install messages for specified gem.
     boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
     bua = Bundle Update (all) - Update gems for projects in current directory.
     bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
-### [Rake](https://github.com/ruby/rake)
+#### [Rake](https://github.com/ruby/rake)
     ber = Bundle Execute Rake - Run Rake via binstub or Bundler.
     bera = Bundle Execute Rake (all) - Run default Rake tasks via binstub or Bundler for projects in current directory.
-### [Code Quality](https://github.com/bkuhlmann/code_quality)
+#### [Code Quality](https://github.com/bkuhlmann/code_quality)
     cqa = Code Quality (all) - Run code quality tasks via binstub or Bundler for projects in current directory.
-### [RSpec](http://rspec.info)
+#### [RSpec](http://rspec.info)
     bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
     besb = Bundle Exec RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
     besd = Bundle Exec RSpec Debug - Debug intermittent RSpec failure(s) by running spec(s) until failure is detected.
     besp = Bundle Exec RSpec Profile - Runs RSpec specs with profiling enabled.
     bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
-### [Guard](https://github.com/guard/guard)
+#### [Guard](https://github.com/guard/guard)
     beg = Bundle Execute Guard - Run Guard via binstub or Bundler.
-### [Ruby on Rails](http://rubyonrails.org)
+#### [Ruby on Rails](http://rubyonrails.org)
     rew = Rails New - Create new Rails application from selected template.
     sc = Rails Script Console - Run Rails console.
     ss = Rails Script Server - Run Rails server.
     sg = Rails Script Generator - Run Rails generator.
     sdb = Rails Script Database Console - Run Rails database console.
-### [Rails ERD](https://github.com/voormedia/rails-erd)
+#### [Rails ERD](https://github.com/voormedia/rails-erd)
     erd = Rails ERD - Generate Rails Entity Relationship Diagram (ERD).
-### [RailRoady](https://github.com/preston/railroady)
+#### [RailRoady](https://github.com/preston/railroady)
     rr = RailRoady Models - Generate diagrams for Rails models, controllers, or states.
-### [Elm](http://elm-lang.org)
+#### [Elm](http://elm-lang.org)
     elmm = Elm Make - Compile Elm source.
     elml = Elm Live Reload - Watch for source code changes and recompile immediately.
-### [Travis CI](https://travis-ci.org)
+#### [Travis CI](https://travis-ci.org)
     tcies = Travis CI Encrypt Slack - Encrypts and adds Code Climate token to notifications.slack section of YAML.
     tciec = Travis CI Encrypt Code Climate - Encrypts and adds Code Climate token to env.global section of YAML.
     tciea = Travis CI Encrypt (all) - Encrypt string for Travis CI-enabled projects in current directory.
-### [FFmpeg](http://www.ffmpeg.org)
+#### [FFmpeg](http://www.ffmpeg.org)
     gifize = Gifize - Convert video to animated GIF.
-### [asciinema](https://asciinema.org)
+#### [asciinema](https://asciinema.org)
     cinr = asciinema Record - Create new asciinema recording.
-### Dotfiles
+#### Dotfiles
     dots = Dotfiles - Learn about dotfile aliases, functions, etc.
 
-## Git Hooks
+### Git Hooks
 
     bundler_gemfile_path = Bundler Gemfile Path - Detect gem path statements.
     capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open_page statements.
@@ -602,14 +603,14 @@ When upgrading to a new version, run the following:
     irb_binding = IRB Binding - Detect IRB debug statements.
     scss_lint_check = SCSS Lint - Scans SCSS code for poor style choices.
 
-## IRB, Pry, and Rails consoles
+### IRB, Pry, and Rails consoles
 
     ConsoleKit.locate - Locates source code for given object and method.
     ConsoleKit.search - Searches for object method for given pattern.
     ConsoleKit.copy - Copies data to OS X clipboard.
     ConsoleKit.paste - Pastes data from OS X clipboard.
 
-## Pry Aliases
+### Pry Aliases
 
     'w' = "whereami"
     'c' = "continue"
@@ -624,7 +625,7 @@ When upgrading to a new version, run the following:
     "bpC" = "break --delete-all"
     "bph" = "break --help"
 
-# Versioning
+## Versioning
 
 Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 
@@ -632,26 +633,26 @@ Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 - Minor (x.Y.z) - Incremented for new, backwards compatible, public API enhancements/fixes.
 - Patch (x.y.Z) - Incremented for small, backwards compatible, bug fixes.
 
-# Code of Conduct
+## Code of Conduct
 
 Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By
 participating in this project you agree to abide by its terms.
 
-# Contributions
+## Contributions
 
 Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-# License
+## License
 
 Copyright (c) 2010 [Alchemists](https://www.alchemists.io).
 Read [LICENSE](LICENSE.md) for details.
 
-# History
+## History
 
 Read [CHANGES](CHANGES.md) for details.
 Built with [Bashsmith](https://github.com/bkuhlmann/bashsmith).
 
-# Credits
+## Credits
 
 Developed by [Brooke Kuhlmann](https://www.alchemists.io) at
 [Alchemists](https://www.alchemists.io).
