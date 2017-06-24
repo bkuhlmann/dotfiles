@@ -76,11 +76,6 @@ fi
 # Node.js
 export PATH="$PATH:/usr/local/share/npm/bin"
 
-# Travis CI
-if [[ -e "$HOME/.travis/travis.sh" ]]; then
-  source "$HOME/.travis/travis.sh"
-fi
-
 # Yarn
 export PATH="$PATH:$(yarn global bin)"
 
