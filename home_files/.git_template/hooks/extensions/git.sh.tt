@@ -1,72 +1,12 @@
 #! /usr/bin/env bash
 
-# Label: Git Label
-# Description: Print Git label.
-_git_label() {
-  printf "[git]"
-}
-
-# Label: Git Commit Message Prefix
-# Description: Detect commit message invalid prefixes.
-git_commit_message_prefix() {
-  local message_file="${BASH_ARGV[0]}"
-  local match="^(Fixed|Removed|Added|Updated|Refactored|fixup\!|squash\!).+"
-
-  read -r first_line < $message_file
-
-  if [[ ! "$first_line" =~ $match ]]; then
-    _print_error "$(_git_label): Invalid commit message prefix. Use: Fixed, Removed, Added, Updated, or Refactored."
-    exit 1
+# Label: Git Cop
+# Description: Enforces consistent Git commits.
+git_cop() {
+  if ! command -v git-cop > /dev/null; then
+     printf "%s\n" "[git]: Git Cop not found. To install, run: gem install git-cop --trust-policy MediumSecurity."
+     exit 1
   fi
-}
 
-# Label: Git Commit Message Words
-# Description: Detect commit message words to avoid.
-# Reference: http://css-tricks.com/words-avoid-educational-writing.
-git_commit_message_words() {
-  local message_file="${BASH_ARGV[0]}"
-  local line_number=0
-  local matched_lines=()
-  local match="((O|o)bviously|(B|b)asically|(S|s)imply|(O|o)f course|(C|c)learly|(J|j)ust|(E|e)veryone knows|(H|h)owever|so |(E|e)asy)"
-
-  while read -r line; do
-    line_number=$((line_number+1))
-
-    if [[ "$line" =~ $match ]]; then
-      matched_lines+=("$line_number: $line")
-    fi
-  done < "$message_file"
-
-  if [[ ${#matched_lines[@]} -gt 0 ]]; then
-    _print_warning "$(_git_label): Commit message uses words/phrases that should be avoided:"
-
-    for line in ${matched_lines[@]}; do
-      _print_warning "  $line"
-    done
-  fi
-}
-
-# Label: Git Commit Message Length
-# Description: Detect commit message long line lengths.
-git_commit_message_length() {
-  local message_file="${BASH_ARGV[0]}"
-  local line_length=71
-  local line_number=0
-  local long_lines=()
-
-  while read -r line; do
-    line_number=$((line_number+1))
-
-    if [[ ${#line} -gt $line_length && "$line" != '#'* ]]; then
-      long_lines+=("$line_number: $line")
-    fi
-  done < "$message_file"
-
-  if [[ ${#long_lines[@]} -gt 0 ]]; then
-    _print_warning "$(_git_label): Commit message exceeds $line_length character line length:"
-
-    for line in ${long_lines[@]}; do
-      _print_warning "  $line"
-    done
-  fi
+  git-cop --hook --commit-message "${BASH_ARGV[0]}"
 }
