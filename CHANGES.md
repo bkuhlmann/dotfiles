@@ -1,3 +1,16 @@
+# v26.1.0 (2017-07-16)
+
+- Fixed `glameh` function when looking for file copies.
+- Added Git Cop commit message Git Hook.
+- Added Git Cop support.
+- Added Rubocop parallel processing support.
+- Added `gamenda` alias.
+- Updated CONTRIBUTING documentation.
+- Updated GitHub templates.
+- Updated README headers.
+- Updated gem dependencies.
+- Removed Travis CI support.
+
 # v26.0.0 (2017-05-27)
 
 - Added .erdconfig template.

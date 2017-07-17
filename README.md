@@ -139,7 +139,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v26.0.0
+    git checkout v26.1.0
 
 Master Version (unstable)
 
@@ -572,10 +572,6 @@ When upgrading to a new version, run the following:
 #### [Elm](http://elm-lang.org)
     elmm = Elm Make - Compile Elm source.
     elml = Elm Live Reload - Watch for source code changes and recompile immediately.
-#### [Travis CI](https://travis-ci.org)
-    tcies = Travis CI Encrypt Slack - Encrypts and adds Code Climate token to notifications.slack section of YAML.
-    tciec = Travis CI Encrypt Code Climate - Encrypts and adds Code Climate token to env.global section of YAML.
-    tciea = Travis CI Encrypt (all) - Encrypt string for Travis CI-enabled projects in current directory.
 #### [FFmpeg](http://www.ffmpeg.org)
     gifize = Gifize - Convert video to animated GIF.
 #### [asciinema](https://asciinema.org)
@@ -590,9 +586,7 @@ When upgrading to a new version, run the following:
     comments_total = Print Comment Totals - Print project comment totals.
     ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
     elm_debug = Elm Debug - Detect debug statements.
-    git_commit_message_prefix = Git Commit Message Prefix - Detect commit message invalid prefixes.
-    git_commit_message_words = Git Commit Message Words - Detect commit message words to avoid.
-    git_commit_message_length = Git Commit Message Length - Detect commit message long line lengths.
+    git_cop = Git Cop - Enforces consistent Git commits.
     jasmine_focus = Jasmine Focus - Detect Jasmine focus statements.
     java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
     java_script_console = JavaScript Console - Detect JavaScript console statements.
