@@ -19,10 +19,6 @@
   hooksPath = ~/.git_template/hooks
   pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
-  diff = auto
-  status = auto
-  branch = auto
-  interactive = auto
   ui = true
   pager = true
 [color "status"]
@@ -34,8 +30,8 @@
   local = yellow
   remote = green
 [color "diff"]
-  meta = yellow bold
-  commit = green bold
+  meta = 227
+  commit = 227 bold
   frag = magenta bold
   old = red bold
   new = green bold
