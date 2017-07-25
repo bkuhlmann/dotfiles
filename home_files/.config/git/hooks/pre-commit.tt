@@ -10,15 +10,15 @@ set -o pipefail # Returns exit status of the last command in the pipe that retur
 IFS=$'\n\t' # Defines how Bash splits words and iterates arrays. This defines newlines and tabs as delimiters.
 
 # EXTENSIONS
-source $HOME/.git_template/hooks/extensions/support.sh
-source $HOME/.git_template/hooks/extensions/bundler.sh
-source $HOME/.git_template/hooks/extensions/capybara.sh
-source $HOME/.git_template/hooks/extensions/elm.sh
-source $HOME/.git_template/hooks/extensions/jasmine.sh
-source $HOME/.git_template/hooks/extensions/java_script.sh
-source $HOME/.git_template/hooks/extensions/pry.sh
-source $HOME/.git_template/hooks/extensions/rspec.sh
-source $HOME/.git_template/hooks/extensions/ruby.sh
+source $HOME/.config/git/hooks/extensions/support.sh
+source $HOME/.config/git/hooks/extensions/bundler.sh
+source $HOME/.config/git/hooks/extensions/capybara.sh
+source $HOME/.config/git/hooks/extensions/elm.sh
+source $HOME/.config/git/hooks/extensions/jasmine.sh
+source $HOME/.config/git/hooks/extensions/java_script.sh
+source $HOME/.config/git/hooks/extensions/pry.sh
+source $HOME/.config/git/hooks/extensions/rspec.sh
+source $HOME/.config/git/hooks/extensions/ruby.sh
 
 # EXECUTION
 bundler_gemfile_path

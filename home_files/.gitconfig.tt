@@ -14,9 +14,9 @@
   untrackedcache = true
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   editor = "$EDITOR --wait"
-  excludesfile = ~/.gitignore
-  attributesFile = ~/.git_template/info/attributes
-  hooksPath = ~/.git_template/hooks
+  excludesfile = ~/.config/git/ignore
+  attributesFile = ~/.config/git/info/attributes
+  hooksPath = ~/.config/git/hooks
   pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
   ui = true
@@ -42,7 +42,7 @@
   newNormal = green bold
   newHighlight = green bold 22
 [commit]
-  template = ~/.git_template/commit_message.txt
+  template = ~/.config/git/commit_message.txt
 [interactive]
   singleKey = true
 [status]

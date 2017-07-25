@@ -15,20 +15,20 @@ export HISTSIZE=10000 # Keep lengthy command history.
 export HISTIGNORE="..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane commands.
 
 # Environment
-. "$HOME/.bash/env.sh"
+. "$HOME/.config/bash/env.sh"
 
 # Colors
-. "$HOME/.bash/colors.sh"
+. "$HOME/.config/bash/colors.sh"
 
 # Aliases
-. "$HOME/.bash/aliases.sh"
+. "$HOME/.config/bash/aliases.sh"
 
 # Functions
-. "$HOME/.bash/functions-private.sh"
-. "$HOME/.bash/functions-public.sh"
+. "$HOME/.config/bash/functions-private.sh"
+. "$HOME/.config/bash/functions-public.sh"
 
 # Command Prompt (http://jonisalonen.com/2012/your-bash-prompt-needs-this)
-. "$HOME/.bash/prompt.sh"
+. "$HOME/.config/bash/prompt.sh"
 
 # Homebrew
 export HOMEBREW_NO_ANALYTICS=1

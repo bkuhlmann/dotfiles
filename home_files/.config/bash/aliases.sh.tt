@@ -16,7 +16,7 @@ alias man="gem man --system"
 alias rmde="find . -type d -empty -not -path '*.git*' -delete"
 
 # Section: [Bash](https://www.gnu.org/software/bash)
-alias bashe='$EDITOR $HOME/.bash/env.sh'
+alias bashe='$EDITOR $HOME/.config/bash/env.sh'
 alias bashs='exec $SHELL'
 
 # Section: Network

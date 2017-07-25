@@ -485,7 +485,7 @@ _print_aliases() {
       printf "    "
       _print_alias "$line"
     fi
-  done < "$HOME/.bash/aliases.sh"
+  done < "$HOME/.config/bash/aliases.sh"
 }
 
 # Label: Print Function Name
@@ -516,7 +516,7 @@ _set_function_description() {
 # Label: Print Functions
 # Description: Print functions.
 _print_functions() {
-  local path="${1:-$HOME/.bash/functions-public.sh}"
+  local path="${1:-$HOME/.config/bash/functions-public.sh}"
 
   while read -r line; do
     _print_section "$line"
@@ -535,7 +535,7 @@ _print_functions() {
 # Label: Print Git Hooks
 # Description: Print Git hooks.
 _print_git_hooks() {
-  for file in $(find "$HOME/.git_template/hooks/extensions" -type l); do
+  for file in $(find "$HOME/.config/git/hooks/extensions" -type l); do
     _print_functions "$file"
   done
 }
@@ -560,7 +560,7 @@ _find_alias() {
       printf "    Alias: "
       _print_alias "$line"
     fi
-  done < "$HOME/.bash/aliases.sh"
+  done < "$HOME/.config/bash/aliases.sh"
 }
 
 # Label: Find Function
@@ -577,7 +577,7 @@ _find_function() {
       unset label
       unset description
     fi
-  done < "$HOME/.bash/functions-public.sh"
+  done < "$HOME/.config/bash/functions-public.sh"
 }
 
 # Label: Find Command

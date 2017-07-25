@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # DESCRIPTION
-# Defines Git post-checkout functionality.
+# Defines Git post-merge functionality.
 
 # SETTINGS
 set -o nounset # Exit, with error message, when attempting to use an undefined variable.
@@ -10,8 +10,6 @@ set -o pipefail # Returns exit status of the last command in the pipe that retur
 IFS=$'\n\t' # Defines how Bash splits words and iterates arrays. This defines newlines and tabs as delimiters.
 
 # EXTENSIONS
-source $HOME/.git_template/hooks/extensions/support.sh
-source $HOME/.git_template/hooks/extensions/ctags.sh
+source $HOME/.config/git/hooks/extensions/support.sh
 
 # EXECUTION
-ctags_rebuild
