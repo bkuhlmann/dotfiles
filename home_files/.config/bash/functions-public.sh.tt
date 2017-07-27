@@ -1339,6 +1339,7 @@ gh() {
         printf "  f: Copy repository file URL.\n"
         printf "  b: Open repository branches. Options:\n"
         printf "     c: Open current branch.\n"
+        printf "     d: Open diff for current branch.\n"
         printf "     r: Open pull request for current branch.\n"
         printf "  t: Open repository tags.\n"
         printf "  r: Open repository pull requests.\n"
