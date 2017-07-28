@@ -266,15 +266,21 @@ gount() {
 
 # Label: Git Log (interactive)
 # Description: List commits with support to show/diff individual commits.
-# Parameters: $1 (optional) - The commit limit. Default: 25.
 gli() {
-  local commit_limit=${1:-25}
-  local commits=($(git rev-list --no-merges --max-count $commit_limit HEAD))
+  local branch="$(_git_branch_name)"
+  local commits=()
+
+  if [[ "$branch" == "master" ]]; then
+    commits=($(git rev-list --no-merges --max-count=25 master))
+  else
+    commits=($(git rev-list --no-merges --reverse master.."$branch"))
+  fi
+
   local commit_total=${#commits[@]}
   local option_padding=${#commit_total}
   local counter=1
 
-  printf "Commit Log:\n\n"
+  printf "Commits:\n\n"
 
   for commit in ${commits[@]}; do
     local option="$(printf "%${option_padding}s" $counter)"
