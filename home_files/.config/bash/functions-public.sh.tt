@@ -1876,7 +1876,7 @@ rr() {
 
   case $kind in
     'm')
-      railroady --label --inheritance --specify --all-columns --join --transitive --output "$doc_dir/models.dot" --models
+      railroady --label --inheritance --show-belongs_to --all-columns --transitive --output "$doc_dir/models.dot" --models
       printf "$(pwd)/$doc_dir/models.dot" | _copy_and_print;;
     'c')
       railroady --label --inheritance --output "$doc_dir/controllers.dot" --controllers
