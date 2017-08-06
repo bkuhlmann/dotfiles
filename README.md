@@ -75,7 +75,6 @@ more.
       - [Rails ERD](#rails-erd)
       - [RailRoady](#railroady)
       - [Elm](#elm-1)
-      - [Travis CI](#travis-ci)
       - [FFmpeg](#ffmpeg)
       - [asciinema](#asciinema-1)
       - [Dotfiles](#dotfiles)
@@ -110,7 +109,6 @@ more.
 - Configures the [Pow](http://pow.cx) `.powconfig` file.
 - Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) `.psqlrc`
   file.
-- Configures the [Xray](https://github.com/brentd/xray-rails) `.xrayconfig` file.
 - Configures the [Rubocop](https://github.com/bbatsov/rubocop) `.rubocop.yml` file.
 - Configures the [NPM](https://www.npmjs.org) `.npmrc` file.
 - Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
@@ -125,7 +123,7 @@ more.
 
 ## Screencast
 
-[![asciicast](https://asciinema.org/a/88966.png)](https://asciinema.org/a/88966)
+[![asciicast](https://asciinema.org/a/132397.png)](https://asciinema.org/a/132397)
 
 ## Requirements
 
@@ -139,7 +137,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v26.1.0
+    git checkout v27.0.0
 
 Master Version (unstable)
 
@@ -178,9 +176,7 @@ When upgrading to a new version, run the following:
    `bin/run i` instead.
 0. Run: `bin/run c`. This will display file differences (if any -- usually, should only be excluded
    files).
-0. Run: `bashs`. This will apply updates to the shell.
-0. Change to the root directory where all projects are stored and run `gia` to re-initialize
-   repositories with new Git Hook updates.
+0. Run: `exec $SHELL`. This will apply updates to the current shell.
 
 ## Usage
 
@@ -201,7 +197,7 @@ When upgrading to a new version, run the following:
     man = "gem man --system"
     rmde = "find . -type d -empty -not -path '*.git*' -delete"
 #### [Bash](https://www.gnu.org/software/bash)
-    bashe = '$EDITOR $HOME/.bash/env.sh'
+    bashe = '$EDITOR $HOME/.config/bash/env.sh'
     bashs = 'exec $SHELL'
 #### Network
     sshe = '$EDITOR $HOME/.ssh/config'

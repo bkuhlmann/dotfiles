@@ -1,3 +1,13 @@
+# v27.0.0 (2017-08-06)
+
+- Fixed Diff So Fancy settings.
+- Fixed Railroady model generation.
+- Added GitHub option for opening a branch diff in browser.
+- Updated `gli` function to dynamically calculate branch commits.
+- Updated to Git Cop 1.5.0.
+- Removed Xray config.
+- Refactored Bash and Git configurations to `~/.config`.
+
 # v26.1.0 (2017-07-16)
 
 - Fixed `glameh` function when looking for file copies.
