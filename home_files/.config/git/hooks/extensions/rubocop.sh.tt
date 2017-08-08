@@ -5,6 +5,6 @@
 rubocop_check() {
   if _check_gem_dependencies "rubocop"; then
     printf "[rubocop]: "
-    bundle exec rubocop --display-cop-names --fail-fast
+    bundle exec rubocop --display-cop-names
   fi
 }
