@@ -1700,6 +1700,16 @@ cqa() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Code Quality Issues
+# Description: List all source files affected by code quality issues.
+cqi() {
+  local comments=("TODO" "FIX" "DUPLICATE" "shellcheck disable" ":reek:" "rubocop:disable")
+
+  for comment in ${comments[*]}; do
+    ag --nomultiline --depth -1 --case-sensitive --ignore "vendor" "^\s*?# $comment" .
+  done
+}
+
 #-------------------------------------#
 # Section: [RSpec](http://rspec.info) #
 #-------------------------------------#
