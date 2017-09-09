@@ -1374,7 +1374,7 @@ gh() {
 }
 
 # Label: GitHub Pull Request (all)
-# Description: Open pull request for all projects in current directory (non-master branches only).
+# Description: Open pull requests for all projects in current directory (non-master branches only).
 ghpra() {
   while read -r project; do
     (
@@ -1382,7 +1382,7 @@ ghpra() {
 
       if [[ -d ".git" ]]; then
         if [[ "$(_git_branch_name)" != "master" ]]; then
-          gh b r # a.k.a. GitHub Branch [Pull] Request
+          gh b r # a.k.a. GitHub Branch Pull Request
         fi
       fi
     )
@@ -1847,20 +1847,6 @@ sg() {
 # Description: Run Rails database console.
 sdb() {
   _run_rails_command "dbconsole" "$*"
-}
-
-#--------------------------------------------------------------#
-# Section: [Rails ERD](https://github.com/voormedia/rails-erd) #
-#--------------------------------------------------------------#
-
-# Label: Rails ERD
-# Description: Generate Rails Entity Relationship Diagram (ERD).
-erd() {
-  local doc_dir="tmp/doc"
-
-  mkdir -p "$doc_dir"
-  ber erd filename="$doc_dir/models"
-  printf "$(pwd)/$doc_dir/models.pdf" | _copy_and_print
 }
 
 #------------------------------------------------------------#
