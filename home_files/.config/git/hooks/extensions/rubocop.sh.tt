@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-# Label: Rubocop
+# Label: Rubocop Check
 # Description: Scans Ruby code for poor style choices.
 rubocop_check() {
   if _check_gem_dependencies "rubocop"; then

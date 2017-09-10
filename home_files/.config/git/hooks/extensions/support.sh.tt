@@ -15,7 +15,7 @@ _build_ctags() {
   ctags
 }
 
-# Label: Print warning message.
+# Label: Print Warning.
 # Description: Print yellow warning message.
 # Parameters: $1 (required) - The message to print.
 _print_warning() {
@@ -26,7 +26,7 @@ _print_warning() {
   printf "\033[m"
 }
 
-# Label: Print error message.
+# Label: Print Error.
 # Description: Print red error message.
 # Parameters: $1 (required) - The message to print.
 _print_error() {
