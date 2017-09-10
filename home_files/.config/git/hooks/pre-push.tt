@@ -15,6 +15,7 @@ source $HOME/.config/git/hooks/extensions/comments.sh
 source $HOME/.config/git/hooks/extensions/reek.sh
 source $HOME/.config/git/hooks/extensions/rubocop.sh
 source $HOME/.config/git/hooks/extensions/rails_best_practices.sh
+source $HOME/.config/git/hooks/extensions/bundler.sh
 source $HOME/.config/git/hooks/extensions/brakeman.sh
 
 # EXECUTION
@@ -37,6 +38,7 @@ while read local_ref local_sha remote_ref remote_sha; do
     reek_check
     rubocop_check
     rails_best_practices_check
+    bundler_audit_check
     brakeman_check
   fi
 done
