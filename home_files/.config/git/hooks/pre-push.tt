@@ -16,7 +16,6 @@ source $HOME/.config/git/hooks/extensions/reek.sh
 source $HOME/.config/git/hooks/extensions/rubocop.sh
 source $HOME/.config/git/hooks/extensions/rails_best_practices.sh
 source $HOME/.config/git/hooks/extensions/brakeman.sh
-source $HOME/.config/git/hooks/extensions/scss_lint.sh
 
 # EXECUTION
 push_command=$(ps -ocommand= -p $PPID)
@@ -39,7 +38,6 @@ while read local_ref local_sha remote_ref remote_sha; do
     rubocop_check
     rails_best_practices_check
     brakeman_check
-    scss_lint_check
   fi
 done
 
