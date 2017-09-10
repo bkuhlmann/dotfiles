@@ -1,8 +1,7 @@
 #! /usr/bin/env bash
 
-# SETTINGS
-# Label: Print Comment Total
-# Description: Print project comment total for specific prefix.
+# Label: Comment Total
+# Description: Print project comment total.
 # Parameters: $1 (required) - The comment prefix to search for.
 _comment_total() {
   local prefix="$1"
@@ -26,9 +25,9 @@ _comment_total() {
   fi
 }
 
-# Label: Print Comment Totals
+# Label: Comment Totals
 # Description: Print project comment totals.
-comments_total() {
+comment_totals() {
   local prefixes=("TODO" "FIX" "DUPLICATE" "shellcheck disable" ":reek:" "rubocop:disable")
 
   for prefix in ${prefixes[*]}; do

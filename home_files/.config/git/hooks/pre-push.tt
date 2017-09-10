@@ -35,7 +35,7 @@ fi
 
 while read local_ref local_sha remote_ref remote_sha; do
   if [[ "$local_sha" != "$zeros" && "$remote_sha" != "$zeros" ]]; then
-    comments_total
+    comment_totals
     reek_check
     rubocop_check
     rails_best_practices_check
