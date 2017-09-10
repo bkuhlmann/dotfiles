@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+# Label: License Finder Check
+# Description: Scans project for valid licenses.
+license_finder_check() {
+  if _check_gem_dependencies "license_finder"; then
+    printf "[license_finder]: "
+    bundle exec license_finder
+  fi
+}
