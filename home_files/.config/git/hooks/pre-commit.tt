@@ -14,7 +14,6 @@ source $HOME/.config/git/hooks/extensions/support.sh
 source $HOME/.config/git/hooks/extensions/bundler.sh
 source $HOME/.config/git/hooks/extensions/capybara.sh
 source $HOME/.config/git/hooks/extensions/elm.sh
-source $HOME/.config/git/hooks/extensions/jasmine.sh
 source $HOME/.config/git/hooks/extensions/java_script.sh
 source $HOME/.config/git/hooks/extensions/pry.sh
 source $HOME/.config/git/hooks/extensions/rspec.sh
@@ -25,7 +24,6 @@ bundler_gemfile_path
 capybara_save_and_open_page
 elm_debug
 irb_binding
-jasmine_focus
 java_script_debugger
 java_script_console
 java_script_alert

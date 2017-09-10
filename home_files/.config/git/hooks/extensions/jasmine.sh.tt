@@ -1,7 +1,0 @@
-#! /usr/bin/env bash
-
-# Label: Jasmine Focus
-# Description: Detect Jasmine focus statements.
-jasmine_focus() {
-  _scan_code "[jasmine]" "Focus statements detected" 'spec.js$' '(fdescribe\(|fit\()'
-}
