@@ -1,3 +1,22 @@
+# v28.0.0 (2017-09-23)
+
+- Fixed Git Hook extension labels.
+- Added Brakeman Git Pre-Push Hook.
+- Added Bundler Audit Git Hook.
+- Added License Finder Git Hook.
+- Added Rails Best Practices Git Pre-Push Hook.
+- Added `cqi` function for finding code quality issues.
+- Updated gem dependencies.
+- Updated to Code Quality 1.2.0.
+- Updated to Code Quality 1.3.0.
+- Updated to Ruby 2.4.2.
+- Removed Jasmine Git Hook support.
+- Removed Pry State gem.
+- Removed SCSS Lint Git Hook support.
+- Removed `--fail-fast` option from Rubocop Git Hook.
+- Removed `erd` function.
+- Refactored comment totals Git Hook.
+
 # v27.0.0 (2017-08-06)
 
 - Fixed Diff So Fancy settings.

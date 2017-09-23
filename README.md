@@ -72,7 +72,6 @@ more.
       - [RSpec](#rspec-1)
       - [Guard](#guard)
       - [Ruby on Rails](#ruby-on-rails-1)
-      - [Rails ERD](#rails-erd)
       - [RailRoady](#railroady)
       - [Elm](#elm-1)
       - [FFmpeg](#ffmpeg)
@@ -137,7 +136,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v27.0.0
+    git checkout v28.0.0
 
 Master Version (unstable)
 
@@ -524,7 +523,7 @@ When upgrading to a new version, run the following:
     gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in current directory.
 #### [GitHub](https://github.com)
     gh = GitHub - View GitHub details for current project.
-    ghpra = GitHub Pull Request (all) - Open pull request for all projects in current directory (non-master branches only).
+    ghpra = GitHub Pull Request (all) - Open pull requests for all projects in current directory (non-master branches only).
 #### [PostgreSQL](http://www.postgresql.org)
     pguc = PostgreSQL User Create - Create PostgreSQL user.
     pgud = PostgreSQL User Drop - Drop PostgreSQL user.
@@ -547,6 +546,7 @@ When upgrading to a new version, run the following:
     bera = Bundle Execute Rake (all) - Run default Rake tasks via binstub or Bundler for projects in current directory.
 #### [Code Quality](https://github.com/bkuhlmann/code_quality)
     cqa = Code Quality (all) - Run code quality tasks via binstub or Bundler for projects in current directory.
+    cqi = Code Quality Issues - List all source files affected by code quality issues.
 #### [RSpec](http://rspec.info)
     bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
     besb = Bundle Exec RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
@@ -561,8 +561,6 @@ When upgrading to a new version, run the following:
     ss = Rails Script Server - Run Rails server.
     sg = Rails Script Generator - Run Rails generator.
     sdb = Rails Script Database Console - Run Rails database console.
-#### [Rails ERD](https://github.com/voormedia/rails-erd)
-    erd = Rails ERD - Generate Rails Entity Relationship Diagram (ERD).
 #### [RailRoady](https://github.com/preston/railroady)
     rr = RailRoady Models - Generate diagrams for Rails models, controllers, or states.
 #### [Elm](http://elm-lang.org)
@@ -577,22 +575,24 @@ When upgrading to a new version, run the following:
 
 ### Git Hooks
 
+    brakeman_check = Brakeman Check - Scans Rails project for security vulnerabilities.
     bundler_gemfile_path = Bundler Gemfile Path - Detect gem path statements.
+    bundler_audit_check = Bundler Audit Check - Scans gem dependencies for security vulnerabilities.
     capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open_page statements.
-    comments_total = Print Comment Totals - Print project comment totals.
+    comment_totals = Comment Totals - Print project comment totals.
     ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
     elm_debug = Elm Debug - Detect debug statements.
     git_cop = Git Cop - Enforces consistent Git commits.
-    jasmine_focus = Jasmine Focus - Detect Jasmine focus statements.
     java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
     java_script_console = JavaScript Console - Detect JavaScript console statements.
     java_script_alert = JavaScript Alert - Detect JavaScript alert statements.
+    license_finder_check = License Finder Check - Scans project for valid licenses.
     pry_binding = Pry Binding - Detect Pry debug statements.
-    reek_check = Reek - Scans Ruby code for poor style choices.
+    rails_best_practices_check = Rails Best Practices - Scans Rails code for poor style choices.
+    reek_check = Reek Check - Scans Ruby code for poor style choices.
     rspec_focus = RSpec Focus - Detect RSpec focus.
-    rubocop_check = Rubocop - Scans Ruby code for poor style choices.
+    rubocop_check = Rubocop Check - Scans Ruby code for poor style choices.
     irb_binding = IRB Binding - Detect IRB debug statements.
-    scss_lint_check = SCSS Lint - Scans SCSS code for poor style choices.
 
 ### IRB, Pry, and Rails consoles
 
