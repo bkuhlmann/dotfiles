@@ -436,7 +436,7 @@ gsta() {
 # Label: Git Update
 # Description: Fetch commits, prune untracked references, review each commit (optional, with diff), and pull (optional).
 gup() {
-  git fetch --prune --quiet
+  git fetch --quiet
   commits=($(git log --reverse --no-merges --pretty=format:"%h" ..@{upstream}))
 
   if [[ ${#commits[@]} == 0 ]]; then
@@ -491,7 +491,7 @@ gync() {
     return 1
   fi
 
-  git fetch --prune && git pull && gbdm
+  git fetch && git pull && gbdm
 }
 
 # Label: Git Set Config Value (all)
