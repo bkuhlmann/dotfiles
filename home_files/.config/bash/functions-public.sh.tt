@@ -491,7 +491,7 @@ gync() {
     return 1
   fi
 
-  git fetch && git pull && gbdm
+  git pull && gbdm
 }
 
 # Label: Git Set Config Value (all)
