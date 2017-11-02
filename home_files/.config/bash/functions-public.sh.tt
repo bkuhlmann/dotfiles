@@ -634,7 +634,7 @@ gweek() {
 # Label: Git Month
 # Description: Answer summarized list of current month activity for projects in current directory.
 gmonth() {
-  gince "month 1 12am"
+  gince "1 month 12am"
 }
 
 # Label: Git Standup
