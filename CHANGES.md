@@ -1,3 +1,12 @@
+# v29.0.0 (2017-11-02)
+
+- Fixed `gince` function format for project names.
+- Fixed `gmonth` function format.
+- Added Git global configuration for fetch and prune.
+- Updated to Rubocop 0.51.0.
+- Removed `git fetch --prune` usage.
+- Removed redundant git-fetch from `gync` function.
+
 # v28.0.0 (2017-09-23)
 
 - Fixed Git Hook extension labels.

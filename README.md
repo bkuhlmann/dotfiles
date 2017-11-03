@@ -136,7 +136,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v28.0.0
+    git checkout v29.0.0
 
 Master Version (unstable)
 
@@ -296,7 +296,6 @@ When upgrading to a new version, run the following:
     gnd = "git notes remove"
     gnp = "git notes prune"
     gf = "git fetch"
-    gfp = "git fetch --prune"
     gpu = "git pull"
     gpuo = "git pull origin"
     gpuom = "git pull origin master"
