@@ -284,7 +284,7 @@ gli() {
 
   for commit in ${commits[@]}; do
     local option="$(printf "%${option_padding}s" $counter)"
-    printf "%s\n" "$option: $(git log --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
+    printf "%s\n" "$option: $(git log --color --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
     counter=$((counter + 1))
   done
 
@@ -605,7 +605,7 @@ gince() {
 
         if [[ -d ".git" ]]; then
           # Capture git log activity.
-          local results=$(git log --oneline --format="$(_git_log_line_format)" --since "$1" --until "$2" --author "$3" --reverse)
+          local results=$(git log --oneline --color --format="$(_git_log_line_format)" --since "$1" --until "$2" --author "$3" --reverse)
           # Print project name (cyan) and Git activity (white) only if Git activity was detected.
           if [[ -n "$results" ]]; then
             printf "\033[36m${project:2}:\033[m\n$results\n"

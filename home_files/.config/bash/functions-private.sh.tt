@@ -127,7 +127,7 @@ _git_file_commits() {
 
   for commit in ${commits[@]}; do
     local option="$(printf "%${option_padding}s" $counter)"
-    printf "%s\n" "$option: $(git log --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
+    printf "%s\n" "$option: $(git log --color --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
     counter=$((counter + 1))
   done
 
@@ -162,7 +162,7 @@ _git_branch_name() {
 _git_branch_list() {
   local format=${1:-"%(refname) %(color:blue bold)%(authorname) %(color:green)(%(authordate:relative))"}
 
-  git for-each-ref --sort="-authordate:iso8601" --format="$format" refs/heads refs/remotes/origin | \
+  git for-each-ref --sort="-authordate:iso8601" --color --format="$format" refs/heads refs/remotes/origin | \
                    sed '/HEAD/d' | \
                    sed 's/refs\/heads\///g' | \
                    sed 's/refs\/remotes\/origin\///g' | \
@@ -281,7 +281,7 @@ _gh_url() {
 _gh_pr_list() {
   local format=${1:-"%(refname) %(color:yellow)%(refname)%(color:reset) %(subject) %(color:blue bold)%(authorname) %(color:green)(%(committerdate:relative))"}
 
-  git for-each-ref --format="$format" refs/remotes/pull_requests | \
+  git for-each-ref --color --format="$format" refs/remotes/pull_requests | \
                    sed 's/refs\/remotes\/pull_requests\///g' | \
                    sort --numeric-sort | \
                    cut -d' ' -f2-
