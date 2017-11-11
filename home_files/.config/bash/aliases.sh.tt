@@ -67,7 +67,7 @@ alias gls='git log --pretty=format:"$(_git_log_line_format)" -S'
 alias glt='git for-each-ref --sort=taggerdate --color --format="%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
 alias grl="git reflog"
 alias gg="git grep"
-alias guthors="git log --format='%an' | sort | uniq -c | sort --reverse"
+alias guthors='git log --color --pretty=format:"%C(bold blue)%an%C(reset)" | sort | uniq -c | sort --reverse'
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias gdm="git diff origin/master"

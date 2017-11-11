@@ -390,7 +390,7 @@ guthorsa() {
       if [[ -d ".git" ]]; then
         # Print project (cyan) and message (white).
         printf "\033[36m${project:2}\033[m:\n"
-        git log --format="%an" | sort | uniq -c | sort --reverse
+        guthors
       fi
     )
   done < <(find . -type d -depth 1)
