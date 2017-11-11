@@ -326,7 +326,7 @@ ghow() {
 
 # Label: Git File
 # Description: Show file details for a specific commit (with optional diff support).
-# Parameters: $1 (required) - The commit, $2 (required) - The file, $3 (optional) - Launch difftool. Default: false.
+# Parameters: $1 (required) - The file, $2 (required) - The commit, $3 (optional) - Launch difftool. Default: false.
 gile() {
   local file="$1"
   local commit="$2"
