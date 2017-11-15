@@ -14,7 +14,7 @@ _comment_total() {
      exit 1
   fi
 
-  lines+=($(ag --count --depth -1 --ignore "vendor" "^\s*?# $prefix" . || :))
+  lines+=($(ag --count --depth -1 --ignore "vendor" "^\s*?(#|--|//) $prefix" . || :))
 
   for line in ${lines[*]}; do
     total=$((total + ${line#*:}))

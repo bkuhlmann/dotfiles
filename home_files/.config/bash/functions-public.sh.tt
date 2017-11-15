@@ -1706,7 +1706,7 @@ cqi() {
   local comments=("TODO" "FIX" "DUPLICATE" "shellcheck disable" ":reek:" "rubocop:disable")
 
   for comment in ${comments[*]}; do
-    ag --nomultiline --depth -1 --case-sensitive --ignore "vendor" "^\s*?# $comment" .
+    ag --nomultiline --depth -1 --case-sensitive --ignore "vendor" "^\s*?(#|--|//) $comment" .
   done
 }
 
