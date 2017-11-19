@@ -136,7 +136,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v29.0.0
+    git checkout v29.1.0
 
 Master Version (unstable)
 
@@ -187,7 +187,7 @@ When upgrading to a new version, run the following:
     cdb = "cd -"
     c = "clear"
     h = "history"
-    l = "ls -alh"
+    l = "ls -alhT"
     l1 = "ls -A1 | _copy_and_print '\n'"
     p = 'pwd | tr -d "\r\n" | _copy_and_print'
     o = "open"
@@ -240,10 +240,10 @@ When upgrading to a new version, run the following:
     glf = 'git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
     glg = 'git log --pretty=format:"$(_git_log_line_format)" --grep'
     gls = 'git log --pretty=format:"$(_git_log_line_format)" -S'
-    glt = 'git for-each-ref --sort=taggerdate --format = "%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
+    glt = 'git for-each-ref --sort=taggerdate --color --format = "%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
     grl = "git reflog"
     gg = "git grep"
-    guthors = "git log --format = '%an' | sort | uniq -c | sort --reverse"
+    guthors = 'git log --color --pretty=format:"%C(bold blue)%an%C(reset)" | sort | uniq -c | sort --reverse'
     gd = "git diff"
     gdc = "git diff --cached"
     gdm = "git diff origin/master"
@@ -320,7 +320,7 @@ When upgrading to a new version, run the following:
     grom = "git fetch --all && git reset --hard origin/master" # Reset local branch to origin/master branch. UNRECOVERABLE!
     gel = "git rm"
     gelc = "git rm --cached" # Removes previously tracked file from index after being added to gitignore.
-    grev = "git revert" # Revert a commit.
+    grev = "git revert --no-commit"
     grp = "git remote prune origin"
     glean = "git clean -d --force"
 #### [Tar](http://www.gnu.org/software/tar/tar.html)
@@ -399,6 +399,7 @@ When upgrading to a new version, run the following:
     taild = "tail -f log/development.log"
     tailt = "tail -f log/test.log"
     res = "touch tmp/restart.txt"
+    rorc = "EDITOR = 'sublime --wait' bin/rails secrets:edit"
 #### [Elm](http://elm-lang.org)
     elmc = "elm repl"
     elms = "elm reactor"

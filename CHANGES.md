@@ -1,3 +1,17 @@
+# v29.1.0 (2017-11-19)
+
+- Fixed Git 2.15.x colored output.
+- Fixed `gile` function documentation.
+- Fixed source code comment detection/count.
+- Added `rorc` alias for editing Rails secrets.
+- Updated Gemfile.lock file.
+- Updated `grev` alias to not make a commit.
+- Updated `guthors/guthorsa` alias/function to use colorized output.
+- Updated `l` alias to include full date/time output.
+- Updated to Bundler 1.16.0.
+- Updated to Git Cop 1.7.0.
+- Updated to Rake 12.3.0.
+
 # v29.0.0 (2017-11-02)
 
 - Fixed `gince` function format for project names.
