@@ -16,7 +16,7 @@ more.
   - [Features](#features)
   - [Screencast](#screencast)
   - [Requirements](#requirements)
-- [Setup](#setup)
+  - [Setup](#setup)
   - [Upgrade](#upgrade)
   - [Usage](#usage)
     - [Aliases](#aliases)
@@ -128,7 +128,7 @@ more.
 
 - [macOS](https://github.com/bkuhlmann/mac_os)
 
-# Setup
+## Setup
 
 Open a terminal window and execute the following commands:
 
