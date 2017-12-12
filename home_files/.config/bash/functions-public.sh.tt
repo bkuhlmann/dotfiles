@@ -273,7 +273,7 @@ gli() {
   if [[ "$branch" == "master" ]]; then
     commits=($(git rev-list --no-merges --max-count=25 master))
   else
-    commits=($(git rev-list --no-merges --reverse master.."$branch"))
+    commits=($(git rev-list --no-merges master.."$branch"))
   fi
 
   local commit_total=${#commits[@]}
