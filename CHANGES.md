@@ -1,3 +1,16 @@
+# v30.0.0 (2018-01-01)
+
+- Fixed README table of contents.
+- Fixed `gli` function so Git history isn't reversed.
+- Added Gemfile.lock to .gitignore.
+- Added ctags `tags` file to git ignore file.
+- Updated to Apache 2.0 license.
+- Updated to Code Quality 1.4.0.
+- Updated to Code Quality 2.0.0.
+- Updated to Ruby 2.4.3.
+- Updated to Ruby 2.5.0.
+- Removed ctags custom output file configuration.
+
 # v29.1.0 (2017-11-19)
 
 - Fixed Git 2.15.x colored output.

@@ -136,7 +136,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v29.1.0
+    git checkout v30.0.0
 
 Master Version (unstable)
 
