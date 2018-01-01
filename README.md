@@ -382,7 +382,7 @@ When upgrading to a new version, run the following:
     gsp = "bundle exec rake publish"
     gsq = "bundle exec rake code_quality"
 #### [Pragmater](https://github.com/bkuhlmann/pragmater)
-    pas = "pragmater --add . --comments '# frozen_string_literal: true' --whitelist 'Gemfile' 'Guardfile' 'Rakefile' 'config.ru' 'bin/**/*' '.gemspec' '.rake' '.rb'"
+    pas = "pragmater --add . --comments '# frozen_string_literal: true' --includes 'Gemfile' 'Guardfile' 'Rakefile' 'config.ru' 'bin/**/*' '.gemspec' '.rake' '.rb'"
 #### [RSpec](http://rspec.info)
     bess = "bes spec"
     best = "bess --tag"
