@@ -1,7 +1,6 @@
 # Dotfiles
 
 [![Circle CI Status](https://circleci.com/gh/bkuhlmann/dotfiles.svg?style=svg)](https://circleci.com/gh/bkuhlmann/dotfiles)
-[![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/bkuhlmann)
 
 Shell scripts for applying default settings to UNIX-based operating systems.
 
