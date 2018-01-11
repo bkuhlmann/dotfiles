@@ -112,7 +112,6 @@ more.
 - Configures [Sublime Text](http://www.sublimetext.com) as the default editor.
 - Adds [Bash Completion](http://bash-completion.alioth.debian.org).
 - Adds [GPG](https://www.gnupg.org) support.
-- Adds [Go](https://golang.org) support.
 - Adds [direnv](http://direnv.net) support.
 - Adds [chruby](https://github.com/postmodern/chruby) support.
 - Adds [Node.js](http://nodejs.org) support.

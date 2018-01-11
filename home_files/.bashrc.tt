@@ -56,12 +56,6 @@ if [ -f "${HOME}/.gpg-agent-info" ]; then
   export SSH_AGENT_PID
 fi
 
-# Go
-if [[ -e /usr/local/bin/go ]]; then
-  export GOPATH=$HOME/Apps/Go
-  export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
-fi
-
 # direnv
 if [[ -e /usr/local/bin/direnv ]]; then
   eval "$(direnv hook bash)"
