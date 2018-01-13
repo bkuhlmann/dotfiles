@@ -26,6 +26,10 @@ _powerline() {
       readonly OS_SYMBOL=$OS_OTHER_SYMBOL
   esac
 
+  _update_iterm_label() {
+    printf "\033]0;${PWD##*/}\007"
+  }
+
   _git_branch_info() {
     # Get current branch name or short SHA1 hash for detached head.
     local branch="$(git symbolic-ref --short HEAD 2>/dev/null || git describe --tags --always 2>/dev/null)"
@@ -73,6 +77,7 @@ _powerline() {
       PS1+="\[$YELLOW\]\[$BLUE_BACKGROUND\]$(_git_stash_info)\[$NORMAL\]" # Git Stash Info.
     fi
 
+    _update_iterm_label
     PS1+="\[$BG_EXIT\] $OS_SYMBOL \[$NORMAL\] "
   }
 
