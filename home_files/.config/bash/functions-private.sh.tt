@@ -156,6 +156,44 @@ _git_branch_name() {
   git rev-parse --abbrev-ref HEAD | tr -d '\n'
 }
 
+# Label: Git Feature Branch SHAs
+# Description: Answer feature branch commit SHAs regardless of branch nesting.
+_git_feature_branch_shas() {
+  local ifs_original=$IFS
+  IFS=$'\n'
+
+  local log_format="%h%d"
+  local current_commit=($(git log --pretty=format:$log_format) -1)
+  local commits=($(git log --pretty=format:$log_format))
+  local parent_sha="$(git log --pretty=format:%h -1)"
+  local current_pattern=".*\(HEAD.+\)*"
+  local parent_pattern=".*\(.+\)*"
+  local origin_pattern=".*\(origin\/$(_git_branch_name)\)$"
+  local master_pattern=".*\(.+master(\,|\))*"
+
+  if [[ "$current_commit" =~ $master_pattern ]]; then
+    git log --pretty=format:%h $parent_sha..$(git log --pretty=format:%h -1)
+  else
+    for entry in ${commits[@]}; do
+      local entry_sha="${entry%% *}"
+
+      if [[ ! "$entry" =~ $current_pattern && ! "$entry" =~ $origin_pattern ]]; then
+        if [[ "$entry" =~ $master_pattern ]]; then
+          parent_sha="$entry_sha"
+          break
+        elif [[ "$entry" =~ $parent_pattern ]]; then
+          parent_sha="$entry_sha"
+          break
+        fi
+      fi
+    done
+
+    git log --pretty=format:%h $parent_sha..$(git log --pretty=format:%h -1)
+  fi
+
+  IFS=$ifs_original
+}
+
 # Label: Git Branch List
 # Description: List branches (local/remote) including author and relative time.
 # Parameters: $1 (optional) - The output format.
