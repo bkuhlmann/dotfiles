@@ -265,20 +265,17 @@ gount() {
 }
 
 # Label: Git Log (interactive)
-# Description: List commits with support to show/diff individual commits.
+# Description: List feature branch commits with support to show/diff individual commits.
 gli() {
-  local branch="$(_git_branch_name)"
-  local commits=()
-
-  if [[ "$branch" == "master" ]]; then
-    commits=($(git rev-list --no-merges --max-count=25 master))
-  else
-    commits=($(git rev-list --no-merges master.."$branch"))
-  fi
-
+  local commits=($(_git_feature_branch_shas))
   local commit_total=${#commits[@]}
   local option_padding=${#commit_total}
   local counter=1
+
+  if [[ ${#commits[@]} == 0 ]]; then
+    printf "%s\n" "No feature branch commits found."
+    return 0
+  fi
 
   printf "Commits:\n\n"
 
