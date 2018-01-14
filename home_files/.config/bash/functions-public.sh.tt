@@ -831,7 +831,7 @@ gcfp() {
   fi
 
   git push
-  gh u $(git log --pretty=format:%h -1)
+  gh u $(_git_commit_last)
 }
 
 # Label: Git Commit (all)

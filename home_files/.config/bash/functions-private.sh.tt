@@ -102,6 +102,12 @@ _git_commit_count_since_last_tag() {
   fi
 }
 
+# Label: Git Commit Last
+# Description: Answer last commit for current branch.
+_git_commit_last() {
+  git log --pretty=format:%h -1
+}
+
 # Label: Git Last Tag Info
 # Description: Answer last tag for project (including commits added since tag was created).
 _git_last_tag_info() {
@@ -165,15 +171,13 @@ _git_feature_branch_shas() {
   local log_format="%h%d"
   local current_commit=($(git log --pretty=format:$log_format) -1)
   local commits=($(git log --pretty=format:$log_format))
-  local parent_sha="$(git log --pretty=format:%h -1)"
+  local parent_sha="$(_git_commit_last)"
   local current_pattern=".*\(HEAD.+\)*"
   local parent_pattern=".*\(.+\)*"
   local origin_pattern=".*\(origin\/$(_git_branch_name)\)$"
   local master_pattern=".*\(.+master(\,|\))*"
 
-  if [[ "$current_commit" =~ $master_pattern ]]; then
-    git log --pretty=format:%h $parent_sha..$(git log --pretty=format:%h -1)
-  else
+  if [[ ! "$current_commit" =~ $master_pattern ]]; then
     for entry in ${commits[@]}; do
       local entry_sha="${entry%% *}"
 
@@ -187,10 +191,9 @@ _git_feature_branch_shas() {
         fi
       fi
     done
-
-    git log --pretty=format:%h $parent_sha..$(git log --pretty=format:%h -1)
   fi
 
+  git log --pretty=format:%h "$parent_sha..$(_git_commit_last)"
   IFS=$ifs_original
 }
 
@@ -407,7 +410,7 @@ _process_gh_url_option() {
   if [[ "$commit" =~ $commit_match ]]; then
     printf "$(_gh_url)/commit/$commit" | _copy_and_print
   elif [[ "$commit" == 'l' ]]; then
-    printf "$(_gh_url)/commit/$(git log --pretty=format:%h -1)" | _copy_and_print
+    printf "$(_gh_url)/commit/$(_git_commit_last)" | _copy_and_print
   else
     _gh_url | _copy_and_print
   fi
