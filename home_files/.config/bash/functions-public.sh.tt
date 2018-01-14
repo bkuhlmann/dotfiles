@@ -908,22 +908,24 @@ gpa() {
 
 # Label: Git Rebase (interactive)
 # Description: Rebase commits, interactively.
-# Parameters: $1 (optional) - The commit number or branch to rebase to. Default: upstream or root.
+# Parameters: $1 (optional) - The number of commits or label (i.e. branch/tag) to rebase to.
 gri() {
-  local value="$1"
-  local number_regex="^[0-9]+$"
-  local branch_regex="^[0-9a-zA-Z\-\_]+$"
+  local number_pattern="^[0-9]+$"
+  local label_pattern="^[0-9a-zA-Z\_-]+$"
+  local parent_sha=$(git log --pretty=format:%h -n 1 "$(_git_feature_branch_first_sha)^" 2> /dev/null || :)
+  local value="${1:-$parent_sha}"
 
-  if [[ $(git config remote.origin.url) ]]; then
-    if [[ "$value" =~ $number_regex ]]; then
-      git rebase --interactive "@~${value}"
-    elif [[ "$value" =~ $branch_regex ]]; then
-      git rebase --interactive "$value"
-    else
-      git rebase --interactive @{upstream}
-    fi
+  if [[ -z $value ]]; then
+    return 0
+  fi
+
+  if [[ "$value" =~ $number_pattern ]]; then
+    git rebase --interactive "@~${value}"
+  elif [[ "$value" =~ $label_pattern ]]; then
+    git rebase --interactive "$value"
   else
-    git rebase --interactive --root
+    printf "%s\n" "Invalid Git commit SHA or label: $value."
+    return 1
   fi
 }
 
