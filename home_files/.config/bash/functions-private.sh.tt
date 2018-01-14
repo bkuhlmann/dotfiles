@@ -194,6 +194,16 @@ _git_feature_branch_shas() {
   IFS=$ifs_original
 }
 
+# Label: Git Feature Branch First SHA
+# Description: Answer first SHA of feature branch.
+_git_feature_branch_first_sha() {
+  local shas=($(_git_feature_branch_shas))
+
+  if [[ ${#shas[@]} != 0 ]]; then
+    printf "%s" ${shas[-1]}
+  fi
+}
+
 # Label: Git Branch List
 # Description: List branches (local/remote) including author and relative time.
 # Parameters: $1 (optional) - The output format.
