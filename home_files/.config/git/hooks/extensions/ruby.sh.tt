@@ -3,6 +3,6 @@
 # Label: IRB Binding
 # Description: Detect IRB debug statements.
 irb_binding() {
-  local search_regex='^(?:(?!.*#.+).*binding.irb)'
-  _scan_code "[ruby]" "Debug statements detected" '(rb|erb|slim)$' $search_regex
+  local search_pattern='^(?:(?!.*#.+).*binding.irb)'
+  _scan_code "[ruby]" "Debug statements detected" '(rb|erb|slim)$' $search_pattern
 }

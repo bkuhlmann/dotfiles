@@ -43,12 +43,12 @@ _print_error() {
 _scan_code() {
   local label="$1"
   local message="$2"
-  local file_regex=$3
-  local search_regex=$4
-  local ignore_regex="vendor"
+  local file_pattern=$3
+  local search_pattern=$4
+  local ignore_pattern="vendor"
 
   if command -v ag > /dev/null; then
-    results=("$(ag --file-search-regex $file_regex $search_regex --ignore $ignore_regex . || :)")
+    results=("$(ag --file-search-regex $file_pattern $search_pattern --ignore $ignore_pattern . || :)")
 
     if [[ ${#results[@]} -gt 0 && ${results[@]} != '' ]]; then
       _print_error "$label: $message:"

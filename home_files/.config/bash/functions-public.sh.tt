@@ -1209,12 +1209,12 @@ gwd() {
 # Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
 grs() {
   local value="$1"
-  local number_regex="^[0-9]+$"
-  local commit_regex="^[a-f0-9]+$"
+  local number_pattern="^[0-9]+$"
+  local commit_pattern="^[a-f0-9]+$"
 
-  if [[ "$value" =~ $number_regex ]]; then
+  if [[ "$value" =~ $number_pattern ]]; then
     git reset --soft "HEAD~${value}"
-  elif [[ "$value" =~ $commit_regex ]]; then
+  elif [[ "$value" =~ $commit_pattern ]]; then
     git reset --soft "${value}"
   else
     git reset --soft HEAD^
@@ -1226,14 +1226,14 @@ grs() {
 # Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
 grh() {
   local value="$1"
-  local number_regex="^[0-9]+$"
-  local commit_regex="^[a-f0-9]+$"
+  local number_pattern="^[0-9]+$"
+  local commit_pattern="^[a-f0-9]+$"
 
   git clean --force --quiet -d
 
-  if [[ "$value" =~ $number_regex ]]; then
+  if [[ "$value" =~ $number_pattern ]]; then
     git reset --hard "HEAD~${value}"
-  elif [[ "$value" =~ $commit_regex ]]; then
+  elif [[ "$value" =~ $commit_pattern ]]; then
     git reset --hard "${value}"
   else
     git reset --hard HEAD
