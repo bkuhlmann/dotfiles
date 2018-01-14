@@ -807,6 +807,40 @@ galla() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Git Commit Fix (interactive)
+# Description: Select which commit to fix within current feature branch.
+gcfi() {
+  local commits=($(_git_feature_branch_shas))
+  local commit_total=${#commits[@]}
+  local option_padding=${#commit_total}
+  local counter=1
+
+  if [[ ${#commits[@]} == 0 ]]; then
+    printf "%s\n" "No feature branch commits found."
+    return 0
+  fi
+
+  printf "Select commit to fix:\n\n"
+
+  for commit in ${commits[@]}; do
+    local option="$(printf "%${option_padding}s" $counter)"
+    printf "%s\n" "$option: $(git log --color --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
+    counter=$((counter + 1))
+  done
+
+  option_padding=$((option_padding + 1))
+  printf "%${option_padding}s %s\n\n" "q:" "Quit/Exit."
+
+  read -p "Enter selection: " response
+  if [[ "$response" == 'q' ]]; then
+    return
+  fi
+
+  printf "\n"
+  local selected_commit=${commits[$((response - 1))]}
+  gcf "$selected_commit"
+}
+
 # Label: Git Commit Fix and Push
 # Description: Create fixup commit, push, and copy URL to clipboard.
 # Parameters: $1 (required) - The commit SHA to be fixed, $2 (optional) - Use "-a" to amend the fixup message.
