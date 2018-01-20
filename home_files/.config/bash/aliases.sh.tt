@@ -227,6 +227,11 @@ alias best="bess --tag"
 alias besn="bess --next-failure"
 alias besf="bess --only-failures"
 
+# Section: [Middleman](https://middlemanapp.com)
+alias mm="middleman"
+alias mmi="middleman init"
+alias mmb="middleman build"
+
 # Section: [Ruby on Rails](http://rubyonrails.org)
 alias scs="sc --sandbox"
 alias sgc="sg controller"
