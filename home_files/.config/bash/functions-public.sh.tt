@@ -268,25 +268,7 @@ gount() {
 # Description: List feature branch commits with support to show/diff individual commits.
 gli() {
   local commits=($(_git_feature_branch_shas))
-  local commit_total=${#commits[@]}
-  local option_padding=${#commit_total}
-  local counter=1
-
-  if [[ ${#commits[@]} == 0 ]]; then
-    printf "%s\n" "No feature branch commits found."
-    return 0
-  fi
-
-  printf "Commits:\n\n"
-
-  for commit in ${commits[@]}; do
-    local option="$(printf "%${option_padding}s" $counter)"
-    printf "%s\n" "$option: $(git log --color --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
-    counter=$((counter + 1))
-  done
-
-  option_padding=$((option_padding + 1))
-  printf "%${option_padding}s %s\n\n" "q:" "Quit/Exit."
+  _git_commit_options "${commits[*]}"
 
   read -p "Enter selection: " response
   if [[ "$response" == 'q' ]]; then
@@ -811,25 +793,8 @@ galla() {
 # Description: Select which commit to fix within current feature branch.
 gcfi() {
   local commits=($(_git_feature_branch_shas))
-  local commit_total=${#commits[@]}
-  local option_padding=${#commit_total}
-  local counter=1
 
-  if [[ ${#commits[@]} == 0 ]]; then
-    printf "%s\n" "No feature branch commits found."
-    return 0
-  fi
-
-  printf "Select commit to fix:\n\n"
-
-  for commit in ${commits[@]}; do
-    local option="$(printf "%${option_padding}s" $counter)"
-    printf "%s\n" "$option: $(git log --color --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
-    counter=$((counter + 1))
-  done
-
-  option_padding=$((option_padding + 1))
-  printf "%${option_padding}s %s\n\n" "q:" "Quit/Exit."
+  _git_commit_options "${commits[*]}" "Select commit to fix"
 
   read -p "Enter selection: " response
   if [[ "$response" == 'q' ]]; then
