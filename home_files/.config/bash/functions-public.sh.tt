@@ -660,7 +660,7 @@ gtaila() {
 # Parameters: $1 (optional) - Label. Default: "Last Actions (YYYY-MM-DD HH:MM:SS AM|PM Z)."
 gash() {
   local label=${1:-"Last Actions ($(date '+%Y-%m-%d %r %Z'))."}
-  git stash save --include-untracked "$label"
+  git stash push --include-untracked --message "$label"
 }
 
 # Label: Git Stash List
