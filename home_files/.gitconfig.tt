@@ -57,6 +57,7 @@
 [branch]
   autoSetupRebase = always
 [rebase]
+  abbreviateCommands = true
   autoSquash = true
   autoStash = true
 [rerere]
