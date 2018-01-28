@@ -263,6 +263,11 @@ alias cov="open coverage/index.html"
 # Section: [Foreman](https://github.com/ddollar/foreman)
 alias fms="foreman start --env /dev/null"
 
+# Section: [Overmind](https://github.com/DarthSim/overmind)
+alias om="overmind"
+alias oms="overmind start -p 2990 -P 10"
+alias omr="overmind restart"
+
 # Section: [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
 alias agf="ag --hidden --files-with-matches --file-search-regex"
 
