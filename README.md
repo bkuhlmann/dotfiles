@@ -104,7 +104,6 @@ more.
 - Configures the [Rails ERD](https://voormedia.github.io/rails-erd) `.erdconfig` file.
 - Configures the [RSpec](http://rspec.info) `.rspec` file.
 - Configures the [Awesome Print](https://github.com/michaeldv/awesome_print) `.aprc` file.
-- Configures the [Pow](http://pow.cx) `.powconfig` file.
 - Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) `.psqlrc`
   file.
 - Configures the [Rubocop](https://github.com/bbatsov/rubocop) `.rubocop.yml` file.
