@@ -1295,16 +1295,54 @@ gleana() {
   done < <(find . -type d -depth 1)
 }
 
+# Label: Git Clear
+# Description: Clear repository for packaging/shipping purposes.
+glear() {
+  if [[ ! -d .git ]]; then
+    printf "%s\n" "ERROR: Project is not a Git repository."
+    return 1
+  fi
+
+  read -p "Permanently non-Git repository files? Continue (y/n)?: " response
+
+  if [[ "$response" == "y" ]]; then
+    gvac
+
+    printf "\n%s\n\n" "Aggressively pruning repository..."
+    git gc --aggressive --prune=now
+
+    printf "\n%s\n" "Clearing reflog..."
+    git reflog expire --expire=now --all
+
+    printf "\n%s\n" "Deleting code coverage reports..."
+    rm -rf coverage
+
+    printf "\n%s\n" "Deleting Rubocop cache..."
+    copd
+
+    printf "\n%s\n" "Deleting Node modules..."
+    rm -rf node_modules
+
+    printf "\n%s\n" "Deleting Elm packages..."
+    rm -rf elm-stuff
+
+    printf "\n%s\n" "Deleting temp directory..."
+    rm -rf tmp
+  else
+    printf "%s\n" "Git clear aborted."
+  fi
+}
+
 # Label: Git Verify and Clean
 # Description: Verify and clean objects for current project.
 gvac() {
-  printf "Verifying connectivity and validity of the objects in Git repository...\n\n"
+  printf "%s\n\n" "Verifying connectivity and validity of the objects in Git repository..."
   git fsck
 
-  printf "\nCleaning unnecessary files and optimizing local Git repository...\n\n"
+  printf "\n%s\n\n" "Cleaning unnecessary files and optimizing local Git repository..."
   git gc
 
-  printf "\nPruning rerere records of older conflicting merges...\n\n"
+  printf "%s\n\n" "Pruning rerere records of older conflicting merges..."
   git rerere gc
 }
 
