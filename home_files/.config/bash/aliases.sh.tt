@@ -239,7 +239,6 @@ alias dbm="ber db:migrate"
 alias dbmt="ber db:migrate && ber db:rollback && ber db:migrate"
 alias taild="tail -f log/development.log"
 alias tailt="tail -f log/test.log"
-alias res="touch tmp/restart.txt"
 alias rorc="EDITOR='sublime --wait' bin/rails secrets:edit"
 
 # Section: [Elm](http://elm-lang.org)
