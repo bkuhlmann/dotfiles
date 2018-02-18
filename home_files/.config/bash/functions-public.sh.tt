@@ -41,7 +41,7 @@ cype() {
 }
 
 # Label: Process Status (specialized)
-# Description: Display process status, excluding the search of it, and ignoring case.
+# Description: Display process status (excluding current process) and ignoring case.
 # Parameters: $1 (required) - The process name.
 pss() {
   ps axu | ag --invert-match ag | ag "$1" --ignore-case
