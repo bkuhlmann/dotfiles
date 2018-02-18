@@ -232,9 +232,6 @@ alias mmb="middleman build"
 
 # Section: [Ruby on Rails](http://rubyonrails.org)
 alias scs="sc --sandbox"
-alias dbd="ber db:drop"
-alias dbc="ber db:create"
-alias dbm="ber db:migrate"
 alias dbmt="ber db:migrate && ber db:rollback && ber db:migrate"
 alias rorc="EDITOR='sublime --wait' bin/rails secrets:edit"
 
