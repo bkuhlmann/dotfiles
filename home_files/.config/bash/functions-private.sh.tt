@@ -468,26 +468,6 @@ _process_gh_option() {
 # Section: [Ruby on Rails](http://rubyonrails.org) #
 #--------------------------------------------------#
 
-# Label: Run Rails Command
-# Description: Run Rails command with smart detection of current environment.
-# Parameters: $1 (required) - The command to run, $2(optional) - Additional arguments
-_run_rails_command() {
-  local rails_command=$1
-  local rails_options=$2
-
-  # Rails 4.x.x.
-  if [[ -e bin/rails ]]; then
-    bin/rails $rails_command $rails_options
-  # Rails 3.x.x.
-  elif [[ -e script/rails ]]; then
-    script/rails $rails_command $rails_options
-  # Unsupported version.
-  else
-    printf "ERROR: Unsupported Rails version.\n"
-    return 1
-  fi
-}
-
 # Label: Create Rails Skeleton
 # Description: Create new Rails application skeleton.
 # Parameters: $1 (required) - The application name, $2 (optional) - The build options to apply.
@@ -496,10 +476,10 @@ _create_rails_skeleton() {
   rails new $1 $2
 }
 
-# Label: Process Rew Option
+# Label: Process Ruby on Rails New Option
 # Description: Process option for constructing new Rails application skeletons with custom build settings.
 # Parameters: $1 (required) - The application name, $2 (required) - The template to apply, $3 (optional) - The branch. Default: master.
-_process_rew_option() {
+_process_rails_new_option() {
   local branch="${3:-master}"
   local flags="--skip-git --skip-bundle --skip-sprockets --skip-action-cable --skip-turbolinks --skip-spring --skip-test --skip-keeps --force --database postgresql"
 

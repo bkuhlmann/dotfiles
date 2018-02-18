@@ -1842,14 +1842,14 @@ beg() {
 # Section: [Ruby on Rails](http://rubyonrails.org) #
 #--------------------------------------------------#
 
-# Label: Rails New
+# Label: Ruby on Rails New
 # Description: Create new Rails application from selected template.
 # Parameters: $1 (required) - Application name, $2 (optional) - Template name, $3 (optional) - Branch name.
-rew() {
+railsn() {
   if [[ "$1" ]]; then
     while true; do
       if [[ $2 ]]; then
-        _process_rew_option "$1" "$2" "$3"
+        _process_rails_new_option "$1" "$2" "$3"
       else
         printf "\nUsage: rew NAME TEMPLATE\n"
         printf "\nAvailable Ruby on Rails Templates:\n\n"
@@ -1861,7 +1861,7 @@ rew() {
         printf "\n"
         read -p "Please pick one (or type 'q' to quit): " response
         printf "\n"
-        _process_rew_option "$1" $response "$3"
+        _process_rails_new_option "$1" $response "$3"
       fi
       break
     done
@@ -1869,24 +1869,6 @@ rew() {
     printf "ERROR: Rails application name must be supplied.\n"
     return 1
   fi
-}
-
-# Label: Rails Script Console
-# Description: Run Rails console.
-sc() {
-  _run_rails_command "console" "$*"
-}
-
-# Label: Rails Script Server
-# Description: Run Rails server.
-ss() {
-  _run_rails_command "server" "$*"
-}
-
-# Label: Rails Script Generator
-# Description: Run Rails generator.
-sg() {
-  _run_rails_command "generate" "$*"
 }
 
 #------------------------------------------------------------#
