@@ -1889,12 +1889,6 @@ sg() {
   _run_rails_command "generate" "$*"
 }
 
-# Label: Rails Script Database Console
-# Description: Run Rails database console.
-sdb() {
-  _run_rails_command "dbconsole" "$*"
-}
-
 #------------------------------------------------------------#
 # Section: [RailRoady](https://github.com/preston/railroady) #
 #------------------------------------------------------------#
