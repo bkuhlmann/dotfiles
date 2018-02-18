@@ -101,6 +101,7 @@ alias gau="git add --update"
 alias gap="git add --patch"
 alias gall="git add --all ."
 alias gco="git commit"
+alias gce='cat .git/COMMIT_EDITMSG | ag --invert-match "^\#.*" | pbcopy'
 alias gatch="git commit --patch"
 alias gca="git commit --all"
 alias gcm="git commit --message"
