@@ -257,9 +257,6 @@ alias copd='find . -name ".rubocop-http*" -type f -delete'
 # Section: [SimpleCov](https://github.com/colszowka/simplecov)
 alias cov="open coverage/index.html"
 
-# Section: [Foreman](https://github.com/ddollar/foreman)
-alias fms="foreman start --env /dev/null"
-
 # Section: [Overmind](https://github.com/DarthSim/overmind)
 alias om="overmind"
 alias oms="overmind start -p 2990 -P 10"
