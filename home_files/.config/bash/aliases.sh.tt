@@ -232,7 +232,6 @@ alias mmb="middleman build"
 
 # Section: [Ruby on Rails](http://rubyonrails.org)
 alias scs="sc --sandbox"
-alias sgm="sg model"
 alias dbd="ber db:drop"
 alias dbc="ber db:create"
 alias dbm="ber db:migrate"
