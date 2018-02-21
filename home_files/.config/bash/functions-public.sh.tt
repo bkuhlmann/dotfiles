@@ -1120,6 +1120,17 @@ gbdm() {
   git branch --merged | ag --invert-match "\* master" | xargs -n 1 git branch --delete --force
 }
 
+# Label: Git Tag Rebuild
+# Description: Rebuild a previous tag. WARNING: Use with caution, especially if previously published.
+# Parameters: $1 (required) - Version, $2 (required) - Release notes path, $3 (optional) - Creation date/time. Default: current date/time.
+gtagr() {
+  local version="$1"
+  local path="$2"
+  local datetime="${3:-$(date '+%Y-%m-%d %H:%M:%S')}"
+
+  GIT_COMMITTER_DATE="$datetime" git tag --force --sign --file "$path" "$version"
+}
+
 # Label: Git Tag Delete
 # Description: Delete local and remote tag (if found).
 # Parameters: $1 (required) - The tag name.
