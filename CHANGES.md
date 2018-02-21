@@ -1,3 +1,42 @@
+# v31.0.0 (2018-02-20)
+
+- Fixed Pragmater `--includes` option.
+- Fixed README feature list and IRB console documentation.
+- Added Git feature branch SHAs calculation.
+- Added Git feature branch first SHA calculation.
+- Added Middleman aliases.
+- Added Overmind aliases.
+- Added `gce` alias.
+- Added `gcfi` function for interactive Git commit fixing.
+- Added `glear` function to clear Git repository for packaging purposes.
+- Added iTerm label updating to Bash prompt.
+- Updated Git stash save command flags.
+- Updated README license information.
+- Updated `gli` function to use feature branch SHAs.
+- Updated `gri` and `gra` functions to use feature branch SHAs.
+- Updated `pss` function documentation.
+- Updated global Git configurate to abbreviate rebase commands.
+- Updated to Circle CI 2.0.0 configuration.
+- Removed Go support.
+- Removed Patreon badge from README.
+- Removed Pow configuration.
+- Removed Rails Best Practices alias.
+- Removed Ruby on Rails DB aliases.
+- Removed Ruby on Rails aliases/functions (replaced by `rails` prefix).
+- Removed `fms` alias.
+- Removed `itl` alias for iTerm labels.
+- Removed `pas` alias.
+- Removed `res` alias.
+- Removed `sdb` function.
+- Removed `sgc` alias.
+- Removed `sgm` alias.
+- Removed `tail*` aliases.
+- Removed `v` alias for Vim.
+- Removed gifize function.
+- Refactored obtaining last commit SHA for branch to single function.
+- Refactored printing of Git commit options.
+- Refactored regular expression pattern variables.
+
 # v30.0.0 (2018-01-01)
 
 - Fixed README table of contents.

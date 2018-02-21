@@ -132,7 +132,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v30.0.0
+    git checkout v31.0.0
 
 Master Version (unstable)
 
@@ -232,7 +232,7 @@ When upgrading to a new version, run the following:
     gst = "git status --short --branch"
     gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
     gld = 'git log --stat --pretty=format:"$(_git_log_details_format)"'
-    glh = 'git log --pretty=format:%h -1 | _copy_and_print'
+    glh = "_git_commit_last | _copy_and_print"
     glf = 'git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
     glg = 'git log --pretty=format:"$(_git_log_line_format)" --grep'
     gls = 'git log --pretty=format:"$(_git_log_line_format)" -S'
@@ -273,6 +273,7 @@ When upgrading to a new version, run the following:
     gap = "git add --patch"
     gall = "git add --all ."
     gco = "git commit"
+    gce = 'cat .git/COMMIT_EDITMSG | ag --invert-match "^\#.*" | pbcopy'
     gatch = "git commit --patch"
     gca = "git commit --all"
     gcm = "git commit --message"
@@ -377,25 +378,19 @@ When upgrading to a new version, run the following:
     gsi = "bundle exec rake install"
     gsp = "bundle exec rake publish"
     gsq = "bundle exec rake code_quality"
-#### [Pragmater](https://github.com/bkuhlmann/pragmater)
-    pas = "pragmater --add . --comments '# frozen_string_literal: true' --includes 'Gemfile' 'Guardfile' 'Rakefile' 'config.ru' 'bin/**/*' '.gemspec' '.rake' '.rb'"
 #### [RSpec](http://rspec.info)
     bess = "bes spec"
     best = "bess --tag"
     besn = "bess --next-failure"
     besf = "bess --only-failures"
+#### [Middleman](https://middlemanapp.com)
+    mm = "middleman"
+    mmi = "middleman init"
+    mmb = "middleman build"
 #### [Ruby on Rails](http://rubyonrails.org)
-    scs = "sc --sandbox"
-    sgc = "sg controller"
-    sgm = "sg model"
-    dbd = "ber db:drop"
-    dbc = "ber db:create"
-    dbm = "ber db:migrate"
-    dbmt = "ber db:migrate && ber db:rollback && ber db:migrate"
-    taild = "tail -f log/development.log"
-    tailt = "tail -f log/test.log"
-    res = "touch tmp/restart.txt"
-    rorc = "EDITOR = 'sublime --wait' bin/rails secrets:edit"
+    railsb = "rails console --sandbox"
+    railse = "EDITOR = 'sublime --wait' rails secrets:edit"
+    railsdbm = "ber db:migrate && ber db:rollback && ber db:migrate"
 #### [Elm](http://elm-lang.org)
     elmc = "elm repl"
     elms = "elm reactor"
@@ -409,12 +404,12 @@ When upgrading to a new version, run the following:
     copf = "rubocop --auto-correct"
     cops = "rubocop --show-cops"
     copd = 'find . -name ".rubocop-http*" -type f -delete'
-#### [Rails Best Practices](https://github.com/railsbp/rails_best_practices)
-    rbp = "rails_best_practices"
 #### [SimpleCov](https://github.com/colszowka/simplecov)
     cov = "open coverage/index.html"
-#### [Foreman](https://github.com/ddollar/foreman)
-    fms = "foreman start --env /dev/null"
+#### [Overmind](https://github.com/DarthSim/overmind)
+    om = "overmind"
+    oms = "overmind start -p 2990 -P 10"
+    omr = "overmind restart"
 #### [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
     agf = "ag --hidden --files-with-matches --file-search-regex"
 #### [direnv](http://direnv.net)
@@ -423,12 +418,8 @@ When upgrading to a new version, run the following:
     denvs = "direnv status"
 #### [Z](https://github.com/rupa/z)
     ze = '$EDITOR $HOME/.z'
-#### [iTerm](https://www.iterm2.com)
-    itl = 'printf "\033]0;${PWD##*/}\007"'
 #### [Path Finder](http://www.cocoatech.com/pathfinder)
     pfo = 'open -a "Path Finder.app" "$PWD"'
-#### [Vim](http://www.vim.org)
-    v = "vim"
 #### [Sublime Text](http://www.sublimetext.com)
     e = "sublime"
 #### [Marked 2](http://marked2app.com)
@@ -443,7 +434,7 @@ When upgrading to a new version, run the following:
 #### General
     t2s = Tab to Space - Convert file from tab to space indendation.
     cype = Colorized Type - Identical to "type" command functionality but with syntax highlighting.
-    pss = Process Status (specialized) - Display process status, excluding the search of it, and ignoring case.
+    pss = Process Status (specialized) - Display process status (excluding current process) and ignoring case.
     kilp = Kill Process - Kill errant processes.
 #### [less](http://en.wikipedia.org/wiki/Less_(Unix))
     lessi = Less Interactive - Inspect file, interactively.
@@ -461,7 +452,7 @@ When upgrading to a new version, run the following:
     gstatsa = Git Statistics (all) - Answer statistics for all projects in current directory.
     ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
     gount = Git Commit Count - Answer total number of commits for current project.
-    gli = Git Log (interactive) - List commits with support to show/diff individual commits.
+    gli = Git Log (interactive) - List feature branch commits with support to show/diff individual commits.
     ghow = Git Show - Show commit details with optional diff support.
     gile = Git File - Show file details for a specific commit (with optional diff support).
     gistory = Git File History - View file commit history (with optional diff support).
@@ -492,6 +483,7 @@ When upgrading to a new version, run the following:
     gucca = Git Upstream Commit Count (all) - Answer upstream commit count since last pull for projects in current directory.
     gpua = Git Pull (all) - Pull new changes from remote branch for projects in current directory.
     galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
+    gcfi = Git Commit Fix (interactive) - Select which commit to fix within current feature branch.
     gcfp = Git Commit Fix and Push - Create fixup commit, push, and copy URL to clipboard.
     gcaa = Git Commit (all) - Commit changes (unstaged and staged) for projects in current directory.
     gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
@@ -515,6 +507,7 @@ When upgrading to a new version, run the following:
     grha = Git Reset Hard (all) - Destroy all untracked, staged, and unstaged changes for all projects in current directory. UNRECOVERABLE!
     guke = Git Nuke - Permanently destroy and erase a file from history. UNRECOVERABLE!
     gleana = Git Clean (all) - Clean uncommitted files from all projects in current directory.
+    glear = Git Clear - Clear repository for packaging/shipping purposes.
     gvac = Git Verify and Clean - Verify and clean objects for current project.
     gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in current directory.
 #### [GitHub](https://github.com)
@@ -552,18 +545,12 @@ When upgrading to a new version, run the following:
 #### [Guard](https://github.com/guard/guard)
     beg = Bundle Execute Guard - Run Guard via binstub or Bundler.
 #### [Ruby on Rails](http://rubyonrails.org)
-    rew = Rails New - Create new Rails application from selected template.
-    sc = Rails Script Console - Run Rails console.
-    ss = Rails Script Server - Run Rails server.
-    sg = Rails Script Generator - Run Rails generator.
-    sdb = Rails Script Database Console - Run Rails database console.
+    railsn = Ruby on Rails New - Create new Rails application from selected template.
 #### [RailRoady](https://github.com/preston/railroady)
     rr = RailRoady Models - Generate diagrams for Rails models, controllers, or states.
 #### [Elm](http://elm-lang.org)
     elmm = Elm Make - Compile Elm source.
     elml = Elm Live Reload - Watch for source code changes and recompile immediately.
-#### [FFmpeg](http://www.ffmpeg.org)
-    gifize = Gifize - Convert video to animated GIF.
 #### [asciinema](https://asciinema.org)
     cinr = asciinema Record - Create new asciinema recording.
 #### Dotfiles
@@ -572,23 +559,22 @@ When upgrading to a new version, run the following:
 ### Git Hooks
 
     brakeman_check = Brakeman Check - Scans Rails project for security vulnerabilities.
-    bundler_gemfile_path = Bundler Gemfile Path - Detect gem path statements.
     bundler_audit_check = Bundler Audit Check - Scans gem dependencies for security vulnerabilities.
+    bundler_gemfile_path = Bundler Gemfile Path - Detect gem path statements.
     capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open_page statements.
     comment_totals = Comment Totals - Print project comment totals.
     ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
     elm_debug = Elm Debug - Detect debug statements.
     git_cop = Git Cop - Enforces consistent Git commits.
-    java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
-    java_script_console = JavaScript Console - Detect JavaScript console statements.
+    irb_binding = IRB Binding - Detect IRB debug statements.
     java_script_alert = JavaScript Alert - Detect JavaScript alert statements.
+    java_script_console = JavaScript Console - Detect JavaScript console statements.
+    java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
     license_finder_check = License Finder Check - Scans project for valid licenses.
     pry_binding = Pry Binding - Detect Pry debug statements.
-    rails_best_practices_check = Rails Best Practices - Scans Rails code for poor style choices.
     reek_check = Reek Check - Scans Ruby code for poor style choices.
     rspec_focus = RSpec Focus - Detect RSpec focus.
     rubocop_check = Rubocop Check - Scans Ruby code for poor style choices.
-    irb_binding = IRB Binding - Detect IRB debug statements.
 
 ### IRB, Pry, and Rails consoles
 
