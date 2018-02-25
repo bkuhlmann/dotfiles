@@ -13,6 +13,7 @@ export -f _check_gem_dependencies
 # Description: Builds/rebuilds CTags.
 _build_ctags() {
   rm -f ".tags"
+  rm -f "tags"
   ctags
 }
 export -f _build_ctags
