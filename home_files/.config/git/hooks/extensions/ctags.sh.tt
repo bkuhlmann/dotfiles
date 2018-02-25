@@ -8,3 +8,4 @@ ctags_rebuild() {
   _build_ctags
   printf "%s\n" "$label: CTags rebuilt."
 }
+export -f ctags_rebuild

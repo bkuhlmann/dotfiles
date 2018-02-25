@@ -24,6 +24,7 @@ _comment_total() {
     _print_warning "$label: $total $prefix"
   fi
 }
+export -f _comment_total
 
 # Label: Comment Totals
 # Description: Print project comment totals.
@@ -34,3 +35,4 @@ comment_totals() {
     _comment_total "$prefix"
   done
 }
+export -f comment_totals

@@ -5,6 +5,7 @@
 bundler_gemfile_path() {
   _scan_code "[bundler]" "Gemfile path statement detected" 'Gemfile' '(path:|:path\s=>)'
 }
+export -f bundler_gemfile_path
 
 # Label: Bundler Audit Check
 # Description: Scans gem dependencies for security vulnerabilities.
@@ -14,3 +15,4 @@ bundler_audit_check() {
     bundle exec bundler-audit
   fi
 }
+export -f bundler_audit_check

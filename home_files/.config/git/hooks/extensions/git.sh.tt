@@ -10,3 +10,4 @@ git_cop() {
 
   git-cop --hook --commit-message "${BASH_ARGV[0]}"
 }
+export -f git_cop

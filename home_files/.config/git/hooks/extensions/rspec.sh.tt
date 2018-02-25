@@ -5,3 +5,4 @@
 rspec_focus() {
   _scan_code "[rspec]" "Focus detected" 'spec.rb$' '(fdescribe\s|fcontext\s|fspecify\s|fit\s|,\s:focus|,\sfocus:)'
 }
+export -f rspec_focus

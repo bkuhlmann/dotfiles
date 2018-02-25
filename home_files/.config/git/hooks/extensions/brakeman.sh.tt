@@ -8,3 +8,4 @@ brakeman_check() {
     bundle exec brakeman
   fi
 }
+export -f brakeman_check

@@ -8,3 +8,4 @@ reek_check() {
     bundle exec reek .
   fi
 }
+export -f reek_check

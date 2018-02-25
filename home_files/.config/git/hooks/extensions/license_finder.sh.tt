@@ -8,3 +8,4 @@ license_finder_check() {
     bundle exec license_finder
   fi
 }
+export -f license_finder_check

@@ -5,3 +5,4 @@
 elm_debug() {
   _scan_code "[elm]" "Debug statements detected" 'elm$' 'Debug\.log'
 }
+export -f elm_debug

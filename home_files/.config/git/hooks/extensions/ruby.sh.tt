@@ -6,3 +6,4 @@ irb_binding() {
   local search_pattern='^(?:(?!.*#.+).*binding.irb)'
   _scan_code "[ruby]" "Debug statements detected" '(rb|erb|slim)$' $search_pattern
 }
+export -f irb_binding

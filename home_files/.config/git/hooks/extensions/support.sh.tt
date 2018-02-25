@@ -7,6 +7,7 @@ _check_gem_dependencies() {
   local gem="$1"
   ag "(add.*dependency \"$gem\"|add.*dependency '$gem'|gem \"$gem\"|gem '$gem')" --depth 0 . > /dev/null
 }
+export -f _check_gem_dependencies
 
 # Label: Builds CTags
 # Description: Builds/rebuilds CTags.
@@ -14,10 +15,11 @@ _build_ctags() {
   rm -f ".tags"
   ctags
 }
+export -f _build_ctags
 
 # Label: Print Warning.
 # Description: Print yellow warning message.
-# Parameters: $1 (required) - The message to print.
+# Parameters: $1 (required) - Message.
 _print_warning() {
   local message="$1"
 
@@ -25,10 +27,11 @@ _print_warning() {
   printf "%s\n" "$message"
   printf "\033[m"
 }
+export -f _print_warning
 
 # Label: Print Error.
 # Description: Print red error message.
-# Parameters: $1 (required) - The message to print.
+# Parameters: $1 (required) - Message.
 _print_error() {
   local message="$1"
 
@@ -36,6 +39,7 @@ _print_error() {
   printf "%s\n" "$message"
   printf "\033[m"
 }
+export -f _print_error
 
 # Label: Scan Code
 # Description: Scan for invalid code.
@@ -64,3 +68,4 @@ _scan_code() {
      exit 1
   fi
 }
+export -f _scan_code
