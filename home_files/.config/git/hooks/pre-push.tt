@@ -34,12 +34,12 @@ fi
 
 while read local_ref local_sha remote_ref remote_sha; do
   if [[ "$local_sha" != "$zeros" && "$remote_sha" != "$zeros" ]]; then
-    comment_totals
-    reek_check
-    rubocop_check
-    bundler_audit_check
-    brakeman_check
-    license_finder_check
+    parallel ::: comment_totals \
+                 reek_check \
+                 rubocop_check \
+                 bundler_audit_check \
+                 brakeman_check \
+                 license_finder_check
   fi
 done
 
