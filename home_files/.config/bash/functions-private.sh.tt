@@ -581,7 +581,7 @@ _print_functions() {
 # Label: Print Git Hooks
 # Description: Print Git hooks.
 _print_git_hooks() {
-  for file in $(find "$HOME/.config/git/hooks/extensions" -type l); do
+  for file in $(find "$HOME/.config/git/hooks/extensions" -type l | sort); do
     _print_functions "$file"
   done
 }
