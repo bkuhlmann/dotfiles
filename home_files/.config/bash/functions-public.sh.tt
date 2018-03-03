@@ -1952,22 +1952,17 @@ elml() {
 
 # Label: asciinema Record
 # Description: Create new asciinema recording.
-# Parameters: $1 (required) - The recording title, $2 (required) - The recording file name.
+# Parameters: $1 (required) - The recording label.
 cinr() {
-  local title="$1"
-  local name="$2"
+  local label="$1"
+  local name="${label,,}.cast"
 
-  if [[ -z "$title" ]]; then
-    printf "ERROR: Recording title is missing.\n"
+  if [[ -z "$label" ]]; then
+    printf "ERROR: Recording label is missing.\n"
     return 1
   fi
 
-  if [[ -z "$name" ]]; then
-    printf "ERROR: Recording file name is missing.\n"
-    return 1
-  fi
-
-  asciinema rec --max-wait 1 --title "$title" "$name"
+  asciinema rec --idle-time-limit 1 --title "$label" "$name"
 }
 
 #-------------------#
