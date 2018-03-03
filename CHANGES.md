@@ -1,3 +1,20 @@
+# v31.1.0 (2018-03-03)
+
+- Fixed Git pre-push hook extension label output.
+- Added `cina` alias for appending to existing asciinema recordings.
+- Added `cinc` alias for `asciinema cat`.
+- Added `gtagr` function for rebuilding Git tags.
+- Added ctags `tags` file to rebuild function.
+- Added parellel processing to Git push hook.
+- Updated Brakeman Git hook extension to use summary format.
+- Updated Git hook extension functions to be exported.
+- Updated Git hook extensions to use consistent descriptions.
+- Updated Git hook printing to be sorted.
+- Updated Rubocop Git hook extension to use simple format.
+- Updated `cinr` function to leverage asciinema 2.0.0 capabilities.
+- Updated table of contents for README.
+- Removed ERD configuration.
+
 # v31.0.0 (2018-02-20)
 
 - Fixed Pragmater `--includes` option.

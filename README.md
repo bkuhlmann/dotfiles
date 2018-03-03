@@ -127,7 +127,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v31.0.0
+    git checkout v31.1.0
 
 Master Version (unstable)
 
@@ -421,6 +421,8 @@ When upgrading to a new version, run the following:
     mo = "open -a Marked\ 2"
 #### [asciinema](https://asciinema.org)
     cin = "asciinema"
+    cina = "asciinema rec --idle-time-limit 1 --append"
+    cinc = "asciinema cat"
     cinp = "asciinema play"
     cinu = "asciinema upload"
 
@@ -494,6 +496,7 @@ When upgrading to a new version, run the following:
     gbna = Git Branch Number (all) - Answer number of branches for projects in current directory.
     gbd = Git Branch Delete - Select local and/or remote branches to delete.
     gbdm = Git Branch Delete Merged - Delete remote and local merged branches.
+    gtagr = Git Tag Rebuild - Rebuild a previous tag. WARNING: Use with caution, especially if previously published.
     gtagd = Git Tag Delete - Delete local and remote tag (if found).
     gwa = Git Worktree Add - Add and switch to new worktree.
     gwd = Git Worktree Delete - Deletes current Git worktree.
@@ -553,23 +556,23 @@ When upgrading to a new version, run the following:
 
 ### Git Hooks
 
-    brakeman_check = Brakeman Check - Scans Rails project for security vulnerabilities.
-    bundler_audit_check = Bundler Audit Check - Scans gem dependencies for security vulnerabilities.
+    brakeman_check = Brakeman Check - Scan Rails project for security vulnerabilities.
     bundler_gemfile_path = Bundler Gemfile Path - Detect gem path statements.
+    bundler_audit_check = Bundler Audit Check - Scans gem dependencies for security vulnerabilities.
     capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open_page statements.
     comment_totals = Comment Totals - Print project comment totals.
     ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
     elm_debug = Elm Debug - Detect debug statements.
-    git_cop = Git Cop - Enforces consistent Git commits.
-    irb_binding = IRB Binding - Detect IRB debug statements.
-    java_script_alert = JavaScript Alert - Detect JavaScript alert statements.
-    java_script_console = JavaScript Console - Detect JavaScript console statements.
+    git_cop = Git Cop - Enforce consistent Git commits.
     java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
-    license_finder_check = License Finder Check - Scans project for valid licenses.
+    java_script_console = JavaScript Console - Detect JavaScript console statements.
+    java_script_alert = JavaScript Alert - Detect JavaScript alert statements.
+    license_finder_check = License Finder Check - Scan project for valid licenses.
     pry_binding = Pry Binding - Detect Pry debug statements.
-    reek_check = Reek Check - Scans Ruby code for poor style choices.
+    reek_check = Reek Check - Scan Ruby code for poor style choices.
     rspec_focus = RSpec Focus - Detect RSpec focus.
-    rubocop_check = Rubocop Check - Scans Ruby code for poor style choices.
+    rubocop_check = Rubocop Check - Scan Ruby code for poor style choices.
+    irb_binding = IRB Binding - Detect IRB debug statements.
 
 ### IRB, Pry, and Rails consoles
 
