@@ -97,7 +97,6 @@ more.
 - Configures the [Ruby](https://www.ruby-lang.org) `.ruby-version` and `.irbrc` files.
 - Configures the [Pry](http://pry.github.com) `.pryrc` file.
 - Configures the [Ruby Debugger](http://bashdb.sourceforge.net/ruby-debug.html) `.rdebugrc` file.
-- Configures the [Rails ERD](https://voormedia.github.io/rails-erd) `.erdconfig` file.
 - Configures the [RSpec](http://rspec.info) `.rspec` file.
 - Configures the [Awesome Print](https://github.com/michaeldv/awesome_print) `.aprc` file.
 - Configures the [PostgreSQL](http://www.postgresql.org/docs/9.3/static/app-psql.html) `.psqlrc`
