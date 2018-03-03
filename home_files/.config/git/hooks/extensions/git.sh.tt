@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # Label: Git Cop
-# Description: Enforces consistent Git commits.
+# Description: Enforce consistent Git commits.
 git_cop() {
   if ! command -v git-cop > /dev/null; then
      printf "%s\n" "[git]: Git Cop not found. To install, run: gem install git-cop --trust-policy MediumSecurity."

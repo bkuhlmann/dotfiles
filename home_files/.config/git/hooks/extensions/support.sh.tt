@@ -10,7 +10,7 @@ _check_gem_dependencies() {
 export -f _check_gem_dependencies
 
 # Label: Builds CTags
-# Description: Builds/rebuilds CTags.
+# Description: Build/rebuild CTags.
 _build_ctags() {
   rm -f ".tags"
   rm -f "tags"

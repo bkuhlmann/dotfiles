@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # Label: Reek Check
-# Description: Scans Ruby code for poor style choices.
+# Description: Scan Ruby code for poor style choices.
 reek_check() {
   if _check_gem_dependencies "reek"; then
     printf "[reek]: "

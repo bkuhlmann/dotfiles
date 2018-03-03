@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # Label: Brakeman Check
-# Description: Scans Rails project for security vulnerabilities.
+# Description: Scan Rails project for security vulnerabilities.
 brakeman_check() {
   if _check_gem_dependencies "brakeman"; then
     printf "[brakeman]: "
