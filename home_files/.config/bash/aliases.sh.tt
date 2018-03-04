@@ -266,6 +266,12 @@ alias denva="direnv allow"
 alias denvr="direnv reload"
 alias denvs="direnv status"
 
+# Section: [Yarn](https://yarnpkg.com)
+alias yarni="yarn install"
+alias yarna="yarn add"
+alias yarnu="yarn upgrade"
+alias yarnr="yarn remove"
+
 # Section: [Z](https://github.com/rupa/z)
 alias ze='$EDITOR $HOME/.z'
 
