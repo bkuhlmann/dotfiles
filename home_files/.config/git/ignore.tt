@@ -20,7 +20,7 @@
 *.dump
 
 # CTags
-tags
+/tags
 .tags
 .tags_sorted_by_file
 
@@ -34,7 +34,7 @@ tags
 .rubocop-http*
 
 # SimpleCov
-coverage
+/coverage
 
 # Temp Directories
 tmp
