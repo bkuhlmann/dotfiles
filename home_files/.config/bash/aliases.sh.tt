@@ -243,7 +243,7 @@ alias elmi="elm package install"
 alias elmt="elm test"
 
 # Section: [Rubocop](https://github.com/bbatsov/rubocop)
-alias cop="rubocop --parallel --display-cop-names"
+alias cop="rubocop --parallel --display-cop-names --display-style-guide"
 alias copc="rubocop --auto-gen-config"
 alias copo="rubocop --display-cop-names --only"
 alias copf="rubocop --auto-correct"
