@@ -253,11 +253,6 @@ alias copd='find . -name ".rubocop-http*" -type f -delete'
 # Section: [SimpleCov](https://github.com/colszowka/simplecov)
 alias cov="open coverage/index.html"
 
-# Section: [Overmind](https://github.com/DarthSim/overmind)
-alias om="overmind"
-alias oms="overmind start -p 2990 -P 10"
-alias omr="overmind restart"
-
 # Section: [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
 alias agf="ag --hidden --files-with-matches --file-search-regex"
 
