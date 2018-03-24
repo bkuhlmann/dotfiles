@@ -1,0 +1,11 @@
+# Use `mdls -name kMDItemCFBundleIdentifier -r /Applications/<app>.app` to identify applications.
+
+com.google.Chrome .gif all
+com.omnigroup.OmniGrafflePro .dot all
+com.pixelmatorteam.pixelmator .arw all
+com.pixelmatorteam.pixelmator .bmp all
+com.pixelmatorteam.pixelmator .jpeg all
+com.pixelmatorteam.pixelmator .jpg all
+com.pixelmatorteam.pixelmator .png all
+com.pixelmatorteam.pixelmator .tiff all
+com.pixelmatorteam.pixelmator .webp all
