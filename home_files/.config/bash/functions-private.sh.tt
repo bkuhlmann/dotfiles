@@ -47,10 +47,10 @@ _git_log_line_format() {
   printf "%s" "%C(yellow)%h%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)%cr.%C(reset)"
 }
 
-# Label: Git Log Format
+# Label: Git Log Details Format
 # Description: Prints default log format.
 _git_log_details_format() {
-  printf "%s" "$(_git_log_line_format) %n%b%n%N%-%n"
+  printf "%s" "$(_git_log_line_format) %n%n%b%n%N%-%n"
 }
 
 # Label: Git Show Details
