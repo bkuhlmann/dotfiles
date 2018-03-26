@@ -238,7 +238,7 @@ alias railsdbm="ber db:migrate && ber db:rollback && ber db:migrate && RAILS_ENV
 alias elmc="elm repl"
 alias elms="elm reactor"
 alias elmp="elm package"
-alias elmi="elm package install"
+alias elmi="elm package install --yes"
 alias elmt="elm test"
 
 # Section: [Rubocop](https://github.com/bbatsov/rubocop)
