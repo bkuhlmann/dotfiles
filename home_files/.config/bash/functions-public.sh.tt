@@ -1608,8 +1608,8 @@ bj() {
 }
 
 # Label: Bundler Config Gem
-# Description: Configure Bundler gem path for development.
-# Parameters: $1 (required) - The gem name, $2 (required) - The gem path.
+# Description: Configure Bundler to use local gem for development purposes.
+# Parameters: $1 (required) - Gem name, $2 (required) - Gem path.
 bcg() {
   local gem_name=$1
   local gem_path=$2
@@ -1625,7 +1625,7 @@ bcg() {
   fi
 
   bundle config "local.$gem_name" "$gem_path"
-  printf "Added: BUNDLE_LOCAL__${gem_name^^}: $gem_path\n"
+  printf "%s\n" "Added: $(tail -n 1 $HOME/.bundle/config)"
 }
 
 # Label: Bundler Config Ignore Post-Install Message
