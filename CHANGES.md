@@ -1,3 +1,19 @@
+# v31.2.0 (2018-04-01)
+
+- Fixed greedy global Git ignore configuration.
+- Added Yarn aliases.
+- Added `bsp` alias for `bundle show --paths`.
+- Added duti support.
+- Added new line between commit subject and body for Git log details.
+- Added style guide links to `cop` alias.
+- Updated `bcg` function to provide dynamic output.
+- Updated `elmi` alias to ignore prompts.
+- Updated `railsdbm` alias to auto-update the test database too.
+- Updated to Git Cop 2.2.0.
+- Updated to Ruby 2.5.1.
+- Refactored Overmind aliases as functions.
+- Refactored `gld` alias as dynamic function.
+
 # v31.1.0 (2018-03-03)
 
 - Fixed Git pre-push hook extension label output.

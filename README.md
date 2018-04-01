@@ -43,14 +43,15 @@ more.
       - [Elm](#elm)
       - [Rubocop](#rubocop)
       - [SimpleCov](#simplecov)
-      - [Overmind](#overmind)
       - [Silver Surfer](#silver-surfer)
       - [direnv](#direnv)
+      - [Yarn](#yarn)
       - [Z](#z)
       - [Path Finder](#path-finder)
       - [Sublime Text](#sublime-text)
       - [Marked 2](#marked-2)
       - [asciinema](#asciinema)
+      - [duti](#duti)
     - [Functions](#functions)
       - [General](#general-1)
       - [less](#less)
@@ -71,6 +72,7 @@ more.
       - [RailRoady](#railroady)
       - [Elm](#elm-1)
       - [asciinema](#asciinema-1)
+      - [Overmind](#overmind)
       - [Dotfiles](#dotfiles)
     - [Git Hooks](#git-hooks)
     - [IRB, Pry, and Rails consoles](#irb-pry-and-rails-consoles)
@@ -127,7 +129,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout v31.1.0
+    git checkout 31.2.0
 
 Master Version (unstable)
 
@@ -226,7 +228,6 @@ When upgrading to a new version, run the following:
     gset = "git config --add"
     gst = "git status --short --branch"
     gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
-    gld = 'git log --stat --pretty=format:"$(_git_log_details_format)"'
     glh = "_git_commit_last | _copy_and_print"
     glf = 'git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
     glg = 'git log --pretty=format:"$(_git_log_line_format)" --grep'
@@ -351,6 +352,7 @@ When upgrading to a new version, run the following:
 #### [Bundler](http://bundler.io)
     b = "bundle"
     bs = "bundle show"
+    bsp = "bundle show --paths"
     bl = "bundle lock"
     bi = "bundle install"
     bu = "bundle update"
@@ -385,15 +387,15 @@ When upgrading to a new version, run the following:
 #### [Ruby on Rails](http://rubyonrails.org)
     railsb = "rails console --sandbox"
     railse = "EDITOR = 'sublime --wait' rails secrets:edit"
-    railsdbm = "ber db:migrate && ber db:rollback && ber db:migrate"
+    railsdbm = "ber db:migrate && ber db:rollback && ber db:migrate && RAILS_ENV=test ber db:migrate"
 #### [Elm](http://elm-lang.org)
     elmc = "elm repl"
     elms = "elm reactor"
     elmp = "elm package"
-    elmi = "elm package install"
+    elmi = "elm package install --yes"
     elmt = "elm test"
 #### [Rubocop](https://github.com/bbatsov/rubocop)
-    cop = "rubocop --parallel --display-cop-names"
+    cop = "rubocop --parallel --display-cop-names --display-style-guide"
     copc = "rubocop --auto-gen-config"
     copo = "rubocop --display-cop-names --only"
     copf = "rubocop --auto-correct"
@@ -401,16 +403,17 @@ When upgrading to a new version, run the following:
     copd = 'find . -name ".rubocop-http*" -type f -delete'
 #### [SimpleCov](https://github.com/colszowka/simplecov)
     cov = "open coverage/index.html"
-#### [Overmind](https://github.com/DarthSim/overmind)
-    om = "overmind"
-    oms = "overmind start -p 2990 -P 10"
-    omr = "overmind restart"
 #### [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
     agf = "ag --hidden --files-with-matches --file-search-regex"
 #### [direnv](http://direnv.net)
     denva = "direnv allow"
     denvr = "direnv reload"
     denvs = "direnv status"
+#### [Yarn](https://yarnpkg.com)
+    yarni = "yarn install"
+    yarna = "yarn add"
+    yarnu = "yarn upgrade"
+    yarnr = "yarn remove"
 #### [Z](https://github.com/rupa/z)
     ze = '$EDITOR $HOME/.z'
 #### [Path Finder](http://www.cocoatech.com/pathfinder)
@@ -425,6 +428,8 @@ When upgrading to a new version, run the following:
     cinc = "asciinema cat"
     cinp = "asciinema play"
     cinu = "asciinema upload"
+#### [duti](http://duti.org)
+    dutia = "duti ~/.config/duti/configuration.duti"
 
 ### Functions
 
@@ -450,6 +455,7 @@ When upgrading to a new version, run the following:
     ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
     gount = Git Commit Count - Answer total number of commits for current project.
     gli = Git Log (interactive) - List feature branch commits with support to show/diff individual commits.
+    gld = Git Log Details - Dynamically list commit details for current feature branch or entire master branch.
     ghow = Git Show - Show commit details with optional diff support.
     gile = Git File - Show file details for a specific commit (with optional diff support).
     gistory = Git File History - View file commit history (with optional diff support).
@@ -523,7 +529,7 @@ When upgrading to a new version, run the following:
     gemdep = Gem Dependency Search - Finds a gem defined within a Gemfile or a gemspec.
 #### [Bundler](http://bundler.io)
     bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
-    bcg = Bundler Config Gem - Configure Bundler gem path for development.
+    bcg = Bundler Config Gem - Configure Bundler to use local gem for development purposes.
     bcim = Bundler Config Ignore Post-Install Message - Configure Bundler to ignore install messages for specified gem.
     boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
     bua = Bundle Update (all) - Update gems for projects in current directory.
@@ -551,6 +557,10 @@ When upgrading to a new version, run the following:
     elml = Elm Live Reload - Watch for source code changes and recompile immediately.
 #### [asciinema](https://asciinema.org)
     cinr = asciinema Record - Create new asciinema recording.
+#### [Overmind](https://github.com/DarthSim/overmind)
+    oms = Overmind Start - Start processes.
+    omc = Overmind Connect - Connect to running process.
+    omr = Overmind Restart - Restart running process.
 #### Dotfiles
     dots = Dotfiles - Learn about dotfile aliases, functions, etc.
 
