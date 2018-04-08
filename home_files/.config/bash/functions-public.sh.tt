@@ -78,6 +78,50 @@ lessi() {
   fi
 }
 
+#---------------------------------------------------------------------#
+# Section: [License Finder](https://github.com/pivotal/LicenseFinder) #
+#---------------------------------------------------------------------#
+
+# Label: License Finder (include)
+# Description: Include license in global list.
+# Parameters: $1 (required) - License, $2 (required) - Why.
+licensei() {
+  local license="$1"
+  local why="$2"
+
+  if [[ -z "$license" ]]; then
+    printf "%s\n" "ERROR: Must supply license."
+    return 1
+  fi
+
+  if [[ -z "$why" ]]; then
+    printf "%s\n" "ERROR: Explain why the license is safe."
+    return 1
+  fi
+
+  license_finder whitelist add "$license" --who "$(git config user.name)" --why "$why"
+}
+
+# Label: License Finder (add)
+# Description: Adds library to global list.
+# Parameters: $1 (required) - Library, $2 (required) - Why.
+licensea() {
+  local library="$1"
+  local why="$2"
+
+  if [[ -z "$library" ]]; then
+    printf "%s\n" "ERROR: Must supply library."
+    return 1
+  fi
+
+  if [[ -z "$why" ]]; then
+    printf "%s\n" "ERROR: Explain why the license is safe."
+    return 1
+  fi
+
+  license_finder approval add "$library" --who "$(git config user.name)" --why "$why"
+}
+
 #-----------------------------------------#
 # Section: [OpenSSL](https://openssl.org) #
 #-----------------------------------------#
