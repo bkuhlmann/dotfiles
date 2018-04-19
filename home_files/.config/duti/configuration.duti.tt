@@ -1,5 +1,6 @@
 # Use `mdls -name kMDItemCFBundleIdentifier -r /Applications/<app>.app` to identify applications.
 
+com.flyingmeat.Acorn5 .svg all
 com.google.Chrome .gif all
 com.omnigroup.OmniGrafflePro .dot all
 com.pixelmatorteam.pixelmator .arw all
