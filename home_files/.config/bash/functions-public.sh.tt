@@ -333,17 +333,16 @@ gli() {
 # Label: Git Log Details
 # Description: Dynamically list commit details for current feature branch or entire master branch.
 gld() {
-  local commit_range=""
-
   if [[ _git_branch_name != "master" ]]; then
     commits=($(_git_feature_branch_shas))
 
-    if [[ ${#commits[@]} > 0 ]]; then
-      commit_range="${commits[0]}...${commits[-1]}"
+    if [[ ${#commits[@]} == 1 ]]; then
+      _git_show_details "${commits[0]}"
+    elif [[ ${#commits[@]} > 1 ]]; then
+      range="${commits[-1]}^..${commits[0]}"
+      git log --stat --pretty=format:"$(_git_log_details_format)" $range
     fi
   fi
-
-  git log --stat --pretty=format:"$(_git_log_details_format)" $commit_range
 }
 
 # Label: Git Show
