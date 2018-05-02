@@ -1,3 +1,14 @@
+# 31.3.0 (2018-05-01)
+
+- Fixed `gld` function to handle single commits.
+- Added Duti configuration for Acorn.
+- Added Git attributes for diff'ing Ruby source code.
+- Added `grbd` alias for showing rebase conflict diff.
+- Added fetch and prune tags to global Git configuration.
+- Added license finder functions.
+- Updated `hbsu` alias to be expanded.
+- Updated project changes to use semantic versions.
+
 # 31.2.0 (2018-04-01)
 
 - Fixed greedy global Git ignore configuration.
