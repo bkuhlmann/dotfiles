@@ -1921,7 +1921,7 @@ railsn() {
       if [[ $2 ]]; then
         _process_rails_new_option "$1" "$2" "$3"
       else
-        printf "\nUsage: rew NAME TEMPLATE\n"
+        printf "\nUsage: railsn NAME TEMPLATE\n"
         printf "\nAvailable Ruby on Rails Templates:\n\n"
         printf "  default: Rails Default Template\n"
         printf "   custom: Rails Custom Template\n"
