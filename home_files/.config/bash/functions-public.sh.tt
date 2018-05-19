@@ -865,6 +865,18 @@ gcfi() {
   gcf "$selected_commit"
 }
 
+# Label: Git Commit Fix (file)
+# Description: Create commit fix for file (ignores previous fixups).
+# Parameters: $1 (required) - The file to create fixup commit for.
+gcff() {
+  local file_path="$1"
+  local file_sha="$(git log --grep 'fixup!' --invert-grep --pretty=format:%h -1 $file_path)"
+
+  if [[ "($(_git_feature_branch_shas))" == *"$file_sha"* ]]; then
+    git add "$file_path" && git commit --fixup "$file_sha"
+  fi
+}
+
 # Label: Git Commit Fix and Push
 # Description: Create fixup commit, push, and copy URL to clipboard.
 # Parameters: $1 (required) - The commit SHA to be fixed, $2 (optional) - Use "-a" to amend the fixup message.
