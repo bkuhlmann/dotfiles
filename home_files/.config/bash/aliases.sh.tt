@@ -11,16 +11,16 @@ alias l1="ls -A1 | _copy_and_print '\n'"
 alias p='pwd | tr -d "\r\n" | _copy_and_print'
 alias o="open"
 alias cat='ccat -G Keyword="turquoise" -G Punctuation="green" -G Decimal="green" -G Type="blue" -G Literal="blue" -G String="lightgray" -G Plaintext="white"'
-alias home='cd $HOME'
+alias home="cd $HOME"
 alias man="gem man --system"
 alias rmde="find . -type d -empty -not -path '*.git*' -delete"
 
 # Section: [Bash](https://www.gnu.org/software/bash)
-alias bashe='$EDITOR $HOME/.config/bash/env.sh'
-alias bashs='exec $SHELL'
+alias bashe="$EDITOR $HOME/.config/bash/env.sh"
+alias bashs="exec $SHELL"
 
 # Section: Network
-alias sshe='$EDITOR $HOME/.ssh/config'
+alias sshe="$EDITOR $HOME/.ssh/config"
 alias key="open /Applications/Utilities/Keychain\ Access.app"
 alias ipa='curl --silent checkip.dyndns.org | ag --only-matching "[0-9\.]+" | _copy_and_print'
 alias sniff="sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
@@ -173,7 +173,7 @@ alias crb="chruby"
 alias rbi="ruby-install"
 
 # Section: [Ruby Gems](https://rubygems.org)
-alias gemcr='$EDITOR ~/.gem/credentials'
+alias gemcr="$EDITOR ~/.gem/credentials"
 alias geml="gem list"
 alias gemi="gem install"
 alias gemup="gem update"
@@ -199,7 +199,7 @@ alias bl="bundle lock"
 alias bi="bundle install"
 alias bu="bundle update"
 alias bo="bundle outdated"
-alias bce='$EDITOR $HOME/.bundle/config'
+alias bce="$EDITOR $HOME/.bundle/config"
 alias bcon="bundle console"
 alias be="bundle exec"
 alias bch="rm -f Gemfile.lock; bundle check"
@@ -268,7 +268,7 @@ alias yarnu="yarn upgrade"
 alias yarnr="yarn remove"
 
 # Section: [Z](https://github.com/rupa/z)
-alias ze='$EDITOR $HOME/.z'
+alias ze="$EDITOR $HOME/.z"
 
 # Section: [Path Finder](http://www.cocoatech.com/pathfinder)
 alias pfo='open -a "Path Finder.app" "$PWD"'
