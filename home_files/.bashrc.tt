@@ -1,8 +1,23 @@
 #! /usr/bin/env bash
 
-# General
-shopt -s globstar
+# Checks the window size after each command and, if necessary, updates LINES and COLUMNS values.
+shopt -s checkwinsize
+
+# Attempts to save all lines of a multi-line command as a single history entry for easy re-editing.
+shopt -s cmdhist
+
+# Attempts word spelling correction on directory names if directory name supplied does not exist.
+shopt -s dirspell
+
+# Enables extended pattern matching features.
 shopt -s extglob
+
+# Using ** in a pathname expansion context will match all files and zero or more directories and
+# subdirectories. If the pattern is followed by a /, only directories and subdirectories match.
+shopt -s globstar
+
+# The history list is appended (instead of being overwritten) as defined by the HISTFILE variable.
+shopt -s histappend
 
 # Default Editors
 export EDITOR=sublime
@@ -68,7 +83,7 @@ if [[ -e /usr/local/share/chruby ]]; then
   source /usr/local/share/chruby/auto.sh
 fi
 
-# Node.js
+# Node
 export PATH="$PATH:/usr/local/share/npm/bin"
 
 # Yarn
