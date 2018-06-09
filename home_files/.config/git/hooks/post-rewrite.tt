@@ -11,5 +11,7 @@ IFS=$'\n\t' # Defines how Bash splits words and iterates arrays. This defines ne
 
 # EXTENSIONS
 source $HOME/.config/git/hooks/extensions/support.sh
+source $HOME/.config/git/hooks/extensions/ctags.sh
 
 # EXECUTION
+ctags_rebuild
