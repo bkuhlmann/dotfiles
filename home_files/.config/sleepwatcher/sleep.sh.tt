@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+set -o nounset
+set -o errexit
+set -o pipefail
+IFS=$'\n\t'
+
+kill_caffeinate() {
+  local pid=$(ps aux | grep caffeinate | grep -v grep | awk '{print $2}')
+
+  if [ -n "$pid" ]; then
+    kill $pid
+  fi
+}
+
+mute_machine() {
+  osascript -e "set volume with output muted"
+}
+
+# Execution
+kill_caffeinate
+mute_machine
