@@ -235,6 +235,14 @@ alias railsb="rails console --sandbox"
 alias railse="EDITOR='sublime --wait' rails secrets:edit"
 alias railsdbm="ber db:migrate && ber db:rollback && ber db:migrate && RAILS_ENV=test ber db:migrate"
 
+# Section: [Crystal](https://crystal-lang.org)
+alias cr="crystal"
+alias crb="crystal build"
+alias crr="crystal run"
+alias crd="crystal docs"
+alias crdo="open docs/index.html"
+alias crs="crystal spec"
+
 # Section: [Elm](http://elm-lang.org)
 alias elmc="elm repl"
 alias elms="elm reactor"
