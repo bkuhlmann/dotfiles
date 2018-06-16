@@ -167,7 +167,7 @@ alias esst="elasticsearch --daemonize"
 alias essp="kilp elasticsearch"
 
 # Section: [chruby](https://github.com/postmodern/chruby)
-alias crb="chruby"
+alias rb="chruby"
 
 # Section: [Ruby](https://www.ruby-lang.org)
 alias rbi="ruby-install"
