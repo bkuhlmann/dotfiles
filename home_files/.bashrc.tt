@@ -58,6 +58,9 @@ fi
 # OpenSSL
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
+# FZF
+export FZF_DEFAULT_OPTS="--multi"
+
 # Git
 source "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash"
 
