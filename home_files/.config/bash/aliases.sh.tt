@@ -192,10 +192,8 @@ alias gemw="gem whois"
 alias bert="ber -T"
 
 # Section: [Bundler](http://bundler.io)
-alias b="bundle"
 alias bs="bundle show"
 alias bsp="bundle show --paths"
-alias bl="bundle lock"
 alias bi="bundle install"
 alias bu="bundle update"
 alias bo="bundle outdated"
