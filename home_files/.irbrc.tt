@@ -4,34 +4,31 @@
 require "irb/completion"
 require "irb/ext/save-history"
 
-# IRB Defaults
+# Defaults
 IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:EVAL_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = %(#{ENV["HOME"]}/.irb_history)
 IRB.conf[:PROMPT] ||= {}
+
+info = if defined?(Rails)
+  "#{RUBY_VERSION}|#{Rails.version}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}"
+else
+  project = File.basename(`git rev-parse --show-toplevel 2> /dev/null`.strip).downcase
+  [RUBY_VERSION, project].reject(&:empty?).join "|"
+end
+
 IRB.conf[:PROMPT][:ALCHEMISTS] = {
-  PROMPT_I: "[#{RUBY_VERSION}]> ",
-  PROMPT_N: "[#{RUBY_VERSION}]| ",
-  PROMPT_C: "[#{RUBY_VERSION}]| ",
-  PROMPT_S: "[#{RUBY_VERSION}]%l ",
+  PROMPT_I: "[#{info}]> ",
+  PROMPT_N: "[#{info}]| ",
+  PROMPT_C: "[#{info}]| ",
+  PROMPT_S: "[#{info}]%l ",
   RETURN: "=> %s\n"
 }
+
 IRB.conf[:PROMPT_MODE] = :ALCHEMISTS
 
-if defined?(Rails)
-  # Prompt
-  require "logger"
-  Rails.logger = Logger.new STDOUT
-  rails_app_name = Rails.application.class.parent_name.downcase
-  IRB.conf[:PROMPT][:ALCHEMISTS][:PROMPT_I] = "[#{RUBY_VERSION}|#{rails_app_name}|#{Rails.env}]> "
-  IRB.conf[:PROMPT][:ALCHEMISTS][:PROMPT_N] = "[#{RUBY_VERSION}|#{rails_app_name}|#{Rails.env}]| "
-  IRB.conf[:PROMPT][:ALCHEMISTS][:PROMPT_C] = "[#{RUBY_VERSION}|#{rails_app_name}|#{Rails.env}]| "
-  IRB.conf[:PROMPT][:ALCHEMISTS][:PROMPT_S] = "[#{RUBY_VERSION}|#{rails_app_name}|#{Rails.env}]%l "
-
-  # ActionController
-  ActionController::Base.logger = Logger.new STDOUT
-end
+# Ruby on Rails
 
 # Gem Enhancements (requirements)
 %w(
