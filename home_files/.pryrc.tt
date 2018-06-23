@@ -1,18 +1,15 @@
-# Setup
-ruby_info = "#{RUBY_VERSION}"
-rails_info = "#{Rails.application.class.parent_name.downcase}|#{Rails.env}" if defined?(Rails)
-
 # Prompt
 Pry.config.prompt = [
   proc do |conf|
-    tree = conf.binding_stack.map { |stack| Pry.view_clip stack.eval("self") } * " / "
-    info = [ruby_info, rails_info, "PRY #{tree} - #{conf.expr_number}:#{conf.nesting_level}"].compact * "|"
-    "[#{info}]> "
+    tree = conf.binding_stack.map { |stack| Pry.view_clip stack.eval("self") }
+    rails = "#{Rails.version}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}" if defined?(Rails)
+    pry = %(#{tree.join " / "} - #{conf.expr_number}:#{conf.nesting_level})
+    %([#{[RUBY_VERSION, rails, pry].compact.join "|"}]> )
   end
 ]
 
-# History
-Pry.config.history.file = %(#{ENV["HOME"]}/.irb_history) # Keep IRB and Pry history the same.
+# History (Keep IRB and Pry the same)
+Pry.config.history.file = %(#{ENV["HOME"]}/.irb_history)
 
 # Aliases
 Pry.commands.alias_command "w", "whereami"
