@@ -19,6 +19,9 @@ shopt -s globstar
 # The history list is appended (instead of being overwritten) as defined by the HISTFILE variable.
 shopt -s histappend
 
+# Enables history expansion with space (i.e. `!!<space>`).
+bind Space:magic-space
+
 # Default Editors
 export EDITOR=sublime
 export VISUAL=vim
