@@ -1,5 +1,9 @@
 #! /usr/bin/env bash
 
+if [[ BASH_VERSINFO[0] < 4 ]]; then
+  printf "%s\n" "WARNING: Dotfiles requires Bash 4.x.x or higher to work correctly."
+fi
+
 # Checks the window size after each command and, if necessary, updates LINES and COLUMNS values.
 shopt -s checkwinsize
 
