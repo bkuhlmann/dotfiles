@@ -1,3 +1,30 @@
+# 32.0.0 (2018-07-01)
+
+- Fixed Homebrew prefix usage.
+- Fixed `railsn` usage typo.
+- Added Bash magic space completion.
+- Added Bash version check.
+- Added Crystal aliases.
+- Added FZF default options.
+- Added Sleepwatcher sleep and wake scripts.
+- Added `gcff` function for creating file-based fixup commits.
+- Added `ss` Pry alias for `show-source`.
+- Added `wp` alias for watching processes.
+- Added additional global Bash shell options.
+- Added ctag rebuild to post rewrite Git hook.
+- Updated Bash history location.
+- Updated IRB Ruby/Rails prompts.
+- Updated IRB/Pry history file to be relocated to .config folder.
+- Updated PRY prompt to include Rails version.
+- Updated Semantic Versioning links to be HTTPS.
+- Updated ctags configuration.
+- Removed Bundler `b` and `bl` aliases.
+- Removed GPG Agent info.
+- Removed `crb` alias (use `rb` instead).
+- Removed `gs` alias.
+- Refactored .inputrc documentation.
+- Refactored Bash aliases to use double quotes.
+
 # 31.3.0 (2018-05-01)
 
 - Fixed `gld` function to handle single commits.

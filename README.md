@@ -40,6 +40,7 @@ more.
       - [RSpec](#rspec)
       - [Middleman](#middleman)
       - [Ruby on Rails](#ruby-on-rails)
+      - [Crystal](#crystal)
       - [Elm](#elm)
       - [Rubocop](#rubocop)
       - [SimpleCov](#simplecov)
@@ -52,6 +53,7 @@ more.
       - [Marked 2](#marked-2)
       - [asciinema](#asciinema)
       - [duti](#duti)
+      - [Watch](#watch)
     - [Functions](#functions)
       - [General](#general-1)
       - [less](#less)
@@ -130,7 +132,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 31.3.0
+    git checkout 32.0.0
 
 Master Version (unstable)
 
@@ -186,14 +188,14 @@ When upgrading to a new version, run the following:
     p = 'pwd | tr -d "\r\n" | _copy_and_print'
     o = "open"
     cat = 'ccat -G Keyword = "turquoise" -G Punctuation="green" -G Decimal="green" -G Type="blue" -G Literal="blue" -G String="lightgray" -G Plaintext="white"'
-    home = 'cd $HOME'
+    home = "cd $HOME"
     man = "gem man --system"
     rmde = "find . -type d -empty -not -path '*.git*' -delete"
 #### [Bash](https://www.gnu.org/software/bash)
-    bashe = '$EDITOR $HOME/.config/bash/env.sh'
-    bashs = 'exec $SHELL'
+    bashe = "$EDITOR $HOME/.config/bash/env.sh"
+    bashs = "exec $SHELL"
 #### Network
-    sshe = '$EDITOR $HOME/.ssh/config'
+    sshe = "$EDITOR $HOME/.ssh/config"
     key = "open /Applications/Utilities/Keychain\ Access.app"
     ipa = 'curl --silent checkip.dyndns.org | ag --only-matching "[0-9\.]+" | _copy_and_print'
     sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
@@ -332,11 +334,11 @@ When upgrading to a new version, run the following:
     esst = "elasticsearch --daemonize"
     essp = "kilp elasticsearch"
 #### [chruby](https://github.com/postmodern/chruby)
-    crb = "chruby"
+    rb = "chruby"
 #### [Ruby](https://www.ruby-lang.org)
     rbi = "ruby-install"
 #### [Ruby Gems](https://rubygems.org)
-    gemcr = '$EDITOR ~/.gem/credentials'
+    gemcr = "$EDITOR ~/.gem/credentials"
     geml = "gem list"
     gemi = "gem install"
     gemup = "gem update"
@@ -352,14 +354,12 @@ When upgrading to a new version, run the following:
 #### [Rake](https://github.com/ruby/rake)
     bert = "ber -T"
 #### [Bundler](http://bundler.io)
-    b = "bundle"
     bs = "bundle show"
     bsp = "bundle show --paths"
-    bl = "bundle lock"
     bi = "bundle install"
     bu = "bundle update"
     bo = "bundle outdated"
-    bce = '$EDITOR $HOME/.bundle/config'
+    bce = "$EDITOR $HOME/.bundle/config"
     bcon = "bundle console"
     be = "bundle exec"
     bch = "rm -f Gemfile.lock; bundle check"
@@ -369,7 +369,6 @@ When upgrading to a new version, run the following:
     msp = "milestoner --publish"
     mse = "milestoner --config --edit"
 #### [Gemsmith](https://github.com/bkuhlmann/gemsmith)
-    gs = "gemsmith"
     gsg = "gemsmith --generate"
     gse = "gemsmith --config --edit"
     gsr = "gemsmith --read"
@@ -390,6 +389,13 @@ When upgrading to a new version, run the following:
     railsb = "rails console --sandbox"
     railse = "EDITOR = 'sublime --wait' rails secrets:edit"
     railsdbm = "ber db:migrate && ber db:rollback && ber db:migrate && RAILS_ENV=test ber db:migrate"
+#### [Crystal](https://crystal-lang.org)
+    cr = "crystal"
+    crb = "crystal build"
+    crr = "crystal run"
+    crd = "crystal docs"
+    crdo = "open docs/index.html"
+    crs = "crystal spec"
 #### [Elm](http://elm-lang.org)
     elmc = "elm repl"
     elms = "elm reactor"
@@ -417,7 +423,7 @@ When upgrading to a new version, run the following:
     yarnu = "yarn upgrade"
     yarnr = "yarn remove"
 #### [Z](https://github.com/rupa/z)
-    ze = '$EDITOR $HOME/.z'
+    ze = "$EDITOR $HOME/.z"
 #### [Path Finder](http://www.cocoatech.com/pathfinder)
     pfo = 'open -a "Path Finder.app" "$PWD"'
 #### [Sublime Text](http://www.sublimetext.com)
@@ -432,6 +438,8 @@ When upgrading to a new version, run the following:
     cinu = "asciinema upload"
 #### [duti](http://duti.org)
     dutia = "duti ~/.config/duti/configuration.duti"
+#### [Watch](https://gitlab.com/procps-ng/procps)
+    wp = "watch --no-title --interval 1 --color --beep --exec"
 
 ### Functions
 
@@ -492,6 +500,7 @@ When upgrading to a new version, run the following:
     gpua = Git Pull (all) - Pull new changes from remote branch for projects in current directory.
     galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
     gcfi = Git Commit Fix (interactive) - Select which commit to fix within current feature branch.
+    gcff = Git Commit Fix (file) - Create commit fix for file (ignores previous fixups).
     gcfp = Git Commit Fix and Push - Create fixup commit, push, and copy URL to clipboard.
     gcaa = Git Commit (all) - Commit changes (unstaged and staged) for projects in current directory.
     gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
@@ -603,6 +612,7 @@ When upgrading to a new version, run the following:
     's' = "step"
     'n' = "next"
     'f' = "finish"
+    "ss" = "show-source"
     "bp" = "break"
     "bpe" = "break --enable"
     "bpd" = "break --disable"
