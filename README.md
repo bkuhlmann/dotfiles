@@ -167,11 +167,11 @@ After install, the following files will require manual updating:
 
 When upgrading to a new version, run the following:
 
-0. Run: `bin/run l`. This will link any new files. If not using linked files, run `bin/run d` and
+1. Run: `bin/run l`. This will link any new files. If not using linked files, run `bin/run d` and
    `bin/run i` instead.
-0. Run: `bin/run c`. This will display file differences (if any -- usually, should only be excluded
+1. Run: `bin/run c`. This will display file differences (if any -- usually, should only be excluded
    files).
-0. Run: `exec $SHELL`. This will apply updates to the current shell.
+1. Run: `exec $SHELL`. This will apply updates to the current shell.
 
 ## Usage
 
