@@ -244,10 +244,11 @@ alias crs="crystal spec"
 
 # Section: [Elm](http://elm-lang.org)
 alias elmc="elm repl"
+alias elmg="elm init"
+alias elmi="elm install"
 alias elms="elm reactor"
-alias elmp="elm package"
-alias elmi="elm package install --yes"
-alias elmt="elm test"
+alias elmt="elm-test"
+alias elmp="elm publish"
 
 # Section: [Rubocop](https://github.com/bbatsov/rubocop)
 alias cop="rubocop --parallel --display-cop-names --display-style-guide"
