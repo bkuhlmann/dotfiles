@@ -9,6 +9,7 @@ alias h="history"
 alias l="ls -alhT"
 alias o="open"
 alias p='pwd | tr -d "\r\n" | _copy_and_print'
+alias du="ncdu -e --color dark"
 alias l1="ls -A1 | _copy_and_print '\n'"
 alias cat="bat --theme DarkNeon"
 alias home="cd $HOME"
