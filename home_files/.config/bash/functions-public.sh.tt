@@ -27,17 +27,14 @@ t2s() {
 }
 
 # Label: Colorized Type
-# Description: Identical to "type" command functionality but with syntax highlighting.
+# Description: Identical to "type" system command but with Bat support.
 # Parameters: $1 (required) - The alias or function to inspect source code for.
 cype() {
   local name="$1"
 
-  if [[ -z "$name" ]]; then
-    printf "ERROR: Alias or function must be supplied.\n"
-    return 1
+  if [[ -n "$name" ]]; then
+    type "$name" | cat --language "bash"
   fi
-
-  type "$1" | cat
 }
 
 # Label: Process Status (specialized)
