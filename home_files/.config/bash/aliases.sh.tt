@@ -7,10 +7,10 @@ alias cdb="cd -"
 alias c="clear"
 alias h="history"
 alias l="ls -alhT"
-alias l1="ls -A1 | _copy_and_print '\n'"
-alias p='pwd | tr -d "\r\n" | _copy_and_print'
 alias o="open"
-alias cat='ccat -G Keyword="turquoise" -G Punctuation="green" -G Decimal="green" -G Type="blue" -G Literal="blue" -G String="lightgray" -G Plaintext="white"'
+alias p='pwd | tr -d "\r\n" | _copy_and_print'
+alias l1="ls -A1 | _copy_and_print '\n'"
+alias cat="bat --theme DarkNeon"
 alias home="cd $HOME"
 alias man="gem man --system"
 alias rmde="find . -type d -empty -not -path '*.git*' -delete"
