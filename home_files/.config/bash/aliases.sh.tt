@@ -14,6 +14,7 @@ alias l1="ls -A1 | _copy_and_print '\n'"
 alias cat="bat --theme DarkNeon"
 alias home="cd $HOME"
 alias man="gem man --system"
+alias ping="prettyping --nolegend"
 alias rmde="find . -type d -empty -not -path '*.git*' -delete"
 alias top="htop"
 
