@@ -14,6 +14,7 @@ alias cat="bat --theme DarkNeon"
 alias home="cd $HOME"
 alias man="gem man --system"
 alias rmde="find . -type d -empty -not -path '*.git*' -delete"
+alias top="htop"
 
 # Section: [Bash](https://www.gnu.org/software/bash)
 alias bashe="$EDITOR $HOME/.config/bash/env.sh"
