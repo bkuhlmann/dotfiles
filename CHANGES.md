@@ -1,3 +1,22 @@
+# 32.1.0 (2018-10-01)
+
+- Fixed Markdown ordered list numbering.
+- Added FZF default command.
+- Added Homebrew environment variable to usage of installed Git.
+- Added Pry aliases for editing, playing, showing, and tracing.
+- Added `du` alias for using `ncdu` by default.
+- Added `ff` alias for Fuzzy Finder.
+- Added `grbo` alias for rebasing branches onto other branches.
+- Added `guthorc` function for answering Git author contribution stats.
+- Added `ping` alias for using `prettyping` by default.
+- Added `top` alias for using `htop` by default.
+- Updated Pry aliases to be alpha-sorted.
+- Updated `cat` alias to use `bat` instead of `ccat`.
+- Updated `cype` function to use Bat functionality.
+- Updated global Git global config to include columns in grep results.
+- Updated to Contributor Covenant Code of Conduct 1.4.1.
+- Updated to Elm 0.19 aliases and functions.
+
 # 32.0.0 (2018-07-01)
 
 - Fixed Homebrew prefix usage.
