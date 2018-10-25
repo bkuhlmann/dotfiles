@@ -183,6 +183,28 @@ curli() {
   fi
 }
 
+# Label: Curl Diagnostics
+# Description: Curl with diagnostic information for request.
+# Parameters: $1 (required) - The URL.
+curld() {
+  local url="$1"
+
+  printf -v diagnostics "%s\n" "\n" \
+                               "HTTP Version:   %{http_version}" \
+                               "HTTP Status:    %{http_code}" \
+                               "Content Type:   %{content_type}" \
+                               "DNS Lookup:     %{time_namelookup} seconds" \
+                               "Connect:        %{time_connect} seconds" \
+                               "App Connect:    %{time_appconnect} seconds" \
+                               "Pre-Transfer:   %{time_pretransfer} seconds" \
+                               "Start Transfer: %{time_starttransfer} seconds" \
+                               "Speed:          %{speed_upload}↑ %{speed_download}↓ bytes/second" \
+                               "Total Time:     %{time_total} seconds" \
+                               "Total Size:     %{size_download} bytes"
+
+  curl --write-out "$diagnostics" --url "$url"
+}
+
 #--------------------------------------------------#
 # Section: [lsof](http://people.freebsd.org/~abe/) #
 #--------------------------------------------------#
