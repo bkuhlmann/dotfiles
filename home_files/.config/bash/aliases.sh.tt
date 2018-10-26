@@ -304,4 +304,4 @@ alias cinu="asciinema upload"
 alias dutia="duti ~/.config/duti/configuration.duti"
 
 # Section: [Watch](https://gitlab.com/procps-ng/procps)
-alias wp="watch --no-title --interval 1 --color --beep --exec"
+alias wp="watch --interval 1 --color --beep --exec"
