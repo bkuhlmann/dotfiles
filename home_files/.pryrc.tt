@@ -1,10 +1,16 @@
 # Prompt
+
+rails_prompt = begin
+  "#{Rails.version}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}"
+rescue NameError
+  nil
+end
+
 Pry.config.prompt = [
   proc do |conf|
     tree = conf.binding_stack.map { |stack| Pry.view_clip stack.eval("self") }
-    rails = "#{Rails.version}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}" if defined?(Rails)
-    pry = %(#{tree.join " / "} - #{conf.expr_number}:#{conf.nesting_level})
-    %([#{[RUBY_VERSION, rails, pry].compact.join "|"}]> )
+    prompt = %(#{tree.join " / "} - #{conf.expr_number}:#{conf.nesting_level})
+    %([#{[RUBY_VERSION, rails_prompt, prompt].compact.join "|"}]> )
   end
 ]
 

@@ -11,9 +11,9 @@ IRB.conf[:EVAL_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = %(#{ENV["HOME"]}/.config/irb/history.log)
 IRB.conf[:PROMPT] ||= {}
 
-info = if defined?(Rails)
+info = begin
   "#{RUBY_VERSION}|#{Rails.version}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}"
-else
+rescue NameError
   project = File.basename(`git rev-parse --show-toplevel 2> /dev/null`.strip).downcase
   [RUBY_VERSION, project].reject(&:empty?).join "|"
 end
@@ -27,8 +27,6 @@ IRB.conf[:PROMPT][:ALCHEMISTS] = {
 }
 
 IRB.conf[:PROMPT_MODE] = :ALCHEMISTS
-
-# Ruby on Rails
 
 # Gem Enhancements (requirements)
 %w(
