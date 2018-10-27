@@ -293,6 +293,9 @@ alias e="sublime"
 # Section: [Marked 2](http://marked2app.com)
 alias mo="open -a Marked\ 2"
 
+# Section: [ASCII Doctor](https://asciidoctor.org)
+alias ad="asciidoctor"
+
 # Section: [asciinema](https://asciinema.org)
 alias cin="asciinema"
 alias cina="asciinema rec --idle-time-limit 1 --append"
