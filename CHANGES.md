@@ -1,3 +1,13 @@
+# 32.2.0 (2018-11-01)
+
+- Fixed IRB and Pry console prompts.
+- Added ASCII Doctor `ad` alias.
+- Added `curld` function for curl diagnostic output.
+- Added title to `watch` command output.
+- Updated `bo` alias to only care about top level dependencies.
+- Updated to Ruby 2.5.2.
+- Updated to Ruby 2.5.3.
+
 # 32.1.0 (2018-10-01)
 
 - Fixed Markdown ordered list numbering.

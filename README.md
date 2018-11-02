@@ -52,6 +52,7 @@ more.
       - [Path Finder](#path-finder)
       - [Sublime Text](#sublime-text)
       - [Marked 2](#marked-2)
+      - [ASCII Doctor](#ascii-doctor)
       - [asciinema](#asciinema)
       - [duti](#duti)
       - [Watch](#watch)
@@ -133,7 +134,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 32.1.0
+    git checkout 32.2.0
 
 Master Version (unstable)
 
@@ -365,7 +366,7 @@ When upgrading to a new version, run the following:
     bsp = "bundle show --paths"
     bi = "bundle install"
     bu = "bundle update"
-    bo = "bundle outdated"
+    bo = "bundle outdated --only-explicit"
     bce = "$EDITOR $HOME/.bundle/config"
     bcon = "bundle console"
     be = "bundle exec"
@@ -438,6 +439,8 @@ When upgrading to a new version, run the following:
     e = "sublime"
 #### [Marked 2](http://marked2app.com)
     mo = "open -a Marked\ 2"
+#### [ASCII Doctor](https://asciidoctor.org)
+    ad = "asciidoctor"
 #### [asciinema](https://asciinema.org)
     cin = "asciinema"
     cina = "asciinema rec --idle-time-limit 1 --append"
@@ -447,7 +450,7 @@ When upgrading to a new version, run the following:
 #### [duti](http://duti.org)
     dutia = "duti ~/.config/duti/configuration.duti"
 #### [Watch](https://gitlab.com/procps-ng/procps)
-    wp = "watch --no-title --interval 1 --color --beep --exec"
+    wp = "watch --interval 1 --color --beep --exec"
 
 ### Functions
 
@@ -465,6 +468,7 @@ When upgrading to a new version, run the following:
     sslc = SSL Certificate Creation - Create SSL certificate.
 #### [curl](http://curl.haxx.se)
     curli = Curl Inspect - Inspect remote file with default editor.
+    curld = Curl Diagnostics - Curl with diagnostic information for request.
 #### [lsof](http://people.freebsd.org/~abe/)
     port = Port - List file activity on given port.
 #### [Git](http://git-scm.com)
