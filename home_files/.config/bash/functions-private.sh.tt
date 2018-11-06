@@ -233,48 +233,6 @@ _git_branch_list() {
                    sort --unique
 }
 
-# Label: Git Branch Delete (local)
-# Description: Delete local branch.
-# Parameters: $1 (required) - The local branch to delete.
-_git_branch_delete_local() {
-  local branch="$1"
-
-  printf "\033[31m" # Switch to red font.
-  read -p "Delete \"$branch\" local branch (y/n)?: " response
-  printf "\033[m" # Switch to white font.
-
-  if [[ "$response" == 'y' ]]; then
-    if [[ -n "$(git branch --list $branch)" ]]; then
-      git branch --delete --force "$branch"
-    else
-      printf "Local branch not found.\n"
-    fi
-  else
-    printf "Local branch deletion aborted.\n"
-  fi
-}
-
-# Label: Git Branch Delete (remote)
-# Description: Delete remote branch.
-# Parameters: $1 (required) - The remote branch to delete.
-_git_branch_delete_remote() {
-  local branch="$1"
-
-  printf "\033[31m" # Switch to red font.
-  read -p "Delete \"$branch\" remote branch (y/n)?: " response
-  printf "\033[m" # Switch to white font.
-
-  if [[ "$response" == 'y' ]]; then
-    if [[ -n "$(git branch --remotes --list origin/$branch)" ]]; then
-      git push --delete origin "$branch"
-    else
-      printf "Remote branch not found.\n"
-    fi
-  else
-    printf "Remote branch deletion aborted.\n"
-  fi
-}
-
 # Label: Git Stash Count
 # Description: Answer total stash count for current project.
 _git_stash_count() {

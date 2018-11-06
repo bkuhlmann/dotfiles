@@ -1187,7 +1187,7 @@ gbna() {
 }
 
 # Label: Git Branch Delete
-# Description: Select local and/or remote branches to delete.
+# Description: Delete branch (select local and/or remote).
 gbd() {
   # Only process projects that are Git-enabled.
   if [[ -d ".git" ]]; then
@@ -1212,8 +1212,8 @@ gbd() {
 
       local match="^([0-9]{1,2})$"
       if [[ "$response" =~ $match ]]; then
-        _git_branch_delete_local "$branch"
-        _git_branch_delete_remote "$branch"
+        gbdl "$branch"
+        gbdr "$branch"
       fi
     else
       printf "Sorry, only the master branch exists and it can't be deleted.\n"
@@ -1225,7 +1225,49 @@ gbd() {
   IFS=$ifs_original
 }
 
-# Label: Git Branch Delete Merged
+# Label: Git Branch Delete (local)
+# Description: Delete local branch.
+# Parameters: $1 (required) - Branch name.
+gbdl() {
+  local branch="$1"
+
+  printf "\033[31m" # Switch to red font.
+  read -p "Delete \"$branch\" local branch (y/n)?: " response
+  printf "\033[m" # Switch to white font.
+
+  if [[ "$response" == 'y' ]]; then
+    if [[ -n "$(git branch --list $branch)" ]]; then
+      git branch --delete --force "$branch"
+    else
+      printf "Local branch not found.\n"
+    fi
+  else
+    printf "Local branch deletion aborted.\n"
+  fi
+}
+
+# Label: Git Branch Delete (remote)
+# Description: Delete remote branch.
+# Parameters: $1 (required) - Branch name.
+gbdr() {
+  local branch="$1"
+
+  printf "\033[31m" # Switch to red font.
+  read -p "Delete \"$branch\" remote branch (y/n)?: " response
+  printf "\033[m" # Switch to white font.
+
+  if [[ "$response" == 'y' ]]; then
+    if [[ -n "$(git branch --remotes --list origin/$branch)" ]]; then
+      git push --delete origin "$branch"
+    else
+      printf "Remote branch not found.\n"
+    fi
+  else
+    printf "Remote branch deletion aborted.\n"
+  fi
+}
+
+# Label: Git Branch Delete (merged)
 # Description: Delete remote and local merged branches.
 gbdm() {
   if [[ $(_git_branch_name) != "master" ]]; then
