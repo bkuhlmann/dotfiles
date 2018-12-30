@@ -1102,6 +1102,30 @@ gbc() {
   fi
 }
 
+# Label: Git Branch Create (all)
+# Description: Create and switch to branch for projects in current directory.
+# Parameters: $1 (required) - The branch name.
+gbca() {
+  local branch="$1"
+
+  if [[ -n "$branch" ]]; then
+    while read -r project; do
+      (
+        cd "$project"
+
+        if [[ -d ".git" ]]; then
+          if [[ "$(_git_branch_name)" != "$branch" ]]; then
+            git checkout -b "$branch" --track
+            printf "\033[36m${project:2}\033[m: $branch\n" # Output in cyan and branch in white color.
+          fi
+        fi
+      )
+    done < <(find . -type d -depth 1)
+  else
+    printf "ERROR: Branch name must be supplied.\n"
+  fi
+}
+
 # Label: Git Branch Switch
 # Description: Switch between branches.
 gbs() {
