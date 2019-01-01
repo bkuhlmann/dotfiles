@@ -307,6 +307,7 @@ When upgrading to a new version, run the following:
     grbd = "git rebase --show-current-patch"
     grbs = "git rebase --skip"
     grba = "git rebase --abort"
+    grbt = "git rebase --edit-todo"
     ger = "git rerere"
     gp = "git push"
     gpf = "git push --force-with-lease"
@@ -524,11 +525,14 @@ When upgrading to a new version, run the following:
     gbl = Git Branch List - List local and remote branch details.
     gbla = Git Branch List (all) - List current branch for projects in current directory.
     gbc = Git Branch Create - Create and switch to branch.
+    gbca = Git Branch Create (all) - Create and switch to branch for projects in current directory.
     gbs = Git Branch Switch - Switch between branches.
     gbsa = Git Branch Switch (all) - Switch to given branch for projects in current directory.
     gbna = Git Branch Number (all) - Answer number of branches for projects in current directory.
-    gbd = Git Branch Delete - Select local and/or remote branches to delete.
-    gbdm = Git Branch Delete Merged - Delete remote and local merged branches.
+    gbd = Git Branch Delete - Delete branch (select local and/or remote).
+    gbdl = Git Branch Delete (local) - Delete local branch.
+    gbdr = Git Branch Delete (remote) - Delete remote branch.
+    gbdm = Git Branch Delete (merged) - Delete remote and local merged branches.
     gtagr = Git Tag Rebuild - Rebuild a previous tag. WARNING: Use with caution, especially if previously published.
     gtagd = Git Tag Delete - Delete local and remote tag (if found).
     gwa = Git Worktree Add - Add and switch to new worktree.
