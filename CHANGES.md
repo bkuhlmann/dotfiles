@@ -1,3 +1,16 @@
+# 32.3.0 (2019-01-01)
+
+- Fixed Circle CI cache for Ruby version.
+- Added Circle CI Bundler cache.
+- Added `gbca` function (Git create branch for all projects).
+- Added `grbt` alias for `git rebase --edit-todo`.
+- Updated ctags exclude organization.
+- Updated to Code Quality 2.4.0.
+- Updated to Code Quality 3.0.0.
+- Updated to Git Cop 3.0.0.
+- Updated to Ruby 2.6.0.
+- Refactored Git branch local and remote deletion as public functions.
+
 # 32.2.0 (2018-11-01)
 
 - Fixed IRB and Pry console prompts.
