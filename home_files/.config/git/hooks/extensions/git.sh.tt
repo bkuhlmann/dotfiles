@@ -3,11 +3,8 @@
 # Label: Git Cop
 # Description: Enforce consistent Git commits.
 git_cop() {
-  if ! command -v git-cop > /dev/null; then
-     printf "%s\n" "[git]: Git Cop not found. To install, run: gem install git-cop --trust-policy MediumSecurity."
-     exit 1
+  if _check_gem_dependencies "git-cop"; then
+    git-cop --hook --commit-message "${BASH_ARGV[0]}"
   fi
-
-  git-cop --hook --commit-message "${BASH_ARGV[0]}"
 }
 export -f git_cop
