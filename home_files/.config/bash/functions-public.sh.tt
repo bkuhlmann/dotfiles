@@ -1507,7 +1507,11 @@ glear() {
   read -p "Permanently non-Git repository files? Continue (y/n)?: " response
 
   if [[ "$response" == "y" ]]; then
-    gvac
+    printf "%s\n\n" "Verifying connectivity and validity of the objects in Git repository..."
+    git fsck
+
+    printf "%s\n\n" "Pruning rerere records of older conflicting merges..."
+    git rerere gc
 
     printf "\n%s\n\n" "Aggressively pruning repository..."
     git gc --aggressive --prune=now
