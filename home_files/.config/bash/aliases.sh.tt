@@ -54,7 +54,7 @@ alias hbp="brew pin"
 alias hbpu="brew unpin"
 alias hbd="brew doctor"
 alias hbc="brew cleanup"
-alias hbsu="brew update && brew upgrade --cleanup && brew cleanup"
+alias hbsu="brew update && brew upgrade && brew cleanup"
 
 # Section: [Git](http://git-scm.com)
 alias gi="git init"
