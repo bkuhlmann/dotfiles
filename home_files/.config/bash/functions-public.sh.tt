@@ -455,9 +455,9 @@ guthorsa() {
 
 # Label: Git Author Contributions
 # Description: Answers total lines added/removed by author for repo (with emphasis on deletion).
-# Parameters: $1 (required) - Author name.
+# Parameters: $1 (optional) - Author name. Default: Current user.
 guthorc() {
-  local author="$1"
+  local author="${1:-$(git config --get user.name)}"
 
   if [[ -z "$author" ]]; then
     printf "ERROR: Author name required.\n"
