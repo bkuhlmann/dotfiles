@@ -27,9 +27,6 @@
 # Bundler
 .bundle
 
-# RubyMine
-*.idea
-
 # Rubocop
 .rubocop-http*
 
