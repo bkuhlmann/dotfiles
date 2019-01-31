@@ -96,6 +96,9 @@ export PATH="$PATH:/usr/local/share/npm/bin"
 # Yarn
 export PATH="$PATH:$(yarn global bin)"
 
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Z
 if [[ -e /usr/local/etc/profile.d/z.sh ]]; then
   . /usr/local/etc/profile.d/z.sh
