@@ -134,7 +134,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 32.3.0
+    git checkout 32.4.0
 
 Master Version (unstable)
 
@@ -228,7 +228,7 @@ When upgrading to a new version, run the following:
     hbpu = "brew unpin"
     hbd = "brew doctor"
     hbc = "brew cleanup"
-    hbsu = "brew update && brew upgrade --cleanup && brew cleanup"
+    hbsu = "brew update && brew upgrade && brew cleanup"
 #### [Git](http://git-scm.com)
     gi = "git init"
     gcle = "git config --local --edit"
@@ -605,6 +605,7 @@ When upgrading to a new version, run the following:
     ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
     elm_debug = Elm Debug - Detect debug statements.
     git_cop = Git Cop - Enforce consistent Git commits.
+    git_trailer_cleaner = Git Trailer Cleaner - Remove unused/empty Git commit body trailers.
     java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
     java_script_console = JavaScript Console - Detect JavaScript console statements.
     java_script_alert = JavaScript Alert - Detect JavaScript alert statements.

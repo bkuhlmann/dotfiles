@@ -1,3 +1,19 @@
+# 32.4.0 (2019-02-01)
+
+- Added Git commit body trailer cleaner hook.
+- Added Rust to PATH.
+- Updated Duti configuration to associate *.mp4 files with VLC.
+- Updated Git Cop Git hook to use gem dependency check.
+- Updated Git branch list to sort by date and author.
+- Updated Git commit message template to include collaborator and signer.
+- Updated Git global configuration to use diff patience algorithm.
+- Updated Homebrew upgrade/cleanup settings.
+- Updated README documentation for aliases and functions.
+- Updated `glear` function to use `fsck` and `rerere gc` directly.
+- Updated `guthorc` function to default to current author.
+- Updated to Ruby 2.6.1.
+- Removed Ruby Mine from Git ignore file.
+
 # 32.3.0 (2019-01-01)
 
 - Fixed Circle CI cache for Ruby version.
