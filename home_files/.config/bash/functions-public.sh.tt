@@ -37,6 +37,23 @@ cype() {
   fi
 }
 
+# Label: Environment Update
+# Description: Update environment with latest software.
+eup() {
+  hbsu
+  gemuc
+  rustup update
+
+  if [[ "$(hostname)" == "vilya" ]]; then
+    (
+      cd ~/Dropbox/Development/OSS
+      bca
+      bua
+      gvaca
+    )
+  fi
+}
+
 # Label: Process Status (specialized)
 # Description: Display process status (excluding current process) and ignoring case.
 # Parameters: $1 (required) - The process name.
