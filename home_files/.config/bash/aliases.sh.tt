@@ -198,6 +198,7 @@ alias gemw="gem whois"
 
 # Section: [Rake](https://github.com/ruby/rake)
 alias bert="ber -T"
+alias berq="ber code_quality"
 
 # Section: [Bundler](http://bundler.io)
 alias bs="bundle show"
