@@ -15,14 +15,14 @@ source lib/options.sh
 if [[ -d "$HOME" ]]; then
   while true; do
     if [[ $# == 0 ]]; then
-      printf "\nUsage: run OPTION\n"
-      printf "\nDotfile Options:\n"
-      printf "  s: Show managed dotfiles.\n"
-      printf "  i: Install dotfiles (existing files are skipped).\n"
-      printf "  l: Link dotfiles to this project (interactive per file, excludes: env.sh and .gitconfig).\n"
-      printf "  c: Check for differences between \$HOME files and this project's files.\n"
-      printf "  d: Delete dotfiles (interactive per file, excludes: env.sh and .gitconfig).\n"
-      printf "  q: Quit/Exit.\n\n"
+      printf "\n%s\n" "Usage: run OPTION"
+      printf "\n%s\n" "Dotfile Options:"
+      printf "  %s\n" "s: Show managed dotfiles."
+      printf "  %s\n" "i: Install dotfiles (existing files are skipped)."
+      printf "  %s\n" "l: Link dotfiles to this project (interactive per file, excludes: env.sh and .gitconfig)."
+      printf "  %s\n" "c: Check for differences between \$HOME files and this project's files."
+      printf "  %s\n" "d: Delete dotfiles (interactive per file, excludes: env.sh and .gitconfig)."
+      printf "  %s\n\n" "q: Quit/Exit."
       read -r -p "Enter selection: " response
       printf "\n"
       process_option $response
@@ -32,6 +32,6 @@ if [[ -d "$HOME" ]]; then
     break
   done
 else
-  printf "ERROR: $HOME does not exist.\n"
+  printf "%s\n" "ERROR: $HOME does not exist."
   return 1
 fi

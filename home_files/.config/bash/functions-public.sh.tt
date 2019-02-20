@@ -15,13 +15,13 @@ t2s() {
   fi
 
   if [[ "$1" ]]; then
-    local temp_file=$(mktemp -t tabs_to_spaces) || { printf "\nERROR: Unable to create temporary file.\n"; return; }
+    local temp_file=$(mktemp -t tabs_to_spaces) || { printf "\n%s\n" "ERROR: Unable to create temporary file."; return; }
     expand -t $number_of_spaces "$1" > $temp_file
     cat $temp_file > "$1"
-    printf "Converted: $1.\n"
+    printf "%s\n" "Converted: $1."
     rm -f $temp_file;
   else
-    printf "ERROR: File must be supplied.\n"
+    printf "%s\n" "ERROR: File must be supplied."
     return 1
   fi
 }
@@ -69,7 +69,7 @@ kilp() {
   local signal=${2:-15}
 
   if [[ -z "$query" ]]; then
-    printf "ERROR: Search query must be supplied.\n"
+    printf "%s\n" "ERROR: Search query must be supplied."
     return 1
   fi
 
@@ -87,8 +87,8 @@ lessi() {
   if [[ "$1" ]]; then
     less +F --LONG-PROMPT --LINE-NUMBERS --RAW-CONTROL-CHARS --QUIET --quit-if-one-screen -i "$1"
   else
-    printf "ERROR: File path must be supplied.\n"
-    printf "TIP: Use CONTROL+c to switch to VI mode, SHIFT+f to switch back, and CONTROL+c+q to exit.\n"
+    printf "%s\n" "ERROR: File path must be supplied."
+    printf "%s\n" "TIP: Use CONTROL+c to switch to VI mode, SHIFT+f to switch back, and CONTROL+c+q to exit."
   fi
 }
 
@@ -147,7 +147,7 @@ sslc() {
   local name="$1"
 
   if [[ -z "$name" ]]; then
-    printf "ERROR: Domain name for SSL certificate must be supplied.\n"
+    printf "%s\n" "ERROR: Domain name for SSL certificate must be supplied."
     return 1
   fi
 
@@ -190,12 +190,12 @@ EOF
 # Parameters: $1 (required) - The URL.
 curli() {
   if [[ "$1" ]]; then
-    local file=$(mktemp -t suspicious_curl_file) || { printf "ERROR: Unable to create temporary file.\n"; return; }
-    curl --location --fail --silent --show-error "$1" > $file || { printf "Failed to curl file.\n"; return; }
+    local file=$(mktemp -t suspicious_curl_file) || { printf "%s\n" "ERROR: Unable to create temporary file."; return; }
+    curl --location --fail --silent --show-error "$1" > $file || { printf "%s\n" "Failed to curl file."; return; }
     $EDITOR --wait $file || { printf "Unable to open temporary curl file.\n"; return; }
     rm -f $file;
   else
-    printf "ERROR: URL must be supplied.\n"
+    printf "%s\n" "ERROR: URL must be supplied."
     return 1
   fi
 }
@@ -233,7 +233,7 @@ port() {
   if [[ "$1" ]]; then
     sudo lsof -i :$1
   else
-    printf "ERROR: Port number must be supplied.\n"
+    printf "%s\n" "ERROR: Port number must be supplied."
   fi
 }
 
@@ -264,39 +264,39 @@ groot() {
 # Label: Git Info
 # Description: Print repository overview information.
 ginfo() {
-  printf "$(_print_black_on_white ' Local Configuration (.git/config) ')\n\n"
+  printf "\n%s\n\n" "$(_print_black_on_white ' Local Configuration (.git/config) ')"
   git config --local --list
 
-  printf "\n$(_print_black_on_white ' Stashes ')\n\n"
+  printf "\n%s\n\n" "$(_print_black_on_white ' Stashes ')"
   local stashes="$(gashl)"
   if [[ -n "$stashes" ]]; then
-    printf "$stashes"
+    printf "%s\n" "$stashes"
   else
-    printf "None.\n"
+    printf "%s\n" "None."
   fi
 
-  printf "\n$(_print_black_on_white ' Branches ')\n\n"
+  printf "\n%s\n\n" "$(_print_black_on_white ' Branches ')"
   gbl
 
-  printf "\n$(_print_black_on_white ' Remote URLs ')\n\n"
+  printf "\n%s\n\n" "$(_print_black_on_white ' Remote URLs ')"
   git remote --verbose
 
-  printf "\n$(_print_black_on_white ' File Churn (Top 25) ')\n\n"
+  printf "\n%s\n\n" "$(_print_black_on_white ' File Churn (Top 25) ')"
   ghurn | head -n 25
 
-  printf "\n$(_print_black_on_white ' Commits by Author ')\n\n"
+  printf "\n%s\n\n" "$(_print_black_on_white ' Commits by Author ')"
   guthors
 
-  printf "\n$(_print_black_on_white ' Total Commits ')\n\n"
+  printf "\n%s\n\n" "$(_print_black_on_white ' Total Commits ')"
   gount
 
-  printf "\n$(_print_black_on_white ' Last Tag ')\n\n"
+  printf "\n%s\n\n" "$(_print_black_on_white ' Last Tag ')"
   _git_last_tag_info
 
-  printf "\n$(_print_black_on_white ' Last Commit ')\n\n"
+  printf "\n%s\n\n" "$(_print_black_on_white ' Last Commit ')"
   git show --decorate --stat
 
-  printf "\n$(_print_black_on_white ' Current Status ')\n\n"
+  printf "\n%s\n\n" "$(_print_black_on_white ' Current Status ')"
   git status --short --branch
 }
 
@@ -355,9 +355,8 @@ gli() {
     return
   fi
 
-  printf "\n"
   local selected_commit=${commits[$((response - 1))]}
-  _git_show_details $selected_commit
+  printf "%s\n" "$(_git_show_details $selected_commit)"
 
   printf "\n"
   read -p "View diff (y = yes, n = no)? " response
@@ -407,12 +406,12 @@ gile() {
   local diff="$3"
 
   if [[ -z "$file" ]]; then
-    printf "ERROR: File is missing.\n"
+    printf "%s\n" "ERROR: File is missing."
     return 1
   fi
 
   if [[ -z "$commit" ]]; then
-    printf "ERROR: Commit SHA is missing.\n"
+    printf "%s\n" "ERROR: Commit SHA is missing."
     return 1
   fi
 
@@ -428,7 +427,7 @@ gile() {
 # Parameters: $1 (required) - The file path.
 gistory() {
   if [[ -z "$1" ]]; then
-    printf "ERROR: File must be supplied.\n"
+    printf "%s\n" "ERROR: File must be supplied."
     return 1
   fi
 
@@ -443,7 +442,7 @@ gistory() {
 # Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
 glameh() {
   if [[ -z "$1" ]]; then
-    printf "ERROR: File must be supplied.\n"
+    printf "%s\n" "ERROR: File must be supplied."
     return 1
   fi
 
@@ -477,7 +476,7 @@ guthorc() {
   local author="${1:-$(git config --get user.name)}"
 
   if [[ -z "$author" ]]; then
-    printf "ERROR: Author name required.\n"
+    printf "%s\n" "ERROR: Author name required."
     return 1
   fi
 
@@ -548,16 +547,16 @@ gup() {
   commits=($(git log --reverse --no-merges --pretty=format:"%h" ..@{upstream}))
 
   if [[ ${#commits[@]} == 0 ]]; then
-    printf "All is quiet, nothing to update.\n"
+    printf "%s\n" "All is quiet, nothing to update."
     return 0
   fi
 
-  printf "Commit Summary:\n"
+  printf "%s\n" "Commit Summary:"
   hr '-'
   git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}
   hr '-'
 
-  printf "Commit Review (↓${#commits[@]}):\n"
+  printf "%s\n" "Commit Review (↓${#commits[@]}):"
 
   local counter=1
   for commit in "${commits[@]}"; do
@@ -576,7 +575,7 @@ gup() {
       'n');;
       'q');;
       *)
-        printf "ERROR: Invalid option.\n";;
+        printf "%s\n" "ERROR: Invalid option.";;
     esac
 
     break
@@ -595,7 +594,7 @@ gup() {
 # Parameters
 gync() {
   if [[ $(_git_branch_name) != "master" ]]; then
-    printf "ERROR: Whoa, switch to master branch first.\n"
+    printf "%s\n" "ERROR: Whoa, switch to master branch first."
     return 1
   fi
 
@@ -621,7 +620,7 @@ gseta() {
       )
     done < <(find . -type d -depth 1)
   else
-    printf "ERROR: Key and value must be supplied.\n"
+    printf "%s\n" "ERROR: Key and value must be supplied."
     return 1
   fi
 }
@@ -652,7 +651,7 @@ ggeta() {
       )
     done < <(find . -type d -depth 1)
   else
-    printf "ERROR: Key must be supplied.\n"
+    printf "%s\n" "ERROR: Key must be supplied."
     return 1
   fi
 }
@@ -676,7 +675,7 @@ gunseta() {
       )
     done < <(find . -type d -depth 1)
   else
-    printf "ERROR: Key must be supplied.\n"
+    printf "%s\n" "ERROR: Key must be supplied."
     return 1
   fi
 }
@@ -722,7 +721,7 @@ gince() {
       )
     done < <(find . -type d -depth 1)
   else
-    printf "ERROR: Date/time must be supplied.\n"
+    printf "%s\n" "ERROR: Date/time must be supplied."
     return 1
   fi
 }
@@ -755,14 +754,14 @@ gsup() {
 # Description: Answer commit history since last tag for current project (copies results to clipboard).
 gtail() {
   if [[ ! -d ".git" ]]; then
-    printf "ERROR: Not a Git repository.\n"
+    printf "%s\n" "ERROR: Not a Git repository."
     return 1
   fi
 
   if [[ $(_git_commits_since_last_tag) ]]; then
     _git_commits_since_last_tag | _copy_and_print "\n"
   else
-    printf "No commits since last tag.\n"
+    printf "%s\n" "No commits since last tag."
   fi
 }
 
@@ -777,7 +776,7 @@ gtaila() {
       if [[ -d ".git" ]]; then
         local info=$(_git_commit_count_since_last_tag "$project")
         if [[ ! "$info" == *": 0"* ]]; then
-          printf "$info\n"
+          printf "%s\n" "$info"
         fi
       fi
     )
@@ -812,10 +811,10 @@ gashs() {
       't')
         _process_git_stash "git difftool" "Git Stash Diff Options (select stash to diff)";;
       *)
-        printf "Usage: gashs OPTION\n\n"
-        printf "Available options:\n"
-        printf "  d: Git diff.\n"
-        printf "  t: Git difftool.\n"
+        printf "%s\n\n" "Usage: gashs OPTION"
+        printf "%s\n" "Available options:"
+        printf "%s\n" "  d: Git diff."
+        printf "%s\n" "  t: Git difftool."
         return;;
     esac
   else
@@ -889,7 +888,7 @@ gpua() {
         printf "\033[36m${project:2}\033[m: " # Outputs in cyan color.
 
         if [[ -n "$results" && "$results" != "Already up-to-date." ]]; then
-          printf "\n  $results\n"
+          printf "\n  %s\n" "$results"
         else
           printf "✓\n"
         fi
@@ -955,12 +954,12 @@ gcfp() {
   local option="$2"
 
   if git diff --cached --quiet; then
-    printf "ERROR: No staged changes detected.\n"
+    printf "%s\n" "ERROR: No staged changes detected."
     return 1
   fi
 
   if [[ -z "$sha" ]]; then
-    printf "ERROR: Fixup commit SHA is required.\n"
+    printf "%s\n" "ERROR: Fixup commit SHA is required."
     return 1
   fi
 
@@ -1103,7 +1102,7 @@ gbla() {
         printf "\033[36m${project:2}\033[m: " # Output in cyan color.
 
         if [[ "$branch" == "master" ]]; then
-          printf "$branch\n"
+          printf "%s\n" "$branch"
         else
           printf "\033[31m$branch\033[m\n" # Output in red color.
         fi
@@ -1122,7 +1121,7 @@ gbc() {
     git checkout -b "$name" --track
     printf "%s" "$name" | _copy_and_print
   else
-    printf "ERROR: Branch name must be supplied.\n"
+    printf "%s\n" "ERROR: Branch name must be supplied."
     return 1
   fi
 }
@@ -1147,7 +1146,7 @@ gbca() {
       )
     done < <(find . -type d -depth 1)
   else
-    printf "ERROR: Branch name must be supplied.\n"
+    printf "%s\n" "ERROR: Branch name must be supplied."
   fi
 }
 
@@ -1162,13 +1161,13 @@ gbs() {
     branches=($(_git_branch_list))
 
     if [[ ${#branches[@]} -gt 1 ]]; then
-      printf "\nSelect branch to switch to:\n"
+      printf "\n%s\n" "Select branch to switch to:"
 
       for ((index = 0; index < ${#branches[*]}; index++)); do
-        printf "  $index: ${branches[$index]}\n"
+        printf "  %s\n" "$index: ${branches[$index]}"
       done
 
-      printf "  q: Quit/Exit.\n\n"
+      printf "  %s\n\n" "q: Quit/Exit."
 
       read -p "Enter selection: " response
       printf "\n"
@@ -1180,10 +1179,10 @@ gbs() {
         printf "\n"
       fi
     else
-      printf "Sorry, only one branch to switch to and you're on it!\n"
+      printf "%s\n" "Sorry, only one branch to switch to and you're on it!"
     fi
   else
-    printf "Sorry, no branches to switch to.\n"
+    printf "%s\n" "Sorry, no branches to switch to."
   fi
 
   IFS=$ifs_original
@@ -1211,7 +1210,7 @@ gbsa() {
       )
     done < <(find . -type d -depth 1)
   else
-    printf "ERROR: Branch name must be supplied.\n"
+    printf "%s\n" "ERROR: Branch name must be supplied."
   fi
 }
 
@@ -1247,13 +1246,13 @@ gbd() {
     branches=($(_git_branch_list))
 
     if [[ ${#branches[@]} -gt 1 ]]; then
-      printf "\nSelect branch to delete:\n"
+      printf "\n%s\n" "Select branch to delete:"
 
       for ((index = 0; index < ${#branches[*]}; index++)); do
-        printf "  $index: ${branches[$index]}\n"
+        printf "  %s\n" "$index: ${branches[$index]}"
       done
 
-      printf "  q: Quit/Exit.\n\n"
+      printf "  %s\n\n" "q: Quit/Exit."
 
       read -p "Enter selection: " response
       local branch="$(printf "${branches[$response]}" | awk '{print $1}')"
@@ -1265,10 +1264,10 @@ gbd() {
         gbdr "$branch"
       fi
     else
-      printf "Sorry, only the master branch exists and it can't be deleted.\n"
+      printf "%s\n" "Sorry, only the master branch exists and it can't be deleted."
     fi
   else
-    printf "Sorry, no branches to delete.\n"
+    printf "%s\n" "Sorry, no branches to delete."
   fi
 
   IFS=$ifs_original
@@ -1288,10 +1287,10 @@ gbdl() {
     if [[ -n "$(git branch --list $branch)" ]]; then
       git branch --delete --force "$branch"
     else
-      printf "Local branch not found.\n"
+      printf "%s\n" "Local branch not found."
     fi
   else
-    printf "Local branch deletion aborted.\n"
+    printf "%s\n" "Local branch deletion aborted."
   fi
 }
 
@@ -1309,10 +1308,10 @@ gbdr() {
     if [[ -n "$(git branch --remotes --list origin/$branch)" ]]; then
       git push --delete origin "$branch"
     else
-      printf "Remote branch not found.\n"
+      printf "%s\n" "Remote branch not found."
     fi
   else
-    printf "Remote branch deletion aborted.\n"
+    printf "%s\n" "Remote branch deletion aborted."
   fi
 }
 
@@ -1320,7 +1319,7 @@ gbdr() {
 # Description: Delete remote and local merged branches.
 gbdm() {
   if [[ $(_git_branch_name) != "master" ]]; then
-    printf "ERROR: Whoa, switch to master branch first.\n"
+    printf "%s\n" "ERROR: Whoa, switch to master branch first."
     return 1
   fi
 
@@ -1351,28 +1350,28 @@ gtagr() {
 # Parameters: $1 (required) - The tag name.
 gtagd() {
   if [[ -z "$1" ]]; then
-    printf "ERROR: Tag name must be supplied.\n"
+    printf "%s\n" "ERROR: Tag name must be supplied."
     return 1
   fi
 
   read -p "Delete '$1' tag from local and remote repositories. Continue (y/n)?: " response
 
   if [[ "$response" == 'y' ]]; then
-    printf "Local: "
+    printf "%s " "Local:"
     if [[ -n "$(git tag --list $1)" ]]; then
       git tag --delete "$1"
     else
-      printf "No tag found.\n"
+      printf "%s\n" "No tag found."
     fi
 
-    printf "Remote: "
+    printf "%s " "Remote:"
     if [[ $(git config remote.origin.url) && -n "$(git ls-remote --tags origin | ag $1)" ]]; then
       git push --delete origin "$1"
     else
-      printf "No tag found.\n"
+      printf "%s\n" "No tag found."
     fi
   else
-    printf "Tag deletion aborted.\n"
+    printf "%s\n" "Tag deletion aborted."
   fi
 }
 
@@ -1386,12 +1385,12 @@ gwa() {
   local option="${2:-ignore}"
 
   if [[ -z "$name" ]]; then
-    printf "ERROR: Git worktree name is missing.\n"
+    printf "%s\n" "ERROR: Git worktree name is missing."
     return 1
   fi
 
   if [[ "$option" != "ignore" && -n $(git branch --list "$name") ]]; then
-    printf "ERROR: Invalid Git worktree, local branch exists.\n"
+    printf "%s\n" "ERROR: Invalid Git worktree, local branch exists."
     return 1
   fi
 
@@ -1404,7 +1403,7 @@ gwa() {
       git worktree add --detach "$worktree_path" HEAD;;
   esac
 
-  printf "Syncing project files...\n"
+  printf "%s\n" "Syncing project files..."
   git ls-files --others | rsync --compress --links --files-from - "$(pwd)/" "$worktree_path/"
   cd "$worktree_path"
 }
@@ -1416,7 +1415,7 @@ gwd() {
   local worktree_dir="$(pwd)"
 
   if [[ "$(git status --short)" ]]; then
-    printf "ERROR: Git worktree has uncommitted changes.\n"
+    printf "%s\n" "ERROR: Git worktree has uncommitted changes."
     return 1
   else
     cd ../$project_name
@@ -1488,7 +1487,7 @@ guke() {
   local file="$1"
 
   if [[ -z "$file" ]]; then
-    printf "ERROR: File to nuke must be supplied.\n"
+    printf "%s\n" "ERROR: File to nuke must be supplied."
     return 1
   fi
 
@@ -1499,7 +1498,7 @@ guke() {
   if [[ "$response" == 'y' ]]; then
     git filter-branch --force --index-filter "git rm -r --cached '$file' --ignore-unmatch" --prune-empty --tag-name-filter cat -- --all
   else
-    printf "Nuke aborted.\n"
+    printf "%s\n" "Nuke aborted."
   fi
 }
 
@@ -1602,29 +1601,29 @@ gh() {
   if [[ -d ".git" ]]; then
     while true; do
       if [[ $# == 0 ]]; then
-        printf "\nUsage: gh OPTION\n"
-        printf "\nGitHub Options (default browser):\n"
-        printf "  o: Open repository.\n"
-        printf "  i: Open repository issues.\n"
-        printf "  c: Open repository commits. Options:\n"
-        printf "     HASH: Open commit.\n"
-        printf "  f: Copy repository file URL.\n"
-        printf "  b: Open repository branches. Options:\n"
-        printf "     c: Open current branch.\n"
-        printf "     d: Open diff for current branch.\n"
-        printf "     r: Open pull request for current branch.\n"
-        printf "  t: Open repository tags.\n"
-        printf "  r: Open repository pull requests.\n"
-        printf "     NUMBER: Open pull request.\n"
-        printf "     l: List pull requests.\n"
-        printf "  w: Open repository wiki.\n"
-        printf "  p: Open repository pulse.\n"
-        printf "  g: Open repository graphs.\n"
-        printf "  s: Open repository settings.\n"
-        printf "  u: Print and copy repository URL. Options:\n"
-        printf "     HASH: Print and copy commit URL.\n"
-        printf "     l: Print and copy last commit URL.\n"
-        printf "  q: Quit/Exit.\n\n"
+        printf "\n%s\n" "Usage: gh OPTION"
+        printf "\n%s\n" "GitHub Options (default browser):"
+        printf "%s\n" "  o: Open repository."
+        printf "%s\n" "  i: Open repository issues."
+        printf "%s\n" "  c: Open repository commits. Options:"
+        printf "%s\n" "     HASH: Open commit."
+        printf "%s\n" "  f: Copy repository file URL."
+        printf "%s\n" "  b: Open repository branches. Options:"
+        printf "%s\n" "     c: Open current branch."
+        printf "%s\n" "     d: Open diff for current branch."
+        printf "%s\n" "     r: Open pull request for current branch."
+        printf "%s\n" "  t: Open repository tags."
+        printf "%s\n" "  r: Open repository pull requests."
+        printf "%s\n" "     NUMBER: Open pull request."
+        printf "%s\n" "     l: List pull requests."
+        printf "%s\n" "  w: Open repository wiki."
+        printf "%s\n" "  p: Open repository pulse."
+        printf "%s\n" "  g: Open repository graphs."
+        printf "%s\n" "  s: Open repository settings."
+        printf "%s\n" "  u: Print and copy repository URL. Options:"
+        printf "%s\n" "     HASH: Print and copy commit URL."
+        printf "%s\n" "     l: Print and copy last commit URL."
+        printf "%s\n\n" "  q: Quit/Exit."
         read -p "Enter selection: " response
         printf "\n"
         _process_gh_option $response "$2"
@@ -1634,7 +1633,7 @@ gh() {
       break
     done
   else
-    printf "ERROR: Not a Git repository!\n"
+    printf "%s\n" "ERROR: Not a Git repository!"
     return 1
   fi
 }
@@ -1668,7 +1667,7 @@ pguc() {
   if [[ -n "$user" ]]; then
     createuser --interactive "$user" -P
   else
-    printf "ERROR: PostgreSQL username must be supplied.\n"
+    printf "%s\n" "ERROR: PostgreSQL username must be supplied."
     return 1
   fi
 }
@@ -1682,7 +1681,7 @@ pgud() {
   if [[ -n "$user" ]]; then
     dropuser --interactive "$user"
   else
-    printf "ERROR: PostgreSQL username must be supplied.\n"
+    printf "%s\n" "ERROR: PostgreSQL username must be supplied."
     return 1
   fi
 }
@@ -1696,7 +1695,7 @@ pgt() {
   if [[ -n "$user" ]]; then
     psql -U "$user" template1
   else
-    printf "ERROR: PostgreSQL username must be supplied.\n"
+    printf "%s\n" "ERROR: PostgreSQL username must be supplied."
     return 1
   fi
 }
@@ -1738,8 +1737,8 @@ rbua() {
           printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
 
           if [[ "$old_version" != "$new_version" ]]; then
-            printf "$new_version\n" > .ruby-version
-            printf "$old_version --> $new_version\n"
+            printf "%s\n" "$new_version" > .ruby-version
+            printf "%s\n" "$old_version --> $new_version"
           else
             printf "✓\n"
           fi
@@ -1747,7 +1746,7 @@ rbua() {
       )
     done < <(find . -type d -depth 1)
   else
-    printf "ERROR: Version must be supplied.\n"
+    printf "%s\n" "ERROR: Version must be supplied."
     return 1
   fi
 }
@@ -1773,7 +1772,7 @@ gemdep() {
   local gem_name="$1"
 
   if [[ -z "$gem_name" ]]; then
-    printf "ERROR: Gem name must be supplied!\n"
+    printf "%s\n" "ERROR: Gem name must be supplied!"
     return 1
   fi
 
@@ -1792,16 +1791,16 @@ bj() {
     local max_jobs=$((`sysctl -n hw.ncpu` - 1))
     local bundler_config="$HOME/.bundle/config"
 
-    printf "$computer_name's maximum Bundler job limit is: $max_jobs.\n"
+    printf "%s\n" "$computer_name's maximum Bundler job limit is: $max_jobs."
 
     if command -v ag > /dev/null && [[ -e "$bundler_config" ]]; then
       local current_jobs=$(ag "JOBS" $bundler_config | awk '{print $2}' | tr -d "'")
 
       if [[ $current_jobs != $max_jobs ]]; then
         bundle config --global jobs $max_jobs
-        printf "Automatically updated Bundler to use maximum job limit. Details: $bundler_config.\n"
+        printf "%s\n" "Automatically updated Bundler to use maximum job limit. Details: $bundler_config."
       else
-        printf "$computer_name is using maximum job limit. Kudos!\n"
+        printf "%s\n" "$computer_name is using maximum job limit. Kudos!"
       fi
     fi
   else
@@ -1818,12 +1817,12 @@ bcg() {
   local gem_path=$2
 
   if [[ -z "$gem_name" ]]; then
-    printf "ERROR: Gem name must be supplied!\n"
+    printf "%s\n" "ERROR: Gem name must be supplied!"
     return 1
   fi
 
   if [[ -z "$gem_path" ]]; then
-    printf "ERROR: Gem path must be supplied!\n"
+    printf "%s\n" "ERROR: Gem path must be supplied!"
     return 1
   fi
 
@@ -1838,13 +1837,13 @@ bcim() {
   local gem_name=$1
 
   if [[ ! $gem_name ]]; then
-    printf "ERROR: Gem name must be supplied!\n"
+    printf "%s\n" "ERROR: Gem name must be supplied!"
     return 1
   fi
 
   bundle config ignore_messages.$gem_name true
 
-  printf "Bundler post-install messages are ignored for \"$gem_name\".\n"
+  printf "%s\n" "Bundler post-install messages are ignored for \"$gem_name\"."
 }
 
 # Label: Bundle Outdated (all)
@@ -1862,7 +1861,7 @@ boa() {
 
         # Print project status if Bundler activity is detected, otherwise a checkmark for passing status.
         if [[ -n "$results" ]]; then
-          printf "\n$results\n"
+          printf "\n%s\n" "$results"
         else
           printf "✓\n"
         fi
@@ -1905,7 +1904,7 @@ bca() {
         # Print status if found, otherwise a checkmark for passing status.
         if [[ -d "pkg" ]]; then
           rm -rf pkg
-          printf "Cleaned gem artifacts.\n"
+          printf "%s\n" "Cleaned gem artifacts."
         else
           printf "✓\n"
         fi
@@ -2048,7 +2047,7 @@ bessa() {
         printf ", "
 
         # Prints total duration (white).
-        printf "$duration seconds.\n"
+        printf "%s\n" "$duration seconds."
       fi
     )
   done < <(find . -type d -depth 1)
@@ -2081,13 +2080,13 @@ railsn() {
       if [[ $2 ]]; then
         _process_rails_new_option "$1" "$2" "$3"
       else
-        printf "\nUsage: railsn NAME TEMPLATE\n"
-        printf "\nAvailable Ruby on Rails Templates:\n\n"
-        printf "  default: Rails Default Template\n"
-        printf "   custom: Rails Custom Template\n"
-        printf "     slim: Rails Slim Template\n"
-        printf "    setup: Rails Setup Template\n"
-        printf "    dummy: Rails Dummy Template\n"
+        printf "%s\n" "\nUsage: railsn NAME TEMPLATE"
+        printf "\n%s\n\n" "Available Ruby on Rails Templates:"
+        printf "%s\n" "  default: Rails Default Template"
+        printf "%s\n" "   custom: Rails Custom Template"
+        printf "%s\n" "     slim: Rails Slim Template"
+        printf "%s\n" "    setup: Rails Setup Template"
+        printf "%s\n" "    dummy: Rails Dummy Template"
         printf "\n"
         read -p "Please pick one (or type 'q' to quit): " response
         printf "\n"
@@ -2096,7 +2095,7 @@ railsn() {
       break
     done
   else
-    printf "ERROR: Rails application name must be supplied.\n"
+    printf "%s\n" "ERROR: Rails application name must be supplied."
     return 1
   fi
 }
@@ -2123,11 +2122,11 @@ rr() {
       railroady --label --inheritance --output "$doc_dir/state.dot" --aasm
       printf "$(pwd)/$doc_dir/state.dot" | _copy_and_print;;
     *)
-      printf "\nUsage: rr KIND\n\n"
-      printf "RailRoady Options:\n"
-      printf "  m: Generate Rails Entity Relationship Diagram (ERD).\n"
-      printf "  c: Generate Rails controller hierarchy diagram.\n"
-      printf "  s: Generate Rails state machine transitions.\n\n";;
+      printf "\n%s\n\n" "Usage: rr KIND"
+      printf "%s\n" "RailRoady Options:"
+      printf "  %s\n" "m: Generate Rails Entity Relationship Diagram (ERD)."
+      printf "  %s\n" "c: Generate Rails controller hierarchy diagram."
+      printf "  %s\n\n" "s: Generate Rails state machine transitions.";;
   esac
 }
 
@@ -2177,7 +2176,7 @@ cinr() {
   local name="${label,,}.cast"
 
   if [[ -z "$label" ]]; then
-    printf "ERROR: Recording label is missing.\n"
+    printf "%s\n" "ERROR: Recording label is missing."
     return 1
   fi
 
@@ -2224,14 +2223,14 @@ omr() {
 dots() {
   while true; do
     if [[ $# == 0 ]]; then
-      printf "\nUsage: dots OPTION\n"
-      printf "\nDotfile Options:\n"
-      printf "  a: Print aliases.\n"
-      printf "  f: Print functions.\n"
-      printf "  g: Print Git hooks.\n"
-      printf "  p: Print all.\n"
-      printf "  s: Search for alias/function.\n"
-      printf "  q: Quit/Exit.\n\n"
+      printf "\n%s\n" "Usage: dots OPTION"
+      printf "\n%s\n" "Dotfile Options:"
+      printf "  %s\n" "a: Print aliases."
+      printf "  %s\n" "f: Print functions."
+      printf "  %s\n" "g: Print Git hooks."
+      printf "  %s\n" "p: Print all."
+      printf "  %s\n" "s: Search for alias/function."
+      printf "  %s\n\n" "q: Quit/Exit."
       read -r -p "Enter selection: " response
       printf "\n"
       _process_dots_option $response "$2"

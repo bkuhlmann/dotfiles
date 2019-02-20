@@ -20,7 +20,7 @@ process_option() {
       delete_files;;
     'q');;
     *)
-      printf "ERROR: Invalid option.\n";;
+      printf "%s\n" "ERROR: Invalid option.";;
   esac
 }
 export -f process_option

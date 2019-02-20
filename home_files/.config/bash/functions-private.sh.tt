@@ -111,7 +111,7 @@ _git_commit_last() {
 # Label: Git Last Tag Info
 # Description: Answer last tag for project (including commits added since tag was created).
 _git_last_tag_info() {
-  printf "$(git describe --tags --always) ($(_git_commit_count_since_last_tag) commits since)\n"
+  printf "%s\n" "$(git describe --tags --always) ($(_git_commit_count_since_last_tag) commits since)"
 }
 
 # Label: Git File Commits
@@ -256,17 +256,17 @@ _process_git_stash() {
   stashes=($(gashl))
 
   if [[ ${#stashes[@]} == 0 ]]; then
-    printf "Git stash is empty. Nothing to do.\n"
+    printf "%s\n" "Git stash is empty. Nothing to do."
     return 0
   fi
 
   # Ask which stash to show when multiple stashes are detected, otherwise show the existing stash.
   if [[ ${#stashes[@]} -gt 1 ]]; then
-    printf "$prompt_label:\n"
+    printf "%s\n" "$prompt_label:"
     for ((index = 0; index < ${#stashes[*]}; index++)); do
-      printf "  $index: ${stashes[$index]}\n"
+      printf "  %s\n" "$index: ${stashes[$index]}"
     done
-    printf "  q: Quit/Exit.\n\n"
+    printf "  %s\n\n" "q: Quit/Exit."
 
     read -p "Enter selection: " response
 
@@ -421,7 +421,7 @@ _process_gh_option() {
       _process_gh_url_option "$2";;
     'q');;
     *)
-      printf "ERROR: Invalid option.\n";;
+      printf "%s\n" "ERROR: Invalid option.";;
   esac
 }
 
@@ -433,7 +433,7 @@ _process_gh_option() {
 # Description: Create new Rails application skeleton.
 # Parameters: $1 (required) - The application name, $2 (optional) - The build options to apply.
 _create_rails_skeleton() {
-  printf "rails new $1 $2\n"
+  printf "%s\n" "rails new $1 $2"
   rails new $1 $2
 }
 
@@ -457,7 +457,7 @@ _process_rails_new_option() {
       _create_rails_skeleton "$1" "$flags --template https://raw.github.com/bkuhlmann/rails_dummy_template/$branch/template.rb";;
     'q');;
     *)
-      printf "ERROR: Invalid option.\n";;
+      printf "%s\n" "ERROR: Invalid option.";;
   esac
 }
 
@@ -471,7 +471,7 @@ _process_rails_new_option() {
 _print_section() {
   if [[ "$1" == "# Section:"* ]]; then
     local section=$(printf "$1" | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
-    printf "#### $section\n"
+    printf "\n%s\n\n" "#### $section"
   fi
 }
 
@@ -500,7 +500,7 @@ _print_aliases() {
 # Parameters: $1 (required) - The string from which to parse the function name from.
 _print_function_name() {
   local name=$(printf "$1" | sed 's/() {//')
-  printf "$name = $2 - $3\n"
+  printf "%s\n" "$name = $2 - $3"
 }
 
 # Label: Set Function Label
@@ -550,11 +550,11 @@ _print_git_hooks() {
 # Label: Print All
 # Description: Print aliases, functions, and Git hooks.
 _print_all() {
-  printf "### Aliases\n\n"
+  printf "%s\n" "### Aliases"
   _print_aliases
-  printf "\n### Functions\n\n"
+  printf "\n%s\n" "### Functions"
   _print_functions
-  printf "\n### Git Hooks\n\n"
+  printf "\n%s\n\n" "### Git Hooks"
   _print_git_hooks
 }
 
@@ -564,7 +564,7 @@ _print_all() {
 _find_alias() {
   while read -r line; do
     if [[ "$line" == "alias "*"$1"* ]]; then
-      printf "    Alias: "
+      printf "    %s " "Alias:"
       _print_alias "$line"
     fi
   done < "$HOME/.config/bash/aliases.sh"
@@ -579,7 +579,7 @@ _find_function() {
     _set_function_description "$line"
 
     if [[ "$line" == *"$1"*"()"* ]]; then
-      printf "    Function: "
+      printf "    %s " "Function:"
       _print_function_name "$line" "$label" "$description"
       unset label
       unset description
@@ -592,12 +592,12 @@ _find_function() {
 # Parameters: $1 (required). The alias or function to search for.
 _find_command() {
   if [[ "$1" ]]; then
-    printf "\"$1\" Search Results:\n"
+    printf "%s\n" "\"$1\" Search Results:"
 
     _find_alias "$1"
     _find_function "$1"
   else
-    printf "ERROR: Nothing to search for. Criteria must be supplied.\n"
+    printf "%s\n" "ERROR: Nothing to search for. Criteria must be supplied."
   fi
 }
 
@@ -618,6 +618,6 @@ _process_dots_option() {
       _find_command "$2" | more;;
     'q');;
     *)
-      printf "ERROR: Invalid option.\n";;
+      printf "%s\n" "ERROR: Invalid option.";;
   esac
 }
