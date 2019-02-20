@@ -1083,6 +1083,14 @@ gbl() {
   _git_branch_list "$format" | column -s'|' -t
 }
 
+# Label: Git Branch List Owner
+# Description: List branches owned by current author or supplied author.
+# Parameters: $1 (optional) - The author name.
+gblo() {
+  local owner="${1:-$(git config user.name)}"
+  gbl | ag --nocolor "$owner"
+}
+
 # Label: Git Branch List (all)
 # Description: List current branch for projects in current directory.
 gbla() {
