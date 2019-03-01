@@ -1,3 +1,12 @@
+# 32.5.0 (2019-03-01)
+
+- Added Homebrew no install cleanup environment variable.
+- Added `berq` alias for running code quality tasks.
+- Added `gblo` function for listing branches by owner.
+- Added environment update function.
+- Updated Git global pull config to preserve when rebasing.
+- Refactored script output formatting.
+
 # 32.4.0 (2019-02-01)
 
 - Added Git commit body trailer cleaner hook.
