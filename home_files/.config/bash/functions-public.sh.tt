@@ -1937,7 +1937,7 @@ bera() {
         # Prints project (cyan).
         printf "\033[36m${project:2}\033[m: "
 
-        SUPPRESS_STDOUT=enabled SUPPRESS_STDERR=enabled ber > /dev/null
+        ber > /dev/null
         printf "\n"
       fi
     )
@@ -2026,7 +2026,7 @@ bessa() {
       cd "$project"
 
       if [[ -f "Gemfile.lock" && -d "spec" ]]; then
-        local json=$(SUPPRESS_STDOUT=enabled SUPPRESS_STDERR=enabled bess --format json)
+        local json=$(bess --format json)
         local examples=$(printf "%s" "$json" | jq ".summary.example_count" )
         local failures=$(printf "%s" "$json" | jq ".summary.failure_count" )
         local pending=$(printf "%s" "$json" | jq ".summary.pending_count" )
