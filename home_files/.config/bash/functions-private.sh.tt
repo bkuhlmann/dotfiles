@@ -81,7 +81,7 @@ _git_commit_count_since_last_tag() {
   if [[ -n $count ]]; then
     # Prefix
     if [[ -n "$prefix" ]]; then
-      printf "\033[36m${prefix:2}\033[m: " # Cyan.
+      printf "\033[36m${prefix}\033[m: " # Cyan.
     fi
 
     # Commit Count

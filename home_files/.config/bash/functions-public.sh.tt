@@ -248,11 +248,11 @@ gia() {
     (
       cd "$project"
       if [[ -d ".git" ]]; then
-        printf "\033[36m${project:2}\033[m: " # Print project (cyan) and message (white).
+        printf "\033[36m${project}\033[m: " # Print project (cyan) and message (white).
         git init
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Root
@@ -318,10 +318,10 @@ gstatsa() {
   while read -r project; do
     (
       cd "$project"
-      printf "\033[36m${project:2}\033[m:\n" # Print project (cyan) and message (white).
+      printf "\033[36m${project}\033[m:\n" # Print project (cyan) and message (white).
       gstats
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Churn
@@ -462,11 +462,11 @@ guthorsa() {
 
       if [[ -d ".git" ]]; then
         # Print project (cyan) and message (white).
-        printf "\033[36m${project:2}\033[m:\n"
+        printf "\033[36m${project}\033[m:\n"
         guthors
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Author Contributions
@@ -522,7 +522,7 @@ gsta() {
           results=("${results[@]:1}")
 
           # Print project (cyan).
-          printf "\033[36m${project:2}\033[m:\n"
+          printf "\033[36m${project}\033[m:\n"
 
           # Print results (white).
           for line in "${results[@]}"; do
@@ -537,7 +537,7 @@ gsta() {
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Update
@@ -615,10 +615,10 @@ gseta() {
           git config "$1" "$2"
 
           # Print project (cyan) and email (white).
-          printf "\033[36m${project:2}\033[m: $1 = $2\n"
+          printf "\033[36m${project}\033[m: $1 = $2\n"
         fi
       )
-    done < <(find . -type d -depth 1)
+    done < <(ls -A1)
   else
     printf "%s\n" "ERROR: Key and value must be supplied."
     return 1
@@ -639,7 +639,7 @@ ggeta() {
           local result=$(git config "$1")
 
           # Print project (cyan).
-          printf "\033[36m${project:2}\033[m: "
+          printf "\033[36m${project}\033[m: "
 
           # Print result.
           if [[ -n "$result" ]]; then
@@ -649,7 +649,7 @@ ggeta() {
           fi
         fi
       )
-    done < <(find . -type d -depth 1)
+    done < <(ls -A1)
   else
     printf "%s\n" "ERROR: Key must be supplied."
     return 1
@@ -670,10 +670,10 @@ gunseta() {
           git config --unset "$1" &> /dev/null
 
           # Print project (cyan).
-          printf "\033[36m${project:2}\033[m: \"$1\" key removed.\n"
+          printf "\033[36m${project}\033[m: \"$1\" key removed.\n"
         fi
       )
-    done < <(find . -type d -depth 1)
+    done < <(ls -A1)
   else
     printf "%s\n" "ERROR: Key must be supplied."
     return 1
@@ -715,11 +715,11 @@ gince() {
           local results=$(git log --oneline --color --format="$(_git_log_line_format)" --since "$1" --until "$2" --author "$3" --reverse)
           # Print project name (cyan) and Git activity (white) only if Git activity was detected.
           if [[ -n "$results" ]]; then
-            printf "\033[36m${project:2}:\033[m\n$results\n"
+            printf "\033[36m${project}:\033[m\n$results\n"
           fi
         fi
       )
-    done < <(find . -type d -depth 1)
+    done < <(ls -A1)
   else
     printf "%s\n" "ERROR: Date/time must be supplied."
     return 1
@@ -780,7 +780,7 @@ gtaila() {
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Stash
@@ -845,11 +845,11 @@ gasha() {
         local count=$(_git_stash_count)
 
         if [[ -n $count && $count != 0 ]]; then
-          printf "\033[36m${project:2}\033[m: $count\n" # Outputs in cyan color.
+          printf "\033[36m${project}\033[m: $count\n" # Outputs in cyan color.
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Upstream Commit Count (all)
@@ -866,11 +866,11 @@ gucca() {
 
         if [[ $count -gt '0' ]]; then
           # Print project (cyan) and commit count (white).
-          printf "\033[36m${project:2}\033[m: $count\n"
+          printf "\033[36m${project}\033[m: $count\n"
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Pull (all)
@@ -885,7 +885,7 @@ gpua() {
         local results=$(git pull | tail -1)
 
         # Print project name and Git activity only if Git activity was detected.
-        printf "\033[36m${project:2}\033[m: " # Outputs in cyan color.
+        printf "\033[36m${project}\033[m: " # Outputs in cyan color.
 
         if [[ -n "$results" && "$results" != "Already up-to-date." ]]; then
           printf "\n  %s\n" "$results"
@@ -894,7 +894,7 @@ gpua() {
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Add (all)
@@ -910,11 +910,11 @@ galla() {
 
         # Print project name (cyan) and Git activity (white) only if Git activity was detected.
         if [[ -n "$results" ]]; then
-          printf "\033[36m${project:2}\033[m:\n$results\n"
+          printf "\033[36m${project}\033[m:\n$results\n"
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Commit Fix (interactive)
@@ -987,12 +987,12 @@ gcaa() {
       if [[ -d ".git" ]]; then
         # Only process projects that have changes.
         if [[ "$(git status --short)" ]]; then
-          printf "\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+          printf "\033[36m${project}\033[m:\n" # Outputs in cyan color.
           git commit --all --cleanup strip --file $temp_file
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 
   rm -f $temp_file
 }
@@ -1011,12 +1011,12 @@ gcap() {
       if [[ -d ".git" ]]; then
         # Only process projects that have changes.
         if [[ "$(git status --short)" ]]; then
-          printf "\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+          printf "\033[36m${project}\033[m:\n" # Outputs in cyan color.
           git commit --all --cleanup strip --file $temp_file && git push
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 
   rm -f $temp_file
 }
@@ -1037,12 +1037,12 @@ gpa() {
       if [[ -d ".git" ]]; then
         # Only process projects that have changes.
         if [[ "$(git status --short --branch)" == *"[ahead"*"]" ]]; then
-          printf "\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+          printf "\033[36m${project}\033[m:\n" # Outputs in cyan color.
           git push
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Rebase (interactive)
@@ -1099,7 +1099,7 @@ gbla() {
 
       if [[ -d ".git" ]]; then
         local branch="$(_git_branch_name)"
-        printf "\033[36m${project:2}\033[m: " # Output in cyan color.
+        printf "\033[36m${project}\033[m: " # Output in cyan color.
 
         if [[ "$branch" == "master" ]]; then
           printf "%s\n" "$branch"
@@ -1108,7 +1108,7 @@ gbla() {
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Branch Create
@@ -1140,11 +1140,11 @@ gbca() {
         if [[ -d ".git" ]]; then
           if [[ "$(_git_branch_name)" != "$branch" ]]; then
             git checkout -b "$branch" --track
-            printf "\033[36m${project:2}\033[m: $branch\n" # Output in cyan and branch in white color.
+            printf "\033[36m${project}\033[m: $branch\n" # Output in cyan and branch in white color.
           fi
         fi
       )
-    done < <(find . -type d -depth 1)
+    done < <(ls -A1)
   else
     printf "%s\n" "ERROR: Branch name must be supplied."
   fi
@@ -1204,11 +1204,11 @@ gbsa() {
 
           if [[ $(git rev-parse --quiet --verify "$branch") && "$current_branch" != "$branch" ]]; then
             git checkout --quiet "$branch"
-            printf "\033[36m${project:2}\033[m: $branch\n" # Output in cyan and branch in white color.
+            printf "\033[36m${project}\033[m: $branch\n" # Output in cyan and branch in white color.
           fi
         fi
       )
-    done < <(find . -type d -depth 1)
+    done < <(ls -A1)
   else
     printf "%s\n" "ERROR: Branch name must be supplied."
   fi
@@ -1227,11 +1227,11 @@ gbna() {
 
         if [[ $number -gt 0 ]]; then
           # Output project in cyan and number in white color.
-          printf "\033[36m${project:2}\033[m: $number\n"
+          printf "\033[36m${project}\033[m: $number\n"
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Branch Delete
@@ -1473,11 +1473,11 @@ grha() {
       cd "$project"
 
       if [[ -d ".git" ]]; then
-        printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+        printf "\n\033[36m${project}\033[m:\n" # Outputs in cyan color.
         grh "$1"
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Nuke
@@ -1512,12 +1512,12 @@ gleana() {
       if [[ -d ".git" ]]; then
         # Only process projects that have untracked changes.
         if [[ "$(git status --untracked-files --short)" ]]; then
-          printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+          printf "\n\033[36m${project}\033[m:\n" # Outputs in cyan color.
           git clean -d --force
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Git Clear
@@ -1583,11 +1583,11 @@ gvaca() {
       cd "$project"
 
       if [[ -d ".git" ]]; then
-        printf "\n\033[36m${project:2}\033[m:\n" # Outputs in cyan color.
+        printf "\n\033[36m${project}\033[m:\n" # Outputs in cyan color.
         git fsck && git gc && git rerere gc
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 #---------------------------------------#
@@ -1651,7 +1651,7 @@ ghpra() {
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 #--------------------------------------------------#
@@ -1715,10 +1715,10 @@ rbva() {
         local version=$(head -n 1 .ruby-version)
 
         # Outputs project as cyan and version as white color.
-        printf "\033[36m${project:2}\033[m: $version\n"
+        printf "\033[36m${project}\033[m: $version\n"
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Ruby Upgrade (all)
@@ -1734,7 +1734,7 @@ rbua() {
           local old_version=$(head -n 1 .ruby-version)
           local new_version="$1"
 
-          printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
+          printf "\033[36m${project}\033[m: " # Outputs project in cyan color.
 
           if [[ "$old_version" != "$new_version" ]]; then
             printf "%s\n" "$new_version" > .ruby-version
@@ -1744,7 +1744,7 @@ rbua() {
           fi
         fi
       )
-    done < <(find . -type d -depth 1)
+    done < <(ls -A1)
   else
     printf "%s\n" "ERROR: Version must be supplied."
     return 1
@@ -1854,7 +1854,7 @@ boa() {
       cd "$project"
 
       if [[ -f "Gemfile.lock" ]]; then
-        printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
+        printf "\033[36m${project}\033[m: " # Outputs project in cyan color.
 
         # Capture current project status: Search for bullets (*, outdated gems) or missing (not found) gems.
         local results=$(bundle outdated | ag --only-matching "(\*.+|.+not\sfind.+)")
@@ -1867,7 +1867,7 @@ boa() {
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Bundle Update (all)
@@ -1881,7 +1881,7 @@ bua() {
         bundle install --quiet
 
         # Print project status if Bundler activity is detected, otherwise a checkmark for passing status.
-        printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
+        printf "\033[36m${project}\033[m: " # Outputs project in cyan color.
         if [[ $(git diff | wc -l | tr -d ' ') -gt 0 ]]; then
           printf "↑\n"
         else
@@ -1889,7 +1889,7 @@ bua() {
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Bundle Clean (all)
@@ -1899,7 +1899,7 @@ bca() {
     (
       cd "$project"
       if [[ -f "Gemfile.lock" ]]; then
-        printf "\033[36m${project:2}\033[m: " # Outputs project in cyan color.
+        printf "\033[36m${project}\033[m: " # Outputs project in cyan color.
 
         # Print status if found, otherwise a checkmark for passing status.
         if [[ -d "pkg" ]]; then
@@ -1910,7 +1910,7 @@ bca() {
         fi
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 #-----------------------------------------------#
@@ -1935,13 +1935,13 @@ bera() {
       cd "$project"
       if [[ -f "Gemfile.lock" && -f "Rakefile" ]]; then
         # Prints project (cyan).
-        printf "\033[36m${project:2}\033[m: "
+        printf "\033[36m${project}\033[m: "
 
         ber > /dev/null
         printf "\n"
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 #--------------------------------------------------------------------#
@@ -1956,13 +1956,13 @@ cqa() {
       cd "$project"
       if [[ -f "Gemfile.lock" && -f "Rakefile" ]]; then
         # Prints project (cyan).
-        printf "\033[36m${project:2}\033[m:\n"
+        printf "\033[36m${project}\033[m:\n"
 
         ber code_quality
         printf "\n"
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 # Label: Code Quality Issues
@@ -2033,7 +2033,7 @@ bessa() {
         local duration=$(printf "%s" "$json" | jq ".summary.duration" )
 
         # Prints project (cyan).
-        printf "\033[36m${project:2}\033[m: "
+        printf "\033[36m${project}\033[m: "
 
         # Prints total examples (white).
         printf "$examples examples, "
@@ -2050,7 +2050,7 @@ bessa() {
         printf "%s\n" "$duration seconds."
       fi
     )
-  done < <(find . -type d -depth 1)
+  done < <(ls -A1)
 }
 
 #--------------------------------------------------#
