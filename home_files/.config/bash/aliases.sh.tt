@@ -170,10 +170,6 @@ alias pgsp="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 alias reds="redis-server /usr/local/etc/redis.conf &"
 alias redc="redis-cli"
 
-# Section: [Elasticsearch](https://www.elastic.co)
-alias esst="elasticsearch --daemonize"
-alias essp="kilp elasticsearch"
-
 # Section: [chruby](https://github.com/postmodern/chruby)
 alias rb="chruby"
 
