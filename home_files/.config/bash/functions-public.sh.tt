@@ -1048,7 +1048,7 @@ gpa() {
 # Label: Git Rebase (interactive)
 # Description: Rebase commits, interactively.
 # Parameters: $1 (optional) - The number of commits or label (i.e. branch/tag) to rebase to.
-gri() {
+grbi() {
   local number_pattern="^[0-9]+$"
   local label_pattern="^[0-9a-zA-Z\_-]+$"
   local parent_sha=$(git log --pretty=format:%h -n 1 "$(_git_feature_branch_first_sha)^" 2> /dev/null || :)
@@ -1068,11 +1068,11 @@ gri() {
   fi
 }
 
-# Label: Git Rebase (automatic)
-# Description: Rebase commits, automatically. Identical to `gri` function but skips editor.
+# Label: Git Rebase (quick)
+# Description: Rebase commits, quickly. Identical to `grbi` function but skips editor.
 # Parameters: $1 (optional) - The commit number or branch to rebase to. Default: upstream or root.
-gra() {
-  EDITOR=true gri "$1"
+grbq() {
+  EDITOR=true grbi "$1"
 }
 
 # Label: Git Branch List
