@@ -1428,6 +1428,21 @@ gwd() {
   fi
 }
 
+# Label: Git Remote Add
+# Description: Add and track a remote repository.
+# Parameters: $1 (required) - Repository URL, $2 (optional) - Name. Default: upstream
+gra() {
+  local url="$1"
+  local name="${2:-upstream}"
+
+  if [[ -z "$url" ]]; then
+    printf "%s\n" "ERROR: Repository URL must be supplied."
+    return 1
+  fi
+
+  git remote add -t master -f "$name" "$url"
+}
+
 # Label: Git Reset Soft
 # Description: Resets previous commit (default), resets back to number of commits, or resets to specific commit.
 # Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
