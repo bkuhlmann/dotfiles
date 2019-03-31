@@ -54,6 +54,26 @@ eup() {
   fi
 }
 
+# Label: ISO
+# Description: Builds an ISO image from mounted volume.
+# Parameters: $1 (required) - Volume source path. $2 (required) - ISO output file path.
+iso() {
+  local source_path="/Volumes/${1:-unknown}"
+  local output_path="$HOME/Downloads/$2.iso"
+
+  if [[ ! -d "$source_path" ]]; then
+    printf "%s\n" "Source path must be supplied or doesn't exist: $source_path."
+    return 1
+  fi
+
+  if [[ -z "$2" ]]; then
+    printf "%s\n" "ISO file name must be supplied."
+    return 1
+  fi
+
+  hdiutil makehybrid -iso -joliet -o "$output_path" "$source_path"
+}
+
 # Label: Process Status (specialized)
 # Description: Display process status (excluding current process) and ignoring case.
 # Parameters: $1 (required) - The process name.
