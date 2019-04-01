@@ -134,7 +134,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 32.5.0
+    git checkout 33.0.0
 
 Master Version (unstable)
 
@@ -208,7 +208,6 @@ When upgrading to a new version, run the following:
     sshe = "$EDITOR $HOME/.ssh/config"
     key = "open /Applications/Utilities/Keychain\ Access.app"
     ipa = 'curl --silent checkip.dyndns.org | ag --only-matching "[0-9\.]+" | _copy_and_print'
-    sniff = "sudo ngrep -W byline -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
     dnsi = "scutil --dns"
     dnss = "sudo dscacheutil -statistics"
     dnsf = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
@@ -315,6 +314,7 @@ When upgrading to a new version, run the following:
     gpu = "git pull"
     gpuo = "git pull origin"
     gpuom = "git pull origin master"
+    gpuum = "git pull upstream master"
     grbo = "git rebase --onto"
     grbc = "git rebase --continue"
     grbd = "git rebase --show-current-patch"
@@ -340,7 +340,6 @@ When upgrading to a new version, run the following:
     gel = "git rm"
     gelc = "git rm --cached" # Removes previously tracked file from index after being added to gitignore.
     grev = "git revert --no-commit"
-    grp = "git remote prune origin"
     glean = "git clean -d --force"
 
 #### [Tar](http://www.gnu.org/software/tar/tar.html)
@@ -359,11 +358,6 @@ When upgrading to a new version, run the following:
     reds = "redis-server /usr/local/etc/redis.conf &"
     redc = "redis-cli"
 
-#### [Elasticsearch](https://www.elastic.co)
-
-    esst = "elasticsearch --daemonize"
-    essp = "kilp elasticsearch"
-
 #### [chruby](https://github.com/postmodern/chruby)
 
     rb = "chruby"
@@ -377,7 +371,6 @@ When upgrading to a new version, run the following:
     gemcr = "$EDITOR ~/.gem/credentials"
     geml = "gem list"
     gemi = "gem install"
-    gemup = "gem update"
     gemu = "gem uninstall"
     gemc = "gem cleanup"
     gems = "gem server"
@@ -523,6 +516,17 @@ When upgrading to a new version, run the following:
 
     dutia = "duti ~/.config/duti/configuration.duti"
 
+#### [Terraform](https://www.terraform.io)
+
+    tf = "terraform"
+    tfa = "terraform apply"
+    tfc = "terraform console"
+    tff = "terraform fmt"
+    tfg = "terraform graph | dot -Tsvg > tmp/graph.svg && open -a 'Firefox.app' tmp/graph.svg"
+    tfi = "terraform init"
+    tfp = "terraform plan"
+    tfv = "terraform validate"
+
 #### [Watch](https://gitlab.com/procps-ng/procps)
 
     wp = "watch --interval 1 --color --beep --exec"
@@ -534,6 +538,7 @@ When upgrading to a new version, run the following:
     t2s = Tab to Space - Convert file from tab to space indendation.
     cype = Colorized Type - Identical to "type" system command but with Bat support.
     eup = Environment Update - Update environment with latest software.
+    iso = ISO - Builds an ISO image from mounted volume.
     pss = Process Status (specialized) - Display process status (excluding current process) and ignoring case.
     kilp = Kill Process - Kill errant processes.
 
@@ -608,8 +613,8 @@ When upgrading to a new version, run the following:
     gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
     gpob = Git Push Origin Branch - Pushes current branch to origin and sets upstream tracking.
     gpa = Git Push (all) - Push changes for projects in current directory.
-    gri = Git Rebase (interactive) - Rebase commits, interactively.
-    gra = Git Rebase (automatic) - Rebase commits, automatically. Identical to `gri` function but skips editor.
+    grbi = Git Rebase (interactive) - Rebase commits, interactively.
+    grbq = Git Rebase (quick) - Rebase commits, quickly. Identical to `grbi` function but skips editor.
     gbl = Git Branch List - List local and remote branch details.
     gblo = Git Branch List Owner - List branches owned by current author or supplied author.
     gbla = Git Branch List (all) - List current branch for projects in current directory.
@@ -626,6 +631,7 @@ When upgrading to a new version, run the following:
     gtagd = Git Tag Delete - Delete local and remote tag (if found).
     gwa = Git Worktree Add - Add and switch to new worktree.
     gwd = Git Worktree Delete - Deletes current Git worktree.
+    gra = Git Remote Add - Add and track a remote repository.
     grs = Git Reset Soft - Resets previous commit (default), resets back to number of commits, or resets to specific commit.
     grh = Git Reset Hard - Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
     grha = Git Reset Hard (all) - Destroy all untracked, staged, and unstaged changes for all projects in current directory. UNRECOVERABLE!

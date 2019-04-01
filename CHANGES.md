@@ -1,3 +1,18 @@
+# 33.0.0 (2019-04-01)
+
+- Added Git remote add function.
+- Added ISO function.
+- Added Terraform aliases.
+- Added `gpuum` alias.
+- Updated Git rebase interactive/automatic functions names.
+- Updated to Ruby 2.6.2.
+- Removed Elasticsearch aliases.
+- Removed Gem update alias.
+- Removed Rake script suppression.
+- Removed `grp` aliases.
+- Removed `sniff` alias.
+- Refactored project loop processing to be more performant.
+
 # 32.5.0 (2019-03-01)
 
 - Added Homebrew no install cleanup environment variable.
