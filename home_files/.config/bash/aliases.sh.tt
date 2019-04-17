@@ -225,6 +225,7 @@ alias bess="bes spec"
 alias best="bess --tag"
 alias besn="bess --next-failure"
 alias besf="bess --only-failures"
+alias beso="bess --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
 
 # Section: [Middleman](https://middlemanapp.com)
 alias mm="middleman"
