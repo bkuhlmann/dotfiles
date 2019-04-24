@@ -27,6 +27,9 @@
 # Bundler
 .bundle
 
+# RSpec
+.rspec-local
+
 # Rubocop
 .rubocop-http*
 
