@@ -1,3 +1,13 @@
+# 33.1.0 (2019-05-01)
+
+- Added Duti `*.heic` extension.
+- Added `beso` alias for viewing an overview of RSpec examples.
+- Added project icon to README.
+- Updated Git hook RSpec extension to detected `fexample` blocks.
+- Updated Git ignore configuration to ignore local RSpec configurations.
+- Updated `.aprc` to disable printing of array indexes.
+- Updated to Ruby 2.6.3.
+
 # 33.0.0 (2019-04-01)
 
 - Added Git remote add function.

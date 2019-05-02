@@ -138,7 +138,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 33.0.0
+    git checkout 33.1.0
 
 Master Version (unstable)
 
@@ -427,6 +427,7 @@ When upgrading to a new version, run the following:
     best = "bess --tag"
     besn = "bess --next-failure"
     besf = "bess --only-failures"
+    beso = "bess --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
 
 #### [Middleman](https://middlemanapp.com)
 
