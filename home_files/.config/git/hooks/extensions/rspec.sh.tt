@@ -6,3 +6,10 @@ rspec_focus() {
   _scan_code "[rspec]" "Focus detected" 'spec.rb$' '(fdescribe\s|fcontext\s|fit\s|fexample\s|fspecify\s|,\s:focus|,\sfocus:)'
 }
 export -f rspec_focus
+
+# Label: RSpec Order
+# Description: Detect RSpec ordered specs.
+rspec_order() {
+  _scan_code "[rspec]" "Order detected" '(_helper.rb$|spec.rb$)' '(order.*\=.*defined|,\sorder:.+defined)'
+}
+export -f rspec_order

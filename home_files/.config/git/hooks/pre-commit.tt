@@ -29,3 +29,4 @@ java_script_console
 java_script_alert
 pry_binding
 rspec_focus
+rspec_order
