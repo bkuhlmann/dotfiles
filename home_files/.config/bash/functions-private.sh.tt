@@ -175,9 +175,9 @@ _git_branch_name() {
   git rev-parse --abbrev-ref HEAD | tr -d '\n'
 }
 
-# Label: Git Feature Branch SHAs
-# Description: Answer feature branch commit SHAs regardless of branch nesting.
-_git_feature_branch_shas() {
+# Label: Git Branch SHAs
+# Description: Answer branch commit SHAs regardless of branch nesting.
+_git_branch_shas() {
   local ifs_original=$IFS
   IFS=$'\n'
 
@@ -210,10 +210,10 @@ _git_feature_branch_shas() {
   IFS=$ifs_original
 }
 
-# Label: Git Feature Branch First SHA
-# Description: Answer first SHA of feature branch.
-_git_feature_branch_first_sha() {
-  local shas=($(_git_feature_branch_shas))
+# Label: Git Branch SHA
+# Description: Answer SHA from which the branch was created.
+_git_branch_sha() {
+  local shas=($(_git_branch_shas))
 
   if [[ ${#shas[@]} != 0 ]]; then
     printf "%s" ${shas[-1]}

@@ -367,7 +367,7 @@ gount() {
 # Label: Git Log (interactive)
 # Description: List feature branch commits with support to show/diff individual commits.
 gli() {
-  local commits=($(_git_feature_branch_shas))
+  local commits=($(_git_branch_shas))
   _git_commit_options "${commits[*]}"
 
   read -p "Enter selection: " response
@@ -389,7 +389,7 @@ gli() {
 # Description: Dynamically list commit details for current feature branch or entire master branch.
 gld() {
   if [[ _git_branch_name != "master" ]]; then
-    commits=($(_git_feature_branch_shas))
+    commits=($(_git_branch_shas))
 
     if [[ ${#commits[@]} == 1 ]]; then
       _git_show_details "${commits[0]}"
@@ -940,7 +940,7 @@ galla() {
 # Label: Git Commit Fix (interactive)
 # Description: Select which commit to fix within current feature branch.
 gcfi() {
-  local commits=($(_git_feature_branch_shas))
+  local commits=($(_git_branch_shas))
 
   _git_commit_options "${commits[*]}" "Select commit to fix"
 
@@ -961,7 +961,7 @@ gcff() {
   local file_path="$1"
   local file_sha="$(git log --grep 'fixup!' --invert-grep --pretty=format:%h -1 $file_path)"
 
-  if [[ "($(_git_feature_branch_shas))" == *"$file_sha"* ]]; then
+  if [[ "($(_git_branch_shas))" == *"$file_sha"* ]]; then
     git add "$file_path" && git commit --fixup "$file_sha"
   fi
 }
@@ -1071,7 +1071,7 @@ gpa() {
 grbi() {
   local number_pattern="^[0-9]+$"
   local label_pattern="^[0-9a-zA-Z\_-]+$"
-  local parent_sha=$(git log --pretty=format:%h -n 1 "$(_git_feature_branch_first_sha)^" 2> /dev/null || :)
+  local parent_sha=$(git log --pretty=format:%h -n 1 "$(_git_branch_sha)^" 2> /dev/null || :)
   local value="${1:-$parent_sha}"
 
   if [[ -z $value ]]; then
