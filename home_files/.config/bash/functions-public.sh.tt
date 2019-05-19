@@ -1074,16 +1074,14 @@ grbi() {
   local parent_sha=$(git log --pretty=format:%h -n 1 "$(_git_branch_sha)^" 2> /dev/null || :)
   local value="${1:-$parent_sha}"
 
-  if [[ -z $value ]]; then
-    return 0
-  fi
-
   if [[ "$value" =~ $number_pattern ]]; then
     git rebase --interactive "@~${value}"
+  elif [[ $(_git_branch_name) == "master" && -z "$(git config remote.origin.url)" ]]; then
+    git rebase --interactive --root
   elif [[ "$value" =~ $label_pattern ]]; then
     git rebase --interactive "$value"
   else
-    printf "%s\n" "Invalid Git commit SHA or label: $value."
+    printf "%s\n" "Invalid commit SHA, branch label, or repo has remote: $value."
     return 1
   fi
 }
