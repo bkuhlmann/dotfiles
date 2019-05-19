@@ -1,5 +1,22 @@
 #! /usr/bin/env bash
 
+# Label: RSpec Dotfile
+# Description: Detect RSpec dotfile.
+rspec_dotfile() {
+  if command -v ag > /dev/null; then
+    results=("$(ag --hidden --file-search-regex ".rspec$" . || :)")
+
+    if [[ ${#results[@]} -gt 0 && ${results[@]} != '' ]]; then
+      _print_error "[rspec]: Dotfile detected."
+      exit 1
+    fi
+  else
+    _print_error "$label: Silver Surfer not found. To install, run: brew install the_silver_searcher."
+     exit 1
+  fi
+}
+export -f rspec_dotfile
+
 # Label: RSpec Focus
 # Description: Detect RSpec focus.
 rspec_focus() {
