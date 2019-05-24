@@ -451,8 +451,6 @@ _process_rails_new_option() {
       _create_rails_skeleton "$1" "$flags";;
     "slim")
       _create_rails_skeleton "$1" "$flags --template https://raw.github.com/bkuhlmann/rails_slim_template/$branch/template.rb";;
-    "setup")
-      _create_rails_skeleton "$1" "$flags --template https://raw.github.com/bkuhlmann/rails_setup_template/$branch/template.rb";;
     "dummy")
       _create_rails_skeleton "$1" "$flags --template https://raw.github.com/bkuhlmann/rails_dummy_template/$branch/template.rb";;
     'q');;

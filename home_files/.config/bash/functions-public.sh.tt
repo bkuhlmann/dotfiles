@@ -2118,7 +2118,6 @@ railsn() {
         printf "%s\n" "  default: Rails Default Template"
         printf "%s\n" "   custom: Rails Custom Template"
         printf "%s\n" "     slim: Rails Slim Template"
-        printf "%s\n" "    setup: Rails Setup Template"
         printf "%s\n" "    dummy: Rails Dummy Template"
         printf "\n"
         read -p "Please pick one (or type 'q' to quit): " response
