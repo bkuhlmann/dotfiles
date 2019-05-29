@@ -37,6 +37,7 @@ while read local_ref local_sha remote_ref remote_sha; do
     parallel ::: comment_totals \
                  reek_check \
                  rubocop_check \
+                 bundler_gemfile_path \
                  bundler_audit_check \
                  brakeman_check \
                  license_finder_check

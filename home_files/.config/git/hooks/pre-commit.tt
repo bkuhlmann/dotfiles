@@ -11,7 +11,6 @@ IFS=$'\n\t' # Defines how Bash splits words and iterates arrays. This defines ne
 
 # EXTENSIONS
 source $HOME/.config/git/hooks/extensions/support.sh
-source $HOME/.config/git/hooks/extensions/bundler.sh
 source $HOME/.config/git/hooks/extensions/capybara.sh
 source $HOME/.config/git/hooks/extensions/elm.sh
 source $HOME/.config/git/hooks/extensions/java_script.sh
@@ -20,7 +19,6 @@ source $HOME/.config/git/hooks/extensions/rspec.sh
 source $HOME/.config/git/hooks/extensions/ruby.sh
 
 # EXECUTION
-bundler_gemfile_path
 capybara_save_and_open_page
 elm_debug
 irb_binding
