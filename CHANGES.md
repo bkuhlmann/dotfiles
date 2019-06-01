@@ -1,3 +1,17 @@
+# 33.2.0 (2019-06-01)
+
+- Added Git hook for RSpec dotfile detection.
+- Added Git hook for ordered RSpec detection.
+- Added Git root rebase support.
+- Added `ba` alias for `bundle add`.
+- Updated Bundler gemfile check to run during Git pre-push hook.
+- Updated Code Quality configuration to use `master`.
+- Updated contributing documentation.
+- Updated to Git Cop 3.5.0.
+- Removed Rails Setup Template from `railsn` function.
+- Removed collaborator trailer from Git commit template.
+- Refactored private Git branch SHA functions.
+
 # 33.1.0 (2019-05-01)
 
 - Added Duti `*.heic` extension.

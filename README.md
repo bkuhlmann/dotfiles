@@ -138,7 +138,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 33.1.0
+    git checkout 33.2.0
 
 Master Version (unstable)
 
@@ -394,6 +394,7 @@ When upgrading to a new version, run the following:
 
 #### [Bundler](http://bundler.io)
 
+    ba = "bundle add"
     bs = "bundle show"
     bsp = "bundle show --paths"
     bi = "bundle install"
@@ -742,7 +743,9 @@ When upgrading to a new version, run the following:
     license_finder_check = License Finder Check - Scan project for valid licenses.
     pry_binding = Pry Binding - Detect Pry debug statements.
     reek_check = Reek Check - Scan Ruby code for poor style choices.
+    rspec_dotfile = RSpec Dotfile - Detect RSpec dotfile.
     rspec_focus = RSpec Focus - Detect RSpec focus.
+    rspec_order = RSpec Order - Detect RSpec ordered specs.
     rubocop_check = Rubocop Check - Scan Ruby code for poor style choices.
     irb_binding = IRB Binding - Detect IRB debug statements.
 
