@@ -94,6 +94,9 @@ fi
 # Node
 export PATH="$PATH:/usr/local/share/npm/bin"
 
+# Terraform
+export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
+
 # Yarn
 export PATH="$PATH:$(yarn global bin)"
 
