@@ -306,12 +306,12 @@ alias dutia="duti ~/.config/duti/configuration.duti"
 
 # Section: [Terraform](https://www.terraform.io)
 alias tf="terraform"
-alias tfa="terraform apply"
+alias tfa="noti --title 'Terraform Apply' terraform apply"
 alias tfc="terraform console"
 alias tff="terraform fmt"
 alias tfg="terraform graph | dot -Tsvg > tmp/graph.svg && open -a 'Firefox.app' tmp/graph.svg"
 alias tfi="terraform init"
-alias tfp="terraform plan"
+alias tfp="noti --title 'Terraform Plan' terraform plan"
 alias tfv="terraform validate"
 
 # Section: [Watch](https://gitlab.com/procps-ng/procps)
