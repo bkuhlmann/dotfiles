@@ -51,7 +51,7 @@
   prune = true
   pruneTags = true
 [pull]
-  rebase = preserve
+  rebase = merges
 [push]
   default = simple
   followTags = true

@@ -172,7 +172,7 @@ _git_commit_options() {
 # Label: Git Branch Name
 # Description: Print Git branch name.
 _git_branch_name() {
-  git rev-parse --abbrev-ref HEAD | tr -d '\n'
+  git branch --show-current | tr -d '\n'
 }
 
 # Label: Git Branch SHAs
