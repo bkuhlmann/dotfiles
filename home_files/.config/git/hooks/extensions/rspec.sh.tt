@@ -4,7 +4,7 @@
 # Description: Detect RSpec dotfile.
 rspec_dotfile() {
   if command -v ag > /dev/null; then
-    results=("$(ag --hidden --file-search-regex ".rspec$" . || :)")
+    results=("$(ag --hidden --file-search-regex "\.rspec$" . || :)")
 
     if [[ ${#results[@]} -gt 0 && ${results[@]} != '' ]]; then
       _print_error "[rspec]: Dotfile detected."
