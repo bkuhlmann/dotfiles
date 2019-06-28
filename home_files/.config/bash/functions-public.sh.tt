@@ -1403,30 +1403,33 @@ gtagd() {
 
 # Label: Git Worktree Add
 # Description: Add and switch to new worktree.
-# Parameters: $1 (required) - The worktree/branch name, $2 (optional) - Use "l" for "local" or "r" for "remote".
+# Parameters: $1 (required) - Worktree/branch name, $2 (required) Option.
 gwa() {
   local name="$1"
+  local option="$2"
   local project_name="$(basename $(pwd))"
   local worktree_path="../$project_name-$name"
-  local option="${2:-ignore}"
 
   if [[ -z "$name" ]]; then
-    printf "%s\n" "ERROR: Git worktree name is missing."
+    printf "%s\n" "ERROR: Worktree name must be supplied."
     return 1
   fi
 
-  if [[ "$option" != "ignore" && -n $(git branch --list "$name") ]]; then
-    printf "%s\n" "ERROR: Invalid Git worktree, local branch exists."
+  if [[ "$option" != "d" && -n $(git branch --list "$name") ]]; then
+    printf "%s\n" "ERROR: Invalid worktree, local branch exists."
     return 1
   fi
 
   case $option in
-    'l')
-      git worktree add -b "$name" "$worktree_path" master;;
+    'd')
+      git worktree add --detach "$worktree_path" HEAD;;
     'r')
       git worktree add -b "$name" "$worktree_path" origin/"$name";;
+    'l')
+      git worktree add -b "$name" "$worktree_path" master;;
     *)
-      git worktree add --detach "$worktree_path" HEAD;;
+      printf "%s\n" "ERROR: Invalid worktree option: Use: (d)etach, (r)emote, or (l)ocal."
+      return 1;;
   esac
 
   printf "%s\n" "Syncing project files..."
