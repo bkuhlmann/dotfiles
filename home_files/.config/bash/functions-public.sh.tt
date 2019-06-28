@@ -937,6 +937,14 @@ galla() {
   done < <(ls -A1)
 }
 
+# Label: Git Commit Breakpoint
+# Description: Create a breakpoint (empty) commit to denote related commits in a feature branch.
+# Parameters: $1 (optional) - A custom label. Default: "Breakpoint"
+gcb() {
+  local label="${1:-Breakpoint}"
+  git commit --allow-empty --no-verify --message "----- $label -----"
+}
+
 # Label: Git Commit Fix (interactive)
 # Description: Select which commit to fix within current feature branch.
 gcfi() {
@@ -1075,11 +1083,11 @@ grbi() {
   local value="${1:-$parent_sha}"
 
   if [[ "$value" =~ $number_pattern ]]; then
-    git rebase --interactive "@~${value}"
+    git rebase --keep-empty --interactive "@~${value}"
   elif [[ $(_git_branch_name) == "master" && -z "$(git config remote.origin.url)" ]]; then
-    git rebase --interactive --root
+    git rebase --keep-empty --interactive --root
   elif [[ "$value" =~ $label_pattern ]]; then
-    git rebase --interactive "$value"
+    git rebase --keep-empty --interactive "$value"
   else
     printf "%s\n" "Invalid commit SHA, branch label, or repo has remote: $value."
     return 1
