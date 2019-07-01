@@ -33,7 +33,6 @@ more.
       - [Tar](#tar)
       - [PostgreSQL](#postgresql)
       - [Redis](#redis)
-      - [Elasticsearch](#elasticsearch)
       - [chruby](#chruby)
       - [Ruby](#ruby)
       - [Ruby Gems](#ruby-gems)
@@ -59,6 +58,7 @@ more.
       - [ASCII Doctor](#ascii-doctor)
       - [asciinema](#asciinema)
       - [duti](#duti)
+      - [Terraform](#terraform)
       - [Watch](#watch)
     - [Functions](#functions)
       - [General](#general-1)
@@ -138,7 +138,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 33.2.0
+    git checkout 33.3.0
 
 Master Version (unstable)
 
@@ -525,12 +525,12 @@ When upgrading to a new version, run the following:
 #### [Terraform](https://www.terraform.io)
 
     tf = "terraform"
-    tfa = "terraform apply"
+    tfa = "noti --title 'Terraform Apply' terraform apply"
     tfc = "terraform console"
     tff = "terraform fmt"
     tfg = "terraform graph | dot -Tsvg > tmp/graph.svg && open -a 'Firefox.app' tmp/graph.svg"
     tfi = "terraform init"
-    tfp = "terraform plan"
+    tfp = "noti --title 'Terraform Plan' terraform plan"
     tfv = "terraform validate"
 
 #### [Watch](https://gitlab.com/procps-ng/procps)
@@ -612,6 +612,7 @@ When upgrading to a new version, run the following:
     gucca = Git Upstream Commit Count (all) - Answer upstream commit count since last pull for projects in current directory.
     gpua = Git Pull (all) - Pull new changes from remote branch for projects in current directory.
     galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
+    gcb = Git Commit Breakpoint - Create a breakpoint (empty) commit to denote related commits in a feature branch.
     gcfi = Git Commit Fix (interactive) - Select which commit to fix within current feature branch.
     gcff = Git Commit Fix (file) - Create commit fix for file (ignores previous fixups).
     gcfp = Git Commit Fix and Push - Create fixup commit, push, and copy URL to clipboard.

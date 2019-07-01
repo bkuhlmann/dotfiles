@@ -1,3 +1,12 @@
+# 33.3.0 (2019-07-01)
+
+- Fixed RSpec dotfile Git Hook detection.
+- Added Terraform 0.11.x support.
+- Added `gcb` function for creating breakpoint commits.
+- Added notifications to long running Terraform aliases.
+- Updated `gwa` function prompt to be user friendly.
+- Updated to Git 2.22.0.
+
 # 33.2.0 (2019-06-01)
 
 - Added Git hook for RSpec dotfile detection.
