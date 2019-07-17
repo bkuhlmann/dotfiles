@@ -235,7 +235,7 @@ alias mmb="middleman build"
 
 # Section: [Ruby on Rails](http://rubyonrails.org)
 alias railsb="rails console --sandbox"
-alias railse="EDITOR='sublime --wait' rails secrets:edit"
+alias railse="EDITOR='sublime --wait' rails credentials:edit"
 alias railsdbm="ber db:migrate && ber db:rollback && ber db:migrate && RAILS_ENV=test ber db:migrate"
 
 # Section: [Crystal](https://crystal-lang.org)
