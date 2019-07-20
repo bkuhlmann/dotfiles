@@ -2226,6 +2226,38 @@ cinr() {
   asciinema rec --idle-time-limit 1 --title "$label" "$name"
 }
 
+#----------------------------------------------------------#
+# Section: [Minisign](https://jedisct1.github.io/minisign) #
+#----------------------------------------------------------#
+
+# Label: Minisign Generate
+# Description: Generate private and public key pair.
+# Parameters: $1 (required) - Key pair name.
+sigg() {
+  local name="$1"
+
+  minisign -G -s "$HOME/.minisign/$name.key" -p "$HOME/.minisign/$name.pub"
+}
+
+# Label: Minisign Sign File
+# Description: Sign a file.
+# Parameters: $1 (required) - File path, $2 (optional) - Comment.
+sigf() {
+  local path="$1"
+  local comment="$2"
+
+  minisign -S -s "$HOME/.minisign/alchemists.key" -m "$path" -t "$comment"
+}
+
+# Label: Minisign Verify File
+# Description: Verify signed file.
+# Parameters: $1 (required) - File path.
+sigv() {
+  local path="$1"
+
+  minisign -V -p "$HOME/.minisign/alchemists.pub" -m "$path"
+}
+
 #-----------------------------------------------------------#
 # Section: [Overmind](https://github.com/DarthSim/overmind) #
 #-----------------------------------------------------------#
