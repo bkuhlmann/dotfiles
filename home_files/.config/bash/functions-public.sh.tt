@@ -1587,6 +1587,12 @@ glear() {
     printf "\n%s\n" "Clearing reflog..."
     git reflog expire --expire=now --all
 
+    printf "\n%s\n" "Clearing commit message file..."
+    echo > .git/COMMIT_EDITMSG
+
+    printf "\n%s\n" "Clearing sample Git Hooks..."
+    rm -rf .git/hooks/*.sample
+
     printf "\n%s\n" "Deleting code coverage reports..."
     rm -rf coverage
 
