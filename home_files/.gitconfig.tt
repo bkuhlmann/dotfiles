@@ -1,3 +1,5 @@
+[init]
+  templateDir = ~/.config/git/template
 [user]
   # name = <enter name here>
   # email = <enter email here>
