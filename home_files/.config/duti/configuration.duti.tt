@@ -11,4 +11,5 @@ com.pixelmatorteam.pixelmator .jpg all
 com.pixelmatorteam.pixelmator .png all
 com.pixelmatorteam.pixelmator .tiff all
 com.pixelmatorteam.pixelmator .webp all
+org.videolan.vlc .mov all
 org.videolan.vlc .mp4 all
