@@ -1,3 +1,14 @@
+# 33.4.0 (2019-08-01)
+
+- Fixed `railse` alias to use credentials instead of secrets.
+- Added Duti `*.mov` association for VLC app.
+- Added Git template directory for repository initialization.
+- Added Magic Wormhole functions.
+- Added Minisign functions.
+- Updated Rubocop configuration to use XDG config directory.
+- Updated `glear` function to remove additional Git artifacts.
+- Removed Duti association with OmniGraffle.
+
 # 33.3.0 (2019-07-01)
 
 - Fixed RSpec dotfile Git Hook detection.

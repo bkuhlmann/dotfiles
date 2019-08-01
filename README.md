@@ -138,7 +138,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 33.3.0
+    git checkout 33.4.0
 
 Master Version (unstable)
 
@@ -439,7 +439,7 @@ When upgrading to a new version, run the following:
 #### [Ruby on Rails](http://rubyonrails.org)
 
     railsb = "rails console --sandbox"
-    railse = "EDITOR = 'sublime --wait' rails secrets:edit"
+    railse = "EDITOR = 'sublime --wait' rails credentials:edit"
     railsdbm = "ber db:migrate && ber db:rollback && ber db:migrate && RAILS_ENV=test ber db:migrate"
 
 #### [Crystal](https://crystal-lang.org)
@@ -717,11 +717,23 @@ When upgrading to a new version, run the following:
 
     cinr = asciinema Record - Create new asciinema recording.
 
+#### [Minisign](https://jedisct1.github.io/minisign)
+
+    sigg = Minisign Generate - Generate private and public key pair.
+    sigf = Minisign Sign File - Sign a file.
+    sigv = Minisign Verify File - Verify signed file.
+
 #### [Overmind](https://github.com/DarthSim/overmind)
 
     oms = Overmind Start - Start processes.
     omc = Overmind Connect - Connect to running process.
     omr = Overmind Restart - Restart running process.
+
+#### [Wormhole](https://magic-wormhole.readthedocs.io)
+
+    whs = Wormhole Send - Send encrypted path (i.e. file or directory).
+    whst = Wormhole Send Text - Send encrypted text.
+    whr = Wormhole Receive - Receive encrypted payload (i.e. text, file, etc.)
 
 #### Dotfiles
 
