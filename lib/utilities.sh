@@ -104,8 +104,11 @@ export -f link_files
 check_file() {
   local source_file="$1"
   local dest_file="$HOME/$(base_dest_file $1)"
+  local excludes=".+command$"
 
-  if [[ -e "$dest_file" || -h "$dest_file" ]]; then
+  if [[ "$source_file" =~ $excludes ]]; then
+    return
+  elif [[ -e "$dest_file" || -h "$dest_file" ]]; then
     if [[ "$(diff $dest_file $source_file)" != '' ]]; then
       printf "  * %s\n" "$dest_file"
     fi
