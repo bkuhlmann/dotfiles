@@ -37,6 +37,11 @@ install_file() {
   local dest_file="$HOME/$(base_dest_file $source_file)"
   local dest_dir="$(dirname $dest_file)"
 
+  if [[ "$(basename $source_file)" == "mkdir.command" ]]; then
+    mkdir -p $dest_dir
+    return
+  fi
+
   if [[ ! -f "$dest_file" ]]; then
     mkdir -p "$dest_dir"
     cp "$source_file" "$dest_file"
@@ -66,7 +71,11 @@ link_file() {
   local dest_dir="$(dirname $dest_file)"
   local excludes=".+(env.sh.tt|.gitconfig.tt)$"
 
-  # Proceed only if the symbolic link doesn't exist and is not an excluded file.
+  if [[ "$(basename $source_file)" == "mkdir.command" ]]; then
+    mkdir -p $dest_dir
+    return
+  fi
+
   if [[ ! -h "$dest_file" && ! "$source_file" =~ $excludes ]]; then
     read -r -p "  Link $dest_file -> $source_file (y/n)? " response
     if [[ $response == 'y' ]]; then

@@ -145,8 +145,8 @@ Master Version (unstable)
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
 
-Edit any of the `home_files/*.tt` template files as you see fit. Then open a terminal window and
-execute the following command to install:
+Edit any of the `*.tt` (template) and/or `*.command` (command) files in the `home_files` directory
+as you see fit. Then open a terminal window and execute the following command to install:
 
     cd dotfiles
     bin/run
@@ -173,11 +173,10 @@ After install, the following files will require manual updating:
 
 When upgrading to a new version, run the following:
 
-1. Run: `bin/run l`. This will link any new files. If not using linked files, run `bin/run d` and
-   `bin/run i` instead.
-1. Run: `bin/run c`. This will display file differences (if any -- usually, should only be excluded
-   files).
-1. Run: `exec $SHELL`. This will apply updates to the current shell.
+1. Run: `bin/run l`. Links new files. If not using linked files, run `bin/run d` and `bin/run i`
+   instead.
+1. Run: `bin/run c`. Displays file differences, if any. Usually, this will be excluded files.
+1. Run: `exec $SHELL`. Updates current shell with the above changes.
 
 ## Usage
 
