@@ -3,22 +3,6 @@
 # DESCRIPTION
 # Defines general utility functions.
 
-# Answers a list of files stored in the home_files folder of this project.
-home_files() {
-  for file in $(find home_files -type f); do
-    printf "%s\n" "$file"
-  done
-}
-export -f home_files
-
-base_dest_file() {
-  local source_file="$1"
-  local computed_file=''
-
-  printf "${source_file%.*}" | sed 's/home_files\///g'
-}
-export -f base_dest_file
-
 # Shows managed files.
 show_files() {
   printf "%s\n" "Managed Dotfiles:"
@@ -28,6 +12,18 @@ show_files() {
   done
 }
 export -f show_files
+
+# Installs all files.
+install_files() {
+  printf "%s\n" "Installing dotfiles..."
+
+  for file in $(home_files); do
+    install_file $file
+  done
+
+  printf "%s\n" "Dotfiles install complete!"
+}
+export -f install_files
 
 # Installs a file.
 # Parameters:
@@ -50,17 +46,17 @@ install_file() {
 }
 export -f install_file
 
-# Installs all files.
-install_files() {
-  printf "%s\n" "Installing dotfiles..."
+# Links all files.
+link_files() {
+  printf "%s\n" "Linking dotfiles..."
 
   for file in $(home_files); do
-    install_file $file
+    link_file $file
   done
 
-  printf "%s\n" "Dotfiles install complete!"
+  printf "%s\n" "Dotfiles link complete!"
 }
-export -f install_files
+export -f link_files
 
 # Links a dotfile to this project.
 # Parameters:
@@ -86,17 +82,17 @@ link_file() {
 }
 export -f link_file
 
-# Links all files.
-link_files() {
-  printf "%s\n" "Linking dotfiles..."
+# Checks all files for changes.
+check_files() {
+  printf "%s\n" "Dotfiles Changes:"
 
   for file in $(home_files); do
-    link_file $file
+    check_file $file
   done
 
-  printf "%s\n" "Dotfiles link complete!"
+  printf "%s\n" "Dotfiles check complete!"
 }
-export -f link_files
+export -f check_files
 
 # Checks a file for changes.
 # Parameters:
@@ -118,17 +114,17 @@ check_file() {
 }
 export -f check_file
 
-# Checks all files for changes.
-check_files() {
-  printf "%s\n" "Dotfiles Changes:"
+# Delete files.
+delete_files() {
+  printf "%s\n" "Deleting dotfiles..."
 
   for file in $(home_files); do
-    check_file $file
+    delete_file $file
   done
 
-  printf "%s\n" "Dotfiles check complete!"
+  printf "%s\n" "Dotfiles deletion complete!"
 }
-export -f check_files
+export -f delete_files
 
 # Delete file.
 # Parameters:
@@ -147,14 +143,18 @@ delete_file() {
 }
 export -f delete_file
 
-# Delete files.
-delete_files() {
-  printf "%s\n" "Deleting dotfiles..."
-
-  for file in $(home_files); do
-    delete_file $file
+# Answers a list of files stored in the home_files folder of this project.
+home_files() {
+  for file in $(find home_files -type f); do
+    printf "%s\n" "$file"
   done
-
-  printf "%s\n" "Dotfiles deletion complete!"
 }
-export -f delete_files
+export -f home_files
+
+base_dest_file() {
+  local source_file="$1"
+  local computed_file=''
+
+  printf "${source_file%.*}" | sed 's/home_files\///g'
+}
+export -f base_dest_file
