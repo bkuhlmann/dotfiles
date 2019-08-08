@@ -1572,7 +1572,7 @@ glear() {
     return 1
   fi
 
-  read -p "Permanently non-Git repository files? Continue (y/n)?: " response
+  read -p "Permanently delete/compact repository files? Continue (y/n)?: " response
 
   if [[ "$response" == "y" ]]; then
     printf "%s\n\n" "Verifying connectivity and validity of the objects in Git repository..."
