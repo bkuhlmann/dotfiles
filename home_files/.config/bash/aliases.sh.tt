@@ -300,6 +300,7 @@ alias cina="asciinema rec --idle-time-limit 1 --append"
 alias cinc="asciinema cat"
 alias cinp="asciinema play"
 alias cinu="asciinema upload"
+alias cine="asciinema_plus -e"
 
 # Section: [duti](http://duti.org)
 alias dutia="duti ~/.config/duti/configuration.duti"
