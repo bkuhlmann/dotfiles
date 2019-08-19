@@ -73,9 +73,6 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --color always --exclude .git"
 export FZF_DEFAULT_OPTS="--multi --ansi"
 
-# Git
-source "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash"
-
 # GPG
 GPG_TTY=$(tty)
 export GPG_TTY
@@ -107,3 +104,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 if [[ -e /usr/local/etc/profile.d/z.sh ]]; then
   . /usr/local/etc/profile.d/z.sh
 fi
+
+# Git
+source "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash"
+export PATH=".git/safe/../../bin:$PATH"

@@ -275,6 +275,16 @@ gia() {
   done < <(ls -A1)
 }
 
+# Label: Git Safe
+# Description: Marks repository as safe for auto-loading project's `bin/*` on path.
+gafe() {
+  if [[ -d ".git" ]]; then
+    mkdir -p .git/safe
+    exec /usr/local/bin/bash
+    printf "%s\n" "Repository has been marked safe."
+  fi
+}
+
 # Label: Git Root
 # Description: Change to repository root directory regardless of current depth.
 groot() {
