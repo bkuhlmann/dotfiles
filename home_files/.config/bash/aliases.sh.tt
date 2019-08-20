@@ -228,11 +228,6 @@ alias rsn="rspec spec --next-failure"
 alias rsf="rspec spec --only-failures"
 alias rso="rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
 
-# Section: [Middleman](https://middlemanapp.com)
-alias mm="middleman"
-alias mmi="middleman init"
-alias mmb="middleman build"
-
 # Section: [Ruby on Rails](http://rubyonrails.org)
 alias railsb="rails console --sandbox"
 alias railse="EDITOR='sublime --wait' rails credentials:edit"
