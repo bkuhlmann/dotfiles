@@ -37,6 +37,14 @@ export HISTCONTROL="erasedups:ignoreboth" # Remove duplicate entries.
 export HISTSIZE=10000 # Keep lengthy command history.
 export HISTIGNORE="..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane commands.
 
+# Homebrew
+export HOMEBREW_FORCE_BREWED_GIT=1
+export HOMEBREW_INSTALL_CLEANUP=1
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+export HOMEBREW_PREFIX="/usr/local"
+export PATH="/usr/local/sbin:$PATH"
+
 # Environment
 . "$HOME/.config/bash/env.sh"
 
@@ -53,14 +61,6 @@ export HISTIGNORE="..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane
 # Command Prompt (http://jonisalonen.com/2012/your-bash-prompt-needs-this)
 . "$HOME/.config/bash/prompt.sh"
 
-# Homebrew
-export HOMEBREW_FORCE_BREWED_GIT=1
-export HOMEBREW_INSTALL_CLEANUP=1
-export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_NO_INSTALL_CLEANUP=1
-export HOMEBREW_PREFIX="/usr/local"
-export PATH="/usr/local/sbin:$PATH"
-
 # Bash Completion
 if [[ -f /usr/local/etc/bash_completion ]]; then
   . /usr/local/etc/bash_completion
@@ -68,10 +68,6 @@ fi
 
 # OpenSSL
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-
-# FZF
-export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --color always --exclude .git"
-export FZF_DEFAULT_OPTS="--multi --ansi"
 
 # GPG
 GPG_TTY=$(tty)
@@ -88,17 +84,21 @@ if [[ -e /usr/local/share/chruby ]]; then
   source /usr/local/share/chruby/auto.sh
 fi
 
+# FZF
+export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --color always --exclude .git"
+export FZF_DEFAULT_OPTS="--multi --ansi"
+
 # Node
 export PATH="$PATH:/usr/local/share/npm/bin"
 
 # Terraform
 export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
 
-# Yarn
-export PATH="$PATH:$(yarn global bin)"
-
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Yarn
+export PATH="$PATH:$(yarn global bin)"
 
 # Z
 if [[ -e /usr/local/etc/profile.d/z.sh ]]; then
