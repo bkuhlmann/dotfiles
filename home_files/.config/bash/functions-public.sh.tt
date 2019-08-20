@@ -1154,7 +1154,7 @@ gbc() {
   local name="$1"
 
   if [[ "$name" ]]; then
-    git checkout -b "$name" --track
+    git switch --create "$name" --track
     printf "%s" "$name" | _copy_and_print
   else
     printf "%s\n" "ERROR: Branch name must be supplied."
@@ -1175,7 +1175,7 @@ gbca() {
 
         if [[ -d ".git" ]]; then
           if [[ "$(_git_branch_name)" != "$branch" ]]; then
-            git checkout -b "$branch" --track
+            git switch --create "$branch" --track
             printf "\033[36m${project}\033[m: $branch\n" # Output in cyan and branch in white color.
           fi
         fi
@@ -1211,7 +1211,7 @@ gbs() {
       local match="^([0-9]{1,2})$"
       if [[ "$response" =~ $match ]]; then
         local branch="$(printf "${branches[$response]}" | awk '{print $1}')"
-        git checkout "$branch"
+        git switch "$branch"
         printf "\n"
       fi
     else
@@ -1239,7 +1239,7 @@ gbsa() {
           local current_branch="$(_git_branch_name)"
 
           if [[ $(git rev-parse --quiet --verify "$branch") && "$current_branch" != "$branch" ]]; then
-            git checkout --quiet "$branch"
+            git switch --quiet "$branch"
             printf "\033[36m${project}\033[m: $branch\n" # Output in cyan and branch in white color.
           fi
         fi
@@ -1485,7 +1485,7 @@ gra() {
 # Label: Git Reset Soft
 # Description: Resets previous commit (default), resets back to number of commits, or resets to specific commit.
 # Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
-grs() {
+gess() {
   local value="$1"
   local number_pattern="^[0-9]+$"
   local commit_pattern="^[a-f0-9]+$"
@@ -1502,7 +1502,7 @@ grs() {
 # Label: Git Reset Hard
 # Description: Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
 # Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
-grh() {
+gesh() {
   local value="$1"
   local number_pattern="^[0-9]+$"
   local commit_pattern="^[a-f0-9]+$"
@@ -1521,7 +1521,7 @@ grh() {
 # Label: Git Reset Hard (all)
 # Description: Destroy all untracked, staged, and unstaged changes for all projects in current directory. UNRECOVERABLE!
 # Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
-grha() {
+gesha() {
   while read -r project; do
     (
       cd "$project"
