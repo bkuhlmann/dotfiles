@@ -2239,7 +2239,7 @@ cinr() {
     return 1
   fi
 
-  asciinema rec --idle-time-limit 1 --title "$label" "$name"
+  asciinema rec --title "$label" "$name"
 }
 
 #----------------------------------------------------------#

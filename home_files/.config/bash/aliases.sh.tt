@@ -292,7 +292,7 @@ alias ad="asciidoctor"
 
 # Section: [asciinema](https://asciinema.org)
 alias cin="asciinema"
-alias cina="asciinema rec --idle-time-limit 1 --append"
+alias cina="asciinema rec --append"
 alias cinc="asciinema cat"
 alias cinp="asciinema play"
 alias cinu="asciinema upload"
