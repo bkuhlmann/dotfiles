@@ -58,7 +58,7 @@ eup() {
 # Description: Builds an ISO image from mounted volume.
 # Parameters: $1 (required) - Volume source path. $2 (required) - ISO output file path.
 iso() {
-  local source_path="/Volumes/${1:-unknown}"
+  local source_path="$1"
   local output_path="$HOME/Downloads/$2.iso"
 
   if [[ ! -d "$source_path" ]]; then
@@ -71,6 +71,7 @@ iso() {
     return 1
   fi
 
+  printf "%s\n" "Creating $output_path..."
   hdiutil makehybrid -iso -joliet -o "$output_path" "$source_path"
 }
 
