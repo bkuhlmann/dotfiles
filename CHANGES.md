@@ -1,3 +1,22 @@
+# 34.0.0 (2019-09-01)
+
+- Fixed ISO function to accept any source input.
+- Fixed `glear` warning message.
+- Fixed command files showing up in file diff.
+- Fixed empty directory creation when installing or linking files.
+- Added Asciinema configuration.
+- Added Bundler binstubs alias.
+- Added Git safe functionality.
+- Updated Asciinema aliases/functions to use Asciinema+ gem.
+- Updated README screencast tutorial.
+- Updated to Git 2.23.0.
+- Updated to Ruby 2.6.4.
+- Removed Middleman commands.
+- Removed home alias.
+- Refactored `.bashrc` export order.
+- Refactored bundle exec alias/function wrappers.
+- Refactored utility functions.
+
 # 33.4.0 (2019-08-01)
 
 - Fixed `railse` alias to use credentials instead of secrets.

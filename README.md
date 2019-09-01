@@ -138,7 +138,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 33.4.0
+    git checkout 34.0.0
 
 Master Version (unstable)
 
@@ -195,7 +195,6 @@ When upgrading to a new version, run the following:
     du = "ncdu -e --color dark"
     l1 = "ls -A1 | _copy_and_print '\n'"
     cat = "bat --theme DarkNeon"
-    home = "cd $HOME"
     man = "gem man --system"
     ping = "prettyping --nolegend"
     rmde = "find . -type d -empty -not -path '*.git*' -delete"
@@ -280,15 +279,15 @@ When upgrading to a new version, run the following:
     gbire = "git bisect replay"
     gbiv = 'git bisect visualize --reverse --pretty=format:"$(_git_log_line_format)"'
     gbih = "git bisect help"
-    gb = "git branch --verbose"
     gbt = "git show-branch --topics"
     gba = "git branch --all"
     gbn = "_git_branch_name | _copy_and_print"
     gbr = "git branch --move"
     gm = "git merge"
     gcl = "git clone"
-    gch = "git checkout"
-    gchm = "git checkout master"
+    gb = "git switch"
+    gbb = "git switch -"
+    gbm = "git switch master"
     ga = "git add"
     gau = "git add --update"
     gap = "git add --patch"
@@ -306,6 +305,7 @@ When upgrading to a new version, run the following:
     gamenda = "git commit --amend --all --no-edit"
     gcp = "git cherry-pick"
     gcpa = "git cherry-pick --abort"
+    gcps = "git cherry-pick --skip"
     gashc = "git stash clear"
     gnl = "git notes list"
     gns = "git notes show"
@@ -324,7 +324,8 @@ When upgrading to a new version, run the following:
     grbs = "git rebase --skip"
     grba = "git rebase --abort"
     grbt = "git rebase --edit-todo"
-    ger = "git rerere"
+    gr = "git restore"
+    grr = "git rerere"
     gp = "git push"
     gpf = "git push --force-with-lease"
     gpn = "git push --no-verify"
@@ -337,8 +338,7 @@ When upgrading to a new version, run the following:
     gtags = "git push --tags"
     gwl = "git worktree list"
     gwp = "git worktree prune"
-    gr = "git reset" # Unstage staged files for commit.
-    grm = "git reset --merge ORIG_HEAD" # Reset to original HEAD prior to merge.
+    ges = "git reset"
     grom = "git fetch --all && git reset --hard origin/master" # Reset local branch to origin/master branch. UNRECOVERABLE!
     gel = "git rm"
     gelc = "git rm --cached" # Removes previously tracked file from index after being added to gitignore.
@@ -394,6 +394,7 @@ When upgrading to a new version, run the following:
 #### [Bundler](http://bundler.io)
 
     ba = "bundle add"
+    bb = "bundle binstubs"
     bs = "bundle show"
     bsp = "bundle show --paths"
     bi = "bundle install"
@@ -417,23 +418,17 @@ When upgrading to a new version, run the following:
     gse = "gemsmith --config --edit"
     gsr = "gemsmith --read"
     gso = "gemsmith --open"
-    gsi = "bundle exec rake install"
-    gsp = "bundle exec rake publish"
-    gsq = "bundle exec rake code_quality"
+    gsi = "rake install"
+    gsp = "rake publish"
+    gsq = "rake code_quality"
 
 #### [RSpec](http://rspec.info)
 
-    bess = "bes spec"
-    best = "bess --tag"
-    besn = "bess --next-failure"
-    besf = "bess --only-failures"
-    beso = "bess --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
-
-#### [Middleman](https://middlemanapp.com)
-
-    mm = "middleman"
-    mmi = "middleman init"
-    mmb = "middleman build"
+    rss = "rspec spec"
+    rst = "rspec spec --tag"
+    rsn = "rspec spec --next-failure"
+    rsf = "rspec spec --only-failures"
+    rso = "rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
 
 #### [Ruby on Rails](http://rubyonrails.org)
 
@@ -512,10 +507,11 @@ When upgrading to a new version, run the following:
 #### [asciinema](https://asciinema.org)
 
     cin = "asciinema"
-    cina = "asciinema rec --idle-time-limit 1 --append"
+    cina = "asciinema rec --append"
     cinc = "asciinema cat"
     cinp = "asciinema play"
     cinu = "asciinema upload"
+    cine = "asciinema_plus -e"
 
 #### [duti](http://duti.org)
 
@@ -572,6 +568,7 @@ When upgrading to a new version, run the following:
 #### [Git](http://git-scm.com)
 
     gia = Git Init (all) - Initialize/re-initialize repositories in current directory.
+    gafe = Git Safe - Marks repository as safe for auto-loading project's `bin/*` on path.
     groot = Git Root - Change to repository root directory regardless of current depth.
     ginfo = Git Info - Print repository overview information.
     gstats = Git Statistics - Answer statistics for current project.
@@ -638,9 +635,9 @@ When upgrading to a new version, run the following:
     gwa = Git Worktree Add - Add and switch to new worktree.
     gwd = Git Worktree Delete - Deletes current Git worktree.
     gra = Git Remote Add - Add and track a remote repository.
-    grs = Git Reset Soft - Resets previous commit (default), resets back to number of commits, or resets to specific commit.
-    grh = Git Reset Hard - Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
-    grha = Git Reset Hard (all) - Destroy all untracked, staged, and unstaged changes for all projects in current directory. UNRECOVERABLE!
+    gess = Git Reset Soft - Resets previous commit (default), resets back to number of commits, or resets to specific commit.
+    gesh = Git Reset Hard - Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
+    gesha = Git Reset Hard (all) - Destroy all untracked, staged, and unstaged changes for all projects in current directory. UNRECOVERABLE!
     guke = Git Nuke - Permanently destroy and erase a file from history. UNRECOVERABLE!
     gleana = Git Clean (all) - Clean uncommitted files from all projects in current directory.
     glear = Git Clear - Clear repository for packaging/shipping purposes.
@@ -679,8 +676,8 @@ When upgrading to a new version, run the following:
 
 #### [Rake](https://github.com/ruby/rake)
 
-    ber = Bundle Execute Rake - Run Rake via binstub or Bundler.
-    bera = Bundle Execute Rake (all) - Run default Rake tasks via binstub or Bundler for projects in current directory.
+    rake = Rake - Run Rake via binstub or Bundler.
+    rakea = Rake (all) - Run default Rake tasks via binstub or Bundler for projects in current directory.
 
 #### [Code Quality](https://github.com/bkuhlmann/code_quality)
 
@@ -689,15 +686,15 @@ When upgrading to a new version, run the following:
 
 #### [RSpec](http://rspec.info)
 
-    bes = Bundle Execute RSpec - Run RSpec via binstub or Bundler.
-    besb = Bundle Exec RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
-    besd = Bundle Exec RSpec Debug - Debug intermittent RSpec failure(s) by running spec(s) until failure is detected.
-    besp = Bundle Exec RSpec Profile - Runs RSpec specs with profiling enabled.
-    bessa = Bundle Execute RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
+    rspec = RSpec - Run RSpec via binstub or Bundler.
+    rsb = RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
+    rsd = RSpec Debug - Debug intermittent RSpec failure(s) by running spec(s) until failure is detected.
+    rsp = RSpec Profile - Runs RSpec specs with profiling enabled.
+    rsall = RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
 
 #### [Guard](https://github.com/guard/guard)
 
-    beg = Bundle Execute Guard - Run Guard via binstub or Bundler.
+    guard = Guard - Run Guard via binstub or Bundler.
 
 #### [Ruby on Rails](http://rubyonrails.org)
 
