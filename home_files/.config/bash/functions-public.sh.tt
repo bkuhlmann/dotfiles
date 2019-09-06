@@ -1316,18 +1316,18 @@ gbd() {
 gbdl() {
   local branch="$1"
 
-  printf "\033[31m" # Switch to red font.
-  read -p "Delete \"$branch\" local branch (y/n)?: " response
-  printf "\033[m" # Switch to white font.
+  if [[ -n "$(git branch --list $branch)" ]]; then
+    printf "\033[31m" # Red.
+    read -p "Delete \"$branch\" local branch (y/n)?: " response
+    printf "\033[m" # White.
 
-  if [[ "$response" == 'y' ]]; then
-    if [[ -n "$(git branch --list $branch)" ]]; then
+    if [[ "$response" == 'y' ]]; then
       git branch --delete --force "$branch"
     else
-      printf "%s\n" "Local branch not found."
+      printf "%s\n" "Local branch deletion aborted."
     fi
   else
-    printf "%s\n" "Local branch deletion aborted."
+    printf "%s\n" "Local branch not found."
   fi
 }
 
@@ -1337,18 +1337,18 @@ gbdl() {
 gbdr() {
   local branch="$1"
 
-  printf "\033[31m" # Switch to red font.
-  read -p "Delete \"$branch\" remote branch (y/n)?: " response
-  printf "\033[m" # Switch to white font.
+  if [[ -n "$(git branch --remotes --list origin/$branch)" ]]; then
+    printf "\033[31m" # Red.
+    read -p "Delete \"$branch\" remote branch (y/n)?: " response
+    printf "\033[m" # White.
 
-  if [[ "$response" == 'y' ]]; then
-    if [[ -n "$(git branch --remotes --list origin/$branch)" ]]; then
+    if [[ "$response" == 'y' ]]; then
       git push --delete origin "$branch"
     else
-      printf "%s\n" "Remote branch not found."
+      printf "%s\n" "Remote branch deletion aborted."
     fi
   else
-    printf "%s\n" "Remote branch deletion aborted."
+    printf "%s\n" "Remote branch not found."
   fi
 }
 
