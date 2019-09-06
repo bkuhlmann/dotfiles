@@ -1371,6 +1371,26 @@ gbdm() {
   git branch --merged | ag --invert-match "\* master" | xargs -n 1 git branch --delete --force
 }
 
+# Label: Git Branch Rename
+# Description: Rename current branch.
+# Parameters: $1 (required) - Branch name.
+gbr() {
+  local new_branch="$1"
+  local old_branch="$(_git_branch_name)"
+
+  git branch --move "$new_branch"
+
+  if [[ -n "$(git branch --remotes --list origin/$old_branch)" ]]; then
+    printf "\033[31m" # Red.
+    read -p "Delete \"$old_branch\" remote branch (y/n)?: " response
+    printf "\033[m" # White.
+
+    if [[ "$response" == 'y' ]]; then
+      git push --delete origin "$old_branch"
+    fi
+  fi
+}
+
 # Label: Git Tag Rebuild
 # Description: Rebuild a previous tag. WARNING: Use with caution, especially if previously published.
 # Parameters: $1 (required) - Version, $2 (required) - Release notes path, $3 (optional) - Creation date/time. Default: current date/time.
