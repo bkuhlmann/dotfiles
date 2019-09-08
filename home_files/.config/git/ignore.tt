@@ -16,6 +16,9 @@
 *.zip
 *.bzip
 
+# Asciicasts
+*.cast
+
 # Databases
 *.dump
 
