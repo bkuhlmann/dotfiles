@@ -35,7 +35,7 @@ export HISTFILE="$HOME/.config/bash/history.log"
 export HISTTIMEFORMAT="%F %T " # Use YYYY-MM-DD HH:MM:SS date/time format.
 export HISTCONTROL="erasedups:ignoreboth" # Remove duplicate entries.
 export HISTSIZE=10000 # Keep lengthy command history.
-export HISTIGNORE="..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane commands.
+export HISTIGNORE="#*:..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane commands.
 
 # Homebrew
 export HOMEBREW_FORCE_BREWED_GIT=1
