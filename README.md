@@ -138,7 +138,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 34.0.0
+    git checkout 34.1.0
 
 Master Version (unstable)
 
@@ -282,7 +282,6 @@ When upgrading to a new version, run the following:
     gbt = "git show-branch --topics"
     gba = "git branch --all"
     gbn = "_git_branch_name | _copy_and_print"
-    gbr = "git branch --move"
     gm = "git merge"
     gcl = "git clone"
     gb = "git switch"
@@ -380,7 +379,7 @@ When upgrading to a new version, run the following:
     gemp = "gem pristine"
     geme = "gem environment"
     gemuc = "gem update --system && gem update && gem cleanup"
-    gemcli = "ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | _copy_and_print '\n'"
+    gemcli = "ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
 
 #### [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
 
@@ -630,6 +629,7 @@ When upgrading to a new version, run the following:
     gbdl = Git Branch Delete (local) - Delete local branch.
     gbdr = Git Branch Delete (remote) - Delete remote branch.
     gbdm = Git Branch Delete (merged) - Delete remote and local merged branches.
+    gbr = Git Branch Rename - Rename current branch.
     gtagr = Git Tag Rebuild - Rebuild a previous tag. WARNING: Use with caution, especially if previously published.
     gtagd = Git Tag Delete - Delete local and remote tag (if found).
     gwa = Git Worktree Add - Add and switch to new worktree.

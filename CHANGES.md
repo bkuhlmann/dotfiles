@@ -1,3 +1,12 @@
+# 34.1.0 (2019-10-01)
+
+- Added Asciicasts to Git ignore.
+- Added Fission app association with M4A files.
+- Updated Bash history to ignore comments.
+- Updated Git branch rename alias to a function.
+- Updated RubyGems CLI alias to alpha-sort results.
+- Updated local and remote Git branch deletion to detect branch first.
+
 # 34.0.0 (2019-09-01)
 
 - Fixed ISO function to accept any source input.
