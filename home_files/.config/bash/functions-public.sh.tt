@@ -1150,13 +1150,29 @@ gbla() {
 
 # Label: Git Branch Create
 # Description: Create and switch to branch.
-# Parameters: $1 (required) - The branch name.
+# Parameters: $1 (required) - New branch name.
 gbc() {
   local name="$1"
 
   if [[ "$name" ]]; then
     git switch --create "$name" --track
     printf "%s" "$name" | _copy_and_print
+  else
+    printf "%s\n" "ERROR: Branch name must be supplied."
+    return 1
+  fi
+}
+
+# Label: Git Branch Facsimile
+# Description: Duplicate current branch with new name and switch to it.
+# Parameters: $1 (required) - New branch name.
+gbf() {
+  local new="$1"
+  local old="$(_git_branch_name)"
+
+  if [[ "$new" ]]; then
+    git switch --create "$new" "$old" --track
+    git commit --allow-empty --no-verify --message "----- End of $old work -----"
   else
     printf "%s\n" "ERROR: Branch name must be supplied."
     return 1
