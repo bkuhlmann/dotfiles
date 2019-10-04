@@ -15,7 +15,7 @@ Pry.config.prompt = [
 ]
 
 # History (Keep IRB and Pry the same)
-Pry.config.history.file = %(#{ENV["HOME"]}/.config/irb/history.log)
+Pry.config.history.file = %(#{ENV["HOME"]}/.cache/ruby/irb/history.log)
 
 # Aliases
 Pry.commands.alias_command "w", "whereami"
