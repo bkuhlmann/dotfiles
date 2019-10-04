@@ -275,7 +275,7 @@ alias yarnu="yarn upgrade"
 alias yarnr="yarn remove"
 
 # Section: [Z](https://github.com/rupa/z)
-alias ze="$EDITOR $HOME/.z"
+alias ze="$EDITOR $_Z_DATA"
 
 # Section: [Path Finder](http://www.cocoatech.com/pathfinder)
 alias pfo='open -a "Path Finder.app" "$PWD"'

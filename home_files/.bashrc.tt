@@ -101,6 +101,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:$(yarn global bin)"
 
 # Z
+export _Z_DATA="$HOME/.cache/z/history.txt"
 if [[ -e /usr/local/etc/profile.d/z.sh ]]; then
   . /usr/local/etc/profile.d/z.sh
 fi
