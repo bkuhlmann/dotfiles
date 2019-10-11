@@ -2317,12 +2317,10 @@ sigv() {
 
 # Label: Overmind Start
 # Description: Start processes.
-# Parameters: $1 (optional) - Processes. Default: "web,worker", $2 (optional) - Port. Default: 2990.
+# Parameters: $1 (optional) - Port. Default: 2990.
 oms() {
-  local processes="${1:-web,worker}"
   local port=${2:-2990}
-
-  overmind start --processes "$processes" --port $port --port-step 10
+  overmind start --port $port --port-step 10
 }
 
 # Label: Overmind Connect
