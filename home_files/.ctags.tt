@@ -9,6 +9,7 @@
 --exclude=.DS_Store
 --exclude=elm-stuff
 --exclude=log
---exclude=node_modules
+--exclude=*node_modules*
+--exclude=*packs*
 --exclude=tmp
 --exclude=vendor
