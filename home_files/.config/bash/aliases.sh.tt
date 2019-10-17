@@ -254,6 +254,7 @@ alias cop="rubocop --parallel --display-cop-names --display-style-guide"
 alias copc="rubocop --auto-gen-config"
 alias copo="rubocop --display-cop-names --only"
 alias copf="rubocop --auto-correct"
+alias copfo="rubocop --auto-correct --only"
 alias cops="rubocop --show-cops"
 alias copd='find . -name ".rubocop-http*" -type f -delete'
 
