@@ -1,0 +1,15 @@
+# Label: Decaffeinate
+# Description: Disables caffeination if running.
+sleepwatcher_decaffeinate() {
+  local pid="$(ps aux | grep caffeinate | grep -v grep | awk '{print $2}')"
+
+  if [ -n "$pid" ]; then
+    kill "$pid"
+  fi
+}
+
+# Label: Mute
+# Description: Mutes sounds.
+sleepwatcher_mute() {
+  osascript -e "set volume with output muted"
+}

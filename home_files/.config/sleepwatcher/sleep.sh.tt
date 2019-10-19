@@ -5,18 +5,7 @@ set -o errexit
 set -o pipefail
 IFS=$'\n\t'
 
-kill_caffeinate() {
-  local pid=$(ps aux | grep caffeinate | grep -v grep | awk '{print $2}')
+source "$HOME/.config/sleepwatcher/support.sh"
 
-  if [ -n "$pid" ]; then
-    kill $pid
-  fi
-}
-
-mute_machine() {
-  osascript -e "set volume with output muted"
-}
-
-# Execution
-kill_caffeinate
-mute_machine
+sleepwatcher_decaffeinate
+sleepwatcher_mute
