@@ -36,6 +36,18 @@ sleepwatcher_wifi_off() {
   fi
 }
 
+# Label: Bluetooth On
+# Description: Turns on Bluetooth.
+sleepwatcher_bluetooth_on() {
+  blueutil --power 1
+}
+
+# Label: Bluetooth Off
+# Description: Turns off Bluetooth.
+sleepwatcher_bluetooth_off() {
+  blueutil --power 0
+}
+
 # Label: Wifi Device
 # Description: Answers WiFi device.
 sleepwatcher_wifi_device() {

@@ -10,3 +10,4 @@ source "$HOME/.config/sleepwatcher/support.sh"
 sleepwatcher_decaffeinate
 sleepwatcher_mute
 sleepwatcher_wifi_off
+sleepwatcher_bluetooth_off
