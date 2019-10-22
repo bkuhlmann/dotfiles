@@ -13,3 +13,31 @@ sleepwatcher_decaffeinate() {
 sleepwatcher_mute() {
   osascript -e "set volume with output muted"
 }
+
+# Label: WiFi On
+# Description: Turns on WiFi.
+sleepwatcher_wifi_on() {
+  local device="$(sleepwatcher_wifi_device)"
+  local off=0
+
+  if [[ $(networksetup -getairportpower "$device" | grep -c On) == $off ]]; then
+    networksetup -setairportpower "$device" On
+  fi
+}
+
+# Label: WiFi Off
+# Description: Turns off WiFi.
+sleepwatcher_wifi_off() {
+  local device="$(sleepwatcher_wifi_device)"
+  local on=1
+
+  if [[ $(networksetup -getairportpower "$device" | grep -c On) == $on ]]; then
+    networksetup -setairportpower "$device" Off
+  fi
+}
+
+# Label: Wifi Device
+# Description: Answers WiFi device.
+sleepwatcher_wifi_device() {
+  networksetup -listallhardwareports | grep -A 2 -E "Wi-Fi" | grep -m 1 -o -e en[0-9]
+}

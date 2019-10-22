@@ -6,3 +6,5 @@ set -o pipefail
 IFS=$'\n\t'
 
 source "$HOME/.config/sleepwatcher/support.sh"
+
+sleepwatcher_wifi_on
