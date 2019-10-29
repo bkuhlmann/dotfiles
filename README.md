@@ -124,7 +124,7 @@ more.
 
 ## Screencast
 
-[![asciicast](https://asciinema.org/a/263055.svg)](https://asciinema.org/a/263055)
+[![asciicast](https://asciinema.org/a/277634.svg)](https://asciinema.org/a/277634)
 
 ## Requirements
 
