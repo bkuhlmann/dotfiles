@@ -1489,6 +1489,7 @@ gwa() {
 gwd() {
   local project_name="$(basename $(git rev-parse --show-toplevel) | cut -d'-' -f1)"
   local worktree_dir="$(pwd)"
+  local branch="$(_git_branch_name)"
 
   if [[ "$(git status --short)" ]]; then
     printf "%s\n" "ERROR: Git worktree has uncommitted changes."
@@ -1500,6 +1501,8 @@ gwd() {
     if [[ "$response" == 'y' ]]; then
       rm -rf $worktree_dir
       git worktree prune
+      gbdl "$branch"
+      git branch --delete --force "$branch"
     fi
   fi
 }
