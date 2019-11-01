@@ -1,3 +1,20 @@
+# 35.0.0 (2019-11-01)
+
+- Fixed Ruby IRB history cache.
+- Fixed Z cache.
+- Added Git branch facsimile function.
+- Added Rubocop Rake support.
+- Added Rubocop auto correct alias for single cops.
+- Added SleepWatcher Bluetooth On/Off support.
+- Added SleepWatcher Wifi On/Off support.
+- Added local branch deletion to Git worktree add function.
+- Updated CTags settings to account for more Node files.
+- Updated README screencast.
+- Updated to Rake 13.0.0.
+- Updated to Ruby 2.6.5.
+- Removed processes from Overmind start function.
+- Refactored Sleepwatcher scripts.
+
 # 34.1.0 (2019-10-01)
 
 - Added Asciicasts to Git ignore.

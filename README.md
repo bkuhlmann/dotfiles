@@ -138,7 +138,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 34.1.0
+    git checkout 35.0.0
 
 Master Version (unstable)
 
@@ -459,6 +459,7 @@ When upgrading to a new version, run the following:
     copc = "rubocop --auto-gen-config"
     copo = "rubocop --display-cop-names --only"
     copf = "rubocop --auto-correct"
+    copfo = "rubocop --auto-correct --only"
     cops = "rubocop --show-cops"
     copd = 'find . -name ".rubocop-http*" -type f -delete'
 
@@ -485,7 +486,7 @@ When upgrading to a new version, run the following:
 
 #### [Z](https://github.com/rupa/z)
 
-    ze = "$EDITOR $HOME/.z"
+    ze = "$EDITOR $_Z_DATA"
 
 #### [Path Finder](http://www.cocoatech.com/pathfinder)
 
@@ -621,6 +622,7 @@ When upgrading to a new version, run the following:
     gblo = Git Branch List Owner - List branches owned by current author or supplied author.
     gbla = Git Branch List (all) - List current branch for projects in current directory.
     gbc = Git Branch Create - Create and switch to branch.
+    gbf = Git Branch Facsimile - Duplicate current branch with new name and switch to it.
     gbca = Git Branch Create (all) - Create and switch to branch for projects in current directory.
     gbs = Git Branch Switch - Switch between branches.
     gbsa = Git Branch Switch (all) - Switch to given branch for projects in current directory.
