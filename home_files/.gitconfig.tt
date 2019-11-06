@@ -45,6 +45,8 @@
   newHighlight = green bold 22
 [commit]
   template = ~/.config/git/commit_message.txt
+[feature]
+  experimental = true
 [interactive]
   singleKey = true
 [status]
@@ -52,6 +54,7 @@
 [fetch]
   prune = true
   pruneTags = true
+  writeCommitGraph = true
 [pull]
   rebase = merges
 [push]
