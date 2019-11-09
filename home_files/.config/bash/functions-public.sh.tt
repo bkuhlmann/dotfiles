@@ -1590,7 +1590,7 @@ guke() {
   printf "\033[m" # Switch to white font.
 
   if [[ "$response" == 'y' ]]; then
-    git filter-branch --force --index-filter "git rm -r --cached '$file' --ignore-unmatch" --prune-empty --tag-name-filter cat -- --all
+    git-filter-repo --force --invert-paths --path "$file"
   else
     printf "%s\n" "Nuke aborted."
   fi
