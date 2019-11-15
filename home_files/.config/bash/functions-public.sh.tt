@@ -1211,7 +1211,7 @@ gbs() {
     local ifs_original=$IFS
     IFS=$'\n'
 
-    branches=($(_git_branch_list))
+    branches=($(_git_branch_list_alpha))
 
     if [[ ${#branches[@]} -gt 1 ]]; then
       printf "\n%s\n" "Select branch to switch to:"
@@ -1296,7 +1296,7 @@ gbd() {
     local ifs_original=$IFS
     IFS=$'\n'
 
-    branches=($(_git_branch_list))
+    branches=($(_git_branch_list_alpha))
 
     if [[ ${#branches[@]} -gt 1 ]]; then
       printf "\n%s\n" "Select branch to delete:"
