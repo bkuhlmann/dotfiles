@@ -1,7 +1,7 @@
 # Prompt
 
 rails_prompt = begin
-  "#{Rails.version}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}"
+  "#{Rails.version}|#{Rails.application.class.module_parent_name.downcase}|#{Rails.env}"
 rescue NameError
   nil
 end
