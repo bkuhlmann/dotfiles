@@ -75,13 +75,6 @@ iso() {
   hdiutil makehybrid -iso -joliet -o "$output_path" "$source_path"
 }
 
-# Label: Process Status (specialized)
-# Description: Display process status (excluding current process) and ignoring case.
-# Parameters: $1 (required) - The process name.
-pss() {
-  ps axu | ag --invert-match ag | ag "$1" --ignore-case
-}
-
 # Label: Kill Process
 # Description: Kill errant processes.
 # Parameters: $1 (required) - The search query, $2 (optional) - The kill signal. Default: 15.
