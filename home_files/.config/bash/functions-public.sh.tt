@@ -76,18 +76,13 @@ iso() {
 }
 
 # Label: Kill Process
-# Description: Kill errant processes.
-# Parameters: $1 (required) - The search query, $2 (optional) - The kill signal. Default: 15.
+# Description: Kill errant/undesired process.
+# Parameters: $1 (required) - The search query, $2 (optional) - The signal. Default: 15.
 kilp() {
   local query="$1"
   local signal=${2:-15}
 
-  if [[ -z "$query" ]]; then
-    printf "%s\n" "ERROR: Search query must be supplied."
-    return 1
-  fi
-
-  ps axu | ag --invert-match ag | ag "$query" | awk '{print $2}' | xargs kill -$signal
+  pkill -$signal -l -f "$query"
 }
 
 #-----------------------------------------------------------#
