@@ -1,11 +1,7 @@
 # Label: Decaffeinate
 # Description: Disables caffeination if running.
 sleepwatcher_decaffeinate() {
-  local pid="$(ps aux | grep caffeinate | grep -v grep | awk '{print $2}')"
-
-  if [ -n "$pid" ]; then
-    kill "$pid"
-  fi
+  pkill -x caffeinate
 }
 
 # Label: Mute
