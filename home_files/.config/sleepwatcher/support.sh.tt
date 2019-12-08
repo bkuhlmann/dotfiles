@@ -5,9 +5,15 @@ sleepwatcher_decaffeinate() {
 }
 
 # Label: Mute
-# Description: Mutes sounds.
+# Description: Mutes sound.
 sleepwatcher_mute() {
   osascript -e "set volume with output muted"
+}
+
+# Label: Unmute
+# Description: Unmutes sound.
+sleepwatcher_unmute() {
+  osascript -e "set volume without output muted"
 }
 
 # Label: WiFi On
