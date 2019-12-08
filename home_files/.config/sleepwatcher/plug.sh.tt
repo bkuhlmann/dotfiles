@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+
+set -o nounset
+set -o errexit
+set -o pipefail
+IFS=$'\n\t'
+
+source "$HOME/.config/sleepwatcher/support.sh"
+
+sleepwatcher_bluetooth_on
+sleepwatcher_wifi_on
+sleepwatcher_unmute
