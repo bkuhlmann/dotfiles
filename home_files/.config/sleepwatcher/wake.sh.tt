@@ -7,5 +7,5 @@ IFS=$'\n\t'
 
 source "$HOME/.config/sleepwatcher/support.sh"
 
-sleepwatcher_wifi_on
 sleepwatcher_bluetooth_on
+sleepwatcher_wifi_on
