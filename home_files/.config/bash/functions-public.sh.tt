@@ -269,8 +269,8 @@ gia() {
 gafe() {
   if [[ -d ".git" ]]; then
     mkdir -p .git/safe
-    exec /usr/local/bin/bash
     printf "%s\n" "Repository has been marked safe."
+    exec /usr/local/bin/bash
   fi
 }
 
