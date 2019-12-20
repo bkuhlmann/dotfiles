@@ -2160,24 +2160,24 @@ guard() {
 #--------------------------------------------------#
 
 # Label: Ruby on Rails New
-# Description: Create new Rails application from selected template.
-# Parameters: $1 (required) - Application name, $2 (optional) - Template name, $3 (optional) - Branch name.
+# Description: Create new Rails application from selected option.
+# Parameters: $1 (required) - Application name, $2 (optional) - Option.
 railsn() {
   if [[ "$1" ]]; then
     while true; do
       if [[ $2 ]]; then
-        _process_rails_new_option "$1" "$2" "$3"
+        _process_rails_new_option "$1" "$2"
       else
         printf "%s\n" "\nUsage: railsn NAME TEMPLATE"
-        printf "\n%s\n\n" "Available Ruby on Rails Templates:"
-        printf "%s\n" "  default: Rails Default Template"
-        printf "%s\n" "   custom: Rails Custom Template"
-        printf "%s\n" "     slim: Rails Slim Template"
-        printf "%s\n" "    dummy: Rails Dummy Template"
+        printf "\n%s\n\n" "Select Ruby on Rails generation option:"
+        printf "%s\n" "  default: Rails Default"
+        printf "%s\n" "      api: Rails API"
+        printf "%s\n" "     slim: Rails Slim"
+        printf "%s\n" "    dummy: Rails Dummy"
         printf "\n"
         read -p "Please pick one (or type 'q' to quit): " response
         printf "\n"
-        _process_rails_new_option "$1" $response "$3"
+        _process_rails_new_option "$1" $response
       fi
       break
     done

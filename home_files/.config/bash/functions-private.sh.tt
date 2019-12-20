@@ -446,20 +446,19 @@ _create_rails_skeleton() {
 
 # Label: Process Ruby on Rails New Option
 # Description: Process option for constructing new Rails application skeletons with custom build settings.
-# Parameters: $1 (required) - The application name, $2 (required) - The template to apply, $3 (optional) - The branch. Default: master.
+# Parameters: $1 (required) - Application name, $2 (required) - Option.
 _process_rails_new_option() {
-  local branch="${3:-master}"
-  local flags="--skip-git --skip-bundle --skip-sprockets --skip-action-cable --skip-turbolinks --skip-spring --skip-test --skip-keeps --force --database postgresql"
+  local flags="--skip-git --skip-bundle --skip-turbolinks --skip-sprockets --skip-action-cable --skip-action-text --skip-active-storage --skip-sprockets --skip-listen --skip-spring --skip-test --skip-keeps --database postgresql --webpack elm"
 
   case $2 in
     "default")
       _create_rails_skeleton "$1";;
-    "custom")
-      _create_rails_skeleton "$1" "$flags";;
+    "api")
+      _create_rails_skeleton "$1" "$flags --api";;
     "slim")
-      _create_rails_skeleton "$1" "$flags --template https://raw.github.com/bkuhlmann/rails_slim_template/$branch/template.rb";;
+      _create_rails_skeleton "$1" "$flags";;
     "dummy")
-      _create_rails_skeleton "$1" "$flags --template https://raw.github.com/bkuhlmann/rails_dummy_template/$branch/template.rb";;
+      _create_rails_skeleton "$1" "$flags --skip-javascript";;
     'q');;
     *)
       printf "%s\n" "ERROR: Invalid option.";;
