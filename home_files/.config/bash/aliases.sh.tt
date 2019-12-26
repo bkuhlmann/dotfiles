@@ -203,7 +203,6 @@ alias bi="bundle install"
 alias bu="bundle update"
 alias bo="bundle outdated --only-explicit"
 alias bce="$EDITOR $HOME/.bundle/config"
-alias bcon="bundle console"
 alias be="bundle exec"
 alias bch="rm -f Gemfile.lock; bundle check"
 
