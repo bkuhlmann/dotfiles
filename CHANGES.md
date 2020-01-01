@@ -1,3 +1,24 @@
+# 36.0.0 (2020-01-01)
+
+- Fixed Git Safe function status output.
+- Fixed Pry RC Rails deprecation warning for module parent name.
+- Added Git fetch write commit graph experimental feature.
+- Added Sleepwatcher configuration.
+- Added Sleepwatcher plug script.
+- Added Sleepwatcher unmute function.
+- Added pre-merge commit Git Hook template.
+- Updated Git Nuke function to use Git Filter Repo command.
+- Updated Git branch switching and deleting to use alphabetic listing.
+- Updated Homebrew environment settings.
+- Updated Rails new function options.
+- Updated `.irbrc` file to Ruby 2.7.0.
+- Updated kill process function to use process kill commmand.
+- Updated process status to use process grep.
+- Updated to Ruby 2.7.0.
+- Removed Bundle console alias.
+- Refactored Sleepwatcher decaffeinate function to use process kill.
+- Refactored Sleepwatcher sleep and wake scripts.
+
 # 35.0.0 (2019-11-01)
 
 - Fixed Ruby IRB history cache.

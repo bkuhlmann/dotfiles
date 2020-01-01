@@ -138,7 +138,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 35.0.0
+    git checkout 36.0.0
 
 Master Version (unstable)
 
@@ -197,6 +197,7 @@ When upgrading to a new version, run the following:
     cat = "bat --theme DarkNeon"
     man = "gem man --system"
     ping = "prettyping --nolegend"
+    pss = "pgrep -i -l -f"
     rmde = "find . -type d -empty -not -path '*.git*' -delete"
     top = "htop"
 
@@ -400,7 +401,6 @@ When upgrading to a new version, run the following:
     bu = "bundle update"
     bo = "bundle outdated --only-explicit"
     bce = "$EDITOR $HOME/.bundle/config"
-    bcon = "bundle console"
     be = "bundle exec"
     bch = "rm -f Gemfile.lock; bundle check"
 
@@ -540,8 +540,7 @@ When upgrading to a new version, run the following:
     cype = Colorized Type - Identical to "type" system command but with Bat support.
     eup = Environment Update - Update environment with latest software.
     iso = ISO - Builds an ISO image from mounted volume.
-    pss = Process Status (specialized) - Display process status (excluding current process) and ignoring case.
-    kilp = Kill Process - Kill errant processes.
+    kilp = Kill Process - Kill errant/undesired process.
 
 #### [less](http://en.wikipedia.org/wiki/Less_(Unix))
 
@@ -700,7 +699,7 @@ When upgrading to a new version, run the following:
 
 #### [Ruby on Rails](http://rubyonrails.org)
 
-    railsn = Ruby on Rails New - Create new Rails application from selected template.
+    railsn = Ruby on Rails New - Create new Rails application from selected option.
 
 #### [RailRoady](https://github.com/preston/railroady)
 
