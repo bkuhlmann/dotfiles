@@ -448,7 +448,7 @@ _create_rails_skeleton() {
 # Description: Process option for constructing new Rails application skeletons with custom build settings.
 # Parameters: $1 (required) - Application name, $2 (required) - Option.
 _process_rails_new_option() {
-  local flags="--skip-git --skip-bundle --skip-turbolinks --skip-sprockets --skip-action-cable --skip-action-text --skip-active-storage --skip-sprockets --skip-listen --skip-spring --skip-test --skip-keeps --database postgresql --webpack elm"
+  local flags="--skip-git --skip-turbolinks --skip-action-cable --skip-action-text --skip-active-storage --skip-sprockets --skip-listen --skip-spring --skip-test --skip-keeps --database postgresql --webpack elm"
 
   case $2 in
     "default")
@@ -457,8 +457,10 @@ _process_rails_new_option() {
       _create_rails_skeleton "$1" "$flags --api";;
     "slim")
       _create_rails_skeleton "$1" "$flags";;
-    "dummy")
+    "static")
       _create_rails_skeleton "$1" "$flags --skip-javascript";;
+    "dummy")
+      _create_rails_skeleton "$1" "$flags --skip-bundle --skip-javascript";;
     'q');;
     *)
       printf "%s\n" "ERROR: Invalid option.";;
