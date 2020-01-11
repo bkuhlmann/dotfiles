@@ -1,33 +1,17 @@
 #!/usr/bin/env ruby
 
-# Requirements
 require "irb/completion"
 
-# Defaults
-IRB.conf[:USE_READLINE] = true
-IRB.conf[:EVAL_HISTORY] = 1000
-IRB.conf[:HISTORY_FILE] = %(#{ENV["HOME"]}/.cache/ruby/irb/history.log)
-IRB.conf[:PROMPT] ||= {}
-
-info = begin
-  "#{RUBY_VERSION}|#{Rails.version}|#{Rails.application.class.parent_name.downcase}|#{Rails.env}"
-rescue NameError
-  project = File.basename(`git rev-parse --show-toplevel 2> /dev/null`.strip).downcase
-  [RUBY_VERSION, project].reject(&:empty?).join "|"
-end
-
-IRB.conf[:PROMPT][:ALCHEMISTS] = {
-  PROMPT_I: "[#{info}]> ",
-  PROMPT_N: "[#{info}]| ",
-  PROMPT_C: "[#{info}]| ",
-  PROMPT_S: "[#{info}]%l ",
-  RETURN: "=> %s\n"
-}
-
-IRB.conf[:PROMPT_MODE] = :ALCHEMISTS
-
-# ConsoleKit (CK) - A collection of utility methods when working within the IRB console.
+# ConsoleKit (CK) - A collection of IRB console utility methods.
 class CK
+  def self.info
+    "#{RUBY_VERSION}|#{Rails.version}|#{Rails.application.class.module_parent_name.downcase}|#{Rails.env}"
+  rescue NameError
+    File.basename(`git rev-parse --show-toplevel 2> /dev/null`.strip)
+        .downcase
+        .then { |project| [RUBY_VERSION, project].reject(&:empty?).join "|" }
+  end
+
   def self.locate object, method
     object.method(method).source_location
   end
@@ -41,6 +25,22 @@ class CK
   end
 
   def self.paste
-    open("| pbpaste", "r") { |clipboard| clipboard.read }
+    open "| pbpaste", "r", &:read
   end
 end
+
+IRB.conf[:USE_READLINE] = true
+IRB.conf[:EVAL_HISTORY] = 1000
+IRB.conf[:HISTORY_FILE] = %(#{ENV["HOME"]}/.cache/ruby/irb/history.log)
+IRB.conf[:PROMPT] ||= {}
+
+IRB.conf[:PROMPT][:ALCHEMISTS] = {
+  PROMPT_I: "[#{CK.info}]> ",
+  PROMPT_N: "[#{CK.info}]| ",
+  PROMPT_C: "[#{CK.info}]| ",
+  PROMPT_S: "[#{CK.info}]%l ",
+  RETURN: "=> %s\n"
+}
+
+IRB.conf[:PROMPT_MODE] = :ALCHEMISTS
+
