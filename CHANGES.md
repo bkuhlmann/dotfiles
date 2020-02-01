@@ -1,3 +1,14 @@
+# 37.0.0 (2020-02-01)
+
+- Fixed README Table of Contents.
+- Added Git branch edit description alias
+- Added Rails new app creation option for static sites
+- Updated Git config to not specify ignore file
+- Updated to Git Cop 4.0.0
+- Removed Git config custom attributes
+- Removed Git merge alias
+- Refactored IRB resource file
+
 # 36.0.0 (2020-01-01)
 
 - Fixed Git Safe function status output.

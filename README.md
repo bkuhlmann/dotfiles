@@ -139,7 +139,7 @@ Current Version (stable)
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
-    git checkout 36.0.0
+    git checkout 37.0.0
 
 Master Version (unstable)
 
@@ -283,8 +283,8 @@ When upgrading to a new version, run the following:
     gbih = "git bisect help"
     gbt = "git show-branch --topics"
     gba = "git branch --all"
+    gbe = "git branch --edit-description"
     gbn = "_git_branch_name | _copy_and_print"
-    gm = "git merge"
     gcl = "git clone"
     gb = "git switch"
     gbb = "git switch -"
