@@ -1194,39 +1194,7 @@ gbca() {
 # Label: Git Branch Switch
 # Description: Switch between branches.
 gbs() {
-  if [[ -d ".git" ]]; then
-    local branches=()
-    local ifs_original=$IFS
-    IFS=$'\n'
-
-    branches=($(_git_branch_list_alpha))
-
-    if [[ ${#branches[@]} -gt 1 ]]; then
-      printf "\n%s\n" "Select branch to switch to:"
-
-      for ((index = 0; index < ${#branches[*]}; index++)); do
-        printf "  %s\n" "$index: ${branches[$index]}"
-      done
-
-      printf "  %s\n\n" "q: Quit/Exit."
-
-      read -p "Enter selection: " response
-      printf "\n"
-
-      local match="^([0-9]{1,2})$"
-      if [[ "$response" =~ $match ]]; then
-        local branch="$(printf "${branches[$response]}" | awk '{print $1}')"
-        git switch "$branch"
-        printf "\n"
-      fi
-    else
-      printf "%s\n" "Sorry, only one branch to switch to and you're on it!"
-    fi
-  else
-    printf "%s\n" "Sorry, no branches to switch to."
-  fi
-
-  IFS=$ifs_original
+  _git_branch_list_alpha | fzf | awk '{print $1}' | xargs git switch
 }
 
 # Label: Git Branch Switch (all)
