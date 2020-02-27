@@ -31,7 +31,7 @@ alias dnss="sudo dscacheutil -statistics"
 alias dnsf="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
 
 # Section: [Fuzzy Finder](https://github.com/junegunn/fzf)
-alias ff="fzf --preview 'bat --theme DarkNeon --color always {}'"
+alias ff="fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
 
 # Section: [tmux](http://tmux.sourceforge.net)
 alias tsl="tmux list-sessions"
