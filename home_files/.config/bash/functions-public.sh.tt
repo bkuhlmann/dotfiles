@@ -364,7 +364,7 @@ gount() {
 }
 
 # Label: Git Log (interactive)
-# Description: List feature branch commits with support to show/diff individual commits.
+# Description: List master or feature branch commits with commit show and/or diff support.
 gli() {
   local commits=($(_git_branch_shas))
   _git_commit_options "${commits[*]}"
@@ -385,16 +385,17 @@ gli() {
 }
 
 # Label: Git Log Details
-# Description: Dynamically list commit details for current feature branch or entire master branch.
+# Description: List master or feature branch commit details.
 gld() {
   if [[ _git_branch_name != "master" ]]; then
     commits=($(_git_branch_shas))
 
     if [[ ${#commits[@]} == 1 ]]; then
       _git_show_details "${commits[0]}"
+    elif [[ "$(_git_branch_name)" == "master" ]]; then
+      git log --stat --pretty=format:"$(_git_log_details_format)"
     elif [[ ${#commits[@]} > 1 ]]; then
-      range="${commits[-1]}^..${commits[0]}"
-      git log --stat --pretty=format:"$(_git_log_details_format)" $range
+      git log --stat --pretty=format:"$(_git_log_details_format)" "${commits[-1]}^..${commits[0]}"
     fi
   fi
 }
