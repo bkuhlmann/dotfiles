@@ -102,6 +102,12 @@ _git_commit_count_since_last_tag() {
   fi
 }
 
+# Label: Git Commit Root
+# Description: Answer root commit of entire repository.
+_git_commit_root() {
+  git rev-list --pretty=format:%h --max-parents=0 HEAD | rg --invert-match "^commit"
+}
+
 # Label: Git Commit Last
 # Description: Answer last commit for current branch.
 _git_commit_last() {
