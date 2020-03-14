@@ -190,7 +190,7 @@ _git_branch_shas() {
   local log_format="%h%d"
   local current_commit=($(git log --pretty=format:$log_format) -1)
   local commits=($(git log --pretty=format:$log_format))
-  local parent_sha="$(_git_commit_last)"
+  local range="$(_git_commit_last)"
   local current_pattern=".*\(HEAD.+\)*"
   local parent_pattern=".*\(.+\)*"
   local origin_pattern=".*\(origin\/$(_git_branch_name)\)$"
@@ -201,18 +201,15 @@ _git_branch_shas() {
       local entry_sha="${entry%% *}"
 
       if [[ ! "$entry" =~ $current_pattern && ! "$entry" =~ $origin_pattern ]]; then
-        if [[ "$entry" =~ $master_pattern ]]; then
-          parent_sha="$entry_sha"
-          break
-        elif [[ "$entry" =~ $parent_pattern ]]; then
-          parent_sha="$entry_sha"
+        if [[ "$entry" =~ $master_pattern || "$entry" =~ $parent_pattern ]]; then
+          range="$entry_sha..$(_git_commit_last)"
           break
         fi
       fi
     done
   fi
 
-  git log --pretty=format:%h "$parent_sha..$(_git_commit_last)"
+  git log --pretty=format:%h "$range"
   IFS=$ifs_original
 }
 
