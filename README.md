@@ -20,6 +20,8 @@ more.
   - [Screencast](#screencast)
   - [Requirements](#requirements)
   - [Setup](#setup)
+    - [Production](#production)
+    - [Development](#development)
   - [Upgrade](#upgrade)
   - [Usage](#usage)
     - [Aliases](#aliases)
@@ -133,18 +135,31 @@ more.
 
 ## Setup
 
-Open a terminal window and execute the following commands:
+### Production
 
-Current Version (stable)
+To install, run:
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
     git checkout 37.0.0
 
-Master Version (unstable)
+### Development
+
+To contribute, run:
 
     git clone https://github.com/bkuhlmann/dotfiles.git
     cd dotfiles
+
+## Upgrade
+
+When upgrading to a new version, run the following:
+
+1. Run: `bin/run l`. Links new files. If not using linked files, run `bin/run d` and `bin/run i`
+   instead.
+1. Run: `bin/run c`. Displays file differences, if any. Usually, this will be excluded files.
+1. Run: `exec $SHELL`. Updates current shell with the above changes.
+
+## Usage
 
 Edit any of the `*.tt` (template) and/or `*.command` (command) files in the `home_files` directory
 as you see fit. Then open a terminal window and execute the following command to install:
@@ -169,17 +184,6 @@ After install, the following files will require manual updating:
 - `.bash/env.sh`: Add secret/machine-specific environment settings (if any).
 - `.gitconfig`: Uncomment the name, email, and token lines within the `[user]` and `[github]`
   sections to replace with your own details.
-
-## Upgrade
-
-When upgrading to a new version, run the following:
-
-1. Run: `bin/run l`. Links new files. If not using linked files, run `bin/run d` and `bin/run i`
-   instead.
-1. Run: `bin/run c`. Displays file differences, if any. Usually, this will be excluded files.
-1. Run: `exec $SHELL`. Updates current shell with the above changes.
-
-## Usage
 
 ### Aliases
 
