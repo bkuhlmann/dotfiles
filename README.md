@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="dotfiles.png" alt="Dotfiles Icon"/>
+  <img src="https://www.alchemists.io/images/projects/dotfiles/icon.png" alt="Dotfiles Icon"/>
 </p>
 
 # Dotfiles
