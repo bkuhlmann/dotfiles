@@ -1049,6 +1049,24 @@ gcap() {
   rm -f $temp_file
 }
 
+# Label: Git Amend Push (all)
+# Description: Amend all changes and force push with lease for projects in current directory.
+gmpa() {
+  while read -r project; do
+    (
+      cd "$project"
+
+      if [[ -d ".git" ]]; then
+        # Only process projects that have changes.
+        if [[ "$(git status --short)" ]]; then
+          printf "\033[36m${project}\033[m:\n" # Outputs in cyan color.
+          git commit --amend --all --no-edit && git push --force-with-lease
+        fi
+      fi
+    )
+  done < <(ls -A1)
+}
+
 # Label: Git Push
 # Description: Pushes changes to remote repository with dynamic branch creation if non-existent.
 gp() {
