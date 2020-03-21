@@ -974,33 +974,6 @@ gcff() {
   fi
 }
 
-# Label: Git Commit Fix and Push
-# Description: Create fixup commit, push, and copy URL to clipboard.
-# Parameters: $1 (required) - The commit SHA to be fixed, $2 (optional) - Use "-a" to amend the fixup message.
-gcfp() {
-  local sha="$1"
-  local option="$2"
-
-  if git diff --cached --quiet; then
-    printf "%s\n" "ERROR: No staged changes detected."
-    return 1
-  fi
-
-  if [[ -z "$sha" ]]; then
-    printf "%s\n" "ERROR: Fixup commit SHA is required."
-    return 1
-  fi
-
-  git commit --fixup "$sha"
-
-  if [[ "$option" == "-a" ]]; then
-    git commit --amend
-  fi
-
-  gp
-  gh u $(_git_commit_last)
-}
-
 # Label: Git Commit (all)
 # Description: Commit changes (unstaged and staged) for projects in current directory.
 gcaa() {
