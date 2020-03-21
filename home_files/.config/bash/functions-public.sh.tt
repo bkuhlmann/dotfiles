@@ -1049,12 +1049,6 @@ gcap() {
   rm -f $temp_file
 }
 
-# Label: Git Push Origin Branch
-# Description: Pushes current branch to origin and sets upstream tracking.
-gpob() {
-  git push --set-upstream origin $(_git_branch_name)
-}
-
 # Label: Git Push
 # Description: Pushes changes to remote repository with dynamic branch creation if non-existent.
 gp() {
