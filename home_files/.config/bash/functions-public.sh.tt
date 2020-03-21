@@ -997,7 +997,7 @@ gcfp() {
     git commit --amend
   fi
 
-  git push
+  gp
   gh u $(_git_commit_last)
 }
 
@@ -1040,7 +1040,7 @@ gcap() {
         # Only process projects that have changes.
         if [[ "$(git status --short)" ]]; then
           printf "\033[36m${project}\033[m:\n" # Outputs in cyan color.
-          git commit --all --cleanup strip --file $temp_file && git push
+          git commit --all --cleanup strip --file $temp_file && gp
         fi
       fi
     )
@@ -1072,7 +1072,7 @@ gpa() {
         # Only process projects that have changes.
         if [[ "$(git status --short --branch)" == *"[ahead"*"]" ]]; then
           printf "\033[36m${project}\033[m:\n" # Outputs in cyan color.
-          git push
+          gp
         fi
       fi
     )
