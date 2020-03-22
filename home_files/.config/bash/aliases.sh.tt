@@ -18,7 +18,7 @@ alias pss="pgrep -i -l -f"
 alias rmde="find . -type d -empty -not -path '*.git*' -delete"
 alias top="htop"
 
-# Section: [Bash](https://www.gnu.org/software/bash)
+# Section: https://www.gnu.org/software/bash:[Bash]
 alias bashe="$EDITOR $HOME/.config/bash/env.sh"
 alias bashs="exec $SHELL"
 
@@ -30,16 +30,16 @@ alias dnsi="scutil --dns"
 alias dnss="sudo dscacheutil -statistics"
 alias dnsf="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
 
-# Section: [Fuzzy Finder](https://github.com/junegunn/fzf)
+# Section: https://github.com/junegunn/fzf:[Fuzzy Finder]
 alias ff="fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
 
-# Section: [tmux](http://tmux.sourceforge.net)
+# Section: http://tmux.sourceforge.net:[tmux]
 alias tsl="tmux list-sessions"
 alias tsa="tmux attach-session -t"
 alias tsk="tmux kill-session -t"
 alias tsr="tmux rename-session -t"
 
-# Section: [Homebrew](http://brew.sh)
+# Section: http://brew.sh[Homebrew]
 alias hb="brew"
 alias hbi="brew install"
 alias hbin="brew info"
@@ -55,7 +55,7 @@ alias hbd="brew doctor"
 alias hbc="brew cleanup"
 alias hbsu="brew update && brew upgrade && brew cleanup"
 
-# Section: [Git](http://git-scm.com)
+# Section: http://git-scm.com:[Git]
 alias gi="git init"
 alias gcle="git config --local --edit"
 alias gcge="git config --global --edit"
@@ -155,26 +155,26 @@ alias gelc="git rm --cached" # Removes previously tracked file from index after 
 alias grev="git revert --no-commit"
 alias glean="git clean -d --force"
 
-# Section: [Tar](http://www.gnu.org/software/tar/tar.html)
+# Section: http://www.gnu.org/software/tar/tar.html:[Tar]
 alias bzc="tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
 alias bzx="tar --extract --bzip2 --verbose --file"
 
-# Section: [PostgreSQL](http://www.postgresql.org)
+# Section: http://www.postgresql.org:[PostgreSQL]
 alias pgi="initdb /usr/local/var/postgres"
 alias pgst="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start &"
 alias pgsp="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
-# Section: [Redis](http://redis.io)
+# Section: http://redis.io:[Redis]
 alias reds="redis-server /usr/local/etc/redis.conf &"
 alias redc="redis-cli"
 
-# Section: [chruby](https://github.com/postmodern/chruby)
+# Section: https://github.com/postmodern/chruby:[chruby]
 alias rb="chruby"
 
-# Section: [Ruby](https://www.ruby-lang.org)
+# Section: https://www.ruby-lang.org:[Ruby]
 alias rbi="ruby-install"
 
-# Section: [Ruby Gems](https://rubygems.org)
+# Section: https://rubygems.org:[Ruby Gems]
 alias gemcr="$EDITOR ~/.gem/credentials"
 alias geml="gem list"
 alias gemi="gem install"
@@ -186,14 +186,14 @@ alias geme="gem environment"
 alias gemuc="gem update --system && gem update && gem cleanup"
 alias gemcli="ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
 
-# Section: [Ruby Gems Whois](https://github.com/jnunemaker/gemwhois)
+# Section: https://github.com/jnunemaker/gemwhois:[Ruby Gems Whois]
 alias gemw="gem whois"
 
-# Section: [Rake](https://github.com/ruby/rake)
+# Section: https://github.com/ruby/rake:[Rake]
 alias bert="ber -T"
 alias berq="ber code_quality"
 
-# Section: [Bundler](http://bundler.io)
+# Section: http://bundler.io:[Bundler]
 alias ba="bundle add"
 alias bb="bundle binstubs"
 alias bs="bundle show"
@@ -205,13 +205,13 @@ alias bce="$EDITOR $HOME/.bundle/config"
 alias be="bundle exec"
 alias bch="rm -f Gemfile.lock; bundle check"
 
-# Section: [Milestoner](https://github.com/bkuhlmann/milestoner)
+# Section: https://www.alchemists.io/projects/milestoner:[Milestoner]
 alias ms="milestoner"
 alias msc='milestoner --commits | _copy_and_print "\n"'
 alias msp="milestoner --publish"
 alias mse="milestoner --config --edit"
 
-# Section: [Gemsmith](https://github.com/bkuhlmann/gemsmith)
+# Section: https://www.alchemists.io/projects/gemsmith:[Gemsmith]
 alias gsg="gemsmith --generate"
 alias gse="gemsmith --config --edit"
 alias gsr="gemsmith --read"
@@ -220,19 +220,19 @@ alias gsi="rake install"
 alias gsp="rake publish"
 alias gsq="rake code_quality"
 
-# Section: [RSpec](http://rspec.info)
+# Section: https://rspec.info:[RSpec]
 alias rss="rspec spec"
 alias rst="rspec spec --tag"
 alias rsn="rspec spec --next-failure"
 alias rsf="rspec spec --only-failures"
 alias rso="rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
 
-# Section: [Ruby on Rails](http://rubyonrails.org)
+# Section: https://rubyonrails.org:[Ruby on Rails]
 alias railsb="rails console --sandbox"
 alias railse="EDITOR='sublime --wait' rails credentials:edit"
 alias railsdbm="ber db:migrate && ber db:rollback && ber db:migrate && RAILS_ENV=test ber db:migrate"
 
-# Section: [Crystal](https://crystal-lang.org)
+# Section: https://crystal-lang.org:[Crystal]
 alias cr="crystal"
 alias crb="crystal build"
 alias crr="crystal run"
@@ -240,7 +240,7 @@ alias crd="crystal docs"
 alias crdo="open docs/index.html"
 alias crs="crystal spec"
 
-# Section: [Elm](http://elm-lang.org)
+# Section: http://elm-lang.org:[Elm]
 alias elmc="elm repl"
 alias elmg="elm init"
 alias elmi="elm install"
@@ -248,7 +248,7 @@ alias elms="elm reactor"
 alias elmt="elm-test"
 alias elmp="elm publish"
 
-# Section: [Rubocop](https://github.com/bbatsov/rubocop)
+# Section: https://github.com/bbatsov/rubocop:[Rubocop]
 alias cop="rubocop --parallel --display-cop-names --display-style-guide"
 alias copc="rubocop --auto-gen-config"
 alias copo="rubocop --display-cop-names --only"
@@ -257,39 +257,39 @@ alias copfo="rubocop --auto-correct --only"
 alias cops="rubocop --show-cops"
 alias copd='find . -name ".rubocop-http*" -type f -delete'
 
-# Section: [SimpleCov](https://github.com/colszowka/simplecov)
+# Section: https://github.com/colszowka/simplecov:[SimpleCov]
 alias cov="open coverage/index.html"
 
-# Section: [Silver Surfer](https://github.com/ggreer/the_silver_searcher)
+# Section: https://github.com/ggreer/the_silver_searcher:[Silver Surfer]
 alias agf="ag --hidden --files-with-matches --file-search-regex"
 
-# Section: [direnv](http://direnv.net)
+# Section: http://direnv.net:[direnv]
 alias denva="direnv allow"
 alias denvr="direnv reload"
 alias denvs="direnv status"
 
-# Section: [Yarn](https://yarnpkg.com)
+# Section: https://yarnpkg.com:[Yarn]
 alias yarni="yarn install"
 alias yarna="yarn add"
 alias yarnu="yarn upgrade"
 alias yarnr="yarn remove"
 
-# Section: [Z](https://github.com/rupa/z)
+# Section: https://github.com/rupa/z:[Z]
 alias ze="$EDITOR $_Z_DATA"
 
-# Section: [Path Finder](http://www.cocoatech.com/pathfinder)
+# Section: http://www.cocoatech.com/pathfinder:[Path Finder]
 alias pfo='open -a "Path Finder.app" "$PWD"'
 
-# Section: [Sublime Text](http://www.sublimetext.com)
+# Section: http://www.sublimetext.com:[Sublime Text]
 alias e="sublime"
 
-# Section: [Marked 2](http://marked2app.com)
+# Section: http://marked2app.com:[Marked 2]
 alias mo="open -a Marked\ 2"
 
-# Section: [ASCII Doctor](https://asciidoctor.org)
+# Section: https://asciidoctor.org:[ASCII Doctor]
 alias ad="asciidoctor"
 
-# Section: [asciinema](https://asciinema.org)
+# Section: https://asciinema.org:[asciinema]
 alias cin="asciinema"
 alias cina="asciinema rec --append"
 alias cinc="asciinema cat"
@@ -297,10 +297,10 @@ alias cinp="asciinema play"
 alias cinu="asciinema upload"
 alias cine="asciinema_plus -e"
 
-# Section: [duti](http://duti.org)
+# Section: http://duti.org:[duti]
 alias dutia="duti ~/.config/duti/configuration.duti"
 
-# Section: [Terraform](https://www.terraform.io)
+# Section: https://www.terraform.io:[Terraform]
 alias tf="terraform"
 alias tfa="noti --title 'Terraform Apply' terraform apply"
 alias tfc="terraform console"
@@ -310,5 +310,5 @@ alias tfi="terraform init"
 alias tfp="noti --title 'Terraform Plan' terraform plan"
 alias tfv="terraform validate"
 
-# Section: [Watch](https://gitlab.com/procps-ng/procps)
+# Section: https://gitlab.com/procps-ng/procps:[Watch]
 alias wp="watch --interval 1 --color --beep --exec"

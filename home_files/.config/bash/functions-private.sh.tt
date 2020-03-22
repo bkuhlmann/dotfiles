@@ -37,9 +37,9 @@ _toggle_total_color() {
   fi
 }
 
-#------------------------------------#
-# Section: [Git](http://git-scm.com) #
-#------------------------------------#
+#-----------------------------------#
+# Section: http://git-scm.com:[Git] #
+#-----------------------------------#
 
 # Label: Git Log Line Format
 # Description: Print single line log format.
@@ -293,9 +293,9 @@ _process_git_stash() {
   eval "$stash_command stash@{$stash_index}"
 }
 
-#---------------------------------------#
-# Section: [GitHub](https://github.com) #
-#---------------------------------------#
+#--------------------------------------#
+# Section: https://github.com:[GitHub] #
+#--------------------------------------#
 
 # Label: GitHub URL
 # Description: Answer GitHub URL for current project.
@@ -435,9 +435,9 @@ _process_gh_option() {
   esac
 }
 
-#--------------------------------------------------#
-# Section: [Ruby on Rails](http://rubyonrails.org) #
-#--------------------------------------------------#
+#-------------------------------------------------#
+# Section: http://rubyonrails.org:[Ruby on Rails] #
+#-------------------------------------------------#
 
 # Label: Create Rails Skeleton
 # Description: Create new Rails application skeleton.
@@ -479,8 +479,13 @@ _process_rails_new_option() {
 # Parameters: $1 (required) - The string from which to parse the section from.
 _print_section() {
   if [[ "$1" == "# Section:"* ]]; then
-    local section=$(printf "$1" | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
-    printf "\n%s\n\n" "#### $section"
+    if [[ -n "${section+x}" ]]; then
+      printf "%s\n" "...."
+    fi
+
+    section=$(printf "$1" | sed 's/# Section://' | sed 's/^ *//g' | tr -d '#')
+    printf "\n%s\n\n" "==== $section"
+    printf "%s\n" "...."
   fi
 }
 
@@ -498,10 +503,11 @@ _print_aliases() {
     _print_section "$line"
 
     if [[ "$line" == "alias"* ]]; then
-      printf "    "
       _print_alias "$line"
     fi
-  done < "$HOME/.config/bash/aliases.sh"
+  done < <(sed '2d' "$HOME/.config/bash/aliases.sh")
+
+  printf "%s\n" "...."
 }
 
 # Label: Print Function Name
@@ -540,7 +546,6 @@ _print_functions() {
     _set_function_description "$line"
 
     if [[ "$line" == *"() {" && "$line" != "_"* ]]; then
-      printf "    "
       _print_function_name "$line" "$label" "$description"
       unset label
       unset description
@@ -551,19 +556,25 @@ _print_functions() {
 # Label: Print Git Hooks
 # Description: Print Git hooks.
 _print_git_hooks() {
+  printf "%s\n" "...."
+
   for file in $(find "$HOME/.config/git/hooks/extensions" -type l | sort); do
     _print_functions "$file"
   done
+
+  printf "%s\n" "...."
 }
 
 # Label: Print All
 # Description: Print aliases, functions, and Git hooks.
 _print_all() {
-  printf "%s\n" "### Aliases"
+  printf "%s\n" "=== Aliases"
   _print_aliases
-  printf "\n%s\n" "### Functions"
+  printf "\n%s\n" "=== Functions"
+  unset section
   _print_functions
-  printf "\n%s\n\n" "### Git Hooks"
+  printf "%s\n" "...."
+  printf "\n%s\n\n" "=== Git Hooks"
   _print_git_hooks
 }
 

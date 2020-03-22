@@ -85,9 +85,9 @@ kilp() {
   pkill -$signal -l -f "$query"
 }
 
-#-----------------------------------------------------------#
-# Section: [less](http://en.wikipedia.org/wiki/Less_(Unix)) #
-#-----------------------------------------------------------#
+#----------------------------------------------------------#
+# Section: http://en.wikipedia.org/wiki/Less_(Unix):[less] #
+#----------------------------------------------------------#
 
 # Label: Less Interactive
 # Description: Inspect file, interactively.
@@ -101,9 +101,9 @@ lessi() {
   fi
 }
 
-#---------------------------------------------------------------------#
-# Section: [License Finder](https://github.com/pivotal/LicenseFinder) #
-#---------------------------------------------------------------------#
+#--------------------------------------------------------------------#
+# Section: https://github.com/pivotal/LicenseFinder:[License Finder] #
+#--------------------------------------------------------------------#
 
 # Label: License Finder (include)
 # Description: Include license in global list.
@@ -145,9 +145,9 @@ licensea() {
   license_finder approval add "$library" --who "$(git config user.name)" --why "$why"
 }
 
-#-----------------------------------------#
-# Section: [OpenSSL](https://openssl.org) #
-#-----------------------------------------#
+#----------------------------------------#
+# Section: https://openssl.org:[OpenSSL] #
+#----------------------------------------#
 
 # Label: SSL Certificate Creation
 # Description: Create SSL certificate.
@@ -190,9 +190,9 @@ EOF
   rm -f "$name.cnf"
 }
 
-#--------------------------------------#
-# Section: [curl](http://curl.haxx.se) #
-#--------------------------------------#
+#-------------------------------------#
+# Section: http://curl.haxx.se:[curl] #
+#-------------------------------------#
 
 # Label: Curl Inspect
 # Description: Inspect remote file with default editor.
@@ -231,9 +231,9 @@ curld() {
   curl --write-out "$diagnostics" --url "$url"
 }
 
-#--------------------------------------------------#
-# Section: [lsof](http://people.freebsd.org/~abe/) #
-#--------------------------------------------------#
+#------------------------------------------------#
+# Section: http://people.freebsd.org/~abe:[lsof] #
+#------------------------------------------------#
 
 # Label: Port
 # Description: List file activity on given port.
@@ -247,7 +247,7 @@ port() {
 }
 
 #------------------------------------#
-# Section: [Git](http://git-scm.com) #
+# Section: https://git-scm.com:[Git] #
 #------------------------------------#
 
 # Label: Git Init (all)
@@ -265,7 +265,7 @@ gia() {
 }
 
 # Label: Git Safe
-# Description: Marks repository as safe for auto-loading project's `bin/*` on path.
+# Description: Marks repository as safe for auto-loading project's `bin` path.
 gafe() {
   if [[ -d ".git" ]]; then
     mkdir -p .git/safe
@@ -1644,9 +1644,9 @@ gvaca() {
   done < <(ls -A1)
 }
 
-#---------------------------------------#
-# Section: [GitHub](https://github.com) #
-#---------------------------------------#
+#--------------------------------------#
+# Section: https://github.com:[GitHub] #
+#--------------------------------------#
 
 # Label: GitHub
 # Description: View GitHub details for current project.
@@ -1708,9 +1708,9 @@ ghpra() {
   done < <(ls -A1)
 }
 
-#--------------------------------------------------#
-# Section: [PostgreSQL](http://www.postgresql.org) #
-#--------------------------------------------------#
+#-------------------------------------------------#
+# Section: http://www.postgresql.org:[PostgreSQL] #
+#-------------------------------------------------#
 
 # Label: PostgreSQL User Create
 # Description: Create PostgreSQL user.
@@ -1754,9 +1754,9 @@ pgt() {
   fi
 }
 
-#--------------------------------------------#
-# Section: [Ruby](https://www.ruby-lang.org) #
-#--------------------------------------------#
+#-------------------------------------------#
+# Section: https://www.ruby-lang.org:[Ruby] #
+#-------------------------------------------#
 
 # Label: Ruby Version (all)
 # Description: Show current Ruby version for all projects in current directory.
@@ -1815,9 +1815,9 @@ rbs() {
   ruby -run -e httpd . --port ${custom_port:-$default_port}
 }
 
-#--------------------------------------------#
-# Section: [Ruby Gems](https://rubygems.org) #
-#--------------------------------------------#
+#-------------------------------------------#
+# Section: https://rubygems.org:[Ruby Gems] #
+#-------------------------------------------#
 
 # Label: Gem Dependency Search
 # Description: Finds a gem defined within a Gemfile or a gemspec.
@@ -1833,9 +1833,9 @@ gemdep() {
   ag "(add.*dependency \"$gem_name\"|add.*dependency '$gem_name'|gem \"$gem_name\"|gem '$gem_name')" .
 }
 
-#---------------------------------------#
-# Section: [Bundler](http://bundler.io) #
-#---------------------------------------#
+#--------------------------------------#
+# Section: http://bundler.io:[Bundler] #
+#--------------------------------------#
 
 # Label: Bundler Jobs
 # Description: Answer maximum Bundler job limit for current machine or automatically set it.
@@ -1967,9 +1967,9 @@ bca() {
   done < <(ls -A1)
 }
 
-#-----------------------------------------------#
-# Section: [Rake](https://github.com/ruby/rake) #
-#-----------------------------------------------#
+#----------------------------------------------#
+# Section: https://github.com/ruby/rake:[Rake] #
+#----------------------------------------------#
 
 # Label: Rake
 # Description: Run Rake via binstub or Bundler.
@@ -1998,9 +1998,9 @@ rakea() {
   done < <(ls -A1)
 }
 
-#--------------------------------------------------------------------#
-# Section: [Code Quality](https://github.com/bkuhlmann/code_quality) #
-#--------------------------------------------------------------------#
+#-------------------------------------------------------------------------#
+# Section: https://www.alchemists.io/projects/code_quality:[Code Quality] #
+#-------------------------------------------------------------------------#
 
 # Label: Code Quality (all)
 # Description: Run code quality tasks via binstub or Bundler for projects in current directory.
@@ -2029,9 +2029,9 @@ cqi() {
   done
 }
 
-#-------------------------------------#
-# Section: [RSpec](http://rspec.info) #
-#-------------------------------------#
+#------------------------------------#
+# Section: http://rspec.info:[RSpec] #
+#------------------------------------#
 
 # Label: RSpec
 # Description: Run RSpec via binstub or Bundler.
@@ -2107,9 +2107,9 @@ rsall() {
   done < <(ls -A1)
 }
 
-#--------------------------------------------------#
-# Section: [Guard](https://github.com/guard/guard) #
-#--------------------------------------------------#
+#-------------------------------------------------#
+# Section: https://github.com/guard/guard:[Guard] #
+#-------------------------------------------------#
 
 # Label: Guard
 # Description: Run Guard via binstub or Bundler.
@@ -2121,9 +2121,9 @@ guard() {
   fi
 }
 
-#--------------------------------------------------#
-# Section: [Ruby on Rails](http://rubyonrails.org) #
-#--------------------------------------------------#
+#-------------------------------------------------#
+# Section: http://rubyonrails.org:[Ruby on Rails] #
+#-------------------------------------------------#
 
 # Label: Ruby on Rails New
 # Description: Create new Rails application from selected option.
@@ -2153,9 +2153,9 @@ railsn() {
   fi
 }
 
-#------------------------------------------------------------#
-# Section: [RailRoady](https://github.com/preston/railroady) #
-#------------------------------------------------------------#
+#-----------------------------------------------------------#
+# Section: https://github.com/preston/railroady:[RailRoady] #
+#-----------------------------------------------------------#
 
 # Label: RailRoady Models
 # Description: Generate diagrams for Rails models, controllers, or states.
@@ -2183,9 +2183,9 @@ rr() {
   esac
 }
 
-#-------------------------------------#
-# Section: [Elm](http://elm-lang.org) #
-#-------------------------------------#
+#------------------------------------#
+# Section: http://elm-lang.org:[Elm] #
+#------------------------------------#
 
 # Label: Elm Make
 # Description: Compile Elm source.
@@ -2217,9 +2217,9 @@ elml() {
   elm-live "$source_path" --debug --output="$output_path"
 }
 
-#---------------------------------------------#
-# Section: [asciinema](https://asciinema.org) #
-#---------------------------------------------#
+#--------------------------------------------#
+# Section: https://asciinema.org:[asciinema] #
+#--------------------------------------------#
 
 # Label: asciinema Record
 # Description: Create new asciinema recording.
@@ -2236,9 +2236,9 @@ cinr() {
   asciinema rec --title "$label" "$name"
 }
 
-#----------------------------------------------------------#
-# Section: [Minisign](https://jedisct1.github.io/minisign) #
-#----------------------------------------------------------#
+#---------------------------------------------------------#
+# Section: https://jedisct1.github.io/minisign:[Minisign] #
+#---------------------------------------------------------#
 
 # Label: Minisign Generate
 # Description: Generate private and public key pair.
@@ -2268,9 +2268,9 @@ sigv() {
   minisign -V -p "$HOME/.minisign/alchemists.pub" -m "$path"
 }
 
-#-----------------------------------------------------------#
-# Section: [Overmind](https://github.com/DarthSim/overmind) #
-#-----------------------------------------------------------#
+#----------------------------------------------------------#
+# Section: https://github.com/DarthSim/overmind:[Overmind] #
+#----------------------------------------------------------#
 
 # Label: Overmind Start
 # Description: Start processes.
@@ -2296,9 +2296,9 @@ omr() {
   overmind restart "$process"
 }
 
-#------------------------------------------------------------#
-# Section: [Wormhole](https://magic-wormhole.readthedocs.io) #
-#------------------------------------------------------------#
+#-----------------------------------------------------------#
+# Section: https://magic-wormhole.readthedocs.io:[Wormhole] #
+#-----------------------------------------------------------#
 
 # Label: Wormhole Send
 # Description: Send encrypted path (i.e. file or directory).
