@@ -62,7 +62,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 37.0.0
+git checkout 38.0.0
 ----
 
 === Development
