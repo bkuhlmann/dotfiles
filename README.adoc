@@ -46,7 +46,7 @@ toc::[]
 == Screencasts
 
 [link=https://www.alchemists.io/screencasts/dotfiles.html]
-image::https://www.alchemists.io/images/screencasts/dotfiles.png[Screencast]
+image::https://www.alchemists.io/images/screencasts/dotfiles/cover-original.png[Screencast,role=focal_point]
 
 == Requirements
 
