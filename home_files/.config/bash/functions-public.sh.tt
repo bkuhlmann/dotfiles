@@ -387,16 +387,17 @@ gli() {
 # Label: Git Log Details
 # Description: List master or feature branch commit details.
 gld() {
-  if [[ _git_branch_name != "master" ]]; then
-    commits=($(_git_branch_shas))
+  if [[ "$(_git_branch_name)" == "master" ]]; then
+    git log --stat --pretty=format:"$(_git_log_details_format)"
+    return
+  fi
 
-    if [[ ${#commits[@]} == 1 ]]; then
-      _git_show_details "${commits[0]}"
-    elif [[ "$(_git_branch_name)" == "master" ]]; then
-      git log --stat --pretty=format:"$(_git_log_details_format)"
-    elif [[ ${#commits[@]} > 1 ]]; then
-      git log --stat --pretty=format:"$(_git_log_details_format)" "${commits[-1]}^..${commits[0]}"
-    fi
+  local commits=($(_git_branch_shas))
+
+  if [[ ${#commits[@]} == 1 ]]; then
+    _git_show_details "${commits[0]}"
+  else
+    git log --stat --pretty=format:"$(_git_log_details_format)" "${commits[-1]}^..${commits[0]}"
   fi
 }
 
