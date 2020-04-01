@@ -1,5 +1,12 @@
 = Changes
 
+== 38.1.0 (2020-04-01)
+
+- Updated Git config debug alias to list and show scope
+- Updated Git log details function to check for master branch sooner
+- Updated README screencast to use larger image
+- Updated to Ruby 2.7.1
+
 == 38.0.0 (2020-03-25)
 
 - Added Git amend and push all function
