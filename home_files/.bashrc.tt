@@ -95,9 +95,6 @@ export FZF_DEFAULT_OPTS="--multi --ansi"
 # Node
 export PATH="$PATH:/usr/local/share/npm/bin"
 
-# Terraform
-export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
-
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
