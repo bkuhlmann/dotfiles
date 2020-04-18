@@ -43,6 +43,7 @@ eup() {
   hbsu
   gemuc
   rustup update
+  docker system prune --force
 
   if [[ "$(hostname)" == "vilya" ]]; then
     (
