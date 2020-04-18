@@ -241,7 +241,7 @@ curld() {
 # Parameters: $1 (required) - The port number.
 port() {
   if [[ "$1" ]]; then
-    sudo lsof -i :$1
+    lsof -i :$1 +c0
   else
     printf "%s\n" "ERROR: Port number must be supplied."
   fi
