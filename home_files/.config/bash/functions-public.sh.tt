@@ -86,6 +86,23 @@ kilp() {
   pkill -$signal -l -f "$query"
 }
 
+#-----------------------------------------------------#
+# Section: link:https://asciidoctor.org[ASCII Doctor] #
+#-----------------------------------------------------#
+
+# Label: ASCII Doctor Open
+# Description: Transforms ASCII Doc into HTML and opens in default browser.
+# Parameters: $1 (required) - Path to ASCII Doc source file.
+ado() {
+  local input="$1"
+  local output=$(mktemp -t asciidoc)
+
+  asciidoctor --failure-level WARN --out-file "$output" "$input"
+  open "$output" -a "Firefox.app"
+  read -p "Viewing: $output. Use any key to continue. " response
+  rm -f "$output"
+}
+
 #----------------------------------------------------------#
 # Section: http://en.wikipedia.org/wiki/Less_(Unix):[less] #
 #----------------------------------------------------------#
