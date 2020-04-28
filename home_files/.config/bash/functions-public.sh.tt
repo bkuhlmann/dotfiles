@@ -2293,9 +2293,9 @@ sigv() {
 
 # Label: Overmind Start
 # Description: Start processes.
-# Parameters: $1 (optional) - Port. Default: 2990.
+# Parameters: $1 (optional) - Port. Default: 3000.
 oms() {
-  local port=${2:-2990}
+  local port=${1:-3000}
   overmind start --port $port --port-step 10
 }
 
