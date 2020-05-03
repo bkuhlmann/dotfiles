@@ -1,29 +1,39 @@
 = Changes
 
+== 38.2.0 (2020-05-03)
+
+* Added ASCII doctor function for rendering and viewing documents
+* Updated Overmind default port for start function
+* Updated README credit URL
+* Updated README screencast URL
+* Updated environment update function to include Docker pruning
+* Updated port function to display long program name
+* Removed Terraform Bash path
+
 == 38.1.0 (2020-04-01)
 
-- Updated Git config debug alias to list and show scope
-- Updated Git log details function to check for master branch sooner
-- Updated README screencast to use larger image
-- Updated to Ruby 2.7.1
+* Updated Git config debug alias to list and show scope
+* Updated Git log details function to check for master branch sooner
+* Updated README screencast to use larger image
+* Updated to Ruby 2.7.1
 
 == 38.0.0 (2020-03-25)
 
-- Added Git amend and push all function
-- Added Git commit root function
-- Added Git push new branch detection
-- Added README production and development setup instructions
-- Updated Circle CI build label
-- Updated Git branch SHAS to calculate range for master branch
-- Updated Git branch switching to use fuzzy find
-- Updated Git functions to leverage new branch detection
-- Updated Git log details function to handle master branch
-- Updated documentation to ASCII Doc format
-- Updated fuzzy find to open selection in default editor
-- Updated to Code of Conduct 2.0.0
-- Removed Git commit fix and push function
-- Removed Git push origin branch function
-- Removed README images
+* Added Git amend and push all function
+* Added Git commit root function
+* Added Git push new branch detection
+* Added README production and development setup instructions
+* Updated Circle CI build label
+* Updated Git branch SHAS to calculate range for master branch
+* Updated Git branch switching to use fuzzy find
+* Updated Git functions to leverage new branch detection
+* Updated Git log details function to handle master branch
+* Updated documentation to ASCII Doc format
+* Updated fuzzy find to open selection in default editor
+* Updated to Code of Conduct 2.0.0
+* Removed Git commit fix and push function
+* Removed Git push origin branch function
+* Removed README images
 
 == 37.0.0 (2020-02-01)
 
