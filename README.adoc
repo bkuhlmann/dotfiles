@@ -197,7 +197,7 @@ hbsu = "brew update && brew upgrade && brew cleanup"
 gi = "git init"
 gcle = "git config --local --edit"
 gcge = "git config --global --edit"
-gcd = "git config --show-origin"
+gcd = "git config --list --show-origin --show-scope"
 gget = "git config --get"
 gset = "git config --add"
 gst = "git status --short --branch"
@@ -549,6 +549,12 @@ cype = Colorized Type - Identical to "type" system command but with Bat support.
 eup = Environment Update - Update environment with latest software.
 iso = ISO - Builds an ISO image from mounted volume.
 kilp = Kill Process - Kill errant/undesired process.
+....
+
+==== link:https://asciidoctor.org[ASCII Doctor]
+
+....
+ado = ASCII Doctor Open - Transforms ASCII Doc into HTML and opens in default browser.
 ....
 
 ==== http://en.wikipedia.org/wiki/Less_(Unix):[less]
