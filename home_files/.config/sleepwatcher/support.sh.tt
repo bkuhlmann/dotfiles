@@ -1,3 +1,10 @@
+#! /usr/bin/env bash
+
+set -o nounset
+set -o errexit
+set -o pipefail
+IFS=$'\n\t'
+
 # Label: Decaffeinate
 # Description: Disables caffeination if running.
 sleepwatcher_decaffeinate() {

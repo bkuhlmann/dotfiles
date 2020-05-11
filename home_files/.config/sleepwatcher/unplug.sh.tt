@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+set -o nounset
+set -o errexit
+set -o pipefail
+IFS=$'\n\t'
+
+source "$HOME/.config/sleepwatcher/support.sh"
+
+sleepwatcher_decaffeinate
+sleepwatcher_mute
