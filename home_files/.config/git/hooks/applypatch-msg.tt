@@ -1,15 +1,10 @@
 #! /usr/bin/env bash
 
-# DESCRIPTION
 # Defines Git apply patch functionality.
 
-# SETTINGS
-set -o nounset # Exit, with error message, when attempting to use an undefined variable.
-set -o errexit # Abort script at first error, when a command exits with non-zero status.
-set -o pipefail # Returns exit status of the last command in the pipe that returned a non-zero return value.
-IFS=$'\n\t' # Defines how Bash splits words and iterates arrays. This defines newlines and tabs as delimiters.
+set -o nounset
+set -o errexit
+set -o pipefail
+IFS=$'\n\t'
 
-# EXTENSIONS
 source $HOME/.config/git/hooks/extensions/support.sh
-
-# EXECUTION
