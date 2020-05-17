@@ -7,13 +7,13 @@ set -o errexit
 set -o pipefail
 IFS=$'\n\t'
 
-source $HOME/.config/git/hooks/extensions/support.sh
-source $HOME/.config/git/hooks/extensions/comments.sh
-source $HOME/.config/git/hooks/extensions/reek.sh
-source $HOME/.config/git/hooks/extensions/rubocop.sh
-source $HOME/.config/git/hooks/extensions/bundler.sh
-source $HOME/.config/git/hooks/extensions/brakeman.sh
-source $HOME/.config/git/hooks/extensions/license_finder.sh
+source "$HOME/.config/git/hooks/extensions/support.sh"
+source "$HOME/.config/git/hooks/extensions/comments.sh"
+source "$HOME/.config/git/hooks/extensions/reek.sh"
+source "$HOME/.config/git/hooks/extensions/rubocop.sh"
+source "$HOME/.config/git/hooks/extensions/bundler.sh"
+source "$HOME/.config/git/hooks/extensions/brakeman.sh"
+source "$HOME/.config/git/hooks/extensions/license_finder.sh"
 
 push_command=$(ps -ocommand= -p $PPID)
 zeros=0000000000000000000000000000000000000000

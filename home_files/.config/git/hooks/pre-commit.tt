@@ -7,13 +7,13 @@ set -o errexit
 set -o pipefail
 IFS=$'\n\t'
 
-source $HOME/.config/git/hooks/extensions/support.sh
-source $HOME/.config/git/hooks/extensions/capybara.sh
-source $HOME/.config/git/hooks/extensions/elm.sh
-source $HOME/.config/git/hooks/extensions/java_script.sh
-source $HOME/.config/git/hooks/extensions/pry.sh
-source $HOME/.config/git/hooks/extensions/rspec.sh
-source $HOME/.config/git/hooks/extensions/ruby.sh
+source "$HOME/.config/git/hooks/extensions/support.sh"
+source "$HOME/.config/git/hooks/extensions/capybara.sh"
+source "$HOME/.config/git/hooks/extensions/elm.sh"
+source "$HOME/.config/git/hooks/extensions/java_script.sh"
+source "$HOME/.config/git/hooks/extensions/pry.sh"
+source "$HOME/.config/git/hooks/extensions/rspec.sh"
+source "$HOME/.config/git/hooks/extensions/ruby.sh"
 
 capybara_save_and_open_page
 elm_debug

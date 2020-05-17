@@ -7,4 +7,4 @@ set -o errexit
 set -o pipefail
 IFS=$'\n\t'
 
-source $HOME/.config/git/hooks/extensions/support.sh
+source "$HOME/.config/git/hooks/extensions/support.sh"

@@ -50,24 +50,24 @@ export HOMEBREW_PREFIX="/usr/local"
 export PATH="/usr/local/sbin:$PATH"
 
 # Environment
-. "$HOME/.config/bash/env.sh"
+source "$HOME/.config/bash/env.sh"
 
 # Colors
-. "$HOME/.config/bash/colors.sh"
+source "$HOME/.config/bash/colors.sh"
 
 # Aliases
-. "$HOME/.config/bash/aliases.sh"
+source "$HOME/.config/bash/aliases.sh"
 
 # Functions
-. "$HOME/.config/bash/functions-private.sh"
-. "$HOME/.config/bash/functions-public.sh"
+source "$HOME/.config/bash/functions-private.sh"
+source "$HOME/.config/bash/functions-public.sh"
 
 # Command Prompt (http://jonisalonen.com/2012/your-bash-prompt-needs-this)
-. "$HOME/.config/bash/prompt.sh"
+source "$HOME/.config/bash/prompt.sh"
 
 # Bash Completion
 if [[ -f /usr/local/etc/bash_completion ]]; then
-  . /usr/local/etc/bash_completion
+  source "/usr/local/etc/bash_completion"
 fi
 
 # OpenSSL
@@ -84,8 +84,8 @@ fi
 
 # chruby
 if [[ -e /usr/local/share/chruby ]]; then
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
+  source "/usr/local/share/chruby/chruby.sh"
+  source "/usr/local/share/chruby/auto.sh"
 fi
 
 # FZF
@@ -104,7 +104,7 @@ export PATH="$PATH:$(yarn global bin)"
 # Z
 export _Z_DATA="$HOME/.cache/z/history.txt"
 if [[ -e /usr/local/etc/profile.d/z.sh ]]; then
-  . /usr/local/etc/profile.d/z.sh
+  source "/usr/local/etc/profile.d/z.sh"
 fi
 
 # Git

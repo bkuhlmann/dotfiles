@@ -7,8 +7,8 @@ set -o errexit
 set -o pipefail
 IFS=$'\n\t'
 
-source $HOME/.config/git/hooks/extensions/support.sh
-source $HOME/.config/git/hooks/extensions/git.sh
+source "$HOME/.config/git/hooks/extensions/support.sh"
+source "$HOME/.config/git/hooks/extensions/git.sh"
 
 git_trailer_cleaner "$1"
 git_cop
