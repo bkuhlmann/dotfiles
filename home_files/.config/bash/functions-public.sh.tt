@@ -364,14 +364,18 @@ gstatsa() {
 # Label: Git Churn
 # Description: Answer commit churn for project files (sorted highest to lowest).
 ghurn() {
-  git log --all --find-renames --find-copies --name-only --format='format:' "$@" | \
-    sort | \
-    grep --invert-match '^$' | \
-    uniq -c | \
-    sort | \
-    awk '{print $1 "\t" $2}' | \
-    sort --general-numeric-sort --reverse | \
-    more
+  git log --all \
+          --find-renames \
+          --find-copies \
+          --name-only \
+          --format='format:' "$@" \
+          | sort \
+          | grep --invert-match '^$' \
+          | uniq -c \
+          | sort \
+          | awk '{print $1 "\t" $2}' \
+          | sort --general-numeric-sort --reverse \
+          | more
 }
 
 # Label: Git Commit Count
@@ -519,27 +523,28 @@ guthorc() {
     return 1
   fi
 
-  git log --author="$author" --pretty=tformat: --numstat | \
-  awk -v author="$author" \
-  'BEGIN {
-    initial_pattern = "\033[1;34m%s\033[0m: Added: \033[0;31m%s\033[0m, Removed: \033[0;32m%s\033[0m, "
-    positive_pattern = initial_pattern "Total: \033[0;32m%s\033[0m.\n";
-    neutral_pattern = initial_pattern "Total: %s.\n";
-    negative_pattern = initial_pattern "Total: \033[0;31m%s\033[0m.\n";
-  }
-  {
-    added += $1;
-    removed += $2;
-    total += $1 - $2;
-  }
-  END {
-    if (total > 0)
-      printf negative_pattern, author, added, removed, total
-    else if (total < 0)
-      printf positive_pattern, author, added, removed, total
-    else
-      printf neutral_pattern, author, added, removed, total
-  }'
+  git log --author="$author" \
+          --pretty=tformat: --numstat \
+          | awk -v author="$author" \
+            'BEGIN {
+              initial_pattern = "\033[1;34m%s\033[0m: Added: \033[0;31m%s\033[0m, Removed: \033[0;32m%s\033[0m, "
+              positive_pattern = initial_pattern "Total: \033[0;32m%s\033[0m.\n";
+              neutral_pattern = initial_pattern "Total: %s.\n";
+              negative_pattern = initial_pattern "Total: \033[0;31m%s\033[0m.\n";
+            }
+            {
+              added += $1;
+              removed += $2;
+              total += $1 - $2;
+            }
+            END {
+              if (total > 0)
+                printf negative_pattern, author, added, removed, total
+              else if (total < 0)
+                printf positive_pattern, author, added, removed, total
+              else
+                printf neutral_pattern, author, added, removed, total
+            }'
 }
 
 # Label: Git Status (all)
@@ -1350,11 +1355,12 @@ gbdm() {
   fi
 
   # Remote
-  git branch --remotes --merged | \
-    ag "origin" | \
-    ag --invert-match "master" | \
-    sed 's/origin\///' | \
-    xargs -n 1 git push --delete origin
+  git branch --remotes \
+             --merged \
+             | ag "origin" \
+             | ag --invert-match "master" \
+             | sed 's/origin\///' \
+             | xargs -n 1 git push --delete origin
 
   # Local
   git branch --merged | ag --invert-match "\* master" | xargs -n 1 git branch --delete --force

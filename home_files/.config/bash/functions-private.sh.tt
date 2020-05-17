@@ -239,11 +239,11 @@ _git_branch_list() {
   git for-each-ref --sort="authordate:iso8601" \
                    --sort="authorname" \
                    --color \
-                   --format="$format" refs/heads refs/remotes/origin | \
-                   sed '/HEAD/d' | \
-                   sed 's/refs\/heads\///g' | \
-                   sed 's/refs\/remotes\/origin\///g' | \
-                   uniq
+                   --format="$format" refs/heads refs/remotes/origin \
+                   | sed '/HEAD/d' \
+                   | sed 's/refs\/heads\///g' \
+                   | sed 's/refs\/remotes\/origin\///g' \
+                   | uniq
 }
 
 # Label: Git Stash Count
@@ -316,10 +316,11 @@ _gh_url() {
 _gh_pr_list() {
   local format=${1:-"%(refname) %(color:yellow)%(refname)%(color:reset) %(subject) %(color:blue bold)%(authorname) %(color:green)(%(committerdate:relative))"}
 
-  git for-each-ref --color --format="$format" refs/remotes/pull_requests | \
-                   sed 's/refs\/remotes\/pull_requests\///g' | \
-                   sort --numeric-sort | \
-                   cut -d' ' -f2-
+  git for-each-ref --color \
+                   --format="$format" refs/remotes/pull_requests \
+                   sed 's/refs\/remotes\/pull_requests\///g' \
+                   | sort --numeric-sort \
+                   | cut -d' ' -f2-
 }
 
 # Label: Process GitHub Commit Option
