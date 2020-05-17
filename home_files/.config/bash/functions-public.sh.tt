@@ -1119,7 +1119,7 @@ grbi() {
 # Description: Rebase commits, quickly. Identical to `grbi` function but skips editor.
 # Parameters: $1 (optional) - The commit number or branch to rebase to. Default: upstream or root.
 grbq() {
-  EDITOR=true grbi "$1"
+  GIT_EDITOR=true grbi "$1"
 }
 
 # Label: Git Branch List
