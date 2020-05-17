@@ -6,16 +6,14 @@ rescue NameError
   nil
 end
 
-Pry.config.prompt = [
-  proc do |conf|
-    tree = conf.binding_stack.map { |stack| Pry.view_clip stack.eval("self") }
-    prompt = %(#{tree.join " / "} - #{conf.expr_number}:#{conf.nesting_level})
-    %([#{[RUBY_VERSION, rails_prompt, prompt].compact.join "|"}]> )
-  end
-]
+Pry.config.prompt = Pry::Prompt.new(
+  "alchemists",
+  "An Alchemists prompt",
+  [proc { |object, level, _| %([#{[RUBY_VERSION, rails_prompt, "#{object}:#{level}"].compact.join "|"}]> ) }]
+)
 
 # History (Keep IRB and Pry the same)
-Pry.config.history.file = %(#{ENV["HOME"]}/.cache/ruby/irb/history.log)
+Pry.config.history_file = %(#{ENV["HOME"]}/.cache/ruby/irb/history.log)
 
 # Aliases
 Pry.commands.alias_command "w", "whereami"
