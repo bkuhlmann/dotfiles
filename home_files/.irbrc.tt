@@ -43,4 +43,3 @@ IRB.conf[:PROMPT][:ALCHEMISTS] = {
 }
 
 IRB.conf[:PROMPT_MODE] = :ALCHEMISTS
-

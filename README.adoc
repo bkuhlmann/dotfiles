@@ -31,7 +31,7 @@ toc::[]
 * Configures the link:http://bashdb.sourceforge.net/ruby-debug.html[Ruby Debugger] (`.rdebugrc`)
   file.
 * Configures the link:https://rspec.info[RSpec] (`.rspec`) file.
-* Configures the link:https://github.com/michaeldv/awesome_print[Awesome Print] (`.aprc`) file.
+* Configures the link:https://github.com/amazing-print/amazing_print[Amazing Print] (`.aprc`) file.
 * Configures the link:https://www.postgresql.org[PostgreSQL] (`.psqlrc`) file.
 * Configures the link:https://github.com/bbatsov/rubocop[Rubocop] (`.rubocop.yml`) file.
 * Configures the link:https://www.npmjs.org[NPM] (`.npmrc`) file.

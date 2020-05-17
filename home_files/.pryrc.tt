@@ -45,7 +45,7 @@ end
 Pry.config.editor = "sublime"
 
 # Gem Enhancements (requirements)
-%w(bond hirb awesome_print).each do |gem|
+%w(bond hirb amazing_print).each do |gem|
   begin
     require gem
   rescue LoadError
@@ -54,7 +54,7 @@ Pry.config.editor = "sublime"
 end
 
 # Gem Enhancements (settings)
-["Bond.start", "Hirb.enable"].each do |config|
+["Bond.start", "Hirb.enable", "AmazingPrint.pry!"].each do |config|
   begin
     instance_eval config
   rescue StandardError
