@@ -1,5 +1,18 @@
 = Changes
 
+== 38.3.0 (2020-05-25)
+
+* Fixed Git rebase quick function to use Git editor
+* Fixed Pry prompt
+* Fixed READE syntax highlighting for script options
+* Fixed Sleepwatcher decaffeination error
+* Added Sleepwatcher unplug script
+* Updated Homebrew install alias to also check for updates
+* Updated to Amazing Print
+* Removed Git Hook section comments
+* Refactored multi-line command pipes
+* Refactored shell scripts to have consistent sourcing of files
+
 == 38.2.0 (2020-05-03)
 
 * Added ASCII doctor function for rendering and viewing documents
