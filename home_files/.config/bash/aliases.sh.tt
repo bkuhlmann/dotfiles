@@ -41,7 +41,7 @@ alias tsr="tmux rename-session -t"
 
 # Section: http://brew.sh[Homebrew]
 alias hb="brew"
-alias hbi="brew install"
+alias hbi="brew update && brew install"
 alias hbin="brew info"
 alias hbu="brew uninstall"
 alias hbl="brew list"
