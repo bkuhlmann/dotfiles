@@ -8,7 +8,7 @@ IFS=$'\n\t'
 # Label: Decaffeinate
 # Description: Disables caffeination if running.
 sleepwatcher_decaffeinate() {
-  pkill -x caffeinate
+  pkill 0 -x caffeinate
 }
 
 # Label: Mute
