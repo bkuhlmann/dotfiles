@@ -37,7 +37,7 @@
 .rubocop-http*
 
 # SimpleCov
-/coverage
+coverage
 
 # Temp Directories
 tmp
