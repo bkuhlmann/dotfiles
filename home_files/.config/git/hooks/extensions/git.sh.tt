@@ -1,13 +1,13 @@
 #! /usr/bin/env bash
 
-# Label: Git Cop
+# Label: Git Lint Check
 # Description: Enforce consistent Git commits.
-git_cop() {
-  if _check_gem_dependencies "git-cop"; then
-    git-cop --hook --commit-message "${BASH_ARGV[0]}"
+git_lint_check() {
+  if _check_gem_dependencies "git-lint"; then
+    git-lint --hook --commit-message "${BASH_ARGV[0]}"
   fi
 }
-export -f git_cop
+export -f git_lint_check
 
 # Label: Git Trailer Cleaner
 # Description: Remove unused/empty Git commit body trailers.
