@@ -62,7 +62,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 38.3.0
+git checkout 39.0.0
 ----
 
 === Development
@@ -806,7 +806,7 @@ capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open
 comment_totals = Comment Totals - Print project comment totals.
 ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
 elm_debug = Elm Debug - Detect debug statements.
-git_cop = Git Cop - Enforce consistent Git commits.
+git_lint_check = Git Lint Check - Enforce consistent Git commits.
 git_trailer_cleaner = Git Trailer Cleaner - Remove unused/empty Git commit body trailers.
 java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
 java_script_console = JavaScript Console - Detect JavaScript console statements.
