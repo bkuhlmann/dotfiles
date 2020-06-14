@@ -389,9 +389,11 @@ gount() {
 # Description: List master or feature branch commits with commit show and/or diff support.
 gli() {
   local commits=($(_git_branch_shas))
+
   _git_commit_options "${commits[*]}"
 
-  read -p "Enter selection: " response
+  printf "\n"
+  read -p "Enter selection or quit (q): " response
   if [[ "$response" == 'q' ]]; then
     return
   fi
@@ -974,9 +976,10 @@ gcb() {
 gcfi() {
   local commits=($(_git_branch_shas))
 
-  _git_commit_options "${commits[*]}" "Select commit to fix"
+  _git_commit_options "${commits[*]}"
 
-  read -p "Enter selection: " response
+  printf "\n"
+  read -p "Enter selection or quit (q): " response
   if [[ "$response" == 'q' ]]; then
     return
   fi
