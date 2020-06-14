@@ -16,9 +16,6 @@
 *.zip
 *.bzip
 
-# Asciicasts
-*.cast
-
 # Databases
 *.dump
 
@@ -29,9 +26,6 @@
 
 # Bundler
 .bundle
-
-# RSpec
-.rspec-local
 
 # Rubocop
 .rubocop-http*
