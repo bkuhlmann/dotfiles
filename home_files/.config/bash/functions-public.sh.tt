@@ -1928,6 +1928,20 @@ bcim() {
   printf "%s\n" "Bundler post-install messages are ignored for \"$gem_name\"."
 }
 
+# Label: Bundle List
+# Description: List gem dependencies for project and copy them to clipboard.
+bl() {
+  local collection=()
+
+  printf "%s\n" "Calculating gem dependencies (will be copied to clipboard)..."
+
+  for gem in $(bundle list --name-only); do
+    collection+=("$(bundle info "$gem")")
+  done
+
+  printf "%s\n" "${collection[@]}" | pbcopy && pbpaste
+}
+
 # Label: Bundle Outdated (all)
 # Description: Answer outdated gems for projects in current directory.
 boa() {
