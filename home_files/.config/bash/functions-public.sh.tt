@@ -1912,22 +1912,6 @@ bcg() {
   printf "%s\n" "Added: $(tail -n 1 $HOME/.bundle/config)"
 }
 
-# Label: Bundler Config Ignore Post-Install Message
-# Description: Configure Bundler to ignore install messages for specified gem.
-# Parameters: $1 (required) - The gem name.
-bcim() {
-  local gem_name=$1
-
-  if [[ ! $gem_name ]]; then
-    printf "%s\n" "ERROR: Gem name must be supplied!"
-    return 1
-  fi
-
-  bundle config ignore_messages.$gem_name true
-
-  printf "%s\n" "Bundler post-install messages are ignored for \"$gem_name\"."
-}
-
 # Label: Bundle List
 # Description: List gem dependencies for project and copy them to clipboard.
 bl() {
