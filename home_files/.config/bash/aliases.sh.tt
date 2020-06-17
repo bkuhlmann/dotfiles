@@ -92,7 +92,6 @@ alias gbire="git bisect replay"
 alias gbiv='git bisect visualize --reverse --pretty=format:"$(_git_log_line_format)"'
 alias gbih="git bisect help"
 alias gbt="git show-branch --topics"
-alias gba="git branch --all"
 alias gbe="git branch --edit-description"
 alias gbn="_git_branch_name | _copy_and_print"
 alias gcl="git clone"
