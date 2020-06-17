@@ -195,6 +195,7 @@ alias berq="ber code_quality"
 
 # Section: http://bundler.io:[Bundler]
 alias ba="bundle add"
+alias br="bundle remove"
 alias bb="bundle binstubs"
 alias bs="bundle show"
 alias bsp="bundle show --paths"
