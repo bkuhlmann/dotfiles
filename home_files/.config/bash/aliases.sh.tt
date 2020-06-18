@@ -184,9 +184,6 @@ alias geme="gem environment"
 alias gemuc="gem update --system && gem update && gem cleanup"
 alias gemcli="ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
 
-# Section: https://github.com/jnunemaker/gemwhois:[Ruby Gems Whois]
-alias gemw="gem whois"
-
 # Section: https://github.com/ruby/rake:[Rake]
 alias bert="ber -T"
 alias berq="ber code_quality"
