@@ -184,10 +184,6 @@ alias geme="gem environment"
 alias gemuc="gem update --system && gem update && gem cleanup"
 alias gemcli="ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
 
-# Section: https://github.com/ruby/rake:[Rake]
-alias bert="ber -T"
-alias berq="ber code_quality"
-
 # Section: http://bundler.io:[Bundler]
 alias ba="bundle add"
 alias br="bundle remove"
@@ -226,7 +222,7 @@ alias rso="rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/r
 # Section: https://rubyonrails.org:[Ruby on Rails]
 alias railsb="rails console --sandbox"
 alias railse="EDITOR='sublime --wait' rails credentials:edit"
-alias railsdbm="ber db:migrate && ber db:rollback && ber db:migrate && RAILS_ENV=test ber db:migrate"
+alias railsdbm="rake db:migrate && rake db:rollback && rake db:migrate && RAILS_ENV=test rake db:migrate"
 
 # Section: https://crystal-lang.org:[Crystal]
 alias cr="crystal"
