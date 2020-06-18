@@ -1997,18 +1997,8 @@ bca() {
 # Section: https://github.com/ruby/rake:[Rake] #
 #----------------------------------------------#
 
-# Label: Rake
-# Description: Run Rake via binstub or Bundler.
-rake() {
-  if [[ -e bin/rake ]]; then
-    bin/rake $@
-  else
-    bundle exec rake $@
-  fi
-}
-
 # Label: Rake (all)
-# Description: Run default Rake tasks via binstub or Bundler for projects in current directory.
+# Description: Run default Rake tasks for projects in current directory.
 rakea() {
   while read -r project; do
     (
@@ -2029,7 +2019,7 @@ rakea() {
 #-------------------------------------------------------------------------#
 
 # Label: Code Quality (all)
-# Description: Run code quality tasks via binstub or Bundler for projects in current directory.
+# Description: Run code quality tasks for projects in current directory.
 cqa() {
   while read -r project; do
     (
@@ -2038,7 +2028,7 @@ cqa() {
         # Prints project (cyan).
         printf "\033[36m${project}\033[m:\n"
 
-        ber code_quality
+        rake code_quality
         printf "\n"
       fi
     )
@@ -2058,16 +2048,6 @@ cqi() {
 #------------------------------------#
 # Section: http://rspec.info:[RSpec] #
 #------------------------------------#
-
-# Label: RSpec
-# Description: Run RSpec via binstub or Bundler.
-rspec() {
-  if [[ -e bin/rspec ]]; then
-    bin/rspec $@
-  else
-    bundle exec rspec $@
-  fi
-}
 
 # Label: RSpec Bisect
 # Description: Debug RSpec failure using bisect to automatically determine where failure is occuring.
@@ -2099,7 +2079,7 @@ rsp() {
 }
 
 # Label: RSpec (all)
-# Description: Run RSpec via binstub or Bundler for projects in current directory.
+# Description: Run RSpec for projects in current directory.
 rsall() {
   while read -r project; do
     (
@@ -2131,20 +2111,6 @@ rsall() {
       fi
     )
   done < <(ls -A1)
-}
-
-#-------------------------------------------------#
-# Section: https://github.com/guard/guard:[Guard] #
-#-------------------------------------------------#
-
-# Label: Guard
-# Description: Run Guard via binstub or Bundler.
-guard() {
-  if [[ -e bin/guard ]]; then
-    bin/guard $@
-  else
-    bundle exec guard $@
-  fi
 }
 
 #-------------------------------------------------#
