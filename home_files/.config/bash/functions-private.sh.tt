@@ -445,7 +445,7 @@ _process_gh_option() {
 }
 
 #-------------------------------------------------#
-# Section: http://rubyonrails.org:[Ruby on Rails] #
+# Section: https://rubyonrails.org:[Ruby on Rails] #
 #-------------------------------------------------#
 
 # Label: Create Rails Skeleton

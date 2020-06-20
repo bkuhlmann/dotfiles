@@ -741,7 +741,7 @@ rsall = RSpec (all) - Run RSpec via binstub or Bundler for projects in current d
 guard = Guard - Run Guard via binstub or Bundler.
 ....
 
-==== http://rubyonrails.org:[Ruby on Rails]
+==== https://rubyonrails.org:[Ruby on Rails]
 
 ....
 railsn = Ruby on Rails New - Create new Rails application from selected option.
