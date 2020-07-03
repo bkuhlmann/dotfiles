@@ -261,10 +261,13 @@ alias denvr="direnv reload"
 alias denvs="direnv status"
 
 # Section: https://yarnpkg.com:[Yarn]
-alias yarni="yarn install"
-alias yarna="yarn add"
-alias yarnu="yarn upgrade"
-alias yarnr="yarn remove"
+alias ya="yarn add"
+alias yad="yarn add --dev"
+alias yi="yarn install"
+alias yo="yarn outdated"
+alias yr="yarn remove"
+alias ys="yarn run"
+alias yu="yarn upgrade"
 
 # Section: https://github.com/rupa/z:[Z]
 alias ze="$EDITOR $_Z_DATA"
