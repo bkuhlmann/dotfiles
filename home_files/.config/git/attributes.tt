@@ -4,6 +4,9 @@
 *.jpeg diff=exif
 *.jpg diff=exif
 *.png diff=exif
+*.mp4 diff=exif
+*.ogg diff=exif
+*.webm diff=exif
 *.rake diff=ruby
 *.rb diff=ruby
 config.ru diff=ruby
