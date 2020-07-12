@@ -302,7 +302,10 @@ alias tfc="terraform console"
 alias tff="terraform fmt"
 alias tfg="terraform graph | dot -Tsvg > tmp/graph.svg && open -a 'Firefox.app' tmp/graph.svg"
 alias tfi="terraform init"
+alias tfo="terraform output"
 alias tfp="noti --title 'Terraform Plan' terraform plan"
+alias tft="terraform taint"
+alias tfu="terraform untaint"
 alias tfv="terraform validate"
 
 # Section: https://gitlab.com/procps-ng/procps:[Watch]
