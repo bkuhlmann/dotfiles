@@ -62,7 +62,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 39.0.0
+git checkout 40.0.0
 ----
 
 === Development
@@ -229,7 +229,6 @@ gbire = "git bisect replay"
 gbiv = 'git bisect visualize --reverse --pretty=format:"$(_git_log_line_format)"'
 gbih = "git bisect help"
 gbt = "git show-branch --topics"
-gba = "git branch --all"
 gbe = "git branch --edit-description"
 gbn = "_git_branch_name | _copy_and_print"
 gcl = "git clone"
@@ -277,7 +276,6 @@ grr = "git rerere"
 gpf = "git push --force-with-lease"
 gpn = "git push --no-verify"
 gpo = "git push --set-upstream origin"
-gpr = "git push review master"
 gps = "git push stage stage:master"
 gpp = "git push production production:master"
 gtag = "git tag"
@@ -342,27 +340,15 @@ gemuc = "gem update --system && gem update && gem cleanup"
 gemcli = "ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
 ....
 
-==== https://github.com/jnunemaker/gemwhois:[Ruby Gems Whois]
-
-....
-gemw = "gem whois"
-....
-
-==== https://github.com/ruby/rake:[Rake]
-
-....
-bert = "ber -T"
-berq = "ber code_quality"
-....
-
 ==== http://bundler.io:[Bundler]
 
 ....
 ba = "bundle add"
+br = "bundle remove"
 bb = "bundle binstubs"
-bs = "bundle show"
-bsp = "bundle show --paths"
+bd = "bundle doctor"
 bi = "bundle install"
+blo = "bundle list --paths | fzf | xargs $EDITOR"
 bu = "bundle update"
 bo = "bundle outdated --only-explicit"
 bce = "$EDITOR $HOME/.bundle/config"
@@ -406,7 +392,7 @@ rso = "rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec
 ....
 railsb = "rails console --sandbox"
 railse = "EDITOR = 'sublime --wait' rails credentials:edit"
-railsdbm = "ber db:migrate && ber db:rollback && ber db:migrate && RAILS_ENV=test ber db:migrate"
+railsdbm = "rake db:migrate && rake db:rollback && rake db:migrate && RAILS_ENV=test rake db:migrate"
 ....
 
 ==== https://crystal-lang.org:[Crystal]
@@ -466,10 +452,13 @@ denvs = "direnv status"
 ==== https://yarnpkg.com:[Yarn]
 
 ....
-yarni = "yarn install"
-yarna = "yarn add"
-yarnu = "yarn upgrade"
-yarnr = "yarn remove"
+ya = "yarn add"
+yad = "yarn add --dev"
+yi = "yarn install"
+yo = "yarn outdated"
+yr = "yarn remove"
+ys = "yarn run"
+yu = "yarn upgrade"
 ....
 
 ==== https://github.com/rupa/z:[Z]
@@ -528,7 +517,10 @@ tfc = "terraform console"
 tff = "terraform fmt"
 tfg = "terraform graph | dot -Tsvg > tmp/graph.svg && open -a 'Firefox.app' tmp/graph.svg"
 tfi = "terraform init"
+tfo = "terraform output"
 tfp = "noti --title 'Terraform Plan' terraform plan"
+tft = "terraform taint"
+tfu = "terraform untaint"
 tfv = "terraform validate"
 ....
 
@@ -705,7 +697,7 @@ gemdep = Gem Dependency Search - Finds a gem defined within a Gemfile or a gemsp
 ....
 bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
 bcg = Bundler Config Gem - Configure Bundler to use local gem for development purposes.
-bcim = Bundler Config Ignore Post-Install Message - Configure Bundler to ignore install messages for specified gem.
+bl = Bundle List - List gem dependencies for project and copy them to clipboard.
 boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
 bua = Bundle Update (all) - Update gems for projects in current directory.
 bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
@@ -714,43 +706,29 @@ bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
 ==== https://github.com/ruby/rake:[Rake]
 
 ....
-rake = Rake - Run Rake via binstub or Bundler.
-rakea = Rake (all) - Run default Rake tasks via binstub or Bundler for projects in current directory.
+rakea = Rake (all) - Run default Rake tasks for projects in current directory.
 ....
 
 ==== https://www.alchemists.io/projects/code_quality:[Code Quality]
 
 ....
-cqa = Code Quality (all) - Run code quality tasks via binstub or Bundler for projects in current directory.
+cqa = Code Quality (all) - Run code quality tasks for projects in current directory.
 cqi = Code Quality Issues - List all source files affected by code quality issues.
 ....
 
 ==== http://rspec.info:[RSpec]
 
 ....
-rspec = RSpec - Run RSpec via binstub or Bundler.
 rsb = RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
 rsd = RSpec Debug - Debug intermittent RSpec failure(s) by running spec(s) until failure is detected.
 rsp = RSpec Profile - Runs RSpec specs with profiling enabled.
-rsall = RSpec (all) - Run RSpec via binstub or Bundler for projects in current directory.
-....
-
-==== https://github.com/guard/guard:[Guard]
-
-....
-guard = Guard - Run Guard via binstub or Bundler.
+rsall = RSpec (all) - Run RSpec for projects in current directory.
 ....
 
 ==== https://rubyonrails.org:[Ruby on Rails]
 
 ....
 railsn = Ruby on Rails New - Create new Rails application from selected option.
-....
-
-==== https://github.com/preston/railroady:[RailRoady]
-
-....
-rr = RailRoady Models - Generate diagrams for Rails models, controllers, or states.
 ....
 
 ==== http://elm-lang.org:[Elm]

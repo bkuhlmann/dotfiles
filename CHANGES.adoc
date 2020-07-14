@@ -1,5 +1,27 @@
 = Changes
 
+== 40.0.0 (2020-07-13)
+
+* Fixed project requirements
+* Added Bundler alias for opening gem dependency
+* Added Bundler docker alias
+* Added Bundler function for listing gem dependenies
+* Added Bundler remove alias
+* Added Terraform output, taint, and untaint aliases
+* Added video formats to Git attributes
+* Updated Bash history to append and reload after each command
+* Updated CTags to exclude SimpleCov coverage directories
+* Updated Yarn aliases to use "y" prefix only
+* Removed Bundler binstub wrapper functions
+* Removed Bundler config post-install message function
+* Removed Bundler show aliases
+* Removed Gem Whois alias
+* Removed Git branch all alias
+* Removed Git push review alias
+* Removed RailRoady function
+* Removed Rake aliases
+* Refactored Rakefile requirements
+
 == 39.0.0 (2020-06-14)
 
 - Fixed Git to ignore all code coverage directories
