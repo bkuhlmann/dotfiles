@@ -1376,7 +1376,7 @@ gbr() {
   local new_branch="$1"
   local old_branch="$(_git_branch_name)"
 
-  git branch --move "$new_branch"
+  git branch --track --move "$new_branch"
 
   if [[ -n "$(git branch --remotes --list origin/$old_branch)" ]]; then
     printf "\033[31m" # Red.
