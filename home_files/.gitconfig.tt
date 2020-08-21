@@ -1,3 +1,5 @@
+[advice]
+  detachedhead = false
 [init]
   templateDir = ~/.config/git/template
 [user]
