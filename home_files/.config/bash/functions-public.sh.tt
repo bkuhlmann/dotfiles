@@ -1462,7 +1462,7 @@ gwa() {
   esac
 
   printf "%s\n" "Syncing project files..."
-  git ls-files --others | rsync --compress --links --files-from - "$(pwd)/" "$worktree_path/"
+  git ls-files --others | rsync --links --files-from - "$(pwd)/" "$worktree_path/"
   cd "$worktree_path"
 }
 
