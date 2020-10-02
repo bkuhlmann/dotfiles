@@ -1,0 +1,10 @@
+attributes:
+  - primary_keys
+  - foreign_keys
+  - content
+  - inheritance
+  - timestamps
+disconnected: true
+inheritance: true
+notation: bachman
+filename: tmp/erd
