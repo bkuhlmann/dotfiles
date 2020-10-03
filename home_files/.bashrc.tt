@@ -82,6 +82,9 @@ if [[ -e /usr/local/bin/direnv ]]; then
   eval "$(direnv hook bash)"
 fi
 
+# Ruby
+export RUBYOPT='-W:deprecated'
+
 # chruby
 if [[ -e /usr/local/share/chruby ]]; then
   source "/usr/local/share/chruby/chruby.sh"
