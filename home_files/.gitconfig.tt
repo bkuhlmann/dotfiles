@@ -44,6 +44,7 @@
   newNormal = green bold
   newHighlight = green bold 22
 [commit]
+  gpgSign = true
   template = ~/.config/git/commit_message.txt
 [feature]
   experimental = true
@@ -96,6 +97,7 @@
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
   trustExitCode = true
 [tag]
+  gpgSign = true
   sort = version:refname
 [transfer]
   fsckobjects = true
