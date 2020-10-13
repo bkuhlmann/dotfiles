@@ -31,6 +31,7 @@ toc::[]
 * Configures the link:http://bashdb.sourceforge.net/ruby-debug.html[Ruby Debugger] (`.rdebugrc`)
   file.
 * Configures the link:https://rspec.info[RSpec] (`.rspec`) file.
+* Configures the link:https://voormedia.github.io/rails-erd[Rails ERD] (`.erdconfig`) file.
 * Configures the link:https://github.com/amazing-print/amazing_print[Amazing Print] (`.aprc`) file.
 * Configures the link:https://www.postgresql.org[PostgreSQL] (`.psqlrc`) file.
 * Configures the link:https://github.com/bbatsov/rubocop[Rubocop] (`.rubocop.yml`) file.
@@ -54,25 +55,13 @@ image::https://www.alchemists.io/images/screencasts/dotfiles/cover.svg[Screencas
 
 == Setup
 
-=== Production
-
 To install, run:
 
 [source,bash]
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 40.0.0
-----
-
-=== Development
-
-To contribute, run:
-
-[source,bash]
-----
-git clone https://github.com/bkuhlmann/dotfiles.git
-cd dotfiles
+git checkout 40.1.0
 ----
 
 == Upgrade
@@ -826,6 +815,16 @@ CK.paste   # Pastes data from OS X clipboard.
 "bpC" = "break --delete-all"
 "bph" = "break --help"
 ....
+
+== Development
+
+To contribute, run:
+
+[source,bash]
+----
+git clone https://github.com/bkuhlmann/dotfiles.git
+cd dotfiles
+----
 
 == Versioning
 

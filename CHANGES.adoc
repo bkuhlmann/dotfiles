@@ -1,5 +1,17 @@
 = Changes
 
+== 40.1.0 (2020-10-12)
+
+* Fixed Git branch rename function to track renamed branch
+* Fixed false positive with RSpec focus detection
+* Added ERD configuration
+* Added Git global configuration for detatched head
+* Added Ruby options to Bash configuration
+* Updated Git configuration to sign commits and tags
+* Updated README screencast cover to SVG format
+* Updated to Ruby 2.7.2
+* Removed Git worktree rsync compression
+
 == 40.0.0 (2020-07-13)
 
 * Fixed project requirements
@@ -24,12 +36,12 @@
 
 == 39.0.0 (2020-06-14)
 
-- Fixed Git to ignore all code coverage directories
-- Added pagination to Git interactive log and fixup functions
-- Updated Git Hook extension to use Git Lint
-- Updated GitHub templates
-- Updated to Git Lint 1.0.0
-- Removed Git ignore Asciicast and RSpec local settings
+* Fixed Git to ignore all code coverage directories
+* Added pagination to Git interactive log and fixup functions
+* Updated Git Hook extension to use Git Lint
+* Updated GitHub templates
+* Updated to Git Lint 1.0.0
+* Removed Git ignore Asciicast and RSpec local settings
 
 == 38.3.0 (2020-05-25)
 
