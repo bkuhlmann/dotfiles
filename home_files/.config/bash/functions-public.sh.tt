@@ -1550,7 +1550,7 @@ gesha() {
 
       if [[ -d ".git" ]]; then
         printf "\n\033[36m${project}\033[m:\n" # Outputs in cyan color.
-        grh "$1"
+        gesh "$1"
       fi
     )
   done < <(ls -A1)
