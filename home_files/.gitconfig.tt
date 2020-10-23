@@ -19,7 +19,7 @@
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   editor = "$EDITOR --wait"
   hooksPath = ~/.config/git/hooks
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta
 [color]
   ui = true
   pager = true
@@ -43,12 +43,22 @@
   oldHighlight = red bold 52
   newNormal = green bold
   newHighlight = green bold 22
+[delta]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  hunk-header-decoration-style = yellow box
+  line-numbers = true
+  minus-color = "#340001"
+  plus-color = "#012800"
+  side-by-side = true
+  whitespace-error-style = 22 reverse
 [commit]
   gpgSign = true
   template = ~/.config/git/commit_message.txt
 [feature]
   experimental = true
 [interactive]
+  diffFilter = delta --color-only
   singleKey = true
 [status]
   showUntrackedFiles = all
@@ -77,6 +87,7 @@
   threads = 3
 [diff]
   algorithm = patience
+  colorMoved = default
   indentHeuristic = true
   mnemonicPrefix = true
   renames = copies
