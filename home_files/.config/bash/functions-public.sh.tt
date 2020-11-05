@@ -2230,6 +2230,29 @@ sigv() {
   minisign -V -p "$HOME/.minisign/alchemists.pub" -m "$path"
 }
 
+#------------------------------------------------------#
+# Section: https://github.com/Aloxaf/silicon:[Silicon] #
+#------------------------------------------------------#
+
+# Label: Silicon Copy
+# Description: Generates and copies code snippet image to clipboard.
+# Parameters: $1 (required) - Path, $2 (optional) - Language. Default: Ruby, $3 (optional) Lines.
+scc() {
+  local path="$1"
+  local language="${2:-rb}"
+  local lines="${3:-0}"
+
+  silicon --language "$language" \
+          --theme DarkNeon \
+          --background "#0000" \
+          --no-window-controls \
+          --pad-horiz 0 \
+          --pad-vert 0 \
+          --highlight-lines "$lines" \
+          --to-clipboard \
+          "$path"
+}
+
 #----------------------------------------------------------#
 # Section: https://github.com/DarthSim/overmind:[Overmind] #
 #----------------------------------------------------------#
