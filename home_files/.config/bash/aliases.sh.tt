@@ -22,6 +22,11 @@ alias top="htop"
 alias bashe="$EDITOR $HOME/.config/bash/env.sh"
 alias bashs="exec $SHELL"
 
+# Section: https://the.exa.website:[Exa]
+alias x="exa --all --long --header --group-directories-first --time-style long-iso --git --git-ignore"
+alias x1="exa --oneline --all --group-directories-first"
+alias xt="exa --tree"
+
 # Section: Network
 alias sshe="$EDITOR $HOME/.ssh/config"
 alias key="open /Applications/Utilities/Keychain\ Access.app"
