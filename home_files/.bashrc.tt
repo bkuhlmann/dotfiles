@@ -82,6 +82,10 @@ if [[ -e /usr/local/bin/direnv ]]; then
   eval "$(direnv hook bash)"
 fi
 
+# Exa
+export EXA_COLORS="da=1;34:di=32"
+export EXA_STRICT=true
+
 # Ruby
 export RUBYOPT='-W:deprecated'
 
