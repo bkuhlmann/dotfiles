@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 40.1.0
+git checkout 40.2.0
 ----
 
 == Upgrade
@@ -132,6 +132,14 @@ top = "htop"
 ....
 bashe = "$EDITOR $HOME/.config/bash/env.sh"
 bashs = "exec $SHELL"
+....
+
+==== https://the.exa.website:[Exa]
+
+....
+x = "exa --all --long --header --group-directories-first --time-style long-iso --git --git-ignore"
+x1 = "exa --oneline --all --group-directories-first"
+xt = "exa --tree"
 ....
 
 ==== Network
