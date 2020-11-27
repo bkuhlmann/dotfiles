@@ -176,9 +176,11 @@ alias rb="chruby"
 
 # Section: https://www.ruby-lang.org:[Ruby]
 alias rbi="ruby-install"
+alias rbb="ruby $HOME/Dropbox/Development/Misc/benchmark.rb"
+alias rbbe="$EDITOR $HOME/Dropbox/Development/Misc/benchmark.rb"
 
 # Section: https://rubygems.org:[Ruby Gems]
-alias gemcr="$EDITOR ~/.gem/credentials"
+alias gemcr="$EDITOR $HOME/.gem/credentials"
 alias geml="gem list"
 alias gemi="gem install"
 alias gemu="gem uninstall"
@@ -298,7 +300,7 @@ alias cinu="asciinema upload"
 alias cine="asciinema_plus -e"
 
 # Section: http://duti.org:[duti]
-alias dutia="duti ~/.config/duti/configuration.duti"
+alias dutia="duti $HOME/.config/duti/configuration.duti"
 
 # Section: https://www.terraform.io:[Terraform]
 alias tf="terraform"
