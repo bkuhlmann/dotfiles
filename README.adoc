@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 40.2.0
+git checkout 40.3.0
 ----
 
 == Upgrade
@@ -320,12 +320,14 @@ rb = "chruby"
 
 ....
 rbi = "ruby-install"
+rbb = "ruby $HOME/Dropbox/Development/Misc/benchmark.rb"
+rbbe = "$EDITOR $HOME/Dropbox/Development/Misc/benchmark.rb"
 ....
 
 ==== https://rubygems.org:[Ruby Gems]
 
 ....
-gemcr = "$EDITOR ~/.gem/credentials"
+gemcr = "$EDITOR $HOME/.gem/credentials"
 geml = "gem list"
 gemi = "gem install"
 gemu = "gem uninstall"
@@ -502,7 +504,7 @@ cine = "asciinema_plus -e"
 ==== http://duti.org:[duti]
 
 ....
-dutia = "duti ~/.config/duti/configuration.duti"
+dutia = "duti $HOME/.config/duti/configuration.duti"
 ....
 
 ==== https://www.terraform.io:[Terraform]
@@ -747,6 +749,12 @@ cinr = asciinema Record - Create new asciinema recording.
 sigg = Minisign Generate - Generate private and public key pair.
 sigf = Minisign Sign File - Sign a file.
 sigv = Minisign Verify File - Verify signed file.
+....
+
+==== https://github.com/Aloxaf/silicon:[Silicon]
+
+....
+scc = Silicon Copy - Generates and copies code snippet image to clipboard.
 ....
 
 ==== https://github.com/DarthSim/overmind:[Overmind]

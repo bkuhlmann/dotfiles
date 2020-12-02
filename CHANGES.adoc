@@ -1,5 +1,10 @@
 = Changes
 
+== 40.3.0 (2020-12-01)
+
+* Added Ruby benchmark aliases
+* Added Silicon snippet to image functionality
+
 == 40.2.0 (2020-11-17)
 
 * Fixed `gesha` function to use `gesh` function
