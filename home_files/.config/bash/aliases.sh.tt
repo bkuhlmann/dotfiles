@@ -179,6 +179,9 @@ alias rbi="ruby-install"
 alias rbb="ruby $HOME/Dropbox/Development/Misc/benchmark.rb"
 alias rbbe="$EDITOR $HOME/Dropbox/Development/Misc/benchmark.rb"
 
+# Section: https://github.com/whitesmith/RubyCritic:[RubyCritic]
+alias rbct="open tmp/rubycritic/overview.html"
+
 # Section: https://rubygems.org:[Ruby Gems]
 alias gemcr="$EDITOR $HOME/.gem/credentials"
 alias geml="gem list"
