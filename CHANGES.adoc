@@ -1,5 +1,13 @@
 = Changes
 
+== 41.0.0 (2020-12-30)
+
+* Fixed Circle CI configuration for Bundler config path - Brooke Kuhlmann
+* Fixed GitHub URL parsing - Brooke Kuhlmann
+* Added RubyCritic alias - Brooke Kuhlmann
+* Updated to Git Lint 2.0.0 - Brooke Kuhlmann
+* Updated to Ruby 3.0.0 - Brooke Kuhlmann
+
 == 40.3.0 (2020-12-01)
 
 * Added Ruby benchmark aliases
