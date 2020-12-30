@@ -72,6 +72,7 @@
 [push]
   default = simple
   followTags = true
+  useForceIfIncludes = true
 [branch]
   autoSetupRebase = always
 [rebase]
