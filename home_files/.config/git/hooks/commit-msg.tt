@@ -11,4 +11,4 @@ source "$HOME/.config/git/hooks/extensions/support.sh"
 source "$HOME/.config/git/hooks/extensions/git.sh"
 
 git_trailer_cleaner "$1"
-# git_lint_check
+git_lint_check
