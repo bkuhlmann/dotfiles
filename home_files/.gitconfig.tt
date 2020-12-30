@@ -1,6 +1,7 @@
 [advice]
   detachedhead = false
 [init]
+  defaultBranch = master
   templateDir = ~/.config/git/template
 [user]
   # name = <enter name here>
