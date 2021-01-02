@@ -262,9 +262,6 @@ alias copd='find . -name ".rubocop-http*" -type f -delete'
 # Section: https://github.com/colszowka/simplecov:[SimpleCov]
 alias cov="open coverage/index.html"
 
-# Section: https://github.com/ggreer/the_silver_searcher:[Silver Surfer]
-alias agf="ag --hidden --files-with-matches --file-search-regex"
-
 # Section: http://direnv.net:[direnv]
 alias denva="direnv allow"
 alias denvr="direnv reload"
