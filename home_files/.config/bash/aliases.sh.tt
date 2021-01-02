@@ -305,6 +305,9 @@ alias cine="asciinema_plus -e"
 # Section: http://duti.org:[duti]
 alias dutia="duti $HOME/.config/duti/configuration.duti"
 
+# Section: https://github.com/BurntSushi/ripgrep:[ripgrep]
+alias rgf="rg --files --glob"
+
 # Section: https://www.terraform.io:[Terraform]
 alias tf="terraform"
 alias tfa="noti --title 'Terraform Apply' terraform apply"
