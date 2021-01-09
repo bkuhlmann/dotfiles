@@ -52,13 +52,10 @@ alias hbu="brew uninstall"
 alias hblf="brew list --formulae --versions | fzf"
 alias hblc="brew list --casks --versions | fzf"
 alias hbs="brew search"
-alias hbsw="brew switch"
-alias hbup="brew update"
 alias hbug="brew upgrade"
 alias hbp="brew pin"
 alias hbpu="brew unpin"
 alias hbd="brew doctor"
-alias hbc="brew cleanup"
 alias hbsu="brew update && brew upgrade && brew cleanup"
 
 # Section: http://git-scm.com:[Git]
