@@ -1,13 +1,13 @@
 [advice]
-  detachedhead = false
+  detachedHead = false
 [init]
   defaultBranch = master
   templateDir = ~/.config/git/template
 [user]
   # name = <enter name here>
   # email = <enter email here>
-  # signingkey = <enter signing key here>
-  useconfigonly = true
+  # signingKey = <enter signing key here>
+  useConfigOnly = true
 [github]
   # user = <enter user here>
   # token = <enter token here>
@@ -15,8 +15,8 @@
   helper = cache --timeout=3600
 [core]
   abbrev = 12
-  quotepath = false
-  untrackedcache = true
+  quotePath = false
+  untrackedCache = true
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   editor = "$EDITOR --wait"
   hooksPath = ~/.config/git/hooks
@@ -113,7 +113,7 @@
   gpgSign = true
   sort = version:refname
 [transfer]
-  fsckobjects = true
+  fsckObjects = true
 [url "https://github.com/"]
   insteadOf = gh:
 [url "https://github.com/bkuhlmann/"]
@@ -122,3 +122,5 @@
   insteadOf = heroku:
 [remote "origin"]
   fetch = +refs/pull/*/head:refs/remotes/pull_requests/*
+[includeIf "gitdir:~/Engineering/Companies/Example/"]
+  path = ~/.config/git/profiles/example
