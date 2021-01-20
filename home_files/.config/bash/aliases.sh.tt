@@ -38,6 +38,14 @@ alias dnsf="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && p
 # Section: https://github.com/junegunn/fzf:[Fuzzy Finder]
 alias ff="fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
 
+# Section: https://www.docker.com:[Docker]
+alias dr="docker"
+alias drb="docker build"
+alias dri="docker images"
+alias drp="docker ps --all"
+alias drt="docker tag"
+alias drc="docker-compose"
+
 # Section: http://tmux.sourceforge.net:[tmux]
 alias tsl="tmux list-sessions"
 alias tsa="tmux attach-session -t"
