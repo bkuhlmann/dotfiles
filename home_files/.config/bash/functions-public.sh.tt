@@ -1137,7 +1137,7 @@ gbl() {
 # Parameters: $1 (optional) - The author name.
 gblo() {
   local owner="${1:-$(git config user.name)}"
-  gbl | ag --nocolor "$owner"
+  gbl | rg --color never "$owner"
 }
 
 # Label: Git Branch List (all)
@@ -1257,7 +1257,7 @@ gbna() {
 
       if [[ -d ".git" ]]; then
         local current_branch="$(_git_branch_name)"
-        local number="$(_git_branch_list | ag --invert-match master | wc -l | tr -d ' ')"
+        local number="$(_git_branch_list | rg --invert-match master | wc -l | tr -d ' ')"
 
         if [[ $number -gt 0 ]]; then
           # Output project in cyan and number in white color.
@@ -1360,13 +1360,13 @@ gbdm() {
   # Remote
   git branch --remotes \
              --merged \
-             | ag "origin" \
-             | ag --invert-match "master" \
+             | rg "origin" \
+             | rg --invert-match "master" \
              | sed 's/origin\///' \
              | xargs -n 1 git push --delete origin
 
   # Local
-  git branch --merged | ag --invert-match "\* master" | xargs -n 1 git branch --delete --force
+  git branch --merged | rg --invert-match "\* master" | xargs -n 1 git branch --delete --force
 }
 
 # Label: Git Branch Rename
@@ -1420,7 +1420,7 @@ gtagd() {
     fi
 
     printf "%s " "Remote:"
-    if [[ $(git config remote.origin.url) && -n "$(git ls-remote --tags origin | ag $1)" ]]; then
+    if [[ $(git config remote.origin.url) && -n "$(git ls-remote --tags origin | rg $1)" ]]; then
       git push --delete origin "$1"
     else
       printf "%s\n" "No tag found."
@@ -1875,8 +1875,8 @@ bj() {
 
     printf "%s\n" "$computer_name's maximum Bundler job limit is: $max_jobs."
 
-    if command -v ag > /dev/null && [[ -e "$bundler_config" ]]; then
-      local current_jobs=$(ag "JOBS" $bundler_config | awk '{print $2}' | tr -d "'")
+    if command -v rg > /dev/null && [[ -e "$bundler_config" ]]; then
+      local current_jobs=$(rg "JOBS" $bundler_config | awk '{print $2}' | tr -d "'")
 
       if [[ $current_jobs != $max_jobs ]]; then
         bundle config --global jobs $max_jobs
@@ -1937,7 +1937,7 @@ boa() {
         printf "\033[36m${project}\033[m: " # Outputs project in cyan color.
 
         # Capture current project status: Search for bullets (*, outdated gems) or missing (not found) gems.
-        local results=$(bundle outdated | ag --only-matching "(\*.+|.+not\sfind.+)")
+        local results=$(bundle outdated | rg --only-matching "(\*.+|.+not\sfind.+)")
 
         # Print project status if Bundler activity is detected, otherwise a checkmark for passing status.
         if [[ -n "$results" ]]; then
@@ -2041,7 +2041,7 @@ cqi() {
   local comments=("TODO" "FIX" "DUPLICATE" "shellcheck disable" ":reek:" "rubocop:disable")
 
   for comment in ${comments[*]}; do
-    ag --nomultiline --depth -1 --case-sensitive --ignore "vendor" "^\s*?(#|--|//) $comment" .
+    rg --case-sensitive --iglob '!vendor' --regexp "^\s*?(#|--|//) $comment" .
   done
 }
 

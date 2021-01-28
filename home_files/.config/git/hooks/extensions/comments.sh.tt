@@ -9,12 +9,12 @@ _comment_total() {
   local lines=("omit:0") # Ensures array is populated, with omitted total, in case Silver Searcher finds nothing.
   local total=0
 
-  if ! command -v ag > /dev/null; then
-     printf "%s" "$label: Silver Surfer not found. To install, run: brew install the_silver_searcher."
+  if ! command -v rg > /dev/null; then
+     printf "%s" "$label: Ripgrep not found. To install, run: brew install ripgrep."
      exit 1
   fi
 
-  lines+=($(ag --count --depth -1 --ignore "vendor" "^\s*?(#|--|//) $prefix" . || :))
+  lines+=($(rg --count --case-sensitive --iglob '!vendor' --regexp "^\s*?(#|--|//) $prefix" . || :))
 
   for line in ${lines[*]}; do
     total=$((total + ${line#*:}))

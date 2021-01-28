@@ -30,7 +30,7 @@ alias xt="exa --tree"
 # Section: Network
 alias sshe="$EDITOR $HOME/.ssh/config"
 alias key="open /Applications/Utilities/Keychain\ Access.app"
-alias ipa='curl --silent checkip.dyndns.org | ag --only-matching "[0-9\.]+" | _copy_and_print'
+alias ipa='curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
 alias dnsi="scutil --dns"
 alias dnss="sudo dscacheutil -statistics"
 alias dnsf="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
@@ -114,7 +114,7 @@ alias gau="git add --update"
 alias gap="git add --patch"
 alias gall="git add --all ."
 alias gco="git commit"
-alias gce='cat .git/COMMIT_EDITMSG | ag --invert-match "^\#.*" | pbcopy'
+alias gce='cat .git/COMMIT_EDITMSG | rg --invert-match "^\#.*" | pbcopy'
 alias gatch="git commit --patch"
 alias gca="git commit --all"
 alias gcm="git commit --message"
