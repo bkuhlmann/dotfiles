@@ -1049,6 +1049,34 @@ gcap() {
   rm -f $temp_file
 }
 
+# Label: Git Merge (all)
+# Description: Merges, deletes, and pushes feature branch.
+# Parameters: $1 (required|optional) - Branch.
+gma() {
+  local branch="$1"
+
+  if [[ -z "$branch" ]]; then
+    printf "%s\n" "ERROR: Branch must be supplied."
+    return 1
+  fi
+
+  while read -r project; do
+    (
+      cd "$project"
+
+      if [[ -d ".git" && "$(_git_branch_name)" == "$branch" ]]; then
+        printf "\033[36m${project}\033[m: Merging, deleting, and pushing...\n"
+
+        git switch master && \
+        git merge "$branch" && \
+        git branch --delete --force "$branch" && \
+        git push --delete origin "$branch" && \
+        git push
+      fi
+    )
+  done < <(ls -A1)
+}
+
 # Label: Git Amend Push (all)
 # Description: Amend all changes and force push with lease for projects in current directory.
 gmpa() {
