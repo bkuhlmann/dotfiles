@@ -1,5 +1,25 @@
 = Changes
 
+== 42.0.0 (2021-02-14)
+
+* Added Bundler XDG configuration - Brooke Kuhlmann
+* Added Docker Bash configuration - Brooke Kuhlmann
+* Added Docker aliases - Brooke Kuhlmann
+* Added Exa colors for Git modified and deleted files - Brooke Kuhlmann
+* Added Exa group list functionality - Brooke Kuhlmann
+* Added Git config default branch name - Brooke Kuhlmann
+* Added Git force if include configuration - Brooke Kuhlmann
+* Added Git merge all function - Brooke Kuhlmann
+* Added Homebrew aliases for fuzzy finding formulae and casks - Brooke Kuhlmann
+* Added ripgrep file search alias - Brooke Kuhlmann
+* Updated Git configuration to use camelcase keys - Brooke Kuhlmann
+* Updated Homebrew upgrade alias to update first - Brooke Kuhlmann
+* Updated to Circle CI 2.1.0 - Brooke Kuhlmann
+* Removed IRB readline configuration - Brooke Kuhlmann
+* Removed Silver Surfer file search alias - Brooke Kuhlmann
+* Removed unused Homebrew aliases - Brooke Kuhlmann
+* Refactored use of Silver Surfer with Ripgrep instead - Brooke Kuhlmann
+
 == 41.0.0 (2020-12-30)
 
 * Fixed Circle CI configuration for Bundler config path - Brooke Kuhlmann

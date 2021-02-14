@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 41.0.0
+git checkout 42.0.0
 ----
 
 == Upgrade
@@ -137,7 +137,7 @@ bashs = "exec $SHELL"
 ==== https://the.exa.website:[Exa]
 
 ....
-x = "exa --all --long --header --group-directories-first --time-style long-iso --git --git-ignore"
+x = "exa --all --long --header --group --group-directories-first --time-style long-iso --git --git-ignore"
 x1 = "exa --oneline --all --group-directories-first"
 xt = "exa --tree"
 ....
@@ -147,7 +147,7 @@ xt = "exa --tree"
 ....
 sshe = "$EDITOR $HOME/.ssh/config"
 key = "open /Applications/Utilities/Keychain\ Access.app"
-ipa = 'curl --silent checkip.dyndns.org | ag --only-matching "[0-9\.]+" | _copy_and_print'
+ipa = 'curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
 dnsi = "scutil --dns"
 dnss = "sudo dscacheutil -statistics"
 dnsf = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
@@ -157,6 +157,17 @@ dnsf = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && print
 
 ....
 ff = "fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
+....
+
+==== https://www.docker.com:[Docker]
+
+....
+dr = "docker"
+drb = "docker build"
+dri = "docker images"
+drp = "docker ps --all"
+drt = "docker tag"
+drc = "docker-compose"
 ....
 
 ==== http://tmux.sourceforge.net:[tmux]
@@ -175,15 +186,13 @@ hb = "brew"
 hbi = "brew update && brew install"
 hbin = "brew info"
 hbu = "brew uninstall"
-hbl = "brew list"
+hblf = "brew list --formulae --versions | fzf"
+hblc = "brew list --casks --versions | fzf"
 hbs = "brew search"
-hbsw = "brew switch"
-hbup = "brew update"
-hbug = "brew upgrade"
+hbug = "brew update && brew upgrade"
 hbp = "brew pin"
 hbpu = "brew unpin"
 hbd = "brew doctor"
-hbc = "brew cleanup"
 hbsu = "brew update && brew upgrade && brew cleanup"
 ....
 
@@ -237,7 +246,7 @@ gau = "git add --update"
 gap = "git add --patch"
 gall = "git add --all ."
 gco = "git commit"
-gce = 'cat .git/COMMIT_EDITMSG | ag --invert-match "^\#.*" | pbcopy'
+gce = 'cat .git/COMMIT_EDITMSG | rg --invert-match "^\#.*" | pbcopy'
 gatch = "git commit --patch"
 gca = "git commit --all"
 gcm = "git commit --message"
@@ -324,6 +333,12 @@ rbb = "ruby $HOME/Dropbox/Development/Misc/benchmark.rb"
 rbbe = "$EDITOR $HOME/Dropbox/Development/Misc/benchmark.rb"
 ....
 
+==== https://github.com/whitesmith/RubyCritic:[RubyCritic]
+
+....
+rbct = "open tmp/rubycritic/overview.html"
+....
+
 ==== https://rubygems.org:[Ruby Gems]
 
 ....
@@ -350,7 +365,7 @@ bi = "bundle install"
 blo = "bundle list --paths | fzf | xargs $EDITOR"
 bu = "bundle update"
 bo = "bundle outdated --only-explicit"
-bce = "$EDITOR $HOME/.bundle/config"
+bce = "$EDITOR $HOME/.config/bundler/configuration.yml"
 be = "bundle exec"
 bch = "rm -f Gemfile.lock; bundle check"
 ....
@@ -434,12 +449,6 @@ copd = 'find . -name ".rubocop-http*" -type f -delete'
 cov = "open coverage/index.html"
 ....
 
-==== https://github.com/ggreer/the_silver_searcher:[Silver Surfer]
-
-....
-agf = "ag --hidden --files-with-matches --file-search-regex"
-....
-
 ==== http://direnv.net:[direnv]
 
 ....
@@ -505,6 +514,12 @@ cine = "asciinema_plus -e"
 
 ....
 dutia = "duti $HOME/.config/duti/configuration.duti"
+....
+
+==== https://github.com/BurntSushi/ripgrep:[ripgrep]
+
+....
+rgf = "rg --files --glob"
 ....
 
 ==== https://www.terraform.io:[Terraform]
@@ -628,6 +643,7 @@ gcfi = Git Commit Fix (interactive) - Select which commit to fix within current 
 gcff = Git Commit Fix (file) - Create commit fix for file (ignores previous fixups).
 gcaa = Git Commit (all) - Commit changes (unstaged and staged) for projects in current directory.
 gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
+gma = Git Merge (all) - Merges, deletes, and pushes feature branch.
 gmpa = Git Amend Push (all) - Amend all changes and force push with lease for projects in current directory.
 gp = Git Push - Pushes changes to remote repository with dynamic branch creation if non-existent.
 gpa = Git Push (all) - Push changes for projects in current directory.
