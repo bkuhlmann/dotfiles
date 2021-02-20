@@ -1,6 +1,6 @@
 = Changes
 
-== 42.0.0 (2021-02-14)
+== 42.0.0 (2021-02-20)
 
 * Added Bundler XDG configuration - Brooke Kuhlmann
 * Added Docker Bash configuration - Brooke Kuhlmann
