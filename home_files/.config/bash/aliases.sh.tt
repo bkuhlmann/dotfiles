@@ -184,6 +184,8 @@ alias rb="chruby"
 alias rbi="ruby-install"
 alias rbb="ruby $HOME/Dropbox/Development/Misc/benchmark.rb"
 alias rbbe="$EDITOR $HOME/Dropbox/Development/Misc/benchmark.rb"
+alias rbse="$EDITOR $HOME/Dropbox/Development/Misc/snippet.rb"
+alias rbsr="ruby $HOME/Dropbox/Development/Misc/snippet.rb"
 
 # Section: https://github.com/whitesmith/RubyCritic:[RubyCritic]
 alias rbct="open tmp/rubycritic/overview.html"
