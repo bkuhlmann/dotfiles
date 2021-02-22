@@ -288,7 +288,7 @@ gafe() {
   if [[ -d ".git" ]]; then
     mkdir -p .git/safe
     printf "%s\n" "Repository has been marked safe."
-    exec /usr/local/bin/bash
+    exec "$HOMEBREW_PREFIX/bin/bash"
   fi
 }
 

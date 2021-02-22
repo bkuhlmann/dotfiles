@@ -169,12 +169,12 @@ alias bzc="tar --use-compress-program=pigz --create --preserve-permissions --bzi
 alias bzx="tar --extract --bzip2 --verbose --file"
 
 # Section: http://www.postgresql.org:[PostgreSQL]
-alias pgi="initdb /usr/local/var/postgres"
-alias pgst="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start &"
-alias pgsp="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+alias pgi="initdb $HOMEBREW_PREFIX/var/postgres"
+alias pgst="pg_ctl -D $HOMEBREW_PREFIX/var/postgres -l $HOMEBREW_PREFIX/var/postgres/server.log start &"
+alias pgsp="pg_ctl -D $HOMEBREW_PREFIX/var/postgres stop -s -m fast"
 
 # Section: http://redis.io:[Redis]
-alias reds="redis-server /usr/local/etc/redis.conf &"
+alias reds="redis-server $HOMEBREW_PREFIX/etc/redis.conf &"
 alias redc="redis-cli"
 
 # Section: https://github.com/postmodern/chruby:[chruby]

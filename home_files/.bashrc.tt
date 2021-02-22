@@ -38,6 +38,7 @@ export HISTSIZE=10000 # Keep lengthy command history.
 export HISTIGNORE="#*:..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane commands.
 
 # Homebrew
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export HOMEBREW_BAT=1
 export HOMEBREW_CURL_RETRIES=3
 export HOMEBREW_FORCE_BREWED_CURL=1
@@ -46,8 +47,7 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
-export HOMEBREW_PREFIX="/usr/local"
-export PATH="/usr/local/sbin:$PATH"
+export HOMEBREW_PREFIX="$(brew --prefix)"
 
 # Environment
 source "$HOME/.config/bash/env.sh"
@@ -66,21 +66,24 @@ source "$HOME/.config/bash/functions-public.sh"
 source "$HOME/.config/bash/prompt.sh"
 
 # Bash Completion
-if [[ -f /usr/local/etc/bash_completion ]]; then
-  source "/usr/local/etc/bash_completion"
+if [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]]; then
+  source "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 fi
+# if [[ -f "$HOMEBREW_PREFIX/etc/bash_completion" ]]; then
+#   source "$HOMEBREW_PREFIX/etc/bash_completion"
+# fi
 
 # Docker
 export DOCKER_CONFIG=$HOME/.config/docker
 
 # OpenSSL
-export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/openssl/bin:$PATH"
 
 # GPG
 export GPG_TTY=$(tty)
 
 # direnv
-if [[ -e /usr/local/bin/direnv ]]; then
+if [[ -e "$HOMEBREW_PREFIX/bin/direnv" ]]; then
   eval "$(direnv hook bash)"
 fi
 
@@ -96,9 +99,11 @@ export BUNDLE_USER_PLUGIN="$HOME/.local/share/bundler/plugin"
 export RUBYOPT='-W:deprecated'
 
 # chruby
-if [[ -e /usr/local/share/chruby ]]; then
-  source "/usr/local/share/chruby/chruby.sh"
-  source "/usr/local/share/chruby/auto.sh"
+if [[ -e "$HOMEBREW_PREFIX/share/chruby" ]]; then
+  source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
+  source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
+  # source "$HOMEBREW_PREFIX/share/chruby/chruby.sh"
+  # source "$HOMEBREW_PREFIX/share/chruby/auto.sh"
 fi
 
 # FZF
@@ -106,7 +111,7 @@ export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --color always --ex
 export FZF_DEFAULT_OPTS="--multi --ansi"
 
 # Node
-export PATH="$PATH:/usr/local/share/npm/bin"
+export PATH="$PATH:$HOMEBREW_PREFIX/share/npm/bin"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -116,8 +121,8 @@ export PATH="$PATH:$(yarn global bin)"
 
 # Z
 export _Z_DATA="$HOME/.cache/z/history.txt"
-if [[ -e /usr/local/etc/profile.d/z.sh ]]; then
-  source "/usr/local/etc/profile.d/z.sh"
+if [[ -e "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]]; then
+  source "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
 fi
 
 # Git
