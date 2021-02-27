@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 42.0.0
+git checkout 42.1.0
 ----
 
 == Upgrade
