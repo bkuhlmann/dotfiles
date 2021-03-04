@@ -69,9 +69,6 @@ source "$HOME/.config/bash/prompt.sh"
 if [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]]; then
   source "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 fi
-# if [[ -f "$HOMEBREW_PREFIX/etc/bash_completion" ]]; then
-#   source "$HOMEBREW_PREFIX/etc/bash_completion"
-# fi
 
 # Docker
 export DOCKER_CONFIG=$HOME/.config/docker
@@ -99,11 +96,9 @@ export BUNDLE_USER_PLUGIN="$HOME/.local/share/bundler/plugin"
 export RUBYOPT='-W:deprecated'
 
 # chruby
-if [[ -e "$HOMEBREW_PREFIX/share/chruby" ]]; then
+if [[ -r "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh" ]]; then
   source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
   source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
-  # source "$HOMEBREW_PREFIX/share/chruby/chruby.sh"
-  # source "$HOMEBREW_PREFIX/share/chruby/auto.sh"
 fi
 
 # FZF
@@ -121,7 +116,7 @@ export PATH="$PATH:$(yarn global bin)"
 
 # Z
 export _Z_DATA="$HOME/.cache/z/history.txt"
-if [[ -e "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]]; then
+if [[ -r "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]]; then
   source "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
 fi
 
