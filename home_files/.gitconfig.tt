@@ -109,6 +109,8 @@
 [mergetool "Kaleidoscope"]
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
   trustExitCode = true
+[pack]
+  writeReverseIndex = true
 [tag]
   gpgSign = true
   sort = version:refname
