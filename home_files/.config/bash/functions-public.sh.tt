@@ -47,7 +47,7 @@ eup() {
 
   if [[ "$(hostname)" == "vilya" ]]; then
     (
-      cd ~/Dropbox/Development/OSS
+      cd $HOME/Engineering/OSS
       bca
       bua
       gvaca

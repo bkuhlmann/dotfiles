@@ -182,10 +182,10 @@ alias rb="chruby"
 
 # Section: https://www.ruby-lang.org:[Ruby]
 alias rbi="ruby-install"
-alias rbbe="$EDITOR $HOME/Dropbox/Development/Misc/benchmark.rb"
-alias rbbr="ruby $HOME/Dropbox/Development/Misc/benchmark.rb"
-alias rbse="$EDITOR $HOME/Dropbox/Development/Misc/snippet.rb"
-alias rbsr="ruby $HOME/Dropbox/Development/Misc/snippet.rb"
+alias rbbe="$EDITOR $HOME/Engineering/Misc/benchmark.rb"
+alias rbbr="ruby $HOME/Engineering/Misc/benchmark.rb"
+alias rbse="$EDITOR $HOME/Engineering/Misc/snippet.rb"
+alias rbsr="ruby $HOME/Engineering/Misc/snippet.rb"
 
 # Section: https://github.com/whitesmith/RubyCritic:[RubyCritic]
 alias rbct="open tmp/rubycritic/overview.html"
