@@ -45,14 +45,12 @@ eup() {
   rustup update
   docker system prune --force
 
-  if [[ "$(hostname)" == "vilya" ]]; then
-    (
-      cd $HOME/Engineering/OSS
-      bca
-      bua
-      gvaca
-    )
-  fi
+  (
+    cd $HOME/Engineering/OSS
+    bca
+    bua
+    gvaca
+  )
 }
 
 # Label: ISO
