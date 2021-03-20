@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 42.2.0
+git checkout 42.3.0
 ----
 
 == Upgrade
@@ -199,7 +199,7 @@ hbsu = "brew update && brew upgrade && brew cleanup"
 ==== http://git-scm.com:[Git]
 
 ....
-gi = "git init"
+gi = "git init && git config --global --add maintenance.repo $PWD"
 gcle = "git config --local --edit"
 gcge = "git config --global --edit"
 gcd = "git config --list --show-origin --show-scope"
@@ -307,15 +307,15 @@ bzx = "tar --extract --bzip2 --verbose --file"
 ==== http://www.postgresql.org:[PostgreSQL]
 
 ....
-pgi = "initdb /usr/local/var/postgres"
-pgst = "pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start &"
-pgsp = "pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+pgi = "initdb $HOMEBREW_PREFIX/var/postgres"
+pgst = "pg_ctl -D $HOMEBREW_PREFIX/var/postgres -l $HOMEBREW_PREFIX/var/postgres/server.log start &"
+pgsp = "pg_ctl -D $HOMEBREW_PREFIX/var/postgres stop -s -m fast"
 ....
 
 ==== http://redis.io:[Redis]
 
 ....
-reds = "redis-server /usr/local/etc/redis.conf &"
+reds = "redis-server $HOMEBREW_PREFIX/etc/redis.conf &"
 redc = "redis-cli"
 ....
 
@@ -329,14 +329,22 @@ rb = "chruby"
 
 ....
 rbi = "ruby-install"
-rbb = "ruby $HOME/Dropbox/Development/Misc/benchmark.rb"
-rbbe = "$EDITOR $HOME/Dropbox/Development/Misc/benchmark.rb"
+rbbe = "$EDITOR $HOME/Engineering/Misc/benchmark.rb"
+rbbr = "ruby $HOME/Engineering/Misc/benchmark.rb"
+rbse = "$EDITOR $HOME/Engineering/Misc/snippet.rb"
+rbsr = "ruby $HOME/Engineering/Misc/snippet.rb"
 ....
 
 ==== https://github.com/whitesmith/RubyCritic:[RubyCritic]
 
 ....
 rbct = "open tmp/rubycritic/overview.html"
+....
+
+==== https://www.alchemists.io/projects/rubysmith:[Rubysmith]
+
+....
+rbb = "rubysmith --build"
 ....
 
 ==== https://rubygems.org:[Ruby Gems]

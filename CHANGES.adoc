@@ -1,5 +1,14 @@
 = Changes
 
+== 42.3.0 (2021-03-20)
+
+* Added Git global maintenance configuration - Brooke Kuhlmann
+* Updated Git configuration to be alphabetically sorted - Brooke Kuhlmann
+* Updated Git init alias to include background maintenance registration - Brooke Kuhlmann
+* Updated Git vacuum functions to consider project maintenance - Brooke Kuhlmann
+* Removed environment update machine check - Brooke Kuhlmann
+* Refactored open source projects location - Brooke Kuhlmann
+
 == 42.2.0 (2021-03-16)
 
 * Fixed chruby setup - Brooke Kuhlmann
