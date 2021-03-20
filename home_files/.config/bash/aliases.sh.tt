@@ -67,7 +67,7 @@ alias hbd="brew doctor"
 alias hbsu="brew update && brew upgrade && brew cleanup"
 
 # Section: http://git-scm.com:[Git]
-alias gi="git init"
+alias gi="git init && git config --global --add maintenance.repo $PWD"
 alias gcle="git config --local --edit"
 alias gcge="git config --global --edit"
 alias gcd="git config --list --show-origin --show-scope"
