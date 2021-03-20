@@ -1676,8 +1676,11 @@ gvac() {
   printf "%s\n\n" "Verifying connectivity and validity of the objects in Git repository..."
   git fsck
 
+  printf "%s\n" "Packing unpacked objects into a single pack and removing redundant packs..."
+  git repack -Ad
+
   printf "\n%s\n\n" "Cleaning unnecessary files and optimizing local Git repository..."
-  git gc
+  git maintenance run --task=gc
 
   printf "%s\n\n" "Pruning rerere records of older conflicting merges..."
   git rerere gc
@@ -1692,7 +1695,7 @@ gvaca() {
 
       if [[ -d ".git" ]]; then
         printf "\n\033[36m${project}\033[m:\n" # Outputs in cyan color.
-        git fsck && git gc && git rerere gc
+        git fsck && git repack -Ad && git maintenance run --task=gc && git rerere gc
       fi
     )
   done < <(ls -A1)
