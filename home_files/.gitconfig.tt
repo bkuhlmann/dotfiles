@@ -100,6 +100,9 @@
   prompt = false
 [difftool "Kaleidoscope"]
   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[maintenance]
+  auto = false
+  strategy = incremental
 [merge]
   ff = only
   tool = Kaleidoscope
