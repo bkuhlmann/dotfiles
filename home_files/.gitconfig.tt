@@ -77,7 +77,7 @@
 [includeIf "gitdir:~/Engineering/Companies/Example/"]
   path = ~/.config/git/profiles/example
 [init]
-  defaultBranch = master
+  defaultBranch = main
   templateDir = ~/.config/git/template
 [interactive]
   diffFilter = delta --color-only
