@@ -183,6 +183,13 @@ _git_commit_options() {
   done
 }
 
+# Label: Git Branch Default
+# Description: Print Git default branch.
+_git_branch_default() {
+  local default="$(git config --get init.defaultBranch)"
+  printf "${default:-main}"
+}
+
 # Label: Git Branch Name
 # Description: Print Git branch name.
 _git_branch_name() {
