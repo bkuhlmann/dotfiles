@@ -384,7 +384,7 @@ gount() {
 }
 
 # Label: Git Log (interactive)
-# Description: List master or feature branch commits with commit show and/or diff support.
+# Description: List default or feature branch commits with commit show and/or diff support.
 gli() {
   local commits=($(_git_branch_shas))
 
@@ -407,9 +407,9 @@ gli() {
 }
 
 # Label: Git Log Details
-# Description: List master or feature branch commit details.
+# Description: List default or feature branch commit details.
 gld() {
-  if [[ "$(_git_branch_name)" == "master" ]]; then
+  if [[ "$(_git_branch_name)" == "$(_git_branch_default)" ]]; then
     git log --stat --pretty=format:"$(_git_log_details_format)"
     return
   fi
@@ -637,8 +637,8 @@ gup() {
 # Description: Syncs up remote changes and deletes pruned/merged branches.
 # Parameters
 gync() {
-  if [[ $(_git_branch_name) != "master" ]]; then
-    printf "%s\n" "ERROR: Whoa, switch to master branch first."
+  if [[ $(_git_branch_name) != "$(_git_branch_default)" ]]; then
+    printf "%s\n" "ERROR: Whoa, switch to default branch first."
     return 1
   fi
 
@@ -1065,7 +1065,7 @@ gma() {
       if [[ -d ".git" && "$(_git_branch_name)" == "$branch" ]]; then
         printf "\033[36m${project}\033[m: Merging, deleting, and pushing...\n"
 
-        git switch master && \
+        git switch "$(_git_branch_default)" && \
         git merge "$branch" && \
         git branch --delete --force "$branch" && \
         git push --delete origin "$branch" && \
@@ -1134,7 +1134,7 @@ grbi() {
 
   if [[ "$value" =~ $number_pattern ]]; then
     git rebase --keep-empty --interactive "@~${value}"
-  elif [[ $(_git_branch_name) == "master" && -z "$(git config remote.origin.url)" ]]; then
+  elif [[ "$(_git_branch_name)" == "$(_git_branch_default)" && -z "$(git config remote.origin.url)" ]]; then
     git rebase --keep-empty --interactive --root
   elif [[ "$value" =~ $label_pattern ]]; then
     git rebase --keep-empty --interactive "$value"
@@ -1177,7 +1177,7 @@ gbla() {
         local branch="$(_git_branch_name)"
         printf "\033[36m${project}\033[m: " # Output in cyan color.
 
-        if [[ "$branch" == "master" ]]; then
+        if [[ "$branch" == "$(_git_branch_default)" ]]; then
           printf "%s\n" "$branch"
         else
           printf "\033[31m$branch\033[m\n" # Output in red color.
@@ -1283,7 +1283,7 @@ gbna() {
 
       if [[ -d ".git" ]]; then
         local current_branch="$(_git_branch_name)"
-        local number="$(_git_branch_list | rg --invert-match master | wc -l | tr -d ' ')"
+        local number="$(_git_branch_list | rg --invert-match "$(_git_branch_default)" | wc -l | tr -d ' ')"
 
         if [[ $number -gt 0 ]]; then
           # Output project in cyan and number in white color.
@@ -1324,7 +1324,7 @@ gbd() {
         gbdr "$branch"
       fi
     else
-      printf "%s\n" "Sorry, only the master branch exists and it can't be deleted."
+      printf "%s\n" "Sorry, only the default branch exists and it can't be deleted."
     fi
   else
     printf "%s\n" "Sorry, no branches to delete."
@@ -1378,8 +1378,8 @@ gbdr() {
 # Label: Git Branch Delete (merged)
 # Description: Delete remote and local merged branches.
 gbdm() {
-  if [[ $(_git_branch_name) != "master" ]]; then
-    printf "%s\n" "ERROR: Whoa, switch to master branch first."
+  if [[ $(_git_branch_name) != "$(_git_branch_default)" ]]; then
+    printf "%s\n" "ERROR: Whoa, switch to default branch first."
     return 1
   fi
 
@@ -1387,12 +1387,12 @@ gbdm() {
   git branch --remotes \
              --merged \
              | rg "origin" \
-             | rg --invert-match "master" \
+             | rg --invert-match "$(_git_branch_default)" \
              | sed 's/origin\///' \
              | xargs -n 1 git push --delete origin
 
   # Local
-  git branch --merged | rg --invert-match "\* master" | xargs -n 1 git branch --delete --force
+  git branch --merged | rg --invert-match "\* $(_git_branch_default)" | xargs -n 1 git branch --delete --force
 }
 
 # Label: Git Branch Rename
@@ -1481,7 +1481,7 @@ gwa() {
     'r')
       git worktree add -b "$name" "$worktree_path" origin/"$name";;
     'l')
-      git worktree add -b "$name" "$worktree_path" master;;
+      git worktree add -b "$name" "$worktree_path" "$(_git_branch_default)";;
     *)
       printf "%s\n" "ERROR: Invalid worktree option: Use: (d)etach, (r)emote, or (l)ocal."
       return 1;;
@@ -1527,7 +1527,7 @@ gra() {
     return 1
   fi
 
-  git remote add -t master -f "$name" "$url"
+  git remote add -t "$(_git_branch_default)" -f "$name" "$url"
 }
 
 # Label: Git Reset Soft
@@ -1750,14 +1750,14 @@ gh() {
 }
 
 # Label: GitHub Pull Request (all)
-# Description: Open pull requests for all projects in current directory (non-master branches only).
+# Description: Open pull requests for all projects in current directory (non-default branches only).
 ghpra() {
   while read -r project; do
     (
       cd "$project"
 
       if [[ -d ".git" ]]; then
-        if [[ "$(_git_branch_name)" != "master" ]]; then
+        if [[ "$(_git_branch_name)" != "$(_git_branch_default)" ]]; then
           gh b r # a.k.a. GitHub Branch Pull Request
         fi
       fi

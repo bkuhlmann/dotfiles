@@ -209,14 +209,14 @@ _git_branch_shas() {
   local current_pattern=".*\(HEAD.+\)*"
   local parent_pattern=".*\(.+\)*"
   local origin_pattern=".*\(origin\/$(_git_branch_name)\)$"
-  local master_pattern=".*\(.+master(\,|\))*"
+  local default_pattern=".*\(.+$(_git_branch_default)(\,|\))*"
 
-  if [[ ! "$current_commit" =~ $master_pattern ]]; then
+  if [[ ! "$current_commit" =~ $default_pattern ]]; then
     for entry in ${commits[@]}; do
       local entry_sha="${entry%% *}"
 
       if [[ ! "$entry" =~ $current_pattern && ! "$entry" =~ $origin_pattern ]]; then
-        if [[ "$entry" =~ $master_pattern || "$entry" =~ $parent_pattern ]]; then
+        if [[ "$entry" =~ $default_pattern || "$entry" =~ $parent_pattern ]]; then
           range="$entry_sha..$(_git_commit_last)"
           break
         fi
