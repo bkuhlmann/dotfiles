@@ -44,6 +44,7 @@ eup() {
   gemuc
   rustup update
   docker system prune --force
+  docker buildx prune --force
 
   (
     cd $HOME/Engineering/OSS
