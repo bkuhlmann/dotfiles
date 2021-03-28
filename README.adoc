@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 42.3.0
+git checkout 42.4.0
 ----
 
 == Upgrade
@@ -164,6 +164,7 @@ ff = "fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
 ....
 dr = "docker"
 drb = "docker build"
+drd = "docker system prune --force && docker buildx prune --force"
 dri = "docker images"
 drp = "docker ps --all"
 drt = "docker tag"
@@ -217,12 +218,12 @@ gg = "git grep"
 guthors = 'git log --color --pretty=format:"%C(bold blue)%an%C(reset)" | sort | uniq -c | sort --reverse'
 gd = "git diff"
 gdc = "git diff --cached"
-gdm = "git diff origin/master"
+gdm = 'git diff origin/$(_git_branch_default)'
 gdw = "git diff --color-words"
 gdo = 'git diff --name-only | uniq | xargs $EDITOR'
 gdt = "git difftool"
 gdtc = "git difftool --cached"
-gdtm = "git difftool origin/master"
+gdtm = 'git difftool origin/$(_git_branch_default)'
 glame = "git blame -M -C -C -C"
 gbi = "git bisect"
 gbis = "git bisect start"
@@ -240,7 +241,7 @@ gbn = "_git_branch_name | _copy_and_print"
 gcl = "git clone"
 gb = "git switch"
 gbb = "git switch -"
-gbm = "git switch master"
+gbm = 'git switch $(_git_branch_default)'
 ga = "git add"
 gau = "git add --update"
 gap = "git add --patch"
@@ -269,8 +270,8 @@ gnp = "git notes prune"
 gf = "git fetch"
 gpu = "git pull"
 gpuo = "git pull origin"
-gpuom = "git pull origin master"
-gpuum = "git pull upstream master"
+gpuom = 'git pull origin $(_git_branch_default)'
+gpuum = 'git pull upstream $(_git_branch_default)'
 grbo = "git rebase --onto"
 grbc = "git rebase --continue"
 grbd = "git rebase --show-current-patch"
@@ -282,15 +283,15 @@ grr = "git rerere"
 gpf = "git push --force-with-lease"
 gpn = "git push --no-verify"
 gpo = "git push --set-upstream origin"
-gps = "git push stage stage:master"
-gpp = "git push production production:master"
+gps = 'git push stage stage:$(_git_branch_default)'
+gpp = 'git push production production:$(_git_branch_default)'
 gtag = "git tag"
 gtagv = "git tag --verify"
 gtags = "git push --tags"
 gwl = "git worktree list"
 gwp = "git worktree prune"
 ges = "git reset"
-grom = "git fetch --all && git reset --hard origin/master" # Reset local branch to origin/master branch. UNRECOVERABLE!
+grom = 'git fetch --all && git reset --hard origin/$(_git_branch_default)' # Reset local branch to origin/main branch. UNRECOVERABLE!
 gel = "git rm"
 gelc = "git rm --cached" # Removes previously tracked file from index after being added to gitignore.
 grev = "git revert --no-commit"
@@ -613,8 +614,8 @@ gstats = Git Statistics - Answer statistics for current project.
 gstatsa = Git Statistics (all) - Answer statistics for all projects in current directory.
 ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
 gount = Git Commit Count - Answer total number of commits for current project.
-gli = Git Log (interactive) - List master or feature branch commits with commit show and/or diff support.
-gld = Git Log Details - List master or feature branch commit details.
+gli = Git Log (interactive) - List default or feature branch commits with commit show and/or diff support.
+gld = Git Log Details - List default or feature branch commit details.
 ghow = Git Show - Show commit details with optional diff support.
 gile = Git File - Show file details for a specific commit (with optional diff support).
 gistory = Git File History - View file commit history (with optional diff support).
@@ -690,7 +691,7 @@ gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in cu
 
 ....
 gh = GitHub - View GitHub details for current project.
-ghpra = GitHub Pull Request (all) - Open pull requests for all projects in current directory (non-master branches only).
+ghpra = GitHub Pull Request (all) - Open pull requests for all projects in current directory (non-default branches only).
 ....
 
 ==== http://www.postgresql.org:[PostgreSQL]

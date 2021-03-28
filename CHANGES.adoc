@@ -1,5 +1,13 @@
 = Changes
 
+== 42.4.0 (2021-03-28)
+
+* Added Docker delete alias - Brooke Kuhlmann
+* Added Docker multi-platform pruning to environment update function - Brooke Kuhlmann
+* Added Git default branch function - Brooke Kuhlmann
+* Updated Git global configuration to default to main branch - Brooke Kuhlmann
+* Updated scripts to calculate default branch - Brooke Kuhlmann
+
 == 42.3.0 (2021-03-20)
 
 * Added Git global maintenance configuration - Brooke Kuhlmann
