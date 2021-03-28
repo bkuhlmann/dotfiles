@@ -41,6 +41,7 @@ alias ff="fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR
 # Section: https://www.docker.com:[Docker]
 alias dr="docker"
 alias drb="docker build"
+alias drd="docker system prune --force && docker buildx prune --force"
 alias dri="docker images"
 alias drp="docker ps --all"
 alias drt="docker tag"
