@@ -121,5 +121,8 @@ if [[ -r "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]]; then
 fi
 
 # Git
-source "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash"
+if [[ -r "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash" ]]; then
+  source "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash"
+fi
+
 export PATH=".git/safe/../../bin:$PATH"
