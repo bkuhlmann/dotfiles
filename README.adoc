@@ -51,7 +51,7 @@ image::https://www.alchemists.io/images/screencasts/dotfiles/cover.svg[Screencas
 
 == Requirements
 
-. link:https://www.alchemists.io/projects/mac_os[macOS]
+. link:https://www.alchemists.io/projects/mac_os-config[macOS Configuration]
 
 == Setup
 
