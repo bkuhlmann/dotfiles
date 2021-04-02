@@ -238,23 +238,6 @@ _git_branch_sha() {
   fi
 }
 
-# Label: Git Branch List
-# Description: List branches (local/remote) including author and relative time.
-# Parameters: $1 (optional) - The output format.
-_git_branch_list() {
-  local format=${1:-"%(refname) %(color:blue bold)%(authorname) %(color:green)(%(authordate:relative))"}
-
-  git for-each-ref --sort="authordate:iso8601" \
-                   --sort="authorname" \
-                   --color \
-                   --format="$format" refs/heads refs/remotes/origin \
-                   | sed '/HEAD/d' \
-                   | sed 's/refs\/heads\///g' \
-                   | sed 's/refs\/remotes\/origin\///g' \
-                   | uniq \
-                   | sort
-}
-
 # Label: Git Stash Count
 # Description: Answer total stash count for current project.
 _git_stash_count() {

@@ -341,7 +341,7 @@ ginfo() {
 gstats() {
   if [[ -d ".git" ]]; then
     gount
-    printf "Branches: %s\n" "$(_git_branch_list | wc -l | tr -d ' ')"
+    printf "Branches: %s\n" "$(gbl | wc -l | tr -d ' ')"
     printf "Tags: %s\n" "$(git tag | wc -l | tr -d ' ')"
     printf "Stashes: %s\n" "$(_git_stash_count)"
     printf "Size: %s\n" "$(git count-objects --human-readable)"
@@ -1156,7 +1156,17 @@ grbq() {
 # Description: List local and remote branch details.
 gbl() {
   local format="%(refname)|%(color:yellow)%(objectname)|%(color:reset)|%(color:blue bold)%(authorname)|%(color:green)|%(committerdate:relative)"
-  _git_branch_list "$format" | column -s'|' -t
+
+  git for-each-ref --sort="authordate:iso8601" \
+                   --sort="authorname" \
+                   --color \
+                   --format="$format" refs/heads refs/remotes/origin \
+                   | sed '/HEAD/d' \
+                   | sed 's/refs\/heads\///g' \
+                   | sed 's/refs\/remotes\/origin\///g' \
+                   | uniq \
+                   | sort \
+                   | column -s'|' -t
 }
 
 # Label: Git Branch List Owner
@@ -1246,7 +1256,7 @@ gbca() {
 # Label: Git Branch Switch
 # Description: Switch between branches.
 gbs() {
-  _git_branch_list | fzf | awk '{print $1}' | xargs git switch
+  gbl | fzf | awk '{print $1}' | xargs git switch
 }
 
 # Label: Git Branch Switch (all)
@@ -1284,7 +1294,7 @@ gbna() {
 
       if [[ -d ".git" ]]; then
         local current_branch="$(_git_branch_name)"
-        local number="$(_git_branch_list | rg --invert-match "$(_git_branch_default)" | wc -l | tr -d ' ')"
+        local number="$(gbl | rg --invert-match "$(_git_branch_default)" | wc -l | tr -d ' ')"
 
         if [[ $number -gt 0 ]]; then
           # Output project in cyan and number in white color.
@@ -1304,7 +1314,7 @@ gbd() {
     local ifs_original=$IFS
     IFS=$'\n'
 
-    branches=($(_git_branch_list))
+    branches=($(gbl))
 
     if [[ ${#branches[@]} -gt 1 ]]; then
       printf "\n%s\n" "Select branch to delete:"
