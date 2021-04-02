@@ -238,13 +238,6 @@ _git_branch_sha() {
   fi
 }
 
-# Label: Git Branch List (alphabetical)
-# Description: List branches (local/remote) alphabetically.
-# Parameters: $1 (optional) - The output format.
-_git_branch_list_alpha() {
-  _git_branch_list "$1" | sort
-}
-
 # Label: Git Branch List
 # Description: List branches (local/remote) including author and relative time.
 # Parameters: $1 (optional) - The output format.
@@ -258,7 +251,8 @@ _git_branch_list() {
                    | sed '/HEAD/d' \
                    | sed 's/refs\/heads\///g' \
                    | sed 's/refs\/remotes\/origin\///g' \
-                   | uniq
+                   | uniq \
+                   | sort
 }
 
 # Label: Git Stash Count

@@ -1246,7 +1246,7 @@ gbca() {
 # Label: Git Branch Switch
 # Description: Switch between branches.
 gbs() {
-  _git_branch_list_alpha | fzf | awk '{print $1}' | xargs git switch
+  _git_branch_list | fzf | awk '{print $1}' | xargs git switch
 }
 
 # Label: Git Branch Switch (all)
@@ -1304,7 +1304,7 @@ gbd() {
     local ifs_original=$IFS
     IFS=$'\n'
 
-    branches=($(_git_branch_list_alpha))
+    branches=($(_git_branch_list))
 
     if [[ ${#branches[@]} -gt 1 ]]; then
       printf "\n%s\n" "Select branch to delete:"
