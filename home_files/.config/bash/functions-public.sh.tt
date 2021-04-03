@@ -193,16 +193,15 @@ cat > "$name.cnf" <<-EOF
   DNS.2 = "$name"
 EOF
 
-  openssl req \
-    -new \
-    -newkey rsa:2048 \
-    -sha256 \
-    -days 3650 \
-    -nodes \
-    -x509 \
-    -keyout "$name.key" \
-    -out "$name.crt" \
-    -config "$name.cnf"
+  openssl req -new \
+              -newkey rsa:2048 \
+              -sha256 \
+              -days 3650 \
+              -nodes \
+              -x509 \
+              -keyout "$name.key" \
+              -out "$name.crt" \
+              -config "$name.cnf"
 
   rm -f "$name.cnf"
 }
@@ -1050,7 +1049,7 @@ gcap() {
 
 # Label: Git Merge (all)
 # Description: Merges, deletes, and pushes feature branch.
-# Parameters: $1 (required|optional) - Branch.
+# Parameters: $1 (required) - Branch.
 gma() {
   local branch="$1"
 
@@ -1066,11 +1065,11 @@ gma() {
       if [[ -d ".git" && "$(_git_branch_name)" == "$branch" ]]; then
         printf "\033[36m${project}\033[m: Merging, deleting, and pushing...\n"
 
-        git switch "$(_git_branch_default)" && \
-        git merge "$branch" && \
-        git branch --delete --force "$branch" && \
-        git push --delete origin "$branch" && \
-        git push
+        git switch "$(_git_branch_default)" \
+        && git merge "$branch" \
+        && git branch --delete --force "$branch" \
+        && git push --delete origin "$branch" \
+        && git push
       fi
     )
   done < <(ls -A1)
@@ -1169,7 +1168,7 @@ gbl() {
                    | column -s'|' -t
 }
 
-# Label: Git Branch List Owner
+# Label: Git Branch List (owner)
 # Description: List branches owned by current author or supplied author.
 # Parameters: $1 (optional) - The author name.
 gblo() {
@@ -1741,7 +1740,7 @@ ghpra() {
 
       if [[ -d ".git" ]]; then
         if [[ "$(_git_branch_name)" != "$(_git_branch_default)" ]]; then
-          gh b r # a.k.a. GitHub Branch Pull Request
+          gh b r
         fi
       fi
     )
@@ -2125,9 +2124,9 @@ rsall() {
   done < <(ls -A1)
 }
 
-#-------------------------------------------------#
+#--------------------------------------------------#
 # Section: https://rubyonrails.org:[Ruby on Rails] #
-#-------------------------------------------------#
+#--------------------------------------------------#
 
 # Label: Ruby on Rails New
 # Description: Create new Rails application from selected option.
