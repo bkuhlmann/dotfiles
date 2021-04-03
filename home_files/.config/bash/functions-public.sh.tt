@@ -724,27 +724,6 @@ gunseta() {
   fi
 }
 
-# Label: Git Email Set (all)
-# Description: Sets user email for projects in current directory.
-# Parameters: $1 (required) - The email address.
-gailsa() {
-  gseta "user.email" "$1"
-}
-
-# Label: Git Email Get
-# Description: Answer user email for current project.
-gail() {
-  if [[ -d ".git" ]]; then
-    git config user.email
-  fi
-}
-
-# Label: Git Email Get (all)
-# Description: Answer user email for projects in current directory.
-gaila() {
-  ggeta "user.email"
-}
-
 # Label: Git Since
 # Description: Answer summarized list of activity since date/time for projects in current directory.
 # Parameters: $1 (required) - The date/time since value, $2 (optional) - The date/time until value, $3 (optional) - The commit author.
