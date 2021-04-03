@@ -74,8 +74,6 @@
   fullname = true
   lineNumber = true
   threads = 3
-[includeIf "gitdir:~/Engineering/Companies/Example/"]
-  path = ~/.config/git/profiles/example
 [init]
   defaultBranch = main
   templateDir = ~/.config/git/template
@@ -129,3 +127,5 @@
   name = <redacted>
   signingKey = <redacted>
   useConfigOnly = true
+[includeIf "gitdir:~/Engineering/Companies/Example/"]
+  path = ~/.config/git/profiles/example
