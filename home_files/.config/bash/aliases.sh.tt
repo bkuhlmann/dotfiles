@@ -1,303 +1,5 @@
 #! /usr/bin/env bash
 
-# Section: General
-alias ..="cd .."
-alias ...="cd ../.."
-alias cdb="cd -"
-alias c="clear"
-alias h="history"
-alias l="ls -alhT"
-alias o="open"
-alias p='pwd | tr -d "\r\n" | _copy_and_print'
-alias du="ncdu -e --color dark"
-alias l1="ls -A1 | _copy_and_print '\n'"
-alias cat="bat --theme DarkNeon"
-alias man="gem man --system"
-alias ping="prettyping --nolegend"
-alias pss="pgrep -i -l -f"
-alias rmde="find . -type d -empty -not -path '*.git*' -delete"
-alias top="htop"
-
-# Section: https://www.gnu.org/software/bash:[Bash]
-alias bashe="$EDITOR $HOME/.config/bash/env.sh"
-alias bashs="exec $SHELL"
-
-# Section: https://the.exa.website:[Exa]
-alias x="exa --all --long --header --group --group-directories-first --time-style long-iso --git --git-ignore"
-alias x1="exa --oneline --all --group-directories-first"
-alias xt="exa --tree"
-
-# Section: Network
-alias sshe="$EDITOR $HOME/.ssh/config"
-alias key="open /Applications/Utilities/Keychain\ Access.app"
-alias ipa='curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
-alias dnsi="scutil --dns"
-alias dnss="sudo dscacheutil -statistics"
-alias dnsf="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
-
-# Section: https://github.com/junegunn/fzf:[Fuzzy Finder]
-alias ff="fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
-
-# Section: https://www.docker.com:[Docker]
-alias dr="docker"
-alias drb="docker build"
-alias drd="docker system prune --force && docker buildx prune --force"
-alias dri="docker images"
-alias drp="docker ps --all"
-alias drt="docker tag"
-alias drc="docker-compose"
-
-# Section: http://tmux.sourceforge.net:[tmux]
-alias tsl="tmux list-sessions"
-alias tsa="tmux attach-session -t"
-alias tsk="tmux kill-session -t"
-alias tsr="tmux rename-session -t"
-
-# Section: http://brew.sh[Homebrew]
-alias hb="brew"
-alias hbi="brew update && brew install"
-alias hbin="brew info"
-alias hbu="brew uninstall"
-alias hblf="brew list --formulae --versions | fzf"
-alias hblc="brew list --casks --versions | fzf"
-alias hbs="brew search"
-alias hbug="brew update && brew upgrade"
-alias hbp="brew pin"
-alias hbpu="brew unpin"
-alias hbd="brew doctor"
-alias hbsu="brew update && brew upgrade && brew cleanup"
-
-# Section: http://git-scm.com:[Git]
-alias gi="git init && git config --global --add maintenance.repo $PWD"
-alias gcle="git config --local --edit"
-alias gcge="git config --global --edit"
-alias gcd="git config --list --show-origin --show-scope"
-alias gget="git config --get"
-alias gset="git config --add"
-alias gst="git status --short --branch"
-alias gl='git log --graph --pretty=format:"$(_git_log_line_format)"'
-alias glh="_git_commit_last | _copy_and_print"
-alias glf='git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
-alias glg='git log --pretty=format:"$(_git_log_line_format)" --grep'
-alias gls='git log --pretty=format:"$(_git_log_line_format)" -S'
-alias glt='git for-each-ref --sort=taggerdate --color --format="%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
-alias grl="git reflog"
-alias gg="git grep"
-alias guthors='git log --color --pretty=format:"%C(bold blue)%an%C(reset)" | sort | uniq -c | sort --reverse'
-alias gd="git diff"
-alias gdc="git diff --cached"
-alias gdm='git diff origin/$(_git_branch_default)'
-alias gdw="git diff --color-words"
-alias gdo='git diff --name-only | uniq | xargs $EDITOR'
-alias gdt="git difftool"
-alias gdtc="git difftool --cached"
-alias gdtm='git difftool origin/$(_git_branch_default)'
-alias glame="git blame -M -C -C -C"
-alias gbi="git bisect"
-alias gbis="git bisect start"
-alias gbib="git bisect bad"
-alias gbig="git bisect good"
-alias gbir="git bisect reset"
-alias gbisk="git bisect skip"
-alias gbil="git bisect log"
-alias gbire="git bisect replay"
-alias gbiv='git bisect visualize --reverse --pretty=format:"$(_git_log_line_format)"'
-alias gbih="git bisect help"
-alias gbt="git show-branch --topics"
-alias gbe="git branch --edit-description"
-alias gbn="_git_branch_name | _copy_and_print"
-alias gcl="git clone"
-alias gb="git switch"
-alias gbb="git switch -"
-alias gbm='git switch $(_git_branch_default)'
-alias ga="git add"
-alias gau="git add --update"
-alias gap="git add --patch"
-alias gall="git add --all ."
-alias gco="git commit"
-alias gce='cat .git/COMMIT_EDITMSG | rg --invert-match "^\#.*" | pbcopy'
-alias gatch="git commit --patch"
-alias gca="git commit --all"
-alias gcm="git commit --message"
-alias gcam="git commit --all --message"
-alias gcf="git commit --fixup"
-alias gcs="git commit --squash"
-alias gamend="git commit --amend"
-alias gamendh="git commit --amend --no-edit"
-alias gamenda="git commit --amend --all --no-edit"
-alias gcp="git cherry-pick"
-alias gcpa="git cherry-pick --abort"
-alias gcps="git cherry-pick --skip"
-alias gashc="git stash clear"
-alias gnl="git notes list"
-alias gns="git notes show"
-alias gna="git notes add"
-alias gne="git notes edit"
-alias gnd="git notes remove"
-alias gnp="git notes prune"
-alias gf="git fetch"
-alias gpu="git pull"
-alias gpuo="git pull origin"
-alias gpuom='git pull origin $(_git_branch_default)'
-alias gpuum='git pull upstream $(_git_branch_default)'
-alias grbo="git rebase --onto"
-alias grbc="git rebase --continue"
-alias grbd="git rebase --show-current-patch"
-alias grbs="git rebase --skip"
-alias grba="git rebase --abort"
-alias grbt="git rebase --edit-todo"
-alias gr="git restore"
-alias grr="git rerere"
-alias gpf="git push --force-with-lease"
-alias gpn="git push --no-verify"
-alias gpo="git push --set-upstream origin"
-alias gtag="git tag"
-alias gtagv="git tag --verify"
-alias gtags="git push --tags"
-alias gwl="git worktree list"
-alias gwp="git worktree prune"
-alias ges="git reset"
-alias grom='git fetch --all && git reset --hard origin/$(_git_branch_default)' # Reset local branch to origin/main branch. UNRECOVERABLE!
-alias gel="git rm"
-alias gelc="git rm --cached" # Removes previously tracked file from index after being added to gitignore.
-alias grev="git revert --no-commit"
-alias glean="git clean -d --force"
-
-# Section: http://www.gnu.org/software/tar/tar.html:[Tar]
-alias bzc="tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
-alias bzx="tar --extract --bzip2 --verbose --file"
-
-# Section: http://www.postgresql.org:[PostgreSQL]
-alias pgi="initdb $HOMEBREW_PREFIX/var/postgres"
-alias pgst="pg_ctl -D $HOMEBREW_PREFIX/var/postgres -l $HOMEBREW_PREFIX/var/postgres/server.log start &"
-alias pgsp="pg_ctl -D $HOMEBREW_PREFIX/var/postgres stop -s -m fast"
-
-# Section: http://redis.io:[Redis]
-alias reds="redis-server $HOMEBREW_PREFIX/etc/redis.conf &"
-alias redc="redis-cli"
-
-# Section: https://github.com/postmodern/chruby:[chruby]
-alias rb="chruby"
-
-# Section: https://www.ruby-lang.org:[Ruby]
-alias rbi="ruby-install"
-alias rbbe="$EDITOR $HOME/Engineering/Misc/benchmark.rb"
-alias rbbr="ruby $HOME/Engineering/Misc/benchmark.rb"
-alias rbse="$EDITOR $HOME/Engineering/Misc/snippet.rb"
-alias rbsr="ruby $HOME/Engineering/Misc/snippet.rb"
-
-# Section: https://github.com/whitesmith/RubyCritic:[RubyCritic]
-alias rbct="open tmp/rubycritic/overview.html"
-
-# Section: https://www.alchemists.io/projects/rubysmith:[Rubysmith]
-alias rbb="rubysmith --build"
-
-# Section: https://rubygems.org:[Ruby Gems]
-alias gemcr="$EDITOR $HOME/.gem/credentials"
-alias geml="gem list"
-alias gemi="gem install"
-alias gemu="gem uninstall"
-alias gemc="gem cleanup"
-alias gems="gem server"
-alias gemp="gem pristine"
-alias geme="gem environment"
-alias gemuc="gem update --system && gem update && gem cleanup"
-alias gemcli="ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
-
-# Section: http://bundler.io:[Bundler]
-alias ba="bundle add"
-alias br="bundle remove"
-alias bb="bundle binstubs"
-alias bd="bundle doctor"
-alias bi="bundle install"
-alias blo="bundle list --paths | fzf | xargs $EDITOR"
-alias bu="bundle update"
-alias bo="bundle outdated --only-explicit"
-alias bce="$EDITOR $HOME/.config/bundler/configuration.yml"
-alias be="bundle exec"
-alias bch="rm -f Gemfile.lock; bundle check"
-
-# Section: https://www.alchemists.io/projects/milestoner:[Milestoner]
-alias ms="milestoner"
-alias msc='milestoner --commits | _copy_and_print "\n"'
-alias msp="milestoner --publish"
-alias mse="milestoner --config --edit"
-
-# Section: https://www.alchemists.io/projects/gemsmith:[Gemsmith]
-alias gsg="gemsmith --generate"
-alias gse="gemsmith --config --edit"
-alias gsr="gemsmith --read"
-alias gso="gemsmith --open"
-alias gsi="rake install"
-alias gsp="rake publish"
-alias gsq="rake code_quality"
-
-# Section: https://rspec.info:[RSpec]
-alias rss="rspec spec"
-alias rst="rspec spec --tag"
-alias rsn="rspec spec --next-failure"
-alias rsf="rspec spec --only-failures"
-alias rso="rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
-
-# Section: https://rubyonrails.org:[Ruby on Rails]
-alias railsb="rails console --sandbox"
-alias railse="EDITOR='sublime --wait' rails credentials:edit"
-alias railsdbm="rake db:migrate && rake db:rollback && rake db:migrate && RAILS_ENV=test rake db:migrate"
-
-# Section: https://crystal-lang.org:[Crystal]
-alias cr="crystal"
-alias crb="crystal build"
-alias crr="crystal run"
-alias crd="crystal docs"
-alias crdo="open docs/index.html"
-alias crs="crystal spec"
-
-# Section: http://elm-lang.org:[Elm]
-alias elmc="elm repl"
-alias elmg="elm init"
-alias elmi="elm install"
-alias elms="elm reactor"
-alias elmt="elm-test"
-alias elmp="elm publish"
-
-# Section: https://github.com/bbatsov/rubocop:[Rubocop]
-alias cop="rubocop --parallel --display-cop-names --display-style-guide"
-alias copc="rubocop --auto-gen-config"
-alias copo="rubocop --display-cop-names --only"
-alias copf="rubocop --auto-correct"
-alias copfo="rubocop --auto-correct --only"
-alias cops="rubocop --show-cops"
-alias copd='find . -name ".rubocop-http*" -type f -delete'
-
-# Section: https://github.com/colszowka/simplecov:[SimpleCov]
-alias cov="open coverage/index.html"
-
-# Section: http://direnv.net:[direnv]
-alias denva="direnv allow"
-alias denvr="direnv reload"
-alias denvs="direnv status"
-
-# Section: https://yarnpkg.com:[Yarn]
-alias ya="yarn add"
-alias yad="yarn add --dev"
-alias yi="yarn install"
-alias yo="yarn outdated"
-alias yr="yarn remove"
-alias ys="yarn run"
-alias yu="yarn upgrade"
-
-# Section: https://github.com/rupa/z:[Z]
-alias ze="$EDITOR $_Z_DATA"
-
-# Section: http://www.cocoatech.com/pathfinder:[Path Finder]
-alias pfo='open -a "Path Finder.app" "$PWD"'
-
-# Section: http://www.sublimetext.com:[Sublime Text]
-alias e="sublime"
-
-# Section: http://marked2app.com:[Marked 2]
-alias mo="open -a Marked\ 2"
-
 # Section: https://asciidoctor.org:[ASCII Doctor]
 alias ad="asciidoctor"
 
@@ -305,15 +7,295 @@ alias ad="asciidoctor"
 alias cin="asciinema"
 alias cina="asciinema rec --append"
 alias cinc="asciinema cat"
+alias cine="asciinema_plus -e"
 alias cinp="asciinema play"
 alias cinu="asciinema upload"
-alias cine="asciinema_plus -e"
+
+# Section: https://www.gnu.org/software/bash:[Bash]
+alias bashe="$EDITOR $HOME/.config/bash/env.sh"
+alias bashs="exec $SHELL"
+
+# Section: http://bundler.io:[Bundler]
+alias ba="bundle add"
+alias bb="bundle binstubs"
+alias bce="$EDITOR $HOME/.config/bundler/configuration.yml"
+alias bch="rm -f Gemfile.lock; bundle check"
+alias bd="bundle doctor"
+alias be="bundle exec"
+alias bi="bundle install"
+alias blo="bundle list --paths | fzf | xargs $EDITOR"
+alias bo="bundle outdated --only-explicit"
+alias br="bundle remove"
+alias bu="bundle update"
+
+# Section: https://github.com/postmodern/chruby:[chruby]
+alias rb="chruby"
+
+# Section: https://crystal-lang.org:[Crystal]
+alias cr="crystal"
+alias crb="crystal build"
+alias crd="crystal docs"
+alias crdo="open docs/index.html"
+alias crr="crystal run"
+alias crs="crystal spec"
+
+# Section: http://direnv.net:[direnv]
+alias denva="direnv allow"
+alias denvr="direnv reload"
+alias denvs="direnv status"
+
+# Section: https://www.docker.com:[Docker]
+alias dr="docker"
+alias drb="docker build"
+alias drc="docker-compose"
+alias drd="docker system prune --force && docker buildx prune --force"
+alias dri="docker images"
+alias drp="docker ps --all"
+alias drt="docker tag"
 
 # Section: http://duti.org:[duti]
 alias dutia="duti $HOME/.config/duti/configuration.duti"
 
+# Section: http://elm-lang.org:[Elm]
+alias elmc="elm repl"
+alias elmg="elm init"
+alias elmi="elm install"
+alias elmp="elm publish"
+alias elms="elm reactor"
+alias elmt="elm-test"
+
+# Section: https://the.exa.website:[Exa]
+alias x1="exa --oneline --all --group-directories-first"
+alias x="exa --all --long --header --group --group-directories-first --time-style long-iso --git --git-ignore"
+alias xt="exa --tree"
+
+# Section: https://github.com/junegunn/fzf:[Fuzzy Finder]
+alias ff="fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
+
+# Section: https://www.alchemists.io/projects/gemsmith:[Gemsmith]
+alias gse="gemsmith --config --edit"
+alias gsg="gemsmith --generate"
+alias gsi="rake install"
+alias gso="gemsmith --open"
+alias gsp="rake publish"
+alias gsq="rake code_quality"
+alias gsr="gemsmith --read"
+
+# Section: General
+alias ...="cd ../.."
+alias ..="cd .."
+alias c="clear"
+alias cat="bat --theme DarkNeon"
+alias cdb="cd -"
+alias du="ncdu -e --color dark"
+alias h="history"
+alias l1="ls -A1 | _copy_and_print '\n'"
+alias l="ls -alhT"
+alias man="gem man --system"
+alias o="open"
+alias p='pwd | tr -d "\r\n" | _copy_and_print'
+alias pss="pgrep -i -l -f"
+alias rmde="find . -type d -empty -not -path '*.git*' -delete"
+
+# Section: http://git-scm.com:[Git]
+alias ga="git add"
+alias gall="git add --all ."
+alias gamend="git commit --amend"
+alias gamenda="git commit --amend --all --no-edit"
+alias gamendh="git commit --amend --no-edit"
+alias gap="git add --patch"
+alias gashc="git stash clear"
+alias gatch="git commit --patch"
+alias gau="git add --update"
+alias gb="git switch"
+alias gbb="git switch -"
+alias gbe="git branch --edit-description"
+alias gbi="git bisect"
+alias gbib="git bisect bad"
+alias gbig="git bisect good"
+alias gbih="git bisect help"
+alias gbil="git bisect log"
+alias gbir="git bisect reset"
+alias gbire="git bisect replay"
+alias gbis="git bisect start"
+alias gbisk="git bisect skip"
+alias gbiv='git bisect visualize --reverse --pretty=format:"$(_git_log_line_format)"'
+alias gbm='git switch $(_git_branch_default)'
+alias gbn="_git_branch_name | _copy_and_print"
+alias gbt="git show-branch --topics"
+alias gca="git commit --all"
+alias gcam="git commit --all --message"
+alias gcd="git config --list --show-origin --show-scope"
+alias gce='cat .git/COMMIT_EDITMSG | rg --invert-match "^\#.*" | pbcopy'
+alias gcf="git commit --fixup"
+alias gcge="git config --global --edit"
+alias gcl="git clone"
+alias gcle="git config --local --edit"
+alias gcm="git commit --message"
+alias gco="git commit"
+alias gcp="git cherry-pick"
+alias gcpa="git cherry-pick --abort"
+alias gcps="git cherry-pick --skip"
+alias gcs="git commit --squash"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gdm='git diff origin/$(_git_branch_default)'
+alias gdo='git diff --name-only | uniq | xargs $EDITOR'
+alias gdt="git difftool"
+alias gdtc="git difftool --cached"
+alias gdtm='git difftool origin/$(_git_branch_default)'
+alias gdw="git diff --color-words"
+alias gel="git rm"
+alias gelc="git rm --cached" # Removes previously tracked file from index after being added to gitignore.
+alias ges="git reset"
+alias gf="git fetch"
+alias gg="git grep"
+alias gget="git config --get"
+alias gi="git init && git config --global --add maintenance.repo $PWD"
+alias gl='git log --graph --pretty=format:"$(_git_log_line_format)"'
+alias glame="git blame -M -C -C -C"
+alias glean="git clean -d --force"
+alias glf='git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
+alias glg='git log --pretty=format:"$(_git_log_line_format)" --grep'
+alias glh="_git_commit_last | _copy_and_print"
+alias gls='git log --pretty=format:"$(_git_log_line_format)" -S'
+alias glt='git for-each-ref --sort=taggerdate --color --format="%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
+alias gna="git notes add"
+alias gnd="git notes remove"
+alias gne="git notes edit"
+alias gnl="git notes list"
+alias gnp="git notes prune"
+alias gns="git notes show"
+alias gpf="git push --force-with-lease"
+alias gpn="git push --no-verify"
+alias gpo="git push --set-upstream origin"
+alias gpu="git pull"
+alias gpuo="git pull origin"
+alias gpuom='git pull origin $(_git_branch_default)'
+alias gpuum='git pull upstream $(_git_branch_default)'
+alias gr="git restore"
+alias grba="git rebase --abort"
+alias grbc="git rebase --continue"
+alias grbd="git rebase --show-current-patch"
+alias grbo="git rebase --onto"
+alias grbs="git rebase --skip"
+alias grbt="git rebase --edit-todo"
+alias grev="git revert --no-commit"
+alias grl="git reflog"
+alias grom='git fetch --all && git reset --hard origin/$(_git_branch_default)' # Reset local branch to origin/main branch. UNRECOVERABLE!
+alias grr="git rerere"
+alias gset="git config --add"
+alias gst="git status --short --branch"
+alias gtag="git tag"
+alias gtags="git push --tags"
+alias gtagv="git tag --verify"
+alias guthors='git log --color --pretty=format:"%C(bold blue)%an%C(reset)" | sort | uniq -c | sort --reverse'
+alias gwl="git worktree list"
+alias gwp="git worktree prune"
+
+# Section: http://brew.sh[Homebrew]
+alias hb="brew"
+alias hbd="brew doctor"
+alias hbi="brew update && brew install"
+alias hbin="brew info"
+alias hblc="brew list --casks --versions | fzf"
+alias hblf="brew list --formulae --versions | fzf"
+alias hbp="brew pin"
+alias hbpu="brew unpin"
+alias hbs="brew search"
+alias hbsu="brew update && brew upgrade && brew cleanup"
+alias hbu="brew uninstall"
+alias hbug="brew update && brew upgrade"
+
+# Section: http://marked2app.com:[Marked 2]
+alias mo="open -a Marked\ 2"
+
+# Section: https://www.alchemists.io/projects/milestoner:[Milestoner]
+alias ms="milestoner"
+alias msc='milestoner --commits | _copy_and_print "\n"'
+alias mse="milestoner --config --edit"
+alias msp="milestoner --publish"
+
+# Section: Network
+alias dnsf="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
+alias dnsi="scutil --dns"
+alias dnss="sudo dscacheutil -statistics"
+alias ipa='curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
+alias key="open /Applications/Utilities/Keychain\ Access.app"
+alias ping="prettyping --nolegend"
+alias sshe="$EDITOR $HOME/.ssh/config"
+alias top="htop"
+
+# Section: http://www.cocoatech.com/pathfinder:[Path Finder]
+alias pfo='open -a "Path Finder.app" "$PWD"'
+
+# Section: http://www.postgresql.org:[PostgreSQL]
+alias pgi="initdb $HOMEBREW_PREFIX/var/postgres"
+alias pgsp="pg_ctl -D $HOMEBREW_PREFIX/var/postgres stop -s -m fast"
+alias pgst="pg_ctl -D $HOMEBREW_PREFIX/var/postgres -l $HOMEBREW_PREFIX/var/postgres/server.log start &"
+
+# Section: http://redis.io:[Redis]
+alias redc="redis-cli"
+alias reds="redis-server $HOMEBREW_PREFIX/etc/redis.conf &"
+
 # Section: https://github.com/BurntSushi/ripgrep:[ripgrep]
 alias rgf="rg --files --glob"
+
+# Section: https://rspec.info:[RSpec]
+alias rsf="rspec spec --only-failures"
+alias rsn="rspec spec --next-failure"
+alias rso="rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
+alias rss="rspec spec"
+alias rst="rspec spec --tag"
+
+# Section: https://github.com/bbatsov/rubocop:[Rubocop]
+alias cop="rubocop --parallel --display-cop-names --display-style-guide"
+alias copc="rubocop --auto-gen-config"
+alias copd='find . -name ".rubocop-http*" -type f -delete'
+alias copf="rubocop --auto-correct"
+alias copfo="rubocop --auto-correct --only"
+alias copo="rubocop --display-cop-names --only"
+alias cops="rubocop --show-cops"
+
+# Section: https://www.ruby-lang.org:[Ruby]
+alias rbbe="$EDITOR $HOME/Engineering/Misc/benchmark.rb"
+alias rbbr="ruby $HOME/Engineering/Misc/benchmark.rb"
+alias rbi="ruby-install"
+alias rbse="$EDITOR $HOME/Engineering/Misc/snippet.rb"
+alias rbsr="ruby $HOME/Engineering/Misc/snippet.rb"
+
+# Section: https://rubyonrails.org:[Ruby on Rails]
+alias railsb="rails console --sandbox"
+alias railsdbm="rake db:migrate && rake db:rollback && rake db:migrate && RAILS_ENV=test rake db:migrate"
+alias railse="EDITOR='sublime --wait' rails credentials:edit"
+
+# Section: https://github.com/whitesmith/RubyCritic:[RubyCritic]
+alias rbct="open tmp/rubycritic/overview.html"
+
+# Section: https://rubygems.org:[RubyGems]
+alias gemc="gem cleanup"
+alias gemcli="ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
+alias gemcr="$EDITOR $HOME/.gem/credentials"
+alias geme="gem environment"
+alias gemi="gem install"
+alias geml="gem list"
+alias gemp="gem pristine"
+alias gems="gem server"
+alias gemu="gem uninstall"
+alias gemuc="gem update --system && gem update && gem cleanup"
+
+# Section: https://www.alchemists.io/projects/rubysmith:[Rubysmith]
+alias rbb="rubysmith --build"
+
+# Section: https://github.com/colszowka/simplecov:[SimpleCov]
+alias cov="open coverage/index.html"
+
+# Section: http://www.sublimetext.com:[Sublime Text]
+alias e="sublime"
+
+# Section: http://www.gnu.org/software/tar/tar.html:[Tar]
+alias bzc="tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
+alias bzx="tar --extract --bzip2 --verbose --file"
 
 # Section: https://www.terraform.io:[Terraform]
 alias tf="terraform"
@@ -328,5 +310,23 @@ alias tft="terraform taint"
 alias tfu="terraform untaint"
 alias tfv="terraform validate"
 
+# Section: http://tmux.sourceforge.net:[tmux]
+alias tsa="tmux attach-session -t"
+alias tsk="tmux kill-session -t"
+alias tsl="tmux list-sessions"
+alias tsr="tmux rename-session -t"
+
 # Section: https://gitlab.com/procps-ng/procps:[Watch]
 alias wp="watch --interval 1 --color --beep --exec"
+
+# Section: https://yarnpkg.com:[Yarn]
+alias ya="yarn add"
+alias yad="yarn add --dev"
+alias yi="yarn install"
+alias yo="yarn outdated"
+alias yr="yarn remove"
+alias ys="yarn run"
+alias yu="yarn upgrade"
+
+# Section: https://github.com/rupa/z:[Z]
+alias ze="$EDITOR $_Z_DATA"
