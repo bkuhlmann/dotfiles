@@ -5,6 +5,6 @@ attributes:
   - inheritance
   - timestamps
 disconnected: true
+filename: tmp/erd
 inheritance: true
 notation: bachman
-filename: tmp/erd
