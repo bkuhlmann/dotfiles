@@ -6,6 +6,7 @@
 
 # Archives
 *.7z
+*.bzip
 *.dmg
 *.gz
 *.iso
@@ -14,15 +15,14 @@
 *.tar
 *.tar.gz
 *.zip
-*.bzip
 
 # Databases
 *.dump
 
 # CTags
-/tags
 .tags
 .tags_sorted_by_file
+/tags
 
 # Bundler
 .bundle
