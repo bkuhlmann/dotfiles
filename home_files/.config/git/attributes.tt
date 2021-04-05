@@ -3,12 +3,12 @@
 *.ico diff=exif
 *.jpeg diff=exif
 *.jpg diff=exif
-*.png diff=exif
 *.mp4 diff=exif
 *.ogg diff=exif
-*.webm diff=exif
+*.png diff=exif
 *.rake diff=ruby
 *.rb diff=ruby
+*.webm diff=exif
 config.ru diff=ruby
 Gemfile diff=ruby
 Gemfile.lock diff=ruby
