@@ -36,9 +36,9 @@ cinr() {
   asciinema rec --title "$label" "$name"
 }
 
-#--------------------------------------#
-# Section: http://bundler.io:[Bundler] #
-#--------------------------------------#
+#---------------------------------------#
+# Section: https://bundler.io:[Bundler] #
+#---------------------------------------#
 
 # Label: Bundle Clean (all)
 # Description: Clean projects of gem artifacts (i.e. pkg folder).
@@ -199,9 +199,9 @@ cqi() {
   done
 }
 
-#-------------------------------------#
-# Section: http://curl.haxx.se:[curl] #
-#-------------------------------------#
+#---------------------------------#
+# Section: https://curl.se:[curl] #
+#---------------------------------#
 
 # Label: Curl Diagnostics
 # Description: Curl with diagnostic information for request.
@@ -268,9 +268,9 @@ dots() {
   done
 }
 
-#------------------------------------#
-# Section: http://elm-lang.org:[Elm] #
-#------------------------------------#
+#-------------------------------------#
+# Section: https://elm-lang.org:[Elm] #
+#-------------------------------------#
 
 # Label: Elm Live
 # Description: Watch for source code changes and recompile immediately.
@@ -1851,9 +1851,9 @@ ghpra() {
   done < <(ls -A1)
 }
 
-#----------------------------------------------------------#
-# Section: http://en.wikipedia.org/wiki/Less_(Unix):[less] #
-#----------------------------------------------------------#
+#-----------------------------------------------------------#
+# Section: https://en.wikipedia.org/wiki/Less_(Unix):[less] #
+#-----------------------------------------------------------#
 
 # Label: Less Interactive
 # Description: Inspect file, interactively.
@@ -1911,9 +1911,9 @@ licensei() {
   license_finder whitelist add "$license" --who "$(git config user.name)" --why "$why"
 }
 
-#------------------------------------------------#
-# Section: http://people.freebsd.org/~abe:[lsof] #
-#------------------------------------------------#
+#-------------------------------------------------#
+# Section: https://people.freebsd.org/~abe:[lsof] #
+#-------------------------------------------------#
 
 # Label: Port
 # Description: List file activity on given port.
@@ -2030,9 +2030,9 @@ oms() {
   overmind start --port $port --port-step 10
 }
 
-#-------------------------------------------------#
-# Section: http://www.postgresql.org:[PostgreSQL] #
-#-------------------------------------------------#
+#--------------------------------------------------#
+# Section: https://www.postgresql.org:[PostgreSQL] #
+#--------------------------------------------------#
 
 # Label: PostgreSQL Template
 # Description: Edit PostgreSQL template.
@@ -2097,9 +2097,9 @@ rakea() {
   done < <(ls -A1)
 }
 
-#------------------------------------#
-# Section: http://rspec.info:[RSpec] #
-#------------------------------------#
+#-------------------------------------#
+# Section: https://rspec.info:[RSpec] #
+#-------------------------------------#
 
 # Label: RSpec (all)
 # Description: Run RSpec for projects in current directory.

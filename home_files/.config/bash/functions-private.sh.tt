@@ -209,9 +209,9 @@ _toggle_total_color() {
   fi
 }
 
-#-----------------------------------#
-# Section: http://git-scm.com:[Git] #
-#-----------------------------------#
+#------------------------------------#
+# Section: https://git-scm.com:[Git] #
+#------------------------------------#
 
 # Label: Git Branch Default
 # Description: Print Git default branch.

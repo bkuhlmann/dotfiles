@@ -15,7 +15,7 @@ alias cinu="asciinema upload"
 alias bashe="$EDITOR $HOME/.config/bash/env.sh"
 alias bashs="exec $SHELL"
 
-# Section: http://bundler.io:[Bundler]
+# Section: https://bundler.io:[Bundler]
 alias ba="bundle add"
 alias bb="bundle binstubs"
 alias bce="$EDITOR $HOME/.config/bundler/configuration.yml"
@@ -39,7 +39,7 @@ alias crdo="open docs/index.html"
 alias crr="crystal run"
 alias crs="crystal spec"
 
-# Section: http://direnv.net:[direnv]
+# Section: https://direnv.net:[direnv]
 alias denva="direnv allow"
 alias denvr="direnv reload"
 alias denvs="direnv status"
@@ -56,7 +56,7 @@ alias drt="docker tag"
 # Section: http://duti.org:[duti]
 alias dutia="duti $HOME/.config/duti/configuration.duti"
 
-# Section: http://elm-lang.org:[Elm]
+# Section: https://elm-lang.org:[Elm]
 alias elmc="elm repl"
 alias elmg="elm init"
 alias elmi="elm install"
@@ -97,7 +97,7 @@ alias p='pwd | tr -d "\r\n" | _copy_and_print'
 alias pss="pgrep -i -l -f"
 alias rmde="find . -type d -empty -not -path '*.git*' -delete"
 
-# Section: http://git-scm.com:[Git]
+# Section: https://git-scm.com:[Git]
 alias ga="git add"
 alias gall="git add --all ."
 alias gamend="git commit --amend"
@@ -193,7 +193,7 @@ alias guthors='git log --color --pretty=format:"%C(bold blue)%an%C(reset)" | sor
 alias gwl="git worktree list"
 alias gwp="git worktree prune"
 
-# Section: http://brew.sh[Homebrew]
+# Section: https://brew.sh:[Homebrew]
 alias hb="brew"
 alias hbd="brew doctor"
 alias hbi="brew update && brew install"
@@ -207,7 +207,7 @@ alias hbsu="brew update && brew upgrade && brew cleanup"
 alias hbu="brew uninstall"
 alias hbug="brew update && brew upgrade"
 
-# Section: http://marked2app.com:[Marked 2]
+# Section: https://marked2app.com:[Marked 2]
 alias mo="open -a Marked\ 2"
 
 # Section: https://www.alchemists.io/projects/milestoner:[Milestoner]
@@ -226,15 +226,15 @@ alias ping="prettyping --nolegend"
 alias sshe="$EDITOR $HOME/.ssh/config"
 alias top="htop"
 
-# Section: http://www.cocoatech.com/pathfinder:[Path Finder]
+# Section: https://cocoatech.com:[Path Finder]
 alias pfo='open -a "Path Finder.app" "$PWD"'
 
-# Section: http://www.postgresql.org:[PostgreSQL]
+# Section: https://www.postgresql.org:[PostgreSQL]
 alias pgi="initdb $HOMEBREW_PREFIX/var/postgres"
 alias pgsp="pg_ctl -D $HOMEBREW_PREFIX/var/postgres stop -s -m fast"
 alias pgst="pg_ctl -D $HOMEBREW_PREFIX/var/postgres -l $HOMEBREW_PREFIX/var/postgres/server.log start &"
 
-# Section: http://redis.io:[Redis]
+# Section: https://redis.io:[Redis]
 alias redc="redis-cli"
 alias reds="redis-server $HOMEBREW_PREFIX/etc/redis.conf &"
 
@@ -290,10 +290,10 @@ alias rbb="rubysmith --build"
 # Section: https://github.com/colszowka/simplecov:[SimpleCov]
 alias cov="open coverage/index.html"
 
-# Section: http://www.sublimetext.com:[Sublime Text]
+# Section: https://www.sublimetext.com:[Sublime Text]
 alias e="sublime"
 
-# Section: http://www.gnu.org/software/tar/tar.html:[Tar]
+# Section: https://www.gnu.org/software/tar/tar.html:[Tar]
 alias bzc="tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
 alias bzx="tar --extract --bzip2 --verbose --file"
 
