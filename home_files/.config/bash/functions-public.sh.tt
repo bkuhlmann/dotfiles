@@ -367,13 +367,9 @@ kilp() {
 
 # Label: Tab to Space
 # Description: Convert file from tab to space indendation.
-# Parameters: $1 (required) - The file to convert, $2 (optional) - The number of spaces, default: 2.
+# Parameters: $1 (required) - File path, $2 (optional) - Number of spaces, default: 2.
 t2s() {
-  if [[ "$2" ]]; then
-    local number_of_spaces=$2
-  else
-    local number_of_spaces=2
-  fi
+  local number_of_spaces="${2:-2}"
 
   if [[ "$1" ]]; then
     local temp_file=$(mktemp -t tabs_to_spaces) || { printf "\n%s\n" "ERROR: Unable to create temporary file."; return; }
