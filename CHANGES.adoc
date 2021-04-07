@@ -1,5 +1,28 @@
 = Changes
 
+== 43.0.0 (2021-04-06)
+
+* Fixed Git global configuration includes - Brooke Kuhlmann
+* Fixed README requirements to point to macOS Configuration - Brooke Kuhlmann
+* Fixed alias and function links to use HTTPS where possible - Brooke Kuhlmann
+* Fixed loading of Git Bash completion library - Brooke Kuhlmann
+* Fixed tab to spaces function to use local variable - Brooke Kuhlmann
+* Updated Git branch deletion to use fuzzy find - Brooke Kuhlmann
+* Updated Git branch list to always use columns - Brooke Kuhlmann
+* Updated Git private branch list function to always be sorted - Brooke Kuhlmann
+* Updated gemrc to only use gem and source keys - Brooke Kuhlmann
+* Updated to Ruby 3.0.1 - Brooke Kuhlmann
+* Removed Git email functions - Brooke Kuhlmann
+* Removed Heroku aliases - Brooke Kuhlmann
+* Refactored .irbrc to be alphabetically sorted - Brooke Kuhlmann
+* Refactored Bash aliases to be alphabeticallly sorted - Brooke Kuhlmann
+* Refactored Bash functions to be alphabetically sorted - Brooke Kuhlmann
+* Refactored CTags options to be alphabetically sorted - Brooke Kuhlmann
+* Refactored ERD configuration to be alphabetically sorted - Brooke Kuhlmann
+* Refactored Git attributes to be alphabetically sorted - Brooke Kuhlmann
+* Refactored Git ignore to be alphabetically sorted - Brooke Kuhlmann
+* Refactored functions - Brooke Kuhlmann
+
 == 42.4.0 (2021-03-28)
 
 * Added Docker delete alias - Brooke Kuhlmann

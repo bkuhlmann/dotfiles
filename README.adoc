@@ -17,30 +17,30 @@ toc::[]
 
 == Features
 
+* Configures the `.hushlogin` file.
+* Configures the link:https://github.com/amazing-print/amazing_print[Amazing Print] (`.aprc`) file.
 * Configures the Bash (`.bashrc`, `.bash_profile`, and `.inputrc`) files.
-* Configures the (`.hushlogin`) file.
 * Configures the link:http://ctags.sourceforge.net[CTags] (`.ctags`) file.
-* Configures the link:https://www.vim.org[Vim] (`.vimrc`) file.
 * Configures the link:https://git-scm.com[Git] (`.gitconfig`, `.gitignore`, `.git_template`, etc.)
   files.
-* Configures the link:https://github.com/ggreer/the_silver_searcher[Silver Surfer] (`.agignore`)
-  file.
-* Configures the link:https://rubygems.org[Ruby Gems] (`.gemrc`) file.
-* Configures the link:https://www.ruby-lang.org[Ruby] (`.ruby-version` and `.irbrc`) files.
+* Configures the link:https://www.npmjs.org[NPM] (`.npmrc`) file.
+* Configures the link:https://www.postgresql.org[PostgreSQL] (`.psqlrc`) file.
 * Configures the link:http://pry.github.com[Pry] (`.pryrc`) file.
+* Configures the link:https://voormedia.github.io/rails-erd[Rails ERD] (`.erdconfig`) file.
+* Configures the link:https://rspec.info[RSpec] (`.rspec`) file.
+* Configures the link:https://www.ruby-lang.org[Ruby] (`.ruby-version` and `.irbrc`) files.
 * Configures the link:http://bashdb.sourceforge.net/ruby-debug.html[Ruby Debugger] (`.rdebugrc`)
   file.
-* Configures the link:https://rspec.info[RSpec] (`.rspec`) file.
-* Configures the link:https://voormedia.github.io/rails-erd[Rails ERD] (`.erdconfig`) file.
-* Configures the link:https://github.com/amazing-print/amazing_print[Amazing Print] (`.aprc`) file.
-* Configures the link:https://www.postgresql.org[PostgreSQL] (`.psqlrc`) file.
+* Configures the link:https://rubygems.org[Ruby Gems] (`.gemrc`) file.
 * Configures the link:https://github.com/bbatsov/rubocop[Rubocop] (`.rubocop.yml`) file.
-* Configures the link:https://www.npmjs.org[NPM] (`.npmrc`) file.
+* Configures the link:https://github.com/ggreer/the_silver_searcher[Silver Surfer] (`.agignore`)
+  file.
+* Configures the link:https://www.vim.org[Vim] (`.vimrc`) file.
 * Configures link:https://www.sublimetext.com[Sublime Text] as the default editor.
 * Adds link:http://bash-completion.alioth.debian.org[Bash Completion].
-* Adds link:https://www.gnupg.org[GPG] support.
-* Adds link:https://direnv.net[direnv] support.
 * Adds link:https://github.com/postmodern/chruby[chruby] support.
+* Adds link:https://direnv.net[direnv] support.
+* Adds link:https://www.gnupg.org[GPG] support.
 * Adds link:https://nodejs.org[Node.js] support.
 * Adds link:https://github.com/rupa/z[Z] support.
 
@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 42.4.0
+git checkout 43.0.0
 ----
 
 == Upgrade
@@ -104,27 +104,25 @@ After install, the following files will require manual updating:
 * `.gitconfig`: Uncomment the name, email, and token lines within the `[user]` and `[github]`
   sections to replace with your own details.
 
+START
+
 === Aliases
 
-==== General
+==== https://asciidoctor.org:[ASCII Doctor]
 
 ....
-.. = "cd .."
-... = "cd ../.."
-cdb = "cd -"
-c = "clear"
-h = "history"
-l = "ls -alhT"
-o = "open"
-p = 'pwd | tr -d "\r\n" | _copy_and_print'
-du = "ncdu -e --color dark"
-l1 = "ls -A1 | _copy_and_print '\n'"
-cat = "bat --theme DarkNeon"
-man = "gem man --system"
-ping = "prettyping --nolegend"
-pss = "pgrep -i -l -f"
-rmde = "find . -type d -empty -not -path '*.git*' -delete"
-top = "htop"
+ad = "asciidoctor"
+....
+
+==== https://asciinema.org:[asciinema]
+
+....
+cin = "asciinema"
+cina = "asciinema rec --append"
+cinc = "asciinema cat"
+cine = "asciinema_plus -e"
+cinp = "asciinema play"
+cinu = "asciinema upload"
 ....
 
 ==== https://www.gnu.org/software/bash:[Bash]
@@ -134,190 +132,20 @@ bashe = "$EDITOR $HOME/.config/bash/env.sh"
 bashs = "exec $SHELL"
 ....
 
-==== https://the.exa.website:[Exa]
+==== https://bundler.io:[Bundler]
 
 ....
-x = "exa --all --long --header --group --group-directories-first --time-style long-iso --git --git-ignore"
-x1 = "exa --oneline --all --group-directories-first"
-xt = "exa --tree"
-....
-
-==== Network
-
-....
-sshe = "$EDITOR $HOME/.ssh/config"
-key = "open /Applications/Utilities/Keychain\ Access.app"
-ipa = 'curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
-dnsi = "scutil --dns"
-dnss = "sudo dscacheutil -statistics"
-dnsf = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
-....
-
-==== https://github.com/junegunn/fzf:[Fuzzy Finder]
-
-....
-ff = "fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
-....
-
-==== https://www.docker.com:[Docker]
-
-....
-dr = "docker"
-drb = "docker build"
-drd = "docker system prune --force && docker buildx prune --force"
-dri = "docker images"
-drp = "docker ps --all"
-drt = "docker tag"
-drc = "docker-compose"
-....
-
-==== http://tmux.sourceforge.net:[tmux]
-
-....
-tsl = "tmux list-sessions"
-tsa = "tmux attach-session -t"
-tsk = "tmux kill-session -t"
-tsr = "tmux rename-session -t"
-....
-
-==== http://brew.sh[Homebrew]
-
-....
-hb = "brew"
-hbi = "brew update && brew install"
-hbin = "brew info"
-hbu = "brew uninstall"
-hblf = "brew list --formulae --versions | fzf"
-hblc = "brew list --casks --versions | fzf"
-hbs = "brew search"
-hbug = "brew update && brew upgrade"
-hbp = "brew pin"
-hbpu = "brew unpin"
-hbd = "brew doctor"
-hbsu = "brew update && brew upgrade && brew cleanup"
-....
-
-==== http://git-scm.com:[Git]
-
-....
-gi = "git init && git config --global --add maintenance.repo $PWD"
-gcle = "git config --local --edit"
-gcge = "git config --global --edit"
-gcd = "git config --list --show-origin --show-scope"
-gget = "git config --get"
-gset = "git config --add"
-gst = "git status --short --branch"
-gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
-glh = "_git_commit_last | _copy_and_print"
-glf = 'git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
-glg = 'git log --pretty=format:"$(_git_log_line_format)" --grep'
-gls = 'git log --pretty=format:"$(_git_log_line_format)" -S'
-glt = 'git for-each-ref --sort=taggerdate --color --format = "%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
-grl = "git reflog"
-gg = "git grep"
-guthors = 'git log --color --pretty=format:"%C(bold blue)%an%C(reset)" | sort | uniq -c | sort --reverse'
-gd = "git diff"
-gdc = "git diff --cached"
-gdm = 'git diff origin/$(_git_branch_default)'
-gdw = "git diff --color-words"
-gdo = 'git diff --name-only | uniq | xargs $EDITOR'
-gdt = "git difftool"
-gdtc = "git difftool --cached"
-gdtm = 'git difftool origin/$(_git_branch_default)'
-glame = "git blame -M -C -C -C"
-gbi = "git bisect"
-gbis = "git bisect start"
-gbib = "git bisect bad"
-gbig = "git bisect good"
-gbir = "git bisect reset"
-gbisk = "git bisect skip"
-gbil = "git bisect log"
-gbire = "git bisect replay"
-gbiv = 'git bisect visualize --reverse --pretty=format:"$(_git_log_line_format)"'
-gbih = "git bisect help"
-gbt = "git show-branch --topics"
-gbe = "git branch --edit-description"
-gbn = "_git_branch_name | _copy_and_print"
-gcl = "git clone"
-gb = "git switch"
-gbb = "git switch -"
-gbm = 'git switch $(_git_branch_default)'
-ga = "git add"
-gau = "git add --update"
-gap = "git add --patch"
-gall = "git add --all ."
-gco = "git commit"
-gce = 'cat .git/COMMIT_EDITMSG | rg --invert-match "^\#.*" | pbcopy'
-gatch = "git commit --patch"
-gca = "git commit --all"
-gcm = "git commit --message"
-gcam = "git commit --all --message"
-gcf = "git commit --fixup"
-gcs = "git commit --squash"
-gamend = "git commit --amend"
-gamendh = "git commit --amend --no-edit"
-gamenda = "git commit --amend --all --no-edit"
-gcp = "git cherry-pick"
-gcpa = "git cherry-pick --abort"
-gcps = "git cherry-pick --skip"
-gashc = "git stash clear"
-gnl = "git notes list"
-gns = "git notes show"
-gna = "git notes add"
-gne = "git notes edit"
-gnd = "git notes remove"
-gnp = "git notes prune"
-gf = "git fetch"
-gpu = "git pull"
-gpuo = "git pull origin"
-gpuom = 'git pull origin $(_git_branch_default)'
-gpuum = 'git pull upstream $(_git_branch_default)'
-grbo = "git rebase --onto"
-grbc = "git rebase --continue"
-grbd = "git rebase --show-current-patch"
-grbs = "git rebase --skip"
-grba = "git rebase --abort"
-grbt = "git rebase --edit-todo"
-gr = "git restore"
-grr = "git rerere"
-gpf = "git push --force-with-lease"
-gpn = "git push --no-verify"
-gpo = "git push --set-upstream origin"
-gps = 'git push stage stage:$(_git_branch_default)'
-gpp = 'git push production production:$(_git_branch_default)'
-gtag = "git tag"
-gtagv = "git tag --verify"
-gtags = "git push --tags"
-gwl = "git worktree list"
-gwp = "git worktree prune"
-ges = "git reset"
-grom = 'git fetch --all && git reset --hard origin/$(_git_branch_default)' # Reset local branch to origin/main branch. UNRECOVERABLE!
-gel = "git rm"
-gelc = "git rm --cached" # Removes previously tracked file from index after being added to gitignore.
-grev = "git revert --no-commit"
-glean = "git clean -d --force"
-....
-
-==== http://www.gnu.org/software/tar/tar.html:[Tar]
-
-....
-bzc = "tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
-bzx = "tar --extract --bzip2 --verbose --file"
-....
-
-==== http://www.postgresql.org:[PostgreSQL]
-
-....
-pgi = "initdb $HOMEBREW_PREFIX/var/postgres"
-pgst = "pg_ctl -D $HOMEBREW_PREFIX/var/postgres -l $HOMEBREW_PREFIX/var/postgres/server.log start &"
-pgsp = "pg_ctl -D $HOMEBREW_PREFIX/var/postgres stop -s -m fast"
-....
-
-==== http://redis.io:[Redis]
-
-....
-reds = "redis-server $HOMEBREW_PREFIX/etc/redis.conf &"
-redc = "redis-cli"
+ba = "bundle add"
+bb = "bundle binstubs"
+bce = "$EDITOR $HOME/.config/bundler/configuration.yml"
+bch = "rm -f Gemfile.lock; bundle check"
+bd = "bundle doctor"
+be = "bundle exec"
+bi = "bundle install"
+blo = "bundle list --paths | fzf | xargs $EDITOR"
+bo = "bundle outdated --only-explicit"
+br = "bundle remove"
+bu = "bundle update"
 ....
 
 ==== https://github.com/postmodern/chruby:[chruby]
@@ -326,14 +154,308 @@ redc = "redis-cli"
 rb = "chruby"
 ....
 
+==== https://crystal-lang.org:[Crystal]
+
+....
+cr = "crystal"
+crb = "crystal build"
+crd = "crystal docs"
+crdo = "open docs/index.html"
+crr = "crystal run"
+crs = "crystal spec"
+....
+
+==== https://direnv.net:[direnv]
+
+....
+denva = "direnv allow"
+denvr = "direnv reload"
+denvs = "direnv status"
+....
+
+==== https://www.docker.com:[Docker]
+
+....
+dr = "docker"
+drb = "docker build"
+drc = "docker-compose"
+drd = "docker system prune --force && docker buildx prune --force"
+dri = "docker images"
+drp = "docker ps --all"
+drt = "docker tag"
+....
+
+==== http://duti.org:[duti]
+
+....
+dutia = "duti $HOME/.config/duti/configuration.duti"
+....
+
+==== https://elm-lang.org:[Elm]
+
+....
+elmc = "elm repl"
+elmg = "elm init"
+elmi = "elm install"
+elmp = "elm publish"
+elms = "elm reactor"
+elmt = "elm-test"
+....
+
+==== https://the.exa.website:[Exa]
+
+....
+x1 = "exa --oneline --all --group-directories-first"
+x = "exa --all --long --header --group --group-directories-first --time-style long-iso --git --git-ignore"
+xt = "exa --tree"
+....
+
+==== https://github.com/junegunn/fzf:[Fuzzy Finder]
+
+....
+ff = "fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
+....
+
+==== https://www.alchemists.io/projects/gemsmith:[Gemsmith]
+
+....
+gse = "gemsmith --config --edit"
+gsg = "gemsmith --generate"
+gsi = "rake install"
+gso = "gemsmith --open"
+gsp = "rake publish"
+gsq = "rake code_quality"
+gsr = "gemsmith --read"
+....
+
+==== General
+
+....
+... = "cd ../.."
+.. = "cd .."
+c = "clear"
+cat = "bat --theme DarkNeon"
+cdb = "cd -"
+du = "ncdu -e --color dark"
+h = "history"
+l1 = "ls -A1 | _copy_and_print '\n'"
+l = "ls -alhT"
+man = "gem man --system"
+o = "open"
+p = 'pwd | tr -d "\r\n" | _copy_and_print'
+pss = "pgrep -i -l -f"
+rmde = "find . -type d -empty -not -path '*.git*' -delete"
+....
+
+==== https://git-scm.com:[Git]
+
+....
+ga = "git add"
+gall = "git add --all ."
+gamend = "git commit --amend"
+gamenda = "git commit --amend --all --no-edit"
+gamendh = "git commit --amend --no-edit"
+gap = "git add --patch"
+gashc = "git stash clear"
+gatch = "git commit --patch"
+gau = "git add --update"
+gb = "git switch"
+gbb = "git switch -"
+gbe = "git branch --edit-description"
+gbi = "git bisect"
+gbib = "git bisect bad"
+gbig = "git bisect good"
+gbih = "git bisect help"
+gbil = "git bisect log"
+gbir = "git bisect reset"
+gbire = "git bisect replay"
+gbis = "git bisect start"
+gbisk = "git bisect skip"
+gbiv = 'git bisect visualize --reverse --pretty=format:"$(_git_log_line_format)"'
+gbm = 'git switch $(_git_branch_default)'
+gbn = "_git_branch_name | _copy_and_print"
+gbt = "git show-branch --topics"
+gca = "git commit --all"
+gcam = "git commit --all --message"
+gcd = "git config --list --show-origin --show-scope"
+gce = 'cat .git/COMMIT_EDITMSG | rg --invert-match "^\#.*" | pbcopy'
+gcf = "git commit --fixup"
+gcge = "git config --global --edit"
+gcl = "git clone"
+gcle = "git config --local --edit"
+gcm = "git commit --message"
+gco = "git commit"
+gcp = "git cherry-pick"
+gcpa = "git cherry-pick --abort"
+gcps = "git cherry-pick --skip"
+gcs = "git commit --squash"
+gd = "git diff"
+gdc = "git diff --cached"
+gdm = 'git diff origin/$(_git_branch_default)'
+gdo = 'git diff --name-only | uniq | xargs $EDITOR'
+gdt = "git difftool"
+gdtc = "git difftool --cached"
+gdtm = 'git difftool origin/$(_git_branch_default)'
+gdw = "git diff --color-words"
+gel = "git rm"
+gelc = "git rm --cached" # Removes previously tracked file from index after being added to gitignore.
+ges = "git reset"
+gf = "git fetch"
+gg = "git grep"
+gget = "git config --get"
+gi = "git init && git config --global --add maintenance.repo $PWD"
+gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
+glame = "git blame -M -C -C -C"
+glean = "git clean -d --force"
+glf = 'git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
+glg = 'git log --pretty=format:"$(_git_log_line_format)" --grep'
+glh = "_git_commit_last | _copy_and_print"
+gls = 'git log --pretty=format:"$(_git_log_line_format)" -S'
+glt = 'git for-each-ref --sort=taggerdate --color --format = "%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
+gna = "git notes add"
+gnd = "git notes remove"
+gne = "git notes edit"
+gnl = "git notes list"
+gnp = "git notes prune"
+gns = "git notes show"
+gpf = "git push --force-with-lease"
+gpn = "git push --no-verify"
+gpo = "git push --set-upstream origin"
+gpu = "git pull"
+gpuo = "git pull origin"
+gpuom = 'git pull origin $(_git_branch_default)'
+gpuum = 'git pull upstream $(_git_branch_default)'
+gr = "git restore"
+grba = "git rebase --abort"
+grbc = "git rebase --continue"
+grbd = "git rebase --show-current-patch"
+grbo = "git rebase --onto"
+grbs = "git rebase --skip"
+grbt = "git rebase --edit-todo"
+grev = "git revert --no-commit"
+grl = "git reflog"
+grom = 'git fetch --all && git reset --hard origin/$(_git_branch_default)' # Reset local branch to origin/main branch. UNRECOVERABLE!
+grr = "git rerere"
+gset = "git config --add"
+gst = "git status --short --branch"
+gtag = "git tag"
+gtags = "git push --tags"
+gtagv = "git tag --verify"
+guthors = 'git log --color --pretty=format:"%C(bold blue)%an%C(reset)" | sort | uniq -c | sort --reverse'
+gwl = "git worktree list"
+gwp = "git worktree prune"
+....
+
+==== https://brew.sh:[Homebrew]
+
+....
+hb = "brew"
+hbd = "brew doctor"
+hbi = "brew update && brew install"
+hbin = "brew info"
+hblc = "brew list --casks --versions | fzf"
+hblf = "brew list --formulae --versions | fzf"
+hbp = "brew pin"
+hbpu = "brew unpin"
+hbs = "brew search"
+hbsu = "brew update && brew upgrade && brew cleanup"
+hbu = "brew uninstall"
+hbug = "brew update && brew upgrade"
+....
+
+==== https://marked2app.com:[Marked 2]
+
+....
+mo = "open -a Marked\ 2"
+....
+
+==== https://www.alchemists.io/projects/milestoner:[Milestoner]
+
+....
+ms = "milestoner"
+msc = 'milestoner --commits | _copy_and_print "\n"'
+mse = "milestoner --config --edit"
+msp = "milestoner --publish"
+....
+
+==== Network
+
+....
+dnsf = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
+dnsi = "scutil --dns"
+dnss = "sudo dscacheutil -statistics"
+ipa = 'curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
+key = "open /Applications/Utilities/Keychain\ Access.app"
+ping = "prettyping --nolegend"
+sshe = "$EDITOR $HOME/.ssh/config"
+top = "htop"
+....
+
+==== https://cocoatech.com:[Path Finder]
+
+....
+pfo = 'open -a "Path Finder.app" "$PWD"'
+....
+
+==== https://www.postgresql.org:[PostgreSQL]
+
+....
+pgi = "initdb $HOMEBREW_PREFIX/var/postgres"
+pgsp = "pg_ctl -D $HOMEBREW_PREFIX/var/postgres stop -s -m fast"
+pgst = "pg_ctl -D $HOMEBREW_PREFIX/var/postgres -l $HOMEBREW_PREFIX/var/postgres/server.log start &"
+....
+
+==== https://redis.io:[Redis]
+
+....
+redc = "redis-cli"
+reds = "redis-server $HOMEBREW_PREFIX/etc/redis.conf &"
+....
+
+==== https://github.com/BurntSushi/ripgrep:[ripgrep]
+
+....
+rgf = "rg --files --glob"
+....
+
+==== https://rspec.info:[RSpec]
+
+....
+rsf = "rspec spec --only-failures"
+rsn = "rspec spec --next-failure"
+rso = "rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
+rss = "rspec spec"
+rst = "rspec spec --tag"
+....
+
+==== https://github.com/bbatsov/rubocop:[Rubocop]
+
+....
+cop = "rubocop --parallel --display-cop-names --display-style-guide"
+copc = "rubocop --auto-gen-config"
+copd = 'find . -name ".rubocop-http*" -type f -delete'
+copf = "rubocop --auto-correct"
+copfo = "rubocop --auto-correct --only"
+copo = "rubocop --display-cop-names --only"
+cops = "rubocop --show-cops"
+....
+
 ==== https://www.ruby-lang.org:[Ruby]
 
 ....
-rbi = "ruby-install"
 rbbe = "$EDITOR $HOME/Engineering/Misc/benchmark.rb"
 rbbr = "ruby $HOME/Engineering/Misc/benchmark.rb"
+rbi = "ruby-install"
 rbse = "$EDITOR $HOME/Engineering/Misc/snippet.rb"
 rbsr = "ruby $HOME/Engineering/Misc/snippet.rb"
+....
+
+==== https://rubyonrails.org:[Ruby on Rails]
+
+....
+railsb = "rails console --sandbox"
+railsdbm = "rake db:migrate && rake db:rollback && rake db:migrate && RAILS_ENV=test rake db:migrate"
+railse = "EDITOR = 'sublime --wait' rails credentials:edit"
 ....
 
 ==== https://github.com/whitesmith/RubyCritic:[RubyCritic]
@@ -342,114 +464,25 @@ rbsr = "ruby $HOME/Engineering/Misc/snippet.rb"
 rbct = "open tmp/rubycritic/overview.html"
 ....
 
+==== https://rubygems.org:[RubyGems]
+
+....
+gemc = "gem cleanup"
+gemcli = "ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
+gemcr = "$EDITOR $HOME/.gem/credentials"
+geme = "gem environment"
+gemi = "gem install"
+geml = "gem list"
+gemp = "gem pristine"
+gems = "gem server"
+gemu = "gem uninstall"
+gemuc = "gem update --system && gem update && gem cleanup"
+....
+
 ==== https://www.alchemists.io/projects/rubysmith:[Rubysmith]
 
 ....
 rbb = "rubysmith --build"
-....
-
-==== https://rubygems.org:[Ruby Gems]
-
-....
-gemcr = "$EDITOR $HOME/.gem/credentials"
-geml = "gem list"
-gemi = "gem install"
-gemu = "gem uninstall"
-gemc = "gem cleanup"
-gems = "gem server"
-gemp = "gem pristine"
-geme = "gem environment"
-gemuc = "gem update --system && gem update && gem cleanup"
-gemcli = "ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
-....
-
-==== http://bundler.io:[Bundler]
-
-....
-ba = "bundle add"
-br = "bundle remove"
-bb = "bundle binstubs"
-bd = "bundle doctor"
-bi = "bundle install"
-blo = "bundle list --paths | fzf | xargs $EDITOR"
-bu = "bundle update"
-bo = "bundle outdated --only-explicit"
-bce = "$EDITOR $HOME/.config/bundler/configuration.yml"
-be = "bundle exec"
-bch = "rm -f Gemfile.lock; bundle check"
-....
-
-==== https://www.alchemists.io/projects/milestoner:[Milestoner]
-
-....
-ms = "milestoner"
-msc = 'milestoner --commits | _copy_and_print "\n"'
-msp = "milestoner --publish"
-mse = "milestoner --config --edit"
-....
-
-==== https://www.alchemists.io/projects/gemsmith:[Gemsmith]
-
-....
-gsg = "gemsmith --generate"
-gse = "gemsmith --config --edit"
-gsr = "gemsmith --read"
-gso = "gemsmith --open"
-gsi = "rake install"
-gsp = "rake publish"
-gsq = "rake code_quality"
-....
-
-==== https://rspec.info:[RSpec]
-
-....
-rss = "rspec spec"
-rst = "rspec spec --tag"
-rsn = "rspec spec --next-failure"
-rsf = "rspec spec --only-failures"
-rso = "rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
-....
-
-==== https://rubyonrails.org:[Ruby on Rails]
-
-....
-railsb = "rails console --sandbox"
-railse = "EDITOR = 'sublime --wait' rails credentials:edit"
-railsdbm = "rake db:migrate && rake db:rollback && rake db:migrate && RAILS_ENV=test rake db:migrate"
-....
-
-==== https://crystal-lang.org:[Crystal]
-
-....
-cr = "crystal"
-crb = "crystal build"
-crr = "crystal run"
-crd = "crystal docs"
-crdo = "open docs/index.html"
-crs = "crystal spec"
-....
-
-==== http://elm-lang.org:[Elm]
-
-....
-elmc = "elm repl"
-elmg = "elm init"
-elmi = "elm install"
-elms = "elm reactor"
-elmt = "elm-test"
-elmp = "elm publish"
-....
-
-==== https://github.com/bbatsov/rubocop:[Rubocop]
-
-....
-cop = "rubocop --parallel --display-cop-names --display-style-guide"
-copc = "rubocop --auto-gen-config"
-copo = "rubocop --display-cop-names --only"
-copf = "rubocop --auto-correct"
-copfo = "rubocop --auto-correct --only"
-cops = "rubocop --show-cops"
-copd = 'find . -name ".rubocop-http*" -type f -delete'
 ....
 
 ==== https://github.com/colszowka/simplecov:[SimpleCov]
@@ -458,12 +491,48 @@ copd = 'find . -name ".rubocop-http*" -type f -delete'
 cov = "open coverage/index.html"
 ....
 
-==== http://direnv.net:[direnv]
+==== https://www.sublimetext.com:[Sublime Text]
 
 ....
-denva = "direnv allow"
-denvr = "direnv reload"
-denvs = "direnv status"
+e = "sublime"
+....
+
+==== https://www.gnu.org/software/tar/tar.html:[Tar]
+
+....
+bzc = "tar --use-compress-program=pigz --create --preserve-permissions --bzip2 --verbose --file"
+bzx = "tar --extract --bzip2 --verbose --file"
+....
+
+==== https://www.terraform.io:[Terraform]
+
+....
+tf = "terraform"
+tfa = "noti --title 'Terraform Apply' terraform apply"
+tfc = "terraform console"
+tff = "terraform fmt"
+tfg = "terraform graph | dot -Tsvg > tmp/graph.svg && open -a 'Firefox.app' tmp/graph.svg"
+tfi = "terraform init"
+tfo = "terraform output"
+tfp = "noti --title 'Terraform Plan' terraform plan"
+tft = "terraform taint"
+tfu = "terraform untaint"
+tfv = "terraform validate"
+....
+
+==== http://tmux.sourceforge.net:[tmux]
+
+....
+tsa = "tmux attach-session -t"
+tsk = "tmux kill-session -t"
+tsl = "tmux list-sessions"
+tsr = "tmux rename-session -t"
+....
+
+==== https://gitlab.com/procps-ng/procps:[Watch]
+
+....
+wp = "watch --interval 1 --color --beep --exec"
 ....
 
 ==== https://yarnpkg.com:[Yarn]
@@ -484,86 +553,7 @@ yu = "yarn upgrade"
 ze = "$EDITOR $_Z_DATA"
 ....
 
-==== http://www.cocoatech.com/pathfinder:[Path Finder]
-
-....
-pfo = 'open -a "Path Finder.app" "$PWD"'
-....
-
-==== http://www.sublimetext.com:[Sublime Text]
-
-....
-e = "sublime"
-....
-
-==== http://marked2app.com:[Marked 2]
-
-....
-mo = "open -a Marked\ 2"
-....
-
-==== https://asciidoctor.org:[ASCII Doctor]
-
-....
-ad = "asciidoctor"
-....
-
-==== https://asciinema.org:[asciinema]
-
-....
-cin = "asciinema"
-cina = "asciinema rec --append"
-cinc = "asciinema cat"
-cinp = "asciinema play"
-cinu = "asciinema upload"
-cine = "asciinema_plus -e"
-....
-
-==== http://duti.org:[duti]
-
-....
-dutia = "duti $HOME/.config/duti/configuration.duti"
-....
-
-==== https://github.com/BurntSushi/ripgrep:[ripgrep]
-
-....
-rgf = "rg --files --glob"
-....
-
-==== https://www.terraform.io:[Terraform]
-
-....
-tf = "terraform"
-tfa = "noti --title 'Terraform Apply' terraform apply"
-tfc = "terraform console"
-tff = "terraform fmt"
-tfg = "terraform graph | dot -Tsvg > tmp/graph.svg && open -a 'Firefox.app' tmp/graph.svg"
-tfi = "terraform init"
-tfo = "terraform output"
-tfp = "noti --title 'Terraform Plan' terraform plan"
-tft = "terraform taint"
-tfu = "terraform untaint"
-tfv = "terraform validate"
-....
-
-==== https://gitlab.com/procps-ng/procps:[Watch]
-
-....
-wp = "watch --interval 1 --color --beep --exec"
-....
-
 === Functions
-
-==== General
-
-....
-t2s = Tab to Space - Convert file from tab to space indendation.
-cype = Colorized Type - Identical to "type" system command but with Bat support.
-eup = Environment Update - Update environment with latest software.
-iso = ISO - Builds an ISO image from mounted volume.
-kilp = Kill Process - Kill errant/undesired process.
-....
 
 ==== link:https://asciidoctor.org[ASCII Doctor]
 
@@ -571,166 +561,21 @@ kilp = Kill Process - Kill errant/undesired process.
 ado = ASCII Doctor Open - Transforms ASCII Doc into HTML and opens in default browser.
 ....
 
-==== http://en.wikipedia.org/wiki/Less_(Unix):[less]
+==== https://asciinema.org:[asciinema]
 
 ....
-lessi = Less Interactive - Inspect file, interactively.
+cinr = asciinema Record - Create new asciinema recording.
 ....
 
-==== https://github.com/pivotal/LicenseFinder:[License Finder]
+==== https://bundler.io:[Bundler]
 
 ....
-licensei = License Finder (include) - Include license in global list.
-licensea = License Finder (add) - Adds library to global list.
-....
-
-==== https://openssl.org:[OpenSSL]
-
-....
-sslc = SSL Certificate Creation - Create SSL certificate.
-....
-
-==== http://curl.haxx.se:[curl]
-
-....
-curli = Curl Inspect - Inspect remote file with default editor.
-curld = Curl Diagnostics - Curl with diagnostic information for request.
-....
-
-==== http://people.freebsd.org/~abe:[lsof]
-
-....
-port = Port - List file activity on given port.
-....
-
-==== https://git-scm.com:[Git]
-
-....
-gia = Git Init (all) - Initialize/re-initialize repositories in current directory.
-gafe = Git Safe - Marks repository as safe for auto-loading project's `bin` path.
-groot = Git Root - Change to repository root directory regardless of current depth.
-ginfo = Git Info - Print repository overview information.
-gstats = Git Statistics - Answer statistics for current project.
-gstatsa = Git Statistics (all) - Answer statistics for all projects in current directory.
-ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
-gount = Git Commit Count - Answer total number of commits for current project.
-gli = Git Log (interactive) - List default or feature branch commits with commit show and/or diff support.
-gld = Git Log Details - List default or feature branch commit details.
-ghow = Git Show - Show commit details with optional diff support.
-gile = Git File - Show file details for a specific commit (with optional diff support).
-gistory = Git File History - View file commit history (with optional diff support).
-glameh = Git Blame History - View file commit history for a specific file and/or lines (with optional diff support).
-guthorsa = Git Authors (all) - Answer author commit activity per project (ranked highest to lowest).
-guthorc = Git Author Contributions - Answers total lines added/removed by author for repo (with emphasis on deletion).
-gsta = Git Status (all) - Answer status of projects with uncommited/unpushed changes.
-gup = Git Update - Fetch commits, prune untracked references, review each commit (optional, with diff), and pull (optional).
-gync = Git Sync - Syncs up remote changes and deletes pruned/merged branches.
-gseta = Git Set Config Value (all) - Set key value for projects in current directory.
-ggeta = Git Get Config Value (all) - Answer key value for projects in current directory.
-gunseta = Git Unset (all) - Unset key value for projects in current directory.
-gailsa = Git Email Set (all) - Sets user email for projects in current directory.
-gail = Git Email Get - Answer user email for current project.
-gaila = Git Email Get (all) - Answer user email for projects in current directory.
-gince = Git Since - Answer summarized list of activity since date/time for projects in current directory.
-gday = Git Day - Answer summarized list of current day activity for projects in current directory.
-gweek = Git Week - Answer summarized list of current week activity for projects in current directory.
-gmonth = Git Month - Answer summarized list of current month activity for projects in current directory.
-gsup = Git Standup - Answer summarized list of activity since yesterday for projects in current directory.
-gtail = Git Tail - Answer commit history since last tag for current project (copies results to clipboard).
-gtaila = Git Tail (all) - Answer commit history count since last tag for projects in current directory.
-gash = Git Stash - Creates stash.
-gashl = Git Stash List - List stashes.
-gashs = Git Stash Show - Show stash or prompt for stash to show.
-gashp = Git Stash Pop - Pop stash or prompt for stash to pop.
-gashd = Git Stash Drop - Drop stash or prompt for stash to drop.
-gasha = Git Stash (all) - Answer stash count for projects in current directory.
-gucca = Git Upstream Commit Count (all) - Answer upstream commit count since last pull for projects in current directory.
-gpua = Git Pull (all) - Pull new changes from remote branch for projects in current directory.
-galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
-gcb = Git Commit Breakpoint - Create a breakpoint (empty) commit to denote related commits in a feature branch.
-gcfi = Git Commit Fix (interactive) - Select which commit to fix within current feature branch.
-gcff = Git Commit Fix (file) - Create commit fix for file (ignores previous fixups).
-gcaa = Git Commit (all) - Commit changes (unstaged and staged) for projects in current directory.
-gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
-gma = Git Merge (all) - Merges, deletes, and pushes feature branch.
-gmpa = Git Amend Push (all) - Amend all changes and force push with lease for projects in current directory.
-gp = Git Push - Pushes changes to remote repository with dynamic branch creation if non-existent.
-gpa = Git Push (all) - Push changes for projects in current directory.
-grbi = Git Rebase (interactive) - Rebase commits, interactively.
-grbq = Git Rebase (quick) - Rebase commits, quickly. Identical to `grbi` function but skips editor.
-gbl = Git Branch List - List local and remote branch details.
-gblo = Git Branch List Owner - List branches owned by current author or supplied author.
-gbla = Git Branch List (all) - List current branch for projects in current directory.
-gbc = Git Branch Create - Create and switch to branch.
-gbf = Git Branch Facsimile - Duplicate current branch with new name and switch to it.
-gbca = Git Branch Create (all) - Create and switch to branch for projects in current directory.
-gbs = Git Branch Switch - Switch between branches.
-gbsa = Git Branch Switch (all) - Switch to given branch for projects in current directory.
-gbna = Git Branch Number (all) - Answer number of branches for projects in current directory.
-gbd = Git Branch Delete - Delete branch (select local and/or remote).
-gbdl = Git Branch Delete (local) - Delete local branch.
-gbdr = Git Branch Delete (remote) - Delete remote branch.
-gbdm = Git Branch Delete (merged) - Delete remote and local merged branches.
-gbr = Git Branch Rename - Rename current branch.
-gtagr = Git Tag Rebuild - Rebuild a previous tag. WARNING: Use with caution, especially if previously published.
-gtagd = Git Tag Delete - Delete local and remote tag (if found).
-gwa = Git Worktree Add - Add and switch to new worktree.
-gwd = Git Worktree Delete - Deletes current Git worktree.
-gra = Git Remote Add - Add and track a remote repository.
-gess = Git Reset Soft - Resets previous commit (default), resets back to number of commits, or resets to specific commit.
-gesh = Git Reset Hard - Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
-gesha = Git Reset Hard (all) - Destroy all untracked, staged, and unstaged changes for all projects in current directory. UNRECOVERABLE!
-guke = Git Nuke - Permanently destroy and erase a file from history. UNRECOVERABLE!
-gleana = Git Clean (all) - Clean uncommitted files from all projects in current directory.
-glear = Git Clear - Clear repository for packaging/shipping purposes.
-gvac = Git Verify and Clean - Verify and clean objects for current project.
-gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in current directory.
-....
-
-==== https://github.com:[GitHub]
-
-....
-gh = GitHub - View GitHub details for current project.
-ghpra = GitHub Pull Request (all) - Open pull requests for all projects in current directory (non-default branches only).
-....
-
-==== http://www.postgresql.org:[PostgreSQL]
-
-....
-pguc = PostgreSQL User Create - Create PostgreSQL user.
-pgud = PostgreSQL User Drop - Drop PostgreSQL user.
-pgt = PostgreSQL Template - Edit PostgreSQL template.
-....
-
-==== https://www.ruby-lang.org:[Ruby]
-
-....
-rbva = Ruby Version (all) - Show current Ruby version for all projects in current directory.
-rbua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version.
-rbs = Ruby Server - Serve web content from current directory via WEBrick.
-....
-
-==== https://rubygems.org:[Ruby Gems]
-
-....
-gemdep = Gem Dependency Search - Finds a gem defined within a Gemfile or a gemspec.
-....
-
-==== http://bundler.io:[Bundler]
-
-....
-bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
+bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
 bcg = Bundler Config Gem - Configure Bundler to use local gem for development purposes.
+bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
 bl = Bundle List - List gem dependencies for project and copy them to clipboard.
 boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
 bua = Bundle Update (all) - Update gems for projects in current directory.
-bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
-....
-
-==== https://github.com/ruby/rake:[Rake]
-
-....
-rakea = Rake (all) - Run default Rake tasks for projects in current directory.
 ....
 
 ==== https://www.alchemists.io/projects/code_quality:[Code Quality]
@@ -740,13 +585,200 @@ cqa = Code Quality (all) - Run code quality tasks for projects in current direct
 cqi = Code Quality Issues - List all source files affected by code quality issues.
 ....
 
-==== http://rspec.info:[RSpec]
+==== https://curl.se:[curl]
 
 ....
+curld = Curl Diagnostics - Curl with diagnostic information for request.
+curli = Curl Inspect - Inspect remote file with default editor.
+....
+
+==== Dotfiles
+
+....
+dots = Dotfiles - Learn about dotfile aliases, functions, etc.
+....
+
+==== https://elm-lang.org:[Elm]
+
+....
+elml = Elm Live - Watch for source code changes and recompile immediately.
+elmm = Elm Make - Compile Elm source.
+....
+
+==== General
+
+....
+cype = Colorized Type - Identical to "type" system command but with Bat support.
+eup = Environment Update - Update environment with latest software.
+iso = ISO - Builds an ISO image from mounted volume.
+kilp = Kill Process - Kill errant/undesired process.
+t2s = Tab to Space - Convert file from tab to space indendation.
+....
+
+==== https://git-scm.com:[Git]
+
+....
+gafe = Git Safe - Marks repository as safe for auto-loading project's `bin` path.
+galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
+gash = Git Stash - Creates stash.
+gasha = Git Stash (all) - Answer stash count for projects in current directory.
+gashd = Git Stash Drop - Drop stash or prompt for stash to drop.
+gashl = Git Stash List - List stashes.
+gashp = Git Stash Pop - Pop stash or prompt for stash to pop.
+gashs = Git Stash Show - Show stash or prompt for stash to show.
+gbc = Git Branch Create - Create and switch to branch.
+gbca = Git Branch Create (all) - Create and switch to branch for projects in current directory.
+gbd = Git Branch Delete - Interactively delete local and/or remote branch.
+gbdl = Git Branch Delete (local) - Delete local branch.
+gbdm = Git Branch Delete (merged) - Delete remote and local merged branches.
+gbdr = Git Branch Delete (remote) - Delete remote branch.
+gbf = Git Branch Facsimile - Duplicate current branch with new name and switch to it.
+gbl = Git Branch List - List local and remote branch details.
+gbla = Git Branch List (all) - List current branch for projects in current directory.
+gblo = Git Branch List (owner) - List branches owned by current author or supplied author.
+gbna = Git Branch Number (all) - Answer number of branches for projects in current directory.
+gbr = Git Branch Rename - Rename current branch.
+gbs = Git Branch Switch - Switch between branches.
+gbsa = Git Branch Switch (all) - Switch to given branch for projects in current directory.
+gcaa = Git Commit (all) - Commit changes (unstaged and staged) for projects in current directory.
+gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
+gcb = Git Commit Breakpoint - Create a breakpoint (empty) commit to denote related commits in a feature branch.
+gcff = Git Commit Fix (file) - Create commit fix for file (ignores previous fixups).
+gcfi = Git Commit Fix (interactive) - Select which commit to fix within current feature branch.
+gday = Git Day - Answer summarized list of current day activity for projects in current directory.
+gesh = Git Reset Hard - Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
+gesha = Git Reset Hard (all) - Destroy all untracked, staged, and unstaged changes for all projects in current directory. UNRECOVERABLE!
+gess = Git Reset Soft - Resets previous commit (default), resets back to number of commits, or resets to specific commit.
+ggeta = Git Get Config Value (all) - Answer key value for projects in current directory.
+ghow = Git Show - Show commit details with optional diff support.
+ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
+gia = Git Init (all) - Initialize/re-initialize repositories in current directory.
+gile = Git File - Show file details for a specific commit (with optional diff support).
+gince = Git Since - Answer summarized list of activity since date/time for projects in current directory.
+ginfo = Git Info - Print repository overview information.
+gistory = Git File History - View file commit history (with optional diff support).
+glameh = Git Blame History - View file commit history for a specific file and/or lines (with optional diff support).
+gld = Git Log Details - List default or feature branch commit details.
+gleana = Git Clean (all) - Clean uncommitted files from all projects in current directory.
+glear = Git Clear - Clear repository for packaging/shipping purposes.
+gli = Git Log (interactive) - List default or feature branch commits with commit show and/or diff support.
+gma = Git Merge (all) - Merges, deletes, and pushes feature branch.
+gmonth = Git Month - Answer summarized list of current month activity for projects in current directory.
+gmpa = Git Amend Push (all) - Amend all changes and force push with lease for projects in current directory.
+gount = Git Commit Count - Answer total number of commits for current project.
+gp = Git Push - Pushes changes to remote repository with dynamic branch creation if non-existent.
+gpa = Git Push (all) - Push changes for projects in current directory.
+gpua = Git Pull (all) - Pull new changes from remote branch for projects in current directory.
+gra = Git Remote Add - Add and track a remote repository.
+grbi = Git Rebase (interactive) - Rebase commits, interactively.
+grbq = Git Rebase (quick) - Rebase commits, quickly. Identical to `grbi` function but skips editor.
+groot = Git Root - Change to repository root directory regardless of current depth.
+gseta = Git Set Config Value (all) - Set key value for projects in current directory.
+gsta = Git Status (all) - Answer status of projects with uncommited/unpushed changes.
+gstats = Git Statistics - Answer statistics for current project.
+gstatsa = Git Statistics (all) - Answer statistics for all projects in current directory.
+gsup = Git Standup - Answer summarized list of activity since yesterday for projects in current directory.
+gtagd = Git Tag Delete - Delete local and remote tag (if found).
+gtagr = Git Tag Rebuild - Rebuild a previous tag. WARNING: Use with caution, especially if previously published.
+gtail = Git Tail - Answer commit history since last tag for current project (copies results to clipboard).
+gtaila = Git Tail (all) - Answer commit history count since last tag for projects in current directory.
+gucca = Git Upstream Commit Count (all) - Answer upstream commit count since last pull for projects in current directory.
+guke = Git Nuke - Permanently destroy and erase a file from history. UNRECOVERABLE!
+gunseta = Git Unset (all) - Unset key value for projects in current directory.
+gup = Git Update - Fetch commits, prune untracked references, review each commit (optional, with diff), and pull (optional).
+guthorc = Git Author Contributions - Answers total lines added/removed by author for repo (with emphasis on deletion).
+guthorsa = Git Authors (all) - Answer author commit activity per project (ranked highest to lowest).
+gvac = Git Verify and Clean - Verify and clean objects for current project.
+gvaca = Git Verify and Clean (all) - Verify and clean objects for projects in current directory.
+gwa = Git Worktree Add - Add and switch to new worktree.
+gwd = Git Worktree Delete - Deletes current Git worktree.
+gweek = Git Week - Answer summarized list of current week activity for projects in current directory.
+gync = Git Sync - Syncs up remote changes and deletes pruned/merged branches.
+....
+
+==== https://github.com:[GitHub]
+
+....
+gh = GitHub - View GitHub details for current project.
+ghpra = GitHub Pull Request (all) - Open pull requests for all projects in current directory (non-default branches only).
+....
+
+==== https://en.wikipedia.org/wiki/Less_(Unix):[less]
+
+....
+lessi = Less Interactive - Inspect file, interactively.
+....
+
+==== https://github.com/pivotal/LicenseFinder:[License Finder]
+
+....
+licensea = License Finder (add) - Adds library to global list.
+licensei = License Finder (include) - Include license in global list.
+....
+
+==== https://people.freebsd.org/~abe:[lsof]
+
+....
+port = Port - List file activity on given port.
+....
+
+==== https://jedisct1.github.io/minisign:[Minisign]
+
+....
+sigf = Minisign Sign File - Sign a file.
+sigg = Minisign Generate - Generate private and public key pair.
+sigv = Minisign Verify File - Verify signed file.
+....
+
+==== https://openssl.org:[OpenSSL]
+
+....
+sslc = SSL Certificate Creation - Create SSL certificate.
+....
+
+==== https://github.com/DarthSim/overmind:[Overmind]
+
+....
+omc = Overmind Connect - Connect to running process.
+omr = Overmind Restart - Restart running process.
+oms = Overmind Start - Start processes.
+....
+
+==== https://www.postgresql.org:[PostgreSQL]
+
+....
+pgt = PostgreSQL Template - Edit PostgreSQL template.
+pguc = PostgreSQL User Create - Create PostgreSQL user.
+pgud = PostgreSQL User Drop - Drop PostgreSQL user.
+....
+
+==== https://github.com/ruby/rake:[Rake]
+
+....
+rakea = Rake (all) - Run default Rake tasks for projects in current directory.
+....
+
+==== https://rspec.info:[RSpec]
+
+....
+rsall = RSpec (all) - Run RSpec for projects in current directory.
 rsb = RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
 rsd = RSpec Debug - Debug intermittent RSpec failure(s) by running spec(s) until failure is detected.
 rsp = RSpec Profile - Runs RSpec specs with profiling enabled.
-rsall = RSpec (all) - Run RSpec for projects in current directory.
+....
+
+==== https://www.ruby-lang.org:[Ruby]
+
+....
+rbs = Ruby Server - Serve web content from current directory via WEBrick.
+rbua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version.
+rbva = Ruby Version (all) - Show current Ruby version for all projects in current directory.
+....
+
+==== https://rubygems.org:[Ruby Gems]
+
+....
+gemdep = Gem Dependency Search - Finds a gem defined within a Gemfile or a gemspec.
 ....
 
 ==== https://rubyonrails.org:[Ruby on Rails]
@@ -755,53 +787,18 @@ rsall = RSpec (all) - Run RSpec for projects in current directory.
 railsn = Ruby on Rails New - Create new Rails application from selected option.
 ....
 
-==== http://elm-lang.org:[Elm]
-
-....
-elmm = Elm Make - Compile Elm source.
-elml = Elm Live - Watch for source code changes and recompile immediately.
-....
-
-==== https://asciinema.org:[asciinema]
-
-....
-cinr = asciinema Record - Create new asciinema recording.
-....
-
-==== https://jedisct1.github.io/minisign:[Minisign]
-
-....
-sigg = Minisign Generate - Generate private and public key pair.
-sigf = Minisign Sign File - Sign a file.
-sigv = Minisign Verify File - Verify signed file.
-....
-
 ==== https://github.com/Aloxaf/silicon:[Silicon]
 
 ....
 scc = Silicon Copy - Generates and copies code snippet image to clipboard.
 ....
 
-==== https://github.com/DarthSim/overmind:[Overmind]
-
-....
-oms = Overmind Start - Start processes.
-omc = Overmind Connect - Connect to running process.
-omr = Overmind Restart - Restart running process.
-....
-
 ==== https://magic-wormhole.readthedocs.io:[Wormhole]
 
 ....
+whr = Wormhole Receive - Receive encrypted payload (i.e. text, file, etc.)
 whs = Wormhole Send - Send encrypted path (i.e. file or directory).
 whst = Wormhole Send Text - Send encrypted text.
-whr = Wormhole Receive - Receive encrypted payload (i.e. text, file, etc.)
-....
-
-==== Dotfiles
-
-....
-dots = Dotfiles - Learn about dotfile aliases, functions, etc.
 ....
 
 === Git Hooks
@@ -833,28 +830,34 @@ irb_binding = IRB Binding - Detect IRB debug statements.
 
 [source,ruby]
 ----
-CK.locate  # Locates source code for given object and method.
-CK.search  # Searches for object method for given pattern.
 CK.copy    # Copies data to OS X clipboard.
+CK.locate  # Locates source code for given object and method.
 CK.paste   # Pastes data from OS X clipboard.
+CK.search  # Searches for object method for given pattern.
 ----
 
 === Pry Aliases
 
 ....
-'w' = "whereami"
-'c' = "continue"
-'s' = "step"
-'n' = "next"
-'f' = "finish"
-"ss" = "show-source"
-"bp" = "break"
-"bpe" = "break --enable"
-"bpd" = "break --disable"
-"bpD" = "break --delete"
-"bpc" = "break --disable-all"
-"bpC" = "break --delete-all"
-"bph" = "break --help"
+bp = "break"
+bpC = "break --delete-all"
+bpc = "break --disable-all"
+bpD = "break --delete"
+bpd = "break --disable"
+bpe = "break --enable"
+bph = "break --help"
+bt = "backtrace"
+c = "continue"
+dis = "disable-pry"
+e = "edit"
+f = "finish"
+n = "next"
+pl = "play --lines"
+po = "play -o"
+s = "step"
+si = "show-input"
+ss = "show-source"
+w = "whereami"
 ....
 
 == Development
