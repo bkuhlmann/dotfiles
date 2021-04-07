@@ -12,20 +12,20 @@ class CK
         .then { |project| [RUBY_VERSION, project].reject(&:empty?).join "|" }
   end
 
-  def self.locate object, method
-    object.method(method).source_location
-  end
-
-  def self.search object, pattern
-    object.methods.grep(/#{pattern}/)
-  end
-
   def self.copy *args
     open("| pbcopy", "w") { |clipboard| clipboard.write args.join("\n") }
   end
 
+  def self.locate object, method
+    object.method(method).source_location
+  end
+
   def self.paste
     open "| pbpaste", "r", &:read
+  end
+
+  def self.search object, pattern
+    object.methods.grep(/#{pattern}/)
   end
 end
 
