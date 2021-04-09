@@ -16,7 +16,7 @@
 \set COMP_KEYWORD_CASE upper
 
 -- Use a separate history file per-database.
-\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTFILE ~/.cache/psql/:DBNAME.log
 
 -- If a command is run more than once in a row, only store it once in the history.
 \set HISTCONTROL ignoredups
