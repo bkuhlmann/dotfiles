@@ -3,8 +3,8 @@
 # Sets bell style to visible instead of audible.
 set bell-style visible
 
-# Use VI edit commands instead of Emacs.
-set editing-mode vi
+# Use Emacs.
+set editing-mode emacs
 
 # Use VI key mappings instead of Emacs.
 set keymap vi
