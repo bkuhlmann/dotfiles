@@ -111,6 +111,9 @@ export PATH="$PATH:$HOMEBREW_PREFIX/share/npm/bin"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Terraform
+export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform/plugins"
+
 # Yarn
 export PATH="$PATH:$(yarn global bin)"
 
