@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 43.0.0
+git checkout 43.1.0
 ----
 
 == Upgrade
@@ -103,8 +103,6 @@ After install, the following files will require manual updating:
 * `.bash/env.sh`: Add secret/machine-specific environment settings (if any).
 * `.gitconfig`: Uncomment the name, email, and token lines within the `[user]` and `[github]`
   sections to replace with your own details.
-
-START
 
 === Aliases
 

@@ -1,5 +1,11 @@
 = Changes
 
+== 43.1.0 (2021-06-01)
+
+* Fixed psql configuration to use XDG cache for database history - Brooke Kuhlmann
+* Added Bash Make CPU jobs calculation - Brooke Kuhlmann
+* Added Terraform XDG plugins cache - Brooke Kuhlmann
+
 == 43.0.0 (2021-04-06)
 
 * Fixed Git global configuration includes - Brooke Kuhlmann
