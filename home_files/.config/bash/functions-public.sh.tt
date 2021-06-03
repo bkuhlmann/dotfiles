@@ -40,7 +40,7 @@ cinr() {
 # Section: https://bundler.io:[Bundler] #
 #---------------------------------------#
 
-# Label: Bundle Clean (all)
+# Label: Bundler Clean (all)
 # Description: Clean projects of gem artifacts (i.e. pkg folder).
 bca() {
   while read -r project; do
@@ -50,7 +50,8 @@ bca() {
         printf "\033[36m${project}\033[m: " # Outputs project in cyan color.
 
         # Print status if found, otherwise a checkmark for passing status.
-        if [[ -d "pkg" ]]; then
+        if [[ $(rg --files --glob *.gem | wc -l | xargs) > 0 ]]; then
+          rm -f *.gem
           rm -rf pkg
           printf "%s\n" "Cleaned gem artifacts."
         else
