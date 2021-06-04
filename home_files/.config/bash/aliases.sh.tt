@@ -212,7 +212,7 @@ alias mo="open -a Marked\ 2"
 
 # Section: https://www.alchemists.io/projects/milestoner:[Milestoner]
 alias ms="milestoner"
-alias msc='milestoner --commits | _copy_and_print "\n"'
+alias mss='milestoner --status | _copy_and_print "\n"'
 alias mse="milestoner --config --edit"
 alias msp="milestoner --publish"
 
