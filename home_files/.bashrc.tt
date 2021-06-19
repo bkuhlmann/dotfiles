@@ -56,7 +56,8 @@ source "$HOME/.config/bash/env.sh"
 source "$HOME/.config/bash/colors.sh"
 
 # Aliases
-source "$HOME/.config/bash/aliases.sh"
+#source "$HOME/.config/bash/aliases.sh"
+source "$HOME/.config/aliases/aliases.sh"
 
 # Functions
 source "$HOME/.config/bash/functions-private.sh"

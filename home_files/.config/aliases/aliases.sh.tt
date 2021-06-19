@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+
+# Custom Alias'
+#----------------------------------------------------------------------------------------
+
+# Source Bash Aliases - from https://github.com/bkuhlmann/dotfiles
+source "$HOME/.config/bash/aliases.sh"
+
+# My Custom Aliases
+#source "$HOME/.config/aliases/aliases.sh"
+
+
