@@ -195,7 +195,7 @@ alias gwp="git worktree prune"
 # Section: https://brew.sh:[Homebrew]
 alias hb="brew"
 alias hbd="brew doctor"
-alias hbi="brew update && brew install"
+alias hbi="brew install"
 alias hbin="brew info"
 alias hblc="brew list --casks --versions | fzf"
 alias hblf="brew list --formulae --versions | fzf"
