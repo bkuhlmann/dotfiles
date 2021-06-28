@@ -127,6 +127,8 @@ if [[ -r "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]]; then
 fi
 
 # Git
+export GIT_CONFIG_GLOBAL="$HOME/.config/git/configuration"
+
 if [[ -r "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash" ]]; then
   source "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash"
 fi
