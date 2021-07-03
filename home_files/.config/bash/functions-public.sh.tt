@@ -789,6 +789,28 @@ gcb() {
   git commit --allow-empty --no-verify --message "----- $label -----"
 }
 
+# Label: Git Commit Fixup
+# Description: Create fixup commit with optional amend or reword support.
+# Parameters: $1 (required) - SHA, $2 (optional) - (a)mend or (r)eword.
+gcf() {
+  local sha="$1"
+  local kind="$2"
+
+  if [[ -z "$sha" ]]; then
+    printf "%s\n" "ERROR: SHA is missing."
+    return
+  fi
+
+  case $kind in
+    'a')
+      git commit --fixup=amend:"$sha";;
+    'r')
+      git commit --fixup=reword:"$sha";;
+    *)
+      git commit --fixup "$sha";;
+  esac
+}
+
 # Label: Git Commit Fix (file)
 # Description: Create commit fix for file (ignores previous fixups).
 # Parameters: $1 (required) - The file to create fixup commit for.
@@ -803,7 +825,9 @@ gcff() {
 
 # Label: Git Commit Fix (interactive)
 # Description: Select which commit to fix within current feature branch.
+# Parameters: $1 (optional) - (a)mend or (r)eword.
 gcfi() {
+  local kind="$1"
   local commits=($(_git_branch_shas))
 
   _git_commit_options "${commits[*]}"
@@ -816,7 +840,8 @@ gcfi() {
 
   printf "\n"
   local selected_commit=${commits[$((response - 1))]}
-  gcf "$selected_commit"
+  printf "%s\n" "Selected commit: $selected_commit"
+  gcf "$selected_commit" "$kind"
 }
 
 # Label: Git Day
