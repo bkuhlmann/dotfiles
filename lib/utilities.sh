@@ -65,7 +65,7 @@ link_file() {
   local source_file="$PWD/$1"
   local dest_file="$HOME/$(base_dest_file $1)"
   local dest_dir="$(dirname $dest_file)"
-  local excludes=".+(env.sh.tt|.gitconfig.tt)$"
+  local excludes=".+(env.sh.tt|git/configuration.tt)$"
 
   if [[ "$(basename $source_file)" == "mkdir.command" ]]; then
     mkdir -p $dest_dir
