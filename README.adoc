@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 43.1.0
+git checkout 43.2.0
 ----
 
 == Upgrade
@@ -277,7 +277,6 @@ gca = "git commit --all"
 gcam = "git commit --all --message"
 gcd = "git config --list --show-origin --show-scope"
 gce = 'cat .git/COMMIT_EDITMSG | rg --invert-match "^\#.*" | pbcopy'
-gcf = "git commit --fixup"
 gcge = "git config --global --edit"
 gcl = "git clone"
 gcle = "git config --local --edit"
@@ -371,7 +370,7 @@ mo = "open -a Marked\ 2"
 
 ....
 ms = "milestoner"
-msc = 'milestoner --commits | _copy_and_print "\n"'
+mss = 'milestoner --status | _copy_and_print "\n"'
 mse = "milestoner --config --edit"
 msp = "milestoner --publish"
 ....
@@ -568,7 +567,7 @@ cinr = asciinema Record - Create new asciinema recording.
 ==== https://bundler.io:[Bundler]
 
 ....
-bca = Bundle Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
+bca = Bundler Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
 bcg = Bundler Config Gem - Configure Bundler to use local gem for development purposes.
 bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
 bl = Bundle List - List gem dependencies for project and copy them to clipboard.
@@ -641,6 +640,7 @@ gbsa = Git Branch Switch (all) - Switch to given branch for projects in current 
 gcaa = Git Commit (all) - Commit changes (unstaged and staged) for projects in current directory.
 gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
 gcb = Git Commit Breakpoint - Create a breakpoint (empty) commit to denote related commits in a feature branch.
+gcf = Git Commit Fixup - Create fixup commit with optional amend or reword support.
 gcff = Git Commit Fix (file) - Create commit fix for file (ignores previous fixups).
 gcfi = Git Commit Fix (interactive) - Select which commit to fix within current feature branch.
 gday = Git Day - Answer summarized list of current day activity for projects in current directory.

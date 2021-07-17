@@ -1,5 +1,13 @@
 = Changes
 
+== 43.2.0 (2021-07-17)
+
+* Added Git commit fixup amend and reword support - Brooke Kuhlmann
+* Added Tealdeer cache update to environment update function - Brooke Kuhlmann
+* Updated Bundler clean all function to account for root files - Brooke Kuhlmann
+* Updated Milestoner status alias to use new CLI flag - Brooke Kuhlmann
+* Updated to Ruby 3.0.2 - Brooke Kuhlmann
+
 == 43.1.0 (2021-06-01)
 
 * Fixed psql configuration to use XDG cache for database history - Brooke Kuhlmann
