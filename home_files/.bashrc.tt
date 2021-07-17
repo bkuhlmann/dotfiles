@@ -128,3 +128,7 @@ if [[ -r "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash" ]]
 fi
 
 export PATH=".git/safe/../../bin:$PATH"
+
+# Zoxide
+export _ZO_DATA_DIR="$HOME/.cache/zoxide"
+eval "$(zoxide init bash)"
