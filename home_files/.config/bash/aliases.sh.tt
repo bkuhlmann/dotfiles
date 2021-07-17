@@ -188,6 +188,12 @@ alias guthors='git log --color --pretty=format:"%C(bold blue)%an%C(reset)" | sor
 alias gwl="git worktree list"
 alias gwp="git worktree prune"
 
+# Section: https://github.com/TaKO8Ki/frum:[Frum]
+alias rbi="frum install"
+alias rbc="frum local"
+alias rbu="frum uninstall"
+alias rbv="frum versions"
+
 # Section: https://brew.sh:[Homebrew]
 alias hb="brew"
 alias hbd="brew doctor"
