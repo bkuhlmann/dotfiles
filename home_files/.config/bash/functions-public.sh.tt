@@ -324,6 +324,7 @@ eup() {
   hbsu
   gemuc
   rustup update
+  tldr --update
   docker system prune --force
   docker buildx prune --force
 
