@@ -325,6 +325,3 @@ alias yo="yarn outdated"
 alias yr="yarn remove"
 alias ys="yarn run"
 alias yu="yarn upgrade"
-
-# Section: https://github.com/rupa/z:[Z]
-alias ze="$EDITOR $_Z_DATA"

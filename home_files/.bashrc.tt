@@ -120,12 +120,6 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform/plugins"
 # Yarn
 export PATH="$PATH:$(yarn global bin)"
 
-# Z
-export _Z_DATA="$HOME/.cache/z/history.txt"
-if [[ -r "$HOMEBREW_PREFIX/etc/profile.d/z.sh" ]]; then
-  source "$HOMEBREW_PREFIX/etc/profile.d/z.sh"
-fi
-
 # Git
 export GIT_CONFIG_GLOBAL="$HOME/.config/git/configuration"
 

@@ -42,7 +42,6 @@ toc::[]
 * Adds link:https://direnv.net[direnv] support.
 * Adds link:https://www.gnupg.org[GPG] support.
 * Adds link:https://nodejs.org[Node.js] support.
-* Adds link:https://github.com/rupa/z[Z] support.
 
 == Screencasts
 
