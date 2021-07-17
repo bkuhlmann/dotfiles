@@ -91,7 +91,6 @@ alias du="ncdu -e --color dark"
 alias h="history"
 alias l1="ls -A1 | _copy_and_print '\n'"
 alias l="ls -alhT"
-alias man="gem man --system"
 alias o="open"
 alias p='pwd | tr -d "\r\n" | _copy_and_print'
 alias pss="pgrep -i -l -f"
