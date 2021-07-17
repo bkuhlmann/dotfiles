@@ -95,6 +95,10 @@ export BUNDLE_USER_HOME="$HOME/.local/share/bundler"
 export BUNDLE_USER_PLUGIN="$HOME/.local/share/bundler/plugin"
 export RUBYOPT='-W:deprecated'
 
+# Frum
+export FRUM_DIR="$HOME/.cache/frum"
+eval "$(frum init)"
+
 # FZF
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --color always --exclude .git"
 export FZF_DEFAULT_OPTS="--multi --ansi"

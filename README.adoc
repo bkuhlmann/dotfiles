@@ -38,6 +38,7 @@ toc::[]
 * Configures the link:https://www.vim.org[Vim] (`.vimrc`) file.
 * Configures link:https://www.sublimetext.com[Sublime Text] as the default editor.
 * Adds link:http://bash-completion.alioth.debian.org[Bash Completion].
+* Adds link:https://github.com/tako8ki/frum[Frum] support.
 * Adds link:https://direnv.net[direnv] support.
 * Adds link:https://www.gnupg.org[GPG] support.
 * Adds link:https://nodejs.org[Node.js] support.
