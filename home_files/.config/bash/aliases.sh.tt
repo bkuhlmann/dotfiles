@@ -274,7 +274,7 @@ alias rbct="open tmp/rubycritic/overview.html"
 
 # Section: https://rubygems.org:[RubyGems]
 alias gemc="gem cleanup"
-alias gemcli="ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
+alias gemcli="rg 'spec\.executables' --no-messages --max-depth=2 --files-with-matches gemspec . | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
 alias gemcr="$EDITOR $HOME/.gem/credentials"
 alias geme="gem environment"
 alias gemi="gem install"
