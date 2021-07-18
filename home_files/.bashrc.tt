@@ -95,12 +95,6 @@ export BUNDLE_USER_HOME="$HOME/.local/share/bundler"
 export BUNDLE_USER_PLUGIN="$HOME/.local/share/bundler/plugin"
 export RUBYOPT='-W:deprecated'
 
-# chruby
-if [[ -r "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh" ]]; then
-  source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh"
-  source "$HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh"
-fi
-
 # FZF
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --color always --exclude .git"
 export FZF_DEFAULT_OPTS="--multi --ansi"

@@ -28,9 +28,6 @@ alias bo="bundle outdated --only-explicit"
 alias br="bundle remove"
 alias bu="bundle update"
 
-# Section: https://github.com/postmodern/chruby:[chruby]
-alias rb="chruby"
-
 # Section: https://crystal-lang.org:[Crystal]
 alias cr="crystal"
 alias crb="crystal build"
