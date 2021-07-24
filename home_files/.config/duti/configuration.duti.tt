@@ -1,5 +1,8 @@
 # Use `mdls -name kMDItemCFBundleIdentifier -r /Applications/<app>.app` to identify applications.
 
+com.colliderli.iina .mov all
+com.colliderli.iina .mp4 all
+com.colliderli.iina .flac all
 com.flyingmeat.Acorn5 .svg all
 com.google.Chrome .gif all
 com.pixelmatorteam.pixelmator .arw all
@@ -11,5 +14,3 @@ com.pixelmatorteam.pixelmator .png all
 com.pixelmatorteam.pixelmator .tiff all
 com.pixelmatorteam.pixelmator .webp all
 com.rogueamoeba.Fission .m4a all
-org.videolan.vlc .mov all
-org.videolan.vlc .mp4 all
