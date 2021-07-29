@@ -1,1 +1,2 @@
+prefix=$HOME/.cache/npm
 progress=false
