@@ -119,9 +119,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Terraform
 export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform/plugins"
 
-# Yarn
-export PATH="$PATH:$(yarn global bin)"
-
 # Git
 export GIT_CONFIG_GLOBAL="$HOME/.config/git/configuration"
 

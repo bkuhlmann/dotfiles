@@ -318,12 +318,3 @@ alias tsr="tmux rename-session -t"
 
 # Section: https://gitlab.com/procps-ng/procps:[Watch]
 alias wp="watch --interval 1 --color --beep --exec"
-
-# Section: https://yarnpkg.com:[Yarn]
-alias ya="yarn add"
-alias yad="yarn add --dev"
-alias yi="yarn install"
-alias yo="yarn outdated"
-alias yr="yarn remove"
-alias ys="yarn run"
-alias yu="yarn upgrade"
