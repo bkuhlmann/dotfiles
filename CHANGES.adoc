@@ -1,5 +1,23 @@
 = Changes
 
+== 44.0.0 (2021-08-01)
+
+* Added Fast Node Manager configuration - Brooke Kuhlmann
+* Added Frum aliases and functions - Brooke Kuhlmann
+* Added Frum configuration - Brooke Kuhlmann
+* Added NPM XDG cache - Brooke Kuhlmann
+* Added Zoxide configuration - Brooke Kuhlmann
+* Updated Git global configuration to use XDG configuration - Brooke Kuhlmann
+* Updated gem CLI alias to use ripgrep instead of Silver Surfer - Brooke Kuhlmann
+* Updated ping alias override to use gping - Brooke Kuhlmann
+* Removed Gem Man override - Brooke Kuhlmann
+* Removed Homebrew upgrade step before install - Brooke Kuhlmann
+* Removed Ruby Install alias - Brooke Kuhlmann
+* Removed VLC Duti configuration - Brooke Kuhlmann
+* Removed Yarn support - Brooke Kuhlmann
+* Removed Z configuration and aliases - Brooke Kuhlmann
+* Removed chruby configuration and alias - Brooke Kuhlmann
+
 == 43.2.0 (2021-07-17)
 
 * Added Git commit fixup amend and reword support - Brooke Kuhlmann

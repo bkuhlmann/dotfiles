@@ -17,32 +17,33 @@ toc::[]
 
 == Features
 
-* Configures the `.hushlogin` file.
-* Configures the link:https://github.com/amazing-print/amazing_print[Amazing Print] (`.aprc`) file.
-* Configures the Bash (`.bashrc`, `.bash_profile`, and `.inputrc`) files.
-* Configures the link:http://ctags.sourceforge.net[CTags] (`.ctags`) file.
-* Configures the link:https://git-scm.com[Git] (`.gitconfig`, `.gitignore`, `.git_template`, etc.)
-  files.
-* Configures the link:https://www.npmjs.org[NPM] (`.npmrc`) file.
-* Configures the link:https://www.postgresql.org[PostgreSQL] (`.psqlrc`) file.
-* Configures the link:http://pry.github.com[Pry] (`.pryrc`) file.
-* Configures the link:https://voormedia.github.io/rails-erd[Rails ERD] (`.erdconfig`) file.
-* Configures the link:https://rspec.info[RSpec] (`.rspec`) file.
-* Configures the link:https://www.ruby-lang.org[Ruby] (`.ruby-version` and `.irbrc`) files.
-* Configures the link:http://bashdb.sourceforge.net/ruby-debug.html[Ruby Debugger] (`.rdebugrc`)
-  file.
-* Configures the link:https://rubygems.org[Ruby Gems] (`.gemrc`) file.
-* Configures the link:https://github.com/bbatsov/rubocop[Rubocop] (`.rubocop.yml`) file.
-* Configures the link:https://github.com/ggreer/the_silver_searcher[Silver Surfer] (`.agignore`)
-  file.
-* Configures the link:https://www.vim.org[Vim] (`.vimrc`) file.
-* Configures link:https://www.sublimetext.com[Sublime Text] as the default editor.
-* Adds link:http://bash-completion.alioth.debian.org[Bash Completion].
-* Adds link:https://github.com/tako8ki/frum[Frum] support.
-* Adds link:https://direnv.net[direnv] support.
-* Adds link:https://www.gnupg.org[GPG] support.
-* Adds link:https://nodejs.org[Node.js] support.
-* Adds link:https://github.com/ajeetdsouza/zoxide[Zoxide] support.
+* Configures link:https://github.com/amazing-print/amazing_print[Amazing Print] (`.aprc`).
+* Configures Bash (`.config/bash`, `.bashrc`, `.bash_profile`, and `.inputrc`).
+* Configures link:http://bash-completion.alioth.debian.org[Bash Completion].
+* Configures link:http://ctags.sourceforge.net[CTags] (`.ctags`).
+* Configures link:https://direnv.net[direnv].
+* Configures link:https://www.docker.com[Docker].
+* Configures link:https://the.exa.website[Exa].
+* Configures link:https://github.com/tako8ki/frum[Frum].
+* Configures link:https://git-scm.com[Git] (`.config/git`).
+* Configures link:https://www.gnupg.org[GPG].
+* Configures `.hushlogin`.
+* Configures link:https://nodejs.org[Node.js].
+* Configures link:https://www.npmjs.org[NPM] (`.npmrc`).
+* Configures link:https://www.postgresql.org[PostgreSQL] (`.psqlrc`).
+* Configures link:http://pry.github.com[Pry] (`.pryrc`).
+* Configures link:https://voormedia.github.io/rails-erd[Rails ERD] (`.erdconfig`).
+* Configures link:https://rspec.info[RSpec] (`.rspec`).
+* Configures link:https://www.ruby-lang.org[Ruby] (`.ruby-version` and `.irbrc`).
+* Configures link:http://bashdb.sourceforge.net/ruby-debug.html[Ruby Debugger] (`.rdebugrc`).
+* Configures link:https://rubygems.org[Ruby Gems] (`.gemrc`).
+* Configures link:https://github.com/bbatsov/rubocop[Rubocop] (`.rubocop.yml`).
+* Configures link:https://www.rust-lang.org[Rust].
+* Configures link:https://github.com/ggreer/the_silver_searcher[Silver Surfer] (`.agignore`).
+* Configures link:https://www.sublimetext.com[Sublime Text].
+* Configures link:https://www.vim.org[Vim] (`.vimrc`).
+* Configures link:https://www.terraform.io[Terraform].
+* Configures link:https://github.com/ajeetdsouza/zoxide[Zoxide].
 
 == Screencasts
 
@@ -61,7 +62,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 43.2.0
+git checkout 44.0.0
 ----
 
 == Upgrade
@@ -144,12 +145,6 @@ blo = "bundle list --paths | fzf | xargs $EDITOR"
 bo = "bundle outdated --only-explicit"
 br = "bundle remove"
 bu = "bundle update"
-....
-
-==== https://github.com/postmodern/chruby:[chruby]
-
-....
-rb = "chruby"
 ....
 
 ==== https://crystal-lang.org:[Crystal]
@@ -238,7 +233,6 @@ du = "ncdu -e --color dark"
 h = "history"
 l1 = "ls -A1 | _copy_and_print '\n'"
 l = "ls -alhT"
-man = "gem man --system"
 o = "open"
 p = 'pwd | tr -d "\r\n" | _copy_and_print'
 pss = "pgrep -i -l -f"
@@ -343,12 +337,21 @@ gwl = "git worktree list"
 gwp = "git worktree prune"
 ....
 
+==== https://github.com/TaKO8Ki/frum:[Frum]
+
+....
+rbi = "frum install"
+rbc = "frum local"
+rbu = "frum uninstall"
+rbv = "frum versions"
+....
+
 ==== https://brew.sh:[Homebrew]
 
 ....
 hb = "brew"
 hbd = "brew doctor"
-hbi = "brew update && brew install"
+hbi = "brew install"
 hbin = "brew info"
 hblc = "brew list --casks --versions | fzf"
 hblf = "brew list --formulae --versions | fzf"
@@ -383,7 +386,7 @@ dnsi = "scutil --dns"
 dnss = "sudo dscacheutil -statistics"
 ipa = 'curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
 key = "open /Applications/Utilities/Keychain\ Access.app"
-ping = "prettyping --nolegend"
+ping = "gping"
 sshe = "$EDITOR $HOME/.ssh/config"
 top = "htop"
 ....
@@ -442,7 +445,6 @@ cops = "rubocop --show-cops"
 ....
 rbbe = "$EDITOR $HOME/Engineering/Misc/benchmark.rb"
 rbbr = "ruby $HOME/Engineering/Misc/benchmark.rb"
-rbi = "ruby-install"
 rbse = "$EDITOR $HOME/Engineering/Misc/snippet.rb"
 rbsr = "ruby $HOME/Engineering/Misc/snippet.rb"
 ....
@@ -465,7 +467,7 @@ rbct = "open tmp/rubycritic/overview.html"
 
 ....
 gemc = "gem cleanup"
-gemcli = "ag --depth=1 --files-with-matches --file-search-regex gemspec executables | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
+gemcli = "rg 'spec\.executables' --no-messages --max-depth=2 --files-with-matches gemspec . | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
 gemcr = "$EDITOR $HOME/.gem/credentials"
 geme = "gem environment"
 gemi = "gem install"
@@ -530,24 +532,6 @@ tsr = "tmux rename-session -t"
 
 ....
 wp = "watch --interval 1 --color --beep --exec"
-....
-
-==== https://yarnpkg.com:[Yarn]
-
-....
-ya = "yarn add"
-yad = "yarn add --dev"
-yi = "yarn install"
-yo = "yarn outdated"
-yr = "yarn remove"
-ys = "yarn run"
-yu = "yarn upgrade"
-....
-
-==== https://github.com/rupa/z:[Z]
-
-....
-ze = "$EDITOR $_Z_DATA"
 ....
 
 === Functions
@@ -769,6 +753,7 @@ rsp = RSpec Profile - Runs RSpec specs with profiling enabled.
 
 ....
 rbs = Ruby Server - Serve web content from current directory via WEBrick.
+rbw = Ruby Which - Locate path to current Ruby program.
 rbua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version.
 rbva = Ruby Version (all) - Show current Ruby version for all projects in current directory.
 ....
