@@ -845,6 +845,20 @@ gcfi() {
   gcf "$selected_commit" "$kind"
 }
 
+# Label: Git Diff Files
+# Description: List all added/changed files on current branch.
+# Parameters: None.
+gdf() {
+  local commits=($(_git_branch_shas))
+
+  if [[ -z "$(git log --left-right --oneline $(_git_branch_name)...$(_git_branch_default))" ]]; then
+    printf "%s\n" "ERROR: You are on the default branch or a branch that is identical."
+    return 1
+  fi
+
+  git log --pretty="format:" --name-only "${commits[-1]}^..${commits[0]}" | sort | uniq
+}
+
 # Label: Git Day
 # Description: Answer summarized list of current day activity for projects in current directory.
 gday() {
