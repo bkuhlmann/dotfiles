@@ -63,7 +63,7 @@ alias elmt="elm-test"
 
 # Section: https://the.exa.website:[Exa]
 alias x1="exa --oneline --all --group-directories-first"
-alias x="exa --all --long --header --group --group-directories-first --time-style long-iso --git --git-ignore"
+alias x="exa --all --all --long --header --group --group-directories-first --time-style long-iso --git"
 alias xt="exa --tree"
 
 # Section: https://github.com/junegunn/fzf:[Fuzzy Finder]
