@@ -7,7 +7,9 @@
 [link=https://circleci.com/gh/bkuhlmann/dotfiles]
 image::https://circleci.com/gh/bkuhlmann/dotfiles.svg?style=svg[Circle CI Status]
 
-Shell scripts for applying default settings to UNIX-based operating systems.
+These are shell scripts for applying default settings to UNIX-based operating systems. These are a
+collection of useful shortcuts, performance augmentation, and advanced practices that, even if you
+don't apply to your own dotfiles, should be educational for improving your own practices.
 
 By default, these are set to my preferences (namely for macOS) but you can change them to your
 liking by editing any of the `.tt` template files in the `home_files` directory. Read on to learn
