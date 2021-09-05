@@ -368,7 +368,7 @@ kilp() {
 }
 
 # Label: Tab to Space
-# Description: Convert file from tab to space indendation.
+# Description: Convert file from tab to space indentation.
 # Parameters: $1 (required) - File path, $2 (optional) - Number of spaces, default: 2.
 t2s() {
   local number_of_spaces="${2:-2}"
