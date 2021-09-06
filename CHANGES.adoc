@@ -1,5 +1,13 @@
 = Changes
 
+== 44.1.0 (2021-09-05)
+
+* Fixed Exa alias to list dotfiles - Brooke Kuhlmann
+* Fixed Exa tree alias to group by directories and ignore Git - Brooke Kuhlmann
+* Fixed tab to space function description typo - Brooke Kuhlmann
+* Added Git diff files function - Brooke Kuhlmann
+* Updated README project description - Brooke Kuhlmann
+
 == 44.0.0 (2021-08-01)
 
 * Added Fast Node Manager configuration - Brooke Kuhlmann

@@ -64,7 +64,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 44.0.0
+git checkout 44.1.0
 ----
 
 == Upgrade
@@ -201,8 +201,8 @@ elmt = "elm-test"
 
 ....
 x1 = "exa --oneline --all --group-directories-first"
-x = "exa --all --long --header --group --group-directories-first --time-style long-iso --git --git-ignore"
-xt = "exa --tree"
+x = "exa --all --all --long --header --group --group-directories-first --time-style long-iso --git"
+xt = "exa --all --group-directories-first --ignore-glob '*.git' --git-ignore --tree"
 ....
 
 ==== https://github.com/junegunn/fzf:[Fuzzy Finder]
@@ -595,7 +595,7 @@ cype = Colorized Type - Identical to "type" system command but with Bat support.
 eup = Environment Update - Update environment with latest software.
 iso = ISO - Builds an ISO image from mounted volume.
 kilp = Kill Process - Kill errant/undesired process.
-t2s = Tab to Space - Convert file from tab to space indendation.
+t2s = Tab to Space - Convert file from tab to space indentation.
 ....
 
 ==== https://git-scm.com:[Git]
@@ -629,6 +629,7 @@ gcb = Git Commit Breakpoint - Create a breakpoint (empty) commit to denote relat
 gcf = Git Commit Fixup - Create fixup commit with optional amend or reword support.
 gcff = Git Commit Fix (file) - Create commit fix for file (ignores previous fixups).
 gcfi = Git Commit Fix (interactive) - Select which commit to fix within current feature branch.
+gdf = Git Diff Files - List all added/changed files on current branch.
 gday = Git Day - Answer summarized list of current day activity for projects in current directory.
 gesh = Git Reset Hard - Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
 gesha = Git Reset Hard (all) - Destroy all untracked, staged, and unstaged changes for all projects in current directory. UNRECOVERABLE!
