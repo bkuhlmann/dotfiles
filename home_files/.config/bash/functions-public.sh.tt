@@ -698,6 +698,7 @@ gbr() {
 
     if [[ "$response" == 'y' ]]; then
       git push --delete origin "$old_branch"
+      git push --set-upstream origin "$new_branch"
     fi
   fi
 }
