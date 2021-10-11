@@ -33,7 +33,6 @@ toc::[]
 * Configures link:https://nodejs.org[Node.js].
 * Configures link:https://www.npmjs.org[NPM] (`.npmrc`).
 * Configures link:https://www.postgresql.org[PostgreSQL] (`.psqlrc`).
-* Configures link:http://pry.github.com[Pry] (`.pryrc`).
 * Configures link:https://voormedia.github.io/rails-erd[Rails ERD] (`.erdconfig`).
 * Configures link:https://rspec.info[RSpec] (`.rspec`).
 * Configures link:https://www.ruby-lang.org[Ruby] (`.ruby-version` and `.irbrc`).
@@ -821,30 +820,6 @@ CK.locate  # Locates source code for given object and method.
 CK.paste   # Pastes data from OS X clipboard.
 CK.search  # Searches for object method for given pattern.
 ----
-
-=== Pry Aliases
-
-....
-bp = "break"
-bpC = "break --delete-all"
-bpc = "break --disable-all"
-bpD = "break --delete"
-bpd = "break --disable"
-bpe = "break --enable"
-bph = "break --help"
-bt = "backtrace"
-c = "continue"
-dis = "disable-pry"
-e = "edit"
-f = "finish"
-n = "next"
-pl = "play --lines"
-po = "play -o"
-s = "step"
-si = "show-input"
-ss = "show-source"
-w = "whereami"
-....
 
 == Development
 
