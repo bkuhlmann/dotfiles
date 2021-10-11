@@ -322,7 +322,6 @@ cype() {
 # Description: Update environment with latest software.
 eup() {
   hbsu
-  gemuc
   rustup update
   tldr --update
   docker system prune --force
@@ -330,7 +329,9 @@ eup() {
 
   (
     cd $HOME/Engineering/OSS
+    gpua
     bca
+    gemuc
     bua
     gvaca
   )
