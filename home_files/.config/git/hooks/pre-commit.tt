@@ -11,7 +11,6 @@ source "$HOME/.config/git/hooks/extensions/support.sh"
 source "$HOME/.config/git/hooks/extensions/capybara.sh"
 source "$HOME/.config/git/hooks/extensions/elm.sh"
 source "$HOME/.config/git/hooks/extensions/java_script.sh"
-source "$HOME/.config/git/hooks/extensions/pry.sh"
 source "$HOME/.config/git/hooks/extensions/rspec.sh"
 source "$HOME/.config/git/hooks/extensions/ruby.sh"
 
@@ -21,7 +20,6 @@ irb_binding
 java_script_debugger
 java_script_console
 java_script_alert
-pry_binding
 rspec_dotfile
 rspec_focus
 rspec_order

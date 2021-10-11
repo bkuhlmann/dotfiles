@@ -802,7 +802,6 @@ java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
 java_script_console = JavaScript Console - Detect JavaScript console statements.
 java_script_alert = JavaScript Alert - Detect JavaScript alert statements.
 license_finder_check = License Finder Check - Scan project for valid licenses.
-pry_binding = Pry Binding - Detect Pry debug statements.
 reek_check = Reek Check - Scan Ruby code for poor style choices.
 rspec_dotfile = RSpec Dotfile - Detect RSpec dotfile.
 rspec_focus = RSpec Focus - Detect RSpec focus.
