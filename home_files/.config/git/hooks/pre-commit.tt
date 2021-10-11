@@ -16,10 +16,10 @@ source "$HOME/.config/git/hooks/extensions/ruby.sh"
 
 capybara_save_and_open_page
 elm_debug
-irb_binding
-java_script_debugger
-java_script_console
 java_script_alert
+java_script_console
+java_script_debugger
 rspec_dotfile
 rspec_focus
 rspec_order
+ruby_debug
