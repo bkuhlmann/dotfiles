@@ -40,6 +40,7 @@ export HISTIGNORE="#*:..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mund
 # Homebrew
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export HOMEBREW_BAT=1
+export HOMEBREW_BOOTSNAP=1
 export HOMEBREW_CURL_RETRIES=3
 export HOMEBREW_FORCE_BREWED_CURL=1
 export HOMEBREW_FORCE_BREWED_GIT=1
