@@ -6,9 +6,9 @@
 
 # Label: ASCII Doctor Open
 # Description: Transforms ASCII Doc into HTML and opens in default browser.
-# Parameters: $1 (required) - Path to ASCII Doc source file.
+# Parameters: $1 (required) - Path to ASCII Doc source file. Default: README.adoc.
 ado() {
-  local input="$1"
+  local input=${1:-README.adoc}
   local output=$(mktemp -t asciidoc)
 
   asciidoctor --failure-level WARN --out-file "$output" "$input"
