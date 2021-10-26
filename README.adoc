@@ -63,7 +63,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 44.1.0
+git checkout 45.0.0
 ----
 
 == Upgrade
@@ -454,7 +454,6 @@ rbsr = "ruby $HOME/Engineering/Misc/snippet.rb"
 
 ....
 railsb = "rails console --sandbox"
-railsdbm = "rake db:migrate && rake db:rollback && rake db:migrate && RAILS_ENV=test rake db:migrate"
 railse = "EDITOR = 'sublime --wait' rails credentials:edit"
 ....
 
@@ -807,10 +806,10 @@ rspec_dotfile = RSpec Dotfile - Detect RSpec dotfile.
 rspec_focus = RSpec Focus - Detect RSpec focus.
 rspec_order = RSpec Order - Detect RSpec ordered specs.
 rubocop_check = Rubocop Check - Scan Ruby code for poor style choices.
-irb_binding = IRB Binding - Detect IRB debug statements.
+ruby_debug = Ruby Debug - Detect Ruby debug statements.
 ....
 
-=== IRB, Pry, and Rails consoles
+=== IRB
 
 [source,ruby]
 ----

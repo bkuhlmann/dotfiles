@@ -1,5 +1,20 @@
 = Changes
 
+== 45.0.0 (2021-10-25)
+
+* Fixed Git attributes template - Brooke Kuhlmann
+* Fixed Git branch rename function to push new remote branch - Brooke Kuhlmann
+* Added Homebrew API environment flag - Brooke Kuhlmann
+* Added Homebrew Bootsnap support - Brooke Kuhlmann
+* Updated ASCII Doc open function to default to README - Brooke Kuhlmann
+* Updated Git file history function to use fuzzy file find - Brooke Kuhlmann
+* Updated Ruby debug Git hook to include debug statement checks - Brooke Kuhlmann
+* Updated environment update function to include Git pull - Brooke Kuhlmann
+* Removed Pry RC - Brooke Kuhlmann
+* Removed Pry binding Git hook - Brooke Kuhlmann
+* Removed Rails database migration rollback and re-migration alias - Brooke Kuhlmann
+* Removed notes from pull request template - Brooke Kuhlmann
+
 == 44.1.0 (2021-09-05)
 
 * Fixed Exa alias to list dotfiles - Brooke Kuhlmann
