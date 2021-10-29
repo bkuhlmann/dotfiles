@@ -2060,7 +2060,12 @@ omr() {
 # Parameters: $1 (optional) - Port. Default: 3000.
 oms() {
   local port=${1:-3000}
-  overmind start --port $port --port-step 10
+
+  if [[ -f Procfile.dev ]]; then
+    overmind start --port $port --port-step 10 --procfile Procfile.dev
+  else
+    overmind start --port $port --port-step 10
+  fi
 }
 
 #--------------------------------------------------#
