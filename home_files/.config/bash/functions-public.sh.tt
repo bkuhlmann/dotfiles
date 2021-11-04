@@ -321,6 +321,8 @@ cype() {
 # Label: Environment Update
 # Description: Update environment with latest software.
 eup() {
+  softwareupdate --all --install --agree-to-license
+  xcode-select --install
   hbsu
   rustup update
   tldr --update
