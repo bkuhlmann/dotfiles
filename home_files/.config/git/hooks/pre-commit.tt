@@ -13,6 +13,7 @@ source "$HOME/.config/git/hooks/extensions/elm.sh"
 source "$HOME/.config/git/hooks/extensions/java_script.sh"
 source "$HOME/.config/git/hooks/extensions/rspec.sh"
 source "$HOME/.config/git/hooks/extensions/ruby.sh"
+source "$HOME/.config/git/hooks/extensions/dead_end.sh"
 
 capybara_save_and_open_page
 elm_debug
@@ -23,3 +24,4 @@ rspec_dotfile
 rspec_focus
 rspec_order
 ruby_debug
+ruby_dead_end
