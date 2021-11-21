@@ -1,5 +1,13 @@
 = Changes
 
+== 45.1.0 (2021-11-21)
+
+* Fixed README changes section - Brooke Kuhlmann
+* Added MacOS and XCode software updates to environment update function - Brooke Kuhlmann
+* Added README community link - Brooke Kuhlmann
+* Added Ruby DeadEnd Git Hook - Brooke Kuhlmann
+* Updated Overmind start function to detect development Procfile - Brooke Kuhlmann
+
 == 45.0.0 (2021-10-25)
 
 * Fixed Git attributes template - Brooke Kuhlmann

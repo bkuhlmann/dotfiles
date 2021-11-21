@@ -63,7 +63,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 45.0.0
+git checkout 45.1.0
 ----
 
 == Upgrade
@@ -794,6 +794,7 @@ bundler_audit_check = Bundler Audit Check - Scans gem dependencies for security 
 capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open_page statements.
 comment_totals = Comment Totals - Print project comment totals.
 ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
+ruby_dead_end = Ruby DeadEnd - Detect Ruby missing `end` statements.
 elm_debug = Elm Debug - Detect debug statements.
 git_lint_check = Git Lint Check - Enforce consistent Git commits.
 git_trailer_cleaner = Git Trailer Cleaner - Remove unused/empty Git commit body trailers.
