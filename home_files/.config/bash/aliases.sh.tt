@@ -285,6 +285,7 @@ alias gemuc="gem update --system && gem update && gem cleanup"
 
 # Section: https://www.alchemists.io/projects/rubysmith:[Rubysmith]
 alias rbb="rubysmith --build"
+alias rbh="rubysmith --help"
 
 # Section: https://github.com/colszowka/simplecov:[SimpleCov]
 alias cov="open coverage/index.html"
