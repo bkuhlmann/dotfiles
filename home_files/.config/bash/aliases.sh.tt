@@ -208,6 +208,9 @@ alias hbsu="brew update && brew upgrade && brew cleanup"
 alias hbu="brew uninstall"
 alias hbug="brew update && brew upgrade"
 
+# Section: https://trac.webkit.org/wiki/JSC:[JavaScript Core]
+alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/jsc"
+
 # Section: https://marked2app.com:[Marked 2]
 alias mo="open -a Marked\ 2"
 
