@@ -279,7 +279,6 @@ alias geme="gem environment"
 alias gemi="gem install"
 alias geml="gem list"
 alias gemp="gem pristine"
-alias gems="gem server"
 alias gemu="gem uninstall"
 alias gemuc="gem update --system && gem update && gem cleanup"
 
