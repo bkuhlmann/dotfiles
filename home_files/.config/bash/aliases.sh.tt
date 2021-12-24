@@ -255,7 +255,7 @@ alias rst="rspec spec --tag"
 # Section: https://github.com/bbatsov/rubocop:[Rubocop]
 alias cop="rubocop --parallel --display-cop-names --display-style-guide"
 alias copc="rubocop --auto-gen-config"
-alias copd='find . -name ".rubocop-http*" -type f -delete'
+alias copd='rm -f $HOME/.config/rubocop/.rubocop-http* && find . -name ".rubocop-http*" -type f -delete'
 alias copf="rubocop --auto-correct"
 alias copfo="rubocop --auto-correct --only"
 alias copo="rubocop --display-cop-names --only"
