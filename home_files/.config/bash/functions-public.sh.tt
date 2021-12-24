@@ -2347,28 +2347,3 @@ scc() {
           --to-clipboard \
           "$path"
 }
-
-#-----------------------------------------------------------#
-# Section: https://magic-wormhole.readthedocs.io:[Wormhole] #
-#-----------------------------------------------------------#
-
-# Label: Wormhole Receive
-# Description: Receive encrypted payload (i.e. text, file, etc.)
-# Parameters: $1 (required) - Secret code.
-whr() {
-  wormhole --appid $(defaults read io.alchemists.www WormholeID) receive "$1"
-}
-
-# Label: Wormhole Send
-# Description: Send encrypted path (i.e. file or directory).
-# Parameters: $1 (required) - Path to be sent.
-whs() {
-  wormhole --appid $(defaults read io.alchemists.www WormholeID) send "$1"
-}
-
-# Label: Wormhole Send Text
-# Description: Send encrypted text.
-# Parameters: $1 (required) - Text to be sent.
-whst() {
-  wormhole --appid $(defaults read io.alchemists.www WormholeID) send --text "$1"
-}
