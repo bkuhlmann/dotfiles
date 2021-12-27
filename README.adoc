@@ -63,7 +63,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 45.1.0
+git checkout 46.0.0
 ----
 
 == Upgrade
@@ -213,8 +213,8 @@ ff = "fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
 ==== https://www.alchemists.io/projects/gemsmith:[Gemsmith]
 
 ....
-gse = "gemsmith --config --edit"
-gsg = "gemsmith --generate"
+gse = "gemsmith --config edit"
+gsb = "gemsmith --build"
 gsi = "rake install"
 gso = "gemsmith --open"
 gsp = "rake publish"
@@ -342,7 +342,8 @@ gwp = "git worktree prune"
 
 ....
 rbi = "frum install"
-rbc = "frum local"
+rbl = "frum local"
+rbg = "frum global"
 rbu = "frum uninstall"
 rbv = "frum versions"
 ....
@@ -362,6 +363,12 @@ hbs = "brew search"
 hbsu = "brew update && brew upgrade && brew cleanup"
 hbu = "brew uninstall"
 hbug = "brew update && brew upgrade"
+....
+
+==== https://trac.webkit.org/wiki/JSC:[JavaScript Core]
+
+....
+jsc = "/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/jsc"
 ....
 
 ==== https://marked2app.com:[Marked 2]
@@ -434,7 +441,7 @@ rst = "rspec spec --tag"
 ....
 cop = "rubocop --parallel --display-cop-names --display-style-guide"
 copc = "rubocop --auto-gen-config"
-copd = 'find . -name ".rubocop-http*" -type f -delete'
+copd = 'rm -f $HOME/.config/rubocop/.rubocop-http* && find . -name ".rubocop-http*" -type f -delete'
 copf = "rubocop --auto-correct"
 copfo = "rubocop --auto-correct --only"
 copo = "rubocop --display-cop-names --only"
@@ -473,7 +480,6 @@ geme = "gem environment"
 gemi = "gem install"
 geml = "gem list"
 gemp = "gem pristine"
-gems = "gem server"
 gemu = "gem uninstall"
 gemuc = "gem update --system && gem update && gem cleanup"
 ....
@@ -482,6 +488,7 @@ gemuc = "gem update --system && gem update && gem cleanup"
 
 ....
 rbb = "rubysmith --build"
+rbh = "rubysmith --help"
 ....
 
 ==== https://github.com/colszowka/simplecov:[SimpleCov]
@@ -750,6 +757,12 @@ rsd = RSpec Debug - Debug intermittent RSpec failure(s) by running spec(s) until
 rsp = RSpec Profile - Runs RSpec specs with profiling enabled.
 ....
 
+==== https://docs.rubocop.org:[Rubocop]
+
+....
+copa = Rubocop (all) - Run Rubocop for all projects in current directory.
+....
+
 ==== https://www.ruby-lang.org:[Ruby]
 
 ....
@@ -775,14 +788,6 @@ railsn = Ruby on Rails New - Create new Rails application from selected option.
 
 ....
 scc = Silicon Copy - Generates and copies code snippet image to clipboard.
-....
-
-==== https://magic-wormhole.readthedocs.io:[Wormhole]
-
-....
-whr = Wormhole Receive - Receive encrypted payload (i.e. text, file, etc.)
-whs = Wormhole Send - Send encrypted path (i.e. file or directory).
-whst = Wormhole Send Text - Send encrypted text.
 ....
 
 === Git Hooks

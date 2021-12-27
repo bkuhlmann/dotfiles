@@ -1,5 +1,28 @@
 = Changes
 
+== 46.0.0 (2021-12-27)
+
+* Fixed Hippocratic license structure - Brooke Kuhlmann
+* Fixed Rubocop Bundler/OrderedGems issue - Brooke Kuhlmann
+* Fixed Rubocop delete alias to delete global cache too - Brooke Kuhlmann
+* Fixed contributing documentation - Brooke Kuhlmann
+* Added Frum local and global version switching aliases - Brooke Kuhlmann
+* Added JavaScript Core alias - Brooke Kuhlmann
+* Added Rubocop function for checking all projects - Brooke Kuhlmann
+* Added alias for Rubysmith help - Brooke Kuhlmann
+* Added project citation information - Brooke Kuhlmann
+* Updated Gemsmith aliases - Brooke Kuhlmann
+* Updated GitHub issue template - Brooke Kuhlmann
+* Updated Rails new function to support Rails 7.0.0 - Brooke Kuhlmann
+* Updated to Git Lint 3.0.0 - Brooke Kuhlmann
+* Updated to Git Lint 3.0.0 Git hook - Brooke Kuhlmann
+* Updated to Hippocratic License 3.0.0 - Brooke Kuhlmann
+* Updated to Ruby 3.0.3 - Brooke Kuhlmann
+* Updated to Ruby 3.1.0 - Brooke Kuhlmann
+* Removed Frum change version alias - Brooke Kuhlmann
+* Removed Magic Wormhole functions - Brooke Kuhlmann
+* Removed Ruby Gems server alias - Brooke Kuhlmann
+
 == 45.1.0 (2021-11-21)
 
 * Fixed README changes section - Brooke Kuhlmann
