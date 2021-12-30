@@ -314,7 +314,6 @@ _git_commit_options() {
   local commit_total=${#commits[@]}
   local option_padding=${#commit_total}
   local counter=1
-  local pager=1
 
   unset response
 
@@ -327,13 +326,6 @@ _git_commit_options() {
     local option="$(printf "%${option_padding}s" $counter)"
     printf "%s\n" "$option: $(git log --color --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
     counter=$((counter + 1))
-    pager=$((pager + 1))
-
-    if [[ $pager == 25 ]]; then
-      printf "\n"
-      read -p "Continue (enter) or quit (q)?: " response
-      pager=1
-    fi
 
     if [[ "$response" == "q" ]]; then
       break
