@@ -1099,8 +1099,14 @@ ginfo() {
 
 # Label: Git File History
 # Description: View file commit history (with optional diff support).
+# Parameters: $1 (required) - The file path.
 gistory() {
-  local file="$(fzf --preview 'bat --theme DarkNeon --color always {}')"
+  if [[ -z "$1" ]]; then
+    printf "%s\n" "ERROR: File must be supplied."
+    return 1
+  fi
+
+  local file="$1"
   local commits=($(git rev-list --reverse HEAD -- "$file"))
 
   _git_file_commits commits[@] "$file"
