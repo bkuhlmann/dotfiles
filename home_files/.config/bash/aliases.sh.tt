@@ -70,13 +70,14 @@ alias xt="exa --all --group-directories-first --ignore-glob '*.git' --git-ignore
 alias ff="fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
 
 # Section: https://www.alchemists.io/projects/gemsmith:[Gemsmith]
-alias gse="gemsmith --config edit"
 alias gsb="gemsmith --build"
-alias gsi="rake install"
+alias gsc="gemsmith --config edit"
+alias gse="gemsmith --edit"
+alias gsi="gemsmith --install"
 alias gso="gemsmith --open"
-alias gsp="rake publish"
+alias gsp="gemsmith --publish"
 alias gsq="rake code_quality"
-alias gsr="gemsmith --read"
+alias gsv="gemsmith --view"
 
 # Section: General
 alias ...="cd ../.."
