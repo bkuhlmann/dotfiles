@@ -423,10 +423,10 @@ galla() {
 }
 
 # Label: Git Stash
-# Description: Creates stash.
-# Parameters: $1 (optional) - Label. Default: "Last Actions (YYYY-MM-DD HH:MM:SS AM|PM Z)."
+# Description: Creates stash of all changes.
+# Parameters: $1 (optional) - Label. Default: "All Work (YYYY-MM-DD HH:MM:SS AM|PM Z)."
 gash() {
-  local label=${1:-"Last Actions ($(date '+%Y-%m-%d %r %Z'))."}
+  local label=${1:-"All Work ($(date '+%Y-%m-%d %r %Z'))."}
   git stash push --include-untracked --message "$label"
 }
 
