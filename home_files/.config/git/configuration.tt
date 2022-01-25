@@ -84,7 +84,7 @@
   auto = false
   strategy = incremental
 [merge]
-  conflictStyle = diff3
+  conflictStyle = zdiff3
   ff = only
   tool = Kaleidoscope
 [mergetool]
