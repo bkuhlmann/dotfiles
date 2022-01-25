@@ -491,6 +491,14 @@ gashs() {
   fi
 }
 
+# Label: Git Stash (stage)
+# Description: Creates stash of staged work.
+# Parameters: $1 (optional) - Label. Default: "Staged Work (YYYY-MM-DD HH:MM:SS AM|PM Z)."
+gasht() {
+  local label=${1:-"Staged Work ($(date '+%Y-%m-%d %r %Z'))."}
+  git stash push --stage --message "$label"
+}
+
 # Label: Git Branch Create
 # Description: Create and switch to branch.
 # Parameters: $1 (required) - New branch name.
