@@ -48,7 +48,7 @@
   side-by-side = true
   whitespace-error-style = 22 reverse
 [diff]
-  algorithm = patience
+  algorithm = histogram
   colorMoved = default
   indentHeuristic = true
   mnemonicPrefix = true
