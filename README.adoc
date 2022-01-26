@@ -63,7 +63,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 46.0.1
+git checkout 46.1.0
 ----
 
 == Upgrade
@@ -213,13 +213,14 @@ ff = "fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
 ==== https://www.alchemists.io/projects/gemsmith:[Gemsmith]
 
 ....
-gse = "gemsmith --config edit"
 gsb = "gemsmith --build"
-gsi = "rake install"
+gsc = "gemsmith --config edit"
+gse = "gemsmith --edit"
+gsi = "gemsmith --install"
 gso = "gemsmith --open"
-gsp = "rake publish"
+gsp = "gemsmith --publish"
 gsq = "rake code_quality"
-gsr = "gemsmith --read"
+gsv = "gemsmith --view"
 ....
 
 ==== General
@@ -608,12 +609,13 @@ t2s = Tab to Space - Convert file from tab to space indentation.
 ....
 gafe = Git Safe - Marks repository as safe for auto-loading project's `bin` path.
 galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
-gash = Git Stash - Creates stash.
+gash = Git Stash - Creates stash of all changes.
 gasha = Git Stash (all) - Answer stash count for projects in current directory.
 gashd = Git Stash Drop - Drop stash or prompt for stash to drop.
 gashl = Git Stash List - List stashes.
 gashp = Git Stash Pop - Pop stash or prompt for stash to pop.
 gashs = Git Stash Show - Show stash or prompt for stash to show.
+gasht = Git Stash (stage) - Creates stash of staged work.
 gbc = Git Branch Create - Create and switch to branch.
 gbca = Git Branch Create (all) - Create and switch to branch for projects in current directory.
 gbd = Git Branch Delete - Interactively delete local and/or remote branch.
