@@ -4,9 +4,6 @@
 
 = Dotfiles
 
-[link=https://circleci.com/gh/bkuhlmann/dotfiles]
-image::https://circleci.com/gh/bkuhlmann/dotfiles.svg?style=svg[Circle CI Status]
-
 These are shell scripts for applying default settings to UNIX-based operating systems. These are a
 collection of useful shortcuts, performance augmentation, and advanced practices that, even if you
 don't apply to your own dotfiles, should be educational for improving your own practices.
