@@ -2233,8 +2233,6 @@ copa() {
 
       if [[ -f ".rubocop.yml" ]]; then
         printf "\n\033[36m${project^^}\033[m\n\n" # Outputs in cyan color.
-        rm -f $HOME/.config/rubocop/.rubocop-http*
-        rm -f .rubocop-http*
         bundle exec rubocop --parallel --format progress
       fi
     )
