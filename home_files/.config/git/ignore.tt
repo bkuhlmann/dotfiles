@@ -27,9 +27,6 @@
 # Bundler
 .bundle
 
-# Rubocop
-.rubocop-http*
-
 # SimpleCov
 coverage
 
