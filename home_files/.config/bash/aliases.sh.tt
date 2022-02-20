@@ -267,10 +267,10 @@ alias copo="rubocop --display-cop-names --only"
 alias cops="rubocop --show-cops"
 
 # Section: https://www.ruby-lang.org:[Ruby]
-alias rbbe="$EDITOR $HOME/Engineering/Misc/benchmark.rb"
-alias rbbr="ruby $HOME/Engineering/Misc/benchmark.rb"
-alias rbse="$EDITOR $HOME/Engineering/Misc/snippet.rb"
-alias rbsr="ruby $HOME/Engineering/Misc/snippet.rb"
+alias rbbe="$EDITOR $HOME/Engineering/Misc/benchmark"
+alias rbbr="$HOME/Engineering/Misc/benchmark"
+alias rbse="$EDITOR $HOME/Engineering/Misc/snippet"
+alias rbsr="$HOME/Engineering/Misc/snippet"
 
 # Section: https://rubyonrails.org:[Ruby on Rails]
 alias railsb="rails console --sandbox"
