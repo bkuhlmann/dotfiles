@@ -169,9 +169,9 @@ bua() {
   done < <(ls -A1)
 }
 
-#-------------------------------------------------------------------------#
-# Section: https://www.alchemists.io/projects/code_quality:[Code Quality] #
-#-------------------------------------------------------------------------#
+#--------------------------------------------------------------------#
+# Section: https://www.alchemists.io/projects/caliber:[Code Quality] #
+#--------------------------------------------------------------------#
 
 # Label: Code Quality (all)
 # Description: Run code quality tasks for projects in current directory.

@@ -564,7 +564,7 @@ boa = Bundle Outdated (all) - Answer outdated gems for projects in current direc
 bua = Bundle Update (all) - Update gems for projects in current directory.
 ....
 
-==== https://www.alchemists.io/projects/code_quality:[Code Quality]
+==== https://www.alchemists.io/projects/caliber:[Code Quality]
 
 ....
 cqa = Code Quality (all) - Run code quality tasks for projects in current directory.
