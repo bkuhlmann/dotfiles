@@ -531,6 +531,8 @@ _process_gh_file_option() {
 # Parameters: $1 (optional) - The first option, $2 (optional) - The second option.
 _process_gh_option() {
   case $1 in
+    'a')
+      open $(_gh_url)/actions;;
     'o')
       open $(_gh_url);;
     'i')

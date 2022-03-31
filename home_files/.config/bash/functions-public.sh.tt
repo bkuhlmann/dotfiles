@@ -1843,6 +1843,7 @@ gh() {
       if [[ $# == 0 ]]; then
         printf "\n%s\n" "Usage: gh OPTION"
         printf "\n%s\n" "GitHub Options (default browser):"
+        printf "%s\n" "  a: Open actions."
         printf "%s\n" "  o: Open repository."
         printf "%s\n" "  i: Open repository issues."
         printf "%s\n" "  c: Open repository commits. Options:"
