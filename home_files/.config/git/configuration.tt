@@ -66,9 +66,6 @@
   prune = true
   pruneTags = true
   writeCommitGraph = true
-[github]
-  user = <redacted>
-  token = <redacted>
 [grep]
   column = true
   fullname = true
