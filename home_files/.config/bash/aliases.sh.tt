@@ -213,6 +213,9 @@ alias hbug="brew update && brew upgrade"
 # Section: https://trac.webkit.org/wiki/JSC:[JavaScript Core]
 alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/jsc"
 
+# Section: https://jless.io:[jless]
+alias jlr="jless --mode line"
+
 # Section: https://marked2app.com:[Marked 2]
 alias mo="open -a Marked\ 2"
 
