@@ -603,7 +603,7 @@ _process_gh_url_option() {
 # Description: Process option for constructing new Rails application skeletons with custom build settings.
 # Parameters: $1 (required) - Application name, $2 (required) - Option.
 _process_rails_new_option() {
-  local flags="--skip-git --skip-action-cable --skip-action-text --skip-active-storage --skip-test --skip-keeps --database postgresql"
+  local flags="--skip-git --skip-action-cable --skip-action-text --skip-active-storage --skip-jbuilder --skip-hotwire --skip-test --skip-keeps --asset-pipeline propshaft --database postgresql"
 
   case $2 in
     "default")
@@ -613,9 +613,9 @@ _process_rails_new_option() {
     "slim")
       _create_rails_skeleton "$1" "$flags";;
     "static")
-      _create_rails_skeleton "$1" "$flags --skip-javascript --skip-hotwire";;
+      _create_rails_skeleton "$1" "$flags --skip-javascript";;
     "dummy")
-      _create_rails_skeleton "$1" "$flags --skip-bundle --skip-javascript --skip-hotwire";;
+      _create_rails_skeleton "$1" "$flags --skip-bundle --skip-javascript";;
     'q');;
     *)
       printf "%s\n" "ERROR: Invalid option.";;
