@@ -2377,3 +2377,22 @@ scc() {
           --to-clipboard \
           "$path"
 }
+
+#-------------------------------------------------------------#
+# Section: https://github.com/colszowka/simplecov:[SimpleCov] #
+#-------------------------------------------------------------#
+
+# Label: RSpec (all)
+# Description: Run RSpec for projects in current directory.
+cova() {
+  while read -r project; do
+    (
+      cd "$project"
+
+      if [[ -d "coverage" ]]; then
+        open "coverage/index.html"
+      fi
+    )
+  done < <(ls -A1)
+}
+
