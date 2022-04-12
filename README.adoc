@@ -60,7 +60,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 46.2.1
+git checkout 46.3.0
 ----
 
 == Upgrade
@@ -367,6 +367,12 @@ hbug = "brew update && brew upgrade"
 
 ....
 jsc = "/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/jsc"
+....
+
+==== https://jless.io:[jless]
+
+....
+jlr = "jless --mode line"
 ....
 
 ==== https://marked2app.com:[Marked 2]

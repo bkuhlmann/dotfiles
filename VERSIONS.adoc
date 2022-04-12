@@ -1,5 +1,14 @@
 = Versions
 
+== 46.3.0 (2022-04-12)
+
+* Added GitHub sponsorship configuration - Brooke Kuhlmann
+* Added jless alias for reading of JSON files - Brooke Kuhlmann
+* Updated code quality links to point to Caliber gem - Brooke Kuhlmann
+* Updated to Caliber 0.5.0 - Brooke Kuhlmann
+* Updated to Git Lint 4.0.0 - Brooke Kuhlmann
+* Updated to Ruby 3.1.2 - Brooke Kuhlmann
+
 == 46.2.1 (2022-03-04)
 
 * Fixed Hippocratic License to be 2.1.0 version - Brooke Kuhlmann
