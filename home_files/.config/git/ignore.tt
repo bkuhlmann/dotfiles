@@ -1,9 +1,3 @@
-# macOS
-.DS_Store
-
-# Environments
-*.env*
-
 # Archives
 *.7z
 *.bzip
@@ -16,22 +10,28 @@
 *.tar.gz
 *.zip
 
-# Databases
-*.dump
+# Bundler
+.bundle
 
 # CTags
 .tags
 .tags_sorted_by_file
 /tags
 
-# Bundler
-.bundle
+# Databases
+*.dump
+
+# Environments
+*.env*
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
 
 # SimpleCov
 coverage
 
 # Temp Directories
 tmp
-
-# Logs
-*.log
