@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 46.3.0
+git checkout 46.4.0
 ----
 
 == Upgrade
@@ -460,10 +460,10 @@ cops = "rubocop --show-cops"
 ==== https://www.ruby-lang.org:[Ruby]
 
 ....
-rbbe = "$EDITOR $HOME/Engineering/Misc/benchmark.rb"
-rbbr = "ruby $HOME/Engineering/Misc/benchmark.rb"
-rbse = "$EDITOR $HOME/Engineering/Misc/snippet.rb"
-rbsr = "ruby $HOME/Engineering/Misc/snippet.rb"
+rbbe = "$EDITOR $HOME/Engineering/Misc/benchmark"
+rbbr = "$HOME/Engineering/Misc/benchmark"
+rbse = "$EDITOR $HOME/Engineering/Misc/snippet"
+rbsr = "$HOME/Engineering/Misc/snippet"
 ....
 
 ==== https://rubyonrails.org:[Ruby on Rails]

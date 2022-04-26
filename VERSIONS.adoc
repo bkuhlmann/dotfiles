@@ -1,5 +1,14 @@
 = Versions
 
+== 46.4.0 (2022-04-25)
+
+* Added GitHub actions option - Brooke Kuhlmann
+* Updated Git ignore to be alphabetically sorted - Brooke Kuhlmann
+* Updated README introduction and usage documentation - Brooke Kuhlmann
+* Updated Rails New function to use safe Rails 7.0.0 settings - Brooke Kuhlmann
+* Updated Ruby benchmark and snippet aliases to be runnable - Brooke Kuhlmann
+* Updated to Caliber 0.7.0 - Brooke Kuhlmann
+
 == 46.3.0 (2022-04-12)
 
 * Added GitHub sponsorship configuration - Brooke Kuhlmann
