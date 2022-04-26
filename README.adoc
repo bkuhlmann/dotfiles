@@ -4,9 +4,10 @@
 
 = Dotfiles
 
-These are shell scripts for applying default settings to UNIX-based operating systems. These are a
-collection of useful shortcuts, performance augmentation, and advanced practices that, even if you
-don't apply to your own dotfiles, should be educational for improving your own practices.
+These dotfiles are a collection shell scripts for applying default settings to UNIX-based operating
+systems. They include useful shortcuts, performance augmentation, and advanced practices that --
+even if you don't apply to your own dotfiles -- should be educational for improving your own
+practices.
 
 By default, these are set to my preferences (namely for macOS) but you can change them to your
 liking by editing any of the `.tt` template files in the `home_files` directory. Read on to learn
@@ -67,7 +68,7 @@ git checkout 46.3.0
 
 When upgrading to a new version, run the following:
 
-. Run: `bin/run l`. Links new files. If not using linked files, run `bin/run d` and `bin/run i`
+. Run: `bin/run l`. Links new files. If not using linked files, then run `bin/run d` and `bin/run i`
   instead.
 . Run: `bin/run c`. Displays file differences, if any. Usually, this will be excluded files.
 . Run: `exec $SHELL`. Updates current shell with the above changes.
@@ -100,8 +101,12 @@ For example, executing `bin/run s` will show all managed dotfiles by this projec
 After install, the following files will require manual updating:
 
 * `.bash/env.sh`: Add secret/machine-specific environment settings (if any).
-* `.gitconfig`: Uncomment the name, email, and token lines within the `[user]` and `[github]`
-  sections to replace with your own details.
+* `.gitconfig`: Replace all `<redacted>` values for name, email, and signingKey within the `[user]`
+  section with your own credentials.
+
+The reason the above two files are not managed by this project -- especially via symbolic links --
+is because senstive data is usually stored in these files and you don't want this information
+accidentally checked into a source code repository or shared via other means.
 
 === Aliases
 
