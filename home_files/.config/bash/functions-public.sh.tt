@@ -2309,6 +2309,20 @@ rbva() {
 # Section: https://rubygems.org:[Ruby Gems] #
 #-------------------------------------------#
 
+# Label: Gem Depenencies
+# Description: Answers dependencies for a gem.
+# Parameters: $1 (required) - The gem name.
+gemd() {
+  local name="$1"
+
+  if [[ -z "$name" ]]; then
+    printf "%s\n" "ERROR: Gem name must be supplied!"
+    return 1
+  fi
+
+  gem dependency "$1" --reverse-dependencies
+}
+
 # Label: Gem Dependency Search
 # Description: Finds a gem defined within a Gemfile or a gemspec.
 # Parameters: $1 (required) - The gem name.
