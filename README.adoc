@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 46.4.0
+git checkout 47.0.0
 ----
 
 == Upgrade
@@ -328,7 +328,7 @@ grbo = "git rebase --onto"
 grbs = "git rebase --skip"
 grbt = "git rebase --edit-todo"
 grev = "git revert --no-commit"
-grl = "git reflog"
+grl = "git reflog --relative-date"
 grom = 'git fetch --all && git reset --hard origin/$(_git_branch_default)' # Reset local branch to origin/main branch. UNRECOVERABLE!
 grr = "git rerere"
 gset = "git config --add"
@@ -450,7 +450,6 @@ rst = "rspec spec --tag"
 ....
 cop = "rubocop --parallel --display-cop-names --display-style-guide"
 copc = "rubocop --auto-gen-config"
-copd = 'rm -f $HOME/.config/rubocop/.rubocop-http* && find . -name ".rubocop-http*" -type f -delete'
 copf = "rubocop --auto-correct"
 copfo = "rubocop --auto-correct --only"
 copo = "rubocop --display-cop-names --only"
@@ -785,6 +784,7 @@ rbva = Ruby Version (all) - Show current Ruby version for all projects in curren
 ==== https://rubygems.org:[Ruby Gems]
 
 ....
+gemd = Gem Dependencies - Answers dependencies for a gem.
 gemdep = Gem Dependency Search - Finds a gem defined within a Gemfile or a gemspec.
 ....
 
@@ -800,6 +800,12 @@ railsn = Ruby on Rails New - Create new Rails application from selected option.
 scc = Silicon Copy - Generates and copies code snippet image to clipboard.
 ....
 
+==== https://github.com/colszowka/simplecov:[SimpleCov]
+
+....
+cova = RSpec (all) - Run RSpec for projects in current directory.
+....
+
 === Git Hooks
 
 ....
@@ -809,7 +815,6 @@ bundler_audit_check = Bundler Audit Check - Scans gem dependencies for security 
 capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open_page statements.
 comment_totals = Comment Totals - Print project comment totals.
 ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
-ruby_dead_end = Ruby DeadEnd - Detect Ruby missing `end` statements.
 elm_debug = Elm Debug - Detect debug statements.
 git_lint_check = Git Lint Check - Enforce consistent Git commits.
 git_trailer_cleaner = Git Trailer Cleaner - Remove unused/empty Git commit body trailers.

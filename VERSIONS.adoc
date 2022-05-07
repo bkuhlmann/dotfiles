@@ -1,5 +1,19 @@
 = Versions
 
+== 47.0.0 (2022-05-07)
+
+* Added Git file history path requirement - Brooke Kuhlmann
+* Added SimpleCov function for viewing all projects - Brooke Kuhlmann
+* Added gem dependencies function - Brooke Kuhlmann
+* Updated Git reflog alias to use relative date - Brooke Kuhlmann
+* Updated Rubocop Git Hook to check for Caliber - Brooke Kuhlmann
+* Updated to Caliber 0.8.0 - Brooke Kuhlmann
+* Removed Git global configuration GitHub keys - Brooke Kuhlmann
+* Removed RuboCop cache delete alias - Brooke Kuhlmann
+* Removed RuboCop cache deletion from run all function - Brooke Kuhlmann
+* Removed Ruby DeadEnd Git Hook - Brooke Kuhlmann
+* Removed pager from git commit options - Brooke Kuhlmann
+
 == 46.4.0 (2022-04-25)
 
 * Added GitHub actions option - Brooke Kuhlmann

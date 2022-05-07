@@ -2313,7 +2313,7 @@ rbva() {
 # Section: https://rubygems.org:[Ruby Gems] #
 #-------------------------------------------#
 
-# Label: Gem Depenencies
+# Label: Gem Dependencies
 # Description: Answers dependencies for a gem.
 # Parameters: $1 (required) - The gem name.
 gemd() {
