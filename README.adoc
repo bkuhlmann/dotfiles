@@ -61,7 +61,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 47.0.0
+git checkout 47.1.0
 ----
 
 == Upgrade
@@ -450,8 +450,8 @@ rst = "rspec spec --tag"
 ....
 cop = "rubocop --parallel --display-cop-names --display-style-guide"
 copc = "rubocop --auto-gen-config"
-copf = "rubocop --auto-correct"
-copfo = "rubocop --auto-correct --only"
+copf = "rubocop --autocorrect"
+copfo = "rubocop --autocorrect --only"
 copo = "rubocop --display-cop-names --only"
 cops = "rubocop --show-cops"
 ....
@@ -496,6 +496,7 @@ gemuc = "gem update --system && gem update && gem cleanup"
 
 ....
 rbb = "rubysmith --build"
+rbe = "rubysmith --config edit"
 rbh = "rubysmith --help"
 ....
 

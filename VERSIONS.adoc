@@ -1,5 +1,12 @@
 = Versions
 
+== 47.1.0 (2022-05-28)
+
+* Fixed RuboCop 1.30.0 deprecation messages - Brooke Kuhlmann
+* Added Rubysmith edit alias - Brooke Kuhlmann
+* Added Solargraph configuration to global Git ignore - Brooke Kuhlmann
+* Updated to Caliber 0.9.0 - Brooke Kuhlmann
+
 == 47.0.0 (2022-05-07)
 
 * Added Git file history path requirement - Brooke Kuhlmann
