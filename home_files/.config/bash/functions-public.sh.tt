@@ -321,6 +321,9 @@ cype() {
 # Label: Environment Update
 # Description: Update environment with latest software.
 eup() {
+  local oss_path="$HOME/Engineering/OSS"
+  local alchemists_path="$HOME/Engineering/Companies/Alchemists"
+
   softwareupdate --all --install --agree-to-license
   xcode-select --install
   hbsu
@@ -329,14 +332,32 @@ eup() {
   docker system prune --force
   docker buildx prune --force
 
-  (
-    cd $HOME/Engineering/OSS
-    gpua
-    bca
-    gemuc
-    bua
-    gvaca
-  )
+  if [[ -d "$oss_path" ]]; then
+    (
+      cd "$oss_path"
+      gpua
+      bca
+      gemuc
+      bua
+      gvaca
+    )
+  else
+    printf "%s\n" "Skipped. Unknown path: #oss_path."
+  fi
+
+  if [[ -d "$alchemists_path" ]]; then
+    (
+      cd "$alchemists_path"
+      gpua
+      bca
+      bua
+      gvaca
+    )
+  else
+    printf "%s\n" "Skipped. Unknown path: #alchemists_path."
+  fi
+
+  noti --title "Environment Update"
 }
 
 # Label: ISO
