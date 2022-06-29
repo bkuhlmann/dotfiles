@@ -107,6 +107,8 @@
 [rerere]
   autoUpdate = true
   enabled = true
+[revert]
+  reference = true
 [status]
   showUntrackedFiles = all
 [tag]
