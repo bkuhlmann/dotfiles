@@ -1,5 +1,11 @@
 = Versions
 
+== 47.2.0 (2022-07-02)
+
+* Added Git FS Monitor global configuration - Brooke Kuhlmann
+* Added Git revert reference global configuration - Brooke Kuhlmann
+* Updated environment update function to include company and notification - Brooke Kuhlmann
+
 == 47.1.0 (2022-05-28)
 
 * Fixed RuboCop 1.30.0 deprecation messages - Brooke Kuhlmann
