@@ -72,6 +72,9 @@ if [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]]; then
   source "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 fi
 
+# Curl
+export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
+
 # Docker
 export DOCKER_CONFIG=$HOME/.config/docker
 
