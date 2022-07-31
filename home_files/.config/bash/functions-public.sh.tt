@@ -537,7 +537,6 @@ gbc() {
 
   if [[ "$name" ]]; then
     git switch --create "$name" --track
-    printf "%s" "$name" | _copy_and_print
   else
     printf "%s\n" "ERROR: Branch name must be supplied."
     return 1
