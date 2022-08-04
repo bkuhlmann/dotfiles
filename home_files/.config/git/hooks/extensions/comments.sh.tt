@@ -29,7 +29,16 @@ export -f _comment_total
 # Label: Comment Totals
 # Description: Print project comment totals.
 comment_totals() {
-  local prefixes=("TODO" "FIX" "DUPLICATE" "shellcheck disable" ":reek:" "rubocop:disable" ":nocov:")
+  local prefixes=(
+    "TODO"
+    "FIX"
+    "DUPLICATE"
+    "shellcheck disable"
+    ":reek:"
+    "rubocop:disable"
+    "rubocop:todo"
+    ":nocov:"
+  )
 
   for prefix in ${prefixes[*]}; do
     _comment_total "$prefix"

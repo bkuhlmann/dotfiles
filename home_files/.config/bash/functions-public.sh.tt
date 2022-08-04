@@ -193,7 +193,16 @@ cqa() {
 # Label: Code Quality Issues
 # Description: List all source files affected by code quality issues.
 cqi() {
-  local comments=("TODO" "FIX" "DUPLICATE" "shellcheck disable" ":reek:" "rubocop:disable" ":nocov:")
+  local comments=(
+    "TODO"
+    "FIX"
+    "DUPLICATE"
+    "shellcheck disable"
+    ":reek:"
+    "rubocop:disable"
+    "rubocop:todo"
+    ":nocov:"
+  )
 
   for comment in ${comments[*]}; do
     rg --case-sensitive --iglob '!vendor' --regexp "^\s*?(#|--|//) $comment" .
