@@ -1,5 +1,13 @@
 = Versions
 
+== 47.3.0 (2022-08-11)
+
+* Added RuboCop TODO code quality checks - Brooke Kuhlmann
+* Added SimpleCov no code coverage code quality checks - Brooke Kuhlmann
+* Added curl export to Bash configuration - Brooke Kuhlmann
+* Updated to Caliber 0.11.0 - Brooke Kuhlmann
+* Removed curl export from Bash configuration - Brooke Kuhlmann
+
 == 47.2.0 (2022-07-02)
 
 * Added Git FS Monitor global configuration - Brooke Kuhlmann
