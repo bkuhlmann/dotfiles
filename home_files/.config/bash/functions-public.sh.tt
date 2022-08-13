@@ -1322,18 +1322,6 @@ gount() {
   git rev-list --count HEAD
 }
 
-# Label: Git Push
-# Description: Pushes changes to remote repository with dynamic branch creation if non-existent.
-gp() {
-  local branch="$(_git_branch_name)"
-
-  if [[ "$(git config --get branch.$branch.remote)" == "." ]]; then
-    git push --set-upstream origin "$branch"
-  else
-    git push
-  fi
-}
-
 # Label: Git Push (all)
 # Description: Push changes for projects in current directory.
 gpa() {
