@@ -95,6 +95,7 @@
 [pull]
   rebase = merges
 [push]
+  autoSetupRemote = true
   default = simple
   followTags = true
   useForceIfIncludes = true
