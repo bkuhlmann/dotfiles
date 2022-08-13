@@ -164,7 +164,6 @@ alias gnp="git notes prune"
 alias gns="git notes show"
 alias gpf="git push --force-with-lease"
 alias gpn="git push --no-verify"
-alias gpo="git push --set-upstream origin"
 alias gpu="git pull"
 alias gpuo="git pull origin"
 alias gpuom='git pull origin $(_git_branch_default)'
