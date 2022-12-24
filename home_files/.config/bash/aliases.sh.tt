@@ -67,7 +67,7 @@ alias x="exa --all --all --long --header --group --group-directories-first --tim
 alias xt="exa --all --group-directories-first --ignore-glob '*.git' --git-ignore --tree"
 
 # Section: https://github.com/junegunn/fzf:[Fuzzy Finder]
-alias ff="fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
+alias ff="_fzf_preview_and_select | xargs -0 -o \$EDITOR"
 
 # Section: https://www.alchemists.io/projects/gemsmith:[Gemsmith]
 alias gsb="gemsmith --build"
