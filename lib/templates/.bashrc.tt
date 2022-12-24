@@ -26,6 +26,9 @@ shopt -s histappend
 # Enables history expansion with space (i.e. `!!<space>`).
 bind Space:magic-space
 
+# Defaults
+export DOTFILES_PG_VERSION=15
+
 # Editors
 export EDITOR=sublime
 export VISUAL=vim

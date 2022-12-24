@@ -2119,6 +2119,14 @@ oms() {
 # Section: https://www.postgresql.org:[PostgreSQL] #
 #--------------------------------------------------#
 
+# Label: PostgreSQL Initialize
+# Description: Initalize PostgreSQL database.
+# Parameters: $1 (optional) - Version.
+pgi() {
+  local version="${1:-$DOTFILES_PG_VERSION}"
+  initdb "$HOMEBREW_PREFIX/var/postgresql@$version"
+}
+
 # Label: PostgreSQL Template
 # Description: Edit PostgreSQL template.
 # Parameters: $1 (required) - The username.
@@ -2131,6 +2139,25 @@ pgt() {
     printf "%s\n" "ERROR: PostgreSQL username must be supplied."
     return 1
   fi
+}
+
+# Label: PostgreSQL Stop
+# Description: Stop existing PostgreSQL process.
+# Parameters: $1 (optional) - Version.
+pgsp() {
+  local version="${1:-$DOTFILES_PG_VERSION}"
+  pg_ctl --pgdata "$HOMEBREW_PREFIX/var/postgresql@$version" --silent --mode fast stop
+}
+
+# Label: PostgreSQL Start
+# Description: Start new PostgreSQL background process.
+# Parameters: $1 (optional) - Version.
+pgst() {
+  local version="${1:-$DOTFILES_PG_VERSION}"
+
+  pg_ctl --pgdata "$HOMEBREW_PREFIX/var/postgresql@$version" \
+         --log "$HOMEBREW_PREFIX/var/postgresql@$version/server.log" \
+         start &
 }
 
 # Label: PostgreSQL User Create

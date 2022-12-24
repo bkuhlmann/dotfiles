@@ -237,11 +237,6 @@ alias top="htop"
 # Section: https://cocoatech.com:[Path Finder]
 alias pfo='open -a "Path Finder.app" "$PWD"'
 
-# Section: https://www.postgresql.org:[PostgreSQL]
-alias pgi="initdb $HOMEBREW_PREFIX/var/postgres"
-alias pgsp="pg_ctl -D $HOMEBREW_PREFIX/var/postgres stop -s -m fast"
-alias pgst="pg_ctl -D $HOMEBREW_PREFIX/var/postgres -l $HOMEBREW_PREFIX/var/postgres/server.log start &"
-
 # Section: https://redis.io:[Redis]
 alias redc="redis-cli"
 alias reds="redis-server $HOMEBREW_PREFIX/etc/redis.conf &"
