@@ -143,18 +143,20 @@ delete_file() {
 }
 export -f delete_file
 
-# Answers a list of files stored in the home_files folder of this project.
+# Label: Home Files
+# Description: Enumerate home file templates.
 home_files() {
-  for file in $(find home_files -type f); do
+  for file in $(find lib/templates -type f); do
     printf "%s\n" "$file"
   done
 }
 export -f home_files
 
+# Label: Base Destination Home File
+# Description: Compute destination file path for source path.
+# Parameters: $1 (required) - The source path.
 base_dest_file() {
   local source_file="$1"
-  local computed_file=''
-
-  printf "${source_file%.*}" | sed 's/home_files\///g'
+  printf "${source_file%.*}" | sed 's/lib\/templates\///g'
 }
 export -f base_dest_file
