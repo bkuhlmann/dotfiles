@@ -12,7 +12,7 @@ alias cinp="asciinema play"
 alias cinu="asciinema upload"
 
 # Section: https://www.gnu.org/software/bash:[Bash]
-alias bashe="$EDITOR $HOME/.config/bash/env.sh"
+alias bashe="$EDITOR $HOME/.config/bash/environment.sh"
 alias bashs="exec $SHELL"
 
 # Section: https://bundler.io:[Bundler]

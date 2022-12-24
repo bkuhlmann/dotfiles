@@ -52,7 +52,7 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 export HOMEBREW_PREFIX="$(brew --prefix)"
 
 # Environment
-source "$HOME/.config/bash/env.sh"
+source "$HOME/.config/bash/environment.sh"
 
 # Colors
 source "$HOME/.config/bash/colors.sh"

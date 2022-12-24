@@ -65,7 +65,7 @@ link_file() {
   local source_file="$PWD/$1"
   local dest_file="$HOME/$(base_dest_file $1)"
   local dest_dir="$(dirname $dest_file)"
-  local excludes=".+(env.sh.tt|git/configuration.tt)$"
+  local excludes=".+(environment.sh.tt|git/configuration.tt)$"
 
   if [[ "$(basename $source_file)" == "mkdir.command" ]]; then
     mkdir -p $dest_dir
@@ -131,7 +131,7 @@ export -f delete_files
 # $1 = The file name.
 delete_file() {
   local dest_file="$HOME/$(base_dest_file $1)"
-  local excludes=".+(env.sh|.gitconfig)$"
+  local excludes=".+(environment.sh|git/configuration)$"
 
   # Proceed only if file exists.
   if [[ -e "$dest_file" || -h "$dest_file" ]] && [[ ! "$dest_file" =~ $excludes ]]; then

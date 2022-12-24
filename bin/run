@@ -17,11 +17,11 @@ if [[ -d "$HOME" ]]; then
     if [[ $# == 0 ]]; then
       printf "\n%s\n" "Usage: run OPTION"
       printf "\n%s\n" "Dotfile Options:"
-      printf "  %s\n" "s: Show managed dotfiles."
-      printf "  %s\n" "i: Install dotfiles (existing files are skipped)."
-      printf "  %s\n" "l: Link dotfiles to this project (interactive per file, excludes: env.sh and .gitconfig)."
+      printf "  %s\n" "s: Show managed files."
+      printf "  %s\n" "i: Install (existing files are skipped)."
+      printf "  %s\n" "l: Link (interactive, excludes: environment.sh and git/configuration)."
       printf "  %s\n" "c: Check for differences between \$HOME files and this project's files."
-      printf "  %s\n" "d: Delete dotfiles (interactive per file, excludes: env.sh and .gitconfig)."
+      printf "  %s\n" "d: Delete (interactive, excludes: environment.sh and git/configuration)."
       printf "  %s\n\n" "q: Quit/Exit."
       read -r -p "Enter selection: " response
       printf "\n"
