@@ -270,6 +270,7 @@ alias rbbe="$EDITOR $HOME/Engineering/Misc/benchmark"
 alias rbbr="$HOME/Engineering/Misc/benchmark"
 alias rbse="$EDITOR $HOME/Engineering/Misc/snippet"
 alias rbsr="$HOME/Engineering/Misc/snippet"
+alias rbsw="viddy $HOME/Engineering/Misc/snippet"
 
 # Section: https://rubyonrails.org:[Ruby on Rails]
 alias railsb="rails console --sandbox"
