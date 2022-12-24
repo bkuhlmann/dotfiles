@@ -587,6 +587,16 @@ _process_gh_url_option() {
   fi
 }
 
+#------------------------------------------------#
+# Section: https://github.com/junegunn/fzf:[FZF] #
+#------------------------------------------------#
+
+# Label: FZF Preview and Select
+# Description: Preview and select one ore more files.
+_fzf_preview_and_select() {
+  fzf --preview 'bat --theme DarkNeon --color always {}' --multi --print0
+}
+
 #--------------------------------------------------#
 # Section: https://rubyonrails.org:[Ruby on Rails] #
 #--------------------------------------------------#
