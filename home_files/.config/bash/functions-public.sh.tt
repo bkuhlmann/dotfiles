@@ -1388,12 +1388,12 @@ grbi() {
 
   if [[ "$value" =~ $number_pattern ]]; then
     git rebase --keep-empty --interactive "@~${value}"
-  elif [[ "$(_git_branch_name)" == "$(_git_branch_default)" && -z "$(git config remote.origin.url)" ]]; then
+  elif [[ "$(_git_branch_name)" == "$(_git_branch_default)" ]]; then
     git rebase --keep-empty --interactive --root
   elif [[ "$value" =~ $label_pattern ]]; then
     git rebase --keep-empty --interactive "$value"
   else
-    printf "%s\n" "Invalid commit SHA, branch label, or repo has remote: $value."
+    printf "%s\n" "Invalid SHA, branch, or tag for rebasing: $value."
     return 1
   fi
 }
