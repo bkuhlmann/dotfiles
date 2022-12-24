@@ -35,7 +35,6 @@ toc::[]
 * Configures link:https://rspec.info[RSpec] (`.rspec`).
 * Configures link:https://www.ruby-lang.org[Ruby] (`.ruby-version` and `.irbrc`).
 * Configures link:http://bashdb.sourceforge.net/ruby-debug.html[Ruby Debugger] (`.rdebugrc`).
-* Configures link:https://rubygems.org[Ruby Gems] (`.gemrc`).
 * Configures link:https://github.com/bbatsov/rubocop[Rubocop] (`.rubocop.yml`).
 * Configures link:https://www.rust-lang.org[Rust].
 * Configures link:https://github.com/ggreer/the_silver_searcher[Silver Surfer] (`.agignore`).
