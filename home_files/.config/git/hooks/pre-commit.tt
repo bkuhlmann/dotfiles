@@ -12,6 +12,7 @@ source "$HOME/.config/git/hooks/extensions/capybara.sh"
 source "$HOME/.config/git/hooks/extensions/elm.sh"
 source "$HOME/.config/git/hooks/extensions/java_script.sh"
 source "$HOME/.config/git/hooks/extensions/rspec.sh"
+source "$HOME/.config/git/hooks/extensions/rubocop.sh"
 source "$HOME/.config/git/hooks/extensions/ruby.sh"
 
 capybara_save_and_open_page
@@ -22,4 +23,5 @@ java_script_debugger
 rspec_dotfile
 rspec_focus
 rspec_order
+rubocop_stage_check
 ruby_debug
