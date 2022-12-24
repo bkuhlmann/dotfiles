@@ -12,18 +12,18 @@ alias cinp="asciinema play"
 alias cinu="asciinema upload"
 
 # Section: https://www.gnu.org/software/bash:[Bash]
-alias bashe="$EDITOR $HOME/.config/bash/environment.sh"
-alias bashs="exec $SHELL"
+alias bashe='$EDITOR $HOME/.config/bash/environment.sh'
+alias bashs='exec $SHELL'
 
 # Section: https://bundler.io:[Bundler]
 alias ba="bundle add"
 alias bb="bundle binstubs"
-alias bce="$EDITOR $HOME/.config/bundler/configuration.yml"
+alias bce='$EDITOR $HOME/.config/bundler/configuration.yml'
 alias bch="rm -f Gemfile.lock; bundle check"
 alias bd="bundle doctor"
 alias be="bundle exec"
 alias bi="bundle install"
-alias blo="bundle list --paths | fzf | xargs $EDITOR"
+alias blo='bundle list --paths | fzf | xargs $EDITOR'
 alias bo="bundle outdated --only-explicit"
 alias br="bundle remove"
 alias bu="bundle update"
@@ -51,7 +51,7 @@ alias drp="docker ps --all"
 alias drt="docker tag"
 
 # Section: http://duti.org:[duti]
-alias dutia="duti $HOME/.config/duti/configuration.duti"
+alias dutia='duti $HOME/.config/duti/configuration.duti'
 
 # Section: https://elm-lang.org:[Elm]
 alias elmc="elm repl"
@@ -146,7 +146,7 @@ alias ges="git diff --name-only --cached | _fzf_preview_and_select | xargs -0 -o
 alias gf="git fetch"
 alias gg="git grep"
 alias gget="git config --get"
-alias gi="git init && git config --global --add maintenance.repo $PWD"
+alias gi='git init && git config --global --add maintenance.repo $PWD'
 alias gl='git log --graph --pretty=format:"$(_git_log_line_format)"'
 alias glame="git blame -M -C -C -C"
 alias glean="git clean -d --force"
@@ -241,7 +241,7 @@ alias dnss="sudo dscacheutil -statistics"
 alias ipa='curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
 alias key="open /Applications/Utilities/Keychain\ Access.app"
 alias ping="gping"
-alias sshe="$EDITOR $HOME/.ssh/config"
+alias sshe='$EDITOR $HOME/.ssh/config'
 alias top="htop"
 
 # Section: https://cocoatech.com:[Path Finder]
@@ -249,7 +249,7 @@ alias pfo='open -a "Path Finder.app" "$PWD"'
 
 # Section: https://redis.io:[Redis]
 alias redc="redis-cli"
-alias reds="redis-server $HOMEBREW_PREFIX/etc/redis.conf &"
+alias reds='redis-server $HOMEBREW_PREFIX/etc/redis.conf &'
 
 # Section: https://github.com/BurntSushi/ripgrep:[ripgrep]
 alias rgf="rg --files --glob"
@@ -271,11 +271,11 @@ alias cops="rubocop --show-cops"
 alias copu="rubocop --autocorrect-all"
 
 # Section: https://www.ruby-lang.org:[Ruby]
-alias rbbe="$EDITOR $HOME/Engineering/Misc/benchmark"
-alias rbbr="$HOME/Engineering/Misc/benchmark"
-alias rbse="$EDITOR $HOME/Engineering/Misc/snippet"
-alias rbsr="$HOME/Engineering/Misc/snippet"
-alias rbsw="viddy $HOME/Engineering/Misc/snippet"
+alias rbbe='$EDITOR $HOME/Engineering/Misc/benchmark'
+alias rbbr='$HOME/Engineering/Misc/benchmark'
+alias rbse='$EDITOR $HOME/Engineering/Misc/snippet'
+alias rbsr='$HOME/Engineering/Misc/snippet'
+alias rbsw='viddy $HOME/Engineering/Misc/snippet'
 
 # Section: https://rubyonrails.org:[Ruby on Rails]
 alias railsb="rails console --sandbox"
@@ -287,7 +287,7 @@ alias rbct="open tmp/rubycritic/overview.html"
 # Section: https://rubygems.org:[RubyGems]
 alias gemc="gem cleanup"
 alias gemcli="rg 'spec\.executables' --no-messages --max-depth=2 --files-with-matches gemspec . | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
-alias gemcr="$EDITOR $HOME/.gem/credentials"
+alias gemcr='$EDITOR $HOME/.gem/credentials'
 alias geme="gem environment"
 alias gemi="gem install"
 alias geml="gem list"
