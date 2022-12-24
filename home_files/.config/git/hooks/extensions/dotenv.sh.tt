@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+# Label: Dotenv Linter
+# Description: Scan environment files for consistent style and security issues.
+dotenv_check() {
+  if command -v dotenv-linter > /dev/null; then
+    printf "%s\n" "[dotenv-linter]:"
+    dotenv-linter
+  fi
+}
+export -f dotenv_check

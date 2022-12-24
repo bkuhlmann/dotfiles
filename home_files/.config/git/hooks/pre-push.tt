@@ -9,6 +9,7 @@ IFS=$'\n\t'
 
 source "$HOME/.config/git/hooks/extensions/support.sh"
 source "$HOME/.config/git/hooks/extensions/comments.sh"
+source "$HOME/.config/git/hooks/extensions/dotenv.sh"
 source "$HOME/.config/git/hooks/extensions/reek.sh"
 source "$HOME/.config/git/hooks/extensions/rubocop.sh"
 source "$HOME/.config/git/hooks/extensions/bundler.sh"
@@ -33,6 +34,7 @@ while read local_ref local_sha remote_ref remote_sha; do
     parallel ::: comment_totals \
                  reek_check \
                  rubocop_check \
+                 dotenv_check \
                  bundler_gemfile_path \
                  bundler_audit_check \
                  brakeman_check \
