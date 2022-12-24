@@ -251,11 +251,11 @@ alias reds="redis-server $HOMEBREW_PREFIX/etc/redis.conf &"
 alias rgf="rg --files --glob"
 
 # Section: https://rspec.info:[RSpec]
-alias rsf="rspec spec --only-failures"
-alias rsn="rspec spec --next-failure"
-alias rso="rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
-alias rss="rspec spec"
-alias rst="rspec spec --tag"
+alias rsf="NO_COVERAGE=true rspec spec --only-failures"
+alias rsn="NO_COVERAGE=true rspec spec --next-failure"
+alias rso="NO_COVERAGE=true rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
+alias rss="rspec"
+alias rst="NO_COVERAGE=true rspec spec --tag"
 
 # Section: https://github.com/bbatsov/rubocop:[Rubocop]
 alias cop="rubocop --parallel --display-cop-names --display-style-guide"
