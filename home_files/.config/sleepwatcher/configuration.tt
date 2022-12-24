@@ -1,6 +1,0 @@
-daemon
-verbose
-sleep = "$HOME/.config/sleepwatcher/sleep.sh"
-wakeup = "$HOME/.config/sleepwatcher/wake.sh"
-plug = "$HOME/.config/sleepwatcher/plug.sh"
-unplug = "$HOME/.config/sleepwatcher/unplug.sh"
