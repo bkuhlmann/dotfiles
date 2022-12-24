@@ -190,7 +190,6 @@ alias gwl="git worktree list"
 alias gwp="git worktree prune"
 
 # Section: https://github.com/TaKO8Ki/frum:[Frum]
-alias rbi="frum install"
 alias rbl="frum local"
 alias rbg="frum global"
 alias rbu="frum uninstall"

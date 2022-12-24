@@ -2258,6 +2258,18 @@ copa() {
 # Section: https://www.ruby-lang.org:[Ruby] #
 #-------------------------------------------#
 
+# Label: Ruby Install
+# Description: Install a specific version with safe defaults.
+# Parameters: $1 (required) - Version.
+rbi() {
+  local version="$1"
+
+  frum install "$version" \
+               --with-openssl-dir="$(brew --prefix openssl)" \
+               --enable-shared \
+               --disable-silent-rules
+}
+
 # Label: Ruby Server
 # Description: Serve web content from current directory via WEBrick.
 # Parameters: $1 (optional) - The custom port. Default: 3030.
