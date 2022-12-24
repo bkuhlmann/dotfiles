@@ -263,6 +263,7 @@ alias copf="rubocop --autocorrect"
 alias copfo="rubocop --autocorrect --only"
 alias copo="rubocop --display-cop-names --only"
 alias cops="rubocop --show-cops"
+alias copu="rubocop --autocorrect-all"
 
 # Section: https://www.ruby-lang.org:[Ruby]
 alias rbbe="$EDITOR $HOME/Engineering/Misc/benchmark"
