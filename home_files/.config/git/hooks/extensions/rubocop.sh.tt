@@ -1,11 +1,32 @@
 #! /usr/bin/env bash
 
-# Label: Rubocop Check
+# Label: RuboCop Check
 # Description: Scan Ruby code for poor style choices.
 rubocop_check() {
   if _check_gem_dependencies "caliber" || _check_gem_dependencies "rubocop"; then
     printf "%s\n" "[rubocop]:"
-    bundle exec rubocop --display-cop-names --format simple
+    _git_feature_files | xargs | _run_rubocop
   fi
 }
 export -f rubocop_check
+
+# Label: RuboCop Stage Check
+# Description: Scan Ruby code -- staged files only -- for poor style choices.
+rubocop_stage_check() {
+  if _check_gem_dependencies "caliber" || _check_gem_dependencies "rubocop"; then
+    printf "%s\n" "[rubocop]:"
+    _git_staged_files | xargs | _run_rubocop
+  fi
+}
+export -f rubocop_stage_check
+
+# Label: Run RuboCop
+# Description: Run RuboCop in a mode compatible for use in Git Hooks.
+_run_rubocop() {
+  bundle exec rubocop --parallel \
+                      --force-exclusion \
+                      --display-cop-names \
+                      --display-style-guide \
+                      --format simple
+}
+export -f _run_rubocop
