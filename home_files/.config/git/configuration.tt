@@ -105,6 +105,7 @@
   abbreviateCommands = true
   autoSquash = true
   autoStash = true
+  updateRefs = true
 [remote "origin"]
   fetch = +refs/pull/*/head:refs/remotes/pull_requests/*
 [rerere]
