@@ -534,7 +534,7 @@ gbc() {
   local name="$1"
 
   if [[ "$name" ]]; then
-    git switch --create "$name" --track
+    git switch --create "$name"
   else
     printf "%s\n" "ERROR: Branch name must be supplied."
     return 1
@@ -727,16 +727,16 @@ gbr() {
   local new_branch="$1"
   local old_branch="$(_git_branch_name)"
 
-  git branch --track --move "$new_branch"
+  git branch --move "$new_branch"
 
   if [[ -n "$(git branch --remotes --list origin/$old_branch)" ]]; then
     printf "\033[31m" # Red.
-    read -p "Delete \"$old_branch\" remote branch (y/n)?: " response
+    read -p "Delete \"$old_branch\" remote branch and push \"$new_branch\" branch (y/n)?: " response
     printf "\033[m" # White.
 
     if [[ "$response" == 'y' ]]; then
       git push --delete origin "$old_branch"
-      git push "$new_branch"
+      git push --set-upstream origin "$new_branch"
     fi
   fi
 }
