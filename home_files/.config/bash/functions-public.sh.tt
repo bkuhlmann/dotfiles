@@ -41,22 +41,20 @@ cinr() {
 #---------------------------------------#
 
 # Label: Bundler Clean (all)
-# Description: Clean projects of gem artifacts (i.e. pkg folder).
+# Description: Clean projects of gem artifacts.
 bca() {
   while read -r project; do
     (
       cd "$project"
       if [[ -f "Gemfile.lock" ]]; then
-        printf "\033[36m${project}\033[m: " # Outputs project in cyan color.
+        printf "\033[36m${project}\033[m\n" # Outputs project in cyan color.
+        rm -rf pkg
+        artifacts=("$(rg --no-ignore-vcs --files --glob "*.gem")")
 
-        # Print status if found, otherwise a checkmark for passing status.
-        if [[ $(rg --files --glob *.gem | wc -l | xargs) > 0 ]]; then
-          rm -f *.gem
-          rm -rf pkg
-          printf "%s\n" "Cleaned gem artifacts."
-        else
-          printf "✓\n"
-        fi
+        for artifact in ${artifacts[*]}; do
+          printf "%s\n" " - $artifact"
+          rm -f "$artifact"
+        done
       fi
     )
   done < <(ls -A1)
