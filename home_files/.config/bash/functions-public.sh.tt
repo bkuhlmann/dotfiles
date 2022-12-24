@@ -2283,6 +2283,12 @@ rbi() {
                --with-openssl-dir="$(brew --prefix openssl)" \
                --enable-shared \
                --disable-silent-rules
+
+  if [ $? -eq 0 ]; then
+    noti --title "Ruby $version installed!"
+  else
+    noti --title "Ruby $version install failed!"
+  fi
 }
 
 # Label: Ruby Server
