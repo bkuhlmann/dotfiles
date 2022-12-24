@@ -11,6 +11,7 @@ source "$HOME/.config/git/hooks/extensions/support.sh"
 source "$HOME/.config/git/hooks/extensions/capybara.sh"
 source "$HOME/.config/git/hooks/extensions/elm.sh"
 source "$HOME/.config/git/hooks/extensions/java_script.sh"
+source "$HOME/.config/git/hooks/extensions/reek.sh"
 source "$HOME/.config/git/hooks/extensions/rspec.sh"
 source "$HOME/.config/git/hooks/extensions/rubocop.sh"
 
@@ -19,6 +20,7 @@ elm_debug
 java_script_alert
 java_script_console
 java_script_debugger
+reek_stage_check
 rspec_dotfile
 rspec_focus
 rspec_order

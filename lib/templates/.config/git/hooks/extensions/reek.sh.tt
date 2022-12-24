@@ -1,11 +1,21 @@
 #! /usr/bin/env bash
 
-# Label: Reek Check
-# Description: Scan Ruby code for poor style choices.
-reek_check() {
+# Label: Reek Branch Check
+# Description: Scan Ruby code -- feature branch only -- for poor style choices.
+reek_branch_check() {
   if _check_gem_dependencies "reek"; then
-    printf "[reek]: "
-    bundle exec reek .
+    printf "%s\n" "[reek]:"
+    bundle exec reek $(_git_feature_files)
   fi
 }
-export -f reek_check
+export -f reek_branch_check
+
+# Label: Reek Stage Check
+# Description: Scan Ruby code -- staged files only -- for poor style choices.
+reek_stage_check() {
+  if _check_gem_dependencies "reek"; then
+    printf "%s\n" "[reek]:"
+    bundle exec reek $(_git_staged_files)
+  fi
+}
+export -f reek_stage_check
