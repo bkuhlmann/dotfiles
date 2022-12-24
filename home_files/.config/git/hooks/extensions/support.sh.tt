@@ -18,6 +18,20 @@ _build_ctags() {
 }
 export -f _build_ctags
 
+# Label: Git Feature Files
+# Description: Answer feature branch files only.
+_git_feature_files() {
+  git diff "$(git branch --show-current | tr -d '\n')".."$(git config --get init.defaultBranch)" \
+  --name-only
+}
+export -f _git_feature_files
+
+# Label: Git Staged Files
+# Description: Answer staged files only.
+_git_staged_files() {
+  git diff --name-only --cached
+}
+
 # Label: Print Warning.
 # Description: Print yellow warning message.
 # Parameters: $1 (required) - Message.
