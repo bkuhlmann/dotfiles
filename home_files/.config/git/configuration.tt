@@ -67,6 +67,8 @@
   prune = true
   pruneTags = true
   writeCommitGraph = true
+[gc]
+  cruftPacks = true
 [grep]
   column = true
   fullname = true
