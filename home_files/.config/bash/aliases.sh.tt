@@ -315,6 +315,7 @@ alias tfo="terraform output"
 alias tfp="noti --title 'Terraform Plan' terraform plan"
 alias tft="terraform taint"
 alias tfu="terraform untaint"
+alias tfup="terraform init -upgrade"
 alias tfv="terraform validate"
 
 # Section: http://tmux.sourceforge.net:[tmux]
