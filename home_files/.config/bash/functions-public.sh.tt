@@ -420,6 +420,14 @@ t2s() {
 # Section: https://git-scm.com:[Git] #
 #------------------------------------#
 
+# Label: Git Add
+# Description: Interactively adds modified/untracked files.
+ga() {
+  git ls-files --modified --other --exclude-standard \
+  | _fzf_preview_and_select \
+  | xargs -0 -o -t git add
+}
+
 # Label: Git Safe
 # Description: Marks repository as safe for auto-loading project's `bin` path.
 gafe() {
@@ -853,10 +861,17 @@ gcf() {
 
 # Label: Git Commit Fix (file)
 # Description: Create commit fix for file (ignores previous fixups).
-# Parameters: $1 (required) - The file to create fixup commit for.
 gcff() {
-  local file_path="$1"
-  local file_sha="$(git log --grep 'fixup!' --invert-grep --pretty=format:%h -1 $file_path)"
+  local file_path
+  local file_sha
+
+  file_path="$(git ls-files --modified | _fzf_preview_and_select)"
+
+  if [[ -a "$file_path" ]]; then
+    file_sha="$(git log --grep 'fixup!' --invert-grep --pretty=format:%h -1 "$file_path")"
+  else
+    return 0
+  fi
 
   if [[ "($(_git_branch_shas))" == *"$file_sha"* ]]; then
     git add "$file_path" && git commit --fixup "$file_sha"
