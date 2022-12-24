@@ -10,6 +10,7 @@ IFS=$'\n\t'
 source "$HOME/.config/git/hooks/extensions/support.sh"
 source "$HOME/.config/git/hooks/extensions/comments.sh"
 source "$HOME/.config/git/hooks/extensions/dotenv.sh"
+source "$HOME/.config/git/hooks/extensions/osv.sh"
 source "$HOME/.config/git/hooks/extensions/reek.sh"
 source "$HOME/.config/git/hooks/extensions/rubocop.sh"
 source "$HOME/.config/git/hooks/extensions/bundler.sh"
@@ -38,7 +39,8 @@ while read local_ref local_sha remote_ref remote_sha; do
                  bundler_gemfile_path \
                  bundler_audit_check \
                  brakeman_check \
-                 license_finder_check
+                 license_finder_check \
+                 osv_check
   fi
 done
 

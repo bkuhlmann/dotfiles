@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+# Label: Open Source Vulnerability (OSV) Check
+# Description: Scan Ruby dependencies for vulnerabilities.
+osv_check() {
+  if command -v osv-scanner > /dev/null && [[ -a "Gemfile.lock" ]]; then
+    printf "%s\n" "[osv]:"
+    osv-scanner --lockfile Gemfile.lock
+  fi
+}
+export -f osv_check
