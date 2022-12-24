@@ -1,16 +1,16 @@
 # Use `mdls -name kMDItemCFBundleIdentifier -r /Applications/<app>.app` to identify applications.
 
+com.colliderli.iina .flac all
 com.colliderli.iina .mov all
 com.colliderli.iina .mp4 all
-com.colliderli.iina .flac all
-com.flyingmeat.Acorn5 .svg all
-com.google.Chrome .gif all
-com.pixelmatorteam.pixelmator .arw all
-com.pixelmatorteam.pixelmator .bmp all
-com.pixelmatorteam.pixelmator .heic all
-com.pixelmatorteam.pixelmator .jpeg all
-com.pixelmatorteam.pixelmator .jpg all
-com.pixelmatorteam.pixelmator .png all
-com.pixelmatorteam.pixelmator .tiff all
-com.pixelmatorteam.pixelmator .webp all
+com.flyingmeat.Acorn7 .arw all
+com.flyingmeat.Acorn7 .bmp all
+com.flyingmeat.Acorn7 .gif all
+com.flyingmeat.Acorn7 .heic all
+com.flyingmeat.Acorn7 .jpeg all
+com.flyingmeat.Acorn7 .jpg all
+com.flyingmeat.Acorn7 .png all
+com.flyingmeat.Acorn7 .svg all
+com.flyingmeat.Acorn7 .tiff all
+com.flyingmeat.Acorn7 .webp all
 com.rogueamoeba.Fission .m4a all
