@@ -99,8 +99,8 @@ export BUNDLE_USER_PLUGIN="$HOME/.local/share/bundler/plugin"
 export RUBYOPT='-W:deprecated'
 
 # Fast Node Manager
-export FNM_DIR="$HOME/.cache/.fnm"
-eval "$(fnm env)"
+export FNM_DIR="$HOME/.cache/fnm"
+eval "$(fnm env --use-on-cd)"
 
 # Frum
 export FRUM_DIR="$HOME/.cache/frum"
