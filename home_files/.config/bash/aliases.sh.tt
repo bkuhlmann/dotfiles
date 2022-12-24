@@ -184,7 +184,7 @@ alias gst="git status --short --branch"
 alias gtag="git tag"
 alias gtags="git push --tags"
 alias gtagv="git tag --verify"
-alias guthors='git log --color --pretty=format:"%C(bold blue)%an%C(reset)" | sort | uniq -c | sort --reverse'
+alias guthors="git shortlog --numbered --summary --group=author --group=trailer:Co-Authored-By"
 alias gwl="git worktree list"
 alias gwp="git worktree prune"
 
