@@ -198,10 +198,11 @@ alias jss="fnm use"
 alias jsu="fnm uninstall"
 
 # Section: https://github.com/TaKO8Ki/frum:[Frum]
-alias rbl="frum local"
-alias rbg="frum global"
+alias rb="frum"
+alias rbd="frum global"
+alias rbl="frum versions"
+alias rbs="frum local"
 alias rbu="frum uninstall"
-alias rbv="frum versions"
 
 # Section: https://brew.sh:[Homebrew]
 alias hb="brew"

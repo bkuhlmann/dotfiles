@@ -2318,10 +2318,10 @@ rbi() {
   fi
 }
 
-# Label: Ruby Server
+# Label: Ruby Web Server
 # Description: Serve web content from current directory via WEBrick.
 # Parameters: $1 (optional) - The custom port. Default: 3030.
-rbs() {
+reb() {
   local default_port=3030
   local custom_port=$1
 
