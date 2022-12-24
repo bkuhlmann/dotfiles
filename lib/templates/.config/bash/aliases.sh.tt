@@ -188,6 +188,15 @@ alias guthors="git shortlog --numbered --summary --group=author --group=trailer:
 alias gwl="git worktree list"
 alias gwp="git worktree prune"
 
+# Section: https://github.com/Schniz/fnm:[Fast Node Manager]
+alias js="fnm"
+alias jsd="fnm default"
+alias jse="fnm env"
+alias jsi="fnm install"
+alias jsl="fnm list"
+alias jss="fnm use"
+alias jsu="fnm uninstall"
+
 # Section: https://github.com/TaKO8Ki/frum:[Frum]
 alias rbl="frum local"
 alias rbg="frum global"
