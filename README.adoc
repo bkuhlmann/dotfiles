@@ -129,8 +129,8 @@ cinu = "asciinema upload"
 ==== https://www.gnu.org/software/bash:[Bash]
 
 ....
-bashe = "$EDITOR $HOME/.config/bash/env.sh"
-bashs = "exec $SHELL"
+bashe = '$EDITOR $HOME/.config/bash/environment.sh'
+bashs = 'exec $SHELL'
 ....
 
 ==== https://bundler.io:[Bundler]
@@ -138,12 +138,12 @@ bashs = "exec $SHELL"
 ....
 ba = "bundle add"
 bb = "bundle binstubs"
-bce = "$EDITOR $HOME/.config/bundler/configuration.yml"
+bce = '$EDITOR $HOME/.config/bundler/configuration.yml'
 bch = "rm -f Gemfile.lock; bundle check"
 bd = "bundle doctor"
 be = "bundle exec"
 bi = "bundle install"
-blo = "bundle list --paths | fzf | xargs $EDITOR"
+blo = 'bundle list --paths | fzf | xargs $EDITOR'
 bo = "bundle outdated --only-explicit"
 br = "bundle remove"
 bu = "bundle update"
@@ -183,7 +183,7 @@ drt = "docker tag"
 ==== http://duti.org:[duti]
 
 ....
-dutia = "duti $HOME/.config/duti/configuration.duti"
+dutia = 'duti $HOME/.config/duti/configuration.duti'
 ....
 
 ==== https://elm-lang.org:[Elm]
@@ -208,7 +208,7 @@ xt = "exa --all --group-directories-first --ignore-glob '*.git' --git-ignore --t
 ==== https://github.com/junegunn/fzf:[Fuzzy Finder]
 
 ....
-ff = "fzf --preview 'bat --theme DarkNeon --color always {}' | xargs $EDITOR"
+ff = "_fzf_preview_and_select | xargs -0 -o \$EDITOR"
 ....
 
 ==== https://www.alchemists.io/projects/gemsmith:[Gemsmith]
@@ -245,12 +245,11 @@ rmde = "find . -type d -empty -not -path '*.git*' -delete"
 ==== https://git-scm.com:[Git]
 
 ....
-ga = "git add"
 gall = "git add --all ."
 gamend = "git commit --amend"
 gamenda = "git commit --amend --all --no-edit"
 gamendh = "git commit --amend --no-edit"
-gap = "git add --patch"
+gap = "git ls-files --modified | _fzf_preview_and_select | xargs -0 -o -t git add --patch"
 gashc = "git stash clear"
 gatch = "git commit --patch"
 gau = "git add --update"
@@ -292,12 +291,12 @@ gdtc = "git difftool --cached"
 gdtm = 'git difftool origin/$(_git_branch_default)'
 gdw = "git diff --color-words"
 gel = "git rm"
-gelc = "git rm --cached" # Removes previously tracked file from index after being added to gitignore.
-ges = "git reset"
+gelc = "git rm --cached"
+ges = "git diff --name-only --cached | _fzf_preview_and_select | xargs -0 -o -t git reset"
 gf = "git fetch"
 gg = "git grep"
 gget = "git config --get"
-gi = "git init && git config --global --add maintenance.repo $PWD"
+gi = 'git init && git config --global --add maintenance.repo $PWD'
 gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
 glame = "git blame -M -C -C -C"
 glean = "git clean -d --force"
@@ -306,20 +305,14 @@ glg = 'git log --pretty=format:"$(_git_log_line_format)" --grep'
 glh = "_git_commit_last | _copy_and_print"
 gls = 'git log --pretty=format:"$(_git_log_line_format)" -S'
 glt = 'git for-each-ref --sort=taggerdate --color --format = "%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
-gna = "git notes add"
-gnd = "git notes remove"
-gne = "git notes edit"
-gnl = "git notes list"
-gnp = "git notes prune"
-gns = "git notes show"
+gp = "git push"
 gpf = "git push --force-with-lease"
 gpn = "git push --no-verify"
-gpo = "git push --set-upstream origin"
 gpu = "git pull"
 gpuo = "git pull origin"
 gpuom = 'git pull origin $(_git_branch_default)'
 gpuum = 'git pull upstream $(_git_branch_default)'
-gr = "git restore"
+gr = "git ls-files --modified | _fzf_preview_and_select | xargs -0 -o -t git restore"
 grba = "git rebase --abort"
 grbc = "git rebase --continue"
 grbd = "git rebase --show-current-patch"
@@ -335,19 +328,31 @@ gst = "git status --short --branch"
 gtag = "git tag"
 gtags = "git push --tags"
 gtagv = "git tag --verify"
-guthors = 'git log --color --pretty=format:"%C(bold blue)%an%C(reset)" | sort | uniq -c | sort --reverse'
+guthors = "git shortlog --numbered --summary --group=author --group=trailer:Co-Authored-By"
 gwl = "git worktree list"
 gwp = "git worktree prune"
+....
+
+==== https://github.com/Schniz/fnm:[Fast Node Manager]
+
+....
+js = "fnm"
+jsd = "fnm default"
+jse = "fnm env"
+jsi = "fnm install"
+jsl = "fnm list"
+jss = "fnm use"
+jsu = "fnm uninstall"
 ....
 
 ==== https://github.com/TaKO8Ki/frum:[Frum]
 
 ....
-rbi = "frum install"
-rbl = "frum local"
-rbg = "frum global"
+rb = "frum"
+rbd = "frum global"
+rbl = "frum versions"
+rbs = "frum local"
 rbu = "frum uninstall"
-rbv = "frum versions"
 ....
 
 ==== https://brew.sh:[Homebrew]
@@ -357,6 +362,7 @@ hb = "brew"
 hbd = "brew doctor"
 hbi = "brew install"
 hbin = "brew info"
+hbl = "brew list --versions | fzf"
 hblc = "brew list --casks --versions | fzf"
 hblf = "brew list --formulae --versions | fzf"
 hbp = "brew pin"
@@ -389,7 +395,7 @@ mo = "open -a Marked\ 2"
 
 ....
 ms = "milestoner"
-mss = 'milestoner --status | _copy_and_print "\n"'
+mss = 'milestoner --status'
 mse = "milestoner --config --edit"
 msp = "milestoner --publish"
 ....
@@ -403,7 +409,7 @@ dnss = "sudo dscacheutil -statistics"
 ipa = 'curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
 key = "open /Applications/Utilities/Keychain\ Access.app"
 ping = "gping"
-sshe = "$EDITOR $HOME/.ssh/config"
+sshe = '$EDITOR $HOME/.ssh/config'
 top = "htop"
 ....
 
@@ -413,19 +419,11 @@ top = "htop"
 pfo = 'open -a "Path Finder.app" "$PWD"'
 ....
 
-==== https://www.postgresql.org:[PostgreSQL]
-
-....
-pgi = "initdb $HOMEBREW_PREFIX/var/postgres"
-pgsp = "pg_ctl -D $HOMEBREW_PREFIX/var/postgres stop -s -m fast"
-pgst = "pg_ctl -D $HOMEBREW_PREFIX/var/postgres -l $HOMEBREW_PREFIX/var/postgres/server.log start &"
-....
-
 ==== https://redis.io:[Redis]
 
 ....
 redc = "redis-cli"
-reds = "redis-server $HOMEBREW_PREFIX/etc/redis.conf &"
+reds = 'redis-server $HOMEBREW_PREFIX/etc/redis.conf &'
 ....
 
 ==== https://github.com/BurntSushi/ripgrep:[ripgrep]
@@ -437,11 +435,11 @@ rgf = "rg --files --glob"
 ==== https://rspec.info:[RSpec]
 
 ....
-rsf = "rspec spec --only-failures"
-rsn = "rspec spec --next-failure"
-rso = "rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
-rss = "rspec spec"
-rst = "rspec spec --tag"
+rsf = "NO_COVERAGE=true rspec spec --only-failures"
+rsn = "NO_COVERAGE=true rspec spec --next-failure"
+rso = "NO_COVERAGE=true rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
+rss = "rspec"
+rst = "NO_COVERAGE=true rspec spec --tag"
 ....
 
 ==== https://github.com/bbatsov/rubocop:[Rubocop]
@@ -453,15 +451,17 @@ copf = "rubocop --autocorrect"
 copfo = "rubocop --autocorrect --only"
 copo = "rubocop --display-cop-names --only"
 cops = "rubocop --show-cops"
+copu = "rubocop --autocorrect-all"
 ....
 
 ==== https://www.ruby-lang.org:[Ruby]
 
 ....
-rbbe = "$EDITOR $HOME/Engineering/Misc/benchmark"
-rbbr = "$HOME/Engineering/Misc/benchmark"
-rbse = "$EDITOR $HOME/Engineering/Misc/snippet"
-rbsr = "$HOME/Engineering/Misc/snippet"
+rbbe = '$EDITOR $HOME/Engineering/Misc/benchmark'
+rbbr = '$HOME/Engineering/Misc/benchmark'
+rbse = '$EDITOR $HOME/Engineering/Misc/snippet'
+rbsr = '$HOME/Engineering/Misc/snippet'
+rbsw = 'viddy $HOME/Engineering/Misc/snippet'
 ....
 
 ==== https://rubyonrails.org:[Ruby on Rails]
@@ -482,7 +482,7 @@ rbct = "open tmp/rubycritic/overview.html"
 ....
 gemc = "gem cleanup"
 gemcli = "rg 'spec\.executables' --no-messages --max-depth=2 --files-with-matches gemspec . | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
-gemcr = "$EDITOR $HOME/.gem/credentials"
+gemcr = '$EDITOR $HOME/.gem/credentials'
 geme = "gem environment"
 gemi = "gem install"
 geml = "gem list"
@@ -531,6 +531,7 @@ tfo = "terraform output"
 tfp = "noti --title 'Terraform Plan' terraform plan"
 tft = "terraform taint"
 tfu = "terraform untaint"
+tfup = "terraform init -upgrade"
 tfv = "terraform validate"
 ....
 
@@ -566,7 +567,7 @@ cinr = asciinema Record - Create new asciinema recording.
 ==== https://bundler.io:[Bundler]
 
 ....
-bca = Bundler Clean (all) - Clean projects of gem artifacts (i.e. pkg folder).
+bca = Bundler Clean (all) - Clean projects of gem artifacts.
 bcg = Bundler Config Gem - Configure Bundler to use local gem for development purposes.
 bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
 bl = Bundle List - List gem dependencies for project and copy them to clipboard.
@@ -614,6 +615,7 @@ t2s = Tab to Space - Convert file from tab to space indentation.
 ==== https://git-scm.com:[Git]
 
 ....
+ga = Git Add - Interactively adds modified/untracked files.
 gafe = Git Safe - Marks repository as safe for auto-loading project's `bin` path.
 galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
 gash = Git Stash - Creates stash of all changes.
@@ -665,7 +667,6 @@ gma = Git Merge (all) - Merges, deletes, and pushes feature branch.
 gmonth = Git Month - Answer summarized list of current month activity for projects in current directory.
 gmpa = Git Amend Push (all) - Amend all changes and force push with lease for projects in current directory.
 gount = Git Commit Count - Answer total number of commits for current project.
-gp = Git Push - Pushes changes to remote repository with dynamic branch creation if non-existent.
 gpa = Git Push (all) - Push changes for projects in current directory.
 gpua = Git Pull (all) - Pull new changes from remote branch for projects in current directory.
 gra = Git Remote Add - Add and track a remote repository.
@@ -746,7 +747,10 @@ oms = Overmind Start - Start processes.
 ==== https://www.postgresql.org:[PostgreSQL]
 
 ....
+pgi = PostgreSQL Initialize - Initalize PostgreSQL database.
 pgt = PostgreSQL Template - Edit PostgreSQL template.
+pgsp = PostgreSQL Stop - Stop existing PostgreSQL process.
+pgst = PostgreSQL Start - Start new PostgreSQL background process.
 pguc = PostgreSQL User Create - Create PostgreSQL user.
 pgud = PostgreSQL User Drop - Drop PostgreSQL user.
 ....
@@ -775,9 +779,10 @@ copa = Rubocop (all) - Run Rubocop for all projects in current directory.
 ==== https://www.ruby-lang.org:[Ruby]
 
 ....
-rbs = Ruby Server - Serve web content from current directory via WEBrick.
+rbi = Ruby Install - Install a specific version with safe defaults.
+reb = Ruby Web Server - Serve web content from current directory via WEBrick.
 rbw = Ruby Which - Locate path to current Ruby program.
-rbua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory with new Ruby version.
+rbua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory to new Ruby version.
 rbva = Ruby Version (all) - Show current Ruby version for all projects in current directory.
 ....
 
@@ -815,6 +820,7 @@ bundler_audit_check = Bundler Audit Check - Scans gem dependencies for security 
 capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open_page statements.
 comment_totals = Comment Totals - Print project comment totals.
 ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
+dotenv_check = Dotenv Linter - Scan environment files for consistent style and security issues.
 elm_debug = Elm Debug - Detect debug statements.
 git_lint_check = Git Lint Check - Enforce consistent Git commits.
 git_trailer_cleaner = Git Trailer Cleaner - Remove unused/empty Git commit body trailers.
@@ -822,12 +828,14 @@ java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
 java_script_console = JavaScript Console - Detect JavaScript console statements.
 java_script_alert = JavaScript Alert - Detect JavaScript alert statements.
 license_finder_check = License Finder Check - Scan project for valid licenses.
-reek_check = Reek Check - Scan Ruby code for poor style choices.
+osv_check = Open Source Vulnerability (OSV) Check - Scan Ruby dependencies for vulnerabilities.
+reek_branch_check = Reek Branch Check - Scan Ruby code -- feature branch only -- for poor style choices.
+reek_stage_check = Reek Stage Check - Scan Ruby code -- staged files only -- for poor style choices.
 rspec_dotfile = RSpec Dotfile - Detect RSpec dotfile.
 rspec_focus = RSpec Focus - Detect RSpec focus.
 rspec_order = RSpec Order - Detect RSpec ordered specs.
-rubocop_check = Rubocop Check - Scan Ruby code for poor style choices.
-ruby_debug = Ruby Debug - Detect Ruby debug statements.
+rubocop_branch_check = RuboCop Branch Check - Scan Ruby code -- feature branch only -- for poor style choices.
+rubocop_stage_check = RuboCop Stage Check - Scan Ruby code -- staged files only -- for poor style choices.
 ....
 
 === IRB
