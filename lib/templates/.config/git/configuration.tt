@@ -73,7 +73,6 @@
   column = true
   fullname = true
   lineNumber = true
-  threads = 3
 [init]
   defaultBranch = main
   templateDir = ~/.config/git/template
