@@ -1,5 +1,13 @@
 = Versions
 
+== 48.1.0 (2023-01-08)
+
+* Fixed Circle CI Git Lint build failure - Brooke Kuhlmann
+* Updated to Caliber 0.21.0 - Brooke Kuhlmann
+* Updated to Git Lint 5.0.0 - Brooke Kuhlmann
+* Removed Gemsmith open alias - Brooke Kuhlmann
+* Removed Git grep threads configuration - Brooke Kuhlmann
+
 == 48.0.0 (2022-12-25)
 
 * Fixed Bundle clean function to acccount for Git ignored folders - Brooke Kuhlmann
