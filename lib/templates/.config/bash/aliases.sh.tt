@@ -197,6 +197,11 @@ alias rbl="frum versions"
 alias rbs="frum local"
 alias rbu="frum uninstall"
 
+# Section: https://www.alchemists.io/projects/hanamismith:[Hanamismith]
+alias hsb="hanamismith --build"
+alias hse="hanamismith --config edit"
+alias hsh="hanamismith --help"
+
 # Section: https://brew.sh:[Homebrew]
 alias hb="brew"
 alias hbd="brew doctor"
