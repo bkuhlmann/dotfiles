@@ -66,6 +66,22 @@ alias x1="exa --oneline --all --group-directories-first"
 alias x="exa --all --all --long --header --group --group-directories-first --time-style long-iso --git"
 alias xt="exa --all --group-directories-first --ignore-glob '*.git' --git-ignore --tree"
 
+# Section: https://github.com/Schniz/fnm:[Fast Node Manager]
+alias js="fnm"
+alias jsd="fnm default"
+alias jse="fnm env"
+alias jsi="fnm install"
+alias jsl="fnm list"
+alias jss="fnm use"
+alias jsu="fnm uninstall"
+
+# Section: https://github.com/TaKO8Ki/frum:[Frum]
+alias rb="frum"
+alias rbd="frum global"
+alias rbl="frum versions"
+alias rbs="frum local"
+alias rbu="frum uninstall"
+
 # Section: https://github.com/junegunn/fzf:[Fuzzy Finder]
 alias ff="_fzf_preview_and_select | xargs -0 -o \$EDITOR"
 
@@ -180,22 +196,6 @@ alias gtagv="git tag --verify"
 alias guthors="git shortlog --numbered --summary --group=author --group=trailer:Co-Authored-By"
 alias gwl="git worktree list"
 alias gwp="git worktree prune"
-
-# Section: https://github.com/Schniz/fnm:[Fast Node Manager]
-alias js="fnm"
-alias jsd="fnm default"
-alias jse="fnm env"
-alias jsi="fnm install"
-alias jsl="fnm list"
-alias jss="fnm use"
-alias jsu="fnm uninstall"
-
-# Section: https://github.com/TaKO8Ki/frum:[Frum]
-alias rb="frum"
-alias rbd="frum global"
-alias rbl="frum versions"
-alias rbs="frum local"
-alias rbu="frum uninstall"
 
 # Section: https://www.alchemists.io/projects/hanamismith:[Hanamismith]
 alias hsb="hanamismith --build"
