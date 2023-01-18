@@ -60,7 +60,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 48.1.0
+git checkout 48.2.0
 ----
 
 == Upgrade
@@ -205,6 +205,28 @@ x = "exa --all --all --long --header --group --group-directories-first --time-st
 xt = "exa --all --group-directories-first --ignore-glob '*.git' --git-ignore --tree"
 ....
 
+==== https://github.com/Schniz/fnm:[Fast Node Manager]
+
+....
+js = "fnm"
+jsd = "fnm default"
+jse = "fnm env"
+jsi = "fnm install"
+jsl = "fnm list"
+jss = "fnm use"
+jsu = "fnm uninstall"
+....
+
+==== https://github.com/TaKO8Ki/frum:[Frum]
+
+....
+rb = "frum"
+rbd = "frum global"
+rbl = "frum versions"
+rbs = "frum local"
+rbu = "frum uninstall"
+....
+
 ==== https://github.com/junegunn/fzf:[Fuzzy Finder]
 
 ....
@@ -218,7 +240,6 @@ gsb = "gemsmith --build"
 gsc = "gemsmith --config edit"
 gse = "gemsmith --edit"
 gsi = "gemsmith --install"
-gso = "gemsmith --open"
 gsp = "gemsmith --publish"
 gsq = "rake code_quality"
 gsv = "gemsmith --view"
@@ -333,26 +354,12 @@ gwl = "git worktree list"
 gwp = "git worktree prune"
 ....
 
-==== https://github.com/Schniz/fnm:[Fast Node Manager]
+==== https://www.alchemists.io/projects/hanamismith:[Hanamismith]
 
 ....
-js = "fnm"
-jsd = "fnm default"
-jse = "fnm env"
-jsi = "fnm install"
-jsl = "fnm list"
-jss = "fnm use"
-jsu = "fnm uninstall"
-....
-
-==== https://github.com/TaKO8Ki/frum:[Frum]
-
-....
-rb = "frum"
-rbd = "frum global"
-rbl = "frum versions"
-rbs = "frum local"
-rbu = "frum uninstall"
+hsb = "hanamismith --build"
+hse = "hanamismith --config edit"
+hsh = "hanamismith --help"
 ....
 
 ==== https://brew.sh:[Homebrew]

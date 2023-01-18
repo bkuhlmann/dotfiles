@@ -1,5 +1,11 @@
 = Versions
 
+== 48.2.0 (2023-01-17)
+
+* Fixed alphabetic storting of aliases with F and G categories - Brooke Kuhlmann
+* Added Hanamismith aliases - Brooke Kuhlmann
+* Updated Ruby options to enable YJIT by default - Brooke Kuhlmann
+
 == 48.1.0 (2023-01-08)
 
 * Fixed Circle CI Git Lint build failure - Brooke Kuhlmann
