@@ -45,12 +45,12 @@ toc::[]
 
 == Screencasts
 
-[link=https://www.alchemists.io/screencasts/dotfiles]
-image::https://www.alchemists.io/images/screencasts/dotfiles/cover.svg[Screencast,600,240,role=focal_point]
+[link=https://alchemists.io/screencasts/dotfiles]
+image::https://alchemists.io/images/screencasts/dotfiles/cover.svg[Screencast,600,240,role=focal_point]
 
 == Requirements
 
-. link:https://www.alchemists.io/projects/mac_os-config[macOS Configuration]
+. link:https://alchemists.io/projects/mac_os-config[macOS Configuration]
 
 == Setup
 
@@ -233,7 +233,7 @@ rbu = "frum uninstall"
 ff = "_fzf_preview_and_select | xargs -0 -o \$EDITOR"
 ....
 
-==== https://www.alchemists.io/projects/gemsmith:[Gemsmith]
+==== https://alchemists.io/projects/gemsmith:[Gemsmith]
 
 ....
 gsb = "gemsmith --build"
@@ -354,7 +354,7 @@ gwl = "git worktree list"
 gwp = "git worktree prune"
 ....
 
-==== https://www.alchemists.io/projects/hanamismith:[Hanamismith]
+==== https://alchemists.io/projects/hanamismith:[Hanamismith]
 
 ....
 hsb = "hanamismith --build"
@@ -398,7 +398,7 @@ jlr = "jless --mode line"
 mo = "open -a Marked\ 2"
 ....
 
-==== https://www.alchemists.io/projects/milestoner:[Milestoner]
+==== https://alchemists.io/projects/milestoner:[Milestoner]
 
 ....
 ms = "milestoner"
@@ -498,7 +498,7 @@ gemu = "gem uninstall"
 gemuc = "gem update --system && gem update && gem cleanup"
 ....
 
-==== https://www.alchemists.io/projects/rubysmith:[Rubysmith]
+==== https://alchemists.io/projects/rubysmith:[Rubysmith]
 
 ....
 rbb = "rubysmith --build"
@@ -582,7 +582,7 @@ boa = Bundle Outdated (all) - Answer outdated gems for projects in current direc
 bua = Bundle Update (all) - Update gems for projects in current directory.
 ....
 
-==== https://www.alchemists.io/projects/caliber:[Code Quality]
+==== https://alchemists.io/projects/caliber:[Code Quality]
 
 ....
 cqa = Code Quality (all) - Run code quality tasks for projects in current directory.
@@ -865,18 +865,18 @@ git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
 ----
 
-== link:https://www.alchemists.io/policies/license[License]
+== link:https://alchemists.io/policies/license[License]
 
-== link:https://www.alchemists.io/policies/security[Security]
+== link:https://alchemists.io/policies/security[Security]
 
-== link:https://www.alchemists.io/policies/code_of_conduct[Code of Conduct]
+== link:https://alchemists.io/policies/code_of_conduct[Code of Conduct]
 
-== link:https://www.alchemists.io/policies/contributions[Contributions]
+== link:https://alchemists.io/policies/contributions[Contributions]
 
-== link:https://www.alchemists.io/projects/dotfiles/versions[Versions]
+== link:https://alchemists.io/projects/dotfiles/versions[Versions]
 
-== link:https://www.alchemists.io/community[Community]
+== link:https://alchemists.io/community[Community]
 
 == Credits
 
-Engineered by link:https://www.alchemists.io/team/brooke_kuhlmann[Brooke Kuhlmann].
+Engineered by link:https://alchemists.io/team/brooke_kuhlmann[Brooke Kuhlmann].

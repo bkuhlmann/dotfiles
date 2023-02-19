@@ -85,7 +85,7 @@ alias rbu="frum uninstall"
 # Section: https://github.com/junegunn/fzf:[Fuzzy Finder]
 alias ff="_fzf_preview_and_select | xargs -0 -o \$EDITOR"
 
-# Section: https://www.alchemists.io/projects/gemsmith:[Gemsmith]
+# Section: https://alchemists.io/projects/gemsmith:[Gemsmith]
 alias gsb="gemsmith --build"
 alias gsc="gemsmith --config edit"
 alias gse="gemsmith --edit"
@@ -197,7 +197,7 @@ alias guthors="git shortlog --numbered --summary --group=author --group=trailer:
 alias gwl="git worktree list"
 alias gwp="git worktree prune"
 
-# Section: https://www.alchemists.io/projects/hanamismith:[Hanamismith]
+# Section: https://alchemists.io/projects/hanamismith:[Hanamismith]
 alias hsb="hanamismith --build"
 alias hse="hanamismith --config edit"
 alias hsh="hanamismith --help"
@@ -226,7 +226,7 @@ alias jlr="jless --mode line"
 # Section: https://marked2app.com:[Marked 2]
 alias mo="open -a Marked\ 2"
 
-# Section: https://www.alchemists.io/projects/milestoner:[Milestoner]
+# Section: https://alchemists.io/projects/milestoner:[Milestoner]
 alias ms="milestoner"
 alias mss='milestoner --status'
 alias mse="milestoner --config --edit"
@@ -293,7 +293,7 @@ alias gemp="gem pristine"
 alias gemu="gem uninstall"
 alias gemuc="gem update --system && gem update && gem cleanup"
 
-# Section: https://www.alchemists.io/projects/rubysmith:[Rubysmith]
+# Section: https://alchemists.io/projects/rubysmith:[Rubysmith]
 alias rbb="rubysmith --build"
 alias rbe="rubysmith --config edit"
 alias rbh="rubysmith --help"

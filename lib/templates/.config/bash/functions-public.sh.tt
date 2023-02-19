@@ -168,7 +168,7 @@ bua() {
 }
 
 #--------------------------------------------------------------------#
-# Section: https://www.alchemists.io/projects/caliber:[Code Quality] #
+# Section: https://alchemists.io/projects/caliber:[Code Quality] #
 #--------------------------------------------------------------------#
 
 # Label: Code Quality (all)
