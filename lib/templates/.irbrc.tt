@@ -16,7 +16,9 @@ end
 # ConsoleKit (CK) - Provides IRB console utility methods.
 module CK
   def self.prompt
-    if defined? Rails
+    if defined? Hanami
+      details Hanami::VERSION, Hanami.app.name.delete_suffix("::App"), Hanami.env
+    elsif defined? Rails
       details Rails.version, Rails.application.class.module_parent_name, Rails.env
     else
       File.basename(`git rev-parse --show-toplevel 2> /dev/null`.strip)
