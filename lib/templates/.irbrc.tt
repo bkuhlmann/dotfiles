@@ -1,4 +1,5 @@
-#!/usr/bin/env ruby
+#! /usr/bin/env ruby
+# frozen_string_literal: true
 
 require "irb/completion"
 
@@ -12,31 +13,33 @@ else
   puts "Reline undefined. Custom colors not applied."
 end
 
-# ConsoleKit (CK) - A collection of IRB console utility methods.
-class CK
-  def self.info
-    "#{RUBY_VERSION}|#{Rails.version}|#{Rails.application.class.module_parent_name.downcase}|#{Rails.env}"
-  rescue NameError
-    File.basename(`git rev-parse --show-toplevel 2> /dev/null`.strip)
-        .downcase
-        .then { |project| [RUBY_VERSION, project].reject(&:empty?).join "|" }
+# ConsoleKit (CK) - Provides IRB console utility methods.
+module CK
+  def self.prompt
+    if defined? Rails
+      details Rails.version, Rails.application.class.module_parent_name, Rails.env
+    else
+      File.basename(`git rev-parse --show-toplevel 2> /dev/null`.strip)
+          .downcase
+          .then { |project| [RUBY_VERSION, project].reject(&:empty?).join "|" }
+    end
   end
 
-  def self.copy *args
-    open("| pbcopy", "w") { |clipboard| clipboard.write args.join("\n") }
+  def self.copy(*arguments)
+    open("| pbcopy", "w") { |clipboard| clipboard.write arguments.join("\n") }
   end
 
-  def self.locate object, method
-    object.method(method).source_location
+  def self.locate(object, method) = object.method(method).source_location
+
+  def self.paste = open "| pbpaste", "r", &:read
+
+  def self.search(object, pattern) = object.methods.grep(/#{pattern}/)
+
+  def self.details framework_version, application_name, environment
+    [RUBY_VERSION, framework_version, application_name.downcase, environment].join "|"
   end
 
-  def self.paste
-    open "| pbpaste", "r", &:read
-  end
-
-  def self.search object, pattern
-    object.methods.grep(/#{pattern}/)
-  end
+  private_class_method :details
 end
 
 IRB.conf[:EVAL_HISTORY] = 1000
@@ -44,10 +47,10 @@ IRB.conf[:HISTORY_FILE] = %(#{ENV["HOME"]}/.cache/ruby/irb/history.log)
 IRB.conf[:PROMPT] ||= {}
 
 IRB.conf[:PROMPT][:ALCHEMISTS] = {
-  PROMPT_I: "[#{CK.info}]> ",
-  PROMPT_N: "[#{CK.info}]| ",
-  PROMPT_C: "[#{CK.info}]| ",
-  PROMPT_S: "[#{CK.info}]%l ",
+  PROMPT_I: "[#{CK.prompt}]> ",
+  PROMPT_N: "[#{CK.prompt}]| ",
+  PROMPT_C: "[#{CK.prompt}]| ",
+  PROMPT_S: "[#{CK.prompt}]%l ",
   RETURN: "=> %s\n"
 }
 
