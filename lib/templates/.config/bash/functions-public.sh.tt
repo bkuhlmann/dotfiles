@@ -2038,6 +2038,19 @@ sigv() {
   minisign -V -p "$HOME/.minisign/alchemists.pub" -m "$path"
 }
 
+#-------------------------------------------------------------------#
+# Section: https://en.wikipedia.org/wiki/Network_Computer:[Network] #
+#-------------------------------------------------------------------#
+
+# Label: DNS Flush
+# Description: Flush DNS cache.
+dnsf() {
+  sudo killall -HUP mDNSResponder \
+  && sudo killall mDNSResponderHelper \
+  && sudo dscacheutil -flushcache \
+  && printf 'DNS cache cleared.\n'
+}
+
 #----------------------------------------#
 # Section: https://openssl.org:[OpenSSL] #
 #----------------------------------------#

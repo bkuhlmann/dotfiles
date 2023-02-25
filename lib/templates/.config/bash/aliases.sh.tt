@@ -232,8 +232,7 @@ alias mss='milestoner --status'
 alias mse="milestoner --config --edit"
 alias msp="milestoner --publish"
 
-# Section: Network
-alias dnsf="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
+# Section: https://en.wikipedia.org/wiki/Network_Computer:[Network]
 alias dnsi="scutil --dns"
 alias dnss="sudo dscacheutil -statistics"
 alias ipa='curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
