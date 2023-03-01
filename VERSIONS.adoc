@@ -1,5 +1,19 @@
 = Versions
 
+== 48.3.0 (2023-03-01)
+
+* Fixed DNS cache flush behavior - Brooke Kuhlmann
+* Added Hanami console prompt to IRB configuration - Brooke Kuhlmann
+* Added IRB Reline color patch - Brooke Kuhlmann
+* Added Rake binstub - Brooke Kuhlmann
+* Added Silicon fancy code snippet function - Brooke Kuhlmann
+* Updated Terraform format alias to be recursive - Brooke Kuhlmann
+* Updated site URLs to use bare domain - Brooke Kuhlmann
+* Updated to Caliber 0.25.0 - Brooke Kuhlmann
+* Updated to Ruby 3.2.1 - Brooke Kuhlmann
+* Removed Homebrew install from API constant - Brooke Kuhlmann
+* Refactored IRB configuration - Brooke Kuhlmann
+
 == 48.2.0 (2023-01-17)
 
 * Fixed alphabetic storting of aliases with F and G categories - Brooke Kuhlmann
