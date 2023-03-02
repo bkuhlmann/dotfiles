@@ -123,6 +123,8 @@
   insteadOf = gh:
 [url "https://github.com/bkuhlmann/"]
   insteadOf = bk:
+[url "https://github.com/hanami/"]
+  insteadOf = hanami:
 [url "https://git.heroku.com"]
   insteadOf = heroku:
 [user]
