@@ -119,10 +119,12 @@
   sort = version:refname
 [transfer]
   fsckObjects = true
-[url "https://github.com/"]
-  insteadOf = gh:
 [url "https://github.com/bkuhlmann/"]
   insteadOf = bk:
+[url "https://github.com/dry-rb/dry-"]
+  insteadOf = dry:
+[url "https://github.com/"]
+  insteadOf = gh:
 [url "https://github.com/hanami/"]
   insteadOf = hanami:
 [url "https://git.heroku.com"]
