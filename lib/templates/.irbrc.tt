@@ -39,11 +39,27 @@ module CK
 
   def self.search(object, pattern) = object.methods.grep(/#{pattern}/)
 
+  def self.usage
+    singleton_methods.map { |key| method key }
+                     .each { |meth| puts %(CK.#{meth.name} #{document(meth.parameters).join ", "}) }
+    nil
+  end
+
   def self.details framework_version, application_name, environment
     [RUBY_VERSION, framework_version, application_name.downcase, environment].join "|"
   end
 
-  private_class_method :details
+  def self.document parameters
+    parameters.map do |kind, name|
+      case kind
+        when :req then name
+        when :rest then "*#{name}"
+        else "#{name} (#{kind})"
+      end
+    end
+  end
+
+  private_class_method :details, :document
 end
 
 IRB.conf[:EVAL_HISTORY] = 1000
