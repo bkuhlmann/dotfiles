@@ -20,10 +20,7 @@ module CK
       details Hanami::VERSION, Hanami.app.name.delete_suffix("::App"), Hanami.env
     elsif defined? Rails
       details Rails.version, Rails.application.class.module_parent_name, Rails.env
-    else
-      File.basename(`git rev-parse --show-toplevel 2> /dev/null`.strip)
-          .downcase
-          .then { |project| [RUBY_VERSION, project].reject(&:empty?).join "|" }
+    else version_with_optional_project
     end
   end
 
@@ -59,7 +56,13 @@ module CK
     end
   end
 
-  private_class_method :details, :document
+  def self.version_with_optional_project
+    File.basename(`git rev-parse --show-toplevel 2> /dev/null`.strip)
+        .downcase
+        .then { |project| [RUBY_VERSION, project].reject(&:empty?).join "|" }
+  end
+
+  private_class_method :details, :document, :version_with_optional_project
 end
 
 IRB.conf[:EVAL_HISTORY] = 1000
