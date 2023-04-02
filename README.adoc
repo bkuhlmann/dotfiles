@@ -60,7 +60,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 48.3.0
+git checkout 48.4.0
 ----
 
 == Upgrade
@@ -407,10 +407,9 @@ mse = "milestoner --config --edit"
 msp = "milestoner --publish"
 ....
 
-==== Network
+==== https://en.wikipedia.org/wiki/Network_Computer:[Network]
 
 ....
-dnsf = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && printf 'DNS cache cleared.\n'"
 dnsi = "scutil --dns"
 dnss = "sudo dscacheutil -statistics"
 ipa = 'curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
@@ -531,7 +530,7 @@ bzx = "tar --extract --bzip2 --verbose --file"
 tf = "terraform"
 tfa = "noti --title 'Terraform Apply' terraform apply"
 tfc = "terraform console"
-tff = "terraform fmt"
+tff = "terraform fmt -recursive"
 tfg = "terraform graph | dot -Tsvg > tmp/graph.svg && open -a 'Firefox.app' tmp/graph.svg"
 tfi = "terraform init"
 tfo = "terraform output"
@@ -737,6 +736,12 @@ sigg = Minisign Generate - Generate private and public key pair.
 sigv = Minisign Verify File - Verify signed file.
 ....
 
+==== https://en.wikipedia.org/wiki/Network_Computer:[Network]
+
+....
+dnsf = DNS Flush - Flush DNS cache.
+....
+
 ==== https://openssl.org:[OpenSSL]
 
 ....
@@ -809,7 +814,8 @@ railsn = Ruby on Rails New - Create new Rails application from selected option.
 ==== https://github.com/Aloxaf/silicon:[Silicon]
 
 ....
-scc = Silicon Copy - Generates and copies code snippet image to clipboard.
+scc = Silicon Copy - Copies plain code snippet image to clipboard.
+scf = Silicon Fancy - Copies fancy code snippet image to clipboard.
 ....
 
 ==== https://github.com/colszowka/simplecov:[SimpleCov]

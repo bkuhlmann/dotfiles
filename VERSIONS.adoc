@@ -1,5 +1,15 @@
 = Versions
 
+== 48.4.0 (2023-04-02)
+
+* Fixed Silicon fancy function to use smoother shadows - Brooke Kuhlmann
+* Added Console Kit constant method for finding source location - Brooke Kuhlmann
+* Added Console Kit usage - Brooke Kuhlmann
+* Added Dry RB alias to Git configuration - Brooke Kuhlmann
+* Added Hanami alias to global Git configuration - Brooke Kuhlmann
+* Updated to Ruby 3.2.2 - Brooke Kuhlmann
+* Refactored Console Kit prompt functionality for version and project - Brooke Kuhlmann
+
 == 48.3.0 (2023-03-01)
 
 * Fixed DNS cache flush behavior - Brooke Kuhlmann
