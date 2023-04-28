@@ -1634,6 +1634,22 @@ guke() {
   fi
 }
 
+# Label: Git Garbage Collect
+# Description: Garbage collect dangling commits for projects in current directory.
+garb() {
+  while read -r project; do
+    (
+      cd "$project"
+
+      if [[ -d ".git" ]]; then
+        printf "\033[36m${project}\033[m\n" # Output in cyan and branch in white color.
+        git reflog expire --expire-unreachable=now --all
+        git gc --prune=now
+      fi
+    )
+  done < <(ls -A1)
+}
+
 # Label: Git Unset (all)
 # Description: Unset key value for projects in current directory.
 # Parameters: $1 (required) - The key name.
