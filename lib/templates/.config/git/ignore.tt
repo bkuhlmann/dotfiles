@@ -33,6 +33,9 @@
 # SimpleCov
 coverage
 
+# Processes
+Procfile.dev
+
 # Solargraph
 .solargraph.yml
 
