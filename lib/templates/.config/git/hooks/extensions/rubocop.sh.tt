@@ -27,6 +27,7 @@ _run_rubocop() {
                       --force-exclusion \
                       --display-cop-names \
                       --display-style-guide \
+                      --only-recognized-file-types \
                       --format simple
 }
 export -f _run_rubocop
