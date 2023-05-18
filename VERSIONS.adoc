@@ -1,5 +1,13 @@
 = Versions
 
+== 48.5.0 (2023-05-18)
+
+* Added Git garbage collection function - Brooke Kuhlmann
+* Added Procfile for development to Git ignore - Brooke Kuhlmann
+* Updated Git Hook support functions to filter out deleted files - Brooke Kuhlmann
+* Updated RuboCop Git Hook to only use recognized file types - Brooke Kuhlmann
+* Updated to Caliber 0.30.0 - Brooke Kuhlmann
+
 == 48.4.0 (2023-04-02)
 
 * Fixed Silicon fancy function to use smoother shadows - Brooke Kuhlmann

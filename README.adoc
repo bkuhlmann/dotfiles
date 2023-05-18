@@ -60,7 +60,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 48.4.0
+git checkout 48.5.0
 ----
 
 == Upgrade
@@ -690,6 +690,7 @@ gtail = Git Tail - Answer commit history since last tag for current project (cop
 gtaila = Git Tail (all) - Answer commit history count since last tag for projects in current directory.
 gucca = Git Upstream Commit Count (all) - Answer upstream commit count since last pull for projects in current directory.
 guke = Git Nuke - Permanently destroy and erase a file from history. UNRECOVERABLE!
+garb = Git Garbage Collect - Garbage collect dangling commits for projects in current directory.
 gunseta = Git Unset (all) - Unset key value for projects in current directory.
 gup = Git Update - Fetch commits, prune untracked references, review each commit (optional, with diff), and pull (optional).
 guthorc = Git Author Contributions - Answers total lines added/removed by author for repo (with emphasis on deletion).
@@ -855,10 +856,12 @@ rubocop_stage_check = RuboCop Stage Check - Scan Ruby code -- staged files only 
 
 [source,ruby]
 ----
-CK.copy    # Copies data to OS X clipboard.
-CK.locate  # Locates source code for given object and method.
-CK.paste   # Pastes data from OS X clipboard.
-CK.search  # Searches for object method for given pattern.
+CK.copy      # Copies data to OS X clipboard.
+CK.constant  # Locates source code for given constant.
+CK.locate    # Locates source code for given object and method.
+CK.paste     # Pastes data from OS X clipboard.
+CK.search    # Searches for object method for given pattern.
+CK.usage     # Diplays usage for all of the above methods.
 ----
 
 == Development
