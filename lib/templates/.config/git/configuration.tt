@@ -67,8 +67,6 @@
   prune = true
   pruneTags = true
   writeCommitGraph = true
-[gc]
-  cruftPacks = true
 [grep]
   column = true
   fullname = true
@@ -91,8 +89,6 @@
 [mergetool "Kaleidoscope"]
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
   trustExitCode = true
-[pack]
-  writeReverseIndex = true
 [pull]
   rebase = merges
 [push]
