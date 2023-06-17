@@ -276,40 +276,6 @@ dots() {
   done
 }
 
-#-------------------------------------#
-# Section: https://elm-lang.org:[Elm] #
-#-------------------------------------#
-
-# Label: Elm Live
-# Description: Watch for source code changes and recompile immediately.
-# Parameters: $1 (required) - The source path, $2 (optional) - The output path.
-elml() {
-  local source_path="$1"
-  local output_path="${2:-/dev/null}"
-
-  if [[ -z "$source_path" || -z "$output_path" ]]; then
-    printf "%s\n" "ERROR: Source and output path must be provided."
-    return 1
-  fi
-
-  elm-live "$source_path" --debug --output="$output_path"
-}
-
-# Label: Elm Make
-# Description: Compile Elm source.
-# Parameters: $1 (required) - The source path, $2 (required) - The output path.
-elmm() {
-  local source_path="$1"
-  local output_path="$2"
-
-  if [[ -z "$source_path" || -z "$output_path" ]]; then
-    printf "%s\n" "ERROR: Source and output path must be provided."
-    return 1
-  fi
-
-  elm make "$source_path" --optimize --output="$output_path"
-}
-
 #------------------#
 # Section: General #
 #------------------#

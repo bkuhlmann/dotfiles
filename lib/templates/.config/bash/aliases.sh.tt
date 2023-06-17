@@ -53,14 +53,6 @@ alias drt="docker tag"
 # Section: http://duti.org:[duti]
 alias dutia='duti $HOME/.config/duti/configuration.duti'
 
-# Section: https://elm-lang.org:[Elm]
-alias elmc="elm repl"
-alias elmg="elm init"
-alias elmi="elm install"
-alias elmp="elm publish"
-alias elms="elm reactor"
-alias elmt="elm-test"
-
 # Section: https://the.exa.website:[Exa]
 alias x1="exa --oneline --all --group-directories-first"
 alias x="exa --all --all --long --header --group --group-directories-first --time-style long-iso --git"

@@ -1,8 +1,0 @@
-#! /usr/bin/env bash
-
-# Label: Elm Debug
-# Description: Detect debug statements.
-elm_debug() {
-  _scan_code "[elm]" "Debug statements detected" 'elm$' 'Debug\.log'
-}
-export -f elm_debug
