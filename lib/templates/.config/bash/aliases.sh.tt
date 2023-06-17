@@ -229,7 +229,7 @@ alias mo="open -a Marked\ 2"
 # Section: https://alchemists.io/projects/milestoner:[Milestoner]
 alias ms="milestoner"
 alias mss='milestoner --status'
-alias mse="milestoner --config --edit"
+alias mse="milestoner config --edit"
 alias msp="milestoner --publish"
 
 # Section: https://en.wikipedia.org/wiki/Network_Computer:[Network]
