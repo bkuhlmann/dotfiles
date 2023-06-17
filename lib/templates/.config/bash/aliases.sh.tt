@@ -278,9 +278,6 @@ alias rbsw='viddy $HOME/Engineering/Misc/snippet'
 alias railsb="rails console --sandbox"
 alias railse="EDITOR='sublime --wait' rails credentials:edit"
 
-# Section: https://github.com/whitesmith/RubyCritic:[RubyCritic]
-alias rbct="open tmp/rubycritic/overview.html"
-
 # Section: https://rubygems.org:[RubyGems]
 alias gemc="gem cleanup"
 alias gemcli="rg 'spec\.executables' --no-messages --max-depth=2 --files-with-matches gemspec . | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
