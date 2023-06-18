@@ -78,8 +78,8 @@ alias rbu="frum uninstall"
 alias ff="_fzf_preview_and_select | xargs -0 -o \$EDITOR"
 
 # Section: https://alchemists.io/projects/gemsmith:[Gemsmith]
-alias gsb="gemsmith --build"
-alias gsc="gemsmith --config edit"
+alias gsb="gemsmith build --name"
+alias gsc="gemsmith config --edit"
 alias gse="gemsmith --edit"
 alias gsi="gemsmith --install"
 alias gsp="gemsmith --publish"
