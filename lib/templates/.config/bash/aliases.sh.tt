@@ -190,8 +190,8 @@ alias gwl="git worktree list"
 alias gwp="git worktree prune"
 
 # Section: https://alchemists.io/projects/hanamismith:[Hanamismith]
-alias hsb="hanamismith --build"
-alias hse="hanamismith --config edit"
+alias hsb="hanamismith build --name"
+alias hse="hanamismith config --edit"
 alias hsh="hanamismith --help"
 
 # Section: https://brew.sh:[Homebrew]
