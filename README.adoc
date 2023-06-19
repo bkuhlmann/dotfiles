@@ -60,7 +60,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 48.5.0
+git checkout 49.0.0
 ----
 
 == Upgrade
@@ -186,17 +186,6 @@ drt = "docker tag"
 dutia = 'duti $HOME/.config/duti/configuration.duti'
 ....
 
-==== https://elm-lang.org:[Elm]
-
-....
-elmc = "elm repl"
-elmg = "elm init"
-elmi = "elm install"
-elmp = "elm publish"
-elms = "elm reactor"
-elmt = "elm-test"
-....
-
 ==== https://the.exa.website:[Exa]
 
 ....
@@ -236,8 +225,8 @@ ff = "_fzf_preview_and_select | xargs -0 -o \$EDITOR"
 ==== https://alchemists.io/projects/gemsmith:[Gemsmith]
 
 ....
-gsb = "gemsmith --build"
-gsc = "gemsmith --config edit"
+gsb = "gemsmith build --name"
+gsc = "gemsmith config --edit"
 gse = "gemsmith --edit"
 gsi = "gemsmith --install"
 gsp = "gemsmith --publish"
@@ -357,8 +346,8 @@ gwp = "git worktree prune"
 ==== https://alchemists.io/projects/hanamismith:[Hanamismith]
 
 ....
-hsb = "hanamismith --build"
-hse = "hanamismith --config edit"
+hsb = "hanamismith build --name"
+hse = "hanamismith config --edit"
 hsh = "hanamismith --help"
 ....
 
@@ -403,7 +392,7 @@ mo = "open -a Marked\ 2"
 ....
 ms = "milestoner"
 mss = 'milestoner --status'
-mse = "milestoner --config --edit"
+mse = "milestoner config --edit"
 msp = "milestoner --publish"
 ....
 
@@ -477,18 +466,13 @@ railsb = "rails console --sandbox"
 railse = "EDITOR = 'sublime --wait' rails credentials:edit"
 ....
 
-==== https://github.com/whitesmith/RubyCritic:[RubyCritic]
-
-....
-rbct = "open tmp/rubycritic/overview.html"
-....
-
 ==== https://rubygems.org:[RubyGems]
 
 ....
 gemc = "gem cleanup"
 gemcli = "rg 'spec\.executables' --no-messages --max-depth=2 --files-with-matches gemspec . | xargs basename | cut -d. -f1 | sort | _copy_and_print '\n'"
 gemcr = '$EDITOR $HOME/.gem/credentials'
+gemb = "gem build"
 geme = "gem environment"
 gemi = "gem install"
 geml = "gem list"
@@ -500,8 +484,8 @@ gemuc = "gem update --system && gem update && gem cleanup"
 ==== https://alchemists.io/projects/rubysmith:[Rubysmith]
 
 ....
-rbb = "rubysmith --build"
-rbe = "rubysmith --config edit"
+rbb = "rubysmith build --name"
+rbe = "rubysmith config --edit"
 rbh = "rubysmith --help"
 ....
 
@@ -599,13 +583,6 @@ curli = Curl Inspect - Inspect remote file with default editor.
 
 ....
 dots = Dotfiles - Learn about dotfile aliases, functions, etc.
-....
-
-==== https://elm-lang.org:[Elm]
-
-....
-elml = Elm Live - Watch for source code changes and recompile immediately.
-elmm = Elm Make - Compile Elm source.
 ....
 
 ==== General
@@ -835,7 +812,6 @@ capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open
 comment_totals = Comment Totals - Print project comment totals.
 ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
 dotenv_check = Dotenv Linter - Scan environment files for consistent style and security issues.
-elm_debug = Elm Debug - Detect debug statements.
 git_lint_check = Git Lint Check - Enforce consistent Git commits.
 git_trailer_cleaner = Git Trailer Cleaner - Remove unused/empty Git commit body trailers.
 java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
