@@ -1,14 +1,19 @@
 
 
+Milestone: ?
+
 # Questions:
 
 # Why is this necessary?
-# How does this address the issue?
 # Any side effects to be aware of?
-# Any links to reference?
+# Any links to add?
 
 # Trailers:
 
-# Co-Authored-By: Jane Doe <jane@example.com>
-# Signed-Off-By: Jill Doe <jill@example.com>
-# Issue: 12345
+# Co-authored-by: River Tam <river@firefly.com>
+# Format: asciidoc
+# Issue: 123
+# Milestone: patch
+# Reviewer: github
+# Signed-of-by: Malcolm Reynolds <mal@firefly.com>
+# Tracker: linear
