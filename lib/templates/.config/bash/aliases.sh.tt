@@ -162,6 +162,12 @@ alias glg='git log --pretty=format:"$(_git_log_line_format)" --grep'
 alias glh="_git_commit_last | _copy_and_print"
 alias gls='git log --pretty=format:"$(_git_log_line_format)" -S'
 alias glt='git for-each-ref --sort=taggerdate --color --format="%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
+alias gna="git notes add"
+alias gne="git notes edit"
+alias gnl="git notes list"
+alias gnp="git notes prune"
+alias gnd="git notes remove"
+alias gns="git notes show"
 alias gp="git push"
 alias gpf="git push --force-with-lease"
 alias gpn="git push --no-verify"
