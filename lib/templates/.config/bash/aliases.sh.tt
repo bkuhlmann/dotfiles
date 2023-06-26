@@ -262,9 +262,9 @@ alias copu="rubocop --autocorrect-all"
 # Section: https://www.ruby-lang.org:[Ruby]
 alias rbbe='$EDITOR $HOME/Engineering/Misc/benchmark'
 alias rbbr='$HOME/Engineering/Misc/benchmark'
-alias rbse='$EDITOR $HOME/Engineering/Misc/snippet'
-alias rbsr='$HOME/Engineering/Misc/snippet'
-alias rbsw='viddy $HOME/Engineering/Misc/snippet'
+alias rbde='$EDITOR $HOME/Engineering/Misc/demo'
+alias rbdr='$HOME/Engineering/Misc/demo'
+alias rbdw='viddy $HOME/Engineering/Misc/demo'
 
 # Section: https://rubyonrails.org:[Ruby on Rails]
 alias railsb="rails console --sandbox"
