@@ -227,6 +227,7 @@ alias mo="open -a Marked\ 2"
 # Section: https://alchemists.io/projects/milestoner:[Milestoner]
 alias ms="milestoner"
 alias mss='milestoner --status'
+alias msb='milestoner build --format html && open tmp/milestone/index.html'
 alias mse="milestoner config --edit"
 alias msp="milestoner --publish"
 
