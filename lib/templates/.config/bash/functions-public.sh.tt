@@ -2516,51 +2516,6 @@ railsn() {
   fi
 }
 
-#------------------------------------------------------#
-# Section: https://github.com/Aloxaf/silicon:[Silicon] #
-#------------------------------------------------------#
-
-# Label: Silicon Copy
-# Description: Copies plain code snippet image to clipboard.
-# Parameters: $1 (required) - Path, $2 (optional) - Language. Default: Ruby, $3 (optional) Lines.
-scc() {
-  local path="$1"
-  local language="${2:-rb}"
-  local lines="${3:-0}"
-
-  silicon --language "$language" \
-          --theme DarkNeon \
-          --background "#0000" \
-          --no-window-controls \
-          --pad-horiz 0 \
-          --pad-vert 0 \
-          --highlight-lines "$lines" \
-          --to-clipboard \
-          "$path"
-}
-
-# Label: Silicon Fancy
-# Description: Copies fancy code snippet image to clipboard.
-# Parameters: $1 (required) - Path, $2 (optional) - Language. Default: Ruby, $3 (optional) Lines.
-scf() {
-  local path="$1"
-  local language="${2:-rb}"
-  local lines="${3:-0}"
-
-  silicon --language "$language" \
-          --theme DarkNeon \
-          --background "#0000" \
-          --pad-horiz 85 \
-          --pad-vert 85 \
-          --shadow-color "#989898" \
-          --shadow-blur-radius 60 \
-          --shadow-offset-x 30 \
-          --shadow-offset-y 30 \
-          --highlight-lines "$lines" \
-          --to-clipboard \
-          "$path"
-}
-
 #-------------------------------------------------------------#
 # Section: https://github.com/colszowka/simplecov:[SimpleCov] #
 #-------------------------------------------------------------#
