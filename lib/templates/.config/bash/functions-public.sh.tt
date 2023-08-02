@@ -1294,6 +1294,78 @@ gmpa() {
   done < <(ls -A1)
 }
 
+# Label: Git Notes Add (interactive)
+# Description: Select which commit note to add for current feature branch.
+gnai() {
+  local commits=($(_git_branch_shas))
+
+  _git_commit_options "${commits[*]}"
+
+  printf "\n"
+  read -p "Enter selection or quit (q): " response
+  if [[ "$response" == 'q' ]]; then
+    return
+  fi
+
+  local selection=${commits[$((response - 1))]}
+  printf "%s\n" "Selected: $selection"
+  gna "$selection"
+}
+
+# Label: Git Notes Edit (interactive)
+# Description: Select which commit note to edit for current feature branch.
+gnei() {
+  local commits=($(_git_branch_shas))
+
+  _git_commit_options "${commits[*]}"
+
+  printf "\n"
+  read -p "Enter selection or quit (q): " response
+  if [[ "$response" == 'q' ]]; then
+    return
+  fi
+
+  local selection=${commits[$((response - 1))]}
+  printf "%s\n" "Selected: $selection"
+  gne "$selection"
+}
+
+# Label: Git Notes Remove (interactive)
+# Description: Select which commit note to remove for current feature branch.
+gndi() {
+  local commits=($(_git_branch_shas))
+
+  _git_commit_options "${commits[*]}"
+
+  printf "\n"
+  read -p "Enter selection or quit (q): " response
+  if [[ "$response" == 'q' ]]; then
+    return
+  fi
+
+  local selection=${commits[$((response - 1))]}
+  printf "%s\n" "Selected: $selection"
+  gnd "$selection"
+}
+
+# Label: Git Notes Show (interactive)
+# Description: Select which commit note to show for current feature branch.
+gnri() {
+  local commits=($(_git_branch_shas))
+
+  _git_commit_options "${commits[*]}"
+
+  printf "\n"
+  read -p "Enter selection or quit (q): " response
+  if [[ "$response" == 'q' ]]; then
+    return
+  fi
+
+  local selection=${commits[$((response - 1))]}
+  printf "%s\n" "Selected: $selection"
+  gns "$selection"
+}
+
 # Label: Git Commit Count
 # Description: Answer total number of commits for current project.
 gount() {
