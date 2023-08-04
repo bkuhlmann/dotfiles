@@ -89,6 +89,8 @@
 [mergetool "Kaleidoscope"]
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
   trustExitCode = true
+[notes]
+  rewriteRef = refs/notes/commits
 [pull]
   rebase = merges
 [push]
