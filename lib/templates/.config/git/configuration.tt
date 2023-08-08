@@ -125,6 +125,8 @@
   insteadOf = hanami:
 [url "https://git.heroku.com"]
   insteadOf = heroku:
+[url "https://github.com/rom-rb/rom-"]
+  insteadOf = rom:
 [user]
   email = <redacted>
   name = <redacted>
