@@ -2176,9 +2176,9 @@ oms() {
   local port=${1:-3000}
 
   if [[ -f Procfile.dev ]]; then
-    overmind start --port $port --port-step 10 --procfile Procfile.dev
+    overmind start --port $port --port-step 10 --procfile Procfile.dev --can-die migration
   else
-    overmind start --port $port --port-step 10
+    overmind start --port $port --port-step 10 --can-die migration
   fi
 }
 
