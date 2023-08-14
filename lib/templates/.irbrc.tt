@@ -43,7 +43,11 @@ module CK
   end
 
   def self.details framework_version, application_name, environment
-    [RUBY_VERSION, framework_version, application_name.downcase, environment].join "|"
+    [RUBY_VERSION, framework_version, application_name.downcase, color_for(environment)].join "|"
+  end
+
+  def self.color_for environment
+    environment.to_sym == :production ? "\e[31m#{environment}\e[0m" : "\e[32m#{environment}\e[0m"
   end
 
   def self.document parameters
@@ -62,7 +66,7 @@ module CK
         .then { |project| [RUBY_VERSION, project].reject(&:empty?).join "|" }
   end
 
-  private_class_method :details, :document, :version_with_optional_project
+  private_class_method :details, :color_for, :document, :version_with_optional_project
 end
 
 IRB.conf[:EVAL_HISTORY] = 1000
