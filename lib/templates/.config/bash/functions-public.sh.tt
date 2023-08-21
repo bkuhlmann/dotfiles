@@ -1115,7 +1115,7 @@ gistory() {
   fi
 
   local file="$1"
-  local commits=($(git rev-list --reverse HEAD -- "$file"))
+  local commits=($(git rev-list --use-bitmap-index --reverse HEAD -- "$file"))
 
   _git_file_commits commits[@] "$file"
 }
@@ -1367,7 +1367,7 @@ gnri() {
 # Description: Answer total number of commits for current project.
 gount() {
   printf "Commits: "
-  git rev-list --count HEAD
+  git rev-list --use-bitmap-index --count HEAD
 }
 
 # Label: Git Push (all)

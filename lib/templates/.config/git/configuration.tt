@@ -91,6 +91,8 @@
   trustExitCode = true
 [notes]
   rewriteRef = refs/notes/commits
+[pack]
+  useBitmapBoundaryTraversal = true
 [pull]
   rebase = merges
 [push]

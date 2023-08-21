@@ -336,7 +336,10 @@ _git_commit_options() {
 # Label: Git Commit Root
 # Description: Answer root commit of entire repository.
 _git_commit_root() {
-  git rev-list --pretty=format:%h --max-parents=0 HEAD | rg --invert-match "^commit"
+  git rev-list --use-bitmap-index \
+               --max-parents=0 HEAD \
+               --pretty=format:%h | \
+               rg --invert-match "^commit"
 }
 
 # Label: Git Commits Since Last Tag
