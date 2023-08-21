@@ -192,6 +192,7 @@ alias gst="git status --short --branch"
 alias gtag="git tag"
 alias gtags="git push --tags"
 alias gtagv="git tag --verify"
+alias gte='cat .git/TAG_EDITMSG | pbcopy'
 alias guthors="git shortlog --numbered --summary --group=author --group=trailer:Co-Authored-By"
 alias gwl="git worktree list"
 alias gwp="git worktree prune"
