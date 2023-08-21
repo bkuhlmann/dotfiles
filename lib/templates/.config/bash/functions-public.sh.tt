@@ -1209,9 +1209,6 @@ glear() {
     printf "\n%s\n" "Deleting Node modules..."
     rm -rf node_modules
 
-    printf "\n%s\n" "Deleting Elm packages..."
-    rm -rf elm-stuff
-
     printf "\n%s\n" "Deleting temp directory..."
     rm -rf tmp
   else
