@@ -1555,7 +1555,7 @@ gsup() {
 # Label: Git Tag Delete
 # Description: Delete local and remote tag (if found).
 # Parameters: $1 (required) - The tag name.
-gtagd() {
+gtd() {
   if [[ -z "$1" ]]; then
     printf "%s\n" "ERROR: Tag name must be supplied."
     return 1
@@ -1585,7 +1585,7 @@ gtagd() {
 # Label: Git Tag Rebuild
 # Description: Rebuild a previous tag. WARNING: Use with caution, especially if previously published.
 # Parameters: $1 (required) - Version, $2 (required) - Release notes path, $3 (optional) - Creation date/time. Default: current date/time.
-gtagr() {
+gtr() {
   local version="$1"
   local path="$2"
   local datetime="${3:-$(date '+%Y-%m-%d %H:%M:%S')}"
