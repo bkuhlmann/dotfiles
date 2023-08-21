@@ -8,7 +8,7 @@
 [core]
   abbrev = 12
   editor = "$EDITOR --wait"
-  fsmonitor = true
+  fsmonitor = false
   hooksPath = ~/.config/git/hooks
   pager = delta
   quotePath = false
