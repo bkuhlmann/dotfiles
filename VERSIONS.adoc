@@ -1,5 +1,29 @@
 = Versions
 
+== 50.0.0 (2023-09-01)
+
+* Added Debug gem - Brooke Kuhlmann
+* Added Docker Compose aliases - Brooke Kuhlmann
+* Added Git cherry pick continue alias - Brooke Kuhlmann
+* Added Git configuration for ROM URL - Brooke Kuhlmann
+* Added Git notes aliases - Brooke Kuhlmann
+* Added Git notes functions - Brooke Kuhlmann
+* Added Git notes rewrite reference to global configuration - Brooke Kuhlmann
+* Added Git tag edit alias - Brooke Kuhlmann
+* Added Milestoner build alias - Brooke Kuhlmann
+* Added Overmind start function can die flag for migrations - Brooke Kuhlmann
+* Added colorized IRB environment prompt - Brooke Kuhlmann
+* Added fuzzy find to Git config debug alias - Brooke Kuhlmann
+* Updated Git commit template trailer examples - Brooke Kuhlmann
+* Updated Git revision list to use bitmap boundary traversal - Brooke Kuhlmann
+* Updated Marked alias as a function with default path - Brooke Kuhlmann
+* Updated snippet aliases as demo aliases - Brooke Kuhlmann
+* Removed Elm support - Brooke Kuhlmann
+* Removed Git fsmonitor daemon - Brooke Kuhlmann
+* Removed Git tag long namespace - Brooke Kuhlmann
+* Removed Silicon functions - Brooke Kuhlmann
+* Removed stripping of comments when editing Git commit message - Brooke Kuhlmann
+
 == 49.0.0 (2023-06-19)
 
 * Added gem build alias - Brooke Kuhlmann
