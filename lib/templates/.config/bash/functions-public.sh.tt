@@ -276,6 +276,24 @@ dots() {
   done
 }
 
+#------------------------------------------------------------#
+# Section: https://github.com/Schniz/fnm:[Fast Node Manager] #
+#------------------------------------------------------------#
+
+# Label: JavaScript Force
+# Description: Installs new Node version as default and removes previous version.
+# Parameters: $1 (required) - Version.
+jsf() {
+  local version="$1"
+  local previous
+
+  previous="$(fnm current)"
+
+  fnm install "$version"
+  fnm default "$version"
+  fnm uninstall "$previous"
+}
+
 #------------------#
 # Section: General #
 #------------------#
