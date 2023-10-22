@@ -2214,7 +2214,7 @@ oms() {
 #--------------------------------------------------#
 
 # Label: PostgreSQL Initialize
-# Description: Initalize PostgreSQL database.
+# Description: Initialize PostgreSQL database.
 # Parameters: $1 (optional) - Version.
 pgi() {
   local version="${1:-$DOTFILES_PG_VERSION}"
@@ -2343,7 +2343,7 @@ rsall() {
 }
 
 # Label: RSpec Bisect
-# Description: Debug RSpec failure using bisect to automatically determine where failure is occuring.
+# Description: Debug RSpec failure using bisect to automatically determine the root cause.
 # Parameters: $1 (optional) - The seed. Default: 2112, $2 (optional) - Debug verbosity. Default: "normal".
 rsb() {
   local seed=${1:-2112}

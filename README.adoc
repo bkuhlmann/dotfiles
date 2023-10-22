@@ -60,7 +60,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 50.0.0
+git checkout 50.1.0
 ----
 
 == Upgrade
@@ -104,7 +104,7 @@ After install, the following files will require manual updating:
   section with your own credentials.
 
 The reason the above two files are not managed by this project -- especially via symbolic links --
-is because senstive data is usually stored in these files and you don't want this information
+is because sensitive data is usually stored in these files and you don't want this information
 accidentally checked into a source code repository or shared via other means.
 
 === Aliases
@@ -310,6 +310,7 @@ ges = "git diff --name-only --cached | _fzf_preview_and_select | xargs -0 -o -t 
 gf = "git fetch"
 gg = "git grep"
 gget = "git config --get"
+ggp = "git config --global --get-regexp includeif | awk '{print \$NF}' | fzf | xargs \$EDITOR"
 gi = 'git init && git config --global --add maintenance.repo $PWD'
 gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
 glame = "git blame -M -C -C -C"
@@ -397,7 +398,7 @@ jlr = "jless --mode line"
 ....
 ms = "milestoner"
 mss = 'milestoner --status'
-msb = 'milestoner build --format html && open tmp/milestone/index.html'
+msb = 'rm -rf tmp/milestone && milestoner build --format html && open tmp/milestone/index.html'
 mse = "milestoner config --edit"
 msp = "milestoner --publish"
 ....
@@ -591,6 +592,12 @@ curli = Curl Inspect - Inspect remote file with default editor.
 dots = Dotfiles - Learn about dotfile aliases, functions, etc.
 ....
 
+==== https://github.com/Schniz/fnm:[Fast Node Manager]
+
+....
+jsf = JavaScript Force - Installs new Node version as default and removes previous version.
+....
+
 ==== General
 
 ....
@@ -753,7 +760,7 @@ oms = Overmind Start - Start processes.
 ==== https://www.postgresql.org:[PostgreSQL]
 
 ....
-pgi = PostgreSQL Initialize - Initalize PostgreSQL database.
+pgi = PostgreSQL Initialize - Initialize PostgreSQL database.
 pgt = PostgreSQL Template - Edit PostgreSQL template.
 pgsp = PostgreSQL Stop - Stop existing PostgreSQL process.
 pgst = PostgreSQL Start - Start new PostgreSQL background process.
@@ -771,7 +778,7 @@ rakea = Rake (all) - Run default Rake tasks for projects in current directory.
 
 ....
 rsall = RSpec (all) - Run RSpec for projects in current directory.
-rsb = RSpec Bisect - Debug RSpec failure using bisect to automatically determine where failure is occuring.
+rsb = RSpec Bisect - Debug RSpec failure using bisect to automatically determine the root cause.
 rsd = RSpec Debug - Debug intermittent RSpec failure(s) by running spec(s) until failure is detected.
 rsp = RSpec Profile - Runs RSpec specs with profiling enabled.
 ....
