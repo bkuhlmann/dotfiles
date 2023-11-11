@@ -2198,14 +2198,14 @@ omr() {
 
 # Label: Overmind Start
 # Description: Start processes.
-# Parameters: $1 (optional) - Port. Default: 3000.
+# Parameters: $1 (optional) - Environment. Use: "p" for "production". Default: "".
 oms() {
-  local port=${1:-3000}
+  local environment="$1"
 
-  if [[ -f Procfile.dev ]]; then
-    overmind start --port $port --port-step 10 --procfile Procfile.dev --can-die migration
+  if [[ "$environment" == "p" ]]; then
+    overmind start --port-step 10 --can-die migration,assets
   else
-    overmind start --port $port --port-step 10 --can-die migration
+    overmind start --port-step 10 --procfile Procfile.dev --can-die migration
   fi
 }
 
