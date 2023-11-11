@@ -3,14 +3,10 @@
 
 require "irb/completion"
 
-# TODO: Remove once Reline supports customized colors.
-if defined? Reline::DialogRenderInfo
-  Reline::DialogRenderInfo.class_eval do
-    def bg_color = 40
-    def pointer_bg_color = 41
-  end
-else
-  puts "Reline undefined. Custom colors not applied."
+Reline::Face.config :completion_dialog do |config|
+  config.define :default, foreground: :white, background: :black
+  config.define :enhanced, foreground: :black, background: :green
+  config.define :scrollbar, foreground: :bright_white, background: :black
 end
 
 # ConsoleKit (CK) - Provides IRB console utility methods.
@@ -71,6 +67,7 @@ end
 
 IRB.conf[:EVAL_HISTORY] = 1_000
 IRB.conf[:HISTORY_FILE] = "#{Dir.home}/.cache/irb/history.log"
+IRB.conf[:COMPLETOR] = :type
 IRB.conf[:PROMPT] ||= {}
 
 IRB.conf[:PROMPT][:ALCHEMISTS] = {
