@@ -243,6 +243,17 @@ alias ping="gping"
 alias sshe='$EDITOR $HOME/.ssh/config'
 alias top="htop"
 
+# Section: https://www.npmjs.com:[NPM]
+alias nb="npm run build"
+alias ni="npm install"
+alias nid="npm install --save-dev"
+alias nl="npm ls"
+alias no="npm outdated"
+alias np="npm publish"
+alias nq="npm run quality"
+alias nt="npm test"
+alias ntw="npm run test:watch"
+
 # Section: https://cocoatech.com:[Path Finder]
 alias pfo='open -a "Path Finder.app" "$PWD"'
 
