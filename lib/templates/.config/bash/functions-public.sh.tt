@@ -181,7 +181,7 @@ cqa() {
         # Prints project (cyan).
         printf "\033[36m${project}\033[m:\n"
 
-        rake code_quality
+        rake quality
         printf "\n"
       fi
     )

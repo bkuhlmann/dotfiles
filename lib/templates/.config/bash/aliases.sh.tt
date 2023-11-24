@@ -86,7 +86,7 @@ alias gsc="gemsmith config --edit"
 alias gse="gemsmith --edit"
 alias gsi="gemsmith --install"
 alias gsp="gemsmith --publish"
-alias gsq="rake code_quality"
+alias gsq="rake quality"
 alias gsv="gemsmith --view"
 
 # Section: General
