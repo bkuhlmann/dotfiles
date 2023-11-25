@@ -68,6 +68,17 @@ end
 IRB.conf[:EVAL_HISTORY] = 1_000
 IRB.conf[:HISTORY_FILE] = "#{Dir.home}/.cache/irb/history.log"
 IRB.conf[:COMPLETOR] = :type
+IRB.conf[:COMMAND_ALIASES]
+   .merge! b: :backtrace,
+           c: :continue,
+           e: :edit,
+           h: :show_cmds,
+           i: :info,
+           l: :ls,
+           n: :next,
+           m: :measure,
+           s: :step,
+           w: :whereami
 IRB.conf[:PROMPT] ||= {}
 
 IRB.conf[:PROMPT][:ALCHEMISTS] = {
