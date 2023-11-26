@@ -60,7 +60,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 50.1.0
+git checkout 51.0.0
 ----
 
 == Upgrade
@@ -175,7 +175,7 @@ dr = "docker"
 drb = "docker build"
 drc = "docker-compose"
 drcb = "docker-compose build"
-drcr = "docker-compose run"
+drcr = "docker-compose run --rm"
 drcu = "docker-compose up"
 drd = "docker system prune --force && docker buildx prune --force"
 dri = "docker images"
@@ -233,7 +233,7 @@ gsc = "gemsmith config --edit"
 gse = "gemsmith --edit"
 gsi = "gemsmith --install"
 gsp = "gemsmith --publish"
-gsq = "rake code_quality"
+gsq = "rake quality"
 gsv = "gemsmith --view"
 ....
 
@@ -413,6 +413,20 @@ key = "open /Applications/Utilities/Keychain\ Access.app"
 ping = "gping"
 sshe = '$EDITOR $HOME/.ssh/config'
 top = "htop"
+....
+
+==== https://www.npmjs.com:[NPM]
+
+....
+nb = "npm run build"
+ni = "npm install"
+nid = "npm install --save-dev"
+nl = "npm ls"
+no = "npm outdated"
+np = "npm publish"
+nq = "npm run quality"
+nt = "npm test"
+ntw = "npm run test:watch"
 ....
 
 ==== https://cocoatech.com:[Path Finder]

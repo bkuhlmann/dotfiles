@@ -1,5 +1,19 @@
 = Versions
 
+== 51.0.0 (2023-11-26)
+
+* Added IRB aliases - Brooke Kuhlmann
+* Added NPM aliases - Brooke Kuhlmann
+* Added Rakefile quality task - Brooke Kuhlmann
+* Added XDG config and cache home directories - Brooke Kuhlmann
+* Updated Docker compose run alias to auto-remove containers - Brooke Kuhlmann
+* Updated IRB to use Reline face and type completion configurations - Brooke Kuhlmann
+* Updated NPM global configuration - Brooke Kuhlmann
+* Updated Overmind start function to accept optional environment - Brooke Kuhlmann
+* Updated root configurations to use XDG config folder - Brooke Kuhlmann
+* Removed Rakefile code prefix from quality task - Brooke Kuhlmann
+* Removed Ruby Debug home confguration - Brooke Kuhlmann
+
 == 50.1.0 (2023-10-22)
 
 * Fixed Milestoner build alias to always delete temp dirctory - Brooke Kuhlmann
