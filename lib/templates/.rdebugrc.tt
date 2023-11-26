@@ -1,5 +1,0 @@
-# Ruby Debug Settings (http://bashdb.sourceforge.net/ruby-debug.html)
-
-set autoeval
-set autolist
-set autoreload
