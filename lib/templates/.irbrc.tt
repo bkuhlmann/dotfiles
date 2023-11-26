@@ -69,8 +69,8 @@ module CK
   private_class_method :details, :color_for, :document, :version_with_optional_project
 end
 
-IRB.conf[:EVAL_HISTORY] = 1000
-IRB.conf[:HISTORY_FILE] = %(#{ENV["HOME"]}/.cache/ruby/irb/history.log)
+IRB.conf[:EVAL_HISTORY] = 1_000
+IRB.conf[:HISTORY_FILE] = "#{Dir.home}/.cache/irb/history.log"
 IRB.conf[:PROMPT] ||= {}
 
 IRB.conf[:PROMPT][:ALCHEMISTS] = {

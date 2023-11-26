@@ -29,6 +29,10 @@ bind Space:magic-space
 # Defaults
 export DOTFILES_PG_VERSION=15
 
+# XDG
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 # Editors
 export EDITOR=sublime
 export VISUAL=vim
