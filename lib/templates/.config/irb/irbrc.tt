@@ -21,14 +21,14 @@ module CK
   end
 
   def self.copy(*arguments)
-    open("| pbcopy", "w") { |clipboard| clipboard.write arguments.join("\n") }
+    IO.popen("pbcopy", "w") { |clipboard| clipboard.write arguments.join("\n") }
   end
 
   def self.constant(name) = Object.const_source_location name
 
   def self.locate(object, method) = object.method(method).source_location
 
-  def self.paste = open "| pbpaste", "r", &:read
+  def self.paste = IO.popen "pbpaste", "r", &:read
 
   def self.search(object, pattern) = object.methods.grep(/#{pattern}/)
 
