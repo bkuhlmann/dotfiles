@@ -77,8 +77,8 @@ bcg() {
     return 1
   fi
 
-  bundle config "local.$gem_name" "$gem_path"
-  printf "%s\n" "Added: $(tail -n 1 $HOME/.bundle/config)"
+  bundle config set --global "local.$gem_name" "$gem_path"
+  printf "%s\n" "Added: $(tail -n 1 $BUNDLE_USER_CONFIG)"
 }
 
 # Label: Bundler Jobs
