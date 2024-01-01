@@ -59,7 +59,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 51.0.0
+git checkout 52.0.0
 ----
 
 == Upgrade
@@ -137,7 +137,7 @@ bashs = 'exec $SHELL'
 ....
 ba = "bundle add"
 bb = "bundle binstubs"
-bce = '$EDITOR $HOME/.config/bundler/configuration.yml'
+bce = '$EDITOR $BUNDLE_USER_CONFIG'
 bch = "rm -f Gemfile.lock; bundle check"
 bd = "bundle doctor"
 be = "bundle exec"

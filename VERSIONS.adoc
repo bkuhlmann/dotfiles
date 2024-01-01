@@ -1,5 +1,15 @@
 = Versions
 
+== 52.0.0 (2024-01-01)
+
+* Fixed Bundler configuration path - Brooke Kuhlmann
+* Fixed Kernel deprecation warnings with open method - Brooke Kuhlmann
+* Updated Bash configuration to include Ruby performance warnings - Brooke Kuhlmann
+* Updated Circle CI step names - Brooke Kuhlmann
+* Updated gem dependencies - Brooke Kuhlmann
+* Updated to Ruby 3.3.0 - Brooke Kuhlmann
+* Removed Ruby Debugger documentation - Brooke Kuhlmann
+
 == 51.0.0 (2023-11-26)
 
 * Added IRB aliases - Brooke Kuhlmann
