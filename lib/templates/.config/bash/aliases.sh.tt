@@ -229,8 +229,8 @@ alias jlr="jless --mode line"
 
 # Section: https://alchemists.io/projects/milestoner:[Milestoner]
 alias ms="milestoner"
-alias mss='milestoner --status'
-alias msb='rm -rf tmp/milestone && milestoner build --format html && open tmp/milestone/index.html'
+alias mss='milestoner build --format stream'
+alias msb='rm -rf tmp/milestone && milestoner build --format web && open tmp/milestone/index.html'
 alias mse="milestoner config --edit"
 alias msp="milestoner --publish"
 
