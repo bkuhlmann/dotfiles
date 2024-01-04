@@ -229,10 +229,12 @@ alias jlr="jless --mode line"
 
 # Section: https://alchemists.io/projects/milestoner:[Milestoner]
 alias ms="milestoner"
-alias mss='milestoner build --format stream'
+alias msa='rm -rf tmp/milestone && milestoner build --format ascii_doc && ado tmp/milestone/index.adoc'
 alias msb='rm -rf tmp/milestone && milestoner build --format web && open tmp/milestone/index.html'
 alias mse="milestoner config --edit"
+alias msm='rm -rf tmp/milestone && milestoner build --format markdown && mo tmp/milestone/index.md'
 alias msp="milestoner --publish"
+alias mss='milestoner build --format stream'
 
 # Section: https://en.wikipedia.org/wiki/Network_Computer:[Network]
 alias dnsi="scutil --dns"
