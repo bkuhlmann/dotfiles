@@ -8,3 +8,6 @@ set -o pipefail
 IFS=$'\n\t'
 
 source "$HOME/.config/git/hooks/extensions/support.sh"
+source "$HOME/.config/git/hooks/extensions/git.sh"
+
+git_add_trailers "$1" "$2"

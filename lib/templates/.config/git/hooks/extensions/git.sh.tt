@@ -18,3 +18,38 @@ git_trailer_cleaner() {
   git interpret-trailers --in-place --trim-empty "$commit_message_path"
 }
 export -f git_trailer_cleaner
+
+# Label: Git Add Trailers
+# Description: Add trailers based on branch description.
+# Parameters: $1 (required|optional) - Commit message file path.
+git_add_trailers() {
+  local commit_message_path="$1"
+  local kind="$2"
+  local pattern="^[a-zA-Z0-9\-\_]+:.*$"
+  local branch=""
+  local trailers=""
+
+  branch="$(git branch --show-current | tr -d '\n')"
+  readarray -t lines <<< "$(git config --get "branch.$branch.description")"
+
+  for line in "${lines[@]}"; do
+    if [[ "$line" =~ $pattern ]]; then
+      trailers+="$line\n"
+    fi
+  done
+
+  case "$kind" in
+    message )
+      echo -e "\n\n$trailers" >> "$commit_message_path";;
+    template )
+      awk -v trailers="$trailers#" '{
+        if (!done && $0 ~ /^#/) {
+            $0 = trailers
+            done = 1
+        }
+        print
+      }' "$commit_message_path" > "$commit_message_path.tmp" \
+      && mv "$commit_message_path.tmp" "$commit_message_path";;
+  esac
+}
+export -f git_add_trailers
