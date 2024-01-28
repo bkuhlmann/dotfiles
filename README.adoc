@@ -59,7 +59,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 52.0.0
+git checkout 52.1.0
 ----
 
 == Upgrade
@@ -396,10 +396,12 @@ jlr = "jless --mode line"
 
 ....
 ms = "milestoner"
-mss = 'milestoner --status'
-msb = 'rm -rf tmp/milestone && milestoner build --format html && open tmp/milestone/index.html'
+msa = 'rm -rf tmp/milestone && milestoner build --format ascii_doc && ado tmp/milestone/index.adoc'
+msb = 'rm -rf tmp/milestone && milestoner build --format web && open tmp/milestone/index.html'
 mse = "milestoner config --edit"
+msm = 'rm -rf tmp/milestone && milestoner build --format markdown && mo tmp/milestone/index.md'
 msp = "milestoner --publish"
+mss = 'milestoner build --format stream'
 ....
 
 ==== https://en.wikipedia.org/wiki/Network_Computer:[Network]
@@ -843,6 +845,7 @@ ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
 dotenv_check = Dotenv Linter - Scan environment files for consistent style and security issues.
 git_lint_check = Git Lint Check - Enforce consistent Git commits.
 git_trailer_cleaner = Git Trailer Cleaner - Remove unused/empty Git commit body trailers.
+git_add_trailers = Git Add Trailers - Add trailers based on branch description.
 java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
 java_script_console = JavaScript Console - Detect JavaScript console statements.
 java_script_alert = JavaScript Alert - Detect JavaScript alert statements.
