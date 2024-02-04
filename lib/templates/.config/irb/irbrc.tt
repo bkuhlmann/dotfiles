@@ -1,7 +1,10 @@
 #! /usr/bin/env ruby
 # frozen_string_literal: true
 
+require "amazing_print"
 require "irb/completion"
+
+AmazingPrint.irb!
 
 Reline::Face.config :completion_dialog do |config|
   config.define :default, foreground: :white, background: :black
