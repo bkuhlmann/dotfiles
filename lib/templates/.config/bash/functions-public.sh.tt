@@ -1139,7 +1139,7 @@ gistory() {
 }
 
 # Label: Git Blame History
-# Description: View file commit history for a specific file and/or lines (with optional diff support).
+# Description: View commit history for file and/or lines (with optional diff support).
 # Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
 glameh() {
   if [[ -z "$1" ]]; then
@@ -1149,7 +1149,7 @@ glameh() {
 
   local file="$1"
   local lines="$2"
-  local commits=($(git blame -s -M -C -C -L "$lines" "$file" | awk '{print $1}' | sort -u))
+  local commits=("$(git blame -s -M -C -L "$lines" "$file" | awk '{print $1}' | sort -u)")
 
   _git_file_commits commits[@] "$file"
 }
