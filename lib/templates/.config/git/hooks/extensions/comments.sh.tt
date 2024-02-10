@@ -2,7 +2,7 @@
 
 # Label: Comment Total
 # Description: Print project comment total.
-# Parameters: $1 (required) - The comment prefix to search for.
+# Parameters: $1 (required): The comment prefix to search for.
 _comment_total() {
   local prefix="$1"
   local label="[comments]"

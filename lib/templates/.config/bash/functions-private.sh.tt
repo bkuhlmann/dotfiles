@@ -6,7 +6,7 @@
 
 # Label: Find Alias
 # Description: Find and print matching alias.
-# Parameters: $1 (required) - The alias to search for.
+# Parameters: $1 (required): The alias to search for.
 _find_alias() {
   while read -r line; do
     if [[ "$line" == "alias "*"$1"* ]]; then
@@ -18,7 +18,7 @@ _find_alias() {
 
 # Label: Find Command
 # Description: Find and print matching alias or function.
-# Parameters: $1 (required). The alias or function to search for.
+# Parameters: $1 (required): The alias or function to search for.
 _find_command() {
   if [[ "$1" ]]; then
     printf "%s\n" "\"$1\" Search Results:"
@@ -32,7 +32,7 @@ _find_command() {
 
 # Label: Find Function
 # Description: Find and print matching function.
-# Parameters: $1 (required) - The function to search for.
+# Parameters: $1 (required): The function to search for.
 _find_function() {
   while read -r line; do
     _set_function_label "$line"
@@ -49,7 +49,7 @@ _find_function() {
 
 # Label: Print Alias
 # Description: Print alias.
-# Parameters: $1 (required) - The string from which to parse the alias from.
+# Parameters: $1 (required): The string from which to parse the alias from.
 _print_alias() {
   echo "$1" | sed 's/alias //' | sed 's/="/ = "/' | sed "s/='/ = '/"
 }
@@ -83,7 +83,7 @@ _print_all() {
 
 # Label: Print Function Name
 # Description: Print function name.
-# Parameters: $1 (required) - The string from which to parse the function name from.
+# Parameters: $1 (required): The string from which to parse the function name from.
 _print_function_name() {
   local name=$(printf "$1" | sed 's/() {//')
   printf "%s\n" "$name = $2 - $3"
@@ -121,7 +121,7 @@ _print_git_hooks() {
 
 # Label: Print Section
 # Description: Print section.
-# Parameters: $1 (required) - The string from which to parse the section from.
+# Parameters: $1 (required): The string from which to parse the section from.
 _print_section() {
   if [[ "$1" == "# Section:"* ]]; then
     if [[ -n "${section+x}" ]]; then
@@ -136,7 +136,7 @@ _print_section() {
 
 # Label: Process Dotfiles Option
 # Description: Process option for learning about dotfile aliases/functions.
-# Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
+# Parameters: $1 (optional): The option selection, $2 (optional): The option input.
 _process_dots_option() {
   case $1 in
     'a')
@@ -165,7 +165,7 @@ _set_function_description() {
 
 # Label: Set Function Label
 # Description: Set function label.
-# Parameters: $1 (required) - The string from which to parse the function label from.
+# Parameters: $1 (required): The string from which to parse the function label from.
 _set_function_label() {
   if [[ "$1" == "# Label:"* ]]; then
     label=$(printf "$1" | sed 's/# Label://' | sed 's/^ *//g')
@@ -178,7 +178,7 @@ _set_function_label() {
 
 # Label: Clip and Print
 # Description: Copy input to clipboard and print what what was copied (best used with a pipe).
-# Parameters: $1 (optional) - Displays "(copied to cliboard)" on a new line. Default: false.
+# Parameters: $1 (optional): Displays "(copied to cliboard)" on a new line. Default: false.
 _copy_and_print() {
   local delimiter=${1:-' '}
   local message="$delimiter(copied to clipboard)\n"
@@ -188,7 +188,7 @@ _copy_and_print() {
 
 # Label: Print Black on White
 # Description: Print black text on a white background.
-# Parameters: $1 (required) - Content to print.
+# Parameters: $1 (required): Content to print.
 _print_black_on_white() {
   local content="$1"
   printf "\e[0;30m\e[48;5;255m$content\033[m"
@@ -196,7 +196,7 @@ _print_black_on_white() {
 
 # Label: Toggle Total Color
 # Description: Format and conditionally color the total.
-# Parameters: $1 (required) - The total, $2(required) - The label, $3 (required) - The color.
+# Parameters: $1 (required): The total, $2(required): The label, $3 (required): The color.
 _toggle_total_color() {
   local total="$1"
   local label="$2"
@@ -270,7 +270,7 @@ _git_branch_shas() {
 
 # Label: Git Commit Count Since Last Tag
 # Description: Answer commit count since last tag for project.
-# Parameters: $1 (optional) - The output prefix. Default: null., $2 (optional) - The output suffix. Default: null.
+# Parameters: $1 (optional): The output prefix. Default: null, $2 (optional): The output suffix. Default: null.
 _git_commit_count_since_last_tag() {
   local prefix="$1"
   local suffix="$2"
@@ -308,7 +308,7 @@ _git_commit_last() {
 
 # Label: Git Commit Options
 # Description: Print options for interacting with Git commits.
-# Parameters: $1 (required) - Commit array.
+# Parameters: $1 (required): Commit array.
 _git_commit_options() {
   local commits=("${1}")
   local commit_total=${#commits[@]}
@@ -354,7 +354,7 @@ _git_commits_since_last_tag() {
 
 # Label: Git File Commits
 # Description: Print file commit history (with optional diff support).
-# Parameters: $1 (required) - The file path.
+# Parameters: $1 (required): The file path.
 _git_file_commits() {
   local commits=("${!1}")
   local file="$2"
@@ -400,7 +400,7 @@ _git_log_line_format() {
 
 # Label: Git Show Details
 # Description: Show commit/file change details in a concise format.
-# Parameters: $1 (required) - The params to pass to git show.
+# Parameters: $1 (required): The params to pass to git show.
 _git_show_details() {
   git show --stat --pretty=format:"$(_git_log_details_format)" $@
 }
@@ -413,7 +413,7 @@ _git_stash_count() {
 
 # Label: Git Stash
 # Description: Enhance default git stash behavior by prompting for input (multiple) or using last stash (single).
-# Parameters: $1 (required) - The Git stash command to execute, $2 (required) - The prompt label (for multiple stashes).
+# Parameters: $1 (required): The Git stash command to execute, $2 (required): The prompt label (for multiple stashes).
 _process_git_stash() {
   local stash_command="$1"
   local stash_index=0
@@ -464,7 +464,7 @@ _gh_url() {
 
 # Label: GitHub Pull Request List
 # Description: List pull requests (local/remote) including subject, author, and relative time.
-# Parameters: $1 (optional) - The output format.
+# Parameters: $1 (optional): The output format.
 _gh_pr_list() {
   local format=${1:-"%(refname) %(color:yellow)%(refname)%(color:reset) %(subject) %(color:blue bold)%(authorname) %(color:green)(%(committerdate:relative))"}
 
@@ -477,7 +477,7 @@ _gh_pr_list() {
 
 # Label: Process GitHub Branch Option
 # Description: Process GitHub branch option for remote repository viewing.
-# Parameters: $1 (optional) - The option.
+# Parameters: $1 (optional): The option.
 _process_gh_branch_option() {
   case $1 in
     'c')
@@ -493,7 +493,7 @@ _process_gh_branch_option() {
 
 # Label: Process GitHub Commit Option
 # Description: Process GitHub commit option for remote repository viewing.
-# Parameters: $1 (optional) - The commit hash.
+# Parameters: $1 (optional): The commit hash.
 _process_gh_commit_option() {
   local commit="$1"
 
@@ -506,7 +506,7 @@ _process_gh_commit_option() {
 
 # Label: Process GitHub File Option
 # Description: Process GitHub file option for remote repository viewing.
-# Parameters: $1 (required) - The local (relative) file path, $2 (optional) - The line numbers.
+# Parameters: $1 (required): The local (relative) file path, $2 (optional): The line numbers.
 _process_gh_file_option() {
   local path="$1"
   local lines="$2"
@@ -523,7 +523,7 @@ _process_gh_file_option() {
 
 # Label: Process GitHub Option
 # Description: Processes GitHub option for remote repository viewing.
-# Parameters: $1 (optional) - The first option, $2 (optional) - The second option.
+# Parameters: $1 (optional): The first option, $2 (optional): The second option.
 _process_gh_option() {
   case $1 in
     'a')
@@ -560,7 +560,7 @@ _process_gh_option() {
 
 # Label: Process GitHub Pull Request Option
 # Description: Process GitHub pull request option for remote repository viewing.
-# Parameters: $1 (optional) - The option.
+# Parameters: $1 (optional): The option.
 _process_gh_pull_request_option() {
   local option="$1"
   local number_match="^[0-9]+$"
@@ -576,7 +576,7 @@ _process_gh_pull_request_option() {
 
 # Label: Process GitHub URL Option
 # Description: Processes GitHub URL option for remote repository viewing.
-# Parameters: $1 (optional) - The commit/option.
+# Parameters: $1 (optional): The commit/option.
 _process_gh_url_option() {
   local commit="$1"
   local commit_match="^([0-9a-f]{40}|[0-9a-f]{7})$"
@@ -606,7 +606,7 @@ _fzf_preview_and_select() {
 
 # Label: Process Ruby on Rails New Option
 # Description: Process option for constructing new Rails application skeletons with custom build settings.
-# Parameters: $1 (required) - Application name, $2 (required) - Option.
+# Parameters: $1 (required): Application name, $2 (required): Option.
 _process_rails_new_option() {
   local flags="--skip-git --skip-action-cable --skip-action-text --skip-active-storage --skip-jbuilder --skip-hotwire --skip-test --skip-keeps --asset-pipeline propshaft --database postgresql"
 
@@ -629,7 +629,7 @@ _process_rails_new_option() {
 
 # Label: Create Rails Skeleton
 # Description: Create new Rails application skeleton.
-# Parameters: $1 (required) - The application name, $2 (optional) - The build options to apply.
+# Parameters: $1 (required): The application name, $2 (optional): The build options to apply.
 _create_rails_skeleton() {
   printf "%s\n" "rails new $1 $2"
   rails new $1 $2

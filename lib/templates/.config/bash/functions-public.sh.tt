@@ -6,7 +6,7 @@
 
 # Label: ASCII Doctor Open
 # Description: Transforms ASCII Doc into HTML and opens in default browser.
-# Parameters: $1 (optional) - Path to ASCII Doc file. Default: README.adoc.
+# Parameters: $1 (optional): Path to ASCII Doc file. Default: README.adoc.
 ado() {
   local input=${1:-README.adoc}
   local output=$(mktemp -t asciidoc)
@@ -23,7 +23,7 @@ ado() {
 
 # Label: asciinema Record
 # Description: Create new asciinema recording.
-# Parameters: $1 (required) - The recording label.
+# Parameters: $1 (required): The recording label.
 cinr() {
   local label="$1"
   local name="${label,,}.cast"
@@ -62,7 +62,7 @@ bca() {
 
 # Label: Bundler Config Gem
 # Description: Configure Bundler to use local gem for development purposes.
-# Parameters: $1 (required) - Gem name, $2 (required) - Gem path.
+# Parameters: $1 (required): Gem name, $2 (required): Gem path.
 bcg() {
   local gem_name=$1
   local gem_path=$2
@@ -213,7 +213,7 @@ cqi() {
 
 # Label: Curl Diagnostics
 # Description: Curl with diagnostic information for request.
-# Parameters: $1 (required) - The URL.
+# Parameters: $1 (required): The URL.
 curld() {
   local url="$1"
 
@@ -235,7 +235,7 @@ curld() {
 
 # Label: Curl Inspect
 # Description: Inspect remote file with default editor.
-# Parameters: $1 (required) - The URL.
+# Parameters: $1 (required): The URL.
 curli() {
   if [[ "$1" ]]; then
     local file=$(mktemp -t suspicious_curl_file) || { printf "%s\n" "ERROR: Unable to create temporary file."; return; }
@@ -254,7 +254,7 @@ curli() {
 
 # Label: Dotfiles
 # Description: Learn about dotfile aliases, functions, etc.
-# Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
+# Parameters: $1 (optional): The option selection, $2 (optional): The option input.
 dots() {
   while true; do
     if [[ $# == 0 ]]; then
@@ -282,7 +282,7 @@ dots() {
 
 # Label: JavaScript Force
 # Description: Installs new Node version as default and removes previous version.
-# Parameters: $1 (required) - Version.
+# Parameters: $1 (required): Version.
 jsf() {
   local version="$1"
   local previous
@@ -300,7 +300,7 @@ jsf() {
 
 # Label: Colorized Type
 # Description: Identical to "type" system command but with Bat support.
-# Parameters: $1 (required) - The alias or function to inspect source code for.
+# Parameters: $1 (required): The alias or function to inspect source code for.
 cype() {
   local name="$1"
 
@@ -353,7 +353,7 @@ eup() {
 
 # Label: ISO
 # Description: Builds an ISO image from mounted volume.
-# Parameters: $1 (required) - Volume source path. $2 (required) - ISO output file path.
+# Parameters: $1 (required): Volume source path. $2 (required): ISO output file path.
 iso() {
   local source_path="$1"
   local output_path="$HOME/Downloads/$2.iso"
@@ -374,7 +374,7 @@ iso() {
 
 # Label: Kill Process
 # Description: Kill errant/undesired process.
-# Parameters: $1 (required) - The search query, $2 (optional) - The signal. Default: 15.
+# Parameters: $1 (required): The search query, $2 (optional): The signal. Default: 15.
 kilp() {
   local query="$1"
   local signal=${2:-15}
@@ -384,7 +384,7 @@ kilp() {
 
 # Label: Tab to Space
 # Description: Convert file from tab to space indentation.
-# Parameters: $1 (required) - File path, $2 (optional) - Number of spaces, default: 2.
+# Parameters: $1 (required): File path, $2 (optional): Number of spaces. Default: 2.
 t2s() {
   local number_of_spaces="${2:-2}"
 
@@ -444,7 +444,7 @@ galla() {
 
 # Label: Git Stash
 # Description: Creates stash of all changes.
-# Parameters: $1 (optional) - Label. Default: "All Work (YYYY-MM-DD HH:MM:SS AM|PM Z)."
+# Parameters: $1 (optional): Label. Default: "All Work (YYYY-MM-DD HH:MM:SS AM|PM Z)."
 gash() {
   local label=${1:-"All Work ($(date '+%Y-%m-%d %r %Z'))."}
   git stash push --include-untracked --message "$label"
@@ -488,7 +488,7 @@ gashp() {
 
 # Label: Git Stash Show
 # Description: Show stash or prompt for stash to show.
-# Parameters: $1 (optional) - Show git diff. Default: skipped.
+# Parameters: $1 (optional): Show git diff. Default: skipped.
 gashs() {
   local stash=($(git stash list))
   local diff_option="$1"
@@ -513,7 +513,7 @@ gashs() {
 
 # Label: Git Stash (stage)
 # Description: Creates stash of staged work.
-# Parameters: $1 (optional) - Label. Default: "Staged Work (YYYY-MM-DD HH:MM:SS AM|PM Z)."
+# Parameters: $1 (optional): Label. Default: "Staged Work (YYYY-MM-DD HH:MM:SS AM|PM Z)."
 gasht() {
   local label=${1:-"Staged Work ($(date '+%Y-%m-%d %r %Z'))."}
   git stash push --stage --message "$label"
@@ -521,7 +521,7 @@ gasht() {
 
 # Label: Git Branch Create
 # Description: Create and switch to branch.
-# Parameters: $1 (required) - New branch name.
+# Parameters: $1 (required): New branch name.
 gbc() {
   local name="$1"
 
@@ -535,7 +535,7 @@ gbc() {
 
 # Label: Git Branch Create (all)
 # Description: Create and switch to branch for projects in current directory.
-# Parameters: $1 (required) - The branch name.
+# Parameters: $1 (required): The branch name.
 gbca() {
   local branch="$1"
 
@@ -570,7 +570,7 @@ gbd() {
 
 # Label: Git Branch Delete (local)
 # Description: Delete local branch.
-# Parameters: $1 (required) - Branch name.
+# Parameters: $1 (required): Branch name.
 gbdl() {
   local branch="$1"
 
@@ -611,7 +611,7 @@ gbdm() {
 
 # Label: Git Branch Delete (remote)
 # Description: Delete remote branch.
-# Parameters: $1 (required) - Branch name.
+# Parameters: $1 (required): Branch name.
 gbdr() {
   local branch="$1"
 
@@ -632,7 +632,7 @@ gbdr() {
 
 # Label: Git Branch Facsimile
 # Description: Duplicate current branch with new name and switch to it.
-# Parameters: $1 (required) - New branch name.
+# Parameters: $1 (required): New branch name.
 gbf() {
   local new="$1"
   local old="$(_git_branch_name)"
@@ -686,7 +686,7 @@ gbla() {
 
 # Label: Git Branch List (owner)
 # Description: List branches owned by current author or supplied author.
-# Parameters: $1 (optional) - The author name.
+# Parameters: $1 (optional): The author name.
 gblo() {
   local owner="${1:-$(git config user.name)}"
   gbl | rg --color never "$owner"
@@ -714,7 +714,7 @@ gbna() {
 
 # Label: Git Branch Rename
 # Description: Rename current branch.
-# Parameters: $1 (required) - Branch name.
+# Parameters: $1 (required): Branch name.
 gbr() {
   local new_branch="$1"
   local old_branch="$(_git_branch_name)"
@@ -741,7 +741,7 @@ gbs() {
 
 # Label: Git Branch Switch (all)
 # Description: Switch to given branch for projects in current directory.
-# Parameters: $1 (required) - The branch name.
+# Parameters: $1 (required): The branch name.
 gbsa() {
   local branch="$1"
 
@@ -815,7 +815,7 @@ gcap() {
 
 # Label: Git Commit Breakpoint
 # Description: Create a breakpoint (empty) commit to denote related commits in a feature branch.
-# Parameters: $1 (optional) - A custom label. Default: "Breakpoint"
+# Parameters: $1 (optional): A custom label. Default: "Breakpoint"
 gcb() {
   local label="${1:-Breakpoint}"
   git commit --allow-empty --no-verify --message "----- $label -----"
@@ -823,7 +823,7 @@ gcb() {
 
 # Label: Git Commit Fixup
 # Description: Create fixup commit with optional amend or reword support.
-# Parameters: $1 (required) - SHA, $2 (optional) - (a)mend or (r)eword.
+# Parameters: $1 (required): SHA, $2 (optional): (a)mend or (r)eword.
 gcf() {
   local sha="$1"
   local kind="$2"
@@ -864,7 +864,7 @@ gcff() {
 
 # Label: Git Commit Fix (interactive)
 # Description: Select which commit to fix within current feature branch.
-# Parameters: $1 (optional) - (a)mend or (r)eword.
+# Parameters: $1 (optional): (a)mend or (r)eword.
 gcfi() {
   local kind="$1"
   local commits=($(_git_branch_shas))
@@ -885,7 +885,6 @@ gcfi() {
 
 # Label: Git Diff Files
 # Description: List all added/changed files on current branch.
-# Parameters: None.
 gdf() {
   local commits=($(_git_branch_shas))
 
@@ -905,7 +904,7 @@ gday() {
 
 # Label: Git Reset Hard
 # Description: Reset to HEAD, destroying all untracked, staged, and unstaged changes. UNRECOVERABLE!
-# Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
+# Parameters: $1 (optional): The number of commits to reset or a specific commit SHA.
 gesh() {
   local value="$1"
   local number_pattern="^[0-9]+$"
@@ -924,7 +923,7 @@ gesh() {
 
 # Label: Git Reset Hard (all)
 # Description: Destroy all untracked, staged, and unstaged changes for all projects in current directory. UNRECOVERABLE!
-# Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
+# Parameters: $1 (optional): The number of commits to reset or a specific commit SHA.
 gesha() {
   while read -r project; do
     (
@@ -940,7 +939,7 @@ gesha() {
 
 # Label: Git Reset Soft
 # Description: Resets previous commit (default), resets back to number of commits, or resets to specific commit.
-# Parameters: $1 (optional) - The number of commits to reset or a specific commit SHA.
+# Parameters: $1 (optional): The number of commits to reset or a specific commit SHA.
 gess() {
   local value="$1"
   local number_pattern="^[0-9]+$"
@@ -957,7 +956,7 @@ gess() {
 
 # Label: Git Get Config Value (all)
 # Description: Answer key value for projects in current directory.
-# Parameters: $1 (required) - The key name.
+# Parameters: $1 (required): The key name.
 ggeta() {
   if [[ "$1" ]]; then
     while read -r project; do
@@ -988,7 +987,7 @@ ggeta() {
 
 # Label: Git Show
 # Description: Show commit details with optional diff support.
-# Parameters: $1 (optional) - The commit to show. Default: <last commit>, $2 (optional) - Launch difftool. Default: false.
+# Parameters: $1 (optional): The commit to show. Default: <last commit>, $2 (optional): Launch difftool. Default: false.
 ghow() {
   local commit="$1"
   local difftool="$2"
@@ -1036,7 +1035,7 @@ gia() {
 
 # Label: Git File
 # Description: Show file details for a specific commit (with optional diff support).
-# Parameters: $1 (required) - The file, $2 (required) - The commit, $3 (optional) - Launch difftool. Default: false.
+# Parameters: $1 (required): The file, $2 (required): The commit, $3 (optional): Launch difftool. Default: false.
 gile() {
   local file="$1"
   local commit="$2"
@@ -1061,7 +1060,7 @@ gile() {
 
 # Label: Git Since
 # Description: Answer summarized list of activity since date/time for projects in current directory.
-# Parameters: $1 (required) - The date/time since value, $2 (optional) - The date/time until value, $3 (optional) - The commit author.
+# Parameters: $1 (required): The date/time since value, $2 (optional): The date/time until value, $3 (optional): The commit author.
 gince() {
   if [[ "$1" ]]; then
     while read -r project; do
@@ -1125,7 +1124,7 @@ ginfo() {
 
 # Label: Git File History
 # Description: View file commit history (with optional diff support).
-# Parameters: $1 (required) - The file path.
+# Parameters: $1 (required): The file path.
 gistory() {
   if [[ -z "$1" ]]; then
     printf "%s\n" "ERROR: File must be supplied."
@@ -1140,7 +1139,7 @@ gistory() {
 
 # Label: Git Blame History
 # Description: View commit history for file and/or lines (with optional diff support).
-# Parameters: $1 (required) - The file path, $2 (optional) - The file lines (<start>,<end>).
+# Parameters: $1 (required): The file path, $2 (optional): The file lines (<start>,<end>).
 glameh() {
   if [[ -z "$1" ]]; then
     printf "%s\n" "ERROR: File must be supplied."
@@ -1259,7 +1258,7 @@ gli() {
 
 # Label: Git Merge (all)
 # Description: Merges, deletes, and pushes feature branch.
-# Parameters: $1 (required) - Branch.
+# Parameters: $1 (required): Branch.
 gma() {
   local branch="$1"
 
@@ -1432,7 +1431,7 @@ gpua() {
 
 # Label: Git Remote Add
 # Description: Add and track a remote repository.
-# Parameters: $1 (required) - Repository URL, $2 (optional) - Name. Default: upstream
+# Parameters: $1 (required): Repository URL, $2 (optional): Name. Default: upstream
 gra() {
   local url="$1"
   local name="${2:-upstream}"
@@ -1447,7 +1446,7 @@ gra() {
 
 # Label: Git Rebase (interactive)
 # Description: Rebase commits, interactively.
-# Parameters: $1 (optional) - The number of commits or label (i.e. branch/tag) to rebase to.
+# Parameters: $1 (optional): The number of commits or label (i.e. branch/tag) to rebase to.
 grbi() {
   local number_pattern="^[0-9]+$"
   local label_pattern="^[0-9a-zA-Z\_-]+$"
@@ -1468,7 +1467,7 @@ grbi() {
 
 # Label: Git Rebase (quick)
 # Description: Rebase commits, quickly. Identical to `grbi` function but skips editor.
-# Parameters: $1 (optional) - The commit number or branch to rebase to. Default: upstream or root.
+# Parameters: $1 (optional): The commit number or branch to rebase to. Default: upstream or root.
 grbq() {
   GIT_EDITOR=true grbi "$1"
 }
@@ -1481,7 +1480,7 @@ groot() {
 
 # Label: Git Set Config Value (all)
 # Description: Set key value for projects in current directory.
-# Parameters: $1 (required) - The key name, $2 (required) - The key value.
+# Parameters: $1 (required): The key name, $2 (required): The key value.
 gseta() {
   if [[ "$1" && "$2" ]]; then
     while read -r project; do
@@ -1572,7 +1571,7 @@ gsup() {
 
 # Label: Git Tag Delete
 # Description: Delete local and remote tag (if found).
-# Parameters: $1 (required) - The tag name.
+# Parameters: $1 (required): The tag name.
 gtd() {
   if [[ -z "$1" ]]; then
     printf "%s\n" "ERROR: Tag name must be supplied."
@@ -1602,7 +1601,7 @@ gtd() {
 
 # Label: Git Tag Rebuild
 # Description: Rebuild a previous tag. WARNING: Use with caution, especially if previously published.
-# Parameters: $1 (required) - Version, $2 (required) - Release notes path, $3 (optional) - Creation date/time. Default: current date/time.
+# Parameters: $1 (required): Version, $2 (required): Release notes path, $3 (optional): Creation date/time. Default: current date/time.
 gtr() {
   local version="$1"
   local path="$2"
@@ -1667,7 +1666,7 @@ gucca() {
 
 # Label: Git Nuke
 # Description: Permanently destroy and erase a file from history. UNRECOVERABLE!
-# Parameters: $1 (optional) - The file to destroy.
+# Parameters: $1 (optional): The file to destroy.
 guke() {
   local file="$1"
 
@@ -1705,7 +1704,7 @@ garb() {
 
 # Label: Git Unset (all)
 # Description: Unset key value for projects in current directory.
-# Parameters: $1 (required) - The key name.
+# Parameters: $1 (required): The key name.
 gunseta() {
   if [[ "$1" ]]; then
     while read -r project; do
@@ -1778,7 +1777,7 @@ gup() {
 
 # Label: Git Author Contributions
 # Description: Answers total lines added/removed by author for repo (with emphasis on deletion).
-# Parameters: $1 (optional) - Author name. Default: Current user.
+# Parameters: $1 (optional): Author name. Default: Current user.
 guthorc() {
   local author="${1:-$(git config --get user.name)}"
 
@@ -1860,7 +1859,7 @@ gvaca() {
 
 # Label: Git Worktree Add
 # Description: Add and switch to new worktree.
-# Parameters: $1 (required) - Worktree/branch name, $2 (required) Option.
+# Parameters: $1 (required): Worktree/branch name, $2 (required): Option.
 gwa() {
   local name="$1"
   local option="$2"
@@ -1925,7 +1924,6 @@ gweek() {
 
 # Label: Git Sync
 # Description: Syncs up remote changes and deletes pruned/merged branches.
-# Parameters
 gync() {
   if [[ $(_git_branch_name) != "$(_git_branch_default)" ]]; then
     printf "%s\n" "ERROR: Whoa, switch to default branch first."
@@ -1941,7 +1939,7 @@ gync() {
 
 # Label: GitHub
 # Description: View GitHub details for current project.
-# Parameters: $1 (optional) - The option selection, $2 (optional) - The option input.
+# Parameters: $1 (optional): The option selection, $2 (optional): The option input.
 gh() {
   if [[ -d ".git" ]]; then
     while true; do
@@ -2006,7 +2004,7 @@ ghpra() {
 
 # Label: Less Interactive
 # Description: Inspect file, interactively.
-# Parameters: $1 (required) - The file path.
+# Parameters: $1 (required): The file path.
 lessi() {
   if [[ "$1" ]]; then
     less +F --LONG-PROMPT --LINE-NUMBERS --RAW-CONTROL-CHARS --QUIET --quit-if-one-screen -i "$1"
@@ -2022,7 +2020,7 @@ lessi() {
 
 # Label: License Finder (add)
 # Description: Adds library to global list.
-# Parameters: $1 (required) - Library, $2 (required) - Why.
+# Parameters: $1 (required): Library, $2 (required): Why.
 licensea() {
   local library="$1"
   local why="$2"
@@ -2042,7 +2040,7 @@ licensea() {
 
 # Label: License Finder (include)
 # Description: Include license in global list.
-# Parameters: $1 (required) - License, $2 (required) - Why.
+# Parameters: $1 (required): License, $2 (required): Why.
 licensei() {
   local license="$1"
   local why="$2"
@@ -2066,7 +2064,7 @@ licensei() {
 
 # Label: Port
 # Description: List file activity on given port.
-# Parameters: $1 (required) - The port number.
+# Parameters: $1 (required): The port number.
 port() {
   if [[ "$1" ]]; then
     lsof -i :$1 +c0
@@ -2081,7 +2079,7 @@ port() {
 
 # Label: Marked Open
 # Description: Opens Markdown file in Marked.
-# Parameters: $1 (optional) - Path to Markdown file. Default: README.md.
+# Parameters: $1 (optional): Path to Markdown file. Default: README.md.
 mo() {
   local path=${1:-README.md}
   open -a Marked\ 2 "$path"
@@ -2093,7 +2091,7 @@ mo() {
 
 # Label: Minisign Sign File
 # Description: Sign a file.
-# Parameters: $1 (required) - File path, $2 (optional) - Comment.
+# Parameters: $1 (required): File path, $2 (optional): Comment.
 sigf() {
   local path="$1"
   local comment="$2"
@@ -2103,7 +2101,7 @@ sigf() {
 
 # Label: Minisign Generate
 # Description: Generate private and public key pair.
-# Parameters: $1 (required) - Key pair name.
+# Parameters: $1 (required): Key pair name.
 sigg() {
   local name="$1"
 
@@ -2112,7 +2110,7 @@ sigg() {
 
 # Label: Minisign Verify File
 # Description: Verify signed file.
-# Parameters: $1 (required) - File path.
+# Parameters: $1 (required): File path.
 sigv() {
   local path="$1"
 
@@ -2138,7 +2136,7 @@ dnsf() {
 
 # Label: SSL Certificate Creation
 # Description: Create SSL certificate.
-# Parameters: $1 (required) - The domain name.
+# Parameters: $1 (required): The domain name.
 sslc() {
   local name="$1"
 
@@ -2182,7 +2180,7 @@ EOF
 
 # Label: Overmind Connect
 # Description: Connect to running process.
-# Parameters: $1 (optional) - Process. Default: "web".
+# Parameters: $1 (optional): Process. Default: "web".
 omc() {
   local process="${1:-web}"
   overmind connect "$process"
@@ -2190,7 +2188,7 @@ omc() {
 
 # Label: Overmind Restart
 # Description: Restart running process.
-# Parameters: $1 (optional) - Process. Default: "web".
+# Parameters: $1 (optional): Process. Default: "web".
 omr() {
   local process="${1:-web}"
   overmind restart "$process"
@@ -2198,7 +2196,7 @@ omr() {
 
 # Label: Overmind Start
 # Description: Start processes.
-# Parameters: $1 (optional) - Environment. Use: "p" for "production". Default: "".
+# Parameters: $1 (optional): Environment. Use: "p" for "production". Default: "".
 oms() {
   local environment="$1"
 
@@ -2215,7 +2213,7 @@ oms() {
 
 # Label: PostgreSQL Initialize
 # Description: Initialize PostgreSQL database.
-# Parameters: $1 (optional) - Version.
+# Parameters: $1 (optional): Version.
 pgi() {
   local version="${1:-$DOTFILES_PG_VERSION}"
   initdb "$HOMEBREW_PREFIX/var/postgresql@$version"
@@ -2223,7 +2221,7 @@ pgi() {
 
 # Label: PostgreSQL Template
 # Description: Edit PostgreSQL template.
-# Parameters: $1 (required) - The username.
+# Parameters: $1 (required): The username.
 pgt() {
   local user="$1"
 
@@ -2237,7 +2235,7 @@ pgt() {
 
 # Label: PostgreSQL Stop
 # Description: Stop existing PostgreSQL process.
-# Parameters: $1 (optional) - Version.
+# Parameters: $1 (optional): Version.
 pgsp() {
   local version="${1:-$DOTFILES_PG_VERSION}"
   pg_ctl --pgdata "$HOMEBREW_PREFIX/var/postgresql@$version" --silent --mode fast stop
@@ -2245,7 +2243,7 @@ pgsp() {
 
 # Label: PostgreSQL Start
 # Description: Start new PostgreSQL background process.
-# Parameters: $1 (optional) - Version.
+# Parameters: $1 (optional): Version.
 pgst() {
   local version="${1:-$DOTFILES_PG_VERSION}"
 
@@ -2256,7 +2254,7 @@ pgst() {
 
 # Label: PostgreSQL User Create
 # Description: Create PostgreSQL user.
-# Parameters: $1 (required) - The username.
+# Parameters: $1 (required): The username.
 pguc() {
   local user="$1"
 
@@ -2270,7 +2268,7 @@ pguc() {
 
 # Label: PostgreSQL User Drop
 # Description: Drop PostgreSQL user.
-# Parameters: $1 (required) - The username.
+# Parameters: $1 (required): The username.
 pgud() {
   local user="$1"
 
@@ -2344,7 +2342,7 @@ rsall() {
 
 # Label: RSpec Bisect
 # Description: Debug RSpec failure using bisect to automatically determine the root cause.
-# Parameters: $1 (optional) - The seed. Default: 2112, $2 (optional) - Debug verbosity. Default: "normal".
+# Parameters: $1 (optional):  The seed. Default: 2112, $2 (optional): Debug verbosity. Default: "normal".
 rsb() {
   local seed=${1:-2112}
   local verbosity="${2:-normal}"
@@ -2354,7 +2352,7 @@ rsb() {
 
 # Label: RSpec Debug
 # Description: Debug intermittent RSpec failure(s) by running spec(s) until failure is detected.
-# Parameters: $1 (optional) - The spec to debug. Default: "spec".
+# Parameters: $1 (optional): The spec to debug. Default: "spec".
 rsd() {
   local subject=${1:-spec}
 
@@ -2365,7 +2363,7 @@ rsd() {
 
 # Label: RSpec Profile
 # Description: Runs RSpec specs with profiling enabled.
-# Parameters: $1 (optional) - The number of top specs to profile. Default: 5.
+# Parameters: $1 (optional): The number of top specs to profile. Default: 5.
 rsp() {
   local number=${1:-5}
   rspec --profile $number spec
@@ -2396,7 +2394,7 @@ copa() {
 
 # Label: Ruby Install
 # Description: Install a specific version with safe defaults.
-# Parameters: $1 (required) - Version.
+# Parameters: $1 (required): Version.
 rbi() {
   local version="$1"
 
@@ -2414,7 +2412,7 @@ rbi() {
 
 # Label: Ruby Web Server
 # Description: Serve web content from current directory via WEBrick.
-# Parameters: $1 (optional) - The custom port. Default: 3030.
+# Parameters: $1 (optional): The custom port. Default: 3030.
 reb() {
   local default_port=3030
   local custom_port=$1
@@ -2424,7 +2422,7 @@ reb() {
 
 # Label: Ruby Which
 # Description: Locate path to current Ruby program.
-# Parameters: $1 (required) - Program name.
+# Parameters: $1 (required): Program name.
 rbw() {
   local program="$(command -v $1)"
 
@@ -2433,7 +2431,7 @@ rbw() {
 
 # Label: Ruby Upgrade (all)
 # Description: Upgrade Ruby projects in current directory to new Ruby version.
-# Parameters: $1 (required) - The new version to upgrade to. Example: 3.2.0.
+# Parameters: $1 (required): The new version to upgrade to. Example: 3.2.0.
 rbua() {
   local new_version="$1"
   local paths=(".ruby-version" "home_files/.ruby-version.tt")
@@ -2485,7 +2483,7 @@ rbva() {
 
 # Label: Gem Dependencies
 # Description: Answers dependencies for a gem.
-# Parameters: $1 (required) - The gem name.
+# Parameters: $1 (required): The gem name.
 gemd() {
   local name="$1"
 
@@ -2499,7 +2497,7 @@ gemd() {
 
 # Label: Gem Dependency Search
 # Description: Finds a gem defined within a Gemfile or a gemspec.
-# Parameters: $1 (required) - The gem name.
+# Parameters: $1 (required): The gem name.
 gemdep() {
   local gem_name="$1"
 
@@ -2517,7 +2515,7 @@ gemdep() {
 
 # Label: Ruby on Rails New
 # Description: Create new Rails application from selected option.
-# Parameters: $1 (required) - Application name, $2 (optional) - Option.
+# Parameters: $1 (required): Application name, $2 (optional): Option.
 railsn() {
   if [[ "$1" ]]; then
     while true; do

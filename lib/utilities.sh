@@ -26,8 +26,7 @@ install_files() {
 export -f install_files
 
 # Installs a file.
-# Parameters:
-# $1 = The file name.
+# Parameters: $1 (required): The file name.
 install_file() {
   local source_file="$1"
   local dest_file="$HOME/$(base_dest_file $source_file)"
@@ -59,8 +58,7 @@ link_files() {
 export -f link_files
 
 # Links a dotfile to this project.
-# Parameters:
-# $1 = The file name.
+# Parameters: $1 (required): The file name.
 link_file() {
   local source_file="$PWD/$1"
   local dest_file="$HOME/$(base_dest_file $1)"
@@ -95,8 +93,7 @@ check_files() {
 export -f check_files
 
 # Checks a file for changes.
-# Parameters:
-# $1 = The file name.
+# Parameters: $1 (required): The file name.
 check_file() {
   local source_file="$1"
   local dest_file="$HOME/$(base_dest_file $1)"
@@ -127,8 +124,7 @@ delete_files() {
 export -f delete_files
 
 # Delete file.
-# Parameters:
-# $1 = The file name.
+# Parameters: $1 (required): The file name.
 delete_file() {
   local dest_file="$HOME/$(base_dest_file $1)"
   local excludes=".+(environment.sh|git/configuration)$"
@@ -154,7 +150,7 @@ export -f home_files
 
 # Label: Base Destination Home File
 # Description: Compute destination file path for source path.
-# Parameters: $1 (required) - The source path.
+# Parameters: $1 (required): The source path.
 base_dest_file() {
   local source_file="$1"
   printf "${source_file%.*}" | sed 's/lib\/templates\///g'
