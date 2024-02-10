@@ -11,7 +11,7 @@ export -f git_lint_check
 
 # Label: Git Trailer Cleaner
 # Description: Remove unused/empty Git commit body trailers.
-# Parameters: $1 (required) - Commit message file path.
+# Parameters: $1 (required): Commit message file path.
 git_trailer_cleaner() {
   local commit_message_path="$1"
 
@@ -20,36 +20,30 @@ git_trailer_cleaner() {
 export -f git_trailer_cleaner
 
 # Label: Git Add Trailers
-# Description: Add trailers based on branch description.
-# Parameters: $1 (required|optional) - Commit message file path.
+# Description: Dynamically add trailers based on branch description.
+# Parameters: $1 (required): Commit message file path, $2 (required): The kind.
 git_add_trailers() {
   local commit_message_path="$1"
   local kind="$2"
-  local pattern="^[a-zA-Z0-9\-\_]+:.*$"
   local branch=""
   local trailers=""
 
   branch="$(git branch --show-current | tr -d '\n')"
-  readarray -t lines <<< "$(git config --get "branch.$branch.description")"
-
-  for line in "${lines[@]}"; do
-    if [[ "$line" =~ $pattern ]]; then
-      trailers+="$line\n"
-    fi
-  done
+  trailers="$(git config --get "branch.$branch.description" | git interpret-trailers --parse || :)"
+  trailers="${trailers//$'\n'/\\n}"
 
   case "$kind" in
-    message )
-      echo -e "\n\n$trailers" >> "$commit_message_path";;
-    template )
-      awk -v trailers="$trailers#" '{
-        if (!done && $0 ~ /^#/) {
-            $0 = trailers
-            done = 1
-        }
-        print
-      }' "$commit_message_path" > "$commit_message_path.tmp" \
-      && mv "$commit_message_path.tmp" "$commit_message_path";;
+    message)
+      printf "\n\n%s" "$trailers" >> "$commit_message_path";;
+    template)
+      if [[ -n "$trailers" ]]; then
+        awk -v trailers="$trailers\n" '
+          BEGIN { inserted = 0 }
+          /^#/ && !inserted { print trailers; inserted = 1 }
+          { print }
+        ' "$commit_message_path" > "$commit_message_path.tmp" \
+        && mv "$commit_message_path.tmp" "$commit_message_path"
+      fi;;
   esac
 }
 export -f git_add_trailers
