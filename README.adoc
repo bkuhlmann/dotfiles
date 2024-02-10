@@ -59,7 +59,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 52.1.0
+git checkout 52.2.0
 ----
 
 == Upgrade
@@ -312,7 +312,7 @@ gget = "git config --get"
 ggp = "git config --global --get-regexp includeif | awk '{print \$NF}' | fzf | xargs \$EDITOR"
 gi = 'git init && git config --global --add maintenance.repo $PWD'
 gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
-glame = "git blame -M -C -C -C"
+glame = "git blame -M -C"
 glean = "git clean -d --force"
 glf = 'git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
 glg = 'git log --pretty=format:"$(_git_log_line_format)" --grep'
@@ -669,7 +669,7 @@ gile = Git File - Show file details for a specific commit (with optional diff su
 gince = Git Since - Answer summarized list of activity since date/time for projects in current directory.
 ginfo = Git Info - Print repository overview information.
 gistory = Git File History - View file commit history (with optional diff support).
-glameh = Git Blame History - View file commit history for a specific file and/or lines (with optional diff support).
+glameh = Git Blame History - View commit history for file and/or lines (with optional diff support).
 gld = Git Log Details - List default or feature branch commit details.
 gleana = Git Clean (all) - Clean uncommitted files from all projects in current directory.
 glear = Git Clear - Clear repository for packaging/shipping purposes.
@@ -845,7 +845,7 @@ ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
 dotenv_check = Dotenv Linter - Scan environment files for consistent style and security issues.
 git_lint_check = Git Lint Check - Enforce consistent Git commits.
 git_trailer_cleaner = Git Trailer Cleaner - Remove unused/empty Git commit body trailers.
-git_add_trailers = Git Add Trailers - Add trailers based on branch description.
+git_add_trailers = Git Add Trailers - Dynamically add trailers based on branch description.
 java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
 java_script_console = JavaScript Console - Detect JavaScript console statements.
 java_script_alert = JavaScript Alert - Detect JavaScript alert statements.
