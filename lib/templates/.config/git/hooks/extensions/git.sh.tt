@@ -30,14 +30,13 @@ git_add_trailers() {
 
   branch="$(git branch --show-current | tr -d '\n')"
   trailers="$(git config --get "branch.$branch.description" | git interpret-trailers --parse || :)"
-  trailers="${trailers//$'\n'/\\n}"
 
   case "$kind" in
     message)
       printf "\n\n%s" "$trailers" >> "$commit_message_path";;
     template)
       if [[ -n "$trailers" ]]; then
-        awk -v trailers="$trailers\n" '
+        awk -v trailers="${trailers//$'\n'/\\n}\n" '
           BEGIN { inserted = 0 }
           /^#/ && !inserted { print trailers; inserted = 1 }
           { print }
