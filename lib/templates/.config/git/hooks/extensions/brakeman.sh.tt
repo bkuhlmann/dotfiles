@@ -3,21 +3,9 @@
 # Label: Brakeman Check
 # Description: Scan Rails project for security vulnerabilities.
 brakeman_check() {
-  local issues="false"
-
   if _check_gem_dependencies "brakeman"; then
     printf "%s\n" "[brakeman]"
-    mapfile -t lines < <(bundle exec brakeman --summary 2>/dev/null)
-
-    for line in "${lines[@]}"; do
-      if [[ "$line" == "Warning Types" ]]; then
-        issues="true"
-      fi
-
-      if [[ "$issues" == "true" ]]; then
-        printf "%s\n" "$line"
-      fi
-    done
+    bundle exec brakeman --summary --quiet
   fi
 }
 export -f brakeman_check
