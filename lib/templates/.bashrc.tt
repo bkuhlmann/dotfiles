@@ -75,9 +75,7 @@ source "$HOME/.config/bash/functions-public.sh"
 source "$HOME/.config/bash/prompt.sh"
 
 # Bash Completion
-if [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]]; then
-  source "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
-fi
+source "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" || :
 
 # OpenSSL
 export PATH="$HOMEBREW_PREFIX/opt/openssl/bin:$PATH"
@@ -133,11 +131,7 @@ export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform/plugins"
 
 # Git
 export GIT_CONFIG_GLOBAL="$HOME/.config/git/configuration"
-
-if [[ -r "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash" ]]; then
-  source "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash"
-fi
-
+source "$HOMEBREW_PREFIX/opt/git/etc/bash_completion.d/git-completion.bash" || :
 export PATH=".git/safe/../../bin:$PATH"
 
 # Zoxide
