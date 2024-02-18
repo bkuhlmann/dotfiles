@@ -1,5 +1,12 @@
 = Versions
 
+== 52.3.0 (2024-02-18)
+
+* ✅ Fixed Brakeman Git hook extension to be quiet and exit on error - Brooke Kuhlmann
+* ✅ Fixed Git hook escaping of trailer new lines - Brooke Kuhlmann
+* 🟢 Added OrbStack initialization - Brooke Kuhlmann
+* 🔁 Refactored Bash configuration conditionals - Brooke Kuhlmann
+
 == 52.2.0 (2024-02-10)
 
 * ✅ Fixed Git blame alias and function - Brooke Kuhlmann

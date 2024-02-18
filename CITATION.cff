@@ -2,9 +2,9 @@ cff-version: 1.2.0
 message: Please use the following metadata when citing this project in your work.
 title: Dotfiles
 abstract: Shell scripts for applying default settings to UNIX-based operating systems.
-version: 52.2.0
+version: 52.3.0
 license: Hippocratic-2.1
-date-released: 2024-02-10
+date-released: 2024-02-18
 authors:
   - family-names: Kuhlmann
     given-names: Brooke

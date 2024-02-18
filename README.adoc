@@ -59,7 +59,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 52.2.0
+git checkout 52.3.0
 ----
 
 == Upgrade
