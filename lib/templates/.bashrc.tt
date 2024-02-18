@@ -122,6 +122,9 @@ export MAKE="make --jobs=$(sysctl -n hw.ncpu)"
 # Node
 export PATH="$PATH:$HOMEBREW_PREFIX/share/npm/bin"
 
+# OrbStack
+source "$HOME/.orbstack/shell/init.bash" 2>/dev/null || :
+
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
