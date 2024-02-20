@@ -123,6 +123,9 @@ export PATH="$PATH:$HOMEBREW_PREFIX/share/npm/bin"
 # OrbStack
 source "$HOME/.orbstack/shell/init.bash" 2>/dev/null || :
 
+# pgenv
+export PATH="$HOME/.pgenv/bin:$HOME/.pgenv/pgsql/bin:$PATH"
+
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
