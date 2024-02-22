@@ -33,6 +33,9 @@
 -- Enables error fixing when entering statements via the prompt without starting over.
 \set ON_ERROR_ROLLBACK interactive
 
+-- Reduces typing so you can use `:vet` instead of `EXPLAIN ANALYZE` to check query performance.
+\set vet 'EXPLAIN ANALYZE'
+
 -- By default, NULL is an empty space. This makes NULL values visible.
 \pset null '[NULL]'
 
