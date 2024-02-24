@@ -26,9 +26,6 @@ shopt -s histappend
 # Enables history expansion with space (i.e. `!!<space>`).
 bind Space:magic-space
 
-# Defaults
-export DOTFILES_PG_VERSION=15
-
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
