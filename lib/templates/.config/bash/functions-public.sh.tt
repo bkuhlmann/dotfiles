@@ -1058,6 +1058,26 @@ gile() {
   fi
 }
 
+# Label: Git Import
+# Description: Import remote repository commits into current local branch.
+# Parameters: $1 (required): URL, $2 (optional): Branch, $3 (optional): Name.
+gim() {
+  local url="$1"
+  local branch="${2:-main}"
+  local name="${3:-import}"
+  local remote="$name/$branch"
+
+  if [[ -z "$url" ]]; then
+    printf "%s\n" "Remote repository URL must be supplied."
+    return 1
+  fi
+
+  git remote add "$name" "$url"
+  git fetch "$name"
+  git cherry-pick "$(git rev-list --max-parents=0 "$remote")".."$(git rev-list -1 "$remote")"
+  git remote remove "$name"
+}
+
 # Label: Git Since
 # Description: Answer summarized list of activity since date/time for projects in current directory.
 # Parameters: $1 (required): The date/time since value, $2 (optional): The date/time until value, $3 (optional): The commit author.
