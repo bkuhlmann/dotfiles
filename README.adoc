@@ -59,7 +59,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 52.3.0
+git checkout 52.4.0
 ----
 
 == Upgrade
@@ -666,6 +666,7 @@ ghow = Git Show - Show commit details with optional diff support.
 ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
 gia = Git Init (all) - Initialize/re-initialize repositories in current directory.
 gile = Git File - Show file details for a specific commit (with optional diff support).
+gim = Git Import - Import remote repository commits into current local branch.
 gince = Git Since - Answer summarized list of activity since date/time for projects in current directory.
 ginfo = Git Info - Print repository overview information.
 gistory = Git File History - View file commit history (with optional diff support).

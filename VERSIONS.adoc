@@ -1,5 +1,12 @@
 = Versions
 
+== 52.4.0 (2024-02-25)
+
+* 🟢 Added Bash configuration for pgenv - Brooke Kuhlmann
+* 🟢 Added Git configuration for verbose commits - Brooke Kuhlmann
+* 🟢 Added Git import function - Brooke Kuhlmann
+* 🟢 Added PostgreSQL vet configuration - Brooke Kuhlmann
+
 == 52.3.0 (2024-02-18)
 
 * ✅ Fixed Brakeman Git hook extension to be quiet and exit on error - Brooke Kuhlmann
