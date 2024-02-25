@@ -5,6 +5,7 @@
 [commit]
   gpgSign = true
   template = ~/.config/git/commit_message.txt
+  verbose = true
 [core]
   abbrev = 12
   editor = "$EDITOR --wait"
