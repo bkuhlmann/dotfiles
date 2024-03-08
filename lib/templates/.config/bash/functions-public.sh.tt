@@ -2373,7 +2373,7 @@ copa() {
     (
       cd "$project"
 
-      if [[ -f ".rubocop.yml" ]]; then
+      if [[ -f ".config/rubocop/config.yml" ]]; then
         printf "\n\033[36m${project^^}\033[m\n\n" # Outputs in cyan color.
         bundle exec rubocop --parallel --format progress
       fi
