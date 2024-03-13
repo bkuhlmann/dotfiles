@@ -55,13 +55,13 @@
   indentHeuristic = true
   mnemonicPrefix = true
   renames = copies
-  tool = Kaleidoscope
+  tool = difftastic
 [diff "exif"]
   textconv = exiftool
 [difftool]
   prompt = false
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
 [feature]
   experimental = true
 [fetch]
@@ -84,16 +84,18 @@
 [merge]
   conflictStyle = zdiff3
   ff = only
-  tool = Kaleidoscope
+  tool = difftastic
 [mergetool]
   prompt = false
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+[mergetool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
   trustExitCode = true
 [notes]
   rewriteRef = refs/notes/commits
 [pack]
   useBitmapBoundaryTraversal = true
+[pager]
+  difftool = true
 [pull]
   rebase = merges
 [push]
