@@ -35,14 +35,7 @@ git_add_trailers() {
     message)
       printf "\n\n%s" "$trailers" >> "$commit_message_path";;
     template)
-      if [[ -n "$trailers" ]]; then
-        awk -v trailers="${trailers//$'\n'/\\n}\n" '
-          BEGIN { inserted = 0 }
-          /^#/ && !inserted { print trailers; inserted = 1 }
-          { print }
-        ' "$commit_message_path" > "$commit_message_path.tmp" \
-        && mv "$commit_message_path.tmp" "$commit_message_path"
-      fi;;
+      sd --max-replacements 1 "\n#" "\n$trailers\n\n#" "$commit_message_path";;
   esac
 }
 export -f git_add_trailers
