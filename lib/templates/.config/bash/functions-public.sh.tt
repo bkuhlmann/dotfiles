@@ -2499,7 +2499,7 @@ gemdep() {
     return 1
   fi
 
-  ag "(add.*dependency \"$gem_name\"|add.*dependency '$gem_name'|gem \"$gem_name\"|gem '$gem_name')" .
+  rg --sort path "(add.*dependency \"$gem_name\"|add.*dependency '$gem_name'|gem \"$gem_name\"|gem '$gem_name')" .
 }
 
 #--------------------------------------------------#
