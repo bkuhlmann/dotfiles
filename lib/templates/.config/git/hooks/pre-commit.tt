@@ -18,6 +18,5 @@ java_script_console
 java_script_debugger
 reek_stage_check
 rspec_dotfile
-rspec_focus
 rspec_order
 rubocop_stage_check

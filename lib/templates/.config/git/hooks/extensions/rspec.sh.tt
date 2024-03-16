@@ -17,13 +17,6 @@ rspec_dotfile() {
 }
 export -f rspec_dotfile
 
-# Label: RSpec Focus
-# Description: Detect RSpec focus.
-rspec_focus() {
-  _scan_code "[rspec]" "Focus detected" 'spec.rb$' '(fdescribe\s|fcontext\s|\sfit\s|fexample\s|fspecify\s|,\s:focus|,\sfocus:)'
-}
-export -f rspec_focus
-
 # Label: RSpec Order
 # Description: Detect RSpec ordered specs.
 rspec_order() {
