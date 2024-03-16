@@ -11,7 +11,7 @@ rspec_dotfile() {
       exit 1
     fi
   else
-    _print_error "$label: Ripgrep not found. To install, run: brew install ripgrep."
+    _print_error "[rspec]: Ripgrep not found. To install, run: brew install ripgrep."
      exit 1
   fi
 }
