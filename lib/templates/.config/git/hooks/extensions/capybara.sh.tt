@@ -1,8 +1,0 @@
-#! /usr/bin/env bash
-
-# Label: Capybara Save And Open Page
-# Description: Detect save_and_open_page statements.
-capybara_save_and_open_page() {
-  _scan_code "[capybara]" "Save and open page statements detected" 'spec.rb$' 'save_and_open_page'
-}
-export -f capybara_save_and_open_page
