@@ -59,7 +59,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 52.5.0
+git checkout 53.0.0
 ----
 
 == Upgrade
@@ -436,6 +436,14 @@ ntw = "npm run test:watch"
 pfo = 'open -a "Path Finder.app" "$PWD"'
 ....
 
+==== https://www.postgresql.org:[PostgreSQL]
+
+....
+pgi = 'initdb "$HOME/.pgenv/pgsql/data"'
+pgsp = "pgenv stop"
+pgst = "pgenv start"
+....
+
 ==== https://redis.io:[Redis]
 
 ....
@@ -776,10 +784,7 @@ oms = Overmind Start - Start processes.
 ==== https://www.postgresql.org:[PostgreSQL]
 
 ....
-pgi = PostgreSQL Initialize - Initialize PostgreSQL database.
 pgt = PostgreSQL Template - Edit PostgreSQL template.
-pgsp = PostgreSQL Stop - Stop existing PostgreSQL process.
-pgst = PostgreSQL Start - Start new PostgreSQL background process.
 pguc = PostgreSQL User Create - Create PostgreSQL user.
 pgud = PostgreSQL User Drop - Drop PostgreSQL user.
 ....
@@ -840,7 +845,6 @@ cova = RSpec (all) - Run RSpec for projects in current directory.
 brakeman_check = Brakeman Check - Scan Rails project for security vulnerabilities.
 bundler_gemfile_path = Bundler Gemfile Path - Detect gem path statements.
 bundler_audit_check = Bundler Audit Check - Scans gem dependencies for security vulnerabilities.
-capybara_save_and_open_page = Capybara Save And Open Page - Detect save_and_open_page statements.
 comment_totals = Comment Totals - Print project comment totals.
 ctags_rebuild = CTags Rebuild - Rebuild project .tags file.
 dotenv_check = Dotenv Linter - Scan environment files for consistent style and security issues.
@@ -855,7 +859,6 @@ osv_check = Open Source Vulnerability (OSV) Check - Scan Ruby dependencies for v
 reek_branch_check = Reek Branch Check - Scan Ruby code -- feature branch only -- for poor style choices.
 reek_stage_check = Reek Stage Check - Scan Ruby code -- staged files only -- for poor style choices.
 rspec_dotfile = RSpec Dotfile - Detect RSpec dotfile.
-rspec_focus = RSpec Focus - Detect RSpec focus.
 rspec_order = RSpec Order - Detect RSpec ordered specs.
 rubocop_branch_check = RuboCop Branch Check - Scan Ruby code -- feature branch only -- for poor style choices.
 rubocop_stage_check = RuboCop Stage Check - Scan Ruby code -- staged files only -- for poor style choices.

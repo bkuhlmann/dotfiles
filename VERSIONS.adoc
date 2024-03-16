@@ -1,5 +1,16 @@
 = Versions
 
+== 53.0.0 (2024-03-16)
+
+* ✅ Fixed Git Hook for RSpec dotfile error - Brooke Kuhlmann
+* 🔼 Updated Git configuration to use Difftastic - Brooke Kuhlmann
+* 🔼 Updated PostgreSQL aliases and functions to use pgenv - Brooke Kuhlmann
+* 🔼 Updated RuboCop run all function to account for XDG path - Brooke Kuhlmann
+* 🔼 Updated gem dependencies function to use ripgrep - Brooke Kuhlmann
+* ⛔️ Removed Git Hook extension for Capybara - Brooke Kuhlmann
+* ⛔️ Removed Git hooks for RSpec focus - Brooke Kuhlmann
+* 🔁 Refactored Git hook extension for adding trailers to use sd - Brooke Kuhlmann
+
 == 52.5.0 (2024-03-03)
 
 * 🔼 Updated RuboCop to use XDG local configuration - Brooke Kuhlmann
