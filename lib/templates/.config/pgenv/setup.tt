@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+set -o nounset
+set -o errexit
+set -o pipefail
+IFS=$'\n\t'
+
+psql --username postgres \
+     --command "CREATE ROLE $USER WITH SUPERUSER CREATEDB CREATEROLE LOGIN PASSWORD '';"
+psql --username postgres --command "CREATE DATABASE $USER;"
