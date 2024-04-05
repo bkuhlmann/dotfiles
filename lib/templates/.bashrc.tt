@@ -122,6 +122,7 @@ source "$HOME/.orbstack/shell/init.bash" 2>/dev/null || :
 
 # pgenv
 export PATH="$HOME/.pgenv/bin:$HOME/.pgenv/pgsql/bin:$PATH"
+export PKG_CONFIG_PATH="${HOMEBREW_PREFIX}/opt/icu4c/lib/pkgconfig"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
