@@ -294,6 +294,37 @@ jsf() {
   fnm uninstall "$previous"
 }
 
+# Label: JavaScript Upgrade (all)
+# Description: Upgrade JavaScript projects in current directory to new JavaScript version.
+# Parameters: $1 (required): The new version to upgrade to. Example: 1.2.3.
+jsua() {
+  local new_version="$1"
+  local paths=(".node-version" "home_files/.node-version.tt")
+
+  if [[ "$new_version" ]]; then
+    while read -r project; do
+      (
+        cd "$project"
+        printf "\033[36m${project}\033[m\n" # Outputs in cyan color.
+
+        for path in "${paths[@]}"; do
+          if [[ -e "$path" ]]; then
+            old_version="$(head -n 1 "$path")"
+
+            if [[ "$old_version" != "$new_version" ]]; then
+              printf "%s\n" "$new_version" > "$path"
+              printf "%s\n" " $path: $old_version --> $new_version"
+            fi
+          fi
+        done
+      )
+    done < <(ls -A1)
+  else
+    printf "%s\n" "ERROR: Version must be supplied."
+    return 1
+  fi
+}
+
 #------------------#
 # Section: General #
 #------------------#
