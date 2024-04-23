@@ -1,5 +1,13 @@
 = Versions
 
+== 53.1.0 (2024-04-23)
+
+* 🟢 Added JavaScript update all function - Brooke Kuhlmann
+* 🟢 Added pgenv package config path for icu4c - Brooke Kuhlmann
+* 🔼 Updated to Git Lint 7.3.0 - Brooke Kuhlmann
+* 🔼 Updated to Rake 13.2.0 - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.1 - Brooke Kuhlmann
+
 == 53.0.0 (2024-03-16)
 
 * ✅ Fixed Git Hook for RSpec dotfile error - Brooke Kuhlmann

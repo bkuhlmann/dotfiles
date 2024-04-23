@@ -59,7 +59,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 53.0.0
+git checkout 53.1.0
 ----
 
 == Upgrade
@@ -619,6 +619,7 @@ dots = Dotfiles - Learn about dotfile aliases, functions, etc.
 
 ....
 jsf = JavaScript Force - Installs new Node version as default and removes previous version.
+jsua = JavaScript Upgrade (all) - Upgrade JavaScript projects in current directory to new JavaScript version.
 ....
 
 ==== General
