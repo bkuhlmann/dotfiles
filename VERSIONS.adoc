@@ -1,5 +1,12 @@
 = Versions
 
+== 53.2.0 (2024-05-02)
+
+* 🟢 Added Git configuration for source and destination diff prefixes - Brooke Kuhlmann
+* 🟢 Added Homebrew reinstall alias - Brooke Kuhlmann
+* 🟢 Added Milestoner build alias for syndicated feeds - Brooke Kuhlmann
+* 🟢 Added pgenv setup script - Brooke Kuhlmann
+
 == 53.1.0 (2024-04-23)
 
 * 🟢 Added JavaScript update all function - Brooke Kuhlmann

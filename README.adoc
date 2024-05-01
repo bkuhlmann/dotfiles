@@ -42,11 +42,6 @@ toc::[]
 * Configures link:https://www.terraform.io[Terraform].
 * Configures link:https://github.com/ajeetdsouza/zoxide[Zoxide].
 
-== Screencasts
-
-[link=https://alchemists.io/screencasts/dotfiles]
-image::https://alchemists.io/images/screencasts/dotfiles/cover.svg[Screencast,600,240,role=focal_point]
-
 == Requirements
 
 . link:https://alchemists.io/projects/mac_os-config[macOS Configuration]
@@ -59,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 53.1.0
+git checkout 53.2.0
 ----
 
 == Upgrade
@@ -374,6 +369,7 @@ hblc = "brew list --casks --versions | fzf"
 hblf = "brew list --formulae --versions | fzf"
 hbp = "brew pin"
 hbpu = "brew unpin"
+hbr = "brew reinstall"
 hbs = "brew search"
 hbsu = "brew update && brew upgrade && brew cleanup"
 hbu = "brew uninstall"
@@ -399,6 +395,7 @@ ms = "milestoner"
 msa = 'rm -rf tmp/milestone && milestoner build --format ascii_doc && ado tmp/milestone/index.adoc'
 msb = 'rm -rf tmp/milestone && milestoner build --format web && open tmp/milestone/index.html'
 mse = "milestoner config --edit"
+msf = 'rm -rf tmp/milestone && milestoner build --format feed && open -a "Firefox" tmp/milestone/index.xml'
 msm = 'rm -rf tmp/milestone && milestoner build --format markdown && mo tmp/milestone/index.md'
 msp = "milestoner --publish"
 mss = 'milestoner build --format stream'
