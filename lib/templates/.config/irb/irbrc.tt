@@ -3,6 +3,7 @@
 
 require "amazing_print"
 require "irb/completion"
+require "irb/kit"
 
 AmazingPrint.irb!
 
@@ -12,65 +13,12 @@ Reline::Face.config :completion_dialog do |config|
   config.define :scrollbar, foreground: :bright_white, background: :black
 end
 
-# ConsoleKit (CK) - Provides IRB console utility methods.
-module CK
-  def self.prompt
-    if defined? Hanami
-      details Hanami::VERSION, Hanami.app.name.delete_suffix("::App"), Hanami.env
-    elsif defined? Rails
-      details Rails.version, Rails.application.class.module_parent_name, Rails.env
-    else version_with_optional_project
-    end
-  end
-
-  def self.copy(*arguments)
-    IO.popen("pbcopy", "w") { |clipboard| clipboard.write arguments.join("\n") }
-  end
-
-  def self.constant(name) = Object.const_source_location name
-
-  def self.locate(object, method) = object.method(method).source_location
-
-  def self.paste = IO.popen "pbpaste", "r", &:read
-
-  def self.search(object, pattern) = object.methods.grep(/#{pattern}/)
-
-  def self.usage
-    singleton_methods.map { |key| method key }
-                     .each { |meth| puts %(CK.#{meth.name} #{document(meth.parameters).join ", "}) }
-    nil
-  end
-
-  def self.details framework_version, application_name, environment
-    [RUBY_VERSION, framework_version, application_name.downcase, color_for(environment)].join "|"
-  end
-
-  def self.color_for environment
-    environment.to_sym == :production ? "\e[31m#{environment}\e[0m" : "\e[32m#{environment}\e[0m"
-  end
-
-  def self.document parameters
-    parameters.map do |kind, name|
-      case kind
-        when :req then name
-        when :rest then "*#{name}"
-        else "#{name} (#{kind})"
-      end
-    end
-  end
-
-  def self.version_with_optional_project
-    File.basename(`git rev-parse --show-toplevel 2> /dev/null`.strip)
-        .downcase
-        .then { |project| [RUBY_VERSION, project].reject(&:empty?).join "|" }
-  end
-
-  private_class_method :details, :color_for, :document, :version_with_optional_project
-end
+IRB::Kit.register_helpers :all
 
 IRB.conf[:EVAL_HISTORY] = 1_000
 IRB.conf[:HISTORY_FILE] = "#{Dir.home}/.cache/irb/history.log"
 IRB.conf[:COMPLETOR] = :type
+
 IRB.conf[:COMMAND_ALIASES]
    .merge! b: :backtrace,
            c: :continue,
@@ -82,13 +30,14 @@ IRB.conf[:COMMAND_ALIASES]
            m: :measure,
            s: :step,
            w: :whereami
+
 IRB.conf[:PROMPT] ||= {}
 
 IRB.conf[:PROMPT][:ALCHEMISTS] = {
-  PROMPT_I: "[#{CK.prompt}]> ",
-  PROMPT_N: "[#{CK.prompt}]| ",
-  PROMPT_C: "[#{CK.prompt}]| ",
-  PROMPT_S: "[#{CK.prompt}]%l ",
+  PROMPT_I: "[#{IRB::Kit.prompt}]> ",
+  PROMPT_N: "[#{IRB::Kit.prompt}]| ",
+  PROMPT_C: "[#{IRB::Kit.prompt}]| ",
+  PROMPT_S: "[#{IRB::Kit.prompt}]%l ",
   RETURN: "=> %s\n"
 }
 
