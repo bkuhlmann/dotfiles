@@ -1,11 +1,7 @@
 #! /usr/bin/env ruby
 # frozen_string_literal: true
 
-require "amazing_print"
 require "irb/completion"
-require "irb/kit"
-
-AmazingPrint.irb!
 
 Reline::Face.config :completion_dialog do |config|
   config.define :default, foreground: :white, background: :black
@@ -13,7 +9,33 @@ Reline::Face.config :completion_dialog do |config|
   config.define :scrollbar, foreground: :bright_white, background: :black
 end
 
-IRB::Kit.register_helpers :all
+begin
+  require "amazing_print"
+
+  AmazingPrint.irb!
+rescue LoadError => error
+  puts "ERROR: #{error.message.capitalize}."
+end
+
+begin
+  require "irb/kit"
+
+  IRB::Kit.register_helpers :all
+
+  IRB.conf[:PROMPT] ||= {}
+
+  IRB.conf[:PROMPT][:ALCHEMISTS] = {
+    PROMPT_I: "[#{IRB::Kit.prompt}]> ",
+    PROMPT_N: "[#{IRB::Kit.prompt}]| ",
+    PROMPT_C: "[#{IRB::Kit.prompt}]| ",
+    PROMPT_S: "[#{IRB::Kit.prompt}]%l ",
+    RETURN: "=> %s\n"
+  }
+
+  IRB.conf[:PROMPT_MODE] = :ALCHEMISTS
+rescue LoadError => error
+  puts "ERROR: #{error.message.capitalize}."
+end
 
 IRB.conf[:EVAL_HISTORY] = 1_000
 IRB.conf[:HISTORY_FILE] = "#{Dir.home}/.cache/irb/history.log"
@@ -30,15 +52,3 @@ IRB.conf[:COMMAND_ALIASES]
            m: :measure,
            s: :step,
            w: :whereami
-
-IRB.conf[:PROMPT] ||= {}
-
-IRB.conf[:PROMPT][:ALCHEMISTS] = {
-  PROMPT_I: "[#{IRB::Kit.prompt}]> ",
-  PROMPT_N: "[#{IRB::Kit.prompt}]| ",
-  PROMPT_C: "[#{IRB::Kit.prompt}]| ",
-  PROMPT_S: "[#{IRB::Kit.prompt}]%l ",
-  RETURN: "=> %s\n"
-}
-
-IRB.conf[:PROMPT_MODE] = :ALCHEMISTS
