@@ -15,5 +15,5 @@ Milestone: ?
 # Issue: 123
 # Milestone: patch
 # Reviewer: github
-# Signed-of-by: Malcolm Reynolds <mal@firefly.com>
+# Signed-off-by: Malcolm Reynolds <mal@firefly.com>
 # Tracker: linear
