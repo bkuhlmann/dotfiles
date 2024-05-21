@@ -1,5 +1,11 @@
 = Versions
 
+== 53.3.0 (2024-05-21)
+
+* ✅ Fixed Git template signed off by key typo - Brooke Kuhlmann
+* ✅ Fixed IRB configuration load errors - Brooke Kuhlmann
+* 🔼 Updated IRB configuration to use IRB Kit - Brooke Kuhlmann
+
 == 53.2.0 (2024-05-02)
 
 * 🟢 Added Git configuration for source and destination diff prefixes - Brooke Kuhlmann
