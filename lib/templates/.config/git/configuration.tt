@@ -136,6 +136,8 @@
   insteadOf = heroku:
 [url "https://github.com/rom-rb/rom-"]
   insteadOf = rom:
+[url "https://github.com/ruby/"]
+  insteadOf = rb:
 [user]
   email = <redacted>
   name = <redacted>
