@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 53.3.0
+git checkout 53.4.0
 ----
 
 == Upgrade
@@ -395,7 +395,7 @@ ms = "milestoner"
 msa = 'rm -rf tmp/milestone && milestoner build --format ascii_doc && ado tmp/milestone/index.adoc'
 msb = 'rm -rf tmp/milestone && milestoner build --format web && open tmp/milestone/index.html'
 mse = "milestoner config --edit"
-msf = 'rm -rf tmp/milestone && milestoner build --format feed && open -a "Firefox" tmp/milestone/index.xml'
+msf = 'rm -rf tmp/milestone && milestoner build --format feed --max 10 && open -a "Firefox" tmp/milestone/index.xml'
 msm = 'rm -rf tmp/milestone && milestoner build --format markdown && mo tmp/milestone/index.md'
 msp = "milestoner --publish"
 mss = 'milestoner build --format stream'

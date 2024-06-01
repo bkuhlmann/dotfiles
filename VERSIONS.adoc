@@ -1,5 +1,14 @@
 = Versions
 
+== 53.4.0 (2024-06-01)
+
+* ✅ Fixed Ruby version template to reflect current version - Brooke Kuhlmann
+* 🟢 Added Git Ruby URL configuration - Brooke Kuhlmann
+* 🟢 Added Ruby debug frozen string literal option - Brooke Kuhlmann
+* 🔼 Updated Milestoner alias to specify build maximum - Brooke Kuhlmann
+* 🔼 Updated citation URLs - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.2 - Brooke Kuhlmann
+
 == 53.3.0 (2024-05-21)
 
 * ✅ Fixed Git template signed off by key typo - Brooke Kuhlmann
