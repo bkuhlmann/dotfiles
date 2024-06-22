@@ -20,6 +20,7 @@ end
 begin
   require "irb/kit"
 
+  IRB::Kit.register_commands :all
   IRB::Kit.register_helpers :all
 
   IRB.conf[:PROMPT] ||= {}
