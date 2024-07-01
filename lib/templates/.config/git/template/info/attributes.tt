@@ -10,6 +10,8 @@
 *.rb diff=ruby
 *.webm diff=exif
 config.ru diff=ruby
+config/credentials.yml.enc diff=rails_credentials
+config/credentials/*.yml.enc diff=rails_credentials
 Gemfile diff=ruby
 Gemfile.lock diff=ruby
 Guardfile diff=ruby
