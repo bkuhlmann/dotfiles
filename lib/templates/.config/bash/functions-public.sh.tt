@@ -2136,6 +2136,74 @@ mo() {
   open -a Marked\ 2 "$path"
 }
 
+#-----------------------------------------------------------------#
+# Section: https://alchemists.io/projects/milestoner:[Milestoner] #
+#-----------------------------------------------------------------#
+
+# Label: Milestoner (ASCII Doc)
+# Description: Build milestone(s) in ASCII Doc format.
+# Parameters: $1 (optional): Maximum tags to build. Default: 1.
+msa() {
+  local max=${1:-1}
+
+  rm -rf tmp/milestones
+  milestoner build --max "$max" --format ascii_doc
+
+  if [[ "$max" == 1 ]]; then
+    ado tmp/milestones/index.adoc
+  fi
+}
+
+# Label: Milestoner (feed)
+# Description: Build milestone(s) in feed (atom) format.
+# Parameters: $1 (optional): Maximum tags to build. Default: 10.
+msf() {
+  local max=${1:-10}
+
+  rm -rf tmp/milestones
+  milestoner build --max "$max" --format feed && open -a "Firefox" "tmp/milestones/index.xml"
+}
+
+# Label: Milestoner (Markdown)
+# Description: Build milestone(s) in Markdown format.
+# Parameters: $1 (optional): Maximum tags to build. Default: 1.
+msm() {
+  local max=${1:-1}
+
+  rm -rf tmp/milestones
+  milestoner build --max "$max" --format markdown
+
+  if [[ "$max" == 1 ]]; then
+    mo "tmp/milestones/index.md"
+  fi
+}
+
+# Label: Milestoner (stream)
+# Description: Build milestone(s) in stream format.
+# Parameters: $1 (optional): Maximum tags to build. Default: 1.
+mss() {
+  local max=${1:-1}
+  milestoner build --max "$max" --format stream
+}
+
+# Label: Milestoner (web)
+# Description: Build milestone(s) in web format.
+# Parameters: $1 (optional): Maximum tags to build. Default: 1.
+msw() {
+  local max=${1:-1}
+
+  rm -rf tmp/milestones
+
+  if [[ "$max" == 1 ]]; then
+    milestoner build --max "$max" --format web && open "tmp/milestones/index.html"
+  else
+    milestoner build --max "$max" --stylesheet "../page" --format web
+    ruby -run -e httpd "tmp/milestones" --port 3030 &
+    open "http://localhost:3030"
+    fg
+  fi
+}
+
 #---------------------------------------------------------#
 # Section: https://jedisct1.github.io/minisign:[Minisign] #
 #---------------------------------------------------------#
