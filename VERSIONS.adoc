@@ -1,5 +1,15 @@
 = Versions
 
+== 54.0.0 (2024-07-07)
+
+* 🟢 Added Git attributes diffing for Rails credentials - Brooke Kuhlmann
+* 🟢 Added Git checkout alias - Brooke Kuhlmann
+* 🔼 Updated IRB configuration to register IRB Kit commands - Brooke Kuhlmann
+* 🔼 Updated Milestoner aliases as functions - Brooke Kuhlmann
+* 🔼 Updated to Caliber 0.58.0 - Brooke Kuhlmann
+* 🔼 Updated to Git Lint 8.0.0 - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.3 - Brooke Kuhlmann
+
 == 53.4.0 (2024-06-01)
 
 * ✅ Fixed Ruby version template to reflect current version - Brooke Kuhlmann

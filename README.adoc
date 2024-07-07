@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 53.4.0
+git checkout 54.0.0
 ----
 
 == Upgrade
@@ -281,6 +281,7 @@ gcam = "git commit --all --message"
 gcd = "git config --list --show-origin --show-scope | fzf"
 gce = 'cat .git/COMMIT_EDITMSG | pbcopy'
 gcge = "git config --global --edit"
+gch = "git checkout"
 gcl = "git clone"
 gcle = "git config --local --edit"
 gcm = "git commit --message"
@@ -392,13 +393,8 @@ jlr = "jless --mode line"
 
 ....
 ms = "milestoner"
-msa = 'rm -rf tmp/milestone && milestoner build --format ascii_doc && ado tmp/milestone/index.adoc'
-msb = 'rm -rf tmp/milestone && milestoner build --format web && open tmp/milestone/index.html'
 mse = "milestoner config --edit"
-msf = 'rm -rf tmp/milestone && milestoner build --format feed --max 10 && open -a "Firefox" tmp/milestone/index.xml'
-msm = 'rm -rf tmp/milestone && milestoner build --format markdown && mo tmp/milestone/index.md'
 msp = "milestoner --publish"
-mss = 'milestoner build --format stream'
 ....
 
 ==== https://en.wikipedia.org/wiki/Network_Computer:[Network]
@@ -751,6 +747,16 @@ port = Port - List file activity on given port.
 mo = Marked Open - Opens Markdown file in Marked.
 ....
 
+==== https://alchemists.io/projects/milestoner:[Milestoner]
+
+....
+msa = Milestoner (ASCII Doc) - Build milestone(s) in ASCII Doc format.
+msf = Milestoner (feed) - Build milestone(s) in feed (atom) format.
+msm = Milestoner (Markdown) - Build milestone(s) in Markdown format.
+mss = Milestoner (stream) - Build milestone(s) in stream format.
+msw = Milestoner (web) - Build milestone(s) in web format.
+....
+
 ==== https://jedisct1.github.io/minisign:[Minisign]
 
 ....
@@ -861,18 +867,6 @@ rspec_order = RSpec Order - Detect RSpec ordered specs.
 rubocop_branch_check = RuboCop Branch Check - Scan Ruby code -- feature branch only -- for poor style choices.
 rubocop_stage_check = RuboCop Stage Check - Scan Ruby code -- staged files only -- for poor style choices.
 ....
-
-=== IRB
-
-[source,ruby]
-----
-CK.copy      # Copies data to OS X clipboard.
-CK.constant  # Locates source code for given constant.
-CK.locate    # Locates source code for given object and method.
-CK.paste     # Pastes data from OS X clipboard.
-CK.search    # Searches for object method for given pattern.
-CK.usage     # Diplays usage for all of the above methods.
-----
 
 == Development
 
