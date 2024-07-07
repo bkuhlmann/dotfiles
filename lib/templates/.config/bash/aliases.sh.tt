@@ -134,6 +134,7 @@ alias gcam="git commit --all --message"
 alias gcd="git config --list --show-origin --show-scope | fzf"
 alias gce='cat .git/COMMIT_EDITMSG | pbcopy'
 alias gcge="git config --global --edit"
+alias gch="git checkout"
 alias gcl="git clone"
 alias gcle="git config --local --edit"
 alias gcm="git commit --message"
