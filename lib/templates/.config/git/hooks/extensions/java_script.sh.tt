@@ -34,6 +34,6 @@ export -f java_script_console
 # Description: Detect JavaScript alert statements.
 java_script_alert() {
   local search_pattern='^(?:(?!(.*//.+|.*/\*.+)).*alert\(.+\);)'
-  _scan_code "$(_java_script_label)" "Console statements detected" $(_java_script_file_pattern) $search_pattern
+  _scan_code "$(_java_script_label)" "Alert statements detected" $(_java_script_file_pattern) $search_pattern
 }
 export -f java_script_alert
