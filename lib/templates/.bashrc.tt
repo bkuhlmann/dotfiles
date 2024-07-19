@@ -88,9 +88,9 @@ if [[ -e "$HOMEBREW_PREFIX/bin/direnv" ]]; then
   eval "$(direnv hook bash)"
 fi
 
-# Exa
-export EXA_STRICT=true
-export EXA_COLORS="da=1;34:di=32:gm=33:gd=31"
+# Eza
+export EZA_STRICT=true
+export EZA_COLORS="da=1;34:di=32:gm=33:gd=31"
 
 # Ruby
 export BUNDLE_USER_CACHE="$HOME/.cache/bundler"
