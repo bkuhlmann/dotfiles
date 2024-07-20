@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 54.0.0
+git checkout 54.1.0
 ----
 
 == Upgrade
@@ -183,12 +183,12 @@ drt = "docker tag"
 dutia = 'duti $HOME/.config/duti/configuration.duti'
 ....
 
-==== https://the.exa.website:[Exa]
+==== https://eza.rocks:[Eza]
 
 ....
-x1 = "exa --oneline --all --group-directories-first"
-x = "exa --all --all --long --header --group --group-directories-first --time-style long-iso --git"
-xt = "exa --all --group-directories-first --ignore-glob '*.git' --git-ignore --tree"
+x1 = "eza --oneline --all --group-directories-first"
+x = "eza --all --all --long --header --group --group-directories-first --time-style long-iso --git"
+xt = "eza --all --group-directories-first --ignore-glob '*.git' --git-ignore --tree"
 ....
 
 ==== https://github.com/Schniz/fnm:[Fast Node Manager]

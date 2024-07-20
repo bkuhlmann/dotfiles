@@ -1,5 +1,11 @@
 = Versions
 
+== 54.1.0 (2024-07-20)
+
+* ✅ Fixed Git Hook typo with JavaScript alert statements - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.4 - Brooke Kuhlmann
+* 🔼 Updated to using Eza instead of Exa - Brooke Kuhlmann
+
 == 54.0.0 (2024-07-07)
 
 * 🟢 Added Git attributes diffing for Rails credentials - Brooke Kuhlmann
