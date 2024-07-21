@@ -74,6 +74,9 @@ source "$HOME/.config/bash/prompt.sh"
 # Bash Completion
 source "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" || :
 
+# XDG
+export PATH="$HOME/.local/bin:$PATH"
+
 # OpenSSL
 export PATH="$HOMEBREW_PREFIX/opt/openssl/bin:$PATH"
 
