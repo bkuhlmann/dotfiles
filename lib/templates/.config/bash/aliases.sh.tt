@@ -266,6 +266,9 @@ alias pgst="pgenv start"
 alias redc="redis-cli"
 alias reds='redis-server $HOMEBREW_PREFIX/etc/redis.conf &'
 
+# Section: https://github.com/AlexB52/retest[Retest]
+alias rt="NO_COVERAGE=true retest"
+
 # Section: https://github.com/BurntSushi/ripgrep:[ripgrep]
 alias rgf="rg --files --glob"
 
