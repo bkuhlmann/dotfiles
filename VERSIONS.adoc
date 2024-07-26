@@ -1,5 +1,12 @@
 = Versions
 
+== 54.2.0 (2024-07-25)
+
+* 🟢 Added XDG bin path - Brooke Kuhlmann
+* 🟢 Added pgsql saved queries - Brooke Kuhlmann
+* 🟢 Added retest alias - Brooke Kuhlmann
+* 🔼 Updated du alias to use Dust - Brooke Kuhlmann
+
 == 54.1.0 (2024-07-20)
 
 * ✅ Fixed Git Hook typo with JavaScript alert statements - Brooke Kuhlmann

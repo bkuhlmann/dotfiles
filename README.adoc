@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 54.1.0
+git checkout 54.2.0
 ----
 
 == Upgrade
@@ -239,7 +239,7 @@ gsv = "gemsmith --view"
 c = "clear"
 cat = "bat --theme DarkNeon"
 cdb = "cd -"
-du = "ncdu -e --color dark"
+du = "dust"
 h = "history"
 l1 = "ls -A1 | _copy_and_print '\n'"
 l = "ls -alhT"
@@ -442,6 +442,12 @@ pgst = "pgenv start"
 ....
 redc = "redis-cli"
 reds = 'redis-server $HOMEBREW_PREFIX/etc/redis.conf &'
+....
+
+==== https://github.com/AlexB52/retest[Retest]
+
+....
+rt = "NO_COVERAGE=true retest"
 ....
 
 ==== https://github.com/BurntSushi/ripgrep:[ripgrep]
