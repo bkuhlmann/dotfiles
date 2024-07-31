@@ -719,7 +719,7 @@ gbla() {
 # Description: List branches owned by current author or supplied author.
 # Parameters: $1 (optional): The author name.
 gblo() {
-  local owner="${1:-$(git config user.name)}"
+  local owner="${1:-$(git config get user.name)}"
   gbl | rg --color never "$owner"
 }
 
@@ -996,7 +996,7 @@ ggeta() {
 
         if [[ -d ".git" ]]; then
           # Get Git config value for given key.
-          local result=$(git config "$1")
+          local result=$(git config get "$1")
 
           # Print project (cyan).
           printf "\033[36m${project}\033[m: "
@@ -1138,7 +1138,7 @@ gince() {
 # Description: Print repository overview information.
 ginfo() {
   printf "\n%s\n\n" "$(_print_black_on_white ' Local Configuration (.git/config) ')"
-  git config --local --list
+  git config list --local
 
   printf "\n%s\n\n" "$(_print_black_on_white ' Stashes ')"
   local stashes="$(gashl)"
@@ -1540,7 +1540,7 @@ gseta() {
 
         if [[ -d ".git" ]]; then
           # Set key value for current project.
-          git config "$1" "$2"
+          git config set "$1" "$2"
 
           # Print project (cyan) and email (white).
           printf "\033[36m${project}\033[m: $1 = $2\n"
@@ -1617,7 +1617,7 @@ gstatsa() {
 # Label: Git Standup
 # Description: Answer summarized list of activity since yesterday for projects in current directory.
 gsup() {
-  gince "yesterday.midnight" "midnight" $(git config user.name)
+  gince "yesterday.midnight" "midnight" $(git config get user.name)
 }
 
 # Label: Git Tag Delete
@@ -1640,7 +1640,7 @@ gtd() {
     fi
 
     printf "%s " "Remote:"
-    if [[ $(git config remote.origin.url) && -n "$(git ls-remote --tags origin | rg $1)" ]]; then
+    if [[ $(git config get remote.origin.url) && -n "$(git ls-remote --tags origin | rg $1)" ]]; then
       git push --delete origin "$1"
     else
       printf "%s\n" "No tag found."
@@ -1764,7 +1764,7 @@ gunseta() {
 
         if [[ -d ".git" ]]; then
           # Unset key for current project with error output suppressed.
-          git config --unset "$1" &> /dev/null
+          git config unset "$1" &> /dev/null
 
           # Print project (cyan).
           printf "\033[36m${project}\033[m: \"$1\" key removed.\n"
@@ -1830,7 +1830,7 @@ gup() {
 # Description: Answers total lines added/removed by author for repo (with emphasis on deletion).
 # Parameters: $1 (optional): Author name. Default: Current user.
 guthorc() {
-  local author="${1:-$(git config --get user.name)}"
+  local author="${1:-$(git config get user.name)}"
 
   if [[ -z "$author" ]]; then
     printf "%s\n" "ERROR: Author name required."
@@ -2086,7 +2086,7 @@ licensea() {
     return 1
   fi
 
-  license_finder approval add "$library" --who "$(git config user.name)" --why "$why"
+  license_finder approval add "$library" --who "$(git config get user.name)" --why "$why"
 }
 
 # Label: License Finder (include)
@@ -2106,7 +2106,7 @@ licensei() {
     return 1
   fi
 
-  license_finder whitelist add "$license" --who "$(git config user.name)" --why "$why"
+  license_finder whitelist add "$license" --who "$(git config get user.name)" --why "$why"
 }
 
 #-------------------------------------------------#

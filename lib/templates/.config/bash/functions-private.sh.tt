@@ -216,7 +216,7 @@ _toggle_total_color() {
 # Label: Git Branch Default
 # Description: Print Git default branch.
 _git_branch_default() {
-  local default="$(git config --get init.defaultBranch)"
+  local default="$(git config get init.defaultBranch)"
   printf "${default:-main}"
 }
 

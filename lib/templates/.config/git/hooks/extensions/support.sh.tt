@@ -23,7 +23,7 @@ export -f _build_ctags
 _git_feature_files() {
   git diff \
       --diff-filter=d \
-      "$(git branch --show-current | tr -d '\n')".."$(git config --get init.defaultBranch)" \
+      "$(git branch --show-current | tr -d '\n')".."$(git config get init.defaultBranch)" \
       --name-only
 }
 export -f _git_feature_files

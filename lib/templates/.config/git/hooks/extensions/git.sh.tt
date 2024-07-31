@@ -29,7 +29,7 @@ git_add_trailers() {
   local trailers=""
 
   branch="$(git branch --show-current | tr -d '\n')"
-  trailers="$(git config --get "branch.$branch.description" | git interpret-trailers --parse || :)"
+  trailers="$(git config get "branch.$branch.description" | git interpret-trailers --parse || :)"
 
   case "$kind" in
     message)
