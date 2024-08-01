@@ -542,7 +542,7 @@ gashs() {
   fi
 }
 
-# Label: Git Stash (stage)
+# Label: Git Stash Stage
 # Description: Creates stash of staged work.
 # Parameters: $1 (optional): Label. Default: "Staged Work (YYYY-MM-DD HH:MM:SS AM|PM Z)."
 gasht() {
@@ -1305,6 +1305,13 @@ gli() {
   if [[ "$response" == 'y' ]]; then
     gdt $selected_commit^!
   fi
+}
+
+# Label: Git Log Fuzzy
+# Description: Fuzzy find commits in the log.
+glz() {
+  git log --color=always --pretty=format:"$(_git_log_line_format)" \
+  | fzf --no-sort --reverse --preview 'git show --color=always {1}' --preview-window=wrap
 }
 
 # Label: Git Merge (all)
