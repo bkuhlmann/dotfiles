@@ -900,18 +900,17 @@ gcfi() {
   local kind="$1"
   local commits=($(_git_branch_shas))
 
-  _git_commit_options "${commits[*]}"
+  selection=$(
+    git log --color=always \
+            --pretty=format:"$(_git_log_line_format)" \
+            "${commits[-1]}^..${commits[0]}" \
+    | fzf --preview 'git show --color=always {1}' --preview-window=wrap \
+    | cut -d ' ' -f 1
+  )
 
-  printf "\n"
-  read -p "Enter selection or quit (q): " response
-  if [[ "$response" == 'q' ]]; then
-    return
+  if [[ -n "$selection" ]]; then
+    gcf "$selection" "$kind"
   fi
-
-  printf "\n"
-  local selected_commit=${commits[$((response - 1))]}
-  printf "%s\n" "Selected commit: $selected_commit"
-  gcf "$selected_commit" "$kind"
 }
 
 # Label: Git Diff Files
