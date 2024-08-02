@@ -1293,21 +1293,16 @@ glear() {
 gli() {
   local commits=($(_git_branch_shas))
 
-  _git_commit_options "${commits[*]}"
+  selection=$(
+    git log --color=always \
+          --pretty=format:"$(_git_log_line_format)" \
+          "${commits[-1]}^..${commits[0]}" \
+    | fzf --preview 'git show --color=always {1}' --preview-window=wrap \
+    | cut -d ' ' -f 1
+  )
 
-  printf "\n"
-  read -p "Enter selection or quit (q): " response
-  if [[ "$response" == 'q' ]]; then
-    return
-  fi
-
-  local selected_commit=${commits[$((response - 1))]}
-  printf "%s\n" "$(_git_show_details $selected_commit)"
-
-  printf "\n"
-  read -p "View diff (y = yes, n = no)? " response
-  if [[ "$response" == 'y' ]]; then
-    gdt $selected_commit^!
+  if [[ -n "$selection" ]]; then
+    ghow "$selection"
   fi
 }
 
