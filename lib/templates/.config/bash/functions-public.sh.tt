@@ -924,7 +924,11 @@ gdf() {
     return 1
   fi
 
-  git log --pretty="format:" --name-only "${commits[-1]}^..${commits[0]}" | sort | uniq
+  git log --pretty="" --name-only "${commits[-1]}^..${commits[0]}" \
+  | sort \
+  | uniq \
+  | _fzf_preview_and_select \
+  | xargs "$EDITOR"
 }
 
 # Label: Git Day
