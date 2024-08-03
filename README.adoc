@@ -23,7 +23,7 @@ toc::[]
 * Configures link:http://ctags.sourceforge.net[CTags] (`.ctags`).
 * Configures link:https://direnv.net[direnv].
 * Configures link:https://www.docker.com[Docker].
-* Configures link:https://the.exa.website[Exa].
+* Configures link:https://eza.rocks[Eza].
 * Configures link:https://github.com/tako8ki/frum[Frum].
 * Configures link:https://git-scm.com[Git] (`.config/git`).
 * Configures link:https://www.gnupg.org[GPG].
@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 54.2.0
+git checkout 54.3.0
 ----
 
 == Upgrade
@@ -278,12 +278,12 @@ gbn = "_git_branch_name | _copy_and_print"
 gbt = "git show-branch --topics"
 gca = "git commit --all"
 gcam = "git commit --all --message"
-gcd = "git config --list --show-origin --show-scope | fzf"
+gcd = "git config list --show-origin --show-scope | fzf"
 gce = 'cat .git/COMMIT_EDITMSG | pbcopy'
-gcge = "git config --global --edit"
+gcge = "git config edit --global"
 gch = "git checkout"
 gcl = "git clone"
-gcle = "git config --local --edit"
+gcle = "git config edit --local"
 gcm = "git commit --message"
 gco = "git commit"
 gcp = "git cherry-pick"
@@ -304,16 +304,14 @@ gelc = "git rm --cached"
 ges = "git diff --name-only --cached | _fzf_preview_and_select | xargs -0 -o -t git reset"
 gf = "git fetch"
 gg = "git grep"
-gget = "git config --get"
+gget = "git config get"
 ggp = "git config --global --get-regexp includeif | awk '{print \$NF}' | fzf | xargs \$EDITOR"
-gi = 'git init && git config --global --add maintenance.repo $PWD'
+gi = "git init"
 gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
 glame = "git blame -M -C"
 glean = "git clean -d --force"
 glf = 'git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
-glg = 'git log --pretty=format:"$(_git_log_line_format)" --grep'
 glh = "_git_commit_last | _copy_and_print"
-gls = 'git log --pretty=format:"$(_git_log_line_format)" -S'
 glt = 'git for-each-ref --sort=taggerdate --color --format = "%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
 gna = "git notes add"
 gnd = "git notes remove"
@@ -339,7 +337,7 @@ grev = "git revert --no-commit"
 grl = "git reflog --relative-date"
 grom = 'git fetch --all && git reset --hard origin/$(_git_branch_default)' # Reset local branch to origin/main branch. UNRECOVERABLE!
 grr = "git rerere"
-gset = "git config --add"
+gset = "git config set"
 gst = "git status --short --branch"
 gt = "git tag"
 gte = 'cat .git/TAG_EDITMSG | pbcopy'
@@ -643,7 +641,7 @@ gashd = Git Stash Drop - Drop stash or prompt for stash to drop.
 gashl = Git Stash List - List stashes.
 gashp = Git Stash Pop - Pop stash or prompt for stash to pop.
 gashs = Git Stash Show - Show stash or prompt for stash to show.
-gasht = Git Stash (stage) - Creates stash of staged work.
+gasht = Git Stash Stage - Creates stash of staged work.
 gbc = Git Branch Create - Create and switch to branch.
 gbca = Git Branch Create (all) - Create and switch to branch for projects in current directory.
 gbd = Git Branch Delete - Interactively delete local and/or remote branch.
@@ -670,6 +668,8 @@ gesh = Git Reset Hard - Reset to HEAD, destroying all untracked, staged, and uns
 gesha = Git Reset Hard (all) - Destroy all untracked, staged, and unstaged changes for all projects in current directory. UNRECOVERABLE!
 gess = Git Reset Soft - Resets previous commit (default), resets back to number of commits, or resets to specific commit.
 ggeta = Git Get Config Value (all) - Answer key value for projects in current directory.
+gga = Git Guise Add - Adds Git configuration and associated profile.
+ggd = Git Guise Delete - Deletes Git configuration and associated profile.
 ghow = Git Show - Show commit details with optional diff support.
 ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
 gia = Git Init (all) - Initialize/re-initialize repositories in current directory.
@@ -682,7 +682,10 @@ glameh = Git Blame History - View commit history for file and/or lines (with opt
 gld = Git Log Details - List default or feature branch commit details.
 gleana = Git Clean (all) - Clean uncommitted files from all projects in current directory.
 glear = Git Clear - Clear repository for packaging/shipping purposes.
+glg = Git Log Grep - Grep Git log by query.
 gli = Git Log (interactive) - List default or feature branch commits with commit show and/or diff support.
+gls = Git Log Search - Search Git log by query.
+glz = Git Log Fuzzy - Fuzzy find commits in the log.
 gma = Git Merge (all) - Merges, deletes, and pushes feature branch.
 gmonth = Git Month - Answer summarized list of current month activity for projects in current directory.
 gmpa = Git Amend Push (all) - Amend all changes and force push with lease for projects in current directory.

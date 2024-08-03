@@ -1,5 +1,19 @@
 = Versions
 
+== 54.3.0 (2024-08-03)
+
+* ✅ Fixed Git show details private function to include patch details - Brooke Kuhlmann
+* 🟢 Added Git guise add and delete functions - Brooke Kuhlmann
+* 🟢 Added Git log fuzzy find function - Brooke Kuhlmann
+* 🔼 Updated Git commit fixup function to use fuzzy find - Brooke Kuhlmann
+* 🔼 Updated Git diff files function to be interactive - Brooke Kuhlmann
+* 🔼 Updated Git log grep as function with fuzzy find - Brooke Kuhlmann
+* 🔼 Updated Git log interactive function to use fuzzy find - Brooke Kuhlmann
+* 🔼 Updated Git log search as function with fuzzy find - Brooke Kuhlmann
+* 🔼 Updated Git stash to show untracked files - Brooke Kuhlmann
+* ⛔️ Removed Git maintenance setup on repository initialization - Brooke Kuhlmann
+* 🔁 Refactored Git config usage - Brooke Kuhlmann
+
 == 54.2.0 (2024-07-25)
 
 * 🟢 Added XDG bin path - Brooke Kuhlmann
