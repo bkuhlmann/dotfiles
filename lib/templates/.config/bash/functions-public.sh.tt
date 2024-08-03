@@ -1019,6 +1019,31 @@ ggeta() {
   fi
 }
 
+# Label: Git Guise Add
+# Description: Adds Git configuration and associated profile.
+# Parameters: $1 (required): Label.
+gga() {
+  local label="$1"
+  local name="${label,,}"
+
+  git config set --global \
+  includeIf."gitdir:~/Engineering/Companies/$label/".path "~/.config/git/profiles/$name" \
+  && touch "$HOME/.config/git/profiles/${name,,}"
+}
+
+# Label: Git Guise Delete
+# Description: Deletes Git configuration and associated profile.
+# Parameters: $1 (required): Name.
+ggd() {
+  local name="$1"
+
+  rg --no-line-number --ignore-case --regexp "includeIf.+$name" "$GIT_CONFIG_GLOBAL" \
+  | sed 's/\[includeIf \"//g' \
+  | sed 's/\"\]//g' \
+  | xargs -I {} git config unset --global "includeIf.{}.path" \
+  && rm -f "$HOME/.config/git/profiles/$name"
+}
+
 # Label: Git Show
 # Description: Show commit details with optional diff support.
 # Parameters: $1 (optional): The commit to show. Default: <last commit>, $2 (optional): Launch difftool. Default: false.
