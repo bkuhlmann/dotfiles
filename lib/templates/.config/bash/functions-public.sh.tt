@@ -1330,6 +1330,28 @@ gli() {
   fi
 }
 
+# Label: Git Log Search
+# Description: Search Git log by query.
+# Parameters: $1 (required): Query.
+gls() {
+  local query="$1"
+
+  if [[ -z "$query" ]]; then
+    printf "%s\n" "ERROR: Search query is required."
+    return 1
+  fi
+
+  selection=$(
+    git log --color=always --pretty=format:"$(_git_log_line_format)" -S "$query" \
+    | fzf --preview 'git show --color=always {1}' --preview-window=wrap \
+    | cut -d ' ' -f 1
+  )
+
+  if [[ -n "$selection" ]]; then
+    ghow "$selection"
+  fi
+}
+
 # Label: Git Log Fuzzy
 # Description: Fuzzy find commits in the log.
 glz() {
