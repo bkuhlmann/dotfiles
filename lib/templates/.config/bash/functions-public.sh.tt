@@ -1312,6 +1312,28 @@ glear() {
   fi
 }
 
+# Label: Git Log Grep
+# Description: Grep Git log by query.
+# Parameters: $1 (required): Query.
+glg() {
+  local query="$1"
+
+  if [[ -z "$query" ]]; then
+    printf "%s\n" "ERROR: Grep query is required."
+    return 1
+  fi
+
+  selection=$(
+    git log --color=always --pretty=format:"$(_git_log_line_format)" --grep "$query" \
+    | fzf --preview 'git show --color=always {1}' --preview-window=wrap \
+    | cut -d ' ' -f 1
+  )
+
+  if [[ -n "$selection" ]]; then
+    ghow "$selection"
+  fi
+}
+
 # Label: Git Log (interactive)
 # Description: List default or feature branch commits with commit show and/or diff support.
 gli() {
