@@ -402,7 +402,7 @@ _git_log_line_format() {
 # Description: Show commit/file change details in a concise format.
 # Parameters: $1 (required): The params to pass to git show.
 _git_show_details() {
-  git show --stat --pretty=format:"$(_git_log_details_format)" $@
+  git show --stat --patch --pretty=format:"$(_git_log_details_format)" $@
 }
 
 # Label: Git Stash Count
