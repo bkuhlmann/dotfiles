@@ -117,6 +117,7 @@ alias gb="git switch"
 alias gbb="git switch -"
 alias gbe="git branch --edit-description"
 alias gbi="git bisect"
+alias gbv='git config get branch.$(_git_branch_name).description'
 alias gbib="git bisect bad"
 alias gbig="git bisect good"
 alias gbih="git bisect help"
