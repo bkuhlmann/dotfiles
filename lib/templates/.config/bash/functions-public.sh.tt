@@ -1341,8 +1341,8 @@ gli() {
 
   selection=$(
     git log --color=always \
-          --pretty=format:"$(_git_log_line_format)" \
-          "${commits[-1]}^..${commits[0]}" \
+            --pretty=format:"$(_git_log_line_format)" \
+            "${commits[-1]}^..${commits[0]}" \
     | fzf --preview 'git show --color=always {1}' --preview-window=wrap \
     | cut -d ' ' -f 1
   )
