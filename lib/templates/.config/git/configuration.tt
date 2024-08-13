@@ -70,6 +70,8 @@
   prune = true
   pruneTags = true
   writeCommitGraph = true
+[gpg "ssh"]
+  allowedSignersFile = ~/.ssh/allowed_signers
 [grep]
   column = true
   fullname = true
