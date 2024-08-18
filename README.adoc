@@ -895,6 +895,8 @@ cd dotfiles
 
 == link:https://alchemists.io/policies/contributions[Contributions]
 
+== link:https://alchemists.io/policies/developer_certificate_of_origin[Developer Certificate of Origin]
+
 == link:https://alchemists.io/projects/dotfiles/versions[Versions]
 
 == link:https://alchemists.io/community[Community]
