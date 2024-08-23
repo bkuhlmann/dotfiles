@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 54.3.0
+git checkout 54.4.0
 ----
 
 == Upgrade
@@ -264,6 +264,7 @@ gb = "git switch"
 gbb = "git switch -"
 gbe = "git branch --edit-description"
 gbi = "git bisect"
+gbv = 'git config get branch.$(_git_branch_name).description'
 gbib = "git bisect bad"
 gbig = "git bisect good"
 gbih = "git bisect help"

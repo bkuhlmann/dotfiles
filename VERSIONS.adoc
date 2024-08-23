@@ -1,5 +1,12 @@
 = Versions
 
+== 54.4.0 (2024-08-23)
+
+🟢 Added Git GPG allowed signers configuration - Brooke Kuhlmann
+🟢 Added Git branch view alias - Brooke Kuhlmann
+🟢 Added README Developer Certificate of Origin documentation - Brooke Kuhlmann
+🔁 Refactored Git log interactive function to align options - Brooke Kuhlmann
+
 == 54.3.0 (2024-08-03)
 
 * ✅ Fixed Git show details private function to include patch details - Brooke Kuhlmann
