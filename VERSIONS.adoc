@@ -1,5 +1,9 @@
 = Versions
 
+== 54.4.1 (2024-09-03)
+
+* 🔼 Updated to Ruby 3.3.5 - Brooke Kuhlmann
+
 == 54.4.0 (2024-08-23)
 
 🟢 Added Git GPG allowed signers configuration - Brooke Kuhlmann
