@@ -166,7 +166,6 @@ alias glame="git blame -M -C"
 alias glean="git clean -d --force"
 alias glf='git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
 alias glh="_git_commit_last | _copy_and_print"
-alias glt='git for-each-ref --sort=taggerdate --color --format="%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
 alias gna="git notes add"
 alias gnd="git notes remove"
 alias gne="git notes edit"

@@ -691,7 +691,7 @@ gbl() {
                    | sed 's/refs\/remotes\/origin\///g' \
                    | uniq \
                    | sort \
-                   | column -s'|' -t
+                   | column -s '|' -t
 }
 
 # Label: Git Branch List (all)
@@ -1722,6 +1722,21 @@ gtd() {
   else
     printf "%s\n" "Tag deletion aborted."
   fi
+}
+
+# Label: Git Tag List
+# Description: List tags in tabular form.
+gtl() {
+  local format="\
+%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|\
+%(color:brightblue)%(taggername)%(color:reset)|%(subject)|\
+%(color:brightmagenta)%(trailers:key=Commits,separator=)%(color:reset)|\
+%(color:brightmagenta)%(trailers:key=Files,separator=)%(color:reset)|\
+%(color:green)%(trailers:key=Deletions,separator=)%(color:reset)|\
+%(color:red)%(trailers:key=Insertions,separator=)%(color:reset)|\
+%(color:brightmagenta)%(trailers:key=Duration,separator=)%(color:reset)"
+
+  git tag --list --sort=taggerdate --color --format="$format" | column -s "|" -t
 }
 
 # Label: Git Tag Rebuild
