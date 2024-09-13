@@ -2219,12 +2219,13 @@ mo() {
 # Parameters: $1 (optional): Maximum tags to build. Default: 1.
 msa() {
   local max=${1:-1}
+  local path="tmp/milestones/index.adoc"
 
   rm -rf tmp/milestones
   milestoner build --max "$max" --format ascii_doc
 
-  if [[ "$max" == 1 ]]; then
-    ado tmp/milestones/index.adoc
+  if [[ "$max" == 1 && -f "$path" ]]; then
+    ado "$path"
   fi
 }
 
@@ -2233,9 +2234,14 @@ msa() {
 # Parameters: $1 (optional): Maximum tags to build. Default: 10.
 msf() {
   local max=${1:-10}
+  local path="tmp/milestones/index.xml"
 
   rm -rf tmp/milestones
-  milestoner build --max "$max" --format feed && open -a "Firefox" "tmp/milestones/index.xml"
+  milestoner build --max "$max" --format feed
+
+  if [[ -f "$path" ]]; then
+    open -a "Firefox" "tmp/milestones/index.xml"
+  fi
 }
 
 # Label: Milestoner (Markdown)
@@ -2243,12 +2249,13 @@ msf() {
 # Parameters: $1 (optional): Maximum tags to build. Default: 1.
 msm() {
   local max=${1:-1}
+  local path="tmp/milestones/index.md"
 
   rm -rf tmp/milestones
   milestoner build --max "$max" --format markdown
 
-  if [[ "$max" == 1 ]]; then
-    mo "tmp/milestones/index.md"
+  if [[ "$max" == 1 && -f "$path" ]]; then
+    mo "$path"
   fi
 }
 
@@ -2265,16 +2272,25 @@ mss() {
 # Parameters: $1 (optional): Maximum tags to build. Default: 1.
 msw() {
   local max=${1:-1}
+  local root="tmp/milestones"
+  local path="$root/index.html"
 
   rm -rf tmp/milestones
 
   if [[ "$max" == 1 ]]; then
-    milestoner build --max "$max" --format web && open "tmp/milestones/index.html"
+    milestoner build --max "$max" --format web
+
+    if [[ -f "$path" ]]; then
+      open "$path"
+    fi
   else
     milestoner build --max "$max" --stylesheet "../page" --format web
-    ruby -run -e httpd "tmp/milestones" --port 3030 &
-    open "http://localhost:3030"
-    fg
+
+    if [[ -d "$root" ]]; then
+      ruby -run -e httpd "tmp/milestones" --port 3030 &
+      open "http://localhost:3030"
+      fg
+    fi
   fi
 }
 
