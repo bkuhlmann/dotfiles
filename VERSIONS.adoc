@@ -1,5 +1,10 @@
 = Versions
 
+== 54.4.2 (2024-09-15)
+
+* ✅ Fixed Milestoner functions to account for non-repositories - Brooke Kuhlmann
+* 🔁 Refactored attributes to global Git configuration root - Brooke Kuhlmann
+
 == 54.4.1 (2024-09-03)
 
 * 🔼 Updated to Ruby 3.3.5 - Brooke Kuhlmann

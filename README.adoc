@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 54.4.1
+git checkout 54.4.2
 ----
 
 == Upgrade
