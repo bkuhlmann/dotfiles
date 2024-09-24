@@ -242,6 +242,7 @@ alias sshe='$EDITOR $HOME/.ssh/config'
 alias top="htop"
 
 # Section: https://www.npmjs.com:[NPM]
+alias na="npm login"
 alias nb="npm run build"
 alias ni="npm install"
 alias nid="npm install --save-dev"
