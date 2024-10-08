@@ -685,7 +685,9 @@ gbl() {
   git for-each-ref --sort="authordate:iso8601" \
                    --sort="authorname" \
                    --color \
-                   --format="$format" refs/heads refs/remotes/origin \
+                   --format="$format" \
+                   refs/heads \
+                   refs/remotes/origin \
                    | sed '/HEAD/d' \
                    | sed 's/refs\/heads\///g' \
                    | sed 's/refs\/remotes\/origin\///g' \

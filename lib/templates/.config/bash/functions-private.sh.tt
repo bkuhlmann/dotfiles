@@ -484,8 +484,9 @@ _gh_pr_list() {
   local format=${1:-"%(refname) %(color:yellow)%(refname)%(color:reset) %(subject) %(color:blue bold)%(authorname) %(color:green)(%(committerdate:relative))"}
 
   git for-each-ref --color \
-                   --format="$format" refs/remotes/pull_requests \
-                   sed 's/refs\/remotes\/pull_requests\///g' \
+                   --format="$format" \
+                   refs/remotes/pull_requests \
+                   | sed 's/refs\/remotes\/pull_requests\///g' \
                    | sort --numeric-sort \
                    | cut -d' ' -f2-
 }
