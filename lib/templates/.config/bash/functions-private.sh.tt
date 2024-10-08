@@ -264,43 +264,13 @@ _git_branch_range() {
 # Label: Git Branch SHA
 # Description: Answer SHA from which the branch was created.
 _git_branch_sha() {
-  local shas=($(_git_branch_shas))
-
-  if [[ ${#shas[@]} != 0 ]]; then
-    printf "%s" ${shas[-1]}
-  fi
+  _git_branch_shas | tail -1
 }
 
 # Label: Git Branch SHAs
 # Description: Answer branch commit SHAs regardless of branch nesting.
 _git_branch_shas() {
-  local ifs_original=$IFS
-  IFS=$'\n'
-
-  local log_format="%h%d"
-  local current_commit=($(git log --pretty=format:$log_format) -1)
-  local commits=($(git log --pretty=format:$log_format))
-  local range="$(_git_commit_last)"
-  local current_pattern=".*\(HEAD.+\)*"
-  local parent_pattern=".*\(.+\)*"
-  local origin_pattern=".*\(origin\/$(_git_branch_name)\)$"
-  local default_pattern=".*\(.+$(_git_branch_default)(\,|\))*"
-
-  if [[ ! "$current_commit" =~ $default_pattern ]]; then
-    for entry in ${commits[@]}; do
-      local entry_sha="${entry%% *}"
-
-      if [[ ! "$entry" =~ $current_pattern && ! "$entry" =~ $origin_pattern ]]; then
-        if [[ "$entry" =~ $default_pattern || "$entry" =~ $parent_pattern ]]; then
-          range="$entry_sha..$(_git_commit_last)"
-          break
-        fi
-      fi
-    done
-  fi
-
-  git log --pretty=format:%h "$range"
-  IFS=$ifs_original
+  git log --pretty=format:%h "$(_git_branch_range)"
 }
 
 # Label: Git Commit Count Since Last Tag
@@ -381,7 +351,8 @@ _git_commit_root() {
 # Description: Answer commit history since last tag for project.
 _git_commits_since_last_tag() {
   if [[ $(git tag) ]]; then
-    git log --oneline --reverse --format='%C(yellow)%h%Creset %s' $(git describe --abbrev=0 --tags --always)..HEAD
+    git log --oneline --reverse --format='%C(yellow)%h%Creset %s' \
+    "$(git describe --abbrev=0 --tags --always)"..HEAD
   else
     git log --oneline --reverse --format='%C(yellow)%h%Creset %s'
   fi
@@ -628,7 +599,7 @@ _process_gh_url_option() {
   if [[ "$commit" =~ $commit_match ]]; then
     printf "$(_gh_url)/commit/$commit" | _copy_and_print
   elif [[ "$commit" == 'l' ]]; then
-    printf "$(_gh_url)/commit/$(_git_commit_last)" | _copy_and_print
+    printf "$(_gh_url)/commit/$(_git_sha)" | _copy_and_print
   else
     _gh_url | _copy_and_print
   fi

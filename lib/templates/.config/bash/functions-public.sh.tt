@@ -898,12 +898,11 @@ gcff() {
 # Parameters: $1 (optional): (a)mend or (r)eword.
 gcfi() {
   local kind="$1"
-  local commits=($(_git_branch_shas))
 
   selection=$(
     git log --color=always \
             --pretty=format:"$(_git_log_line_format)" \
-            "${commits[-1]}^..${commits[0]}" \
+            "$(_git_branch_range)" \
     | fzf --preview 'git show --color=always {1}' --preview-window=wrap \
     | cut -d ' ' -f 1
   )
@@ -916,14 +915,7 @@ gcfi() {
 # Label: Git Diff Files
 # Description: List all added/changed files on current branch.
 gdf() {
-  local commits=($(_git_branch_shas))
-
-  if [[ -z "$(git log --left-right --oneline $(_git_branch_name)...$(_git_branch_default))" ]]; then
-    printf "%s\n" "ERROR: You are on the default branch or a branch that is identical."
-    return 1
-  fi
-
-  git log --pretty="" --name-only "${commits[-1]}^..${commits[0]}" \
+  git log --pretty="" --name-only "$(_git_branch_range)" \
   | sort \
   | uniq \
   | _fzf_preview_and_select \
@@ -1235,18 +1227,7 @@ glameh() {
 # Label: Git Log Details
 # Description: List default or feature branch commit details.
 gld() {
-  if [[ "$(_git_branch_name)" == "$(_git_branch_default)" ]]; then
-    git log --stat --pretty=format:"$(_git_log_details_format)"
-    return
-  fi
-
-  local commits=($(_git_branch_shas))
-
-  if [[ ${#commits[@]} == 1 ]]; then
-    _git_show_details "${commits[0]}"
-  else
-    git log --stat --pretty=format:"$(_git_log_details_format)" "${commits[-1]}^..${commits[0]}"
-  fi
+  git log --stat --pretty=format:"$(_git_log_details_format)" "$(_git_branch_range)"
 }
 
 # Label: Git Clean (all)
@@ -1337,12 +1318,8 @@ glg() {
 # Label: Git Log (interactive)
 # Description: List default or feature branch commits with commit show and/or diff support.
 gli() {
-  local commits=($(_git_branch_shas))
-
   selection=$(
-    git log --color=always \
-            --pretty=format:"$(_git_log_line_format)" \
-            "${commits[-1]}^..${commits[0]}" \
+    git log --color=always --pretty=format:"$(_git_log_line_format)" "$(_git_branch_range)" \
     | fzf --preview 'git show --color=always {1}' --preview-window=wrap \
     | cut -d ' ' -f 1
   )
@@ -1436,9 +1413,9 @@ gmpa() {
 # Label: Git Notes Add (interactive)
 # Description: Select which commit note to add for current feature branch.
 gnai() {
-  local commits=($(_git_branch_shas))
+  mapfile -t shas < <(_git_branch_shas)
 
-  _git_commit_options "${commits[*]}"
+  _git_commit_options "${shas[*]}"
 
   printf "\n"
   read -p "Enter selection or quit (q): " response
@@ -1446,7 +1423,7 @@ gnai() {
     return
   fi
 
-  local selection=${commits[$((response - 1))]}
+  local selection=${shas[$((response - 1))]}
   printf "%s\n" "Selected: $selection"
   gna "$selection"
 }
@@ -1454,9 +1431,9 @@ gnai() {
 # Label: Git Notes Edit (interactive)
 # Description: Select which commit note to edit for current feature branch.
 gnei() {
-  local commits=($(_git_branch_shas))
+  mapfile -t shas < <(_git_branch_shas)
 
-  _git_commit_options "${commits[*]}"
+  _git_commit_options "${shas[*]}"
 
   printf "\n"
   read -p "Enter selection or quit (q): " response
@@ -1464,7 +1441,7 @@ gnei() {
     return
   fi
 
-  local selection=${commits[$((response - 1))]}
+  local selection=${shas[$((response - 1))]}
   printf "%s\n" "Selected: $selection"
   gne "$selection"
 }
@@ -1472,9 +1449,9 @@ gnei() {
 # Label: Git Notes Remove (interactive)
 # Description: Select which commit note to remove for current feature branch.
 gndi() {
-  local commits=($(_git_branch_shas))
+  mapfile -t shas < <(_git_branch_shas)
 
-  _git_commit_options "${commits[*]}"
+  _git_commit_options "${shas[*]}"
 
   printf "\n"
   read -p "Enter selection or quit (q): " response
@@ -1482,7 +1459,7 @@ gndi() {
     return
   fi
 
-  local selection=${commits[$((response - 1))]}
+  local selection=${shas[$((response - 1))]}
   printf "%s\n" "Selected: $selection"
   gnd "$selection"
 }
@@ -1490,9 +1467,9 @@ gndi() {
 # Label: Git Notes Show (interactive)
 # Description: Select which commit note to show for current feature branch.
 gnri() {
-  local commits=($(_git_branch_shas))
+  mapfile -t shas < <(_git_branch_shas)
 
-  _git_commit_options "${commits[*]}"
+  _git_commit_options "${shas[*]}"
 
   printf "\n"
   read -p "Enter selection or quit (q): " response
@@ -1500,7 +1477,7 @@ gnri() {
     return
   fi
 
-  local selection=${commits[$((response - 1))]}
+  local selection=${shas[$((response - 1))]}
   printf "%s\n" "Selected: $selection"
   gns "$selection"
 }
@@ -1575,7 +1552,7 @@ gra() {
 grbi() {
   local number_pattern="^[0-9]+$"
   local label_pattern="^[0-9a-zA-Z\_-]+$"
-  local parent_sha=$(git log --pretty=format:%h -n 1 "$(_git_branch_sha)^" 2> /dev/null || :)
+  local parent_sha=$(git log --pretty=format:%h -n 1 "$(_git_branch_parent)" 2> /dev/null || :)
   local value="${1:-$parent_sha}"
 
   if [[ "$value" =~ $number_pattern ]]; then
