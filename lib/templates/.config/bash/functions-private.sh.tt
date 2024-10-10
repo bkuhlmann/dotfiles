@@ -261,12 +261,6 @@ _git_branch_range() {
   printf "%s" "$range"
 }
 
-# Label: Git Branch SHA
-# Description: Answer SHA from which the branch was created.
-_git_branch_sha() {
-  _git_branch_shas | tail -1
-}
-
 # Label: Git Branch SHAs
 # Description: Answer branch commit SHAs regardless of branch nesting.
 _git_branch_shas() {
@@ -303,12 +297,6 @@ _git_commit_count_since_last_tag() {
       printf "$suffix"
     fi
   fi
-}
-
-# Label: Git Commit Last
-# Description: Answer last commit for current branch.
-_git_commit_last() {
-  git log --pretty=format:%h -1
 }
 
 # Label: Git Commit Options
