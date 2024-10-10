@@ -398,6 +398,15 @@ _git_log_line_format() {
   printf "%s" "%C(yellow)%h%C(reset) %G? %C(bold blue)%an%C(reset) %s%C(bold cyan)%d%C(reset) %C(green)%cr.%C(reset)"
 }
 
+# Label: Git SHA
+# Description: Answer sha for branch, tag, or any kind of valid reference.
+# Parameters: $1 (optional): The reference name, otherwise current branch.
+_git_sha() {
+  local reference="${1:-$(_git_branch_name)}"
+
+  git rev-parse --short "$reference"
+}
+
 # Label: Git Show Details
 # Description: Show commit/file change details in a concise format.
 # Parameters: $1 (required): The params to pass to git show.
