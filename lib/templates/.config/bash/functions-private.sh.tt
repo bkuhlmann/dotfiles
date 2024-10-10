@@ -247,6 +247,20 @@ _git_branch_parent() {
   fi
 }
 
+# Label: Git Branch Range
+# Description: Answer branch commit range (i.e. starting and ending reference).
+_git_branch_range() {
+  local range=""
+
+  if [[ "$(_git_branch_name)" == "$(_git_branch_default)" ]]; then
+    range="$(_git_sha)"
+  else
+    range="$(_git_branch_parent)..$(_git_sha)"
+  fi
+
+  printf "%s" "$range"
+}
+
 # Label: Git Branch SHA
 # Description: Answer SHA from which the branch was created.
 _git_branch_sha() {
