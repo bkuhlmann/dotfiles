@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 54.4.2
+git checkout 54.5.0
 ----
 
 == Upgrade
@@ -100,6 +100,8 @@ After install, the following files will require manual updating:
 The reason the above two files are not managed by this project -- especially via symbolic links --
 is because sensitive data is usually stored in these files and you don't want this information
 accidentally checked into a source code repository or shared via other means.
+
+START
 
 === Aliases
 
@@ -312,8 +314,7 @@ gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
 glame = "git blame -M -C"
 glean = "git clean -d --force"
 glf = 'git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
-glh = "_git_commit_last | _copy_and_print"
-glt = 'git for-each-ref --sort=taggerdate --color --format = "%(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|%(color:blue)%(color:bold)%(*authorname)%(color:reset)|%(subject)" refs/tags | column -s"|" -t'
+glh = "_git_sha | _copy_and_print"
 gna = "git notes add"
 gnd = "git notes remove"
 gne = "git notes edit"
@@ -411,6 +412,7 @@ top = "htop"
 ==== https://www.npmjs.com:[NPM]
 
 ....
+na = "npm login"
 nb = "npm run build"
 ni = "npm install"
 nid = "npm install --save-dev"
@@ -707,6 +709,7 @@ gstats = Git Statistics - Answer statistics for current project.
 gstatsa = Git Statistics (all) - Answer statistics for all projects in current directory.
 gsup = Git Standup - Answer summarized list of activity since yesterday for projects in current directory.
 gtd = Git Tag Delete - Delete local and remote tag (if found).
+gtl = Git Tag List - List tags in tabular form.
 gtr = Git Tag Rebuild - Rebuild a previous tag. WARNING: Use with caution, especially if previously published.
 gtail = Git Tail - Answer commit history since last tag for current project (copies results to clipboard).
 gtaila = Git Tail (all) - Answer commit history count since last tag for projects in current directory.

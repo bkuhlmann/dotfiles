@@ -1,5 +1,16 @@
 = Versions
 
+== 54.5.0 (2024-10-14)
+
+* 🟢 Added Git SHA function - Brooke Kuhlmann
+* 🟢 Added Git branch parent function - Brooke Kuhlmann
+* 🟢 Added Git branch range function - Brooke Kuhlmann
+* 🟢 Added NPM authentication alias - Brooke Kuhlmann
+* 🔼 Updated Git tag list alias as a function - Brooke Kuhlmann
+* ⛔️ Removed Git commit last and branch sha functions - Brooke Kuhlmann
+* 🔁 Refactored Git aliases/functions to use parent branch and SHA functions - Brooke Kuhlmann
+* 🔁 Refactored GitHub pull request and branch list functions - Brooke Kuhlmann
+
 == 54.4.2 (2024-09-15)
 
 * ✅ Fixed Milestoner functions to account for non-repositories - Brooke Kuhlmann
