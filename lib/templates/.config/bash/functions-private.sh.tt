@@ -414,6 +414,12 @@ _git_stash_count() {
   git stash list | wc -l | xargs -n 1
 }
 
+# Label: Git Tag Last
+# Description: Answer last tag or last commit SHA.
+_git_tag_last() {
+  git describe --abbrev=0 --tags --always
+}
+
 # Label: Git Stash
 # Description: Enhance default git stash behavior by prompting for input (multiple) or using last stash (single).
 # Parameters: $1 (required): The Git stash command to execute, $2 (required): The prompt label (for multiple stashes).
