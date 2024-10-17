@@ -386,6 +386,23 @@ _git_log_details_format() {
   printf "%s" "$(_git_log_line_format) %n%n%b%n%N%-%n"
 }
 
+# Label: Git Log Enrich
+# Description: Enrich log for improved readability.
+_git_log_enrich() {
+  sd "\[G\]" "🔒" \
+  | sd "\[[^G]\]" "🚨" \
+  | sd "\[major\]" "🔴" \
+  | sd "\[minor\]" "🔵" \
+  | sd "\[patch\]" "🟢" \
+  | sd "\[\]" "⚪️"
+}
+
+# Label: Git Log Enrich Format
+# Description: Print enriched log line format.
+_git_log_enrich_format() {
+  printf "%s" "%C(yellow)%h%C(reset) [%G?] %C(bold blue)%an%C(reset) [%(trailers:key=Milestone,valueonly=true,separator=)] %s%C(bold cyan)%d%C(reset) %C(green)%cr.%C(reset)"
+}
+
 # Label: Git Log Line Format
 # Description: Print single line log format.
 _git_log_line_format() {
