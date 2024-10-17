@@ -902,10 +902,9 @@ gcfi() {
   local kind="$1"
 
   selection=$(
-    git log --color=always \
-            --pretty=format:"$(_git_log_line_format)" \
-            "$(_git_branch_range)" \
-    | fzf --preview 'git show --color=always {1}' --preview-window=wrap \
+    git log --color --pretty=format:"$(_git_log_enrich_format)" "$(_git_branch_range)" \
+    | _git_log_enrich \
+    | fzf --preview 'git show --color {1}' --preview-window=wrap \
     | cut -d ' ' -f 1
   )
 
@@ -1142,7 +1141,7 @@ gince() {
 
         if [[ -d ".git" ]]; then
           # Capture git log activity.
-          local results=$(git log --oneline --color --format="$(_git_log_line_format)" --since "$1" --until "$2" --author "$3" --reverse)
+          results=$(git log --reverse --color --format="$(_git_log_enrich_format)" --since "$1" --until "$2" --author "$3" | _git_log_enrich)
           # Print project name (cyan) and Git activity (white) only if Git activity was detected.
           if [[ -n "$results" ]]; then
             printf "\033[36m${project}:\033[m\n$results\n"
@@ -1307,8 +1306,9 @@ glg() {
   fi
 
   selection=$(
-    git log --color=always --pretty=format:"$(_git_log_line_format)" --grep "$query" \
-    | fzf --preview 'git show --color=always {1}' --preview-window=wrap \
+    git log --color --pretty=format:"$(_git_log_enrich_format)" --grep "$query" \
+    | _git_log_enrich \
+    | fzf --preview 'git show --color {1}' --preview-window=wrap \
     | cut -d ' ' -f 1
   )
 
@@ -1321,8 +1321,9 @@ glg() {
 # Description: List default or feature branch commits with commit show and/or diff support.
 gli() {
   selection=$(
-    git log --color=always --pretty=format:"$(_git_log_line_format)" "$(_git_branch_range)" \
-    | fzf --preview 'git show --color=always {1}' --preview-window=wrap \
+    git log --color --pretty=format:"$(_git_log_enrich_format)" "$(_git_branch_range)" \
+    | _git_log_enrich \
+    | fzf --preview 'git show --color {1}' --preview-window=wrap \
     | cut -d ' ' -f 1
   )
 
@@ -1343,8 +1344,9 @@ gls() {
   fi
 
   selection=$(
-    git log --color=always --pretty=format:"$(_git_log_line_format)" -S "$query" \
-    | fzf --preview 'git show --color=always {1}' --preview-window=wrap \
+    git log --color --pretty=format:"$(_git_log_enrich_format)" -S "$query" \
+    | _git_log_enrich \
+    | fzf --preview 'git show --color {1}' --preview-window=wrap \
     | cut -d ' ' -f 1
   )
 
@@ -1356,8 +1358,8 @@ gls() {
 # Label: Git Log Fuzzy
 # Description: Fuzzy find commits in the log.
 glz() {
-  git log --color=always --pretty=format:"$(_git_log_line_format)" \
-  | fzf --no-sort --reverse --preview 'git show --color=always {1}' --preview-window=wrap
+  git log --color --pretty=format:"$(_git_log_line_format)" \
+  | fzf --no-sort --reverse --preview 'git show --color {1}' --preview-window=wrap
 }
 
 # Label: Git Merge (all)
@@ -1737,10 +1739,15 @@ gtail() {
     return 1
   fi
 
-  if [[ $(_git_commits_since_last_tag) ]]; then
-    _git_commits_since_last_tag | _copy_and_print "\n"
+  if [[ $(git tag) ]]; then
+    git log --reverse \
+            --color \
+            --pretty=format:"$(_git_log_enrich_format)" "$(_git_tag_last)..HEAD" \
+            | _git_log_enrich
+    printf "\n"
   else
-    printf "%s\n" "No commits since last tag."
+    git log --reverse --color --pretty=format:"$(_git_log_enrich_format)" | _git_log_enrich
+    printf "\n"
   fi
 }
 
