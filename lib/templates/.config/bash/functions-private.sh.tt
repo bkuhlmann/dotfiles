@@ -374,6 +374,12 @@ _git_file_commits() {
   fi
 }
 
+# Label: Git Last Tag
+# Description: Answer last tag or last commit SHA.
+_git_last_tag() {
+  git describe --abbrev=0 --tags --always
+}
+
 # Label: Git Last Tag Info
 # Description: Answer last tag for project (including commits added since tag was created).
 _git_last_tag_info() {
