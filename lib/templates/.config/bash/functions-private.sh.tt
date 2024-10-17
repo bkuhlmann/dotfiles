@@ -316,8 +316,8 @@ _git_commit_options() {
   fi
 
   for commit in ${commits[@]}; do
-    local option="$(printf "%${option_padding}s" $counter)"
-    printf "%s\n" "$option: $(git log --color --pretty=format:"$(_git_log_line_format)" -n1 $commit)"
+    option="$(printf "%${option_padding}s" $counter)"
+    printf "%s\n" "$option: $(git log --color --pretty=format:"$(_git_log_enrich_format)" -n1 $commit | _git_log_enrich)"
     counter=$((counter + 1))
 
     if [[ "$response" == "q" ]]; then
