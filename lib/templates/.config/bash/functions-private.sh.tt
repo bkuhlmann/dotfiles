@@ -373,12 +373,6 @@ _git_file_commits() {
   fi
 }
 
-# Label: Git Last Tag Info
-# Description: Answer last tag for project (including commits added since tag was created).
-_git_last_tag_info() {
-  printf "%s\n" "$(git describe --tags --always) ($(_git_commit_count_since_last_tag) commits since)"
-}
-
 # Label: Git Log Details Format
 # Description: Prints default log format.
 _git_log_details_format() {
@@ -434,6 +428,12 @@ _git_stash_count() {
 # Description: Answer last tag or last commit SHA.
 _git_tag_last() {
   git describe --abbrev=0 --tags --always
+}
+
+# Label: Git Tag Last Info
+# Description: Answer last tag for project (including commits added since tag was created).
+_git_tag_last_info() {
+  printf "%s\n" "$(git describe --tags --always) ($(_git_commit_count_since_last_tag) commits since)"
 }
 
 # Label: Git Stash

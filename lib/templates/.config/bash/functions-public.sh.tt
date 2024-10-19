@@ -1185,7 +1185,7 @@ ginfo() {
   gount
 
   printf "\n%s\n\n" "$(_print_black_on_white ' Last Tag ')"
-  _git_last_tag_info
+  _git_tag_last_info
 
   printf "\n%s\n\n" "$(_print_black_on_white ' Last Commit ')"
   git show --decorate --stat
