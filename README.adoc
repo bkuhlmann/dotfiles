@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 54.5.0
+git checkout 54.6.0
 ----
 
 == Upgrade
@@ -100,8 +100,6 @@ After install, the following files will require manual updating:
 The reason the above two files are not managed by this project -- especially via symbolic links --
 is because sensitive data is usually stored in these files and you don't want this information
 accidentally checked into a source code repository or shared via other means.
-
-START
 
 === Aliases
 

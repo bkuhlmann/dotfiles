@@ -1,5 +1,14 @@
 = Versions
 
+== 54.6.0 (2024-10-19)
+
+* 🟢 Added Duti MKV video format - Brooke Kuhlmann
+* 🟢 Added Git log line enrichment - Brooke Kuhlmann
+* 🟢 Added Git tag last function - Brooke Kuhlmann
+* 🔼 Updated Git commits since last tag to use last tag function - Brooke Kuhlmann
+* 🔼 Updated Git log functions to use enriched formatting - Brooke Kuhlmann
+* 🔁 Refactored Git tag last info function name - Brooke Kuhlmann
+
 == 54.5.0 (2024-10-14)
 
 * 🟢 Added Git SHA function - Brooke Kuhlmann
