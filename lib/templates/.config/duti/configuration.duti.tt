@@ -1,6 +1,7 @@
 # Use `mdls -name kMDItemCFBundleIdentifier -r /Applications/<app>.app` to identify applications.
 
 com.colliderli.iina .flac all
+com.colliderli.iina .mkv all
 com.colliderli.iina .mov all
 com.colliderli.iina .mp4 all
 com.colliderli.iina .webm all
