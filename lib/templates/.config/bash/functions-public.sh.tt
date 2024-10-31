@@ -1018,10 +1018,12 @@ ggeta() {
 gga() {
   local label="$1"
   local name="${label,,}"
+  local path="$HOME/.config/git/profiles/${name,,}"
 
   git config set --global \
   includeIf."gitdir:~/Engineering/Companies/$label/".path "~/.config/git/profiles/$name" \
-  && touch "$HOME/.config/git/profiles/${name,,}"
+  && touch "$path" \
+  && printf "%s\n" "Created: $path."
 }
 
 # Label: Git Guise Delete
@@ -1029,12 +1031,14 @@ gga() {
 # Parameters: $1 (required): Name.
 ggd() {
   local name="$1"
+  local path="$HOME/.config/git/profiles/$name"
 
   rg --no-line-number --ignore-case --regexp "includeIf.+$name" "$GIT_CONFIG_GLOBAL" \
   | sed 's/\[includeIf \"//g' \
   | sed 's/\"\]//g' \
   | xargs -I {} git config unset --global "includeIf.{}.path" \
-  && rm -f "$HOME/.config/git/profiles/$name"
+  && rm -f "$path" \
+  && printf "%s\n" "Deleted: $path."
 }
 
 # Label: Git Show
