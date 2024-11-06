@@ -2221,22 +2221,25 @@ mo() {
 
 # Label: Milestoner (ASCII Doc)
 # Description: Build milestone(s) in ASCII Doc format.
-# Parameters: $1 (optional): Maximum tags to build. Default: 1.
+# Parameters: $1 (optional): Maximum. Default: 1.
 msa() {
   local max=${1:-1}
-  local path="tmp/milestones/index.adoc"
+  local root="tmp/milestones"
+  local selection=""
 
   rm -rf tmp/milestones
   milestoner build --max "$max" --format ascii_doc
 
-  if [[ "$max" == 1 && -f "$path" ]]; then
-    ado "$path"
+  read -r selection < <(fd .adoc tmp/milestones | _fzf_preview_and_select)
+
+  if [[ -n "$selection" ]]; then
+    ado "$selection"
   fi
 }
 
 # Label: Milestoner (feed)
 # Description: Build milestone(s) in feed (atom) format.
-# Parameters: $1 (optional): Maximum tags to build. Default: 10.
+# Parameters: $1 (optional): Maximum. Default: 10.
 msf() {
   local max=${1:-10}
   local path="tmp/milestones/index.xml"
@@ -2245,28 +2248,31 @@ msf() {
   milestoner build --max "$max" --format feed
 
   if [[ -f "$path" ]]; then
-    open -a "Firefox" "tmp/milestones/index.xml"
+    open -a "Brave Browser" "tmp/milestones/index.xml"
   fi
 }
 
 # Label: Milestoner (Markdown)
 # Description: Build milestone(s) in Markdown format.
-# Parameters: $1 (optional): Maximum tags to build. Default: 1.
+# Parameters: $1 (optional): Maximum. Default: 1.
 msm() {
   local max=${1:-1}
   local path="tmp/milestones/index.md"
+  local selection=""
 
   rm -rf tmp/milestones
   milestoner build --max "$max" --format markdown
 
-  if [[ "$max" == 1 && -f "$path" ]]; then
-    mo "$path"
+  read -r selection < <(fd .md tmp/milestones | _fzf_preview_and_select)
+
+  if [[ -n "$selection" ]]; then
+    mo "$selection"
   fi
 }
 
 # Label: Milestoner (stream)
 # Description: Build milestone(s) in stream format.
-# Parameters: $1 (optional): Maximum tags to build. Default: 1.
+# Parameters: $1 (optional): Maximum. Default: 1.
 mss() {
   local max=${1:-1}
   milestoner build --max "$max" --format stream
@@ -2274,28 +2280,18 @@ mss() {
 
 # Label: Milestoner (web)
 # Description: Build milestone(s) in web format.
-# Parameters: $1 (optional): Maximum tags to build. Default: 1.
+# Parameters: $1 (optional): Maximum. Default: 1.
 msw() {
   local max=${1:-1}
   local root="tmp/milestones"
-  local path="$root/index.html"
+  local path=""
 
-  rm -rf tmp/milestones
+  rm -rf "$root"
+  milestoner build --max "$max" --format web
+  path="$(eza --oneline --all --only-dirs "$root" | tail -n 1)"
 
-  if [[ "$max" == 1 ]]; then
-    milestoner build --max "$max" --format web
-
-    if [[ -f "$path" ]]; then
-      open "$path"
-    fi
-  else
-    milestoner build --max "$max" --stylesheet "../page" --format web
-
-    if [[ -d "$root" ]]; then
-      ruby -run -e httpd "tmp/milestones" --port 3030 &
-      open "http://localhost:3030"
-      fg
-    fi
+  if [[ -d "$root" ]]; then
+    reb "$root" 3030 "$path"
   fi
 }
 
