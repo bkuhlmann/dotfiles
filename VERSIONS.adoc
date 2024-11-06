@@ -1,5 +1,11 @@
 = Versions
 
+== 54.6.1 (2024-11-05)
+
+* ✅ Fixed Bash ICU4C package config path for pgenv - Brooke Kuhlmann
+* ✅ Fixed Git guise functions to print info - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.6 - Brooke Kuhlmann
+
 == 54.6.0 (2024-10-19)
 
 * 🟢 Added Duti MKV video format - Brooke Kuhlmann
