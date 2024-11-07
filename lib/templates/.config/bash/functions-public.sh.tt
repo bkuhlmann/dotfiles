@@ -9,10 +9,10 @@
 # Parameters: $1 (optional): Path to ASCII Doc file. Default: README.adoc.
 ado() {
   local input=${1:-README.adoc}
-  local output=$(mktemp -t asciidoc)
+  local output=$(mktemp -t asciidoc -u).html
 
   asciidoctor --failure-level WARN --out-file "$output" "$input"
-  open "$output" -a "Firefox.app"
+  open "$output"
   read -p "Viewing: $output. Use any key to continue. " response
   rm -f "$output"
 }
