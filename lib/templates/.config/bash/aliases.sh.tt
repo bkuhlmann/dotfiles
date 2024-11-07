@@ -238,6 +238,7 @@ alias dnss="sudo dscacheutil -statistics"
 alias ipa='curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
 alias key="open /Applications/Utilities/Keychain\ Access.app"
 alias ping="gping"
+alias speed="networkQuality"
 alias sshe='$EDITOR $HOME/.ssh/config'
 alias top="htop"
 
