@@ -2598,13 +2598,20 @@ rbi() {
 }
 
 # Label: Ruby Web Server
-# Description: Serve web content from current directory via WEBrick.
-# Parameters: $1 (optional): The custom port. Default: 3030.
+# Description: Serve web content via WEBrick.
+# Parameters: $1 (optional): Root path. Default: ., $2 (optional): Port. Default: 3030.
 reb() {
-  local default_port=3030
-  local custom_port=$1
+  local root-="${1:-.}"
+  local port=${2:-3030}
 
-  ruby -run -e httpd . --port ${custom_port:-$default_port}
+  ruby -run -e httpd "$root" --port "$port" &
+
+  while ! nc -z localhost "$port"; do
+    sleep 0.1
+  done
+
+  open "http://localhost:$port"
+  fg
 }
 
 # Label: Ruby Which
