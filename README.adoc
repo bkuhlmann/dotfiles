@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 54.6.1
+git checkout 54.7.0
 ----
 
 == Upgrade
@@ -403,6 +403,7 @@ dnss = "sudo dscacheutil -statistics"
 ipa = 'curl --silent checkip.dyndns.org | rg --only-matching "[0-9\.]+" | _copy_and_print'
 key = "open /Applications/Utilities/Keychain\ Access.app"
 ping = "gping"
+speed = "networkQuality"
 sshe = '$EDITOR $HOME/.ssh/config'
 top = "htop"
 ....
@@ -829,7 +830,7 @@ copa = Rubocop (all) - Run Rubocop for all projects in current directory.
 
 ....
 rbi = Ruby Install - Install a specific version with safe defaults.
-reb = Ruby Web Server - Serve web content from current directory via WEBrick.
+reb = Ruby Web Server - Serve web content via WEBrick.
 rbw = Ruby Which - Locate path to current Ruby program.
 rbua = Ruby Upgrade (all) - Upgrade Ruby projects in current directory to new Ruby version.
 rbva = Ruby Version (all) - Show current Ruby version for all projects in current directory.

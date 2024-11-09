@@ -1,5 +1,13 @@
 = Versions
 
+== 54.7.0 (2024-11-09)
+
+* ✅ Fixed ASCII Doc function to use default browser - Brooke Kuhlmann
+* 🟢 Added speed alias for checking network quality - Brooke Kuhlmann
+* 🔼 Updated Ruby web server function to open site after launch - Brooke Kuhlmann
+* 🔼 Updated to Caliber 0.64.0 - Brooke Kuhlmann
+* 🔼 Updated to Git Lint 8.7.0 - Brooke Kuhlmann
+
 == 54.6.1 (2024-11-05)
 
 * ✅ Fixed Bash ICU4C package config path for pgenv - Brooke Kuhlmann
