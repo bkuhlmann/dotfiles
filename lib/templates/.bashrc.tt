@@ -122,7 +122,7 @@ export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --color always --ex
 export FZF_DEFAULT_OPTS="--multi --ansi"
 
 # Make
-export MAKE="make --jobs=$(sysctl -n hw.ncpu)"
+export MAKEFLAGS="--jobs=$(sysctl -n hw.ncpu)"
 
 # Node
 export PATH="$PATH:$HOMEBREW_PREFIX/share/npm/bin"
