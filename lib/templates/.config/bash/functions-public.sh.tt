@@ -2599,10 +2599,13 @@ rbi() {
 
 # Label: Ruby Web Server
 # Description: Serve web content via WEBrick.
-# Parameters: $1 (optional): Root path. Default: ., $2 (optional): Port. Default: 3030.
+# Parameters: $1 (optional): Root. Default: .
+#             $2 (optional): Port. Default: 3030
+#             $3 (optional): Path. Default: "".
 reb() {
-  local root-="${1:-.}"
+  local root="${1:-.}"
   local port=${2:-3030}
+  local path="${3:-}"
 
   ruby -run -e httpd "$root" --port "$port" &
 
@@ -2610,7 +2613,7 @@ reb() {
     sleep 0.1
   done
 
-  open "http://localhost:$port"
+  open "http://localhost:$port/$path"
   fg
 }
 
