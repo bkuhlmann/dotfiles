@@ -1714,7 +1714,7 @@ gtd() {
 gtl() {
   local format="\
 %(color:yellow)%(refname:short)%(color:reset)|%(taggerdate:short)|\
-%(color:brightblue)%(taggername)%(color:reset)|%(subject)|\
+%(color:brightblue)%(taggername)%(color:reset)|\
 %(color:brightmagenta)%(trailers:key=Commits,separator=)%(color:reset)|\
 %(color:brightmagenta)%(trailers:key=Files,separator=)%(color:reset)|\
 %(color:green)%(trailers:key=Deletions,separator=)%(color:reset)|\
