@@ -4,32 +4,6 @@ if [[ BASH_VERSINFO[0] < 4 ]]; then
   printf "%s\n" "WARNING: Dotfiles requires Bash 4.x.x or higher to work correctly."
 fi
 
-# Checks the window size after each command and, if necessary, updates LINES and COLUMNS values.
-shopt -s checkwinsize
-
-# Attempts to save all lines of a multi-line command as a single history entry for easy re-editing.
-shopt -s cmdhist
-
-# Attempts word spelling correction on directory names if directory name supplied does not exist.
-shopt -s dirspell
-
-# Enables extended pattern matching features.
-shopt -s extglob
-
-# Using ** in a pathname expansion context will match all files and zero or more directories and
-# subdirectories. If the pattern is followed by a /, only directories and subdirectories match.
-shopt -s globstar
-
-# The history list is appended (instead of being overwritten) as defined by the HISTFILE variable.
-shopt -s histappend
-
-# Enables history expansion with space (i.e. `!!<space>`).
-bind Space:magic-space
-
-# XDG
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-
 # Editors
 export EDITOR=sublime
 export VISUAL=vim
@@ -40,6 +14,11 @@ export HISTTIMEFORMAT="%F %T " # Use YYYY-MM-DD HH:MM:SS date/time format.
 export HISTCONTROL="erasedups:ignoreboth" # Remove duplicate entries.
 export HISTSIZE=10000 # Keep lengthy command history.
 export HISTIGNORE="#*:..:...:c:h:l:l1:p:pwd:gst:gd:exit:* --help" # Exclude mundane commands.
+
+# XDG
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Homebrew
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
@@ -73,9 +52,6 @@ source "$HOME/.config/bash/prompt.sh"
 
 # Bash Completion
 source "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" || :
-
-# XDG
-export PATH="$HOME/.local/bin:$PATH"
 
 # OpenSSL
 export PATH="$HOMEBREW_PREFIX/opt/openssl/bin:$PATH"
@@ -145,3 +121,25 @@ export PATH=".git/safe/../../bin:$PATH"
 # Zoxide
 export _ZO_DATA_DIR="$HOME/.cache/zoxide"
 eval "$(zoxide init bash)"
+
+# Checks the window size after each command and, if necessary, updates LINES and COLUMNS values.
+shopt -s checkwinsize
+
+# Attempts to save all lines of a multi-line command as a single history entry for easy re-editing.
+shopt -s cmdhist
+
+# Attempts word spelling correction on directory names if directory name supplied does not exist.
+shopt -s dirspell
+
+# Enables extended pattern matching features.
+shopt -s extglob
+
+# Using ** in a pathname expansion context will match all files and zero or more directories and
+# subdirectories. If the pattern is followed by a /, only directories and subdirectories match.
+shopt -s globstar
+
+# The history list is appended (instead of being overwritten) as defined by the HISTFILE variable.
+shopt -s histappend
+
+# Enables history expansion with space (i.e. `!!<space>`).
+bind Space:magic-space
