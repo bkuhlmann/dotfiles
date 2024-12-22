@@ -80,11 +80,18 @@ export PATH="$HOME/.local/bin:$PATH"
 # OpenSSL
 export PATH="$HOMEBREW_PREFIX/opt/openssl/bin:$PATH"
 
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Docker
 export DOCKER_CONFIG=$HOME/.config/docker
 
 # GPG
 export GPG_TTY=$(tty)
+
+# Atuin
+export ATUIN_NOBIND="true"
+eval "$(atuin init bash)"
 
 # direnv
 if [[ -e "$HOMEBREW_PREFIX/bin/direnv" ]]; then
@@ -126,9 +133,6 @@ source "$HOME/.orbstack/shell/init.bash" 2>/dev/null || :
 # pgenv
 export PATH="$HOME/.pgenv/bin:$HOME/.pgenv/pgsql/bin:$PATH"
 export PKG_CONFIG_PATH="${HOMEBREW_PREFIX}/opt/icu4c@76/lib/pkgconfig"
-
-# Rust
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # Terraform
 export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform/plugins"
