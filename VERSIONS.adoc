@@ -1,5 +1,17 @@
 = Versions
 
+== 55.0.0 (2024-12-27)
+
+* ✅ Fixed Bash make flags configuration - Brooke Kuhlmann
+* 🟢 Added Atuin Bash setup - Brooke Kuhlmann
+* 🟢 Added Ruby web server function path parameter - Brooke Kuhlmann
+* 🔼 Updated Milestoner functions to handle multiple versions - Brooke Kuhlmann
+* 🔼 Updated to Caliber 0.68.0 - Brooke Kuhlmann
+* 🔼 Updated to Git Lint 9.0.0 - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.4.0 - Brooke Kuhlmann
+* ⛔️ Removed subject from Git tag log output - Brooke Kuhlmann
+* 🔁 Refactored Bash configuration - Brooke Kuhlmann
+
 == 54.7.0 (2024-11-09)
 
 * ✅ Fixed ASCII Doc function to use default browser - Brooke Kuhlmann
