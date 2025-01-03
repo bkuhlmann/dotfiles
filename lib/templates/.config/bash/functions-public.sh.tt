@@ -350,6 +350,7 @@ eup() {
   xcode-select --install
   hbsu
   rustup update
+  cargo install-update --all
   tldr --update
   docker system prune --force
   docker buildx prune --force
@@ -358,10 +359,10 @@ eup() {
     (
       cd "$oss_path"
       gpua
-      bca
-      gemuc
-      bua
       gvaca
+      gemuc
+      bca
+      bua
     )
   else
     printf "%s\n" "Skipped. Unknown path: #oss_path."
@@ -371,9 +372,9 @@ eup() {
     (
       cd "$alchemists_path"
       gpua
+      gvaca
       bca
       bua
-      gvaca
     )
   else
     printf "%s\n" "Skipped. Unknown path: #alchemists_path."
