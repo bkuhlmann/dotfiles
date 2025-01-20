@@ -83,7 +83,7 @@ export BUNDLE_USER_CACHE="$HOME/.cache/bundler"
 export BUNDLE_USER_CONFIG="$HOME/.config/bundler/configuration.yml"
 export BUNDLE_USER_HOME="$HOME/.local/share/bundler"
 export BUNDLE_USER_PLUGIN="$HOME/.local/share/bundler/plugin"
-export RUBYOPT="-W:deprecated -W:performance --yjit --debug-frozen-string-literal"
+export RUBYOPT="-W:deprecated -W:performance -W:strict_unused_block --yjit --debug-frozen-string-literal"
 
 # Fast Node Manager
 export FNM_DIR="$HOME/.cache/fnm"
