@@ -107,8 +107,8 @@ export PATH="$PATH:$HOMEBREW_PREFIX/share/npm/bin"
 source "$HOME/.orbstack/shell/init.bash" 2>/dev/null || :
 
 # pgenv
-export PATH="$HOME/.pgenv/bin:$HOME/.pgenv/pgsql/bin:$PATH"
-export PKG_CONFIG_PATH="${HOMEBREW_PREFIX}/opt/icu4c@76/lib/pkgconfig"
+export PGENV_ROOT="$HOME/.cache/pgenv"
+export PATH="$HOME/.cache/pgenv/bin:$HOME/.cache/pgenv/pgsql/bin:$PATH"
 
 # Terraform
 export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform/plugins"
