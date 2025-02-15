@@ -8,3 +8,25 @@ IFS=$'\n\t'
 psql --username postgres \
      --command "CREATE ROLE $USER WITH SUPERUSER CREATEDB CREATEROLE LOGIN PASSWORD '';"
 psql --username postgres --command "CREATE DATABASE $USER;"
+
+(
+  cd "$HOME/.cache/pgenv/pgsql/data"
+
+  openssl req -new \
+              -x509 \
+              -days 365 \
+              -nodes \
+              -text \
+              -out server.crt \
+              -keyout server.key \
+              -subj "/CN=postgres"
+
+  chmod 0600 server.key
+)
+
+psql -c "ALTER SYSTEM SET ssl = 'on';"
+psql -c "ALTER SYSTEM SET ssl_cert_file = 'server.crt';"
+psql -c "ALTER SYSTEM SET ssl_key_file = 'server.key';"
+psql -c "ALTER SYSTEM SET ssl_min_protocol_version = 'TLSv1.3';"
+
+pgenv restart
