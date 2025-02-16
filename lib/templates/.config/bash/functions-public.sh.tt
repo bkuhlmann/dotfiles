@@ -355,6 +355,11 @@ eup() {
   docker system prune --force
   docker buildx prune --force
 
+  (
+    cd "$HOME/.cache/pgenv"
+    git pull
+  )
+
   if [[ -d "$oss_path" ]]; then
     (
       cd "$oss_path"
