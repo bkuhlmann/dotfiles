@@ -2419,6 +2419,19 @@ oms() {
 }
 
 #--------------------------------------------------#
+# Section: https://github.com/theory/pgenv:[pgenv] #
+#--------------------------------------------------#
+
+# Label: PostgreSQL Install
+# Description: Install (build) specific version.
+# Parameters: $1 (required): Version.
+pgi() {
+  local version="$1"
+
+  pgenv build "$version" && noti --title "PostgreSQL $version installed!"
+}
+
+#--------------------------------------------------#
 # Section: https://www.postgresql.org:[PostgreSQL] #
 #--------------------------------------------------#
 

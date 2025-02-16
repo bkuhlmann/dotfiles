@@ -257,10 +257,14 @@ alias ntw="npm run test:watch"
 # Section: https://cocoatech.com:[Path Finder]
 alias pfo='open -a "Path Finder.app" "$PWD"'
 
-# Section: https://www.postgresql.org:[PostgreSQL]
-alias pgi='initdb "$HOME/.pgenv/pgsql/data"'
+# Section: https://github.com/theory/pgenv:[pgenv]
+alias pgc="pgenv clear"
+alias pgl="pgenv log"
+alias pgs="pgenv use"
 alias pgsp="pgenv stop"
 alias pgst="pgenv start"
+alias pgu="pgenv remove"
+alias pgv="pgenv versions"
 
 # Section: https://redis.io:[Redis]
 alias redc="redis-cli"
