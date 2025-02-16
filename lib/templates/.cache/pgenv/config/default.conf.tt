@@ -1,0 +1,84 @@
+# Enables debug output
+#export PGENV_DEBUG=''
+
+# Enables warning messages
+#export PGENV_WARNINGS=''
+
+###### Build settings #####
+# Make command to use for build
+export PGENV_MAKE='/usr/bin/make'
+
+# Make flags
+declare -a PGENV_MAKE_OPTIONS=([0]="-j3")
+export PGENV_MAKE_OPTIONS
+
+# Configure flags, including PL languages but without --prefix
+PGENV_CONFIGURE_OPTIONS=(
+  --enable-thread-safety
+  --with-bonjour
+  --with-llvm
+  --with-openssl
+  --with-uuid=e2fs
+  PKG_CONFIG_PATH=$HOMEBREW_PREFIX/opt/icu4c@76/lib/pkgconfig
+  LLVM_CONFIG=$HOMEBREW_PREFIX/opt/llvm/bin/llvm-config
+  CLANG=$HOMEBREW_PREFIX/opt/llvm/bin/clang
+  "CPPFLAGS=-I$HOMEBREW_PREFIX/opt/icu4c/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include"
+  "CFLAGS=-I$HOMEBREW_PREFIX/opt/icu4c/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include"
+  "LDFLAGS=-L$HOMEBREW_PREFIX/opt/icu4c/lib -L$HOMEBREW_PREFIX/opt/openssl/lib -L$HOMEBREW_PREFIX/opt/readline/lib"
+)
+
+# A file that lists ordered patches to apply before building starts
+#export PGENV_PATCH_INDEX=''
+
+# Curl command to download source code
+export PGENV_CURL='/usr/bin/curl'
+
+# Patch command for specific versions
+export PGENV_PATCH='/usr/bin/patch'
+
+# Sed used to manipulate strings
+export PGENV_SED='/usr/bin/sed'
+
+##### Runtime options #####
+# Path to the cluster log file (mandatory)
+export PGENV_LOG="$HOME/.cache/pgenv/pgsql/data/server.log"
+
+# Initdb flags
+declare -a PGENV_INITDB_OPTIONS=([0]="-U" [1]="postgres" [2]="--locale" [3]="en_US.UTF-8" [4]="--encoding" [5]="UNICODE")
+export PGENV_INITDB_OPTIONS
+
+# Stop configuration flags
+declare -a PGENV_STOP_OPTIONS=()
+export PGENV_STOP_OPTIONS
+
+# Start configuration flags
+declare -a PGENV_START_OPTIONS=()
+export PGENV_START_OPTIONS
+
+# Restart configuration flags
+declare -a PGENV_RESTART_OPTIONS=()
+export PGENV_RESTART_OPTIONS
+
+# Script to execute when the build process finishes
+#export PGENV_SCRIPT_POSTINSTALL=''
+
+# Script to execute when initdb finishes (and the server has not started yet)
+export PGENV_SCRIPT_FIRSTSTART="$HOME/.config/pgenv/initialize"
+
+# Script to execute at the very first start of the instance
+#export PGENV_SCRIPT_FIRSTSTART=''
+
+# Script to execute before the cluster stops
+#export PGENV_SCRIPT_PRESTOP=''
+
+# Script to execute when the cluster has been stopped
+#export PGENV_SCRIPT_POSTSTOP=''
+
+# Script to execute when the cluster has been started
+#export PGENV_SCRIPT_POSTSTART=''
+
+# Script to execute when the cluster has been restarted
+#export PGENV_SCRIPT_POSTRESTART=''
+
+# Ensures configuration is preserved.
+export PGENV_WRITE_CONFIGURATION_FILE_AUTOMATICALLY=no
