@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 55.1.0
+git checkout 55.2.0
 ----
 
 == Upgrade
@@ -429,12 +429,16 @@ ntw = "npm run test:watch"
 pfo = 'open -a "Path Finder.app" "$PWD"'
 ....
 
-==== https://www.postgresql.org:[PostgreSQL]
+==== https://github.com/theory/pgenv:[pgenv]
 
 ....
-pgi = 'initdb "$HOME/.pgenv/pgsql/data"'
+pgc = "pgenv clear"
+pgl = "pgenv log"
+pgs = "pgenv use"
 pgsp = "pgenv stop"
 pgst = "pgenv start"
+pgu = "pgenv remove"
+pgv = "pgenv versions"
 ....
 
 ==== https://redis.io:[Redis]
@@ -795,6 +799,12 @@ sslc = SSL Certificate Creation - Create SSL certificate.
 omc = Overmind Connect - Connect to running process.
 omr = Overmind Restart - Restart running process.
 oms = Overmind Start - Start processes.
+....
+
+==== https://github.com/theory/pgenv:[pgenv]
+
+....
+pgi = PostgreSQL Install - Install (build) specific version.
 ....
 
 ==== https://www.postgresql.org:[PostgreSQL]
