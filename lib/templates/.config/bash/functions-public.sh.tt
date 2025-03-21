@@ -2417,9 +2417,9 @@ oms() {
   local environment="$1"
 
   if [[ "$environment" == "p" ]]; then
-    overmind start --port-step 10 --can-die migration,assets
+    overmind start --port-step 10 --can-die assets,migrate
   else
-    overmind start --port-step 10 --procfile Procfile.dev --can-die migration
+    overmind start --port-step 10 --procfile Procfile.dev --can-die assets,migrate
   fi
 }
 
