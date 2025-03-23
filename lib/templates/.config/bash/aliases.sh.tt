@@ -59,7 +59,12 @@ alias dutia='duti $HOME/.config/duti/configuration.duti'
 # Section: https://eza.rocks:[Eza]
 alias x1="eza --oneline --all --group-directories-first"
 alias x="eza --all --all --long --header --group --group-directories-first --time-style long-iso --git"
-alias xt="eza --all --group-directories-first --ignore-glob '*.git' --git-ignore --tree"
+alias xt="eza --tree --all --group-directories-first --ignore-glob '*.git' --git-ignore"
+alias xtv="eza --tree --all --group-directories-first --ignore-glob '*.git'"
+
+# Second
+ public/assets
+
 
 # Section: https://github.com/Schniz/fnm:[Fast Node Manager]
 alias js="fnm"
