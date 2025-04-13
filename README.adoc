@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 55.2.0
+git checkout 55.3.0
 ----
 
 == Upgrade
@@ -188,7 +188,8 @@ dutia = 'duti $HOME/.config/duti/configuration.duti'
 ....
 x1 = "eza --oneline --all --group-directories-first"
 x = "eza --all --all --long --header --group --group-directories-first --time-style long-iso --git"
-xt = "eza --all --group-directories-first --ignore-glob '*.git' --git-ignore --tree"
+xt = "eza --tree --all --group-directories-first --ignore-glob '*.git' --git-ignore"
+xtv = "eza --tree --all --group-directories-first --ignore-glob '*.git'"
 ....
 
 ==== https://github.com/Schniz/fnm:[Fast Node Manager]
