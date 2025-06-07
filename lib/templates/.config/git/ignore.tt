@@ -21,11 +21,16 @@
 # Databases
 *.dump
 
+# Docker
+compose.dev.yml
+
 # Environments
 *.env*
+!*.env*.tt
 
 # Logs
 *.log
+*.log.*
 
 # macOS
 .DS_Store
