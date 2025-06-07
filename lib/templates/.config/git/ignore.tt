@@ -23,6 +23,7 @@
 
 # Environments
 *.env*
+!*env.tt
 
 # Logs
 *.log
