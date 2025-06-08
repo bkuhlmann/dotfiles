@@ -248,6 +248,70 @@ curli() {
   fi
 }
 
+#------------------------------------------#
+# Section: https://www.docker.com:[Docker] #
+#------------------------------------------#
+
+# Label: Docker Comppose
+# Description: Run Docker Comppose for development (default) or production.
+# Parameters: $1 (optional): Environment. Use: "p" for "production". Default: "".
+drc() {
+  local environment="$1"
+
+  shift
+
+  if [[ "$environment" == "p" ]]; then
+    docker-compose "$@"
+  else
+    docker-compose --file "compose.dev.yml" "$@"
+  fi
+}
+
+# Label: Docker Compose Build
+# Description: Build service for development (default) or production.
+# Parameters: $1 (optional): Environment. Use: "p" for "production". Default: "".
+drcb() {
+  local environment="$1"
+
+  drc "$environment" "build"
+}
+
+# Label: Docker Compose Down
+# Description: Shutdown services for development (default) or production.
+# Parameters: $1 (optional): Environment. Use: "p" for "production". Default: "".
+drcd() {
+  local environment="$1"
+
+  drc "$environment" "down"
+}
+
+# Label: Docker Compose Execute
+# Description: Execute command for development (default) or production.
+# Parameters: $1 (optional): Environment. Use: "p" for "production". Default: "".
+drce() {
+  local environment="$1"
+
+  drc "$environment" "exec"
+}
+
+# Label: Docker Compose Run
+# Description: Run oneoff command for development (default) or production.
+# Parameters: $1 (optional): Environment. Use: "p" for "production". Default: "".
+drcr() {
+  local environment="$1"
+
+  drc "$environment" "run" "--rm"
+}
+
+# Label: Docker Compose Up
+# Description: Startup services for development (default) or production.
+# Parameters: $1 (optional): Environment. Use: "p" for "production". Default: "".
+drcu() {
+  local environment="$1"
+
+  drc "$environment" "up"
+}
+
 #-------------------#
 # Section: Dotfiles #
 #-------------------#
