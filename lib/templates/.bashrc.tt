@@ -93,6 +93,11 @@ eval "$(fnm env --use-on-cd)"
 export FRUM_DIR="$HOME/.cache/frum"
 eval "$(frum init)"
 
+# Fx
+export FX_LINE_NUMBERS=true
+export FX_SHOW_SIZE=true
+export FX_THEME=8
+
 # FZF
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --color always --exclude .git"
 export FZF_DEFAULT_OPTS="--multi --ansi"
