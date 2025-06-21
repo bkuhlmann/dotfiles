@@ -108,6 +108,9 @@ export MAKEFLAGS="--jobs=$(sysctl -n hw.ncpu)"
 # Node
 export PATH="$PATH:$HOMEBREW_PREFIX/share/npm/bin"
 
+# Ollama
+export OLLAMA_CONTEXT_LENGTH=8192
+
 # OrbStack
 source "$HOME/.orbstack/shell/init.bash" 2>/dev/null || :
 
