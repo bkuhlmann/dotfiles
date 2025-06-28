@@ -26,6 +26,7 @@ psql --username postgres --command "CREATE DATABASE $USER;"
   fi
 )
 
+psql -c "ALTER SYSTEM SET timezone = 'UTC';"
 psql -c "ALTER SYSTEM SET ssl = 'on';"
 psql -c "ALTER SYSTEM SET ssl_cert_file = 'server.crt';"
 psql -c "ALTER SYSTEM SET ssl_key_file = 'server.key';"
