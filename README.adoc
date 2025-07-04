@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 55.3.0
+git checkout 55.4.0
 ----
 
 == Upgrade
@@ -167,10 +167,6 @@ denvs = "direnv status"
 ....
 dr = "docker"
 drb = "docker build"
-drc = "docker-compose"
-drcb = "docker-compose build"
-drcr = "docker-compose run --rm"
-drcu = "docker-compose up"
 drd = "docker system prune --force && docker buildx prune --force"
 dri = "docker images"
 drp = "docker ps --all"
@@ -611,6 +607,17 @@ cqi = Code Quality Issues - List all source files affected by code quality issue
 ....
 curld = Curl Diagnostics - Curl with diagnostic information for request.
 curli = Curl Inspect - Inspect remote file with default editor.
+....
+
+==== https://www.docker.com:[Docker]
+
+....
+drc = Docker Comppose - Run Docker Comppose for development (default) or production.
+drcb = Docker Compose Build - Build service for development (default) or production.
+drcd = Docker Compose Down - Shutdown services for development (default) or production.
+drce = Docker Compose Execute - Execute command for development (default) or production.
+drcr = Docker Compose Run - Run oneoff command for development (default) or production.
+drcu = Docker Compose Up - Startup services for development (default) or production.
 ....
 
 ==== Dotfiles
