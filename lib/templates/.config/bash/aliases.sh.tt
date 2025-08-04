@@ -26,7 +26,6 @@ alias bi="bundle install"
 alias blo='bundle list --paths | fzf | xargs $EDITOR'
 alias bo="bundle outdated --only-explicit"
 alias br="bundle remove"
-alias bu="bundle update"
 
 # Section: https://crystal-lang.org:[Crystal]
 alias cr="crystal"

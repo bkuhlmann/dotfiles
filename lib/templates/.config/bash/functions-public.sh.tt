@@ -145,6 +145,19 @@ boa() {
   done < <(ls -A1)
 }
 
+# Label: Bundle Update
+# Description: Update all gems or a single gem in current project.
+# Parameters: $1 (optional): The desired gem. Default: nil.
+bu() {
+  local gem="$1"
+
+  if [[ -n "$gem" ]]; then
+    bundle update "$gem"
+  else
+    bundle update --all
+  fi
+}
+
 # Label: Bundle Update (all)
 # Description: Update gems for projects in current directory.
 bua() {
