@@ -157,7 +157,7 @@ alias gg="git grep"
 alias gget="git config get"
 alias ggp="git config --global --get-regexp includeif | awk '{print \$NF}' | fzf | xargs \$EDITOR"
 alias gi="git init"
-alias gl='git log --graph --pretty=format:"$(_git_log_line_format)"'
+alias gl='git log --graph --pretty=format:"$(_git_log_line_format)" "$(_git_branch_range)"'
 alias glame="git blame -M -C"
 alias glean="git clean -d --force"
 alias glf='git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
