@@ -1312,12 +1312,6 @@ glameh() {
   _git_file_commits commits[@] "$file"
 }
 
-# Label: Git Log Details
-# Description: List default or feature branch commit details.
-gld() {
-  git log --stat --pretty=format:"$(_git_log_details_format)" "$(_git_branch_range)"
-}
-
 # Label: Git Clean (all)
 # Description: Clean uncommitted files from all projects in current directory.
 gleana() {
