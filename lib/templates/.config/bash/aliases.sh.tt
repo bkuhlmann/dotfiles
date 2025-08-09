@@ -58,10 +58,6 @@ alias x="eza --all --all --long --header --group --group-directories-first --tim
 alias xt="eza --tree --all --group-directories-first --ignore-glob '*.git' --git-ignore"
 alias xtv="eza --tree --all --group-directories-first --ignore-glob '*.git'"
 
-# Second
- public/assets
-
-
 # Section: https://github.com/Schniz/fnm:[Fast Node Manager]
 alias js="fnm"
 alias jsd="fnm default"
