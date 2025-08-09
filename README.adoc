@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 55.4.0
+git checkout 55.5.0
 ----
 
 == Upgrade
@@ -140,7 +140,6 @@ bi = "bundle install"
 blo = 'bundle list --paths | fzf | xargs $EDITOR'
 bo = "bundle outdated --only-explicit"
 br = "bundle remove"
-bu = "bundle update"
 ....
 
 ==== https://crystal-lang.org:[Crystal]
@@ -303,9 +302,10 @@ ges = "git diff --name-only --cached | _fzf_preview_and_select | xargs -0 -o -t 
 gf = "git fetch"
 gg = "git grep"
 gget = "git config get"
-ggp = "git config --global --get-regexp includeif | awk '{print \$NF}' | fzf | xargs \$EDITOR"
+ggp = "git config get --global --regexp includeif | fzf | xargs \$EDITOR"
 gi = "git init"
-gl = 'git log --graph --pretty=format:"$(_git_log_line_format)"'
+gl = 'git log --graph --pretty=format:"$(_git_log_line_format)" "$(_git_branch_range)"'
+gld = 'git log --stat --pretty=format:"$(_git_log_details_format)" "$(_git_branch_range)"'
 glame = "git blame -M -C"
 glean = "git clean -d --force"
 glf = 'git fetch && git log --reverse --no-merges --pretty=format:"$(_git_log_line_format)" ..@{upstream}'
@@ -592,6 +592,7 @@ bcg = Bundler Config Gem - Configure Bundler to use local gem for development pu
 bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
 bl = Bundle List - List gem dependencies for project and copy them to clipboard.
 boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
+bu = Bundle Update - Update all gems or a single gem in current project.
 bua = Bundle Update (all) - Update gems for projects in current directory.
 ....
 
@@ -693,13 +694,13 @@ gince = Git Since - Answer summarized list of activity since date/time for proje
 ginfo = Git Info - Print repository overview information.
 gistory = Git File History - View file commit history (with optional diff support).
 glameh = Git Blame History - View commit history for file and/or lines (with optional diff support).
-gld = Git Log Details - List default or feature branch commit details.
 gleana = Git Clean (all) - Clean uncommitted files from all projects in current directory.
 glear = Git Clear - Clear repository for packaging/shipping purposes.
 glg = Git Log Grep - Grep Git log by query.
 gli = Git Log (interactive) - List default or feature branch commits with commit show and/or diff support.
 gls = Git Log Search - Search Git log by query.
 glz = Git Log Fuzzy - Fuzzy find commits in the log.
+gm = Git Merge - Interactively select a branch to merge into the current branch and delete after.
 gma = Git Merge (all) - Merges, deletes, and pushes feature branch.
 gmonth = Git Month - Answer summarized list of current month activity for projects in current directory.
 gmpa = Git Amend Push (all) - Amend all changes and force push with lease for projects in current directory.
