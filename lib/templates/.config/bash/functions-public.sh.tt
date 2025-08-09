@@ -1103,8 +1103,13 @@ gga() {
   local name="${label,,}"
   local path="$HOME/.config/git/profiles/${name,,}"
 
+  if [[ -z "$label" ]]; then
+    printf "%s\n" "ERROR: Guise label must be supplied."
+    return
+  fi
+
   git config set --global \
-  includeIf."gitdir:~/Engineering/Companies/$label/".path "~/.config/git/profiles/$name" \
+  includeIf."gitdir:~/Engineering/Companies/$label/".path "$HOME/.config/git/profiles/$name" \
   && touch "$path" \
   && printf "%s\n" "Created: $path."
 }
@@ -1115,6 +1120,11 @@ gga() {
 ggd() {
   local name="$1"
   local path="$HOME/.config/git/profiles/$name"
+
+  if [[ -z "$name" ]]; then
+    printf "%s\n" "ERROR: Guise name must be supplied."
+    return
+  fi
 
   rg --no-line-number --ignore-case --regexp "includeIf.+$name" "$GIT_CONFIG_GLOBAL" \
   | sed 's/\[includeIf \"//g' \

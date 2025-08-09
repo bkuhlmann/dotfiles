@@ -155,7 +155,7 @@ alias ges="git diff --name-only --cached | _fzf_preview_and_select | xargs -0 -o
 alias gf="git fetch"
 alias gg="git grep"
 alias gget="git config get"
-alias ggp="git config --global --get-regexp includeif | awk '{print \$NF}' | fzf | xargs \$EDITOR"
+alias ggp="git config get --global --regexp includeif | fzf | xargs \$EDITOR"
 alias gi="git init"
 alias gl='git log --graph --pretty=format:"$(_git_log_line_format)" "$(_git_branch_range)"'
 alias gld='git log --stat --pretty=format:"$(_git_log_details_format)" "$(_git_branch_range)"'
