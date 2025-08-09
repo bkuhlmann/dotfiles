@@ -1,16 +1,29 @@
--- Reference: http://robots.thoughtbot.com/improving-the-command-line-postgres-experience
-
 -- %[...%] = Sets the default prompt bold black color.
 -- %M = The full host name (with domain) of database server, or [local] if the connection is a Unix domain socket.
 -- %n = The database user name.
 -- %/ = The database name.
--- %R = Normally '=' but '^' if in single-line mode and '!' if the session is disconnected from the database.
+-- %x = The transaction state. See legend below:
+--       : Not in transaction.
+--      *: Inside a transaction.
+--      !: Inside a failed transaction and not rolled back.
+--      ?: State is unknown or there is no connection.
+-- %R = The connection info. See legend below:
+--      =: New command.
+--      –: Continuation of multiline query.
+--      ^: In single-line mode.
+--      @: Inside conditional logic branch.
+--      *: Inside unfinished comment block.
+--      ': Inside unfinished single quoted string.
+--      ": Inside unfinished double quoted string.
+--      $: Inside unfinished dollar quoted string.
+--      (: Inside unfinished parenthesis.
+--      !: Disconnected from database.
 -- %[...%] = Resets the color to non-bold black.
 -- %# = '#' if superuser, otherwise '>'.
-\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+\set PROMPT1 '%[%033[1m%]%M %n@%/%x%R%[%033[0m%]%# '
 
 -- Used when waiting for more input.
-\set PROMPT2 '[more] %R > '
+\set PROMPT2 '[more] %x%R> '
 
 -- Autocomplete keywords (like SELECT) in upper-case, even if you started typing them in lower case.
 \set COMP_KEYWORD_CASE upper
