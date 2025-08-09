@@ -1449,6 +1449,15 @@ glz() {
   | fzf --no-sort --reverse --preview 'git show --color {1}' --preview-window=wrap
 }
 
+# Label: Git Merge
+# Description: Interactively select a branch to merge into the current branch and delete after.
+# Parameters: $1 (required): The branch to merge.
+gm() {
+  branch="$(gbl | fzf | awk '{print $1}')"
+
+  git merge "$branch" && git branch --delete --force "$branch" && git push --delete origin "$branch"
+}
+
 # Label: Git Merge (all)
 # Description: Merges, deletes, and pushes feature branch.
 # Parameters: $1 (required): Branch.
