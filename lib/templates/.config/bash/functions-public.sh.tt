@@ -582,6 +582,16 @@ gasha() {
   done < <(ls -A1)
 }
 
+# Label: Git Stash Clear
+# Description: Clears all stashes.
+gashc() {
+  local reference="refs/stashes/$USER"
+
+  git stash clear
+  git update-ref -d "$reference"
+  git push --delete origin "$reference"
+}
+
 # Label: Git Stash Drop
 # Description: Drop stash or prompt for stash to drop.
 gashd() {
