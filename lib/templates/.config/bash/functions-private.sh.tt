@@ -424,6 +424,18 @@ _git_stash_count() {
   git stash list | wc -l | xargs -n 1
 }
 
+# Label: Git Stash push
+# Description: Pushes changes to remote.
+_git_stash_push() {
+  local reference="refs/stashes/$USER"
+
+  if [[ -e ".git/$reference" ]]; then
+    git push --no-verify --force origin "$reference"
+  else
+    printf "%s\n" "Push skipped. Reference doesn't exist: $reference."
+  fi
+}
+
 # Label: Git Tag Last
 # Description: Answer last tag or last commit SHA.
 _git_tag_last() {
