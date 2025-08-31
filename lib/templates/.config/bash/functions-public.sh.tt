@@ -603,6 +603,14 @@ gashd() {
   _git_stash_push
 }
 
+# Label: Git Stash Import
+# Description: Imports a remote stash.
+# Parameters: $1 (optional): The remote name. Default: $USER.
+gashi() {
+  local name="${1:-$USER}"
+  git stash import "refs/stashes/$name"
+}
+
 # Label: Git Stash List
 # Description: List stashes.
 gashl() {
