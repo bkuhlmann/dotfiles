@@ -268,17 +268,17 @@ alias redc="redis-cli"
 alias reds='redis-server $HOMEBREW_PREFIX/etc/redis.conf &'
 
 # Section: https://github.com/AlexB52/retest[Retest]
-alias rt="NO_COVERAGE=true retest"
+alias rt="COVERAGE=no retest"
 
 # Section: https://github.com/BurntSushi/ripgrep:[ripgrep]
 alias rgf="rg --files --glob"
 
 # Section: https://rspec.info:[RSpec]
-alias rsf="NO_COVERAGE=true rspec spec --only-failures"
-alias rsn="NO_COVERAGE=true rspec spec --next-failure"
-alias rso="NO_COVERAGE=true rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
+alias rsf="COVERAGE=no rspec spec --only-failures"
+alias rsn="COVERAGE=no rspec spec --next-failure"
+alias rso="COVERAGE=no rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
 alias rss="rspec"
-alias rst="NO_COVERAGE=true rspec spec --tag"
+alias rst="COVERAGE=no rspec spec --tag"
 
 # Section: https://github.com/bbatsov/rubocop:[Rubocop]
 alias cop="rubocop --parallel --display-cop-names --display-style-guide"
