@@ -277,6 +277,7 @@ alias rgf="rg --files --glob"
 alias rsf="COVERAGE=no rspec spec --only-failures"
 alias rsn="COVERAGE=no rspec spec --next-failure"
 alias rso="COVERAGE=no rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
+alias rsr="COVERAGE=no rspec"
 alias rss="rspec"
 alias rst="COVERAGE=no rspec spec --tag"
 
