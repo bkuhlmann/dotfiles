@@ -113,7 +113,8 @@
   autoStash = true
   updateRefs = true
 [remote "origin"]
-  fetch = +refs/pull/*/head:refs/remotes/pull_requests/*
+  fetch = refs/pull/*/head:refs/remotes/pull_requests/*
+  fetch = refs/stashes/*:refs/remote/origin/stashes/*
 [rerere]
   autoUpdate = true
   enabled = true
