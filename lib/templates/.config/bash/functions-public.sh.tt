@@ -560,7 +560,7 @@ galla() {
 # Description: Creates stash of all changes.
 # Parameters: $1 (optional): Label. Default: "All Work (YYYY-MM-DD HH:MM:SS AM|PM Z)."
 gash() {
-  local label=${1:-"All Work ($(date '+%Y-%m-%d %r %Z'))."}
+  local label=${1:-"All Work ($(date '+%Y-%m-%d %r %Z'))"}
   local reference="refs/stashes/$USER"
 
   git stash push --include-untracked --message "$label"
