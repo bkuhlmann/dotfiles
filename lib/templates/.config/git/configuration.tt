@@ -119,6 +119,10 @@
   enabled = true
 [revert]
   reference = true
+[stash]
+  showIncludeUntracked = true
+  showPatch = true
+  showStat = false
 [status]
   showUntrackedFiles = all
 [tag]
