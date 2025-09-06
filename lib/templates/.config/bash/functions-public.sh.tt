@@ -610,7 +610,7 @@ gashs() {
   if [[ -n "$diff_option" ]]; then
     case "$diff_option" in
       'd')
-        _process_git_stash "git stash show --include-untracked --patch" "Git Stash Diff Options (select stash to diff)";;
+        _process_git_stash "git stash show" "Git Stash Diff Options (select stash to diff)";;
       't')
         _process_git_stash "git difftool" "Git Stash Diff Options (select stash to diff)";;
       *)
