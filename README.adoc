@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 55.5.0
+git checkout 55.6.0
 ----
 
 == Upgrade
@@ -253,7 +253,6 @@ gamend = "git commit --amend"
 gamenda = "git commit --amend --all --no-edit"
 gamendh = "git commit --amend --no-edit"
 gap = "git ls-files --modified | _fzf_preview_and_select | xargs -0 -o -t git add --patch"
-gashc = "git stash clear"
 gatch = "git commit --patch"
 gau = "git add --update"
 gb = "git switch"
@@ -448,7 +447,7 @@ reds = 'redis-server $HOMEBREW_PREFIX/etc/redis.conf &'
 ==== https://github.com/AlexB52/retest[Retest]
 
 ....
-rt = "NO_COVERAGE=true retest"
+rt = "COVERAGE=no retest"
 ....
 
 ==== https://github.com/BurntSushi/ripgrep:[ripgrep]
@@ -460,11 +459,12 @@ rgf = "rg --files --glob"
 ==== https://rspec.info:[RSpec]
 
 ....
-rsf = "NO_COVERAGE=true rspec spec --only-failures"
-rsn = "NO_COVERAGE=true rspec spec --next-failure"
-rso = "NO_COVERAGE=true rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
+rsf = "COVERAGE=no rspec spec --only-failures"
+rsn = "COVERAGE=no rspec spec --next-failure"
+rso = "COVERAGE=no rspec spec --dry-run --format doc > tmp/rspec-overview.txt && e tmp/rspec-overview.txt"
+rsr = "COVERAGE=no rspec"
 rss = "rspec"
-rst = "NO_COVERAGE=true rspec spec --tag"
+rst = "COVERAGE=no rspec spec --tag"
 ....
 
 ==== https://github.com/bbatsov/rubocop:[Rubocop]
@@ -652,7 +652,9 @@ gafe = Git Safe - Marks repository as safe for auto-loading project's `bin` path
 galla = Git Add (all) - Apply file changes (including new files) for projects in current directory.
 gash = Git Stash - Creates stash of all changes.
 gasha = Git Stash (all) - Answer stash count for projects in current directory.
+gashc = Git Stash Clear - Clears all stashes.
 gashd = Git Stash Drop - Drop stash or prompt for stash to drop.
+gashi = Git Stash Import - Imports a remote stash.
 gashl = Git Stash List - List stashes.
 gashp = Git Stash Pop - Pop stash or prompt for stash to pop.
 gashs = Git Stash Show - Show stash or prompt for stash to show.
