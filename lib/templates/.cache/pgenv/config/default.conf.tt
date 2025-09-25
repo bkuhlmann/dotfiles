@@ -20,8 +20,8 @@ PGENV_CONFIGURE_OPTIONS=(
   --with-openssl
   --with-uuid=e2fs
   PKG_CONFIG_PATH=$HOMEBREW_PREFIX/opt/icu4c@77/lib/pkgconfig
-  LLVM_CONFIG=$HOMEBREW_PREFIX/opt/llvm/bin/llvm-config
-  CLANG=$HOMEBREW_PREFIX/opt/llvm/bin/clang
+  LLVM_CONFIG=$HOMEBREW_PREFIX/opt/llvm@20/bin/llvm-config
+  CLANG=$HOMEBREW_PREFIX/opt/llvm@20/bin/clang
   "CPPFLAGS=-I$HOMEBREW_PREFIX/opt/icu4c/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include"
   "CFLAGS=-I$HOMEBREW_PREFIX/opt/icu4c/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include"
   "LDFLAGS=-L$HOMEBREW_PREFIX/opt/icu4c/lib -L$HOMEBREW_PREFIX/opt/openssl/lib -L$HOMEBREW_PREFIX/opt/readline/lib"
