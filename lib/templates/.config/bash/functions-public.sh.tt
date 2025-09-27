@@ -2342,7 +2342,7 @@ msf() {
   milestoner build --max "$max" --format feed
 
   if [[ -f "$path" ]]; then
-    open -a "Brave Browser" "tmp/milestones/index.xml"
+    open -a "Vivaldi" "tmp/milestones/index.xml"
   fi
 }
 
