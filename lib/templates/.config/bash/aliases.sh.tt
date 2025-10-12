@@ -3,14 +3,6 @@
 # Section: https://asciidoctor.org:[ASCII Doctor]
 alias ad="asciidoctor"
 
-# Section: https://asciinema.org:[asciinema]
-alias cin="asciinema"
-alias cina="asciinema rec --append"
-alias cinc="asciinema cat"
-alias cine="asciinema_plus -e"
-alias cinp="asciinema play"
-alias cinu="asciinema upload"
-
 # Section: https://www.gnu.org/software/bash:[Bash]
 alias bashe='$EDITOR $HOME/.config/bash/environment.sh'
 alias bashs='exec $SHELL'
