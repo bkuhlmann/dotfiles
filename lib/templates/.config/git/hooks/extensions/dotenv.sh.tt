@@ -5,7 +5,7 @@
 dotenv_check() {
   if command -v dotenv-linter > /dev/null; then
     printf "%s\n" "[dotenv-linter]:"
-    dotenv-linter
+    dotenv-linter check .
   fi
 }
 export -f dotenv_check
