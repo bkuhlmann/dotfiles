@@ -12,16 +12,16 @@ export PGENV_MAKE='/usr/bin/make'
 declare -a PGENV_MAKE_OPTIONS=([0]="-j3")
 export PGENV_MAKE_OPTIONS
 
-# Configure flags, including PL languages but without --prefix
+# Configure PostgreSQL build flags.
 PGENV_CONFIGURE_OPTIONS=(
   --enable-thread-safety
   --with-bonjour
   --with-llvm
   --with-openssl
   --with-uuid=e2fs
-  PKG_CONFIG_PATH=$HOMEBREW_PREFIX/opt/icu4c@77/lib/pkgconfig
-  LLVM_CONFIG=$HOMEBREW_PREFIX/opt/llvm/bin/llvm-config
-  CLANG=$HOMEBREW_PREFIX/opt/llvm/bin/clang
+  PKG_CONFIG_PATH=$HOMEBREW_PREFIX/opt/icu4c/lib/pkgconfig
+  LLVM_CONFIG=$HOMEBREW_PREFIX/opt/llvm@20/bin/llvm-config
+  CLANG=$HOMEBREW_PREFIX/opt/llvm@20/bin/clang
   "CPPFLAGS=-I$HOMEBREW_PREFIX/opt/icu4c/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include"
   "CFLAGS=-I$HOMEBREW_PREFIX/opt/icu4c/include -I$HOMEBREW_PREFIX/opt/openssl/include -I$HOMEBREW_PREFIX/opt/readline/include"
   "LDFLAGS=-L$HOMEBREW_PREFIX/opt/icu4c/lib -L$HOMEBREW_PREFIX/opt/openssl/lib -L$HOMEBREW_PREFIX/opt/readline/lib"
