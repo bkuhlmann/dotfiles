@@ -1615,18 +1615,20 @@ gpua() {
 }
 
 # Label: Git Remote Add
-# Description: Add and track a remote repository.
-# Parameters: $1 (required): Repository URL, $2 (optional): Name. Default: upstream
+# Description: Add remote repository.
+# Parameters: $1 (required): The repository URL.
 gra() {
   local url="$1"
-  local name="${2:-upstream}"
+
+  name=$(echo "$url" | awk -F/ '{print $4}')
 
   if [[ -z "$url" ]]; then
     printf "%s\n" "ERROR: Repository URL must be supplied."
     return 1
   fi
 
-  git remote add -t "$(_git_branch_default)" -f "$name" "$url"
+  git remote add --no-tags "$name" "$url"
+  git -c fetch.pruneTags=false fetch "$name"
 }
 
 # Label: Git Remote Delete
