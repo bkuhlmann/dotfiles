@@ -1629,6 +1629,16 @@ gra() {
   git remote add -t "$(_git_branch_default)" -f "$name" "$url"
 }
 
+# Label: Git Remote Delete
+# Description: Delete local remote.
+grd() {
+  selection="$(git remote | grep -v '^origin$' | fzf)"
+
+  git remote remove "$selection"
+
+  printf "%s\n" "Removed remote: $selection."
+}
+
 # Label: Git Rebase (interactive)
 # Description: Rebase commits, interactively.
 # Parameters: $1 (optional): The number of commits or label (i.e. branch/tag) to rebase to.
