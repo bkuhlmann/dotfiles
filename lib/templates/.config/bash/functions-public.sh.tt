@@ -81,32 +81,6 @@ bcg() {
   printf "%s\n" "Added: $(tail -n 1 $BUNDLE_USER_CONFIG)"
 }
 
-# Label: Bundler Jobs
-# Description: Answer maximum Bundler job limit for current machine or automatically set it.
-bj() {
-  if command -v sysctl > /dev/null; then
-    local computer_name=$(scutil --get ComputerName)
-    local max_jobs=$((`sysctl -n hw.ncpu` - 1))
-    local bundler_config="$HOME/.bundle/config"
-
-    printf "%s\n" "$computer_name's maximum Bundler job limit is: $max_jobs."
-
-    if command -v rg > /dev/null && [[ -e "$bundler_config" ]]; then
-      local current_jobs=$(rg "JOBS" $bundler_config | awk '{print $2}' | tr -d "'")
-
-      if [[ $current_jobs != $max_jobs ]]; then
-        bundle config --global jobs $max_jobs
-        printf "%s\n" "Automatically updated Bundler to use maximum job limit. Details: $bundler_config."
-      else
-        printf "%s\n" "$computer_name is using maximum job limit. Kudos!"
-      fi
-    fi
-  else
-    printf "ERROR: Operating system must be OSX."
-    return 1
-  fi
-}
-
 # Label: Bundle List
 # Description: List gem dependencies for project and copy them to clipboard.
 bl() {
