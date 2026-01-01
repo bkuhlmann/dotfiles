@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 55.6.0
+git checkout 56.0.0
 ----
 
 == Upgrade
@@ -107,17 +107,6 @@ accidentally checked into a source code repository or shared via other means.
 
 ....
 ad = "asciidoctor"
-....
-
-==== https://asciinema.org:[asciinema]
-
-....
-cin = "asciinema"
-cina = "asciinema rec --append"
-cinc = "asciinema cat"
-cine = "asciinema_plus -e"
-cinp = "asciinema play"
-cinu = "asciinema upload"
 ....
 
 ==== https://www.gnu.org/software/bash:[Bash]
@@ -300,8 +289,8 @@ gelc = "git rm --cached"
 ges = "git diff --name-only --cached | _fzf_preview_and_select | xargs -0 -o -t git reset"
 gf = "git fetch"
 gg = "git grep"
+gge = "git config get --global --regexp includeif | fzf | xargs \$EDITOR"
 gget = "git config get"
-ggp = "git config get --global --regexp includeif | fzf | xargs \$EDITOR"
 gi = "git init"
 gl = 'git log --graph --pretty=format:"$(_git_log_line_format)" "$(_git_branch_range)"'
 gld = 'git log --stat --pretty=format:"$(_git_log_details_format)" "$(_git_branch_range)"'
@@ -578,18 +567,11 @@ wp = "watch --interval 1 --color --beep --exec"
 ado = ASCII Doctor Open - Transforms ASCII Doc into HTML and opens in default browser.
 ....
 
-==== https://asciinema.org:[asciinema]
-
-....
-cinr = asciinema Record - Create new asciinema recording.
-....
-
 ==== https://bundler.io:[Bundler]
 
 ....
 bca = Bundler Clean (all) - Clean projects of gem artifacts.
 bcg = Bundler Config Gem - Configure Bundler to use local gem for development purposes.
-bj = Bundler Jobs - Answer maximum Bundler job limit for current machine or automatically set it.
 bl = Bundle List - List gem dependencies for project and copy them to clipboard.
 boa = Bundle Outdated (all) - Answer outdated gems for projects in current directory.
 bu = Bundle Update - Update all gems or a single gem in current project.
@@ -713,7 +695,8 @@ gnri = Git Notes Show (interactive) - Select which commit note to show for curre
 gount = Git Commit Count - Answer total number of commits for current project.
 gpa = Git Push (all) - Push changes for projects in current directory.
 gpua = Git Pull (all) - Pull new changes from remote branch for projects in current directory.
-gra = Git Remote Add - Add and track a remote repository.
+gra = Git Remote Add - Add remote repository.
+grd = Git Remote Delete - Delete local remote.
 grbi = Git Rebase (interactive) - Rebase commits, interactively.
 grbq = Git Rebase (quick) - Rebase commits, quickly. Identical to `grbi` function but skips editor.
 groot = Git Root - Change to repository root directory regardless of current depth.
