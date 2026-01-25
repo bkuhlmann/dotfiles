@@ -5,7 +5,7 @@
 reek_branch_check() {
   if _check_gem_dependencies "reek"; then
     printf "%s\n" "[reek]:"
-    bundle exec reek $(_git_feature_files)
+    bundle exec reek "$(_git_feature_files)"
   fi
 }
 export -f reek_branch_check
@@ -15,7 +15,7 @@ export -f reek_branch_check
 reek_stage_check() {
   if _check_gem_dependencies "reek"; then
     printf "%s\n" "[reek]:"
-    bundle exec reek $(_git_staged_files)
+    bundle exec reek "$(_git_staged_files)"
   fi
 }
 export -f reek_stage_check
