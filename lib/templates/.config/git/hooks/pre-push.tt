@@ -12,6 +12,7 @@ source "$HOME/.config/git/hooks/extensions/brakeman.sh"
 source "$HOME/.config/git/hooks/extensions/bundler.sh"
 source "$HOME/.config/git/hooks/extensions/comments.sh"
 source "$HOME/.config/git/hooks/extensions/dotenv.sh"
+source "$HOME/.config/git/hooks/extensions/hadolint.sh"
 source "$HOME/.config/git/hooks/extensions/license_finder.sh"
 source "$HOME/.config/git/hooks/extensions/osv.sh"
 source "$HOME/.config/git/hooks/extensions/reek.sh"
@@ -40,6 +41,7 @@ while read local_ref local_sha remote_ref remote_sha; do
                  bundler_audit_check \
                  brakeman_check \
                  license_finder_check \
+                 hadolint_check \
                  osv_check
   fi
 done

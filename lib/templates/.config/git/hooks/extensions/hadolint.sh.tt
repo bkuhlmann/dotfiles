@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+# Label: Haskell Dockerfile Linter
+# Description: Scan Dockerfile for vulnerabilities.
+hadolint_check() {
+  if command -v hadolint > /dev/null && [[ -e "Dockerfile" ]]; then
+    printf "%s\n" "[hadolint]:"
+    hadolint Dockerfile
+  fi
+}
+export -f hadolint_check
