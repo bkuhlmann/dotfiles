@@ -108,6 +108,9 @@ export MAKEFLAGS="--jobs=$(sysctl -n hw.ncpu)"
 # Node
 export PATH="$PATH:$HOMEBREW_PREFIX/share/npm/bin"
 
+# Obsidian
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
 # Ollama
 export OLLAMA_CONTEXT_LENGTH=8192
 
