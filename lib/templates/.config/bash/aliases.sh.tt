@@ -245,9 +245,6 @@ alias nq="npm run quality"
 alias nt="npm test"
 alias ntw="npm run test:watch"
 
-# Section: https://cocoatech.com:[Path Finder]
-alias pfo='open -a "Path Finder.app" "$PWD"'
-
 # Section: https://github.com/theory/pgenv:[pgenv]
 alias pgc="pgenv clear"
 alias pgl="pgenv log"
@@ -341,6 +338,3 @@ alias tsa="tmux attach-session -t"
 alias tsk="tmux kill-session -t"
 alias tsl="tmux list-sessions"
 alias tsr="tmux rename-session -t"
-
-# Section: https://gitlab.com/procps-ng/procps:[Watch]
-alias wp="watch --interval 1 --color --beep --exec"
