@@ -92,6 +92,9 @@ alias p='pwd | tr -d "\r\n" | _copy_and_print'
 alias pss="pgrep -i -l -f"
 alias rmde="find . -type d -empty -not -path '*.git*' -delete"
 
+# Section: https://ghostty.org:[Ghostty]
+alias ghoste="$EDITOR $HOME/.config/ghostty/config.ghostty"
+
 # Section: https://git-scm.com:[Git]
 alias gall="git add --all ."
 alias gamend="git commit --amend"
