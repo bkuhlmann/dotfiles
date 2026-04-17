@@ -65,10 +65,6 @@ export DOCKER_CONFIG=$HOME/.config/docker
 # GPG
 export GPG_TTY=$(tty)
 
-# Atuin
-export ATUIN_NOBIND="true"
-eval "$(atuin init bash)"
-
 # direnv
 if [[ -e "$HOMEBREW_PREFIX/bin/direnv" ]]; then
   eval "$(direnv hook bash)"
