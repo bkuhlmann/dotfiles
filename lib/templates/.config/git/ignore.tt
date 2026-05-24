@@ -8,6 +8,7 @@
 *.rar
 *.tar
 *.tar.gz
+*.tgz
 *.zip
 
 # Bundler
