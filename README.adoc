@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 57.0.0
+git checkout 57.1.0
 ----
 
 == Upgrade
@@ -234,6 +234,12 @@ pss = "pgrep -i -l -f"
 rmde = "find . -type d -empty -not -path '*.git*' -delete"
 ....
 
+==== https://ghostty.org:[Ghostty]
+
+....
+ghoste = "$EDITOR $HOME/.config/ghostty/config.ghostty"
+....
+
 ==== https://git-scm.com:[Git]
 
 ....
@@ -287,6 +293,7 @@ gdw = "git diff --color-words"
 gel = "git rm"
 gelc = "git rm --cached"
 ges = "git diff --name-only --cached | _fzf_preview_and_select | xargs -0 -o -t git reset"
+gesu = "git reset --hard ORIG_HEAD"
 gf = "git fetch"
 gg = "git grep"
 gge = "git config get --global --regexp includeif | fzf | xargs \$EDITOR"
@@ -400,18 +407,13 @@ na = "npm login"
 nb = "npm run build"
 ni = "npm install"
 nid = "npm install --save-dev"
+nk = "npm pack"
 nl = "npm ls"
 no = "npm outdated"
 np = "npm publish"
 nq = "npm run quality"
 nt = "npm test"
 ntw = "npm run test:watch"
-....
-
-==== https://cocoatech.com:[Path Finder]
-
-....
-pfo = 'open -a "Path Finder.app" "$PWD"'
 ....
 
 ==== https://github.com/theory/pgenv:[pgenv]
@@ -551,12 +553,6 @@ tsa = "tmux attach-session -t"
 tsk = "tmux kill-session -t"
 tsl = "tmux list-sessions"
 tsr = "tmux rename-session -t"
-....
-
-==== https://gitlab.com/procps-ng/procps:[Watch]
-
-....
-wp = "watch --interval 1 --color --beep --exec"
 ....
 
 === Functions
@@ -871,6 +867,7 @@ dotenv_check = Dotenv Linter - Scan environment files for consistent style and s
 git_lint_check = Git Lint Check - Enforce consistent Git commits.
 git_trailer_cleaner = Git Trailer Cleaner - Remove unused/empty Git commit body trailers.
 git_add_trailers = Git Add Trailers - Dynamically add trailers based on branch description.
+hadolint_check = Haskell Dockerfile Linter - Scan Dockerfile for vulnerabilities.
 java_script_debugger = JavaScript Debugger - Detect JavaScript debug statements.
 java_script_console = JavaScript Console - Detect JavaScript console statements.
 java_script_alert = JavaScript Alert - Detect JavaScript alert statements.
