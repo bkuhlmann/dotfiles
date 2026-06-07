@@ -121,7 +121,6 @@ alias gbm='git switch $(_git_branch_default)'
 alias gbn="_git_branch_name | _copy_and_print"
 alias gbt="git show-branch --topics"
 alias gca="git commit --all"
-alias gcam="git commit --all --message"
 alias gcd="git config list --show-origin --show-scope | fzf"
 alias gce='cat .git/COMMIT_EDITMSG | pbcopy'
 alias gcge="git config edit --global"

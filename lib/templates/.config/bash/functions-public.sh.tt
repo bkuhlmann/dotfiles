@@ -884,6 +884,26 @@ gcaa() {
   rm -f $temp_file
 }
 
+# Label: Git Commit (all) Message
+# Description: Commit changes (unstaged and staged) with message.
+# Parameters: $1 (required): Message, $2 (required): Milestone trailer.
+gcam() {
+  local subject="$1"
+  local milestone="$2"
+
+  if [[ -z "$subject" ]]; then
+    printf "%s\n" "ERROR: Commit subject is missing."
+    return
+  fi
+
+  if [[ -z "$milestone" ]]; then
+    printf "%s\n" "ERROR: Milestone trailer is missing."
+    return
+  fi
+
+  git commit --all --message "$subject" --trailer "Milestone:$milestone"
+}
+
 # Label: Git Commit and Push (all)
 # Description: Commit and push changes for projects in current directory.
 gcap() {
