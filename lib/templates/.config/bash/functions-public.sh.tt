@@ -1133,6 +1133,51 @@ ggd() {
   && printf "%s\n" "Deleted: $path."
 }
 
+# Label: Git History Fixup (interactive)
+# Description: Select which commit to fix within current feature branch.
+ghfi() {
+  selection=$(
+    git log --color --pretty=format:"$(_git_log_enrich_format)" "$(_git_branch_range)" \
+    | _git_log_enrich \
+    | fzf --preview 'git show --color {1}' --preview-window=wrap \
+    | cut -d ' ' -f 1
+  )
+
+  if [[ -n "$selection" ]]; then
+    git history fixup "$selection"
+  fi
+}
+
+# Label: Git History Reword (interactive)
+# Description: Select which commit to reword within current feature branch.
+ghri() {
+  selection=$(
+    git log --color --pretty=format:"$(_git_log_enrich_format)" "$(_git_branch_range)" \
+    | _git_log_enrich \
+    | fzf --preview 'git show --color {1}' --preview-window=wrap \
+    | cut -d ' ' -f 1
+  )
+
+  if [[ -n "$selection" ]]; then
+    git history reword "$selection"
+  fi
+}
+
+# Label: Git History Split (interactive)
+# Description: Select which commit to split within current feature branch.
+ghsi() {
+  selection=$(
+    git log --color --pretty=format:"$(_git_log_enrich_format)" "$(_git_branch_range)" \
+    | _git_log_enrich \
+    | fzf --preview 'git show --color {1}' --preview-window=wrap \
+    | cut -d ' ' -f 1
+  )
+
+  if [[ -n "$selection" ]]; then
+    git history split "$selection"
+  fi
+}
+
 # Label: Git Show
 # Description: Show commit details with optional diff support.
 # Parameters: $1 (optional): The commit to show. Default: <last commit>, $2 (optional): Launch difftool. Default: false.
