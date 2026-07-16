@@ -639,7 +639,7 @@ gbca() {
 
         if [[ -d ".git" ]]; then
           if [[ "$(_git_branch_name)" != "$branch" ]]; then
-            git switch --create "$branch" --track
+            git switch --create "$branch"
             printf "\033[36m${project}\033[m: $branch\n" # Output in cyan and branch in white color.
           fi
         fi
