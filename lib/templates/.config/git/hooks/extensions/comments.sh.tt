@@ -37,7 +37,7 @@ comment_totals() {
     ":reek:"
     "rubocop:disable"
     "rubocop:todo"
-    ":nocov:"
+    "simplecov:disable"
   )
 
   for prefix in ${prefixes[*]}; do

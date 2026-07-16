@@ -167,7 +167,7 @@ cqi() {
     ":reek:"
     "rubocop:disable"
     "rubocop:todo"
-    ":nocov:"
+    "simplecov:disable"
   )
 
   for comment in ${comments[*]}; do
