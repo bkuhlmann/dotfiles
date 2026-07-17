@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 57.1.0
+git checkout 58.0.0
 ----
 
 == Upgrade
@@ -268,7 +268,6 @@ gbm = 'git switch $(_git_branch_default)'
 gbn = "_git_branch_name | _copy_and_print"
 gbt = "git show-branch --topics"
 gca = "git commit --all"
-gcam = "git commit --all --message"
 gcd = "git config list --show-origin --show-scope | fzf"
 gce = 'cat .git/COMMIT_EDITMSG | pbcopy'
 gcge = "git config edit --global"
@@ -652,6 +651,7 @@ gbr = Git Branch Rename - Rename current branch.
 gbs = Git Branch Switch - Switch between branches.
 gbsa = Git Branch Switch (all) - Switch to given branch for projects in current directory.
 gcaa = Git Commit (all) - Commit changes (unstaged and staged) for projects in current directory.
+gcam = Git Commit (all) Message - Commit changes (unstaged and staged) with message.
 gcap = Git Commit and Push (all) - Commit and push changes for projects in current directory.
 gcb = Git Commit Breakpoint - Create a breakpoint (empty) commit to denote related commits in a feature branch.
 gcf = Git Commit Fixup - Create fixup commit with optional amend or reword support.
@@ -665,6 +665,9 @@ gess = Git Reset Soft - Resets previous commit (default), resets back to number 
 ggeta = Git Get Config Value (all) - Answer key value for projects in current directory.
 gga = Git Guise Add - Adds Git configuration and associated profile.
 ggd = Git Guise Delete - Deletes Git configuration and associated profile.
+ghfi = Git History Fixup (interactive) - Select which commit to fix within current feature branch.
+ghri = Git History Reword (interactive) - Select which commit to reword within current feature branch.
+ghsi = Git History Split (interactive) - Select which commit to split within current feature branch.
 ghow = Git Show - Show commit details with optional diff support.
 ghurn = Git Churn - Answer commit churn for project files (sorted highest to lowest).
 gia = Git Init (all) - Initialize/re-initialize repositories in current directory.
