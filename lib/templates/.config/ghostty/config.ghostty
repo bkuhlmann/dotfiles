@@ -1,0 +1,13 @@
+bell-features = ""
+confirm-close-surface = false
+copy-on-select = clipboard
+font-family = Menlo
+font-size = 14
+keybind = "cmd+left=previous_tab"
+keybind = "cmd+right=next_tab"
+macos-option-as-alt = true
+macos-titlebar-style = tabs
+theme = Dracula+
+window-padding-x = 8
+window-padding-y = 4
+window-save-state = always
