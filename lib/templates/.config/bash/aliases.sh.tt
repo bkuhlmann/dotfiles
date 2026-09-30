@@ -114,7 +114,7 @@ alias gbih="git bisect help"
 alias gbil="git bisect log"
 alias gbir="git bisect reset"
 alias gbire="git bisect replay"
-alias gbis="git bisect start"
+alias gbis="git bisect start --reset-when-found"
 alias gbisk="git bisect skip"
 alias gbiv='git bisect visualize --reverse --pretty=format:"$(_git_log_line_format)"'
 alias gbm='git switch $(_git_branch_default)'
