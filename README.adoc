@@ -54,7 +54,7 @@ To install, run:
 ----
 git clone https://github.com/bkuhlmann/dotfiles.git
 cd dotfiles
-git checkout 58.0.0
+git checkout 58.1.0
 ----
 
 == Upgrade
@@ -261,7 +261,7 @@ gbih = "git bisect help"
 gbil = "git bisect log"
 gbir = "git bisect reset"
 gbire = "git bisect replay"
-gbis = "git bisect start"
+gbis = "git bisect start --reset-when-found"
 gbisk = "git bisect skip"
 gbiv = 'git bisect visualize --reverse --pretty=format:"$(_git_log_line_format)"'
 gbm = 'git switch $(_git_branch_default)'
@@ -665,6 +665,7 @@ gess = Git Reset Soft - Resets previous commit (default), resets back to number 
 ggeta = Git Get Config Value (all) - Answer key value for projects in current directory.
 gga = Git Guise Add - Adds Git configuration and associated profile.
 ggd = Git Guise Delete - Deletes Git configuration and associated profile.
+ghdi = Git History Drop (interactive) - Select which commit to drop within current feature branch.
 ghfi = Git History Fixup (interactive) - Select which commit to fix within current feature branch.
 ghri = Git History Reword (interactive) - Select which commit to reword within current feature branch.
 ghsi = Git History Split (interactive) - Select which commit to split within current feature branch.
