@@ -231,6 +231,7 @@ alias key="open /Applications/Utilities/Keychain\ Access.app"
 alias ping="gping"
 alias speed="networkQuality"
 alias sshe='$EDITOR $HOME/.ssh/config'
+alias sshd="ssh-keygen -R"
 alias top="htop"
 
 # Section: https://www.npmjs.com:[NPM]
